@@ -17,7 +17,7 @@
  * ###################
  * A point with a weight
  */
-struct WeightedPoint3D: public Point3D {
+struct WeightedPoint3D : public Point3D {
 	LSN w;
 
 	WeightedPoint3D();

@@ -25,7 +25,7 @@ Vector3D::Vector3D() {
  * p1 is the point of application
  * p2 is the end.
  */
-Vector3D::Vector3D(const Point3D& p1, const Point3D& p2){
+Vector3D::Vector3D(const Point3D& p1, const Point3D& p2) {
 	m_delp1=true;
 	m_delp2=true;
 	this->m_pp1=new Point3D(p1);
@@ -37,7 +37,7 @@ Vector3D::Vector3D(const Point3D& p1, const Point3D& p2){
  * pp1 is a pointeur to the point of application
  * pp2 is a pointeur to the end.
  */
-Vector3D::Vector3D(Point3D* pp1, Point3D* pp2){
+Vector3D::Vector3D(Point3D* pp1, Point3D* pp2) {
 	if (pp1!=NULL){
 		m_delp1=false;
 		this->m_pp1=pp1;
@@ -59,7 +59,7 @@ Vector3D::Vector3D(Point3D* pp1, Point3D* pp2){
  * pp1 is a pointeur to the point of application
  * p2 is the end.
  */
-Vector3D::Vector3D(Point3D* pp1, const Point3D& p2){
+Vector3D::Vector3D(Point3D* pp1, const Point3D& p2) {
 	if (pp1!=NULL){
 		m_delp1=false;
 		this->m_pp1=pp1;
@@ -77,7 +77,7 @@ Vector3D::Vector3D(Point3D* pp1, const Point3D& p2){
  * p1 is the point of application
  * pp2 is a pointeur to the end.
  */
-Vector3D::Vector3D(const Point3D& p1, Point3D* pp2){
+Vector3D::Vector3D(const Point3D& p1, Point3D* pp2) {
 	m_delp1=true;
 	this->m_pp1=new Point3D();
 
@@ -120,11 +120,11 @@ Vector3D::~Vector3D() {
 
 
 
-LSN Vector3D::getNorm() const{
+LSN Vector3D::getNorm() const {
 	return getDistance(*m_pp2);
 }
 
-void Vector3D::setNorm(const LSN& norm){
+void Vector3D::setNorm(const LSN& norm) {
 	if (*m_pp2!=Point3D{{0,0},{0,0},{0,0}}){
 		LSN k=norm/getDistance(*m_pp2);
 		//std::cout<<"\n"<<k.to_string()<<"\n";
@@ -136,54 +136,54 @@ void Vector3D::setNorm(const LSN& norm){
 }
 
 
-void Vector3D::operator=(const Vector3D& v){
+void Vector3D::operator=(const Vector3D& v) {
 	//printf("\n on egalise deux vectors start\n");
 	*this->m_pp2=v.getP2();
 	//printf("\n on egalise deux vectors end\n");
 }
 
-void Vector3D::operator+=(const Vector3D& v){
+void Vector3D::operator+=(const Vector3D& v) {
 	//printf("\n on += deux vectors start\n");
 	*this->m_pp2+=v.getP2();
 	//printf("\n on += deux vectors end\n");
 }
 
-void Vector3D::operator-=(const Vector3D& v){
+void Vector3D::operator-=(const Vector3D& v) {
 	*this->m_pp2-=v.getP2();
 }
 
-void Vector3D::operator*=(const long double& k){
+void Vector3D::operator*=(const long double& k) {
 	*this->m_pp2*=k;
 }
 
-void Vector3D::operator/=(const long double& k){
+void Vector3D::operator/=(const long double& k) {
 	*this->m_pp2/=k;
 }
 
-void Vector3D::operator*=(const LSN& k){
+void Vector3D::operator*=(const LSN& k) {
 	*this->m_pp2*=k;
 }
 
-void Vector3D::operator/=(const LSN& k){
+void Vector3D::operator/=(const LSN& k) {
 	*this->m_pp2/=k;
 }
 
 
-bool Vector3D::operator==(const Vector3D& v) const{
+bool Vector3D::operator==(const Vector3D& v) const {
 	if (*m_pp1==v.getP2()){
 		return true;
 	}
 	return false;
 }
 
-bool Vector3D::operator<=(const Vector3D& v) const{
+bool Vector3D::operator<=(const Vector3D& v) const {
 	if (*m_pp1<=v.getP2()){
 		return true;
 	}
 	return false;
 }
 
-bool Vector3D::operator>=(const Vector3D& v) const{
+bool Vector3D::operator>=(const Vector3D& v) const {
 	if (*m_pp1>=v.getP2()){
 		return true;
 	}
@@ -252,6 +252,19 @@ Vector3D operator/(const Vector3D& v, const long double& k) {
 
 Vector3D operator/(const Vector3D& v, const LSN& k) {
 	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()/k);
+	return *pnv;
+}
+
+LSN operator*(const Vector3D& v1, const Vector3D& v2) {
+	return v1.getP2().x*v2.getP2().x + v1.getP2().y*v2.getP2().y + v1.getP2().z*v2.getP2().z;
+}
+
+Vector3D operator^(const Vector3D& v1, const Vector3D& v2) {
+	Vector3D* pnv=new Vector3D(v1.getP1(), {
+			{v1.getP2().y*v2.getP2().z-v1.getP2().z*v2.getP2().y},
+			{v1.getP2().z*v2.getP2().x-v1.getP2().x*v2.getP2().z},
+			{v1.getP2().x*v2.getP2().y-v1.getP2().y*v2.getP2().x}
+	});
 	return *pnv;
 }
 

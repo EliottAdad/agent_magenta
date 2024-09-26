@@ -16,7 +16,7 @@ Particle3D::Particle3D() {
 	m_dels=true;
 }
 
-/*Particle3D::Particle3D(const Point3D& p, Vector* pspeed){
+/*Particle3D::Particle3D(const Point3D& p, Vector* pspeed) {
 	x=p.x;
 	y=p.y;
 	z=p.z;
@@ -25,7 +25,7 @@ Particle3D::Particle3D() {
 	m_dels=false;
 }
 
-Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed){
+Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
 	x=wp.x;
 	y=wp.y;
 	z=wp.z;
@@ -34,7 +34,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed){
 	m_dels=false;
 }*/
 
-Particle3D::Particle3D(const Point3D& p){
+Particle3D::Particle3D(const Point3D& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
@@ -43,7 +43,7 @@ Particle3D::Particle3D(const Point3D& p){
 	m_dels=true;
 }
 
-Particle3D::Particle3D(const WeightedPoint3D& wp){
+Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->x=wp.x;
 	this->y=wp.y;
 	this->z=wp.z;
@@ -52,7 +52,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp){
 	m_dels=true;
 }
 
-Particle3D::Particle3D(const Point3D& p, const Vector3D& speed){
+Particle3D::Particle3D(const Point3D& p, const Vector3D& speed) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
@@ -61,7 +61,7 @@ Particle3D::Particle3D(const Point3D& p, const Vector3D& speed){
 	m_dels=true;
 }
 
-Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed){
+Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	this->x=wp.x;
 	this->y=wp.y;
 	this->z=wp.z;
@@ -80,33 +80,33 @@ Particle3D::~Particle3D() {
 
 
 
-Vector3D Particle3D::getSpeed() const{
+Vector3D Particle3D::getSpeed() const {
 	return *m_ps;
 }
 
-Vector3D* Particle3D::getPSpeed(){
+Vector3D* Particle3D::getPSpeed() {
 	return m_ps;
 }
 
-void Particle3D::setSpeed(const Vector3D& v){
+void Particle3D::setSpeed(const Vector3D& v) {
 	*m_ps=v;
 }
 
 
-void Particle3D::addAsForce(const Vector3D& v, const long double& dt){
+void Particle3D::addAsForce(const Vector3D& v, const long double& dt) {
 	LSN a=LSN{dt, 0}/this->w;
 	*m_ps+=v*a;
 }
 
-void Particle3D::addAsAcc(const Vector3D& v, const long double& dt){
+void Particle3D::addAsAcc(const Vector3D& v, const long double& dt) {
 	*m_ps+=v*dt;
 }
 
-void Particle3D::addAsSpeed(const Vector3D& v){
+void Particle3D::addAsSpeed(const Vector3D& v) {
 	*m_ps+=v;
 }
 
-void Particle3D::addAsPos(const Vector3D& v){
+void Particle3D::addAsPos(const Vector3D& v) {
 	this->x+=v.getP2().x;
 	this->y+=v.getP2().y;
 	this->z+=v.getP2().z;

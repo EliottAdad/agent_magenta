@@ -4,10 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Camera.cpp \
+../src/Cube.cpp \
 ../src/Display1.cpp \
 ../src/Figure3D.cpp \
 ../src/LSN.cpp \
 ../src/Line3D.cpp \
+../src/Mesh3D.cpp \
 ../src/Moveable.cpp \
 ../src/Particle3D.cpp \
 ../src/ParticleSystem3D.cpp \
@@ -27,10 +30,13 @@ CPP_SRCS += \
 ../src/main.cpp 
 
 CPP_DEPS += \
+./src/Camera.d \
+./src/Cube.d \
 ./src/Display1.d \
 ./src/Figure3D.d \
 ./src/LSN.d \
 ./src/Line3D.d \
+./src/Mesh3D.d \
 ./src/Moveable.d \
 ./src/Particle3D.d \
 ./src/ParticleSystem3D.d \
@@ -50,10 +56,13 @@ CPP_DEPS += \
 ./src/main.d 
 
 OBJS += \
+./src/Camera.o \
+./src/Cube.o \
 ./src/Display1.o \
 ./src/Figure3D.o \
 ./src/LSN.o \
 ./src/Line3D.o \
+./src/Mesh3D.o \
 ./src/Moveable.o \
 ./src/Particle3D.o \
 ./src/ParticleSystem3D.o \
@@ -85,7 +94,7 @@ src/%.o: ../src/%.cpp src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/Display1.d ./src/Display1.o ./src/Figure3D.d ./src/Figure3D.o ./src/LSN.d ./src/LSN.o ./src/Line3D.d ./src/Line3D.o ./src/Moveable.d ./src/Moveable.o ./src/Particle3D.d ./src/Particle3D.o ./src/ParticleSystem3D.d ./src/ParticleSystem3D.o ./src/Physics.d ./src/Physics.o ./src/Point3D.d ./src/Point3D.o ./src/Polyhedron.d ./src/Polyhedron.o ./src/Printable.d ./src/Printable.o ./src/TimeLoop.d ./src/TimeLoop.o ./src/TimeSensitive.d ./src/TimeSensitive.o ./src/Triangle.d ./src/Triangle.o ./src/Vector3D.d ./src/Vector3D.o ./src/VectorField.d ./src/VectorField.o ./src/VectorFieldUnidirectional.d ./src/VectorFieldUnidirectional.o ./src/VectorFieldVortex.d ./src/VectorFieldVortex.o ./src/WeightedPoint3D.d ./src/WeightedPoint3D.o ./src/functions.d ./src/functions.o ./src/main.d ./src/main.o
+	-$(RM) ./src/Camera.d ./src/Camera.o ./src/Cube.d ./src/Cube.o ./src/Display1.d ./src/Display1.o ./src/Figure3D.d ./src/Figure3D.o ./src/LSN.d ./src/LSN.o ./src/Line3D.d ./src/Line3D.o ./src/Mesh3D.d ./src/Mesh3D.o ./src/Moveable.d ./src/Moveable.o ./src/Particle3D.d ./src/Particle3D.o ./src/ParticleSystem3D.d ./src/ParticleSystem3D.o ./src/Physics.d ./src/Physics.o ./src/Point3D.d ./src/Point3D.o ./src/Polyhedron.d ./src/Polyhedron.o ./src/Printable.d ./src/Printable.o ./src/TimeLoop.d ./src/TimeLoop.o ./src/TimeSensitive.d ./src/TimeSensitive.o ./src/Triangle.d ./src/Triangle.o ./src/Vector3D.d ./src/Vector3D.o ./src/VectorField.d ./src/VectorField.o ./src/VectorFieldUnidirectional.d ./src/VectorFieldUnidirectional.o ./src/VectorFieldVortex.d ./src/VectorFieldVortex.o ./src/WeightedPoint3D.d ./src/WeightedPoint3D.o ./src/functions.d ./src/functions.o ./src/main.d ./src/main.o
 
 .PHONY: clean-src
 

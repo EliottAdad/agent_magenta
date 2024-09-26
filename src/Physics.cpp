@@ -123,7 +123,7 @@ bool Physics::iterate() {
 	return m_fpause;
 }
 
-std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
+std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="PHYSICS";
@@ -144,7 +144,7 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	return mes;
 }
 
-void Physics::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
+void Physics::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

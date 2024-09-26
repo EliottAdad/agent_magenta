@@ -13,7 +13,7 @@
  * Functions
  */
 
-std::string to_stringTabs(const unsigned int& nb){
+std::string to_stringTabs(const unsigned int& nb) {
 	std::string mes="";
 	for (unsigned int i(0) ; i<nb ; i++){
 		mes+="\t";
@@ -21,7 +21,7 @@ std::string to_stringTabs(const unsigned int& nb){
 	return mes;
 }
 
-void printTabs(const unsigned int& nb){
+void printTabs(const unsigned int& nb) {
 	for (unsigned int i(0) ; i<nb ; i++){
 		std::cout<<"\t";
 	}
@@ -31,14 +31,12 @@ void printTabs(const unsigned int& nb){
 
 
 
-/*float getDistance(Point2D* ppoint1, Point2D* ppoint2)//:)
-{
+/*float getDistance(Point2D* ppoint1, Point2D* ppoint2) {//:)
 	// d=square root( (xA-xB)²+(yA-yB)² )
 	return sqrt( pow(ppoint1->x-ppoint2->x, 2) + pow(ppoint1->y-ppoint2->y, 2) );
 }*/
 
-unsigned long long int factorial(unsigned int n)
-{
+unsigned long long int factorial(unsigned int n) {
 	unsigned long long int result(1);
 
 	for (unsigned int i(1) ; i<n ; ++i)
@@ -48,8 +46,7 @@ unsigned long long int factorial(unsigned int n)
 	return result;
 }
 /*
-unsigned long long int binomialCoef(unsigned int n, unsigned int k)
-{
+unsigned long long int binomialCoef(unsigned int n, unsigned int k) {
 	return factorial(n)/(factorial(k)*factorial(n-k));
 }*/
 

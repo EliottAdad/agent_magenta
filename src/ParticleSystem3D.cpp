@@ -57,7 +57,7 @@ bool ParticleSystem3D::addPParticle(Particle3D* ppart) {
 
 
 
-void ParticleSystem3D::move(const Vector3D& dp){
+void ParticleSystem3D::move(const Vector3D& dp) {
 	for (Particle3D* ppart : m_poctree->getPElements()){
 		//ppart->wp+= dp.getP2();
 		//ppart->addAsPos(dp);

@@ -52,6 +52,12 @@ Vector3D operator*(const Vector3D& v, const LSN& k);// :)
 Vector3D operator/(const Vector3D& v, const long double& k);// :)
 Vector3D operator/(const Vector3D& v, const LSN& k);// :)
 
+//Scalar product
+LSN operator*(const Vector3D& v1, const Vector3D& v2);// :)
+
+//Vector product
+Vector3D operator^(const Vector3D& v1, const Vector3D& v2);// :)
+
 
 
 #endif /* VECTOR3D_H_ */

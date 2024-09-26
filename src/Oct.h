@@ -185,7 +185,7 @@ template <typename T> Oct<T>::~Oct() {
 	}
 }
 
-template <typename T> LSN Oct<T>::getA() const{
+template <typename T> LSN Oct<T>::getA() const {
 	return m_a;
 }
 
@@ -193,11 +193,11 @@ template <typename T> LSN Oct<T>::getA() const{
 	m_a=a;
 }*/
 
-template <typename T> unsigned int Oct<T>::getNB_OCTS() const{
+template <typename T> unsigned int Oct<T>::getNB_OCTS() const {
 	return m_NB_OCTS;
 }
 
-template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const{
+template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 	std::unordered_set<T*> elmts;
 
 	if (m_pT!=NULL){
@@ -591,7 +591,7 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 	return true;
 }*/
 
-template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>& pquads){
+template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>& pquads) {
 	Point3D p={t.x, t.y, {0, 0}};
 
 	LSN s=this->m_a;
@@ -629,7 +629,7 @@ template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>&
 	}
 }
 
-template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const{
+template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const {
 	if (&t!=m_pT){
 		Point3D p={t.x, t.y, t.z};
 
@@ -678,7 +678,7 @@ template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, 
 /*
  * Stores the octs that are to be considered given alpha.
  */
-/*template <typename T> std::unordered_set<T*> Oct<T>::find(const Point3D& point){
+/*template <typename T> std::unordered_set<T*> Oct<T>::find(const Point3D& point) {
 	;
 }*/
 
@@ -805,7 +805,7 @@ template <typename T> std::string Oct<T>::to_string(const bool& spread, const bo
 	return mes;
 }
 
-template <typename T> void Oct<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{
+template <typename T> void Oct<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
 	printf((to_string(spread, indent, full_info)).c_str());
 }

@@ -135,15 +135,15 @@ template <typename T> Quad<T>::~Quad() {
 	}
 }
 
-template <typename T> LSN Quad<T>::getA() const{
+template <typename T> LSN Quad<T>::getA() const {
 	return m_a;
 }
 
-template <typename T> unsigned int Quad<T>::getNB_QUADS() const{
+template <typename T> unsigned int Quad<T>::getNB_QUADS() const {
 	return m_NB_QUADS;
 }
 
-template <typename T> std::unordered_set<T*> Quad<T>::getElements() const{
+template <typename T> std::unordered_set<T*> Quad<T>::getElements() const {
 	std::unordered_set<T*> elmts;
 
 	if (m_pT!=NULL){
@@ -175,7 +175,7 @@ template <typename T> std::unordered_set<T*> Quad<T>::getElements() const{
 	return elmts;
 }
 
-template <typename T> bool Quad<T>::insert(T* pT){
+template <typename T> bool Quad<T>::insert(T* pT) {
 	if (pT!=NULL){
 		Point3D p={pT->x, pT->y, {0, 0}/*ppart->z*/};
 		Point3D dp={pT->x-m_ppoint->x, pT->y-m_ppoint->y, {0, 0}};
@@ -283,7 +283,7 @@ template <typename T> bool Quad<T>::insert(T* pT){
 	return true;
 }
 
-template<> bool Quad<Particle3D>::insert(Particle3D* ppart){
+template<> bool Quad<Particle3D>::insert(Particle3D* ppart) {
 	if (ppart!=NULL){
 		Point3D p={ppart->x, ppart->y, {0, 0}};//ppart->z
 		Point3D dp={ppart->x-m_ppoint->x, ppart->y-m_ppoint->y, {0, 0}};
@@ -392,7 +392,7 @@ template<> bool Quad<Particle3D>::insert(Particle3D* ppart){
 /*
  * Stores the quads that are to be considered given alpha.
  */
-template <typename T> void Quad<T>::find(const T& t, std::unordered_set<Quad<T>*>& pquads){
+template <typename T> void Quad<T>::find(const T& t, std::unordered_set<Quad<T>*>& pquads) {
 	Point3D p={t.x, t.y, {0, 0}};
 
 	LSN s=this->m_a;
@@ -466,7 +466,7 @@ template <typename T> void Quad<T>::computeInverseSquareLawResultant(const T& t,
 	}
 }
 
-/*template <typename T> std::set<T*> Quad<T>::find(const Point3D& point){
+/*template <typename T> std::set<T*> Quad<T>::find(const Point3D& point) {
 	;
 }*/
 
@@ -570,7 +570,7 @@ template <typename T> std::string Quad<T>::to_string(const bool& spread, const b
 	return mes;
 }
 
-template <typename T> void Quad<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{
+template <typename T> void Quad<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
 	std::cout << to_string(spread, full_info, indent);
 }

@@ -31,73 +31,73 @@ Point3D::Point3D(const Point3D& point) {
 
 
 
-void Point3D::operator=(const Point3D& p){
+void Point3D::operator=(const Point3D& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
 }
 
-void Point3D::operator=(const LSN& nb){
+void Point3D::operator=(const LSN& nb) {
 	this->x=nb;
 	this->y=nb;
 	this->z=nb;
 }
 
-void Point3D::operator+=(const Point3D& p){
+void Point3D::operator+=(const Point3D& p) {
 	this->x+=p.x;
 	this->y+=p.y;
 	this->z+=p.z;
 }
 
-void Point3D::operator+=(const LSN& nb){
+void Point3D::operator+=(const LSN& nb) {
 	this->x+=nb;
 	this->y+=nb;
 	this->z+=nb;
 }
 
-void Point3D::operator+=(const long double& nb){
+void Point3D::operator+=(const long double& nb) {
 	this->x+=nb;
 	this->y+=nb;
 	this->z+=nb;
 }
 
-void Point3D::operator-=(const Point3D& p){
+void Point3D::operator-=(const Point3D& p) {
 	this->x-=p.x;
 	this->y-=p.y;
 	this->z-=p.z;
 }
 
-void Point3D::operator-=(const LSN& nb){
+void Point3D::operator-=(const LSN& nb) {
 	this->x-=nb;
 	this->y-=nb;
 	this->z-=nb;
 }
 
-void Point3D::operator-=(const long double& nb){
+void Point3D::operator-=(const long double& nb) {
 	this->x-=nb;
 	this->y-=nb;
 	this->z-=nb;
 }
 
-void Point3D::operator*=(const LSN& k){
+void Point3D::operator*=(const LSN& k) {
 	this->x*=k;
 	this->y*=k;
 	this->z*=k;
 }
 
-void Point3D::operator*=(const long double& k){
+void Point3D::operator*=(const long double& k) {
 	this->x*=k;
 	this->y*=k;
 	this->z*=k;
 }
 
-void Point3D::operator/=(const LSN& k){
+void Point3D::operator/=(const LSN& k) {
 	this->x/=k;
 	this->y/=k;
 	this->z/=k;
 }
 
-void Point3D::operator/=(const long double& k){
+void Point3D::operator/=(const long double& k) {
 	this->x/=k;
 	this->y/=k;
 	this->z/=k;
@@ -107,7 +107,7 @@ void Point3D::operator/=(const long double& k){
 
 
 
-std::string Point3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const{
+std::string Point3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -120,87 +120,87 @@ std::string Point3D::to_string(const bool& spread, const bool& full_info, const 
 	return mes;
 }
 
-void Point3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{
+void Point3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
 	std::cout<<this->to_string(spread, full_info);
 }
 
 
 
-bool operator==(const Point3D& p1, const Point3D& p2){
+bool operator==(const Point3D& p1, const Point3D& p2) {
 	if (p1.x==p2.x && p1.y==p2.y && p1.z==p2.z){
 		return true;
 	}
 	return false;
 }
 
-bool operator!=(const Point3D& p1, const Point3D& p2){
+bool operator!=(const Point3D& p1, const Point3D& p2) {
 	if (p1.x!=p2.x && p1.y!=p2.y && p1.z!=p2.z){
 		return true;
 	}
 	return false;
 }
 
-bool operator<=(const Point3D& p1, const Point3D& p2){
+bool operator<=(const Point3D& p1, const Point3D& p2) {
 	if (p1.x<=p2.x && p1.y<=p2.y && p1.z<=p2.z){
 		return true;
 	}
 	return false;
 }
 
-bool operator>=(const Point3D& p1, const Point3D& p2){
+bool operator>=(const Point3D& p1, const Point3D& p2) {
 	if (p1.x>=p2.x && p1.y>=p2.y && p1.z>=p2.z){
 		return true;
 	}
 	return false;
 }
 
-Point3D operator+(const Point3D& p1, const Point3D& p2){
+Point3D operator+(const Point3D& p1, const Point3D& p2) {
 	//Point3D* pnp=new Point3D;
 	return {p1.x+p2.x, p1.y+p2.y, p1.z+p2.z};
 }
 
-Point3D operator-(const Point3D& p1, const Point3D& p2){
+Point3D operator-(const Point3D& p1, const Point3D& p2) {
 	//Point3D* pnp=new Point3D{this->x-p.x, this->y-p.y, this->z-p.z};
 	return {p1.x-p2.x, p1.y-p2.y, p1.z-p2.z};
 }
 
-Point3D operator*(const Point3D& p, const LSN& k){
+Point3D operator*(const Point3D& p, const LSN& k) {
 	//Point3D* pnp=new Point3D{this->x*k, this->y*k, this->z*k};
 	return {p.x*k, p.y*k, p.z*k};
 }
 
-Point3D operator*(const LSN& k, const Point3D& p){
+Point3D operator*(const LSN& k, const Point3D& p) {
 	//Point3D* pnp=new Point3D{this->x*k, this->y*k, this->z*k};
 	return {p.x*k, p.y*k, p.z*k};
 }
 
-Point3D operator*(const Point3D& p, const long double& k){
+Point3D operator*(const Point3D& p, const long double& k) {
 	//Point3D* pnp=new Point3D
 	return {p.x*k, p.y*k, p.z*k};
 }
 
-Point3D operator*(const long double& k, const Point3D& p){
+Point3D operator*(const long double& k, const Point3D& p) {
 	//Point3D* pnp=new Point3D
 	return {p.x*k, p.y*k, p.z*k};
 }
 
-Point3D operator/(const Point3D& p, const LSN& k){
+Point3D operator/(const Point3D& p, const LSN& k) {
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
 	return {p.x/k, p.y/k, p.z/k};
 }
 
-/*Point3D operator/(const LSN& k, const Point3D& p){
+/*Point3D operator/(const LSN& k, const Point3D& p) {
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
 	return {p.x/k, p.y/k, p.z/k};
 }*/
 
-Point3D operator/(const Point3D& p, const long double& k){
+Point3D operator/(const Point3D& p, const long double& k) {
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
 	return {p.x/k, p.y/k, p.z/k};
 }
 
-/*Point3D operator/(const long double& k, const Point3D& p){
+/*Point3D operator/(const long double& k, const Point3D& p) {
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
 	return {p.x/k, p.y/k, p.z/k};
 }*/
@@ -210,7 +210,7 @@ Point3D operator/(const Point3D& p, const long double& k){
  * Functions
  */
 
-LSN getDistance(const Point3D& p1, const Point3D& p2){
+LSN getDistance(const Point3D& p1, const Point3D& p2) {
 	LSN* pnlsn=new LSN{sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² )
 	return *pnlsn;
 }
