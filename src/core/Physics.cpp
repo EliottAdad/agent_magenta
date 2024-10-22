@@ -111,6 +111,12 @@ bool Physics::run(const unsigned int& steps) {
 					//long double dT=;
 					ptime_sensitive->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
 				}
+
+				Vector3D v; //We define a dummy vector to pass in parameters
+				for (Moveable* pmoveable : m_pmoveables){
+					//long double dT=;
+					pmoveable->apply(v);//The duration given by dt is in ns.
+				}
 				t1=t2;
 				i++;
 			}

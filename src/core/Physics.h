@@ -31,6 +31,7 @@ private:
 	bool m_fcollide;
 	bool m_fpause;
 	std::unordered_set<TimeSensitive*> m_ptime_sensitives;			//List of time sensitive objects
+	std::unordered_set<Moveable*> m_pmoveables;			//List of moveable objects
 public:
 	Physics();
 	virtual ~Physics();
@@ -47,6 +48,7 @@ public:
 	unsigned int getFPause() const;
 	void setFPause(const bool& bpause);
 
+	// Regroup all 3 under just run
 	bool loop();
 	bool run(const unsigned int& steps=1);
 	bool iterate();
