@@ -1,6 +1,6 @@
 <map id="Line3D" name="Line3D">
-<area shape="rect" id="node1" title=" " alt="" coords="33,228,100,255"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="5,5,85,32"/>
-<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="83,124,157,151"/>
-<area shape="rect" id="node4" href="$structLSN.html" title=" " alt="" coords="110,5,157,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,304,72,331"/>
+<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="28,5,108,32"/>
+<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="55,200,129,227"/>
+<area shape="rect" id="node4" href="$structLSN.html" title=" " alt="" coords="106,81,153,108"/>
 </map>

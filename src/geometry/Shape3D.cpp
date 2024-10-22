@@ -1,29 +1,29 @@
 /*
- * Figure3D.cpp
+ * Shape3D.cpp
  *
  *  Created on: 20 mai 2024
  *      Author: esn
  */
 
-#include "Figure3D.h"
+#include "Shape3D.h"
 
-Figure3D::Figure3D() {
+Shape3D::Shape3D() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Figure3D::~Figure3D() {
+Shape3D::~Shape3D() {
 	// TODO Auto-generated destructor stub
 }
 
-Figure3D::Figure3D(const Figure3D &other) {
+Shape3D::Shape3D(const Shape3D &other) {
 	// TODO Auto-generated constructor stub
 
 }
 
 
 
-std::string Figure3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Shape3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -39,7 +39,7 @@ std::string Figure3D::to_string(const bool& spread, const bool& full_info, const
 	return mes;
 }
 
-void Figure3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Shape3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
 	printf((this->to_string(spread, indent, full_info)).c_str());
 }

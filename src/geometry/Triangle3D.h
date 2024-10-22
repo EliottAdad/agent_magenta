@@ -9,14 +9,14 @@
 #define TRIANGLE3D_H_
 
 #include "../core/Point3D.h"
-#include "Figure3D.h"
+#include "Shape3D.h"
 
 /*
  * ##############
  *  Triangle3D :)
  * ##############
  */
-class Triangle3D : public Figure3D {
+class Triangle3D : public Shape3D {
 protected:
 	Point3D* pp1;
 	Point3D* pp2;

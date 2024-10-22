@@ -12,11 +12,12 @@
 #include "../core/Vector3D.h"
 #include "../geometry/Mesh3D.h"
 #include "../geometry/Triangle3D.h"
+#include "../utilities/Printable.h"
 
 /*
  * This camera is a cone directed by a normal
  */
-class Camera {
+class Camera: public Printable {
 private:
 	float m_aperture;		//Aperture angle in radians
 	Point3D* m_ppoint;

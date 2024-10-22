@@ -25,6 +25,8 @@ protected:
 	LSN m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<Particle3D>* m_poctree;										// Pointer to the Octree.
+	long double m_dt;
+
 public:
 	ParticleSystem3D();
 	//ParticleSystem3D(const ParticleSystem3D &other);
@@ -41,10 +43,17 @@ public:
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
 
-	virtual void move(const Vector3D& dp);
+	virtual void setT(const long double& dt);	// TimeSensitive
+	virtual void apply(const Vector3D& dv);		// Moveable
+	//virtual void move(const Vector3D& dp);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 };
+
+/*
+ * Returns the vector immediately
+ */
+Vector3D grav(const Particle3D& p1, const Particle3D& p2);
 
 #endif /* PARTICLESYSTEM3D_H_ */

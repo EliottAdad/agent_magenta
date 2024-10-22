@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['timeloop_0',['TimeLoop',['../classTimeLoop.html',1,'']]],
-  ['timesensitive_1',['TimeSensitive',['../classTimeSensitive.html',1,'']]],
-  ['triangle3d_2',['Triangle3D',['../classTriangle3D.html',1,'']]]
+  ['shape3d_0',['Shape3D',['../classShape3D.html',1,'']]],
+  ['sphere_1',['Sphere',['../classSphere.html',1,'']]]
 ];

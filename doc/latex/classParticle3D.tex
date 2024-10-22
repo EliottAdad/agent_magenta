@@ -2,22 +2,20 @@
 \label{classParticle3D}\index{Particle3D@{Particle3D}}
 
 
-Inheritance diagram for Particle3D\+:
-\nopagebreak
+Inheritance diagram for Particle3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=286pt]{classParticle3D__inherit__graph}
+\includegraphics[width=341pt]{classParticle3D__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Particle3D\+:
-\nopagebreak
+Collaboration diagram for Particle3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=326pt]{classParticle3D__coll__graph}
+\includegraphics[width=350pt]{classParticle3D__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -56,11 +54,14 @@ virtual void {\bfseries add\+As\+Speed} (const \mbox{\hyperlink{classVector3D}{V
 \mbox{\Hypertarget{classParticle3D_afba1c78e27128ee07b66f29753952af5}\label{classParticle3D_afba1c78e27128ee07b66f29753952af5}} 
 virtual void {\bfseries add\+As\+Pos} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
 \item 
-\mbox{\Hypertarget{classParticle3D_a9c2746f5ed971b571063942c401c9e82}\label{classParticle3D_a9c2746f5ed971b571063942c401c9e82}} 
-std\+::string {\bfseries to\+\_\+string} (const bool \&spread=false, const bool \&full\+\_\+info=false) const
+\mbox{\Hypertarget{classParticle3D_ad6e609cf6e871dc4913a6611f3d5485d}\label{classParticle3D_ad6e609cf6e871dc4913a6611f3d5485d}} 
+virtual void {\bfseries setT} (long double \&dt)
 \item 
-\mbox{\Hypertarget{classParticle3D_ad46b84fa907dc341595dd0fd2b48918e}\label{classParticle3D_ad46b84fa907dc341595dd0fd2b48918e}} 
-void {\bfseries print} (const bool \&spread=false, const unsigned int \&indent=0, const bool \&full\+\_\+info=false) const
+virtual void \mbox{\hyperlink{classParticle3D_aa8b12ec552706f6cf05bee05d67068b5}{apply}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&dv)
+\item 
+std\+::string \mbox{\hyperlink{classParticle3D_ab929b38472952c0b702ef81da7600eb4}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+void \mbox{\hyperlink{classParticle3D_a81568cf3aac423e27098830d5e865fc3}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -70,8 +71,44 @@ void {\bfseries print} (const bool \&spread=false, const unsigned int \&indent=0
 \item 
 \mbox{\Hypertarget{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}\label{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}} 
 bool {\bfseries m\+\_\+dels}
+\item 
+\mbox{\Hypertarget{classParticle3D_aa424f77901dbd9849ea4d0da82658306}\label{classParticle3D_aa424f77901dbd9849ea4d0da82658306}} 
+long double {\bfseries m\+\_\+dt}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParticle3D_aa8b12ec552706f6cf05bee05d67068b5}\label{classParticle3D_aa8b12ec552706f6cf05bee05d67068b5}} 
+\index{Particle3D@{Particle3D}!apply@{apply}}
+\index{apply@{apply}!Particle3D@{Particle3D}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void Particle3\+D\+::apply (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMoveable}{Moveable}}.
+
+\mbox{\Hypertarget{classParticle3D_a81568cf3aac423e27098830d5e865fc3}\label{classParticle3D_a81568cf3aac423e27098830d5e865fc3}} 
+\index{Particle3D@{Particle3D}!print@{print}}
+\index{print@{print}!Particle3D@{Particle3D}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Particle3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMoveable}{Moveable}}.
+
+\mbox{\Hypertarget{classParticle3D_ab929b38472952c0b702ef81da7600eb4}\label{classParticle3D_ab929b38472952c0b702ef81da7600eb4}} 
+\index{Particle3D@{Particle3D}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Particle3D@{Particle3D}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Particle3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMoveable}{Moveable}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

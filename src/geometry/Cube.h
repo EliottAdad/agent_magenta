@@ -8,9 +8,9 @@
 #ifndef CUBE_H_
 #define CUBE_H_
 
-#include "Mesh3D.h"
+#include "Polyhedron.h"
 
-class Cube: public Mesh3D {
+class Cube: public Polyhedron {
 public:
 	Cube();
 	virtual ~Cube();

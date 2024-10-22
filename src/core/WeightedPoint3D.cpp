@@ -79,3 +79,4 @@ void WeightedPoint3D::print(const bool& spread, const bool& full_info, const uns
 	printTabs(indent);
 	printf((this->to_string(spread, indent, full_info)).c_str());
 }
+

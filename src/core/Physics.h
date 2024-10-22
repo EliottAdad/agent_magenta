@@ -15,6 +15,7 @@
 #include "TimeLoop.h"
 //#include "Particle3DSet.h"
 #include "VectorField.h"
+#include "../utilities/Printable.h"
 
 /*
  * ###########
@@ -22,7 +23,7 @@
  * ###########
  * Gère le temps (à la place de TimeLoop, tout transvaser)
  */
-class Physics {
+class Physics: public Printable {
 private:
 	float m_speed;//Ratio between simulation_speed/real_world_speed
 	unsigned int m_cps;//Computations per second

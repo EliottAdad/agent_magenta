@@ -10,6 +10,7 @@
 ParticleSystem3D::ParticleSystem3D() {
 	m_a={1,1};				//10m sided box
 	m_poctree=new Oct<Particle3D>(m_a);
+	m_dt=0;
 }
 
 /*ParticleSystem3D::ParticleSystem3D(const ParticleSystem3D &other) {
@@ -56,13 +57,24 @@ bool ParticleSystem3D::addPParticle(Particle3D* ppart) {
 }
 
 
+void ParticleSystem3D::setT(const long double& dt) {
+	m_dt=dt;
+	//this->apply()
+}
 
-void ParticleSystem3D::move(const Vector3D& dp) {
+void ParticleSystem3D::apply(const Vector3D& dv){
+	for (Particle3D* ppart : m_poctree->getPElements()){
+		ppart->apply(dv);
+	}
+}
+
+
+/*void ParticleSystem3D::move(const Vector3D& dv) {
 	for (Particle3D* ppart : m_poctree->getPElements()){
 		//ppart->wp+= dp.getP2();
 		//ppart->addAsPos(dp);
 	}
-}
+}*/
 
 
 

@@ -1,12 +1,12 @@
 /*
- * Figure3D.h
+ * Shape3D.h
  *
  *  Created on: 20 mai 2024
  *      Author: esn
  */
 
-#ifndef FIGURE3D_H_
-#define FIGURE3D_H_
+#ifndef SHAPE3D_H_
+#define SHAPE3D_H_
 
 #include <unordered_set>
 #include "../core/Point3D.h"
@@ -14,16 +14,17 @@
 
 /*
  * ############
- *  Figure3D :)
+ *  Shape3D :)
  * ############
  */
-class Figure3D : public Printable {
+class Shape3D : public Printable {
 protected:
 	std::unordered_set<Point3D*> m_ppoints;
+
 public:
-	Figure3D();
-	virtual ~Figure3D();
-	Figure3D(const Figure3D &other);
+	Shape3D();
+	virtual ~Shape3D();
+	Shape3D(const Shape3D &other);
 
 	std::unordered_set<Point3D*> setPoint(Point3D* ppoint);
 	void setPPoint(Point3D* ppoint);
@@ -32,4 +33,4 @@ public:
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
 };
 
-#endif /* FIGURE3D_H_ */
+#endif /* SHAPE3D_H_ */

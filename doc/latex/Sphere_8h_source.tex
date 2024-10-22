@@ -1,0 +1,33 @@
+\hypertarget{Sphere_8h_source}{}\doxysection{Sphere.\+h}
+\label{Sphere_8h_source}\index{geometry/Sphere.h@{geometry/Sphere.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Sphere.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 22 oct. 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SPHERE\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SPHERE\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Shape3D.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/LSN.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classSphere}{Sphere}}: \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{structLSN}{LSN}} m\_r;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{classSphere}{Sphere}}();}
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSphere}{\string~Sphere}}();}
+\DoxyCodeLine{21     \mbox{\hyperlink{classSphere}{Sphere}}(\textcolor{keyword}{const} \mbox{\hyperlink{classSphere}{Sphere}} \&other);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \mbox{\hyperlink{structLSN}{LSN}} getR() \textcolor{keyword}{const};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} setR(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& r);}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SPHERE\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

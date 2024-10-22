@@ -12,13 +12,13 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef QUAD\_H\_}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define QUAD\_H\_}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <cstdio>}}
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <cmath>}}
 \DoxyCodeLine{13 \textcolor{comment}{//\#include <vector>}}
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#include <unordered\_set>}}
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Printable.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
 \DoxyCodeLine{18 }
 \DoxyCodeLine{19 \textcolor{comment}{/*}}
 \DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
@@ -547,40 +547,32 @@
 \DoxyCodeLine{543         nulll+=\textcolor{stringliteral}{"{}, "{}};}
 \DoxyCodeLine{544         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
 \DoxyCodeLine{545 }
-\DoxyCodeLine{546         \textcolor{comment}{//mes+=(m\_pTLTree==NULL)?nulll : m\_pTLTree-\/>to\_string(spread, indent, full\_info)+"{}, "{};}}
-\DoxyCodeLine{547         \textcolor{comment}{//mes+=(m\_pTRTree==NULL)?nulll : m\_pTRTree-\/>to\_string(spread, indent, full\_info)+"{}, "{};}}
-\DoxyCodeLine{548         \textcolor{comment}{//mes+=(m\_pBLTree==NULL)?nulll : m\_pBLTree-\/>to\_string(spread, indent, full\_info)+"{}, "{};}}
-\DoxyCodeLine{549         \textcolor{comment}{//mes+=(m\_pBRTree==NULL)?nulll : m\_pBRTree-\/>to\_string(spread, indent, full\_info)+"{}, "{};}}
-\DoxyCodeLine{550         mes+=(m\_pTLTree==NULL)?nulll : m\_pTLTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{546         mes+=(m\_pTLTree==NULL)?nulll : m\_pTLTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{547         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{548         mes+=(m\_pTRTree==NULL)?nulll : m\_pTRTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{549         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{550         mes+=(m\_pBLTree==NULL)?nulll : m\_pBLTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{551         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{552         \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{553         mes+=(m\_pTRTree==NULL)?nulll : m\_pTRTree-\/>to\_string(spread, indent+1, full\_info);}
-\DoxyCodeLine{554         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{555         \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{556         mes+=(m\_pBLTree==NULL)?nulll : m\_pBLTree-\/>to\_string(spread, indent+1, full\_info);}
-\DoxyCodeLine{557         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{558         \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{559         mes+=(m\_pBRTree==NULL)?nulll : m\_pBRTree-\/>to\_string(spread, indent+1, full\_info);}
-\DoxyCodeLine{560         \textcolor{comment}{//mes+=to\_stringTabs(indent+1);}}
-\DoxyCodeLine{561         \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{562 }
-\DoxyCodeLine{563 }
-\DoxyCodeLine{564         mes.erase(mes.length()-\/2);}
-\DoxyCodeLine{565         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{566         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{567         mes+=\textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{568     \}}
+\DoxyCodeLine{552         mes+=(m\_pBRTree==NULL)?nulll : m\_pBRTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{553         \textcolor{comment}{//mes+=to\_stringTabs(indent+1);}}
+\DoxyCodeLine{554 }
+\DoxyCodeLine{555 }
+\DoxyCodeLine{556         mes.erase(mes.length()-\/2);}
+\DoxyCodeLine{557         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{558         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{559         mes+=\textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{560     \}}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{562     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{563 \}}
+\DoxyCodeLine{564 }
+\DoxyCodeLine{565 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{566     printTabs(indent);}
+\DoxyCodeLine{567     printf((this-\/>to\_string(spread, indent, full\_info)).c\_str());}
+\DoxyCodeLine{568 \}}
 \DoxyCodeLine{569 }
-\DoxyCodeLine{570     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{571 \}}
-\DoxyCodeLine{572 }
-\DoxyCodeLine{573 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{574     printTabs(indent);}
-\DoxyCodeLine{575     std::cout << to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{576 \}}
-\DoxyCodeLine{577 }
-\DoxyCodeLine{578 }
-\DoxyCodeLine{579 }
-\DoxyCodeLine{580 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* QUAD\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{570 }
+\DoxyCodeLine{571 }
+\DoxyCodeLine{572 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* QUAD\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

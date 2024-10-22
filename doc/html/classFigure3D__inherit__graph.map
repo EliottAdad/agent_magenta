@@ -1,6 +1,7 @@
 <map id="Figure3D" name="Figure3D">
 <area shape="rect" id="node1" title=" " alt="" coords="71,80,151,107"/>
 <area shape="rect" id="node3" href="$classPolyhedron.html" title=" " alt="" coords="5,155,100,181"/>
-<area shape="rect" id="node4" href="$classTriangle3D.html" title=" " alt="" coords="125,155,215,181"/>
+<area shape="rect" id="node5" href="$classTriangle3D.html" title=" " alt="" coords="125,155,215,181"/>
 <area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="71,5,151,32"/>
+<area shape="rect" id="node4" href="$classCube.html" title=" " alt="" coords="25,229,80,256"/>
 </map>

@@ -14,6 +14,7 @@
 #include <math.h>
 #include <string>
 #include "../utilities/functions.h"
+#include "../utilities/Printable.h"
 
 /*
  * ################################
@@ -22,7 +23,7 @@
  * It allows to store bigger numbers
  * under scientific notation.
  */
-struct LSN {
+struct LSN: public Printable {
 	long double m;						// Mantissa
 	long int exp;						// Exponent
 

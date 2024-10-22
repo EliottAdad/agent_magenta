@@ -1,7 +1,8 @@
 <map id="Particle3D" name="Particle3D">
-<area shape="rect" id="node1" title=" " alt="" coords="103,229,191,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="178,229,266,256"/>
 <area shape="rect" id="node2" href="$structWeightedPoint3D.html" title=" " alt="" coords="5,155,140,181"/>
 <area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="73,80,147,107"/>
-<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="107,5,187,32"/>
+<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="182,5,262,32"/>
 <area shape="rect" id="node5" href="$classTimeSensitive.html" title=" " alt="" coords="165,155,279,181"/>
+<area shape="rect" id="node6" href="$classMoveable.html" title=" " alt="" coords="267,80,353,107"/>
 </map>

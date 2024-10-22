@@ -9,8 +9,8 @@
 #define POLYHEDRON_H_
 
 #include <unordered_set>
-#include "Figure3D.h"
-//#include "Line.h"
+
+#include "Shape3D.h"
 #include "Triangle3D.h"
 
 /*
@@ -18,7 +18,7 @@
  *  Polyhedron :)
  * ##############
  */
-class Polyhedron : public Figure3D {
+class Polyhedron : public Shape3D {
 protected:
 	std::unordered_set<Triangle3D*> m_ptriangs;
 	//std::unordered_set<Point3D*> m_ppoints;

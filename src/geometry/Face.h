@@ -8,7 +8,9 @@
 #ifndef FACE_H_
 #define FACE_H_
 
-class Face {
+#include "../utilities/Printable.h"
+
+class Face: public Printable {
 public:
 	Face();
 	virtual ~Face();

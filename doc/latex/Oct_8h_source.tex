@@ -17,9 +17,9 @@
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cmath>}}
 \DoxyCodeLine{14 \textcolor{comment}{//\#include <vector>}}
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{comment}{//\#include "{}Particle3D.h"{}}}
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}Printable.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
 \DoxyCodeLine{19 }
 \DoxyCodeLine{20 \textcolor{comment}{/*}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#}}
@@ -782,21 +782,21 @@
 \DoxyCodeLine{778         nulll+=\textcolor{stringliteral}{"{}, "{}};}
 \DoxyCodeLine{779         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
 \DoxyCodeLine{780 }
-\DoxyCodeLine{781         mes+=(m\_pBLBTree==NULL)?nulll : m\_pBLBTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{781         mes+=(m\_pBLBTree==NULL)?nulll : m\_pBLBTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{782         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{783         mes+=(m\_pBRBTree==NULL)?nulll : m\_pBRBTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{783         mes+=(m\_pBRBTree==NULL)?nulll : m\_pBRBTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{784         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{785         mes+=(m\_pBRFTree==NULL)?nulll : m\_pBRFTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{785         mes+=(m\_pBRFTree==NULL)?nulll : m\_pBRFTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{786         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{787         mes+=(m\_pBLFTree==NULL)?nulll : m\_pBLFTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{787         mes+=(m\_pBLFTree==NULL)?nulll : m\_pBLFTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{788         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{789         mes+=(m\_pTLBTree==NULL)?nulll : m\_pTLBTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{789         mes+=(m\_pTLBTree==NULL)?nulll : m\_pTLBTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{790         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{791         mes+=(m\_pTRBTree==NULL)?nulll : m\_pTRBTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{791         mes+=(m\_pTRBTree==NULL)?nulll : m\_pTRBTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{792         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{793         mes+=(m\_pTRFTree==NULL)?nulll : m\_pTRFTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{793         mes+=(m\_pTRFTree==NULL)?nulll : m\_pTRFTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{794         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{795         mes+=(m\_pTLFTree==NULL)?nulll : m\_pTLFTree-\/>to\_string(spread, indent+1, full\_info);}
+\DoxyCodeLine{795         mes+=(m\_pTLFTree==NULL)?nulll : m\_pTLFTree-\/>to\_string(spread, full\_info, indent+1);}
 \DoxyCodeLine{796         \textcolor{comment}{//mes+=((spread)?to\_stringTabs(indent+1) : "{}"{});}}
 \DoxyCodeLine{797 }
 \DoxyCodeLine{798 }
@@ -811,7 +811,7 @@
 \DoxyCodeLine{807 }
 \DoxyCodeLine{808 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{809     printTabs(indent);}
-\DoxyCodeLine{810     printf((to\_string(spread, indent, full\_info)).c\_str());}
+\DoxyCodeLine{810     printf((this-\/>to\_string(spread, indent, full\_info)).c\_str());}
 \DoxyCodeLine{811 \}}
 \DoxyCodeLine{812 }
 \DoxyCodeLine{813 }

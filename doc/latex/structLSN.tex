@@ -1,5 +1,23 @@
 \hypertarget{structLSN}{}\doxysection{LSN Struct Reference}
 \label{structLSN}\index{LSN@{LSN}}
+
+
+Inheritance diagram for LSN\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{structLSN__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for LSN\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{structLSN__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,11 +60,9 @@ void {\bfseries operator/=} (const \mbox{\hyperlink{structLSN}{LSN}} \&nb)
 \mbox{\Hypertarget{structLSN_a7e76d6748a6b7dea9455710be5788ed7}\label{structLSN_a7e76d6748a6b7dea9455710be5788ed7}} 
 void {\bfseries operator/=} (const long double \&nb)
 \item 
-\mbox{\Hypertarget{structLSN_a4d74596565318c131a03cb3e4b8a8798}\label{structLSN_a4d74596565318c131a03cb3e4b8a8798}} 
-std\+::string {\bfseries to\+\_\+string} (const bool \&spread=false, const bool \&full\+\_\+info=false) const
+std\+::string \mbox{\hyperlink{structLSN_aa1f9f21cdd38e1e1fe3047a637a9a72d}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \item 
-\mbox{\Hypertarget{structLSN_adc0afeb48f1a7ad0eb68cc472296794c}\label{structLSN_adc0afeb48f1a7ad0eb68cc472296794c}} 
-void {\bfseries print} (const bool \&spread=false, const unsigned int \&indent=0, const bool \&full\+\_\+info=false) const
+void \mbox{\hyperlink{structLSN_a23fcadfe9ef3f6ad9248d7586554b5a2}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -57,6 +73,29 @@ long double {\bfseries m}
 \mbox{\Hypertarget{structLSN_a90ee1f25930ce2401cd18773887b570d}\label{structLSN_a90ee1f25930ce2401cd18773887b570d}} 
 long int {\bfseries exp}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structLSN_a23fcadfe9ef3f6ad9248d7586554b5a2}\label{structLSN_a23fcadfe9ef3f6ad9248d7586554b5a2}} 
+\index{LSN@{LSN}!print@{print}}
+\index{print@{print}!LSN@{LSN}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void LSN\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{structLSN_aa1f9f21cdd38e1e1fe3047a637a9a72d}\label{structLSN_aa1f9f21cdd38e1e1fe3047a637a9a72d}} 
+\index{LSN@{LSN}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!LSN@{LSN}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string LSN\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}

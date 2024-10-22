@@ -2,8 +2,7 @@
 \label{classParticleSystem3D}\index{ParticleSystem3D@{ParticleSystem3D}}
 
 
-Inheritance diagram for Particle\+System3D\+:
-\nopagebreak
+Inheritance diagram for Particle\+System3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Particle\+System3D\+:
 \end{figure}
 
 
-Collaboration diagram for Particle\+System3D\+:
-\nopagebreak
+Collaboration diagram for Particle\+System3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,8 +39,9 @@ std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classParticle3D}{Particle3D}} $\as
 \mbox{\Hypertarget{classParticleSystem3D_aa5670087e55436ff13682eea698bd9f2}\label{classParticleSystem3D_aa5670087e55436ff13682eea698bd9f2}} 
 bool {\bfseries add\+PParticle} (\mbox{\hyperlink{classParticle3D}{Particle3D}} $\ast$ppart)
 \item 
-\mbox{\Hypertarget{classParticleSystem3D_a9567d1d55b1d9787773827fb7b722607}\label{classParticleSystem3D_a9567d1d55b1d9787773827fb7b722607}} 
-virtual void {\bfseries move} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&dp)
+virtual void \mbox{\hyperlink{classParticleSystem3D_a62d2efcabd18674904adfbc80458b809}{setT}} (const long double \&dt)
+\item 
+virtual void \mbox{\hyperlink{classParticleSystem3D_ab6972b882e165ac0338330083b3d0752}{apply}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&dv)
 \item 
 virtual std\+::string \mbox{\hyperlink{classParticleSystem3D_a910294a8ce56b478f53777f370911fbc}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \item 
@@ -56,10 +55,23 @@ virtual void \mbox{\hyperlink{classParticleSystem3D_a09a0550428da4aadf4486619a59
 \item 
 \mbox{\Hypertarget{classParticleSystem3D_a2053187d7e7aa6a1dc517f31f16f998b}\label{classParticleSystem3D_a2053187d7e7aa6a1dc517f31f16f998b}} 
 \mbox{\hyperlink{classOct}{Oct}}$<$ \mbox{\hyperlink{classParticle3D}{Particle3D}} $>$ $\ast$ {\bfseries m\+\_\+poctree}
+\item 
+\mbox{\Hypertarget{classParticleSystem3D_a9ad68123f42b7b07a9ff699dfabaa439}\label{classParticleSystem3D_a9ad68123f42b7b07a9ff699dfabaa439}} 
+long double {\bfseries m\+\_\+dt}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParticleSystem3D_ab6972b882e165ac0338330083b3d0752}\label{classParticleSystem3D_ab6972b882e165ac0338330083b3d0752}} 
+\index{ParticleSystem3D@{ParticleSystem3D}!apply@{apply}}
+\index{apply@{apply}!ParticleSystem3D@{ParticleSystem3D}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void Particle\+System3\+D\+::apply (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMoveable}{Moveable}}.
+
 \mbox{\Hypertarget{classParticleSystem3D_a09a0550428da4aadf4486619a5961237}\label{classParticleSystem3D_a09a0550428da4aadf4486619a5961237}} 
 \index{ParticleSystem3D@{ParticleSystem3D}!print@{print}}
 \index{print@{print}!ParticleSystem3D@{ParticleSystem3D}}
@@ -69,6 +81,16 @@ virtual void \mbox{\hyperlink{classParticleSystem3D_a09a0550428da4aadf4486619a59
 
 
 Reimplemented from \mbox{\hyperlink{classMoveable}{Moveable}}.
+
+\mbox{\Hypertarget{classParticleSystem3D_a62d2efcabd18674904adfbc80458b809}\label{classParticleSystem3D_a62d2efcabd18674904adfbc80458b809}} 
+\index{ParticleSystem3D@{ParticleSystem3D}!setT@{setT}}
+\index{setT@{setT}!ParticleSystem3D@{ParticleSystem3D}}
+\doxysubsubsection{\texorpdfstring{setT()}{setT()}}
+{\footnotesize\ttfamily void Particle\+System3\+D\+::setT (\begin{DoxyParamCaption}\item[{const long double \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
 \mbox{\Hypertarget{classParticleSystem3D_a910294a8ce56b478f53777f370911fbc}\label{classParticleSystem3D_a910294a8ce56b478f53777f370911fbc}} 
 \index{ParticleSystem3D@{ParticleSystem3D}!to\_string@{to\_string}}

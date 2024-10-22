@@ -14,6 +14,7 @@ Particle3D::Particle3D() {
 	this->w=LSN{1, 0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
 	m_ps=new Vector3D(NULL, Point3D{LSN{1, 0}, LSN{1, 0}, LSN{1, 0}});		// Vector3D init to end=(1, 1, 1)
 	m_dels=true;
+	m_dt=0;
 }
 
 /*Particle3D::Particle3D(const Point3D& p, Vector* pspeed) {
@@ -23,6 +24,7 @@ Particle3D::Particle3D() {
 	w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=pspeed;
 	m_dels=false;
+	m_dt=0;
 }
 
 Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
@@ -32,6 +34,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
 	w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	m_ps=pspeed;
 	m_dels=false;
+	m_dt=0;
 }*/
 
 Particle3D::Particle3D(const Point3D& p) {
@@ -41,6 +44,7 @@ Particle3D::Particle3D(const Point3D& p) {
 	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
 	m_dels=true;
+	m_dt=0;
 }
 
 Particle3D::Particle3D(const WeightedPoint3D& wp) {
@@ -50,6 +54,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
 	m_dels=true;
+	m_dt=0;
 }
 
 Particle3D::Particle3D(const Point3D& p, const Vector3D& speed) {
@@ -59,6 +64,7 @@ Particle3D::Particle3D(const Point3D& p, const Vector3D& speed) {
 	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, speed.getP2());
 	m_dels=true;
+	m_dt=0;
 }
 
 Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
@@ -68,6 +74,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	m_ps=new Vector3D(NULL, speed.getP2());
 	m_dels=true;
+	m_dt=0;
 }
 
 Particle3D::~Particle3D() {
@@ -113,6 +120,16 @@ void Particle3D::addAsPos(const Vector3D& v) {
 }
 
 
+
+void Particle3D::setT(long double& dt) {
+	m_dt=dt;
+}
+
+void Particle3D::apply(const Vector3D& dv){
+	this->x+=dv.getP2().x;
+	this->y+=dv.getP2().y;
+	this->z+=dv.getP2().z;
+}
 
 
 std::string Particle3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
