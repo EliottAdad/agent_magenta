@@ -11,144 +11,148 @@
 #include <chrono>
 #include <iostream>
 #include "unistd.h"
-//#include "SDL2/SDL.h"
+#include <eigen3/Eigen/Dense>
+#include <SDL2/SDL.h>
 
-#include "LSN.h"
-#include "Point3D.h"
-#include "WeightedPoint3D.h"
-#include "Quad.h"
-#include "Oct.h"
-#include "Particle3D.h"
-#include "ParticleSystem3D.h"
-#include "Vector3D.h"
-#include "VectorField.h"
-#include "VectorFieldUnidirectional.h"
-#include "Physics.h"
-//#include "functions.h"
+#include "core/LSN.h"
+#include "core/Point3D.h"
+#include "core/WeightedPoint3D.h"
+#include "core/Quad.h"
+#include "core/Oct.h"
+#include "core/Particle3D.h"
+#include "core/ParticleSystem3D.h"
+#include "core/Vector3D.h"
+#include "core/VectorField.h"
+#include "core/VectorFieldUnidirectional.h"
+#include "core/Physics.h"
+//#include "utilities/functions.h"
 
 
+/*
+ * Test Eigen
+ */
+//int main(){
+//
+//	std::cout<< "Hello\n" << "\n";
+//
+//	Eigen::MatrixXd m(3,3);
+//	m << 1, 2, 3,
+//	     4, 5, 6,
+//	     7, 8, 9;
+//	std::cout << m << std::endl;
+//	return 0;
+//}
 
+
+/*
+ * Main core
+ */
 int main(){
-
-	std::cout<< "Hello\n" << "\n";
 
 	/*
 	 * Tests LSN
 	 */
-	std::cout<< "\n" << "####Tests LSN####" << "\n";
-
-	LSN nb1{-2000.53,20};
-	LSN nb2{1,20};
-	LSN nb3=nb1+nb2;
-	nb1.print(true, 0, true);
-	nb2.print(true, 0, true);
-	nb3.print(true, 0, true);
-	nb3*=2;
-	nb3*=LSN{5,-1};
-	nb3.print(true, 0, true);
-
-	std::cout<< "\n";
-
-	/*
-	 * Tests Points
-	 */
-	std::cout<< "\n" << "####Tests Points####" << "\n";
-
-	Point3D p1{{0,0},{2,0},{1,0}};
-	Point3D p2{{20,7},{2,0},{1,0}};
-	p1-=p2;
-	Point3D p3{{18,7},{2,0},{5,0}};
-	Point3D p4=p1+p2-p3;
-	p1.print(true, 0, false);
-	p2.print(true, 0, false);
-	p3.print(true, 0, false);
-	p4.print(true, 0, false);
-
-	Quad<Point3D> q2(LSN{50, 0});
-	q2.insert(new Point3D{{0,0},{0,0},{0,0}});
-	q2.print(true, 0, true);
-
-	std::cout<< "\n";
-
-	/*
-	 * Tests Weighted Points
-	 */
-	std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
-
-	WeightedPoint3D wp1{{0,0},{2,0},{1,0},{1,0}};
-	WeightedPoint3D wp2{{20,7},{2,0},{1,0},{1,0}};
-	WeightedPoint3D wp3{{18,7},{2,0},{5,0},{1,0}};
-	WeightedPoint3D wp4=wp1+wp2-wp3;
-
-	wp1.print(true, 0, false);
-	wp2.print(true, 0, false);
-	wp3.print(true, 0, false);
-	wp4.print(true, 0, false);
-
-	/*
-	 * Tests SDL
-	 */
-	/*SDL_Init(SDL_INIT_VIDEO);
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)){
-		return 1;
-	}
-	SDL_Window* pw1=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
-
-
-
-
-	SDL_Quit();*/
-
-	/*
-	 * Tests Time
-	 */
-	std::cout<< "\n" << "####Tests Time####" << "\n";
-
-	std::chrono::time_point t1=std::chrono::system_clock::now();
-	//std::cout "t1=" << t1.count() << "\n";
-	sleep(1);
-	std::chrono::time_point t2=std::chrono::system_clock::now();
-	std::chrono::duration dt=t2-t1;
-	std::cout << "\n delta t = " << dt.count() << "ns\n";
-
-	/*
-	 * Tests Vectors
-	 */
-	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
-
-	Vector3D v1;
-	v1.print();
-	Vector3D v2;
-	v2.print();
-	Vector3D v3;
-	v3.print();
-
-
-	printf("\n Test + start \n");
-	Vector3D rv1=v1+v2;
-	rv1.print();
-	printf("\n Test + end \n");
-
-	printf("\n Test - start \n");
-	Vector3D rv2=v1-v2;
-	rv2.print();
-	printf("\n Test - end \n");
-
-	printf("\n Test * start \n");
-	Vector3D rv3=v1*2.;
-	rv3.print();
-	printf("\n Test * end \n");
-
-	printf("\n Test / start \n");
-	Vector3D rv4=v1/2.;
-	rv4.print();
-	printf("\n Test / end \n");
-
-	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-	//Vector3D rv5=((rv1+rv2)-rv4)+rv3;
-	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-	//rv5.print();
-	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
+//	std::cout<< "\n" << "####Tests LSN####" << "\n";
+//
+//	LSN nb1{-2000.53,20};
+//	LSN nb2{1,20};
+//	LSN nb3=nb1+nb2;
+//	nb1.print(true, 0, true);
+//	nb2.print(true, 0, true);
+//	nb3.print(true, 0, true);
+//	nb3*=2;
+//	nb3*=LSN{5,-1};
+//	nb3.print(true, 0, true);
+//
+//	std::cout<< "\n";
+//
+//	/*
+//	 * Tests Points
+//	 */
+//	std::cout<< "\n" << "####Tests Points####" << "\n";
+//
+//	Point3D p1{{0,0},{2,0},{1,0}};
+//	Point3D p2{{20,7},{2,0},{1,0}};
+//	p1-=p2;
+//	Point3D p3{{18,7},{2,0},{5,0}};
+//	Point3D p4=p1+p2-p3;
+//	p1.print(true, 0, false);
+//	p2.print(true, 0, false);
+//	p3.print(true, 0, false);
+//	p4.print(true, 0, false);
+//
+//	Quad<Point3D> q2(LSN{50, 0});
+//	q2.insert(new Point3D{{0,0},{0,0},{0,0}});
+//	q2.print(true, 0, true);
+//
+//	std::cout<< "\n";
+//
+//	/*
+//	 * Tests Weighted Points
+//	 */
+//	std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
+//
+//	WeightedPoint3D wp1{{0,0},{2,0},{1,0},{1,0}};
+//	WeightedPoint3D wp2{{20,7},{2,0},{1,0},{1,0}};
+//	WeightedPoint3D wp3{{18,7},{2,0},{5,0},{1,0}};
+//	WeightedPoint3D wp4=wp1+wp2-wp3;
+//
+//	wp1.print(true, 0, false);
+//	wp2.print(true, 0, false);
+//	wp3.print(true, 0, false);
+//	wp4.print(true, 0, false);
+//
+//
+//	/*
+//	 * Tests Time
+//	 */
+//	std::cout<< "\n" << "####Tests Time####" << "\n";
+//
+//	std::chrono::time_point t1=std::chrono::system_clock::now();
+//	//std::cout "t1=" << t1.count() << "\n";
+//	sleep(1);
+//	std::chrono::time_point t2=std::chrono::system_clock::now();
+//	std::chrono::duration dt=t2-t1;
+//	std::cout << "\n delta t = " << dt.count() << "ns\n";
+//
+//	/*
+//	 * Tests Vectors
+//	 */
+//	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
+//
+//	Vector3D v1;
+//	v1.print();
+//	Vector3D v2;
+//	v2.print();
+//	Vector3D v3;
+//	v3.print();
+//
+//
+//	printf("\n Test + start \n");
+//	Vector3D rv1=v1+v2;
+//	rv1.print();
+//	printf("\n Test + end \n");
+//
+//	printf("\n Test - start \n");
+//	Vector3D rv2=v1-v2;
+//	rv2.print();
+//	printf("\n Test - end \n");
+//
+//	printf("\n Test * start \n");
+//	Vector3D rv3=v1*2.;
+//	rv3.print();
+//	printf("\n Test * end \n");
+//
+//	printf("\n Test / start \n");
+//	Vector3D rv4=v1/2.;
+//	rv4.print();
+//	printf("\n Test / end \n");
+//
+//	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
+//	//Vector3D rv5=((rv1+rv2)-rv4)+rv3;
+//	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
+//	//rv5.print();
+//	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
 
 
 	/*
@@ -169,17 +173,17 @@ int main(){
 	/*
 	 * Tests Quads
 	 */
-	std::cout<< "\n" << "####Tests Quads####" << "\n" << "\n";
+	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
 	Quad<Particle3D> q1(LSN{1, 2});
 	//q1.m_ALPHA=0.1;
 
 	q1.insert(&par1);
 	q1.insert(&par2);
 	q1.insert(&par3);
-	//q1.insert(&par4);
+	q1.insert(&par4);
 	q1.print(true, 0, true);
 
-	//std::cout << "\nArobase\n";
+	std::cout << "\nArobase\n";
 
 	std::unordered_set<Quad<Particle3D>*> pquads;
 	q1.find(par4, pquads);
@@ -246,95 +250,23 @@ int main(){
 	return 0;
 }
 
-
-
 /*
- * Main tests Points and Vectors
+ * Main SDL
  */
+
 //int main(){
-//	/*
-//	 * Tests Points
-//	 */
-//	std::cout<< "\n" << "####Tests Points####" << "\n" << "\n";
 //
-//	//Point3D p1{{0,0},{2,0},{1,0}};
-//	Point3D p1{{1,0},{1,0},{1,0}};
-//	p1.print(true);
-//	//Point3D p2{{20,7},{2,0},{1,0}};
-//	Point3D p2{{1,0},{1,0},{1,0}};
-//	p2.print(true);
-//	//Point3D p3{{18,7},{2,0},{5,0}};
-//	Point3D p3{{1,0},{1,0},{1,0}};
-//	p3.print(true);
-//
-//	printf("\n Test + start\n");
-//	Point3D rp1=p1+p2;
-//	rp1.print();
-//	printf("\n Test + end\n");
-//
-//	printf("\n Test - start\n");
-//	Point3D rp2=p1-p2;
-//	rp2.print();
-//	printf("\n Test - end\n");
-//
-//	printf("\n Test * start\n");
-//	Point3D rp3=p1*2;
-//	rp3.print();
-//	printf("\n Test * end\n");
-//
-//	printf("\n Test / start\n");
-//	Point3D rp4=p1/2;
-//	rp4.print();
-//	printf("\n Test / end\n");
-//
-//	printf("\n Test chained calculus start \n");
-//	Point3D rp5=p1*2+(p2*0.5-p3)*2;
-//	rp5.print();
-//	printf("\n Test chained calculus end \n");
+//	SDL_Init(SDL_INIT_VIDEO);
+//	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)){
+//		return 1;
+//	}
+//	SDL_Window* pw1=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
 //
 //
-//	/*
-//	 * Tests Vectors
-//	 */
 //
-//	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
 //
-//	Vector3D v1;
-//	v1.print(true);
-//	Vector3D v2;
-//	v2.print(true);
-//	Vector3D v3;
-//	v3.print(true);
-//	Vector3D v4;
-//	v4.print(true);
-//
-//	printf("\n Test + start\n");
-//	Vector3D r1=v1+v2;
-//	r1.print();
-//	printf("\n Test + end \n");
-//
-//	printf("\n Test - start \n");
-//	Vector3D r2=v1-v2;
-//	r2.print();
-//	printf("\n Test - end \n");
-//
-//	printf("\n Test * start \n");
-//	Vector3D r3=v3*2;
-//	r3.print();
-//	printf("\n Test * end \n");
-//
-//	printf("\n Test / start \n");
-//	Vector3D r4=v4/2.;
-//	r4.print();
-//	printf("\n Test / end \n");
-//
-//	printf("\n Test chained calculus start \n");
-//	//Vector3D r5=((r1+r2)-r4)+r3;//Chained calculus doesn't work.
-//	//Vector3D r5(r1+r2);
-//	//r5.print();
-//	printf("\n Test chained calculus end \n");
-//
-//	return 0;
+//	SDL_Quit();
 //}
+
 
 #endif /* MAIN_CPP_ */

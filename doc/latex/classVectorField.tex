@@ -1,0 +1,97 @@
+\hypertarget{classVectorField}{}\doxysection{Vector\+Field Class Reference}
+\label{classVectorField}\index{VectorField@{VectorField}}
+
+
+Inheritance diagram for Vector\+Field\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{classVectorField__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Vector\+Field\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classVectorField__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorField_a080ef541011c9164edf9921835a9b854}\label{classVectorField_a080ef541011c9164edf9921835a9b854}} 
+{\bfseries Vector\+Field} (const \mbox{\hyperlink{classVectorField}{Vector\+Field}} \&other)
+\item 
+\mbox{\Hypertarget{classVectorField_a73c9d5394308ee89e308b1de8001814e}\label{classVectorField_a73c9d5394308ee89e308b1de8001814e}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classMoveable}{Moveable}} $\ast$ $>$ {\bfseries get\+PMoveables} () const
+\item 
+\mbox{\Hypertarget{classVectorField_a5a4de8d80757871ab41ed6a41f5bec71}\label{classVectorField_a5a4de8d80757871ab41ed6a41f5bec71}} 
+bool {\bfseries add\+PMoveable} (\mbox{\hyperlink{classMoveable}{Moveable}} $\ast$pmoveable)
+\item 
+\mbox{\Hypertarget{classVectorField_a86f6b1090913d82434b3cacc701c1b06}\label{classVectorField_a86f6b1090913d82434b3cacc701c1b06}} 
+unsigned int {\bfseries get\+Mode} () const
+\item 
+\mbox{\Hypertarget{classVectorField_a9ce5f97d79990031e5c93154fb83fd28}\label{classVectorField_a9ce5f97d79990031e5c93154fb83fd28}} 
+void {\bfseries set\+Mode} (const unsigned int \&mode)
+\item 
+virtual void \mbox{\hyperlink{classVectorField_af45cf6f4561e922b0cf5c186e7cb2d64}{setT}} (const long double \&dt)
+\item 
+virtual std\+::string \mbox{\hyperlink{classVectorField_a176ac3b71cb8cf47c899397951d28bd2}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classVectorField_a747205620cb40a24ba69879b34b89d6e}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorField_a95038e072de76fa98350b5519c1264c4}\label{classVectorField_a95038e072de76fa98350b5519c1264c4}} 
+unsigned int {\bfseries m\+\_\+mode}
+\item 
+\mbox{\Hypertarget{classVectorField_a16c3d397af846feff6b510ffa61f6b84}\label{classVectorField_a16c3d397af846feff6b510ffa61f6b84}} 
+float {\bfseries m\+\_\+k}
+\item 
+\mbox{\Hypertarget{classVectorField_a7a35afec255c9b330b45781fdb2f3493}\label{classVectorField_a7a35afec255c9b330b45781fdb2f3493}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classMoveable}{Moveable}} $\ast$ $>$ {\bfseries m\+\_\+pmoveables}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVectorField_a747205620cb40a24ba69879b34b89d6e}\label{classVectorField_a747205620cb40a24ba69879b34b89d6e}} 
+\index{VectorField@{VectorField}!print@{print}}
+\index{print@{print}!VectorField@{VectorField}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Vector\+Field\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+\mbox{\Hypertarget{classVectorField_af45cf6f4561e922b0cf5c186e7cb2d64}\label{classVectorField_af45cf6f4561e922b0cf5c186e7cb2d64}} 
+\index{VectorField@{VectorField}!setT@{setT}}
+\index{setT@{setT}!VectorField@{VectorField}}
+\doxysubsubsection{\texorpdfstring{setT()}{setT()}}
+{\footnotesize\ttfamily void Vector\+Field\+::setT (\begin{DoxyParamCaption}\item[{const long double \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+\mbox{\Hypertarget{classVectorField_a176ac3b71cb8cf47c899397951d28bd2}\label{classVectorField_a176ac3b71cb8cf47c899397951d28bd2}} 
+\index{VectorField@{VectorField}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!VectorField@{VectorField}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Vector\+Field\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/Vector\+Field.\+h\item 
+core/Vector\+Field.\+cpp\end{DoxyCompactItemize}

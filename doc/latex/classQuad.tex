@@ -1,0 +1,98 @@
+\hypertarget{classQuad}{}\doxysection{Quad\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classQuad}\index{Quad$<$ T $>$@{Quad$<$ T $>$}}
+
+
+Inheritance diagram for Quad\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classQuad__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Quad\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classQuad__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQuad_a8f2fdf18320caf3a39daec84909436ad}\label{classQuad_a8f2fdf18320caf3a39daec84909436ad}} 
+{\bfseries Quad} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
+\item 
+\mbox{\Hypertarget{classQuad_a7c21dba3c03a7052355d56fbde4077b5}\label{classQuad_a7c21dba3c03a7052355d56fbde4077b5}} 
+{\bfseries Quad} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
+\item 
+\mbox{\Hypertarget{classQuad_a65511a642218444bfa2fa8871971fc8a}\label{classQuad_a65511a642218444bfa2fa8871971fc8a}} 
+\mbox{\hyperlink{structLSN}{LSN}} {\bfseries getA} () const
+\item 
+\mbox{\Hypertarget{classQuad_acabd060caa8211cbef58d35cbd479c6f}\label{classQuad_acabd060caa8211cbef58d35cbd479c6f}} 
+unsigned int {\bfseries get\+NB\+\_\+\+QUADS} () const
+\item 
+\mbox{\Hypertarget{classQuad_aeeea5a0691b4bc0c80084e030ff955ed}\label{classQuad_aeeea5a0691b4bc0c80084e030ff955ed}} 
+std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+Elements} () const
+\item 
+\mbox{\Hypertarget{classQuad_af4e4748de956cf219b61c88e0dc81cb0}\label{classQuad_af4e4748de956cf219b61c88e0dc81cb0}} 
+bool {\bfseries insert} (T $\ast$pT)
+\item 
+\mbox{\Hypertarget{classQuad_a77f156e7196a21cd21027d9350863ac9}\label{classQuad_a77f156e7196a21cd21027d9350863ac9}} 
+void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T $>$ $\ast$ $>$ \&pquads)
+\item 
+\mbox{\Hypertarget{classQuad_af586c4d776641d2b9dc8c976a7062752}\label{classQuad_af586c4d776641d2b9dc8c976a7062752}} 
+void {\bfseries compute\+Inverse\+Square\+Law\+Resultant} (const T \&t, \mbox{\hyperlink{classVector3D}{Vector3D}} \&v) const
+\item 
+\mbox{\Hypertarget{classQuad_a668a4f257f6434b403159c342175f36a}\label{classQuad_a668a4f257f6434b403159c342175f36a}} 
+T $\ast$ {\bfseries search} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint) const
+\item 
+std\+::string \mbox{\hyperlink{classQuad_a6691a320e39587380e423716790b5fb7}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+void \mbox{\hyperlink{classQuad_a9b443a4e94f5e9bd57f3cc364a518c27}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+\mbox{\Hypertarget{classQuad_aaab72b3733373c44c28ad07feb452d63}\label{classQuad_aaab72b3733373c44c28ad07feb452d63}} 
+bool {\bfseries insert} (\mbox{\hyperlink{classParticle3D}{Particle3D}} $\ast$ppart)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQuad_ad131ebf8e35ba95b7ed8fbfc6360dca8}\label{classQuad_ad131ebf8e35ba95b7ed8fbfc6360dca8}} 
+static \mbox{\hyperlink{structLSN}{LSN}} {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1, 0\}
+\item 
+\mbox{\Hypertarget{classQuad_a85efca8d49c3c32a95fde0a5a33f89c8}\label{classQuad_a85efca8d49c3c32a95fde0a5a33f89c8}} 
+static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classQuad_a9b443a4e94f5e9bd57f3cc364a518c27}\label{classQuad_a9b443a4e94f5e9bd57f3cc364a518c27}} 
+\index{Quad$<$ T $>$@{Quad$<$ T $>$}!print@{print}}
+\index{print@{print}!Quad$<$ T $>$@{Quad$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classQuad}{Quad}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{classQuad_a6691a320e39587380e423716790b5fb7}\label{classQuad_a6691a320e39587380e423716790b5fb7}} 
+\index{Quad$<$ T $>$@{Quad$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Quad$<$ T $>$@{Quad$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classQuad}{Quad}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+core/Quad.\+h\end{DoxyCompactItemize}

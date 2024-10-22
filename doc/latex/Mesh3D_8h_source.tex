@@ -1,0 +1,34 @@
+\hypertarget{Mesh3D_8h_source}{}\doxysection{Mesh3\+D.\+h}
+\label{Mesh3D_8h_source}\index{geometry/Mesh3D.h@{geometry/Mesh3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Mesh3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 26 sept. 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef MESH3D\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define MESH3D\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Triangle3D.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classMesh3D}{Mesh3D}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \textcolor{comment}{//std::unordered\_set<std::pair<Point3D*, bool>> m\_ppoints;}}
+\DoxyCodeLine{19     std::unordered\_set<std::pair<Triangle3D*, bool>> m\_ptriangles;}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{classMesh3D}{Mesh3D}}();}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \mbox{\hyperlink{classMesh3D}{\string~Mesh3D}}();}
+\DoxyCodeLine{23     \textcolor{comment}{//Mesh3D(const Mesh3D \&other);}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{//public ;}}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* MESH3D\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

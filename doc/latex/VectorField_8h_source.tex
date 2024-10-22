@@ -1,0 +1,62 @@
+\hypertarget{VectorField_8h_source}{}\doxysection{Vector\+Field.\+h}
+\label{VectorField_8h_source}\index{core/VectorField.h@{core/VectorField.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * VectorField.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 9 mai 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef VECTORFIELD\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define VECTORFIELD\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{//\#include "{}Particle3DSet.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Moveable.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}Printable.h"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{/*}}
+\DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{24 \textcolor{comment}{ *  VectorField :)}}
+\DoxyCodeLine{25 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{26 \textcolor{comment}{ * Uses the weights of the particles.}}
+\DoxyCodeLine{27 \textcolor{comment}{ */}}
+\DoxyCodeLine{28 \textcolor{comment}{/*template <typename T> */}}
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{classVectorField}{VectorField}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
+\DoxyCodeLine{30 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{31     \textcolor{comment}{// @TODO change mode to integer where it indicates the degree of differenciation (acc, jerks, ...) no speed or displacement}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_mode;                                        \textcolor{comment}{// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').}}
+\DoxyCodeLine{33     \textcolor{keywordtype}{float} m\_k;                                                  \textcolor{comment}{// Coeff of proportionnality to apply.}}
+\DoxyCodeLine{34     std::unordered\_set<Moveable*> m\_pmoveables;                 \textcolor{comment}{// Pointers to the Moveables.}}
+\DoxyCodeLine{35 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \mbox{\hyperlink{classVectorField}{VectorField}}();}
+\DoxyCodeLine{37     \textcolor{comment}{//VectorField(std::unordered\_set<Particle3D*>* pparts);}}
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVectorField}{\string~VectorField}}();}
+\DoxyCodeLine{39     \mbox{\hyperlink{classVectorField}{VectorField}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVectorField}{VectorField}} \&other);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     std::unordered\_set<Moveable*> getPMoveables() \textcolor{keyword}{const};}
+\DoxyCodeLine{42     \textcolor{keywordtype}{bool} addPMoveable(\mbox{\hyperlink{classMoveable}{Moveable}}* pmoveable);}
+\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getMode() \textcolor{keyword}{const};}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} setMode(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& mode);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{/*virtual void applyAsAcc(const double\& dt);}}
+\DoxyCodeLine{47 \textcolor{comment}{    virtual void applyAsSpeed();}}
+\DoxyCodeLine{48 \textcolor{comment}{    virtual void applyAsPos();*/}}
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);\textcolor{comment}{//Apply given the mode (a, j, p)}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* VECTORFIELD\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

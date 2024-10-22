@@ -1,0 +1,41 @@
+\hypertarget{Figure3D_8h_source}{}\doxysection{Figure3\+D.\+h}
+\label{Figure3D_8h_source}\index{geometry/Figure3D.h@{geometry/Figure3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Figure3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 20 mai 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef FIGURE3D\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define FIGURE3D\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/*}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ *  Figure3D :)}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ */}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classFigure3D}{Figure3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{22     std::unordered\_set<Point3D*> m\_ppoints;}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{classFigure3D}{Figure3D}}();}
+\DoxyCodeLine{25     \textcolor{keyword}{virtual} \mbox{\hyperlink{classFigure3D}{\string~Figure3D}}();}
+\DoxyCodeLine{26     \mbox{\hyperlink{classFigure3D}{Figure3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classFigure3D}{Figure3D}} \&other);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     std::unordered\_set<Point3D*> setPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FIGURE3D\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

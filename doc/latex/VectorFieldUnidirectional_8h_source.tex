@@ -1,0 +1,54 @@
+\hypertarget{VectorFieldUnidirectional_8h_source}{}\doxysection{Vector\+Field\+Unidirectional.\+h}
+\label{VectorFieldUnidirectional_8h_source}\index{core/VectorFieldUnidirectional.h@{core/VectorFieldUnidirectional.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * VectorFieldUnidirectional.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 18 mai 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef VECTORFIELDUNIDIRECTIONAL\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define VECTORFIELDUNIDIRECTIONAL\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}VectorField.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{/*}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ *  VectorFieldUnidirectional :)}}
+\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classVectorFieldUnidirectional}{VectorFieldUnidirectional}} : \textcolor{keyword}{public} \mbox{\hyperlink{classVectorField}{VectorField}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{classVector3D}{Vector3D}}* m\_pv;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} m\_delv;}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \mbox{\hyperlink{classVectorFieldUnidirectional}{VectorFieldUnidirectional}}();}
+\DoxyCodeLine{28     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVectorFieldUnidirectional}{\string~VectorFieldUnidirectional}}();}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{classVector3D}{Vector3D}} getVector() \textcolor{keyword}{const};}
+\DoxyCodeLine{31     \mbox{\hyperlink{classVector3D}{Vector3D}}* getPVector();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{//virtual void addAsForce(const long double\& dt);}}
+\DoxyCodeLine{34     \textcolor{comment}{//virtual void addAsAcc(const long double\& dt);}}
+\DoxyCodeLine{35     \textcolor{comment}{//virtual void addAsSpeed();}}
+\DoxyCodeLine{36     \textcolor{comment}{//virtual void addAsPos();}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{//virtual void applyAsForce(const long double\& dt);}}
+\DoxyCodeLine{39     \textcolor{comment}{//virtual void applyAsAcc(const long double\& dt);}}
+\DoxyCodeLine{40     \textcolor{comment}{//virtual void applyAsSpeed();}}
+\DoxyCodeLine{41     \textcolor{comment}{//virtual void applyAsPos();}}
+\DoxyCodeLine{42     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt=1);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{45     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* VECTORFIELDUNIDIRECTIONAL\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

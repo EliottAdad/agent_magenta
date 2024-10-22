@@ -1,0 +1,63 @@
+\hypertarget{Physics_8h_source}{}\doxysection{Physics.\+h}
+\label{Physics_8h_source}\index{core/Physics.h@{core/Physics.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Physics.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 4 juin 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef PHYSICS\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PHYSICS\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{//\#include <ctime>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}TimeLoop.h"{}}}
+\DoxyCodeLine{16 \textcolor{comment}{//\#include "{}Particle3DSet.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}VectorField.h"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{21 \textcolor{comment}{ *  Physics :)}}
+\DoxyCodeLine{22 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{23 \textcolor{comment}{ * Gère le temps (à la place de TimeLoop, tout transvaser)}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classPhysics}{Physics}} \{}
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{float} m\_speed;\textcolor{comment}{//Ratio between simulation\_speed/real\_world\_speed}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_cps;\textcolor{comment}{//Computations per second}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} m\_fcollide;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{bool} m\_fpause;}
+\DoxyCodeLine{32     std::unordered\_set<TimeSensitive*> m\_ptime\_sensitives;          \textcolor{comment}{//List of time sensitive objects}}
+\DoxyCodeLine{33 \textcolor{keyword}{public}:}
+\DoxyCodeLine{34     \mbox{\hyperlink{classPhysics}{Physics}}();}
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPhysics}{\string~Physics}}();}
+\DoxyCodeLine{36     \mbox{\hyperlink{classPhysics}{Physics}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPhysics}{Physics}}\& phys);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getCPS() \textcolor{keyword}{const};}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} setCPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& cps);}
+\DoxyCodeLine{40     \textcolor{keywordtype}{float} getSpeed() \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& speed);}
+\DoxyCodeLine{42     std::unordered\_set<TimeSensitive*> getPTimeSensitives() \textcolor{keyword}{const};}
+\DoxyCodeLine{43     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
+\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFCollide() \textcolor{keyword}{const};}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} setFCollide(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bcollide);}
+\DoxyCodeLine{46     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPause() \textcolor{keyword}{const};}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} setFPause(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bpause);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} loop();}
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);}
+\DoxyCodeLine{51     \textcolor{keywordtype}{bool} iterate();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{55 \};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PHYSICS\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

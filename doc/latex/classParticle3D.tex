@@ -1,0 +1,80 @@
+\hypertarget{classParticle3D}{}\doxysection{Particle3D Class Reference}
+\label{classParticle3D}\index{Particle3D@{Particle3D}}
+
+
+Inheritance diagram for Particle3D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{classParticle3D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle3D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classParticle3D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParticle3D_abcdcd91a6aabd53f08dcd8bb2b5ff8e3}\label{classParticle3D_abcdcd91a6aabd53f08dcd8bb2b5ff8e3}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p)
+\item 
+\mbox{\Hypertarget{classParticle3D_a699d5048fab177c01eb9b8e82f5ecb04}\label{classParticle3D_a699d5048fab177c01eb9b8e82f5ecb04}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}} \&wp)
+\item 
+\mbox{\Hypertarget{classParticle3D_a4c84c005c2bbb6fd6e3bd99590f6f257}\label{classParticle3D_a4c84c005c2bbb6fd6e3bd99590f6f257}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&speed)
+\item 
+\mbox{\Hypertarget{classParticle3D_a18531384e48e70b5c8ccd5de7f4a7741}\label{classParticle3D_a18531384e48e70b5c8ccd5de7f4a7741}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}} \&wp, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&speed)
+\item 
+\mbox{\Hypertarget{classParticle3D_a13e1a4df5f49bee0b469268a1da84b6d}\label{classParticle3D_a13e1a4df5f49bee0b469268a1da84b6d}} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} {\bfseries get\+Speed} () const
+\item 
+\mbox{\Hypertarget{classParticle3D_a571c0568298d67165f5aa333d93b6b2e}\label{classParticle3D_a571c0568298d67165f5aa333d93b6b2e}} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} $\ast$ {\bfseries get\+PSpeed} ()
+\item 
+\mbox{\Hypertarget{classParticle3D_adc28def25bff5df4559d193cb55f2b41}\label{classParticle3D_adc28def25bff5df4559d193cb55f2b41}} 
+void {\bfseries set\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
+\item 
+\mbox{\Hypertarget{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}\label{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}} 
+virtual void {\bfseries add\+As\+Force} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v, const long double \&dt)
+\item 
+\mbox{\Hypertarget{classParticle3D_a7e52dcb2c43c84d08d43fd41c263e48c}\label{classParticle3D_a7e52dcb2c43c84d08d43fd41c263e48c}} 
+virtual void {\bfseries add\+As\+Acc} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v, const long double \&dt)
+\item 
+\mbox{\Hypertarget{classParticle3D_a41b6008980589292213d717b78967c80}\label{classParticle3D_a41b6008980589292213d717b78967c80}} 
+virtual void {\bfseries add\+As\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
+\item 
+\mbox{\Hypertarget{classParticle3D_afba1c78e27128ee07b66f29753952af5}\label{classParticle3D_afba1c78e27128ee07b66f29753952af5}} 
+virtual void {\bfseries add\+As\+Pos} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
+\item 
+\mbox{\Hypertarget{classParticle3D_a9c2746f5ed971b571063942c401c9e82}\label{classParticle3D_a9c2746f5ed971b571063942c401c9e82}} 
+std\+::string {\bfseries to\+\_\+string} (const bool \&spread=false, const bool \&full\+\_\+info=false) const
+\item 
+\mbox{\Hypertarget{classParticle3D_ad46b84fa907dc341595dd0fd2b48918e}\label{classParticle3D_ad46b84fa907dc341595dd0fd2b48918e}} 
+void {\bfseries print} (const bool \&spread=false, const unsigned int \&indent=0, const bool \&full\+\_\+info=false) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParticle3D_a5148814470d405e4da9795347a15d62d}\label{classParticle3D_a5148814470d405e4da9795347a15d62d}} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} $\ast$ {\bfseries m\+\_\+ps}
+\item 
+\mbox{\Hypertarget{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}\label{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}} 
+bool {\bfseries m\+\_\+dels}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/Particle3\+D.\+h\item 
+core/Particle3\+D.\+cpp\end{DoxyCompactItemize}

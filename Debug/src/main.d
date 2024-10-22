@@ -1,23 +1,36 @@
-src/main.o: ../src/main.cpp ../src/LSN.h ../src/functions.h \
- ../src/Point3D.h ../src/Printable.h ../src/WeightedPoint3D.h \
- ../src/Quad.h ../src/Particle3D.h ../src/Vector3D.h ../src/Line3D.h \
- ../src/TimeSensitive.h ../src/Oct.h ../src/ParticleSystem3D.h \
- ../src/Moveable.h ../src/VectorField.h \
- ../src/VectorFieldUnidirectional.h ../src/Physics.h ../src/TimeLoop.h
-../src/LSN.h:
-../src/functions.h:
-../src/Point3D.h:
-../src/Printable.h:
-../src/WeightedPoint3D.h:
-../src/Quad.h:
-../src/Particle3D.h:
-../src/Vector3D.h:
-../src/Line3D.h:
-../src/TimeSensitive.h:
-../src/Oct.h:
-../src/ParticleSystem3D.h:
-../src/Moveable.h:
-../src/VectorField.h:
-../src/VectorFieldUnidirectional.h:
-../src/Physics.h:
-../src/TimeLoop.h:
+src/main.o: ../src/main.cpp ../src/core/LSN.h \
+ ../src/core/../utilities/functions.h ../src/core/Point3D.h \
+ ../src/core/LSN.h ../src/core/../utilities/Printable.h \
+ ../src/core/../utilities/functions.h ../src/core/WeightedPoint3D.h \
+ ../src/core/Point3D.h ../src/core/Quad.h ../src/core/Particle3D.h \
+ ../src/core/WeightedPoint3D.h ../src/core/Vector3D.h \
+ ../src/core/Line3D.h ../src/core/TimeSensitive.h ../src/core/Oct.h \
+ ../src/core/Particle3D.h ../src/core/ParticleSystem3D.h \
+ ../src/core/Oct.h ../src/core/Moveable.h ../src/core/Vector3D.h \
+ ../src/core/VectorField.h ../src/core/VectorFieldUnidirectional.h \
+ ../src/core/VectorField.h ../src/core/Physics.h ../src/core/TimeLoop.h
+../src/core/LSN.h:
+../src/core/../utilities/functions.h:
+../src/core/Point3D.h:
+../src/core/LSN.h:
+../src/core/../utilities/Printable.h:
+../src/core/../utilities/functions.h:
+../src/core/WeightedPoint3D.h:
+../src/core/Point3D.h:
+../src/core/Quad.h:
+../src/core/Particle3D.h:
+../src/core/WeightedPoint3D.h:
+../src/core/Vector3D.h:
+../src/core/Line3D.h:
+../src/core/TimeSensitive.h:
+../src/core/Oct.h:
+../src/core/Particle3D.h:
+../src/core/ParticleSystem3D.h:
+../src/core/Oct.h:
+../src/core/Moveable.h:
+../src/core/Vector3D.h:
+../src/core/VectorField.h:
+../src/core/VectorFieldUnidirectional.h:
+../src/core/VectorField.h:
+../src/core/Physics.h:
+../src/core/TimeLoop.h:

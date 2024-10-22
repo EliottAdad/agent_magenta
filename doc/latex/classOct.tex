@@ -1,0 +1,95 @@
+\hypertarget{classOct}{}\doxysection{Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classOct}\index{Oct$<$ T $>$@{Oct$<$ T $>$}}
+
+
+Inheritance diagram for Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{classOct__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classOct__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOct_a7011b6bc483f624632fa10e7fa76d11e}\label{classOct_a7011b6bc483f624632fa10e7fa76d11e}} 
+{\bfseries Oct} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
+\item 
+\mbox{\Hypertarget{classOct_ab499eead2347ff37ec5ad12fceefba81}\label{classOct_ab499eead2347ff37ec5ad12fceefba81}} 
+{\bfseries Oct} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
+\item 
+\mbox{\Hypertarget{classOct_a05fb013b3028a499ce377f9e771dd4ee}\label{classOct_a05fb013b3028a499ce377f9e771dd4ee}} 
+\mbox{\hyperlink{structLSN}{LSN}} {\bfseries getA} () const
+\item 
+\mbox{\Hypertarget{classOct_a6f9c0e0153199705b97b85e10c4b8503}\label{classOct_a6f9c0e0153199705b97b85e10c4b8503}} 
+unsigned int {\bfseries get\+NB\+\_\+\+OCTS} () const
+\item 
+\mbox{\Hypertarget{classOct_a9e7564bf8cdf6aba3ab49cc57d6951fc}\label{classOct_a9e7564bf8cdf6aba3ab49cc57d6951fc}} 
+std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
+\item 
+\mbox{\Hypertarget{classOct_a27c195d322315049f35bd767238c37b7}\label{classOct_a27c195d322315049f35bd767238c37b7}} 
+bool {\bfseries insert} (T $\ast$pT)
+\item 
+\mbox{\Hypertarget{classOct_a2c56e3393adfdf23629541ee87e6d76f}\label{classOct_a2c56e3393adfdf23629541ee87e6d76f}} 
+void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$ $\ast$ $>$ \&pquads)
+\item 
+\mbox{\Hypertarget{classOct_a5f94f7966d0442da75983f9efeb9cc18}\label{classOct_a5f94f7966d0442da75983f9efeb9cc18}} 
+void {\bfseries compute\+Inverse\+Square\+Law\+Resultant} (const T \&t, \mbox{\hyperlink{classVector3D}{Vector3D}} \&v) const
+\item 
+\mbox{\Hypertarget{classOct_aa548888df7db2d062d0792edce30971b}\label{classOct_aa548888df7db2d062d0792edce30971b}} 
+T $\ast$ {\bfseries search} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint) const
+\item 
+std\+::string \mbox{\hyperlink{classOct_a007572857b0abff287385cf4f089c255}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+void \mbox{\hyperlink{classOct_ad462eb5c2bcbf01019678645781d0eb1}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOct_a1796f44e8f21704dca70a7421199ecaa}\label{classOct_a1796f44e8f21704dca70a7421199ecaa}} 
+static \mbox{\hyperlink{structLSN}{LSN}} {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1, 0\}
+\item 
+\mbox{\Hypertarget{classOct_ac0414ab190dae41cd676e888157c2605}\label{classOct_ac0414ab190dae41cd676e888157c2605}} 
+static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOct_ad462eb5c2bcbf01019678645781d0eb1}\label{classOct_ad462eb5c2bcbf01019678645781d0eb1}} 
+\index{Oct$<$ T $>$@{Oct$<$ T $>$}!print@{print}}
+\index{print@{print}!Oct$<$ T $>$@{Oct$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{classOct_a007572857b0abff287385cf4f089c255}\label{classOct_a007572857b0abff287385cf4f089c255}} 
+\index{Oct$<$ T $>$@{Oct$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Oct$<$ T $>$@{Oct$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+core/Oct.\+h\end{DoxyCompactItemize}

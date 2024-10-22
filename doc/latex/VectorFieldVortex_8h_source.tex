@@ -1,0 +1,38 @@
+\hypertarget{VectorFieldVortex_8h_source}{}\doxysection{Vector\+Field\+Vortex.\+h}
+\label{VectorFieldVortex_8h_source}\index{core/VectorFieldVortex.h@{core/VectorFieldVortex.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * VectorFieldVortex.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 18 mai 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef VECTORFIELDVORTEX\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define VECTORFIELDVORTEX\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}VectorField.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{/*}}
+\DoxyCodeLine{14 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{15 \textcolor{comment}{ *  VectorFieldVortex :)}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ */}}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classVectorFieldVortex}{VectorFieldVortex}} : \textcolor{keyword}{public} \mbox{\hyperlink{classVectorField}{VectorField}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} m\_m;              \textcolor{comment}{//Moment unit/m or N/m.}}
+\DoxyCodeLine{21     \mbox{\hyperlink{structPoint3D}{Point3D}}* m\_ppoint;       \textcolor{comment}{//Center.}}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \mbox{\hyperlink{classVectorFieldVortex}{VectorFieldVortex}}();}
+\DoxyCodeLine{24     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVectorFieldVortex}{\string~VectorFieldVortex}}();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} applyAsForce(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} applyAsAcc(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} applyAsSpeed();}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} applyAsPos();}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* VECTORFIELDVORTEX\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
