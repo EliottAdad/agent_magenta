@@ -21,6 +21,7 @@
 #include "core/Oct.h"
 #include "core/Particle3D.h"
 #include "core/ParticleSystem3D.h"
+#include "core/System3D.h"
 #include "core/Vector3D.h"
 #include "core/VectorField.h"
 #include "core/VectorFieldUnidirectional.h"
@@ -217,6 +218,15 @@ int main(){
 	ps.addPParticle(&par1);
 	ps.addPParticle(&par2);
 	ps.print(true, true, 0);
+
+	/*
+	 * Tests Systems
+	 */
+	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
+	System3D<Particle3D> ps2;
+	ps2.addPElement(&par1);
+	ps2.addPElement(&par2);
+	ps2.print(true, true, 0);
 
 	/*
 	 * Tests Vector Fields
