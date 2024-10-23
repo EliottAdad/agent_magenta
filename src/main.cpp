@@ -164,10 +164,10 @@ int main(){
 	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
 	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
 	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
-	par1.print(true, 0, true);
-	par2.print(true, 0, true);
-	par3.print(true, 0, true);
-	par4.print(true, 0, true);
+	par1.print(true, true, 0);
+	par2.print(true, true, 0);
+	par3.print(true, true, 0);
+	par4.print(true, true, 0);
 
 
 	/*
@@ -181,14 +181,14 @@ int main(){
 	q1.insert(&par2);
 	q1.insert(&par3);
 	q1.insert(&par4);
-	q1.print(true, 0, true);
+	q1.print(true, true, 0);
 
 	std::cout << "\nArobase\n";
 
 	std::unordered_set<Quad<Particle3D>*> pquads;
 	q1.find(par4, pquads);
 	for (Quad<Particle3D>* pquad : pquads){
-		pquad->print(true, 0, false);
+		pquad->print(true, false, 0);
 	}
 
 	Vector3D v(Point3D{{0,0},{0,0},{0,0}}, Point3D{{0,0},{0,0},{0,0}});
@@ -206,7 +206,7 @@ int main(){
 	o1.insert(&par2);
 	o1.insert(&par3);
 	//o1.insert(&par4);
-	o1.print(true, 0, true);
+	o1.print(true, true, 0);
 
 
 	/*
@@ -216,29 +216,28 @@ int main(){
 	ParticleSystem3D ps;
 	ps.addPParticle(&par1);
 	ps.addPParticle(&par2);
-	ps.print(true, 0, true);
+	ps.print(true, true, 0);
 
 	/*
 	 * Tests Vector Fields
 	 */
-	std::cout<< "\n" << "####Tests Vector Fields####" << "\n";
 	VectorFieldUnidirectional vf1;
-	std::cout<< "\n" << "####Tests Vector Fields2####" << "\n";
-	vf1.addPMoveable(&ps);
-	vf1.print(true, 0, true);
+	//vf1.addPMoveable(&ps);
+	vf1.print(true, true, 0);
 
-	std::cout <<"\nHello";
-	std::cout<< "\n" << "####Tests Vector Fields3####" << "\n";
 
 	/*
 	 * Tests Physics
 	 */
-	std::cout<< "\n" << "####Tests Physics####" << "\n";
+	std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
 	Physics phys;
 	phys.setCPS(100);
 	phys.setFPause(false);
-	phys.addPTimeSensitive(&vf1);//:(
-	phys.run(100);
+	phys.addPTimeSensitive(&par1);
+
+	//phys.loop();
+	phys.run(200);
+	//phys.iterate();
 
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);
@@ -246,7 +245,8 @@ int main(){
 	phys.print(true, true, 0);
 
 	//std::cout<< "\n" << "####Tests Physics2####" << "\n";
-	std::cout<< "\n" << "Bye bye" << "\n";
+	printf("\nBye bye\n");
+
 	return 0;
 }
 

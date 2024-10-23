@@ -45,22 +45,26 @@
 \DoxyCodeLine{41     \textcolor{keywordtype}{void} setCPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& cps);}
 \DoxyCodeLine{42     \textcolor{keywordtype}{float} getSpeed() \textcolor{keyword}{const};}
 \DoxyCodeLine{43     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& speed);}
-\DoxyCodeLine{44     std::unordered\_set<TimeSensitive*> getPTimeSensitives() \textcolor{keyword}{const};}
-\DoxyCodeLine{45     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
-\DoxyCodeLine{46     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFCollide() \textcolor{keyword}{const};}
-\DoxyCodeLine{47     \textcolor{keywordtype}{void} setFCollide(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bcollide);}
-\DoxyCodeLine{48     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPause() \textcolor{keyword}{const};}
-\DoxyCodeLine{49     \textcolor{keywordtype}{void} setFPause(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bpause);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51     \textcolor{comment}{// Regroup all 3 under just run}}
-\DoxyCodeLine{52     \textcolor{keywordtype}{bool} loop();}
-\DoxyCodeLine{53     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);}
-\DoxyCodeLine{54     \textcolor{keywordtype}{bool} iterate();}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{57     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{58 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     std::unordered\_set<TimeSensitive*> getPTimeSensitives();}
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
+\DoxyCodeLine{47     std::unordered\_set<Moveable*> getPMoveables();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} addPMoveable(\mbox{\hyperlink{classMoveable}{Moveable}}* pmoveabele);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFCollide() \textcolor{keyword}{const};}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} setFCollide(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bcollide);}
+\DoxyCodeLine{52     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPause() \textcolor{keyword}{const};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} setFPause(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bpause);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{comment}{// Regroup all 3 under just run}}
+\DoxyCodeLine{56     \textcolor{comment}{//bool loop();}}
+\DoxyCodeLine{57     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);}
+\DoxyCodeLine{58     \textcolor{comment}{//bool iterate();}}
 \DoxyCodeLine{59 }
-\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PHYSICS\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{60     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{61     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{62 \};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PHYSICS\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -15,10 +15,11 @@
  *  VectorFieldVortex :)
  * #####################
  */
-class VectorFieldVortex : public VectorField {
+class VectorFieldVortex: public VectorField {
 protected:
 	float m_m;				//Moment unit/m or N/m.
 	Point3D* m_ppoint;		//Center.
+
 public:
 	VectorFieldVortex();
 	virtual ~VectorFieldVortex();

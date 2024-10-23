@@ -10,7 +10,6 @@
 
 #include "WeightedPoint3D.h"
 #include "Vector3D.h"
-#include "Moveable.h"
 #include "TimeSensitive.h"
 
 /*
@@ -19,7 +18,7 @@
  * ##############
  * A weighted point with a speed.
  */
-class Particle3D: public WeightedPoint3D, public TimeSensitive, public Moveable {
+class Particle3D: public WeightedPoint3D, public TimeSensitive {
 protected:
 	Vector3D* m_ps;// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
 	bool m_dels;

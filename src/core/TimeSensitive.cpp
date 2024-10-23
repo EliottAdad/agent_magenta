@@ -26,6 +26,10 @@ void TimeSensitive::setT(const long double& dt) {
 
 }
 
+void TimeSensitive::apply() {//Useless
+	;
+}
+
 
 
 std::string TimeSensitive::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)

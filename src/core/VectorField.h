@@ -16,6 +16,7 @@
 //#include "Particle3DSet.h"
 #include "Moveable.h"
 #include "TimeSensitive.h"
+#include "Moveable.h"
 #include "../utilities/Printable.h"
 
 
@@ -26,7 +27,7 @@
  * Uses the weights of the particles.
  */
 /*template <typename T> */
-class VectorField : public TimeSensitive {
+class VectorField: public TimeSensitive {
 protected:
 	// @TODO change mode to integer where it indicates the degree of differenciation (acc, jerks, ...) no speed or displacement
 	unsigned int m_mode;										// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').

@@ -21,6 +21,7 @@
  * #######
  *  Oct :)
  * #######
+ * Can contain any object that has x, y, z
  */
 template <typename T> class Oct : public Printable {
 private:
@@ -262,7 +263,6 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 					m_tot_weight=1.;//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
 				}else{																				// Else it means it is an internal branch
-
 					m_tot_weight+=1.;//Add to tot_weight
 					*m_pbarycenter+=p*(1./m_tot_weight);//Add to the barycenter
 

@@ -1,6 +1,5 @@
 <map id="Moveable" name="Moveable">
-<area shape="rect" id="node1" title=" " alt="" coords="74,80,161,107"/>
-<area shape="rect" id="node3" href="$classParticle3D.html" title=" " alt="" coords="5,155,93,181"/>
-<area shape="rect" id="node4" href="$classParticleSystem3D.html" title=" " alt="" coords="118,155,255,181"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="77,5,157,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="19,155,106,181"/>
+<area shape="rect" id="node2" href="$classTimeSensitive.html" title=" " alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="23,5,103,32"/>
 </map>

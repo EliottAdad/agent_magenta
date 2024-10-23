@@ -41,17 +41,21 @@ public:
 	void setCPS(const unsigned int& cps);
 	float getSpeed() const;
 	void setSpeed(const float& speed);
-	std::unordered_set<TimeSensitive*> getPTimeSensitives() const;
+
+	std::unordered_set<TimeSensitive*> getPTimeSensitives();
 	bool addPTimeSensitive(TimeSensitive* ptime_sensitive);
+	std::unordered_set<Moveable*> getPMoveables();
+	bool addPMoveable(Moveable* pmoveabele);
+
 	unsigned int getFCollide() const;
 	void setFCollide(const bool& bcollide);
 	unsigned int getFPause() const;
 	void setFPause(const bool& bpause);
 
 	// Regroup all 3 under just run
-	bool loop();
+	//bool loop();
 	bool run(const unsigned int& steps=1);
-	bool iterate();
+	//bool iterate();
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)

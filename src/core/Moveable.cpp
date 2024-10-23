@@ -22,6 +22,10 @@ Moveable::Moveable(const Moveable &other) {
 }
 
 
+void Moveable::apply() {//Useless
+	;
+}
+
 void Moveable::apply(const Vector3D& v) {//Useless
 	;
 }

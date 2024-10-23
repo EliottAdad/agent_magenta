@@ -36,11 +36,17 @@ float {\bfseries get\+Speed} () const
 \mbox{\Hypertarget{classPhysics_a55fede2757ded5181e3541116889c532}\label{classPhysics_a55fede2757ded5181e3541116889c532}} 
 void {\bfseries set\+Speed} (const float \&speed)
 \item 
-\mbox{\Hypertarget{classPhysics_ae0d668bb791992781929277e2623ed1f}\label{classPhysics_ae0d668bb791992781929277e2623ed1f}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} () const
+\mbox{\Hypertarget{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}\label{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} ()
 \item 
 \mbox{\Hypertarget{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}\label{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}} 
 bool {\bfseries add\+PTime\+Sensitive} (\mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ptime\+\_\+sensitive)
+\item 
+\mbox{\Hypertarget{classPhysics_aa6c469efe153149df0f51d06698e974a}\label{classPhysics_aa6c469efe153149df0f51d06698e974a}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classMoveable}{Moveable}} $\ast$ $>$ {\bfseries get\+PMoveables} ()
+\item 
+\mbox{\Hypertarget{classPhysics_ace68d86f508e2c66327aab92e38bdd1c}\label{classPhysics_ace68d86f508e2c66327aab92e38bdd1c}} 
+bool {\bfseries add\+PMoveable} (\mbox{\hyperlink{classMoveable}{Moveable}} $\ast$pmoveabele)
 \item 
 \mbox{\Hypertarget{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}\label{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}} 
 unsigned int {\bfseries get\+FCollide} () const
@@ -54,14 +60,8 @@ unsigned int {\bfseries get\+FPause} () const
 \mbox{\Hypertarget{classPhysics_ae0206b6f2791930d1e487008202ec1aa}\label{classPhysics_ae0206b6f2791930d1e487008202ec1aa}} 
 void {\bfseries set\+FPause} (const bool \&bpause)
 \item 
-\mbox{\Hypertarget{classPhysics_ae2943cb1696d6067d724b3323c560c65}\label{classPhysics_ae2943cb1696d6067d724b3323c560c65}} 
-bool {\bfseries loop} ()
-\item 
 \mbox{\Hypertarget{classPhysics_a41cbc3698f05e4e78495a67f6cd64365}\label{classPhysics_a41cbc3698f05e4e78495a67f6cd64365}} 
 bool {\bfseries run} (const unsigned int \&steps=1)
-\item 
-\mbox{\Hypertarget{classPhysics_a2cbe3c58c17915d7c0e886282738fcb5}\label{classPhysics_a2cbe3c58c17915d7c0e886282738fcb5}} 
-bool {\bfseries iterate} ()
 \item 
 virtual std\+::string \mbox{\hyperlink{classPhysics_aa4a316eadc9f771fe09d2b65d4af761e}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \item 

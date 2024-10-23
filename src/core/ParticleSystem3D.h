@@ -13,14 +13,14 @@
 #include "Particle3D.h"
 #include "Oct.h"
 #include "TimeSensitive.h"
-#include "Moveable.h"
 
 /*
- * #################
+ * ####################
  *  ParticleSystem3D :)
- * #################
+ * ####################
+ * Can contain any object having ->x, ->y or ->z
  */
-class ParticleSystem3D: public TimeSensitive, public Moveable {
+class ParticleSystem3D: public TimeSensitive {
 protected:
 	LSN m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)

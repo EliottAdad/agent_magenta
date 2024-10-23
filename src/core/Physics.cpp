@@ -61,7 +61,7 @@ void Physics::setFPause(const bool& fpause) {
 	m_fpause=fpause;
 }
 
-std::unordered_set<TimeSensitive*> Physics::getPTimeSensitives() const {
+std::unordered_set<TimeSensitive*> Physics::getPTimeSensitives() {
 	return m_ptime_sensitives;
 }
 
@@ -73,8 +73,20 @@ bool Physics::addPTimeSensitive(TimeSensitive* ptime_sensitive) {
 	return success;
 }
 
+std::unordered_set<Moveable*> Physics::getPMoveables() {
+	return m_pmoveables;
+}
 
-bool Physics::loop() {
+bool Physics::addPMoveable(Moveable* pmoveable) {
+	bool success=false;
+	if (pmoveable!=NULL){
+		success=m_pmoveables.insert(pmoveable).second;
+	}
+	return success;
+}
+
+
+/*bool Physics::loop() {
 
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	while(!m_fpause){
@@ -91,13 +103,16 @@ bool Physics::loop() {
 		}
 	}
 	return m_fpause;
-}
+}*/
 
+/*
+ * If 0: infinite loop
+ */
 bool Physics::run(const unsigned int& steps) {
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	if (!m_fpause){
 		unsigned int i(0);
-		while (i<steps){
+		while (i<=steps){
 			std::chrono::time_point t2=std::chrono::system_clock::now();
 			std::chrono::duration dt=t2-t1;
 
@@ -108,26 +123,28 @@ bool Physics::run(const unsigned int& steps) {
 				//std::cout << "\n 1/cps = " << 1/(long double)m_cps*1000000000 << "ns\n";
 
 				for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
-					//long double dT=;
 					ptime_sensitive->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
 				}
 
-				Vector3D v; //We define a dummy vector to pass in parameters
 				for (Moveable* pmoveable : m_pmoveables){
 					//long double dT=;
-					pmoveable->apply(v);//The duration given by dt is in ns.
+					pmoveable->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
+					pmoveable->apply();
 				}
 				t1=t2;
-				i++;
+				if (steps!=0){//If steps is not null
+					i++;
+				}
 			}
 		}
 	}
 	return m_fpause;
 }
 
-bool Physics::iterate() {
+/*bool Physics::iterate() {
 	return m_fpause;
-}
+}*/
+
 
 std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
@@ -136,16 +153,23 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 
 	if (full_info){
 		mes+="():";//Pointer
-		mes+=((spread)?"\n" : "");
 	}
+	mes+=((spread)?"\n" : " ");
 	mes+="speed=" + std::to_string(m_speed) +";cps=" + std::to_string(m_cps) + ";fcollide=" + std::to_string(m_fcollide) + ";fpause=" + std::to_string(m_fpause) + "\n";
 
-	mes+="Time Sensitives list:\n";
+	mes+="Time Sensitive list:\n";
 	int i=0;
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
 		i++;
 		mes+=std::to_string(i);
-		mes+=ptime_sensitive->to_string(true, true);
+		mes+=ptime_sensitive->to_string(true, true, indent+1);
+	}
+	mes+="\nMoveable list:\n";
+	int j=0;
+	for (Moveable* pmoveable : m_pmoveables){
+		j++;
+		mes+=std::to_string(j);
+		mes+=pmoveable->to_string(true, true, indent+1);
 	}
 	return mes;
 }
