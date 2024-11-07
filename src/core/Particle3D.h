@@ -35,14 +35,15 @@ public:
 	Vector3D getSpeed() const;
 	Vector3D* getPSpeed();
 	void setSpeed(const Vector3D& v);
+	void setDSpeed(const Vector3D& ds);
 
 	virtual void addAsForce(const Vector3D& v, const long double& dt);
 	virtual void addAsAcc(const Vector3D& v, const long double& dt);
 	virtual void addAsSpeed(const Vector3D& v);
 	virtual void addAsPos(const Vector3D& v);
 
-	virtual void setT(long double& dt);
-	virtual void apply(const Vector3D& dv);
+	virtual void setT(const long double& dt);
+	virtual void apply();
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;

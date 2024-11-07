@@ -26,9 +26,9 @@ void Moveable::apply() {//Useless
 	;
 }
 
-void Moveable::apply(const Vector3D& v) {//Useless
+/*void Moveable::apply(const Vector3D& v) {//Useless
 	;
-}
+}*/
 
 /*void Moveable::applyAsAcc(const Vector3D& v, const double& dt) {//Useless
 	;

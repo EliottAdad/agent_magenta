@@ -11,8 +11,9 @@
 #include <chrono>
 #include <iostream>
 #include "unistd.h"
-#include <eigen3/Eigen/Dense>
+//#include <eigen3/Eigen/Dense>
 #include <SDL2/SDL.h>
+//#include <SDL2/SDL_log.h>
 
 #include "core/LSN.h"
 #include "core/Point3D.h"
@@ -27,6 +28,16 @@
 #include "core/VectorFieldUnidirectional.h"
 #include "core/Physics.h"
 //#include "utilities/functions.h"
+
+
+
+//#include <qt6/QtWidgets/QApplication>
+
+//#include <qt6/QtWidgets/QGraphicsView>
+//#include <qt5/QtWidgets/QGraphicsScene>
+//#include <qt5/QtCore/QPointF>
+//#include <qt5/QtGui/QVector2D>
+
 
 
 /*
@@ -48,11 +59,10 @@
 /*
  * Main core
  */
-int main(){
-
-	/*
-	 * Tests LSN
-	 */
+//int main(){
+//	/*
+//	 * Tests LSN
+//	 */
 //	std::cout<< "\n" << "####Tests LSN####" << "\n";
 //
 //	LSN nb1{-2000.53,20};
@@ -154,129 +164,180 @@ int main(){
 //	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
 //	//rv5.print();
 //	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
-
+//
 
 	/*
 	 * Tests Particles
 	 */
-	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
+//	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
+//
+//	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
+//	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
+//	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
+//	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
+//	par1.print(true, true, 0);
+//	par2.print(true, true, 0);
+//	par3.print(true, true, 0);
+//	par4.print(true, true, 0);
 
-	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
-	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
-	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
-	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
-	par1.print(true, true, 0);
-	par2.print(true, true, 0);
-	par3.print(true, true, 0);
-	par4.print(true, true, 0);
-
-
-	/*
-	 * Tests Quads
-	 */
-	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
-	Quad<Particle3D> q1(LSN{1, 2});
-	//q1.m_ALPHA=0.1;
-
-	q1.insert(&par1);
-	q1.insert(&par2);
-	q1.insert(&par3);
-	q1.insert(&par4);
-	q1.print(true, true, 0);
-
-	std::cout << "\nArobase\n";
-
-	std::unordered_set<Quad<Particle3D>*> pquads;
-	q1.find(par4, pquads);
-	for (Quad<Particle3D>* pquad : pquads){
-		pquad->print(true, false, 0);
-	}
-
-	Vector3D v(Point3D{{0,0},{0,0},{0,0}}, Point3D{{0,0},{0,0},{0,0}});
-	q1.computeInverseSquareLawResultant(par4, v);
-	std::cout << "\n" << v.to_string() << "\n";
-
-
-	/*
-	 * Tests Octs
-	 */
-	std::cout<< "\n" << "####Tests Octs####" << "\n" << "\n";
-	Oct<Particle3D> o1(LSN{1, 2});
-
-	o1.insert(&par1);
-	o1.insert(&par2);
-	o1.insert(&par3);
-	//o1.insert(&par4);
-	o1.print(true, true, 0);
-
-
-	/*
-	 * Tests Particle Sets
-	 */
-	std::cout<< "\n" << "####Tests Particle Sets####" << "\n";
-	ParticleSystem3D ps;
-	ps.addPParticle(&par1);
-	ps.addPParticle(&par2);
-	ps.print(true, true, 0);
-
+//
+//	/*
+//	 * Tests Quads
+//	 */
+//	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
+//	Quad<Particle3D> q1(LSN{1, 2});
+//	//q1.m_ALPHA=0.1;
+//
+//	q1.insert(&par1);
+//	q1.insert(&par2);
+//	q1.insert(&par3);
+//	q1.insert(&par4);
+//	q1.print(true, true, 0);
+//
+//	std::cout << "\nArobase\n";
+//
+//	std::unordered_set<Quad<Particle3D>*> pquads;
+//	q1.find(par4, pquads);
+//	for (Quad<Particle3D>* pquad : pquads){
+//		pquad->print(true, false, 0);
+//	}
+//
+//	Vector3D v(Point3D{{0,0},{0,0},{0,0}}, Point3D{{0,0},{0,0},{0,0}});
+//	q1.computeInverseSquareLawResultant(par4, v);
+//	std::cout << "\n" << v.to_string() << "\n";
+//
+//
+//	/*
+//	 * Tests Octs
+//	 */
+//	std::cout<< "\n" << "####Tests Octs####" << "\n" << "\n";
+//	Oct<Particle3D> o1(LSN{1, 2});
+//
+//	o1.insert(&par1);
+//	o1.insert(&par2);
+//	o1.insert(&par3);
+//	//o1.insert(&par4);
+//	o1.print(true, true, 0);
+//
+//
+//	/*
+//	 * Tests Particle Sets
+//	 */
+//	std::cout<< "\n" << "####Tests Particle Sets####" << "\n";
+//	ParticleSystem3D ps;
+//	ps.addPParticle(&par1);
+//	ps.addPParticle(&par2);
+//	ps.print(true, true, 0);
+//
 	/*
 	 * Tests Systems
 	 */
-	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
-	System3D<Particle3D> ps2;
-	ps2.addPElement(&par1);
-	ps2.addPElement(&par2);
-	ps2.print(true, true, 0);
+//	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
+//	System3D<Particle3D> ps2;
+//	ps2.addPElement(&par1);
+//	ps2.addPElement(&par2);
+//	ps2.print(true, true, 0);
 
-	/*
-	 * Tests Vector Fields
-	 */
-	VectorFieldUnidirectional vf1;
-	//vf1.addPMoveable(&ps);
-	vf1.print(true, true, 0);
+//	/*
+//	 * Tests Vector Fields
+//	 */
+//	VectorFieldUnidirectional vf1;
+//	//vf1.addPMoveable(&ps);
+//	vf1.print(true, true, 0);
 
 
 	/*
 	 * Tests Physics
 	 */
-	std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
+	/*std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
 	Physics phys;
 	phys.setCPS(100);
 	phys.setFPause(false);
-	phys.addPTimeSensitive(&par1);
+	printf("%b\n", phys.addPTimeSensitive(&par1));
+	printf("%b\n", phys.addPTimeSensitive(&ps2));*/
 
-	//phys.loop();
-	phys.run(200);
-	//phys.iterate();
+	//phys.run(1);
 
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);
 
-	phys.print(true, true, 0);
+	//phys.print(true, true, 0);
+
+	/*
+	 * Tests Physics
+	 */
 
 	//std::cout<< "\n" << "####Tests Physics2####" << "\n";
-	printf("\nBye bye\n");
+//	printf("\nBye bye\n");
+//
+//	return 0;
+//}
 
-	return 0;
-}
+
 
 /*
  * Main SDL
  */
+int main(int argc, char* argv[])
+{
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_Window* pWindow{ nullptr };
+    SDL_Renderer* pRenderer{ nullptr };
+    pWindow = SDL_CreateWindow("SDL Programme", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    if (pWindow == nullptr)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+    pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
+    if (pRenderer == nullptr)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
 
-//int main(){
+    SDL_Delay(1000);
+
+    SDL_DestroyRenderer(pRenderer);     SDL_DestroyWindow(pWindow);
+    SDL_Quit();
+    return EXIT_SUCCESS;
+}
+
+
+/*
+ * Main QT
+ */
+
+//int main(int argc, char *argv[])
+//{
+//    QApplication a(argc, argv);
+//    QVector2D <QPointF> points;
 //
-//	SDL_Init(SDL_INIT_VIDEO);
-//	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)){
-//		return 1;
-//	}
-//	SDL_Window* pw1=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
+//    // Fill in points with n number of points
+//    for(int i = 0; i< 100; i++)
+//       points.append(QPointF(i*5, i*5));
 //
+//    // Create a view, put a scene in it and add tiny circles
+//    // in the scene
+//    QGraphicsView * view = new QGraphicsView();
+//    QGraphicsScene * scene = new QGraphicsScene();
+//    view->setScene(scene);
 //
+//    for(int i = 0; i< points.size(); i++)
+//        scene->addEllipse(points[i].x(), points[i].y(), 1, 1);
 //
+//    // Show the view
+//    view->show();
 //
-//	SDL_Quit();
+//    // or add the view to the layout inside another widget
+//
+//    return a.exec();
 //}
-
 
 #endif /* MAIN_CPP_ */

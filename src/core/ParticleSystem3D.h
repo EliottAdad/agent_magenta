@@ -18,7 +18,7 @@
  * ####################
  *  ParticleSystem3D :)
  * ####################
- * Can contain any object having ->x, ->y or ->z
+ * Can contain any object having ->x, ->y and ->z
  */
 class ParticleSystem3D: public TimeSensitive {
 protected:
@@ -26,6 +26,7 @@ protected:
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<Particle3D>* m_poctree;										// Pointer to the Octree.
 	long double m_dt;
+	void (*pfunc)(TimeSensitive*, TimeSensitive*);					//Pointer to an operator
 
 public:
 	ParticleSystem3D();

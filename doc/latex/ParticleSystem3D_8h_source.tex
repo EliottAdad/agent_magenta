@@ -22,43 +22,45 @@
 \DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{19 \textcolor{comment}{ *  ParticleSystem3D :)}}
 \DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{21 \textcolor{comment}{ */}}
-\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
-\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{24     \mbox{\hyperlink{structLSN}{LSN}} m\_a;                                                     \textcolor{comment}{// Lenght of the side of the zone}}
-\DoxyCodeLine{25     \textcolor{comment}{//std::unordered\_set<Particle3D*> m\_pparticles;                 // Pointers to the Particles (useless: already in the octree)}}
-\DoxyCodeLine{26     \mbox{\hyperlink{classOct}{Oct<Particle3D>}}* m\_poctree;                                      \textcolor{comment}{// Pointer to the Octree.}}
-\DoxyCodeLine{27     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} m\_dt;}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{keyword}{public}:}
-\DoxyCodeLine{30     \mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}}();}
-\DoxyCodeLine{31     \textcolor{comment}{//ParticleSystem3D(const ParticleSystem3D \&other);}}
-\DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{classParticleSystem3D}{\string~ParticleSystem3D}}();}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     \mbox{\hyperlink{structLSN}{LSN}} getA() \textcolor{keyword}{const};}
-\DoxyCodeLine{35     \textcolor{comment}{/*void setA(const LSN\& a);*/}}
-\DoxyCodeLine{36     \mbox{\hyperlink{classOct}{Oct<Particle3D>}}* getPOctree();}
-\DoxyCodeLine{37     \textcolor{comment}{//void setOctree(const float\& alpha);}}
-\DoxyCodeLine{38     \textcolor{keywordtype}{float} getAlpha() \textcolor{keyword}{const};}
-\DoxyCodeLine{39     \textcolor{keywordtype}{void} setAlpha(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha);}
-\DoxyCodeLine{40     std::unordered\_set<Particle3D*> getPParticles() \textcolor{keyword}{const};}
-\DoxyCodeLine{41     \textcolor{keywordtype}{bool} addPParticle(\mbox{\hyperlink{classParticle3D}{Particle3D}}* ppart);}
-\DoxyCodeLine{42     \textcolor{comment}{//void removePParticle(Particle3D* ppart);}}
-\DoxyCodeLine{43     \textcolor{comment}{//void empty();}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);   \textcolor{comment}{// TimeSensitive}}
-\DoxyCodeLine{46     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& dv);     \textcolor{comment}{// Moveable}}
-\DoxyCodeLine{47     \textcolor{comment}{//virtual void move(const Vector3D\& dp);}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{50     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{51 \};}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{comment}{/*}}
-\DoxyCodeLine{54 \textcolor{comment}{ * Returns the vector immediately}}
-\DoxyCodeLine{55 \textcolor{comment}{ */}}
-\DoxyCodeLine{56 \mbox{\hyperlink{classVector3D}{Vector3D}} grav(\textcolor{keyword}{const} \mbox{\hyperlink{classParticle3D}{Particle3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{classParticle3D}{Particle3D}}\& p2);}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARTICLESYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{21 \textcolor{comment}{ * Can contain any object having -\/>x, -\/>y and -\/>z}}
+\DoxyCodeLine{22 \textcolor{comment}{ */}}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{25     \mbox{\hyperlink{structLSN}{LSN}} m\_a;                                                     \textcolor{comment}{// Lenght of the side of the zone}}
+\DoxyCodeLine{26     \textcolor{comment}{//std::unordered\_set<Particle3D*> m\_pparticles;                 // Pointers to the Particles (useless: already in the octree)}}
+\DoxyCodeLine{27     \mbox{\hyperlink{classOct}{Oct<Particle3D>}}* m\_poctree;                                      \textcolor{comment}{// Pointer to the Octree.}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} m\_dt;}
+\DoxyCodeLine{29     void (*pfunc)(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}*, \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}*);                    \textcolor{comment}{//Pointer to an operator}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     \mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}}();}
+\DoxyCodeLine{33     \textcolor{comment}{//ParticleSystem3D(const ParticleSystem3D \&other);}}
+\DoxyCodeLine{34     \textcolor{keyword}{virtual} \mbox{\hyperlink{classParticleSystem3D}{\string~ParticleSystem3D}}();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \mbox{\hyperlink{structLSN}{LSN}} getA() \textcolor{keyword}{const};}
+\DoxyCodeLine{37     \textcolor{comment}{/*void setA(const LSN\& a);*/}}
+\DoxyCodeLine{38     \mbox{\hyperlink{classOct}{Oct<Particle3D>}}* getPOctree();}
+\DoxyCodeLine{39     \textcolor{comment}{//void setOctree(const float\& alpha);}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{float} getAlpha() \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} setAlpha(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha);}
+\DoxyCodeLine{42     std::unordered\_set<Particle3D*> getPParticles() \textcolor{keyword}{const};}
+\DoxyCodeLine{43     \textcolor{keywordtype}{bool} addPParticle(\mbox{\hyperlink{classParticle3D}{Particle3D}}* ppart);}
+\DoxyCodeLine{44     \textcolor{comment}{//void removePParticle(Particle3D* ppart);}}
+\DoxyCodeLine{45     \textcolor{comment}{//void empty();}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);   \textcolor{comment}{// TimeSensitive}}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& dv);     \textcolor{comment}{// Moveable}}
+\DoxyCodeLine{49     \textcolor{comment}{//virtual void move(const Vector3D\& dp);}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{/*}}
+\DoxyCodeLine{56 \textcolor{comment}{ * Returns the vector immediately}}
+\DoxyCodeLine{57 \textcolor{comment}{ */}}
+\DoxyCodeLine{58 \mbox{\hyperlink{classVector3D}{Vector3D}} grav(\textcolor{keyword}{const} \mbox{\hyperlink{classParticle3D}{Particle3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{classParticle3D}{Particle3D}}\& p2);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARTICLESYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

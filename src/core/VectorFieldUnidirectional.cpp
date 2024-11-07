@@ -85,10 +85,10 @@ void VectorFieldUnidirectional::applyAsPos(){
  */
 void VectorFieldUnidirectional::setT(const long double& dt){
 	for (Moveable* pmov : m_pmoveables){
-		Vector3D v(*m_pv);
-		v*=pow(dt, m_mode);
-		v/=factorial(m_mode);
-		pmov->apply(v);
+		//Vector3D v(*m_pv);
+		//v*=pow(dt, m_mode);
+		//v/=factorial(m_mode);
+		pmov->apply();
 	}
 }
 

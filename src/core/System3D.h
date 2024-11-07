@@ -10,21 +10,24 @@
 
 #include <unordered_set>
 
-#include "Particle3D.h"
+//#include "Particle3D.h"
 #include "Oct.h"
 #include "TimeSensitive.h"
+#include "macros.h"
 
 /*
  * ############
  *  System3D :)
  * ############
- * Can contain any object having ->x, ->y, ->z and ->w
+ * Can contain any object having ->x, ->y, ->z
  */
 template <typename T> class System3D: public TimeSensitive {
 protected:
 	LSN m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<T>* m_poctree;												// Pointer to the Octree.
+	void (*m_ptrFunc) (T*, T*, const long double&);										// Pointer to a function operating on 2 particles
+
 	long double m_dt;
 
 public:
@@ -42,9 +45,10 @@ public:
 	bool addPElement(T* pelement);
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
+	void setPFunc(void (*ptrFunc) (T*, T*, const long double&));
 
-	virtual void setT(const long double& dt);	// TimeSensitive
-	virtual void apply(const Vector3D& dv);		// Moveable
+	virtual void setT(const long double& dt);	// From TimeSensitive
+	virtual void apply();		// From Moveable
 	//virtual void move(const Vector3D& dp);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
@@ -54,12 +58,36 @@ public:
 /*
  * Returns the vector immediately
  */
-//Vector3D grav(const Particle3D& p1, const Particle3D& p2);
+void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
+void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
+	Vector3D* pv1=new Vector3D({pp1->x, pp1->y, pp1->z}, {pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	Vector3D* pv2=new Vector3D({pp2->x, pp2->y, pp2->z}, {pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
+	LSN d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	pv1->setNorm({1, 0});
+	pv2->setNorm({1, 0});
+
+	(*pv1)*=G;
+	(*pv1)*=pp2->w;
+	(*pv1)/=d;
+	(*pv1)/=d;
+
+	(*pv2)*=G;
+	(*pv2)*=pp1->w;
+	(*pv2)/=d;
+	(*pv2)/=d;
+
+	(*pv1)*=pow(dt, 2)/2;
+	(*pv2)*=pow(dt, 2)/2;
+
+	pp1->setDSpeed(*pv1);
+	pp2->setDSpeed(*pv2);
+}
 
 
 template <typename T> System3D<T>::System3D() {
 	m_a={1,1};				//10m sided box
 	m_poctree=new Oct<T>(m_a);
+	m_ptrFunc=NULL;
 	m_dt=0;
 }
 
@@ -109,12 +137,22 @@ template <typename T> bool System3D<T>::addPElement(T* pelement) {
 
 template <typename T> void System3D<T>::setT(const long double& dt) {
 	m_dt=dt;
-	//this->apply()
+	printf("%Lf\n", m_dt);
+	//T* ppart1=NULL;
+	//T* ppart2=NULL;
+	for (T* ppart1 : m_poctree->getPElements()){
+		ppart1->setT(m_dt);
+		for (T* ppart2 : m_poctree->getPElements()){
+			if (ppart1!=ppart2){
+				//(*m_ptrFunc)(ppart1, ppart2, m_dt);
+			}
+		}
+	}
 }
 
-template <typename T> void System3D<T>::apply(const Vector3D& dv){
+template <typename T> void System3D<T>::apply(){
 	for (T* ppart : m_poctree->getPElements()){
-		ppart->apply(dv);
+		ppart->apply();
 	}
 }
 
@@ -126,6 +164,10 @@ template <typename T> void System3D<T>::apply(const Vector3D& dv){
 	}
 }*/
 
+
+template <typename T> void System3D<T>::setPFunc(void (*ptrFunc) (T*, T*, const long double&)){
+	m_ptrFunc=ptrFunc;
+}
 
 
 template <typename T> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
@@ -150,6 +192,6 @@ template <typename T> void System3D<T>::print(const bool& spread, const bool& fu
 }
 
 
-
+template <typename T> void rrr(Oct<T>* tree);
 
 #endif /* SYSTEM3D_H_ */

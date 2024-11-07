@@ -118,19 +118,16 @@ bool Physics::run(const unsigned int& steps) {
 
 			if (dt.count()>=1/(long double)m_cps*1000000000.){
 
-				//std::cout << "\n delta t = " << dt.count() << "ns\n";
-				//std::cout << "\n delta t = " << dt.count()/1000000000. << "s\n";
-				//std::cout << "\n 1/cps = " << 1/(long double)m_cps*1000000000 << "ns\n";
-
 				for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
 					ptime_sensitive->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
+					//printf("%f", dt.count()/1000000000.*m_speed);
+					ptime_sensitive->apply();
 				}
 
-				for (Moveable* pmoveable : m_pmoveables){
-					//long double dT=;
+				/*for (Moveable* pmoveable : m_pmoveables){
 					pmoveable->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
 					pmoveable->apply();
-				}
+				}*/
 				t1=t2;
 				if (steps!=0){//If steps is not null
 					i++;

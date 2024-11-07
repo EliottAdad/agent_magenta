@@ -32,6 +32,7 @@ private:
 	bool m_fpause;
 	std::unordered_set<TimeSensitive*> m_ptime_sensitives;			//List of time sensitive objects
 	std::unordered_set<Moveable*> m_pmoveables;			//List of moveable objects
+
 public:
 	Physics();
 	virtual ~Physics();

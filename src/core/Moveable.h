@@ -13,7 +13,7 @@
 #include "../utilities/Printable.h"
 
 /*
- * Used to show an object can be moved (with speed).
+ * Used to show an object can be moved (with speed).(useless)
  */
 class Moveable : public TimeSensitive {
 public:
@@ -22,7 +22,7 @@ public:
 	Moveable(const Moveable &other);
 
 	virtual void apply();
-	virtual void apply(const Vector3D& dv);//delta speed to add
+	//virtual void apply(const Vector3D& dv);//delta speed to add
 	//virtual void applyAsAcc(const Vector3D& v, const long double& dt=1);//Useless, the whole class is useless (jst to be used as an indicator to regroup)
 	//virtual void applyAsSpeed(const Vector3D& v);//Useless
 	//virtual void applyAsPos(const Vector3D& v);//Useless

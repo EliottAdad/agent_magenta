@@ -42,6 +42,9 @@ Collaboration diagram for Particle3D\+:\nopagebreak
 \mbox{\Hypertarget{classParticle3D_adc28def25bff5df4559d193cb55f2b41}\label{classParticle3D_adc28def25bff5df4559d193cb55f2b41}} 
 void {\bfseries set\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
 \item 
+\mbox{\Hypertarget{classParticle3D_a304ec3ec8ab20b18994c200bf45c9ab7}\label{classParticle3D_a304ec3ec8ab20b18994c200bf45c9ab7}} 
+void {\bfseries set\+DSpeed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&ds)
+\item 
 \mbox{\Hypertarget{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}\label{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}} 
 virtual void {\bfseries add\+As\+Force} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v, const long double \&dt)
 \item 
@@ -54,11 +57,9 @@ virtual void {\bfseries add\+As\+Speed} (const \mbox{\hyperlink{classVector3D}{V
 \mbox{\Hypertarget{classParticle3D_afba1c78e27128ee07b66f29753952af5}\label{classParticle3D_afba1c78e27128ee07b66f29753952af5}} 
 virtual void {\bfseries add\+As\+Pos} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
 \item 
-\mbox{\Hypertarget{classParticle3D_ad6e609cf6e871dc4913a6611f3d5485d}\label{classParticle3D_ad6e609cf6e871dc4913a6611f3d5485d}} 
-virtual void {\bfseries setT} (long double \&dt)
+virtual void \mbox{\hyperlink{classParticle3D_af1a80db832228ccf3d69e17287ece0d9}{setT}} (const long double \&dt)
 \item 
-\mbox{\Hypertarget{classParticle3D_aa8b12ec552706f6cf05bee05d67068b5}\label{classParticle3D_aa8b12ec552706f6cf05bee05d67068b5}} 
-virtual void {\bfseries apply} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&dv)
+virtual void \mbox{\hyperlink{classParticle3D_a3bebac277da186d974921d88370905b3}{apply}} ()
 \item 
 std\+::string \mbox{\hyperlink{classParticle3D_ab929b38472952c0b702ef81da7600eb4}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \item 
@@ -80,11 +81,31 @@ long double {\bfseries m\+\_\+dt}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParticle3D_a3bebac277da186d974921d88370905b3}\label{classParticle3D_a3bebac277da186d974921d88370905b3}} 
+\index{Particle3D@{Particle3D}!apply@{apply}}
+\index{apply@{apply}!Particle3D@{Particle3D}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void Particle3\+D\+::apply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
 \mbox{\Hypertarget{classParticle3D_a81568cf3aac423e27098830d5e865fc3}\label{classParticle3D_a81568cf3aac423e27098830d5e865fc3}} 
 \index{Particle3D@{Particle3D}!print@{print}}
 \index{print@{print}!Particle3D@{Particle3D}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
 {\footnotesize\ttfamily void Particle3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+\mbox{\Hypertarget{classParticle3D_af1a80db832228ccf3d69e17287ece0d9}\label{classParticle3D_af1a80db832228ccf3d69e17287ece0d9}} 
+\index{Particle3D@{Particle3D}!setT@{setT}}
+\index{setT@{setT}!Particle3D@{Particle3D}}
+\doxysubsubsection{\texorpdfstring{setT()}{setT()}}
+{\footnotesize\ttfamily void Particle3\+D\+::setT (\begin{DoxyParamCaption}\item[{const long double \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

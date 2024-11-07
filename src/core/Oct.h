@@ -51,6 +51,11 @@ public:
 	static float m_ALPHA;				// The threshold m_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.
 
 	//Oct();
+	/*
+	 * Constructor1
+	 * @param a{The side's lenght of the area}
+	 * @param point{The center on which is centered the Oct's area}
+	 */
 	Oct(const LSN& a, const Point3D& p={{0,0},{0,0},{0,0}});
 	Oct(const LSN& a, Point3D* ppoint);
 	virtual ~Oct();
@@ -99,6 +104,7 @@ template <typename T> float Oct<T>::m_ALPHA=0.5;
 
 	m_NB_QUADS++;
 }*/
+
 
 /*
  * Constructor1

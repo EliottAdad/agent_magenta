@@ -121,6 +121,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc28def25bff5df4559d193cb55f2b41"><td class="memItemLeft" align="right" valign="top"><a id="adc28def25bff5df4559d193cb55f2b41" name="adc28def25bff5df4559d193cb55f2b41"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setSpeed</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;v)</td></tr>
 <tr class="separator:adc28def25bff5df4559d193cb55f2b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304ec3ec8ab20b18994c200bf45c9ab7"><td class="memItemLeft" align="right" valign="top"><a id="a304ec3ec8ab20b18994c200bf45c9ab7" name="a304ec3ec8ab20b18994c200bf45c9ab7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDSpeed</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;ds)</td></tr>
+<tr class="separator:a304ec3ec8ab20b18994c200bf45c9ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade7b6cfead0a2351154bed13b3fb0a34"><td class="memItemLeft" align="right" valign="top"><a id="ade7b6cfead0a2351154bed13b3fb0a34" name="ade7b6cfead0a2351154bed13b3fb0a34"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsForce</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;v, const long double &amp;dt)</td></tr>
 <tr class="separator:ade7b6cfead0a2351154bed13b3fb0a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,12 +136,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsSpeed</b
 <tr class="memitem:afba1c78e27128ee07b66f29753952af5"><td class="memItemLeft" align="right" valign="top"><a id="afba1c78e27128ee07b66f29753952af5" name="afba1c78e27128ee07b66f29753952af5"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsPos</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;v)</td></tr>
 <tr class="separator:afba1c78e27128ee07b66f29753952af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6e609cf6e871dc4913a6611f3d5485d"><td class="memItemLeft" align="right" valign="top"><a id="ad6e609cf6e871dc4913a6611f3d5485d" name="ad6e609cf6e871dc4913a6611f3d5485d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setT</b> (long double &amp;dt)</td></tr>
-<tr class="separator:ad6e609cf6e871dc4913a6611f3d5485d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8b12ec552706f6cf05bee05d67068b5"><td class="memItemLeft" align="right" valign="top"><a id="aa8b12ec552706f6cf05bee05d67068b5" name="aa8b12ec552706f6cf05bee05d67068b5"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;dv)</td></tr>
-<tr class="separator:aa8b12ec552706f6cf05bee05d67068b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a80db832228ccf3d69e17287ece0d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#af1a80db832228ccf3d69e17287ece0d9">setT</a> (const long double &amp;dt)</td></tr>
+<tr class="separator:af1a80db832228ccf3d69e17287ece0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bebac277da186d974921d88370905b3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#a3bebac277da186d974921d88370905b3">apply</a> ()</td></tr>
+<tr class="separator:a3bebac277da186d974921d88370905b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab929b38472952c0b702ef81da7600eb4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#ab929b38472952c0b702ef81da7600eb4">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
 <tr class="separator:ab929b38472952c0b702ef81da7600eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81568cf3aac423e27098830d5e865fc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#a81568cf3aac423e27098830d5e865fc3">print</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
@@ -214,17 +215,16 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_str
 <tr class="memitem:aadb685e67ebb43b1c4123ace07d6ec5c inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="aadb685e67ebb43b1c4123ace07d6ec5c" name="aadb685e67ebb43b1c4123ace07d6ec5c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
 <tr class="separator:aadb685e67ebb43b1c4123ace07d6ec5c inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classTimeSensitive"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTimeSensitive')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTimeSensitive.html">TimeSensitive</a></td></tr>
-<tr class="memitem:a4362a7bfeeaba5f28233425483968c7d inherit pub_methods_classTimeSensitive"><td class="memItemLeft" align="right" valign="top"><a id="a4362a7bfeeaba5f28233425483968c7d" name="a4362a7bfeeaba5f28233425483968c7d"></a>
+<tr class="memitem:a4362a7bfeeaba5f28233425483968c7d"><td class="memItemLeft" align="right" valign="top"><a id="a4362a7bfeeaba5f28233425483968c7d" name="a4362a7bfeeaba5f28233425483968c7d"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setT</b> (const long double &amp;dt)</td></tr>
-<tr class="separator:a4362a7bfeeaba5f28233425483968c7d inherit pub_methods_classTimeSensitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1703b0b92f98fa2192149759bfeacedd inherit pub_methods_classTimeSensitive"><td class="memItemLeft" align="right" valign="top"><a id="a1703b0b92f98fa2192149759bfeacedd" name="a1703b0b92f98fa2192149759bfeacedd"></a>
+<tr class="separator:a4362a7bfeeaba5f28233425483968c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1703b0b92f98fa2192149759bfeacedd"><td class="memItemLeft" align="right" valign="top"><a id="a1703b0b92f98fa2192149759bfeacedd" name="a1703b0b92f98fa2192149759bfeacedd"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b> ()</td></tr>
-<tr class="separator:a1703b0b92f98fa2192149759bfeacedd inherit pub_methods_classTimeSensitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c75b87dcedd6bd82c62329b2496e2f9 inherit pub_methods_classTimeSensitive"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimeSensitive.html#a0c75b87dcedd6bd82c62329b2496e2f9">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
-<tr class="separator:a0c75b87dcedd6bd82c62329b2496e2f9 inherit pub_methods_classTimeSensitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaa68bda282bf06965e287a6c7327374 inherit pub_methods_classTimeSensitive"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimeSensitive.html#afaa68bda282bf06965e287a6c7327374">print</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
-<tr class="separator:afaa68bda282bf06965e287a6c7327374 inherit pub_methods_classTimeSensitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a1703b0b92f98fa2192149759bfeacedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c75b87dcedd6bd82c62329b2496e2f9"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimeSensitive.html#a0c75b87dcedd6bd82c62329b2496e2f9">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
+<tr class="separator:a0c75b87dcedd6bd82c62329b2496e2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa68bda282bf06965e287a6c7327374"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimeSensitive.html#afaa68bda282bf06965e287a6c7327374">print</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned int &amp;indent=0) const</td></tr>
+<tr class="separator:afaa68bda282bf06965e287a6c7327374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -256,6 +256,33 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ad956c4a1453b9b9cadee953ca0c47a92 inherit pub_attribs_structPoint3D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3bebac277da186d974921d88370905b3" name="a3bebac277da186d974921d88370905b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bebac277da186d974921d88370905b3">&#9670;&nbsp;</a></span>apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Particle3D::apply </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classTimeSensitive.html">TimeSensitive</a>.</p>
+
+</div>
+</div>
 <a id="a81568cf3aac423e27098830d5e865fc3" name="a81568cf3aac423e27098830d5e865fc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81568cf3aac423e27098830d5e865fc3">&#9670;&nbsp;</a></span>print()</h2>
 
@@ -287,6 +314,34 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classTimeSensitive.html">TimeSensitive</a>.</p>
+
+</div>
+</div>
+<a id="af1a80db832228ccf3d69e17287ece0d9" name="af1a80db832228ccf3d69e17287ece0d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a80db832228ccf3d69e17287ece0d9">&#9670;&nbsp;</a></span>setT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Particle3D::setT </td>
+          <td>(</td>
+          <td class="paramtype">const long double &amp;&#160;</td>
+          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

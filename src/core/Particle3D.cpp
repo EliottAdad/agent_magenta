@@ -99,6 +99,9 @@ void Particle3D::setSpeed(const Vector3D& v) {
 	*m_ps=v;
 }
 
+void Particle3D::setDSpeed(const Vector3D& ds) {
+	*m_ps+=ds;
+}
 
 void Particle3D::addAsForce(const Vector3D& v, const long double& dt) {
 	LSN a=LSN{dt, 0}/this->w;
@@ -121,15 +124,18 @@ void Particle3D::addAsPos(const Vector3D& v) {
 
 
 
-void Particle3D::setT(long double& dt) {
+void Particle3D::setT(const long double& dt) {
 	m_dt=dt;
+	//printf("%Lf\n", dt);
 }
 
-void Particle3D::apply(const Vector3D& dv){
-	this->x+=dv.getP2().x;
-	this->y+=dv.getP2().y;
-	this->z+=dv.getP2().z;
+void Particle3D::apply(){
+	this->x+=m_ps->getP2().x*m_dt;
+	this->y+=m_ps->getP2().y*m_dt;
+	this->z+=m_ps->getP2().z*m_dt;
 }
+
+
 
 
 std::string Particle3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {

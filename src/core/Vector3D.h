@@ -20,13 +20,42 @@
 class Vector3D: public Line3D {
 public:
 	Vector3D();
+	/**
+	 * @brief A Vector3D is defined by two Point3D
+	 * @param p1 First point
+	 * @param p2 Second point
+	 * @param[in/out] p1 and p2 are copied
+	 */
 	Vector3D(const Point3D& p1, const Point3D& p2);
+	/**
+	 * @brief A Vector3D is defined by two Point3D
+	 * @param p1 First point
+	 * @param p2 Second point
+	 * @param[in/out] Modifications to *pp1 or *pp2 outside of class definition will be passed onto p1 and p2
+	 */
 	Vector3D(Point3D* pp1, Point3D* pp2);
+	/**
+	 * Constructor3
+	 * Defined by two points
+	 * @param pp1 Pointer to the first point
+	 * (modifications outside of class definition will be passed onto p1)
+	 * @param p2 Second point
+	 */
 	Vector3D(Point3D* pp1, const Point3D& p2);
+	/**
+	 * Constructor4
+	 * Defined by two points
+	 * @param p1 First point
+	 * @param pp2 Pointer to the second point
+	 * (modifications outside of class definition will be passed onto p2)
+	 */
 	Vector3D(const Point3D& p1, Point3D* pp2);
 	Vector3D(const Vector3D& v);
 	virtual ~Vector3D();//:)
 
+	/**
+	 * @return Returns the norm
+	 */
 	LSN getNorm() const;// :)
 	void setNorm(const LSN& norm);// :)
 
