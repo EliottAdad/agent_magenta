@@ -13,7 +13,6 @@
 #include "unistd.h"
 //#include <eigen3/Eigen/Dense>
 #include <SDL2/SDL.h>
-//#include <SDL2/SDL_log.h>
 
 #include "core/LSN.h"
 #include "core/Point3D.h"

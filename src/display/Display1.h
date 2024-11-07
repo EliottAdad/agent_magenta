@@ -26,6 +26,8 @@ template <typename T> class Display1 {
 private:
 	SDL_Window* m_pwindow;				// Pointeur to the window.
 	SDL_Renderer* m_prenderer;			// Pointeur to the renderer.
+	bool m_delw;
+	bool m_delr;
 	bool m_fclear;
 public:
 	Display1();
@@ -41,17 +43,19 @@ public:
 
 
 template <typename T> Display1<T>::Display1() {
-	m_pwindow=NULL;//SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
-	m_prenderer=NULL;//SDL_CreateRenderer(m_pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
+	m_pwindow=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
+	m_prenderer=SDL_CreateRenderer(m_pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
+	m_delw=true;
+	m_delr=true;
 	m_fclear=true;
 }
 
 template <typename T> Display1<T>::~Display1() {
 	if (m_pwindow!=NULL){
-		//SDL_DestroyWindow(m_pwindow);
+		SDL_DestroyWindow(m_pwindow);
 	}
 	if (m_prenderer!=NULL){
-		//SDL_DestroyRenderer(m_prenderer);
+		SDL_DestroyRenderer(m_prenderer);
 	}
 }
 
@@ -78,7 +82,7 @@ template <typename T> void Display1<T>::renderPoint(Point3D* ppoint){//:)
 template <typename T> bool Display1<T>::render(T* pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
-		//success=m_poctree->insert(pelement);
+		pelement->x, pelement->y, pelement->z;
 	}
 	return success;
 }

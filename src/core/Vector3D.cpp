@@ -12,12 +12,10 @@
  * By default constructor
  */
 Vector3D::Vector3D() {
-	//std::cout<< "\nC1\n";
 	m_delp1=true;
 	m_delp2=true;
 	m_pp1=new Point3D{{0, 0}, {0, 0}, {0, 0}};
 	m_pp2=new Point3D{{1, 0}, {1, 0}, {1, 0}};
-	//std::cout<< "\nC2\n";
 }
 
 /*
@@ -127,7 +125,6 @@ LSN Vector3D::getNorm() const {
 void Vector3D::setNorm(const LSN& norm) {
 	if (*m_pp2!=Point3D{{0,0},{0,0},{0,0}}){
 		LSN k=norm/getDistance(*m_pp2);
-		//std::cout<<"\n"<<k.to_string()<<"\n";
 		*m_pp2*=k;
 	}else{
 		*m_pp2=Point3D{{1,0},{1,0},{1,0}};
@@ -137,15 +134,11 @@ void Vector3D::setNorm(const LSN& norm) {
 
 
 void Vector3D::operator=(const Vector3D& v) {
-	//printf("\n on egalise deux vectors start\n");
 	*this->m_pp2=v.getP2();
-	//printf("\n on egalise deux vectors end\n");
 }
 
 void Vector3D::operator+=(const Vector3D& v) {
-	//printf("\n on += deux vectors start\n");
 	*this->m_pp2+=v.getP2();
-	//printf("\n on += deux vectors end\n");
 }
 
 void Vector3D::operator-=(const Vector3D& v) {
@@ -216,21 +209,11 @@ void Vector3D::print(const bool& spread, const bool& full_info, const unsigned i
 
 
 Vector3D operator+(const Vector3D& v1, const Vector3D& v2) {
-	printf("\n on ajoute deux vectors start *\n");
-	//Vector3D* pnv=new Vector3D(*m_pp1, *m_pp1+v.getP2());
-	//*m_pp1+v.getP2();
-	printf("\n on ajoute deux vectors end *\n");
-	/*return *pnv;*/
 	Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()+v2.getP2());
 	return *pnv;
 }
 
 Vector3D operator-(const Vector3D& v1, const Vector3D& v2) {
-	printf("\n on ajoute deux vectors start *\n");
-	//Vector3D* pnv=new Vector3D(*m_pp1, *m_pp1+v.getP2());
-	//*m_pp1+v.getP2();
-	printf("\n on ajoute deux vectors end *\n");
-	/*return *pnv;*/
 	Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()-v2.getP2());
 	return *pnv;
 }
