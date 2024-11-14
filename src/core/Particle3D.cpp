@@ -47,6 +47,16 @@ Particle3D::Particle3D(const Point3D& p) {
 	m_dt=0;
 }
 
+Particle3D::Particle3D(const LSN& x, const LSN& y, const LSN& z) {
+	this->x=x;
+	this->y=y;
+	this->z=z;
+	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
+	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
+	m_dels=true;
+	m_dt=0;
+}
+
 Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->x=wp.x;
 	this->y=wp.y;

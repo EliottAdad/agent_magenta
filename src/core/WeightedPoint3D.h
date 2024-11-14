@@ -29,6 +29,8 @@ struct WeightedPoint3D : public Point3D {
 	//virtual void operator+=(const Point3D& p);// :)Not necessary
 	//virtual void operator-=(const Point3D& p);// :)Not necessary
 
+	virtual LSN getW() const;
+
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 };

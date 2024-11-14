@@ -18,10 +18,11 @@ Vector3D::Vector3D() {
 	m_pp2=new Point3D{{1, 0}, {1, 0}, {1, 0}};
 }
 
-/*
- * Constructor 2
- * p1 is the point of application
- * p2 is the end.
+/**
+ * @brief A Vector3D is defined by two Point3D
+ * @param p1 First point
+ * @param p2 Second point
+ * @param[in/out] p1 and p2 are copied
  */
 Vector3D::Vector3D(const Point3D& p1, const Point3D& p2) {
 	m_delp1=true;
@@ -30,10 +31,11 @@ Vector3D::Vector3D(const Point3D& p1, const Point3D& p2) {
 	this->m_pp2=new Point3D(p2);
 }
 
-/*
- * Constructor 3
- * pp1 is a pointeur to the point of application
- * pp2 is a pointeur to the end.
+/**
+ * @brief A Vector3D is defined by two Point3D
+ * @param p1 First point
+ * @param p2 Second point
+ * @param[in/out] Modifications to *pp1 or *pp2 outside of class definition will be passed onto p1 and p2
  */
 Vector3D::Vector3D(Point3D* pp1, Point3D* pp2) {
 	if (pp1!=NULL){
@@ -52,10 +54,12 @@ Vector3D::Vector3D(Point3D* pp1, Point3D* pp2) {
 	}
 }
 
-/*
- * Constructor 4
- * pp1 is a pointeur to the point of application
- * p2 is the end.
+/**
+ * Constructor3
+ * Defined by two points
+ * @param pp1 Pointer to the first point
+ * (modifications outside of class definition will be passed onto p1)
+ * @param p2 Second point
  */
 Vector3D::Vector3D(Point3D* pp1, const Point3D& p2) {
 	if (pp1!=NULL){
@@ -70,10 +74,12 @@ Vector3D::Vector3D(Point3D* pp1, const Point3D& p2) {
 	this->m_pp2=new Point3D(p2);
 }
 
-/*
- * Constructor 5
- * p1 is the point of application
- * pp2 is a pointeur to the end.
+/**
+ * Constructor4
+ * Defined by two points
+ * @param p1 First point
+ * @param pp2 Pointer to the second point
+ * (modifications outside of class definition will be passed onto p2)
  */
 Vector3D::Vector3D(const Point3D& p1, Point3D* pp2) {
 	m_delp1=true;
@@ -118,6 +124,9 @@ Vector3D::~Vector3D() {
 
 
 
+/**
+ * @return Returns the norm
+ */
 LSN Vector3D::getNorm() const {
 	return getDistance(*m_pp2);
 }
@@ -130,6 +139,22 @@ void Vector3D::setNorm(const LSN& norm) {
 		*m_pp2=Point3D{{1,0},{1,0},{1,0}};
 		this->setNorm(norm);
 	}
+}
+
+Point3D Vector3D::getOrigin() const {
+	return *m_pp1;
+}
+
+void Vector3D::setOrigin(const Point3D& origin) {
+	*m_pp1=origin;
+}
+
+Point3D Vector3D::getEnd() const {
+	return *m_pp2;
+}
+
+void Vector3D::setEnd(const Point3D& end) {
+	*m_pp2=end;
 }
 
 

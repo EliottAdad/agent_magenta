@@ -23,6 +23,7 @@
  * ###########
  * Physics must be kept independent from Game (it should be self sufficient)
  * Gère le temps (à la place de TimeLoop, tout transvaser)
+ * Exemples of objects it can drive: System<T>, Particle3D, ...
  */
 class Physics : public Printable {
 private:

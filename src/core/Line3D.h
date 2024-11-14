@@ -39,8 +39,10 @@ public:
 	virtual ~Line3D();//:)
 
 	Point3D getP1() const;	//:)
+	void setP1(const Point3D& p1);	//:)
 	Point3D* getPP1();//:)
 	Point3D getP2() const;	//:)
+	void setP2(const Point3D& p2);	//:)
 	Point3D* getPP2();//:)
 	bool getDelP1() const;	//:)
 	bool getDelP2() const;	//:)

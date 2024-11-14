@@ -16,7 +16,7 @@ Physics::Physics() {
 }
 
 Physics::~Physics() {
-	// TODO Auto-generated destructor stub
+	m_ptime_sensitives.clear();
 }
 
 Physics::Physics(const Physics& phys) {
@@ -117,7 +117,7 @@ bool Physics::run(const unsigned int& steps) {
 			std::chrono::duration dt=t2-t1;
 
 			if (dt.count()>=1/(long double)m_pps*1000000000.){
-				iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
+				this->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 
 				t1=t2;
 				if (steps!=0){//If steps is not null

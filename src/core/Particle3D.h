@@ -28,6 +28,7 @@ protected:
 public:
 	Particle3D();
 	Particle3D(const Point3D& p);
+	Particle3D(const LSN& x, const LSN& y, const LSN& z);
 	Particle3D(const WeightedPoint3D& wp);
 	Particle3D(const Point3D& p, const Vector3D& speed);
 	Particle3D(const WeightedPoint3D& wp, const Vector3D& speed);

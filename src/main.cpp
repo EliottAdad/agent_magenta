@@ -285,13 +285,13 @@ int main(int argc, char* argv[]){
     p.x={1, 1};
     p.y={1, 1};
     p.z={0, 0};
-    p.w={0, 0};
+    p.w={1, 12};
 
     Particle3D p2;
     p2.x={-3, 1};
     p2.y={-2, 1};
     p2.z={2, 1};
-    p2.w={0, 0};
+    p2.w={1, 12};
 
     printf("\nMain0\n");
     p.print(true);
@@ -322,8 +322,21 @@ int main(int argc, char* argv[]){
     	ptime_sensitive->print(true);
     	printf("\n###2\n");
     }//OK
+
+
+    // Creation of a particle system (System3D)
+    System3D<Particle3D> sys;
+    sys.setPFunc(rrr);
+    sys.addPElement(&p);
+    sys.addPElement(&p2);
+    sys.setA({1, 3});
+
+    g1.getPPhysics()->addPTimeSensitive(&sys);
+
+    // Launch the simulation
     //g1.getPPhysics()->iterate(10);
-    g1.run(100);
+    g1.run(1);
+
 
     printf("\nMain2\n");
 

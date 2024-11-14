@@ -57,6 +57,10 @@ Point3D Line3D::getP1() const {
 	return Point3D{*(this->m_pp1)};
 }
 
+void Line3D::setP1(const Point3D& p1) {
+	*m_pp1=p1;
+}
+
 Point3D* Line3D::getPP1() {
 	Point3D* pp1=NULL;
 	if (!m_delp1){
@@ -67,6 +71,10 @@ Point3D* Line3D::getPP1() {
 
 Point3D Line3D::getP2() const {
 	return Point3D{*(this->m_pp2)};
+}
+
+void Line3D::setP2(const Point3D& p2) {
+	*m_pp2=p2;
 }
 
 Point3D* Line3D::getPP2() {

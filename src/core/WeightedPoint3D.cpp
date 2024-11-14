@@ -61,6 +61,9 @@ void WeightedPoint3D::operator-=(const Point3D& p) {
 	z-=p.z;
 }*/
 
+LSN WeightedPoint3D::getW() const {
+	return w;
+}
 
 std::string WeightedPoint3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");

@@ -61,18 +61,20 @@ public:
 	virtual ~Oct();
 
 	LSN getA() const;
+	void setA(const LSN& a);
 	unsigned int getNB_OCTS() const;
 	//float getAlpha();
 	//void setAlpha(float& alpha=0.5);
 	std::unordered_set<Oct<T>*> getPTrees();			//Returns all the trees under, contained by this tree.
 	std::unordered_set<T*> getPElements() const;		//Returns all the elements contained in the tree.
-	std::unordered_set<T*> getPNeighbors(const T* pelement) const;		//Returns all the neighbors.
+	std::unordered_set<T*> getPNeighbors(T* pelement) const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
 	void find(const T& t, std::unordered_set<Oct<T>*>& pquads);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
 	void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;
 	//std::unordered_set<T*> find(const Point3D& point);
 	T* search(Point3D* ppoint) const;
+	void recalculate();
 	bool empty();
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
@@ -201,9 +203,10 @@ template <typename T> LSN Oct<T>::getA() const {
 	return m_a;
 }
 
-/*template <typename T> void Oct<T>::setA(const LSN& a) const{
+template <typename T> void Oct<T>::setA(const LSN& a){
 	m_a=a;
-}*/
+
+}
 
 template <typename T> unsigned int Oct<T>::getNB_OCTS() const {
 	return m_NB_OCTS;
@@ -285,17 +288,21 @@ template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 	return elmts;
 }
 
-template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(const T* pelement) const {
+template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(T* pelement) const {
 	static std::unordered_set<T*> neighbors;
 
+	printf("AB\n");
+
 	if (m_a/getDistance(*m_ppoint, *pelement)<=(long double)m_ALPHA){
+		printf("AC\n");
 		if (m_pT!=NULL){
 			neighbors.insert(m_pT);
 		}else{
 			neighbors.insert(new T(m_ppoint->getX(), m_ppoint->getY(), m_ppoint->getZ()));
 		}
 	}else{
-		if (m_pTLFTree->m_ppoint!=NULL){
+		printf("AD\n");
+		if (m_pTLFTree!=NULL){
 			m_pTLFTree->getPNeighbors(pelement);
 		}
 		if (m_pTRFTree!=NULL){
@@ -490,6 +497,16 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 	return true;
 }
 
+template <typename T> void Oct<T>::recalculate() {
+	std::unordered_set<T*> pelements=this->getPElements();
+
+	this->empty();
+
+	for (Oct<T>* pelement : pelements){
+		this->insert(pelement);
+	}
+}
+
 template <typename T> bool Oct<T>::empty() {
 	for (Oct<T>* ptree : this->getPTrees()){
 		delete ptree;
@@ -510,6 +527,7 @@ template <typename T> bool Oct<T>::empty() {
 
 	return true;
 }
+
 /*template<> bool Oct<Particle3D>::insert(Particle3D* ppart){//Doesn't work for some reason.
 	if (ppart!=NULL){
 		Point3D p={ppart->x, ppart->y, ppart->z};
