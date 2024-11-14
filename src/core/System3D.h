@@ -44,7 +44,7 @@ public:
 	void setAlpha(const float& alpha);
 	std::unordered_set<T*> getPElements() const;
 	bool addPElement(T* pelement);
-	std::unordered_set<T*> getNeighbors(T* pelement);				// Returns the list of neighbours, given the precision.
+	std::unordered_set<T*> getPNeighbors(const T* pelement);				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
 	void setPFunc(void (*ptrFunc) (T*, T*, const long double&));
@@ -139,29 +139,14 @@ template <typename T> bool System3D<T>::addPElement(T* pelement) {
 	return success;
 }
 
-template <typename T> std::unordered_set<T*> System3D<T>::getNeighbors(T* pelement) {
-	static std::unordered_set<T*> neighbors;
-
-	if (m_pelement!=NULL){
-		neighbors.insert(m_pelement);
-	}else{
-		if (){
-			;
-		}
-		for (Oct<T>* poct : m_poctree->getPTrees()){//On a les arbres
-			poct->getNeighbors(pelement);
-		}
-	}
-
-	return neighbors;
+template <typename T> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) {
+	return m_poctree->getPNeighbors(pelement);
 }
 
 
 template <typename T> void System3D<T>::setT(const long double& dt) {
 	m_dt=dt;
 	printf("%Lf\n", m_dt);
-	//T* ppart1=NULL;
-	//T* ppart2=NULL;
 	for (T* ppart1 : m_poctree->getPElements()){
 		ppart1->setT(m_dt);
 		for (T* ppart2 : m_poctree->getPElements()){
@@ -173,9 +158,8 @@ template <typename T> void System3D<T>::setT(const long double& dt) {
 }
 
 template <typename T> void System3D<T>::apply(){
-	for (T* ppart : m_pelements){
-		//ppart->apply();
-		ppart->;
+	for (T* pelement : m_pelements){
+		pelement->apply();
 	}
 }
 

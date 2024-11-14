@@ -286,6 +286,13 @@ int main(int argc, char* argv[]){
     p.y={1, 1};
     p.z={0, 0};
     p.w={0, 0};
+
+    Particle3D p2;
+    p2.x={-3, 1};
+    p2.y={-2, 1};
+    p2.z={2, 1};
+    p2.w={0, 0};
+
     printf("\nMain0\n");
     p.print(true);
     printf("\nMain1\n");
@@ -301,12 +308,14 @@ int main(int argc, char* argv[]){
     Game g1;
 
     g1.getPScene()->addPDisplayable(&p);
+    g1.getPScene()->addPDisplayable(&p2);
     for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
     	printf("\n###1\n");
     	pdisplayable->print(true);
     	printf("\n###1\n");
     }//OK
     bool ans2=g1.getPPhysics()->addPTimeSensitive(&p);
+    g1.getPPhysics()->addPTimeSensitive(&p2);
     printf("\naddPTimeSensitive was successful ?: %b\n", ans2);
     for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
     	printf("\n###2\n");

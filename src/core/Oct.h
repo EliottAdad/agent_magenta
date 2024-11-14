@@ -66,7 +66,7 @@ public:
 	//void setAlpha(float& alpha=0.5);
 	std::unordered_set<Oct<T>*> getPTrees();			//Returns all the trees under, contained by this tree.
 	std::unordered_set<T*> getPElements() const;		//Returns all the elements contained in the tree.
-	std::unordered_set<T*> getPNeighbors() const;		//Returns all the neighbors.
+	std::unordered_set<T*> getPNeighbors(const T* pelement) const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
 	void find(const T& t, std::unordered_set<Oct<T>*>& pquads);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
@@ -285,59 +285,43 @@ template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 	return elmts;
 }
 
-template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(T* pelement) const {
-	std::unordered_set<T*> neighbors;
+template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(const T* pelement) const {
+	static std::unordered_set<T*> neighbors;
 
 	if (m_a/getDistance(*m_ppoint, *pelement)<=(long double)m_ALPHA){
 		if (m_pT!=NULL){
 			neighbors.insert(m_pT);
 		}else{
-			;
+			neighbors.insert(new T(m_ppoint->getX(), m_ppoint->getY(), m_ppoint->getZ()));
 		}
 	}else{
 		if (m_pTLFTree->m_ppoint!=NULL){
-			for (T* pt : m_pTLFTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pTLFTree->getPNeighbors(pelement);
 		}
 		if (m_pTRFTree!=NULL){
-			for (T* pt : m_pTRFTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pTRFTree->getPNeighbors(pelement);
 		}
 		if (m_pBLFTree!=NULL){
-			for (T* pt : m_pBLFTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pBLFTree->getPNeighbors(pelement);
 		}
 		if (m_pBRFTree!=NULL){
-			for (T* pt : m_pBRFTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pBRFTree->getPNeighbors(pelement);
 		}
 		if (m_pTLBTree!=NULL){
-			for (T* pt : m_pTLBTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pTLBTree->getPNeighbors(pelement);
 		}
 		if (m_pTRBTree!=NULL){
-			for (T* pt : m_pTRBTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pTRBTree->getPNeighbors(pelement);
 		}
 		if (m_pBLBTree!=NULL){
-			for (T* pt : m_pBLBTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pBLBTree->getPNeighbors(pelement);
 		}
 		if (m_pBRBTree!=NULL){
-			for (T* pt : m_pBRBTree->getPElements()){
-				elmts.insert(pt);
-			}
+			m_pBRBTree->getPNeighbors(pelement);
 		}
 	}
 
-	return elmts;
+	return neighbors;
 }
 
 template <typename T> bool Oct<T>::insert(T* pT) {
@@ -504,46 +488,6 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 		}
 	}
 	return true;
-}
-
-template <typename T> std::unordered_set<T*> Oct<T>::getNeighbors(T* pelement) {
-	static std::unordered_set<T*> neighbors;
-
-	// If there is something, it means we're on the edge of a branch
-	if (m_pT!=NULL){
-		neighbors.insert(m_pT);
-	}else{
-		if (m_pTLBTree!=NULL){
-			m_pTLBTree->find(t, pquads);
-		}
-		if (m_pTRBTree!=NULL){
-			m_pTRBTree->find(t, pquads);
-		}
-		if (m_pBLBTree!=NULL){
-			m_pBLBTree->find(t, pquads);
-		}
-		if (m_pBRBTree!=NULL){
-			m_pBRBTree->find(t, pquads);
-		}
-		if (m_pTLFTree!=NULL){
-			m_pTLFTree->find(t, pquads);
-		}
-		if (m_pTRFTree!=NULL){
-			m_pTRFTree->find(t, pquads);
-		}
-		if (m_pBLFTree!=NULL){
-			m_pBLFTree->find(t, pquads);
-		}
-		if (m_pBRFTree!=NULL){
-			m_pBRFTree->find(t, pquads);
-		}
-
-		for (Oct<T>* poct : m_poctree->getPTrees()){//On a les arbres
-			poct->getNeighbors(pelement);
-		}
-	}
-
-	return neighbors;
 }
 
 template <typename T> bool Oct<T>::empty() {
