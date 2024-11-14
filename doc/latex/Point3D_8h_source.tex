@@ -31,40 +31,44 @@
 \DoxyCodeLine{27     \textcolor{keyword}{virtual} \mbox{\hyperlink{structPoint3D}{\string~Point3D}}();}
 \DoxyCodeLine{28     \mbox{\hyperlink{structPoint3D}{Point3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& point);\textcolor{comment}{//Copy constructor}}
 \DoxyCodeLine{29 }
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
-\DoxyCodeLine{31     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
-\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
-\DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
-\DoxyCodeLine{34     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& nb);\textcolor{comment}{// :)}}
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
-\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
-\DoxyCodeLine{37     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& nb);\textcolor{comment}{// :)}}
-\DoxyCodeLine{38     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{39     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{40     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{41     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{44     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{45 \};}
+\DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{structLSN}{LSN}} getX() \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} \mbox{\hyperlink{structLSN}{LSN}} getY() \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{structLSN}{LSN}} getZ() \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
+\DoxyCodeLine{37     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& nb);\textcolor{comment}{// :)}}
+\DoxyCodeLine{39     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);\textcolor{comment}{// :)}}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& nb);\textcolor{comment}{// :)}}
+\DoxyCodeLine{41     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& nb);\textcolor{comment}{// :)}}
+\DoxyCodeLine{42     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{43     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{44     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{45     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
 \DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
-\DoxyCodeLine{48 \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
-\DoxyCodeLine{49 \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
-\DoxyCodeLine{50 \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
-\DoxyCodeLine{51 \mbox{\hyperlink{structPoint3D}{Point3D}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);   \textcolor{comment}{// :)}}
-\DoxyCodeLine{52 \mbox{\hyperlink{structPoint3D}{Point3D}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);   \textcolor{comment}{// :)}}
-\DoxyCodeLine{53 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);         \textcolor{comment}{// :)}}
-\DoxyCodeLine{54 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);         \textcolor{comment}{// :)}}
-\DoxyCodeLine{55 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);    \textcolor{comment}{// :)}}
-\DoxyCodeLine{56 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);    \textcolor{comment}{// :)}}
-\DoxyCodeLine{57 \mbox{\hyperlink{structPoint3D}{Point3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);         \textcolor{comment}{// :)}}
-\DoxyCodeLine{58 \textcolor{comment}{//Point3D operator/(const LSN\& k, const Point3D\& p);            // :)}}
-\DoxyCodeLine{59 \mbox{\hyperlink{structPoint3D}{Point3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);    \textcolor{comment}{// :)}}
-\DoxyCodeLine{60 \textcolor{comment}{//Point3D operator/(const long double\& k, const Point3D\& p);    // :)}}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62 \mbox{\hyperlink{structLSN}{LSN}} getDistance(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2=\{\{0,0\},\{0,0\},\{0,0\}\});}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{47     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{49 \};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
+\DoxyCodeLine{53 \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
+\DoxyCodeLine{54 \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);        \textcolor{comment}{// :)}}
+\DoxyCodeLine{55 \mbox{\hyperlink{structPoint3D}{Point3D}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);   \textcolor{comment}{// :)}}
+\DoxyCodeLine{56 \mbox{\hyperlink{structPoint3D}{Point3D}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);   \textcolor{comment}{// :)}}
+\DoxyCodeLine{57 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);         \textcolor{comment}{// :)}}
+\DoxyCodeLine{58 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);         \textcolor{comment}{// :)}}
+\DoxyCodeLine{59 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);    \textcolor{comment}{// :)}}
+\DoxyCodeLine{60 \mbox{\hyperlink{structPoint3D}{Point3D}} operator*(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p);    \textcolor{comment}{// :)}}
+\DoxyCodeLine{61 \mbox{\hyperlink{structPoint3D}{Point3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);         \textcolor{comment}{// :)}}
+\DoxyCodeLine{62 \textcolor{comment}{//Point3D operator/(const LSN\& k, const Point3D\& p);            // :)}}
+\DoxyCodeLine{63 \mbox{\hyperlink{structPoint3D}{Point3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);    \textcolor{comment}{// :)}}
+\DoxyCodeLine{64 \textcolor{comment}{//Point3D operator/(const long double\& k, const Point3D\& p);    // :)}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \mbox{\hyperlink{structLSN}{LSN}} getDistance(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2=\{\{0,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

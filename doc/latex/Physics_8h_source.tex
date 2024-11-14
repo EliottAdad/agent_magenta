@@ -25,42 +25,42 @@
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{22 \textcolor{comment}{ *  Physics :)}}
 \DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{24 \textcolor{comment}{ * Gère le temps (à la place de TimeLoop, tout transvaser)}}
-\DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classPhysics}{Physics}}: \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{27 \textcolor{keyword}{private}:}
-\DoxyCodeLine{28     \textcolor{keywordtype}{float} m\_speed;\textcolor{comment}{//Ratio between simulation\_speed/real\_world\_speed}}
-\DoxyCodeLine{29     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_cps;\textcolor{comment}{//Computations per second}}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31     \textcolor{keywordtype}{bool} m\_fcollide;}
-\DoxyCodeLine{32     \textcolor{keywordtype}{bool} m\_fpause;}
-\DoxyCodeLine{33     std::unordered\_set<TimeSensitive*> m\_ptime\_sensitives;          \textcolor{comment}{//List of time sensitive objects}}
-\DoxyCodeLine{34     std::unordered\_set<Moveable*> m\_pmoveables;         \textcolor{comment}{//List of moveable objects}}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{keyword}{public}:}
-\DoxyCodeLine{37     \mbox{\hyperlink{classPhysics}{Physics}}();}
-\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPhysics}{\string~Physics}}();}
-\DoxyCodeLine{39     \mbox{\hyperlink{classPhysics}{Physics}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPhysics}{Physics}}\& phys);}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getCPS() \textcolor{keyword}{const};}
-\DoxyCodeLine{42     \textcolor{keywordtype}{void} setCPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& cps);}
-\DoxyCodeLine{43     \textcolor{keywordtype}{float} getSpeed() \textcolor{keyword}{const};}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& speed);}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46     std::unordered\_set<TimeSensitive*> getPTimeSensitives();}
-\DoxyCodeLine{47     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
-\DoxyCodeLine{48     std::unordered\_set<Moveable*> getPMoveables();}
-\DoxyCodeLine{49     \textcolor{keywordtype}{bool} addPMoveable(\mbox{\hyperlink{classMoveable}{Moveable}}* pmoveabele);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFCollide() \textcolor{keyword}{const};}
-\DoxyCodeLine{52     \textcolor{keywordtype}{void} setFCollide(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bcollide);}
-\DoxyCodeLine{53     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPause() \textcolor{keyword}{const};}
-\DoxyCodeLine{54     \textcolor{keywordtype}{void} setFPause(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bpause);}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56     \textcolor{comment}{// Regroup all 3 under just run}}
+\DoxyCodeLine{24 \textcolor{comment}{ * Physics must be kept independent from Game (it should be self sufficient)}}
+\DoxyCodeLine{25 \textcolor{comment}{ * Gère le temps (à la place de TimeLoop, tout transvaser)}}
+\DoxyCodeLine{26 \textcolor{comment}{ */}}
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{classPhysics}{Physics}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     \textcolor{keywordtype}{float} m\_speed;                  \textcolor{comment}{//Ratio between simulation\_speed/real\_world\_speed}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_pps;             \textcolor{comment}{//Physics per second}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{bool} m\_fcollide;}
+\DoxyCodeLine{33     \textcolor{keywordtype}{bool} m\_fpause;}
+\DoxyCodeLine{34     std::unordered\_set<TimeSensitive*> m\_ptime\_sensitives;          \textcolor{comment}{//List of time sensitive objects}}
+\DoxyCodeLine{35     \textcolor{comment}{//std::unordered\_set<Moveable*> m\_pmoveables;           //List of moveable objects}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{public}:}
+\DoxyCodeLine{38     \mbox{\hyperlink{classPhysics}{Physics}}();}
+\DoxyCodeLine{39     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPhysics}{\string~Physics}}();}
+\DoxyCodeLine{40     \mbox{\hyperlink{classPhysics}{Physics}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPhysics}{Physics}}\& phys);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{float} getSpeed() \textcolor{keyword}{const};}
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& speed);}
+\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getPPS() \textcolor{keyword}{const};}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} setPPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& pps);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     std::unordered\_set<TimeSensitive*> getPTimeSensitives();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
+\DoxyCodeLine{49     \textcolor{comment}{//std::unordered\_set<Moveable*> getPMoveables();}}
+\DoxyCodeLine{50     \textcolor{comment}{//bool addPMoveable(Moveable* pmoveabele);}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFCollide() \textcolor{keyword}{const};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} setFCollide(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bcollide);}
+\DoxyCodeLine{54     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPause() \textcolor{keyword}{const};}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} setFPause(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& bpause);}
+\DoxyCodeLine{56 }
 \DoxyCodeLine{57     \textcolor{comment}{//bool loop();}}
 \DoxyCodeLine{58     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);}
-\DoxyCodeLine{59     \textcolor{comment}{//bool iterate();}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{bool} iterate(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
 \DoxyCodeLine{60 }
 \DoxyCodeLine{61     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
 \DoxyCodeLine{62     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}

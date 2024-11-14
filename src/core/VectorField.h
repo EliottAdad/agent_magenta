@@ -33,6 +33,7 @@ protected:
 	unsigned int m_mode;										// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').
 	float m_k;													// Coeff of proportionnality to apply.
 	std::unordered_set<Moveable*> m_pmoveables;					// Pointers to the Moveables.
+
 public:
 	VectorField();
 	//VectorField(std::unordered_set<Particle3D*>* pparts);

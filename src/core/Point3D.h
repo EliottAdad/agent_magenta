@@ -27,6 +27,10 @@ public:
 	virtual ~Point3D();
 	Point3D(const Point3D& point);//Copy constructor
 
+	virtual LSN getX() const;// :)
+	virtual LSN getY() const;// :)
+	virtual LSN getZ() const;// :)
+
 	virtual void operator=(const Point3D& p);// :)
 	virtual void operator=(const LSN& nb);// :)
 	virtual void operator+=(const Point3D& p);// :)

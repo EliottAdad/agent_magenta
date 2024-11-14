@@ -87,6 +87,18 @@ Particle3D::~Particle3D() {
 
 
 
+LSN Particle3D::getX() const {
+	return x;
+}
+
+LSN Particle3D::getY() const {
+	return y;
+}
+
+LSN Particle3D::getZ() const {
+	return z;
+}
+
 Vector3D Particle3D::getSpeed() const {
 	return *m_ps;
 }
@@ -130,9 +142,12 @@ void Particle3D::setT(const long double& dt) {
 }
 
 void Particle3D::apply(){
-	this->x+=m_ps->getP2().x*m_dt;
-	this->y+=m_ps->getP2().y*m_dt;
-	this->z+=m_ps->getP2().z*m_dt;
+	this->x=this->x+(m_ps->getP2().x)*m_dt;
+	this->y=this->y+(m_ps->getP2().y)*m_dt;
+	this->z=this->z+(m_ps->getP2().z)*m_dt;
+	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM
+	//this->y+=(m_ps->getP2().y)*m_dt;
+	//this->z+=(m_ps->getP2().z)*m_dt;
 }
 
 

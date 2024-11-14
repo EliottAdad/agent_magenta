@@ -23,6 +23,7 @@ class VectorFieldUnidirectional: public VectorField {
 protected:
 	Vector3D* m_pv;
 	bool m_delv;
+
 public:
 	VectorFieldUnidirectional();
 	virtual ~VectorFieldUnidirectional();

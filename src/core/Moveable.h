@@ -13,7 +13,7 @@
 #include "../utilities/Printable.h"
 
 /*
- * Used to show an object can be moved (with speed).(useless)
+ * Used to show an object can be moved (with speed).(useless, depreciated)
  */
 class Moveable : public TimeSensitive {
 public:

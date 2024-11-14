@@ -24,29 +24,23 @@ Collaboration diagram for Physics\+:\nopagebreak
 \mbox{\Hypertarget{classPhysics_afcbc9f9e83c308d76788c88e3f72afe9}\label{classPhysics_afcbc9f9e83c308d76788c88e3f72afe9}} 
 {\bfseries Physics} (const \mbox{\hyperlink{classPhysics}{Physics}} \&phys)
 \item 
-\mbox{\Hypertarget{classPhysics_a6ee6eec31c7a0a792e287a831553e836}\label{classPhysics_a6ee6eec31c7a0a792e287a831553e836}} 
-unsigned int {\bfseries get\+CPS} () const
-\item 
-\mbox{\Hypertarget{classPhysics_ad931258af804cec61288605488f915be}\label{classPhysics_ad931258af804cec61288605488f915be}} 
-void {\bfseries set\+CPS} (const unsigned int \&cps)
-\item 
 \mbox{\Hypertarget{classPhysics_a6e4c5c28a8e8a8fe30bd346946114989}\label{classPhysics_a6e4c5c28a8e8a8fe30bd346946114989}} 
 float {\bfseries get\+Speed} () const
 \item 
 \mbox{\Hypertarget{classPhysics_a55fede2757ded5181e3541116889c532}\label{classPhysics_a55fede2757ded5181e3541116889c532}} 
 void {\bfseries set\+Speed} (const float \&speed)
 \item 
+\mbox{\Hypertarget{classPhysics_ae067500b23cd04728bef79497327d011}\label{classPhysics_ae067500b23cd04728bef79497327d011}} 
+unsigned int {\bfseries get\+PPS} () const
+\item 
+\mbox{\Hypertarget{classPhysics_a7fbf767be3e4432f68230491cecfb583}\label{classPhysics_a7fbf767be3e4432f68230491cecfb583}} 
+void {\bfseries set\+PPS} (const unsigned int \&pps)
+\item 
 \mbox{\Hypertarget{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}\label{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}} 
 std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} ()
 \item 
 \mbox{\Hypertarget{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}\label{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}} 
 bool {\bfseries add\+PTime\+Sensitive} (\mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ptime\+\_\+sensitive)
-\item 
-\mbox{\Hypertarget{classPhysics_aa6c469efe153149df0f51d06698e974a}\label{classPhysics_aa6c469efe153149df0f51d06698e974a}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classMoveable}{Moveable}} $\ast$ $>$ {\bfseries get\+PMoveables} ()
-\item 
-\mbox{\Hypertarget{classPhysics_ace68d86f508e2c66327aab92e38bdd1c}\label{classPhysics_ace68d86f508e2c66327aab92e38bdd1c}} 
-bool {\bfseries add\+PMoveable} (\mbox{\hyperlink{classMoveable}{Moveable}} $\ast$pmoveabele)
 \item 
 \mbox{\Hypertarget{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}\label{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}} 
 unsigned int {\bfseries get\+FCollide} () const
@@ -62,6 +56,9 @@ void {\bfseries set\+FPause} (const bool \&bpause)
 \item 
 \mbox{\Hypertarget{classPhysics_a41cbc3698f05e4e78495a67f6cd64365}\label{classPhysics_a41cbc3698f05e4e78495a67f6cd64365}} 
 bool {\bfseries run} (const unsigned int \&steps=1)
+\item 
+\mbox{\Hypertarget{classPhysics_aacf999e2bc6616c41efebf1a03c82580}\label{classPhysics_aacf999e2bc6616c41efebf1a03c82580}} 
+bool {\bfseries iterate} (const long double \&dt)
 \item 
 virtual std\+::string \mbox{\hyperlink{classPhysics_aa4a316eadc9f771fe09d2b65d4af761e}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \item 

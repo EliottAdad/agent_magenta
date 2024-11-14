@@ -22,7 +22,7 @@
  * ########
  */
 template <typename T> class Quad : public Printable {
-private:
+protected:
 	Point3D* m_ppoint;					// The center of the zone.
 	Point3D* m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
 	bool m_delppoint;					// If the point should be deleted.
@@ -60,6 +60,7 @@ public:
 	void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;
 	//std::set<T*> find(const Point3D& point);
 	T* search(Point3D* ppoint) const;
+	bool empty();
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
@@ -133,6 +134,8 @@ template <typename T> Quad<T>::~Quad() {
 	if (m_pBRTree!=NULL){
 		delete m_pBRTree;
 	}
+	// There is one less Quad
+	m_NB_QUADS--;
 }
 
 template <typename T> LSN Quad<T>::getA() const {
@@ -506,6 +509,11 @@ template <typename T> T* Quad<T>::search(Point3D* ppoint) const {
 
 	return pT;
 }
+
+template<typename T> bool Quad<T>::empty() {
+	return true;
+}
+
 
 template <typename T> std::string Quad<T>::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");

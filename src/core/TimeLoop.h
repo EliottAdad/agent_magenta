@@ -16,6 +16,7 @@ class TimeLoop {
 private:
 	bool m_loop;
 	std::unordered_set<TimeSensitive*> m_lst;			//List of time sensitive objects
+
 public:
 	TimeLoop();
 	virtual ~TimeLoop();

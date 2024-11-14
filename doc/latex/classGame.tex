@@ -3,8 +3,38 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGame_a465ef3d9c00b2d03cc86573b2c01e8c3}\label{classGame_a465ef3d9c00b2d03cc86573b2c01e8c3}} 
-{\bfseries Game} (const \mbox{\hyperlink{classGame}{Game}} \&other)
+\mbox{\Hypertarget{classGame_aa39ae5760f330946c386f280d3d120b5}\label{classGame_aa39ae5760f330946c386f280d3d120b5}} 
+unsigned int {\bfseries get\+FPS} () const
+\item 
+\mbox{\Hypertarget{classGame_a9fb75200186867b5d9754942a501e372}\label{classGame_a9fb75200186867b5d9754942a501e372}} 
+void {\bfseries set\+FPS} (const unsigned int \&fps)
+\item 
+\mbox{\Hypertarget{classGame_afa45ff1348222debd353560c443e26e5}\label{classGame_afa45ff1348222debd353560c443e26e5}} 
+unsigned int {\bfseries get\+PPS} () const
+\item 
+\mbox{\Hypertarget{classGame_a2eba7ac938b1e42e8bd42cc077ff7954}\label{classGame_a2eba7ac938b1e42e8bd42cc077ff7954}} 
+void {\bfseries set\+PPS} (const unsigned int \&pps)
+\item 
+\mbox{\Hypertarget{classGame_a7782fb56c2ffb71c420fb40babd18d61}\label{classGame_a7782fb56c2ffb71c420fb40babd18d61}} 
+\mbox{\hyperlink{classPhysics}{Physics}} $\ast$ {\bfseries get\+PPhysics} ()
+\item 
+\mbox{\Hypertarget{classGame_a81b77d743a50062c085e414832aa2602}\label{classGame_a81b77d743a50062c085e414832aa2602}} 
+\mbox{\hyperlink{classScene}{Scene}} $\ast$ {\bfseries get\+PScene} ()
+\item 
+\mbox{\Hypertarget{classGame_a945e32006542e26025066d522b3ed09b}\label{classGame_a945e32006542e26025066d522b3ed09b}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} ()
+\item 
+\mbox{\Hypertarget{classGame_a287569adeca2d9cedcf0f34b082a7104}\label{classGame_a287569adeca2d9cedcf0f34b082a7104}} 
+bool {\bfseries add\+PTime\+Sensitive} (\mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ptime\+\_\+sensitive)
+\item 
+\mbox{\Hypertarget{classGame_a1676d62da51ef45d985cc44ddc986839}\label{classGame_a1676d62da51ef45d985cc44ddc986839}} 
+bool {\bfseries run} (const unsigned int \&steps=1)
+\item 
+\mbox{\Hypertarget{classGame_ae6da5df458c5fe18d65149814c5a7026}\label{classGame_ae6da5df458c5fe18d65149814c5a7026}} 
+bool {\bfseries iterate} (const long double \&dt)
+\item 
+\mbox{\Hypertarget{classGame_aef454bb9fcccafbd8c248780275caabd}\label{classGame_aef454bb9fcccafbd8c248780275caabd}} 
+bool {\bfseries render} () const
 \end{DoxyCompactItemize}
 
 

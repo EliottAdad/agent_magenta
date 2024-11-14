@@ -31,6 +31,18 @@ Point3D::Point3D(const Point3D& point) {
 
 
 
+LSN Point3D::getX() const {
+	return x;
+}
+
+LSN Point3D::getY() const {
+	return y;
+}
+
+LSN Point3D::getZ() const {
+	return z;
+}
+
 void Point3D::operator=(const Point3D& p) {
 	this->x=p.x;
 	this->y=p.y;

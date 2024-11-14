@@ -19,6 +19,7 @@ private:
 	//std::unordered_set<std::pair<Point3D*, bool>> m_ppoints;
 
 	//std::unordered_set<std::pair<Triangle3D*, bool>> m_ptriangles;
+
 public:
 	Mesh3D();
 	virtual ~Mesh3D();

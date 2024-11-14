@@ -8,7 +8,7 @@
 #include "Physics.h"
 
 Physics::Physics() {
-	m_cps=60;//Computations per second
+	m_pps=30;//Computations per second
 	m_speed=1;//Speed of the simulation
 
 	m_fcollide=false;
@@ -20,7 +20,7 @@ Physics::~Physics() {
 }
 
 Physics::Physics(const Physics& phys) {
-	m_cps=phys.getCPS();
+	m_pps=phys.getPPS();
 	m_speed=phys.getSpeed();
 
 	m_fcollide=phys.getFCollide();
@@ -29,12 +29,12 @@ Physics::Physics(const Physics& phys) {
 
 
 
-unsigned int Physics::getCPS() const {
-	return m_cps;
+unsigned int Physics::getPPS() const {
+	return m_pps;
 }
 
-void Physics::setCPS(const unsigned int& cps) {
-	m_cps=cps;
+void Physics::setPPS(const unsigned int& pps) {
+	m_pps=pps;
 }
 
 float Physics::getSpeed() const {
@@ -73,17 +73,17 @@ bool Physics::addPTimeSensitive(TimeSensitive* ptime_sensitive) {
 	return success;
 }
 
-std::unordered_set<Moveable*> Physics::getPMoveables() {
+/*std::unordered_set<Moveable*> Physics::getPMoveables() {
 	return m_pmoveables;
-}
+}*/
 
-bool Physics::addPMoveable(Moveable* pmoveable) {
+/*bool Physics::addPMoveable(Moveable* pmoveable) {
 	bool success=false;
 	if (pmoveable!=NULL){
 		success=m_pmoveables.insert(pmoveable).second;
 	}
 	return success;
-}
+}*/
 
 
 /*bool Physics::loop() {
@@ -116,18 +116,9 @@ bool Physics::run(const unsigned int& steps) {
 			std::chrono::time_point t2=std::chrono::system_clock::now();
 			std::chrono::duration dt=t2-t1;
 
-			if (dt.count()>=1/(long double)m_cps*1000000000.){
+			if (dt.count()>=1/(long double)m_pps*1000000000.){
+				iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 
-				for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
-					ptime_sensitive->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
-					//printf("%f", dt.count()/1000000000.*m_speed);
-					ptime_sensitive->apply();
-				}
-
-				/*for (Moveable* pmoveable : m_pmoveables){
-					pmoveable->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
-					pmoveable->apply();
-				}*/
 				t1=t2;
 				if (steps!=0){//If steps is not null
 					i++;
@@ -138,9 +129,15 @@ bool Physics::run(const unsigned int& steps) {
 	return m_fpause;
 }
 
-/*bool Physics::iterate() {
+bool Physics::iterate(const long double& dt) {//THE PROBLEM
+	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
+		printf("\nHello1\n");
+		ptime_sensitive->setT(dt*m_speed);
+		printf("%Lf\n", dt*m_speed);
+		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
+	}
 	return m_fpause;
-}*/
+}
 
 
 std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
@@ -152,7 +149,7 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 		mes+="():";//Pointer
 	}
 	mes+=((spread)?"\n" : " ");
-	mes+="speed=" + std::to_string(m_speed) +";cps=" + std::to_string(m_cps) + ";fcollide=" + std::to_string(m_fcollide) + ";fpause=" + std::to_string(m_fpause) + "\n";
+	mes+="speed=" + std::to_string(m_speed) + ";fcollide=" + std::to_string(m_fcollide) + ";fpause=" + std::to_string(m_fpause) + "\n";
 
 	mes+="Time Sensitive list:\n";
 	int i=0;
@@ -161,13 +158,7 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 		mes+=std::to_string(i);
 		mes+=ptime_sensitive->to_string(true, true, indent+1);
 	}
-	mes+="\nMoveable list:\n";
-	int j=0;
-	for (Moveable* pmoveable : m_pmoveables){
-		j++;
-		mes+=std::to_string(j);
-		mes+=pmoveable->to_string(true, true, indent+1);
-	}
+
 	return mes;
 }
 

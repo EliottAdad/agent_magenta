@@ -26,6 +26,7 @@
 #include "core/VectorField.h"
 #include "core/VectorFieldUnidirectional.h"
 #include "core/Physics.h"
+#include "utilities/Game.h"
 //#include "utilities/functions.h"
 
 
@@ -277,34 +278,52 @@
 /*
  * Main SDL
  */
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]){
+
+    printf("Hello\n");
+    Particle3D p;
+    p.x={1, 1};
+    p.y={1, 1};
+    p.z={0, 0};
+    p.w={0, 0};
+    printf("\nMain0\n");
+    p.print(true);
+    printf("\nMain1\n");
+
+    // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    SDL_Window* pWindow{ nullptr };
-    SDL_Renderer* pRenderer{ nullptr };
-    pWindow = SDL_CreateWindow("SDL Programme", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-    if (pWindow == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
-        SDL_Quit();
-        return EXIT_FAILURE;
-    }
-    pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
-    if (pRenderer == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
-        SDL_Quit();
-        return EXIT_FAILURE;
-    }
+
+
+    Game g1;
+
+    g1.getPScene()->addPDisplayable(&p);
+    for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
+    	printf("\n###1\n");
+    	pdisplayable->print(true);
+    	printf("\n###1\n");
+    }//OK
+    bool ans2=g1.getPPhysics()->addPTimeSensitive(&p);
+    printf("\naddPTimeSensitive was successful ?: %b\n", ans2);
+    for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
+    	printf("\n###2\n");
+    	ptime_sensitive->print(true);
+    	printf("\n###2\n");
+    }//OK
+    //g1.getPPhysics()->iterate(10);
+    g1.run(100);
+
+    printf("\nMain2\n");
 
     SDL_Delay(1000);
 
-    SDL_DestroyRenderer(pRenderer);     SDL_DestroyWindow(pWindow);
     SDL_Quit();
+
+    printf("\nBye\n");
+
     return EXIT_SUCCESS;
 }
 

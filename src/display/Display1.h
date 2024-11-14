@@ -10,8 +10,12 @@
 
 #include <set>
 #include <SDL2/SDL.h>
+#include "../core/LSN.h"
 #include "../core/Point3D.h"
 #include "../core/Line3D.h"
+#include "../display/Displayable.h"
+#include "../utilities/Printable.h"
+#include "../core/Scene.h"
 
 
 /*
@@ -22,69 +26,58 @@
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
  */
-template <typename T> class Display1 {
+class Display1 : public Printable {
 private:
+	Point3D* m_ppoint;					// Pointeur to the center of display.
+	char m_display;						// The point of view from which it is projected (1, 2, 3).
+	long double m_scale;				// Ratio d_pixels/d_meters
+	std::set<Scene*> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
+
+	SDL_Color* m_pbkgd_color;			// Pointeur to the background color.
+	SDL_Color* m_pdraw_color;			// Pointeur to the render color.
 	SDL_Window* m_pwindow;				// Pointeur to the window.
 	SDL_Renderer* m_prenderer;			// Pointeur to the renderer.
+
+	bool m_delp;
 	bool m_delw;
 	bool m_delr;
 	bool m_fclear;
+
 public:
 	Display1();
+	Display1(Point3D* ppoint);
+	Display1(SDL_Window* pwindow, SDL_Renderer* prenderer);
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
-	bool render(T* pelement);
-	void renderPoints(std::set<Point3D*> ppoints);//:)
-	void renderPoint(Point3D* ppoint);//:)
-	void renderLines(std::set<Line3D*> plines);//:)
-	void renderLine(Line3D* pline);//:)
+	Point3D* getPPoint();
+	void setPPoint(Point3D* ppoint, const bool& delp=true);
+	void setPoint(Point3D& point, const bool& delp=false);
+	char getDisplay() const;
+	void setDisplay(const char& display);
+	long double getScale() const;
+	void setScale(long double m_scale);
+	SDL_Color* getPBkgdColor();
+	void setBkrdColor(int r, int g, int b, int a);
+	SDL_Color* getPDrawColor();
+	void setDrawColor(int r, int g, int b, int a);
+	SDL_Window* getPWindow();
+	SDL_Renderer* getPRenderer();
+	//void setDrawColor(int r, int g, int b, int a);
+	std::set<Scene*> getPScenes() const;
+	void addPScene(Scene* pscene);
+
+	bool render() const;
+	bool render(Scene* pscene) const;
+	bool render(Displayable* pdisplayable) const;
+	void renderPoints(std::set<Point3D*> ppoints) const;//:)
+	void renderPoint(Point3D* ppoint) const;//:)
+	void renderLines(std::set<Line3D*> plines) const;//:)
+	void renderLine(Line3D* pline) const;//:)
+
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 };
 
-
-template <typename T> Display1<T>::Display1() {
-	m_pwindow=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200, SDL_WINDOW_SHOWN);
-	m_prenderer=SDL_CreateRenderer(m_pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
-	m_delw=true;
-	m_delr=true;
-	m_fclear=true;
-}
-
-template <typename T> Display1<T>::~Display1() {
-	if (m_pwindow!=NULL){
-		SDL_DestroyWindow(m_pwindow);
-	}
-	if (m_prenderer!=NULL){
-		SDL_DestroyRenderer(m_prenderer);
-	}
-}
-
-/*
-template <typename T> Display1::Display1(const Display1 &other) {
-	m_pwindow=;
-}*/
-
-
-
-template <typename T> void Display1<T>::renderPoints(std::set<Point3D*> ppoints){//:)
-	for (Point3D* ppoint : ppoints){
-		this->renderPoint(ppoint);
-	}
-}
-
-template <typename T> void Display1<T>::renderPoint(Point3D* ppoint){//:)
-	;
-}
-
-/*
- * T needs to have x, y, z
- */
-template <typename T> bool Display1<T>::render(T* pelement) {
-	bool success=false;
-	if (pelement!=NULL) {
-		pelement->x, pelement->y, pelement->z;
-	}
-	return success;
-}
 
 #endif /* DISPLAY1_H_ */

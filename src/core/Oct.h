@@ -24,7 +24,7 @@
  * Can contain any object that has x, y, z
  */
 template <typename T> class Oct : public Printable {
-private:
+protected:
 	Point3D* m_ppoint;					// The center of the zone.
 	Point3D* m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
 	bool m_delppoint;					// If the point should be deleted.
@@ -64,13 +64,16 @@ public:
 	unsigned int getNB_OCTS() const;
 	//float getAlpha();
 	//void setAlpha(float& alpha=0.5);
-	std::unordered_set<T*> getPElements() const;//Returns all the elements contained in the tree.
+	std::unordered_set<Oct<T>*> getPTrees();			//Returns all the trees under, contained by this tree.
+	std::unordered_set<T*> getPElements() const;		//Returns all the elements contained in the tree.
+	std::unordered_set<T*> getPNeighbors() const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
 	void find(const T& t, std::unordered_set<Oct<T>*>& pquads);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
 	void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;
 	//std::unordered_set<T*> find(const Point3D& point);
 	T* search(Point3D* ppoint) const;
+	bool empty();
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
@@ -190,6 +193,8 @@ template <typename T> Oct<T>::~Oct() {
 	if (m_pBRBTree!=NULL){
 		delete m_pBRBTree;
 	}
+	// There is one less Oct
+	m_NB_OCTS--;
 }
 
 template <typename T> LSN Oct<T>::getA() const {
@@ -204,6 +209,31 @@ template <typename T> unsigned int Oct<T>::getNB_OCTS() const {
 	return m_NB_OCTS;
 }
 
+/*
+ * Returns all the trees under, contained by this tree.
+ */
+template <typename T> std::unordered_set<Oct<T>*> Oct<T>::getPTrees() {
+	std::unordered_set<Oct*> ptrees;
+	if (m_pTLFTree!=NULL){
+		ptrees.insert(m_pTLFTree);
+	}else if (m_pTRFTree!=NULL){
+		ptrees.insert(m_pTRFTree);
+	}else if (m_pBLFTree!=NULL){
+		ptrees.insert(m_pBLFTree);
+	}else if (m_pBRFTree!=NULL){
+		ptrees.insert(m_pBRFTree);
+	}else if (m_pTLBTree!=NULL){
+		ptrees.insert(m_pTLBTree);
+	}else if (m_pTRBTree!=NULL){
+		ptrees.insert(m_pTRBTree);
+	}else if (m_pBLBTree!=NULL){
+		ptrees.insert(m_pBLBTree);
+	}else if (m_pBRBTree!=NULL){
+		ptrees.insert(m_pBRBTree);
+	}
+	return ptrees;
+}
+
 template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 	std::unordered_set<T*> elmts;
 
@@ -211,6 +241,61 @@ template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 		elmts.insert(m_pT);
 	}else{
 		if (m_pTLFTree!=NULL){
+			for (T* pt : m_pTLFTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pTRFTree!=NULL){
+			for (T* pt : m_pTRFTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pBLFTree!=NULL){
+			for (T* pt : m_pBLFTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pBRFTree!=NULL){
+			for (T* pt : m_pBRFTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pTLBTree!=NULL){
+			for (T* pt : m_pTLBTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pTRBTree!=NULL){
+			for (T* pt : m_pTRBTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pBLBTree!=NULL){
+			for (T* pt : m_pBLBTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+		if (m_pBRBTree!=NULL){
+			for (T* pt : m_pBRBTree->getPElements()){
+				elmts.insert(pt);
+			}
+		}
+	}
+
+	return elmts;
+}
+
+template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(T* pelement) const {
+	std::unordered_set<T*> neighbors;
+
+	if (m_a/getDistance(*m_ppoint, *pelement)<=(long double)m_ALPHA){
+		if (m_pT!=NULL){
+			neighbors.insert(m_pT);
+		}else{
+			;
+		}
+	}else{
+		if (m_pTLFTree->m_ppoint!=NULL){
 			for (T* pt : m_pTLFTree->getPElements()){
 				elmts.insert(pt);
 			}
@@ -421,10 +506,66 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 	return true;
 }
 
+template <typename T> std::unordered_set<T*> Oct<T>::getNeighbors(T* pelement) {
+	static std::unordered_set<T*> neighbors;
 
-/*template<> bool Oct<Particle3D>::insert(Particle3D* ppart) {//Doesn't work for some reason.
+	// If there is something, it means we're on the edge of a branch
+	if (m_pT!=NULL){
+		neighbors.insert(m_pT);
+	}else{
+		if (m_pTLBTree!=NULL){
+			m_pTLBTree->find(t, pquads);
+		}
+		if (m_pTRBTree!=NULL){
+			m_pTRBTree->find(t, pquads);
+		}
+		if (m_pBLBTree!=NULL){
+			m_pBLBTree->find(t, pquads);
+		}
+		if (m_pBRBTree!=NULL){
+			m_pBRBTree->find(t, pquads);
+		}
+		if (m_pTLFTree!=NULL){
+			m_pTLFTree->find(t, pquads);
+		}
+		if (m_pTRFTree!=NULL){
+			m_pTRFTree->find(t, pquads);
+		}
+		if (m_pBLFTree!=NULL){
+			m_pBLFTree->find(t, pquads);
+		}
+		if (m_pBRFTree!=NULL){
+			m_pBRFTree->find(t, pquads);
+		}
+
+		for (Oct<T>* poct : m_poctree->getPTrees()){//On a les arbres
+			poct->getNeighbors(pelement);
+		}
+	}
+
+	return neighbors;
+}
+
+template <typename T> bool Oct<T>::empty() {
+	for (Oct<T>* ptree : this->getPTrees()){
+		delete ptree;
+	}
+
+	m_pTLFTree=NULL;
+	m_pTRFTree=NULL;
+	m_pBLFTree=NULL;
+	m_pBRFTree=NULL;
+	m_pTLBTree=NULL;
+	m_pTRBTree=NULL;
+	m_pBLBTree=NULL;
+	m_pBRBTree=NULL;
+
+	*m_pbarycenter=*m_ppoint;
+	m_tot_weight=0.;
+	m_pT=NULL;
+
 	return true;
-}*/
+}
 /*template<> bool Oct<Particle3D>::insert(Particle3D* ppart){//Doesn't work for some reason.
 	if (ppart!=NULL){
 		Point3D p={ppart->x, ppart->y, ppart->z};
@@ -744,7 +885,6 @@ template <typename T> T* Oct<T>::search(Point3D* ppoint) const {
 	}
 	return pT;
 }
-
 
 
 

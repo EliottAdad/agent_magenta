@@ -1,0 +1,38 @@
+\hypertarget{Scene_8h_source}{}\doxysection{Scene.\+h}
+\label{Scene_8h_source}\index{core/Scene.h@{core/Scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//:)}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef SCENE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define SCENE\_H}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../display/Displayable.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{12 \textcolor{comment}{// Scene :)}}
+\DoxyCodeLine{14 \textcolor{comment}{}\textcolor{comment}{//Scene va contenir les Displayable}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classScene}{Scene}}\{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classScene}{Scene}}();\textcolor{comment}{//:)}}
+\DoxyCodeLine{19     \textcolor{comment}{//Scene(std::string name, std::vector<SDL\_Color*> pcolors=\{\});//:)}}
+\DoxyCodeLine{20     \mbox{\hyperlink{classScene}{Scene}}(\textcolor{keyword}{const} \mbox{\hyperlink{classScene}{Scene}}\& scene);\textcolor{comment}{//:/}}
+\DoxyCodeLine{21     \mbox{\hyperlink{classScene}{\string~Scene}}();\textcolor{comment}{//:)}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     std::set<Displayable*> getPDisplayables();\textcolor{comment}{//:)}}
+\DoxyCodeLine{24     \textcolor{comment}{//void addDisplayables(std::vector<Displayable*> pdisplayables);//:)}}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} addPDisplayable(\mbox{\hyperlink{structDisplayable}{Displayable}}* pdisplayable);\textcolor{comment}{//:)}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28     std::set<Displayable*> m\_pdisplayables;\textcolor{comment}{//:)}}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,25 +1,130 @@
-\hypertarget{classDisplay1}{}\doxysection{Display1\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classDisplay1}\index{Display1$<$ T $>$@{Display1$<$ T $>$}}
+\hypertarget{classDisplay1}{}\doxysection{Display1 Class Reference}
+\label{classDisplay1}\index{Display1@{Display1}}
+
+
+Inheritance diagram for Display1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classDisplay1__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Display1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classDisplay1__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classDisplay1_aa2f877f1faff45cd4c6ce57ff7539081}\label{classDisplay1_aa2f877f1faff45cd4c6ce57ff7539081}} 
-bool {\bfseries render} (T $\ast$pelement)
+\mbox{\Hypertarget{classDisplay1_aeba03432e8d8d430e80a257ad84e7d21}\label{classDisplay1_aeba03432e8d8d430e80a257ad84e7d21}} 
+{\bfseries Display1} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
 \item 
-\mbox{\Hypertarget{classDisplay1_aeae1326578e7135750fc646e73bf19e6}\label{classDisplay1_aeae1326578e7135750fc646e73bf19e6}} 
-void {\bfseries render\+Points} (std\+::set$<$ \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ $>$ ppoints)
+\mbox{\Hypertarget{classDisplay1_aa3d99052256259320914a05a0c0b5e3d}\label{classDisplay1_aa3d99052256259320914a05a0c0b5e3d}} 
+{\bfseries Display1} (SDL\+\_\+\+Window $\ast$pwindow, SDL\+\_\+\+Renderer $\ast$prenderer)
 \item 
-\mbox{\Hypertarget{classDisplay1_a4968a2fb84142461c08b64de873b5391}\label{classDisplay1_a4968a2fb84142461c08b64de873b5391}} 
-void {\bfseries render\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
+\mbox{\Hypertarget{classDisplay1_ad3c5dcb1716fce4908651c886083729c}\label{classDisplay1_ad3c5dcb1716fce4908651c886083729c}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+PPoint} ()
 \item 
-\mbox{\Hypertarget{classDisplay1_ab134a078b7fe44871995e88622910739}\label{classDisplay1_ab134a078b7fe44871995e88622910739}} 
-void {\bfseries render\+Lines} (std\+::set$<$ \mbox{\hyperlink{classLine3D}{Line3D}} $\ast$ $>$ plines)
+\mbox{\Hypertarget{classDisplay1_a85d74dc1476539bafa34cd21b189a51e}\label{classDisplay1_a85d74dc1476539bafa34cd21b189a51e}} 
+void {\bfseries set\+PPoint} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint, const bool \&delp=true)
 \item 
-\mbox{\Hypertarget{classDisplay1_a21b75a3090fc44bd35122eb2d28c04be}\label{classDisplay1_a21b75a3090fc44bd35122eb2d28c04be}} 
-void {\bfseries render\+Line} (\mbox{\hyperlink{classLine3D}{Line3D}} $\ast$pline)
+\mbox{\Hypertarget{classDisplay1_af1d6ab3df1513ff620ff6cfb805be9b2}\label{classDisplay1_af1d6ab3df1513ff620ff6cfb805be9b2}} 
+void {\bfseries set\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&point, const bool \&delp=false)
+\item 
+\mbox{\Hypertarget{classDisplay1_a9a8620d7f7332fffbdac8f4ac8b89996}\label{classDisplay1_a9a8620d7f7332fffbdac8f4ac8b89996}} 
+char {\bfseries get\+Display} () const
+\item 
+\mbox{\Hypertarget{classDisplay1_aa04d8311a9a097d2973bc2f28fe96f82}\label{classDisplay1_aa04d8311a9a097d2973bc2f28fe96f82}} 
+void {\bfseries set\+Display} (const char \&display)
+\item 
+\mbox{\Hypertarget{classDisplay1_a65e553a7aca4cdc530272df6d29cc0d6}\label{classDisplay1_a65e553a7aca4cdc530272df6d29cc0d6}} 
+long double {\bfseries get\+Scale} () const
+\item 
+\mbox{\Hypertarget{classDisplay1_a18105fad4d5661d32c1ae299ad85ea93}\label{classDisplay1_a18105fad4d5661d32c1ae299ad85ea93}} 
+void {\bfseries set\+Scale} (long double m\+\_\+scale)
+\item 
+\mbox{\Hypertarget{classDisplay1_a3ef080129a23ce7d23b710230a527d82}\label{classDisplay1_a3ef080129a23ce7d23b710230a527d82}} 
+SDL\+\_\+\+Color $\ast$ {\bfseries get\+PBkgd\+Color} ()
+\item 
+\mbox{\Hypertarget{classDisplay1_a25415f846fd6fad9d652459574514d96}\label{classDisplay1_a25415f846fd6fad9d652459574514d96}} 
+void {\bfseries set\+Bkrd\+Color} (int r, int g, int b, int a)
+\item 
+\mbox{\Hypertarget{classDisplay1_a5051c4dda84fede869a0a1fe84736870}\label{classDisplay1_a5051c4dda84fede869a0a1fe84736870}} 
+SDL\+\_\+\+Color $\ast$ {\bfseries get\+PDraw\+Color} ()
+\item 
+\mbox{\Hypertarget{classDisplay1_a34232d015e838242d4be2b162f8f6641}\label{classDisplay1_a34232d015e838242d4be2b162f8f6641}} 
+void {\bfseries set\+Draw\+Color} (int r, int g, int b, int a)
+\item 
+\mbox{\Hypertarget{classDisplay1_aca984d622af78ae12a6556070bb512d5}\label{classDisplay1_aca984d622af78ae12a6556070bb512d5}} 
+SDL\+\_\+\+Window $\ast$ {\bfseries get\+PWindow} ()
+\item 
+\mbox{\Hypertarget{classDisplay1_a8f68e3d587fd2d99d878930b9112e075}\label{classDisplay1_a8f68e3d587fd2d99d878930b9112e075}} 
+SDL\+\_\+\+Renderer $\ast$ {\bfseries get\+PRenderer} ()
+\item 
+\mbox{\Hypertarget{classDisplay1_aa6a8c0081341d1e6da9f3626396fd788}\label{classDisplay1_aa6a8c0081341d1e6da9f3626396fd788}} 
+std\+::set$<$ \mbox{\hyperlink{classScene}{Scene}} $\ast$ $>$ {\bfseries get\+PScenes} () const
+\item 
+\mbox{\Hypertarget{classDisplay1_a4e6d98f2ce7a46bf5692193fad607dda}\label{classDisplay1_a4e6d98f2ce7a46bf5692193fad607dda}} 
+void {\bfseries add\+PScene} (\mbox{\hyperlink{classScene}{Scene}} $\ast$pscene)
+\item 
+\mbox{\Hypertarget{classDisplay1_a376b66ec28bf8fa2610d4ec3890cbaff}\label{classDisplay1_a376b66ec28bf8fa2610d4ec3890cbaff}} 
+bool {\bfseries render} () const
+\item 
+\mbox{\Hypertarget{classDisplay1_a8a3a54bb8725bb5eb0065f193e7ad1d6}\label{classDisplay1_a8a3a54bb8725bb5eb0065f193e7ad1d6}} 
+bool {\bfseries render} (\mbox{\hyperlink{classScene}{Scene}} $\ast$pscene) const
+\item 
+\mbox{\Hypertarget{classDisplay1_ac6bd3d5139a3385727ee1aea1c061dce}\label{classDisplay1_ac6bd3d5139a3385727ee1aea1c061dce}} 
+bool {\bfseries render} (\mbox{\hyperlink{structDisplayable}{Displayable}} $\ast$pdisplayable) const
+\item 
+\mbox{\Hypertarget{classDisplay1_ab4f94c823b4f6ac555984c4bdf04718e}\label{classDisplay1_ab4f94c823b4f6ac555984c4bdf04718e}} 
+void {\bfseries render\+Points} (std\+::set$<$ \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ $>$ ppoints) const
+\item 
+\mbox{\Hypertarget{classDisplay1_a2d4e94b2bf73b542ad6fc56dec1a056c}\label{classDisplay1_a2d4e94b2bf73b542ad6fc56dec1a056c}} 
+void {\bfseries render\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint) const
+\item 
+\mbox{\Hypertarget{classDisplay1_a0903d877c803cc4659690ab9a37c48df}\label{classDisplay1_a0903d877c803cc4659690ab9a37c48df}} 
+void {\bfseries render\+Lines} (std\+::set$<$ \mbox{\hyperlink{classLine3D}{Line3D}} $\ast$ $>$ plines) const
+\item 
+\mbox{\Hypertarget{classDisplay1_a2a32e0f254729adc3fa526fafe9e4f30}\label{classDisplay1_a2a32e0f254729adc3fa526fafe9e4f30}} 
+void {\bfseries render\+Line} (\mbox{\hyperlink{classLine3D}{Line3D}} $\ast$pline) const
+\item 
+virtual std\+::string \mbox{\hyperlink{classDisplay1_a2679536fc3bc802fac43178fa6e36974}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classDisplay1_a69ce04a297ad426766ab242b07e95a79}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDisplay1_a69ce04a297ad426766ab242b07e95a79}\label{classDisplay1_a69ce04a297ad426766ab242b07e95a79}} 
+\index{Display1@{Display1}!print@{print}}
+\index{print@{print}!Display1@{Display1}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Display1\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{classDisplay1_a2679536fc3bc802fac43178fa6e36974}\label{classDisplay1_a2679536fc3bc802fac43178fa6e36974}} 
+\index{Display1@{Display1}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Display1@{Display1}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Display1\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-display/Display1.\+h\end{DoxyCompactItemize}
+display/Display1.\+h\item 
+display/Display1.\+cpp\end{DoxyCompactItemize}

@@ -23,12 +23,13 @@
  */
 template <typename T> class System3D: public TimeSensitive {
 protected:
-	LSN m_a;														// Lenght of the side of the zone
+	LSN m_a;														// Lenght of the side of the zone.
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<T>* m_poctree;												// Pointer to the Octree.
-	void (*m_ptrFunc) (T*, T*, const long double&);										// Pointer to a function operating on 2 particles
+	void (*m_ptrFunc) (T*, T*, const long double&);					// Pointer to a function operating on 2 particles
 
 	long double m_dt;
+	std::unordered_set<T*> m_pelements;
 
 public:
 	System3D();
@@ -43,12 +44,14 @@ public:
 	void setAlpha(const float& alpha);
 	std::unordered_set<T*> getPElements() const;
 	bool addPElement(T* pelement);
+	std::unordered_set<T*> getNeighbors(T* pelement);				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
 	void setPFunc(void (*ptrFunc) (T*, T*, const long double&));
+	void recalculate() const;
 
 	virtual void setT(const long double& dt);	// From TimeSensitive
-	virtual void apply();		// From Moveable
+	virtual void apply();						// From Moveable
 	//virtual void move(const Vector3D& dp);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
@@ -85,7 +88,7 @@ void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
 
 
 template <typename T> System3D<T>::System3D() {
-	m_a={1,1};				//10m sided box
+	m_a={1,2};				//100m sided box
 	m_poctree=new Oct<T>(m_a);
 	m_ptrFunc=NULL;
 	m_dt=0;
@@ -98,6 +101,7 @@ template <typename T> System3D<T>::System3D() {
 
 template <typename T> System3D<T>::~System3D() {
 	delete m_poctree;
+	m_pelements.clear();
 }
 
 
@@ -130,8 +134,26 @@ template <typename T> bool System3D<T>::addPElement(T* pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
+		m_pelements->insert(pelement);
 	}
 	return success;
+}
+
+template <typename T> std::unordered_set<T*> System3D<T>::getNeighbors(T* pelement) {
+	static std::unordered_set<T*> neighbors;
+
+	if (m_pelement!=NULL){
+		neighbors.insert(m_pelement);
+	}else{
+		if (){
+			;
+		}
+		for (Oct<T>* poct : m_poctree->getPTrees()){//On a les arbres
+			poct->getNeighbors(pelement);
+		}
+	}
+
+	return neighbors;
 }
 
 
@@ -151,8 +173,9 @@ template <typename T> void System3D<T>::setT(const long double& dt) {
 }
 
 template <typename T> void System3D<T>::apply(){
-	for (T* ppart : m_poctree->getPElements()){
-		ppart->apply();
+	for (T* ppart : m_pelements){
+		//ppart->apply();
+		ppart->;
 	}
 }
 
@@ -167,6 +190,15 @@ template <typename T> void System3D<T>::apply(){
 
 template <typename T> void System3D<T>::setPFunc(void (*ptrFunc) (T*, T*, const long double&)){
 	m_ptrFunc=ptrFunc;
+}
+
+template <typename T> void System3D<T>::recalculate() const {
+	for (Oct<T>* ptree : m_poctree->getPTrees()){
+		delete ptree;
+	}
+	for (T* pelement : m_pelements){
+		m_poctree->insert(pelement);
+	}
 }
 
 
