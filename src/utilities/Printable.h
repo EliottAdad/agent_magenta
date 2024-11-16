@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "functions.h"
 
 class Printable {

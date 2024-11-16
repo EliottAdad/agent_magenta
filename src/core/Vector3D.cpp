@@ -211,10 +211,13 @@ bool Vector3D::operator>=(const Vector3D& v) const {
 
 std::string Vector3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
-	mes+="Vector3D";
 
 	if (full_info){
-		mes+="():";//Pointer
+		mes+="Vector3D[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 	mes+="(";
@@ -228,7 +231,7 @@ std::string Vector3D::to_string(const bool& spread, const bool& full_info, const
 
 void Vector3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

@@ -100,7 +100,11 @@ std::string Triangle3D::to_string(const bool& spread, const bool& full_info, con
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="TRIANGLE ():";
+		mes+="TRIANGLE [";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 	/*for (Particle3D* ppart : m_poctree->getPElements()){
@@ -114,6 +118,6 @@ std::string Triangle3D::to_string(const bool& spread, const bool& full_info, con
 
 void Triangle3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 

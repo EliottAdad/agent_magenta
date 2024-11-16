@@ -67,7 +67,7 @@ std::string Moveable::to_string(const bool& spread, const bool& full_info, const
 
 void Moveable::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

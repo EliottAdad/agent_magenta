@@ -291,7 +291,11 @@ std::string LSN::to_string(const bool& spread, const bool& full_info, const unsi
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="LSN ():";
+		mes+="LSN[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 	mes+=std::to_string(m) + "x10^" + std::to_string(exp);
@@ -301,8 +305,7 @@ std::string LSN::to_string(const bool& spread, const bool& full_info, const unsi
 
 void LSN::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	this->to_string(spread, indent, full_info);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

@@ -123,7 +123,11 @@ std::string Point3D::to_string(const bool& spread, const bool& full_info, const 
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="POINT ():";
+		mes+="POINT[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 
@@ -134,7 +138,7 @@ std::string Point3D::to_string(const bool& spread, const bool& full_info, const 
 
 void Point3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

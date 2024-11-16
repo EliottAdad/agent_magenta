@@ -520,10 +520,12 @@ template <typename T> std::string Quad<T>::to_string(const bool& spread, const b
 	mes+=((spread)?to_stringTabs(indent) : "");
 	//mes+="QUAD";
 
-	//if (full_info){
+	if (full_info){
 		mes+="QUAD[";
-		mes+="p, ";									//Pointer
-		//mes+="\n";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=m_a.to_string();						//a
 		mes+=", ";
 		mes+=m_ppoint->to_string(false, false);		//Point
@@ -535,7 +537,7 @@ template <typename T> std::string Quad<T>::to_string(const bool& spread, const b
 		mes+="w:" + std::to_string(m_tot_weight.to_long_double());
 		mes+="]";
 		mes+=((spread)?"\n" : "");
-	//}
+	}
 
 	mes+=((spread)?to_stringTabs(indent+1) : "");
 	//mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
@@ -572,7 +574,7 @@ template <typename T> std::string Quad<T>::to_string(const bool& spread, const b
 
 template <typename T> void Quad<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

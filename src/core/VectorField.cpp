@@ -76,10 +76,12 @@ void VectorField::setT(const long double& dt){
 std::string VectorField::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
 	std::string mes=(spread)?"\n":"";
 
-	mes+="VECTOR_FIELD";
-
 	if (full_info){
-		mes+="():";//Pointer
+		mes+="VECTOR_FIELD[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 	mes+="mode= " + std::to_string(m_mode) + ";k= "+std::to_string(m_k)+";sets: " + std::to_string(m_pmoveables.size()) +"\n";
@@ -96,7 +98,7 @@ std::string VectorField::to_string(const bool& spread, const bool& full_info, co
 
 void VectorField::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

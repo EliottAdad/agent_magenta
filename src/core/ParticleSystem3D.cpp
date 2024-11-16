@@ -83,7 +83,11 @@ std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_inf
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="PARTICLE SET ():";
+		mes+="PARTICLE SET[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 	for (Particle3D* ppart : m_poctree->getPElements()){
@@ -97,6 +101,6 @@ std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_inf
 
 void ParticleSystem3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 

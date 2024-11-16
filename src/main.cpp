@@ -293,13 +293,10 @@ int main(int argc, char* argv[]){
     p2.z={2, 1};
     p2.w={1, 12};
 
-    printf("\nMain0\n");
-    p.print(true);
-    printf("\nMain1\n");
+    p.print(true, true, 1);
 
     // Init SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0){
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
         return EXIT_FAILURE;
     }
@@ -309,29 +306,35 @@ int main(int argc, char* argv[]){
 
     g1.getPScene()->addPDisplayable(&p);
     g1.getPScene()->addPDisplayable(&p2);
-    for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
+    /*for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
     	printf("\n###1\n");
     	pdisplayable->print(true);
     	printf("\n###1\n");
-    }//OK
+    }*///OK
     bool ans2=g1.getPPhysics()->addPTimeSensitive(&p);
     g1.getPPhysics()->addPTimeSensitive(&p2);
     printf("\naddPTimeSensitive was successful ?: %b\n", ans2);
-    for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
-    	printf("\n###2\n");
+    /*for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
+    	//printf("\n###2\n");
     	ptime_sensitive->print(true);
-    	printf("\n###2\n");
-    }//OK
+    	//printf("\n###2\n");
+    }*///OK
 
 
     // Creation of a particle system (System3D)
     System3D<Particle3D> sys;
     sys.setPFunc(rrr);
+    sys.setA({1, 3});
     sys.addPElement(&p);
     sys.addPElement(&p2);
-    sys.setA({1, 3});
+    printf("\nprint system1:\n");
+    sys.print(true, true, 2);
+    printf("\nprint system2\n");
 
     g1.getPPhysics()->addPTimeSensitive(&sys);
+    printf("\nprint physics1:\n");
+    g1.getPPhysics()->print(true);
+    printf("\nprint physics2:\n");
 
     // Launch the simulation
     //g1.getPPhysics()->iterate(10);

@@ -80,6 +80,6 @@ std::string WeightedPoint3D::to_string(const bool& spread, const bool& full_info
 
 void WeightedPoint3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 

@@ -25,14 +25,14 @@ Printable::Printable(const Printable &other) {
 
 std::string Printable::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
-	//mes+=((spread)?to_stringTabs(indent) : "");
-	//mes+=((spread)?to_stringTabs(0) : "");
-	//mes+="QUAD";
+	printTabs(indent);
 
 	if (full_info){
 		mes+="PRINTABLE[";
-		mes+="p";									//Pointer
-		mes+="]";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 
@@ -41,6 +41,6 @@ std::string Printable::to_string(const bool& spread, const bool& full_info, cons
 
 void Printable::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }
 

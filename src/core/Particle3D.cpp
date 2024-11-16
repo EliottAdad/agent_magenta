@@ -165,19 +165,26 @@ void Particle3D::apply(){
 
 std::string Particle3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
 
 	if (full_info){
-		mes+="PARTICLE ():";
+		mes+="PARTICLE[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
 
-	mes+="(" + this->x.to_string() + ", " + this->y.to_string() + ", " + this->z.to_string()+ ", " + this->w.to_string()+")";
-	mes+=" ; ";
+	mes+=to_stringTabs(indent+1);
+	mes+="(" + this->x.to_string() + ", " + this->y.to_string() + ", " + this->z.to_string()+ ", " + this->w.to_string();
+	mes+=" |:| ";
 	mes+=m_ps->to_string(false, false);
+	mes+=")";
 	return mes;
 }
 
 void Particle3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, full_info, indent);
 }

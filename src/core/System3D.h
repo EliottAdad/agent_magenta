@@ -22,7 +22,7 @@
  * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ()
  * If you want to use the functions (rrr, ...) you need a .getW() too
  */
-template <typename T> class System3D: public TimeSensitive {
+template <typename T> class System3D : public TimeSensitive {
 protected:
 	LSN m_a;														// Lenght of the side of the zone.
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
@@ -116,7 +116,7 @@ template <typename T> LSN System3D<T>::getA() const {
 
 template <typename T> void System3D<T>::setA(const LSN& a) {
 	m_poctree->setA(a);
-	this->recalculate();//Possible probleme
+	//this->recalculate();//Possible probleme
 }
 
 template <typename T> Oct<T>* System3D<T>::getPOctree() {
@@ -187,7 +187,7 @@ template <typename T> void System3D<T>::apply(){
 
 template <typename T> void System3D<T>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
 	m_ptrLaw=ptrLaw;
-	printf("%p\n", m_ptrLaw);
+	//printf("%p\n", m_ptrLaw);
 }
 
 template <typename T> void System3D<T>::recalculate() const {
@@ -202,23 +202,29 @@ template <typename T> void System3D<T>::recalculate() const {
 
 template <typename T> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
 
 	if (full_info){
-		mes+="SYSTEM ():";
+		mes+="SYSTEM[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
-	for (T* ppart : m_poctree->getPElements()){
-		mes+="	- ( ";
-		mes+=ppart->to_string(false, false);
-		mes+=" )";
+	for (T* pelement : m_poctree->getPElements()){
+		mes+=to_stringTabs(indent+1);
+		mes+="* ";
+		mes+=pelement->to_string(false, false, 0);
 		mes+="\n";
 	}
+
 	return mes;
 }
 
 template <typename T> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
 	printTabs(indent);
-	printf((this->to_string(spread, indent, full_info)).c_str());
+	std::cout << this->to_string(spread, indent, full_info);
 }
 
 /*
