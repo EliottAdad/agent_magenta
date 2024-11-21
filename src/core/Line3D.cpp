@@ -38,6 +38,16 @@ Line3D::Line3D(const Line3D& l){
 	m_pp2=new Point3D(l.getP2());
 }
 
+/*
+ * Copy constructor
+ */
+Line3D::Line3D(const Line3D* pl){
+	m_delp1=true;
+	m_delp2=true;
+	m_pp1=new Point3D(pl->getP1());
+	m_pp2=new Point3D(pl->getP2());
+}
+
 Line3D::~Line3D() {
 	if (m_delp1){
 		delete m_pp1;

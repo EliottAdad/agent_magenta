@@ -2,8 +2,7 @@
 \label{classParticle3D}\index{Particle3D@{Particle3D}}
 
 
-Inheritance diagram for Particle3D\+:
-\nopagebreak
+Inheritance diagram for Particle3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Particle3D\+:
 \end{figure}
 
 
-Collaboration diagram for Particle3D\+:
-\nopagebreak
+Collaboration diagram for Particle3D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,6 +23,9 @@ Collaboration diagram for Particle3D\+:
 \item 
 \mbox{\Hypertarget{classParticle3D_abcdcd91a6aabd53f08dcd8bb2b5ff8e3}\label{classParticle3D_abcdcd91a6aabd53f08dcd8bb2b5ff8e3}} 
 {\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p)
+\item 
+\mbox{\Hypertarget{classParticle3D_aa637809ba1866f434573311855dc652a}\label{classParticle3D_aa637809ba1866f434573311855dc652a}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structLSN}{LSN}} \&x, const \mbox{\hyperlink{structLSN}{LSN}} \&y, const \mbox{\hyperlink{structLSN}{LSN}} \&z)
 \item 
 \mbox{\Hypertarget{classParticle3D_a699d5048fab177c01eb9b8e82f5ecb04}\label{classParticle3D_a699d5048fab177c01eb9b8e82f5ecb04}} 
 {\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}} \&wp)
@@ -50,8 +51,14 @@ virtual \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classParticle3D_a89ff
 \mbox{\Hypertarget{classParticle3D_adc28def25bff5df4559d193cb55f2b41}\label{classParticle3D_adc28def25bff5df4559d193cb55f2b41}} 
 void {\bfseries set\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
 \item 
-\mbox{\Hypertarget{classParticle3D_a304ec3ec8ab20b18994c200bf45c9ab7}\label{classParticle3D_a304ec3ec8ab20b18994c200bf45c9ab7}} 
-void {\bfseries set\+DSpeed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&ds)
+\mbox{\Hypertarget{classParticle3D_ab6fb116529756e8fc3d37bec95c9aa4c}\label{classParticle3D_ab6fb116529756e8fc3d37bec95c9aa4c}} 
+void {\bfseries set\+Speed} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p)
+\item 
+\mbox{\Hypertarget{classParticle3D_a173fb97d151038da40e10920f484987c}\label{classParticle3D_a173fb97d151038da40e10920f484987c}} 
+void {\bfseries add\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&ds)
+\item 
+\mbox{\Hypertarget{classParticle3D_a1122ed9a45ffd3459a04182169af9c04}\label{classParticle3D_a1122ed9a45ffd3459a04182169af9c04}} 
+void {\bfseries add\+Speed} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p)
 \item 
 \mbox{\Hypertarget{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}\label{classParticle3D_ade7b6cfead0a2351154bed13b3fb0a34}} 
 virtual void {\bfseries add\+As\+Force} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v, const long double \&dt)
@@ -69,9 +76,9 @@ virtual void \mbox{\hyperlink{classParticle3D_af1a80db832228ccf3d69e17287ece0d9}
 \item 
 virtual void \mbox{\hyperlink{classParticle3D_a3bebac277da186d974921d88370905b3}{apply}} ()
 \item 
-std\+::string \mbox{\hyperlink{classParticle3D_ab929b38472952c0b702ef81da7600eb4}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+std\+::string \mbox{\hyperlink{classParticle3D_a8425f54a8ac32f72f7f84dbda8f1f874}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-void \mbox{\hyperlink{classParticle3D_a81568cf3aac423e27098830d5e865fc3}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+void \mbox{\hyperlink{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -129,11 +136,11 @@ Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
 
 Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
 
-\mbox{\Hypertarget{classParticle3D_a81568cf3aac423e27098830d5e865fc3}\label{classParticle3D_a81568cf3aac423e27098830d5e865fc3}} 
+\mbox{\Hypertarget{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}\label{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}} 
 \index{Particle3D@{Particle3D}!print@{print}}
 \index{print@{print}!Particle3D@{Particle3D}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void Particle3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Particle3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -149,11 +156,11 @@ Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
 Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
-\mbox{\Hypertarget{classParticle3D_ab929b38472952c0b702ef81da7600eb4}\label{classParticle3D_ab929b38472952c0b702ef81da7600eb4}} 
+\mbox{\Hypertarget{classParticle3D_a8425f54a8ac32f72f7f84dbda8f1f874}\label{classParticle3D_a8425f54a8ac32f72f7f84dbda8f1f874}} 
 \index{Particle3D@{Particle3D}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!Particle3D@{Particle3D}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily std\+::string Particle3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::string Particle3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

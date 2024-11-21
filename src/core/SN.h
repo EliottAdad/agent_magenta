@@ -17,19 +17,16 @@
 #include "../utilities/Printable.h"
 
 
-//typedef enum mantissa{float, double, (long double)};
-//typedef enum exponent{char, int, long int};
-
-/*
+/**
  * ######
  *  SN :)
  * ######
  * Scientific Number
  * It allows to store big numbers
  * under scientific notation.
- * Recommended uses : 	(float, char)
- * 						(double, char)
- * 						##(double, int)
+ * Recommended uses : 	<float, char>
+ * 						<double, char>
+ * 						<double, int>
  */
 template<typename M, typename E> struct SN : public Printable {
 	M m;						// Mantissa
@@ -37,6 +34,8 @@ template<typename M, typename E> struct SN : public Printable {
 
 	SN();
 	SN(M m, E e);
+	SN(const SN& nb);
+	SN(const SN* pnb);
 
 	void recal();												//:)
 
@@ -104,14 +103,36 @@ template<typename M, typename E> SN<M, E>::SN() {
 	this->e=0;
 }
 
+template<> SN<float, char>::SN() {
+	this->m=0.;
+	this->e=0;
+}
+
 template<typename M, typename E> SN<M, E>::SN(M m, E e) {
 	this->m=m;
 	this->e=e;
 	this->recal();
 }
 
+template<> SN<float, char>::SN(float m, char e) {
+	this->m=m;
+	this->e=e;
+}
+
+template<typename M, typename E> SN<M, E>::SN(const SN& nb) {
+	this->m=nb.m;
+	this->e=nb.e;
+	this->recal();
+}
+
+template<typename M, typename E> SN<M, E>::SN(const SN* pnb) {
+	this->m=pnb->m;
+	this->e=pnb->e;
+	this->recal();
+}
+
 /*
- * Recalculate the LSN under scientific notation.
+ * Recalculate the SN under scientific notation.
  * Ex: 1.27x10⁹
  */
 template<typename M, typename E> void SN<M, E>::recal() {
@@ -248,8 +269,8 @@ template<typename M, typename E> bool operator!=(const long double& nb1, const L
  * :)
  */
 template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const SN<M, E>& nb2) {
-	printf("1)\n%Lf\n", nb1.m*pow(10., (long double)(nb1.e-nb2.e)));
-	printf("2)\n%Lf\n", nb2.m);
+	//printf("1)\n%Lf\n", nb1.m*pow(10., (long double)(nb1.e-nb2.e)));
+	//printf("2)\n%Lf\n", nb2.m);
 	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))<=nb2.m){	// .
 		return true;
 	}
@@ -277,6 +298,13 @@ template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const SN<M
 	return false;
 }
 
+template<> bool operator>=(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	if (nb1.m*pow(10., (float)(nb1.e-nb2.e))>=nb2.m){	// .
+		return true;
+	}
+	return false;
+}
+
 /*template<typename M, typename E> bool operator>=(const LSN& nb1, const long double& nb2) {
 	if (nb1.m*pow(10., (long double)(nb1.e))>=nb2){	// .
 		return true;
@@ -294,6 +322,13 @@ template<typename M, typename E> bool operator>=(const long double& nb1, const L
 template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))<nb2.m){	// .
 	//if (nb1.e<nb2.e or (nb1.e==nb2.e and nb1.m<nb2.m)){		// Else if the e are the same but m1<m2.
+		return true;
+	}
+	return false;
+}
+
+template<> bool operator<(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	if (nb1.m*pow(10., (float)(nb1.e-nb2.e))<nb2.m){
 		return true;
 	}
 	return false;
@@ -323,6 +358,13 @@ template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const SN<M,
 	return false;
 }
 
+template<typename M, typename E> bool operator>(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	if (nb1.m*pow(10., (float)(nb1.e-nb2.e))>nb2.m){
+		return true;
+	}
+	return false;
+}
+
 /*template<typename M, typename E> bool operator>(const LSN& nb1, const long double& nb2) {
 	if (nb1.m*pow(10., (long double)(nb1.e))>nb2){	// .
 	//if (nb1.m>nb2/pow(10, nb1.e)){
@@ -345,6 +387,11 @@ template<typename M, typename E> bool operator>(const long double& nb1, const LS
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	return {nb1.m+nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e};
 }
+
+template<> SN<float, char> operator+(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	return {nb1.m+nb2.m/pow(10., (float)(nb1.e-nb2.e)), nb1.e};
+}
+
 /*
 template<typename M, typename E> LSN operator+(const LSN& nb1, const long double& nb2) {
 	return {nb1.m+nb2/pow(10., (long double)nb1.e), nb1.e};
@@ -361,6 +408,10 @@ template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const S
 	return {nb1.m-nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e};
 }
 
+template<> SN<float, char> operator-(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	return {nb1.m-nb2.m/pow(10., (float)(nb1.e-nb2.e)), nb1.e};
+}
+
 /*template<typename M, typename E> LSN operator-(const LSN& nb1, const long double& nb2) {
 	return {nb1.m-nb2/pow(10., (long double)nb1.e), nb1.e};
 }
@@ -373,6 +424,10 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const S
 	return {nb1.m*nb2.m, nb1.e+nb2.e};
 }
 
+template<> SN<float, char> operator*(const SN<float, char>& nb1, const SN<float, char>& nb2) {
+	return {nb1.m*nb2.m, nb1.e+nb2.e};
+}
+
 /*template<typename M, typename E> LSN operator*(const LSN& nb, const long double& k) {
 	return {nb.m*k, nb.e};
 }
@@ -382,6 +437,10 @@ template<typename M, typename E> LSN operator*(const long double& k, const LSN& 
 }*/
 
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2) {
+	return {nb1.m/nb2.m, nb1.e-nb2.e};
+}
+
+template<typename M, typename E> SN<float, char> operator/(const SN<float, char>& nb1, const SN<float, char>& nb2) {
 	return {nb1.m/nb2.m, nb1.e-nb2.e};
 }
 
@@ -413,11 +472,33 @@ template<typename M, typename E> std::string SN<M, E>::to_string(const bool& spr
 	return mes;
 }
 
+template<> std::string SN<float, char>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::string mes=((spread)?"\n" : "");
+
+	if (full_info){
+		mes+="LSN[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
+		mes+=((spread)?"\n" : "");
+		mes+=std::to_string(m) + "x10^" + std::to_string(e);
+	}else{
+		mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
+	}
+
+	return mes;
+}
+
 template<typename M, typename E> void SN<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
 
+template<> void SN<float, char>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printTabs(indent);
+	std::cout << this->to_string(spread, full_info, indent);
+}
 
 /*
  * Functions
@@ -429,12 +510,23 @@ template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb) {
 	return resp;
 }
 
+template<> SN<float, char> abs(const SN<float, char>& nb) {
+	SN resp{std::abs(nb.m), nb.e};
+	//resp.recal();
+	return resp;
+}
+
 template<typename M, typename E> SN<M, E> pow(const SN<M, E>& nb, const long int& e) {
 	SN resp{pow(nb.m, (long double)e), nb.e*e};
 	resp.recal();
 	return resp;
 }
 
+template<> SN<float, char> pow(const SN<float, char>& nb, const long int& e) {
+	SN resp{pow(nb.m, (float)e), nb.e*e};
+	resp.recal();
+	return resp;
+}
 /*// Calculate the n root of a number
 template<typename M, typename E> LSN nrt(LSN& nb, long int e) {
 	//LSN nb2={1, 0};
@@ -456,6 +548,11 @@ template<typename M, typename E> SN<M, E> sqrt(const SN<M, E>& nb) {
 	return resp;
 }
 
+template<> SN<float, char> sqrt(const SN<float, char>& nb) {
+	SN resp={pow(nb.m, 0.5), nb.e/2};//Doesn't work (exponent cast to int)
+	resp.recal();
+	return resp;
+}
 
 
 

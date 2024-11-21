@@ -10,6 +10,7 @@
 
 #include "Line3D.h"
 #include "Point3D.h"
+#include <memory>
 
 /*
  * ############
@@ -25,6 +26,7 @@ public:
 	Vector3D(Point3D* pp1, const Point3D& p2);
 	Vector3D(const Point3D& p1, Point3D* pp2);
 	Vector3D(const Vector3D& v);
+	Vector3D(const Vector3D* pv);
 	virtual ~Vector3D();//:)
 
 	void setPPoint(Point3D* ppoint, const bool& delp=true);
@@ -59,18 +61,18 @@ public:
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
-Vector3D operator+(const Vector3D& v1, const Vector3D& v2);// :)
-Vector3D operator-(const Vector3D& v1, const Vector3D& v2);// :)
-Vector3D operator*(const Vector3D& v, const long double& k);// :)
-Vector3D operator*(const Vector3D& v, const LSN& k);// :)
-Vector3D operator/(const Vector3D& v, const long double& k);// :)
-Vector3D operator/(const Vector3D& v, const LSN& k);// :)
+std::unique_ptr<Vector3D> operator+(const Vector3D& v1, const Vector3D& v2);// :)
+std::unique_ptr<Vector3D> operator-(const Vector3D& v1, const Vector3D& v2);// :)
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const long double& k);// :)
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const LSN& k);// :)
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const long double& k);// :)
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const LSN& k);// :)
 
 //Scalar product
-LSN operator*(const Vector3D& v1, const Vector3D& v2);// :)
+std::unique_ptr<LSN> operator*(const Vector3D& v1, const Vector3D& v2);// :)
 
 //Vector product
-Vector3D operator^(const Vector3D& v1, const Vector3D& v2);// :)
+std::unique_ptr<Vector3D> operator^(const Vector3D& v1, const Vector3D& v2);// :)
 
 
 

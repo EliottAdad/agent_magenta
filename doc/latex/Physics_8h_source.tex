@@ -27,16 +27,16 @@
 \DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{24 \textcolor{comment}{ * Physics must be kept independent from Game (it should be self sufficient)}}
 \DoxyCodeLine{25 \textcolor{comment}{ * Gère le temps (à la place de TimeLoop, tout transvaser)}}
-\DoxyCodeLine{26 \textcolor{comment}{ */}}
-\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{classPhysics}{Physics}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{28 \textcolor{keyword}{private}:}
-\DoxyCodeLine{29     \textcolor{keywordtype}{float} m\_speed;                  \textcolor{comment}{//Ratio between simulation\_speed/real\_world\_speed}}
-\DoxyCodeLine{30     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_pps;             \textcolor{comment}{//Physics per second}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{keywordtype}{bool} m\_fcollide;}
-\DoxyCodeLine{33     \textcolor{keywordtype}{bool} m\_fpause;}
-\DoxyCodeLine{34     std::unordered\_set<TimeSensitive*> m\_ptime\_sensitives;          \textcolor{comment}{//List of time sensitive objects}}
-\DoxyCodeLine{35     \textcolor{comment}{//std::unordered\_set<Moveable*> m\_pmoveables;           //List of moveable objects}}
+\DoxyCodeLine{26 \textcolor{comment}{ * Exemples of objects it can drive: System<T>, Particle3D, ...}}
+\DoxyCodeLine{27 \textcolor{comment}{ */}}
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classPhysics}{Physics}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30     \textcolor{keywordtype}{float} m\_speed;                  \textcolor{comment}{//Ratio between simulation\_speed/real\_world\_speed}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_pps;             \textcolor{comment}{//Physics per second}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{bool} m\_fcollide;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{bool} m\_fpause;}
+\DoxyCodeLine{35     std::unordered\_set<TimeSensitive*> m\_ptime\_sensitives;          \textcolor{comment}{//List of time sensitive objects}}
 \DoxyCodeLine{36 }
 \DoxyCodeLine{37 \textcolor{keyword}{public}:}
 \DoxyCodeLine{38     \mbox{\hyperlink{classPhysics}{Physics}}();}
@@ -62,8 +62,8 @@
 \DoxyCodeLine{58     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);}
 \DoxyCodeLine{59     \textcolor{keywordtype}{bool} iterate(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
 \DoxyCodeLine{60 }
-\DoxyCodeLine{61     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{62     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{61     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{62     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
 \DoxyCodeLine{63 \};}
 \DoxyCodeLine{64 }
 \DoxyCodeLine{65 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PHYSICS\_H\_ */}\textcolor{preprocessor}{}}

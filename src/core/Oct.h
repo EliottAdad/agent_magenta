@@ -27,7 +27,7 @@ template <typename T> class Oct : public Printable {
 protected:
 	Point3D* m_ppoint;					// The center of the zone.
 	Point3D* m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
-	bool m_delppoint;					// If the point should be deleted.
+	bool m_delp;					// If the point should be deleted.
 
 	LSN m_a;							// Length of the zone's border.
 	LSN m_tot_weight;					// Total weight contained in this Oct.
@@ -35,14 +35,14 @@ protected:
 	T* m_pT;							// The content of this square (NULL if nothing).
 	//Particle3D* m_pparticle;			// The content of this node.
 
-	Oct* m_pTLFTree;					// Top Left corner : is NULL if nothing
-	Oct* m_pTRFTree;					// Top Right corner : is NULL if nothing
-	Oct* m_pBLFTree;					// Bottom Left corner : is NULL if nothing
-	Oct* m_pBRFTree;					// Bottom Right corner : is NULL if nothing
-	Oct* m_pTLBTree;					// Top Left corner : is NULL if nothing
-	Oct* m_pTRBTree;					// Top Right corner : is NULL if nothing
-	Oct* m_pBLBTree;					// Bottom Left corner : is NULL if nothing
-	Oct* m_pBRBTree;					// Bottom Right corner : is NULL if nothing
+	Oct<T>* m_pTLFTree;					// Top Left corner : is NULL if nothing
+	Oct<T>* m_pTRFTree;					// Top Right corner : is NULL if nothing
+	Oct<T>* m_pBLFTree;					// Bottom Left corner : is NULL if nothing
+	Oct<T>* m_pBRFTree;					// Bottom Right corner : is NULL if nothing
+	Oct<T>* m_pTLBTree;					// Top Left corner : is NULL if nothing
+	Oct<T>* m_pTRBTree;					// Top Right corner : is NULL if nothing
+	Oct<T>* m_pBLBTree;					// Bottom Left corner : is NULL if nothing
+	Oct<T>* m_pBRBTree;					// Bottom Right corner : is NULL if nothing
 
 	static unsigned int m_NB_OCTS;		// Keeps track of the number of Octs created.
 
@@ -60,18 +60,23 @@ public:
 	Oct(const LSN& a, Point3D* ppoint);
 	virtual ~Oct();
 
+	Point3D getPoint() const;
+	Point3D* getPPoint() const;
+	Point3D getBarycenter() const;
+	//Point3D* getPBarycenter() const;
+	bool getDelP() const;
 	LSN getA() const;
 	void setA(const LSN& a);
 	unsigned int getNB_OCTS() const;
 	//float getAlpha();
 	//static void setAlpha(float& alpha=0.5);
-	std::unordered_set<Oct<T>*> getPTrees();			//Returns all the trees under, contained by this tree.
-	std::unordered_set<T*> getPElements() const;		//Returns all the elements contained in the tree.
+	std::unordered_set<Oct<T>*> getPTrees();						//Returns all the trees under, contained by this tree.
+	std::unordered_set<T*> getPElements() const;					//Returns all the elements contained in the tree.
 	std::unordered_set<T*> getPNeighbors(T* pelement) const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
 	//bool insert(Particle3D* ppart);
-	void find(const T& t, std::unordered_set<Oct<T>*>& pquads);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
+	void find(const T& t, std::unordered_set<Oct<T>*>& pocts);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
 	//void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;// Useless
 	//std::unordered_set<T*> find(const Point3D& point);
 	T* search(Point3D* ppoint) const;
@@ -118,7 +123,7 @@ template <typename T> float Oct<T>::m_ALPHA=0.5;
 template <typename T> Oct<T>::Oct(const LSN& a, const Point3D& point) {
 	m_ppoint=new Point3D(point);
 	m_pbarycenter=new Point3D(*m_ppoint);
-	m_delppoint=true;
+	m_delp=true;
 
 	m_a=a;
 	m_tot_weight=0.;
@@ -143,7 +148,7 @@ template <typename T> Oct<T>::Oct(const LSN& a, const Point3D& point) {
 template <typename T> Oct<T>::Oct(const LSN& a, Point3D* ppoint) {
 	m_ppoint=ppoint;
 	m_pbarycenter=new Point3D(*m_ppoint);
-	m_delppoint=false;
+	m_delp=false;
 
 	m_a=a;
 	m_tot_weight=0.;
@@ -163,7 +168,7 @@ template <typename T> Oct<T>::Oct(const LSN& a, Point3D* ppoint) {
 }
 
 template <typename T> Oct<T>::~Oct() {
-	if (m_delppoint){
+	if (m_delp){
 		delete m_ppoint;
 	}else{
 		m_ppoint=NULL;
@@ -689,7 +694,7 @@ template <typename T> bool Oct<T>::empty() {
 	return true;
 }
 
-template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>& pquads) {
+template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>& pocts) {
 	Point3D p={t.x, t.y, {0, 0}};
 
 	LSN s=this->m_a;
@@ -698,34 +703,35 @@ template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>&
 	//std::cout<<"\n"<<alpha.to_string()<<"\n";
 
 	if (alpha>=m_ALPHA){
-		pquads.insert(this);
+		pocts.insert(this);
 	}else{
 		if (m_pTLBTree!=NULL){
-			m_pTLBTree->find(t, pquads);
+			m_pTLBTree->find(t, pocts);
 		}
 		if (m_pTRBTree!=NULL){
-			m_pTRBTree->find(t, pquads);
+			m_pTRBTree->find(t, pocts);
 		}
 		if (m_pBLBTree!=NULL){
-			m_pBLBTree->find(t, pquads);
+			m_pBLBTree->find(t, pocts);
 		}
 		if (m_pBRBTree!=NULL){
-			m_pBRBTree->find(t, pquads);
+			m_pBRBTree->find(t, pocts);
 		}
 		if (m_pTLFTree!=NULL){
-			m_pTLFTree->find(t, pquads);
+			m_pTLFTree->find(t, pocts);
 		}
 		if (m_pTRFTree!=NULL){
-			m_pTRFTree->find(t, pquads);
+			m_pTRFTree->find(t, pocts);
 		}
 		if (m_pBLFTree!=NULL){
-			m_pBLFTree->find(t, pquads);
+			m_pBLFTree->find(t, pocts);
 		}
 		if (m_pBRFTree!=NULL){
-			m_pBRFTree->find(t, pquads);
+			m_pBRFTree->find(t, pocts);
 		}
 	}
 }
+
 //Useless
 /*template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const {
 	if (&t!=m_pT){

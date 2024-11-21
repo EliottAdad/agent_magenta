@@ -10,6 +10,7 @@
 
 #include "LSN.h"
 #include "../utilities/Printable.h"
+#include <memory>
 
 /*
  * ###########
@@ -53,15 +54,15 @@ bool operator==(const Point3D& p1, const Point3D& p2);		// :)
 bool operator!=(const Point3D& p1, const Point3D& p2);		// :)
 bool operator<=(const Point3D& p1, const Point3D& p2);		// :)
 bool operator>=(const Point3D& p1, const Point3D& p2);		// :)
-Point3D operator+(const Point3D& p1, const Point3D& p2);	// :)
-Point3D operator-(const Point3D& p1, const Point3D& p2);	// :)
-Point3D operator*(const Point3D& p, const LSN& k);			// :)
-Point3D operator*(const LSN& k, const Point3D& p);			// :)
-Point3D operator*(const Point3D& p, const long double& k);	// :)
-Point3D operator*(const long double& k, const Point3D& p);	// :)
-Point3D operator/(const Point3D& p, const LSN& k);			// :)
+std::unique_ptr<Point3D> operator+(const Point3D& p1, const Point3D& p2);	// :)
+std::unique_ptr<Point3D> operator-(const Point3D& p1, const Point3D& p2);	// :)
+std::unique_ptr<Point3D> operator*(const Point3D& p, const LSN& k);			// :)
+std::unique_ptr<Point3D> operator*(const LSN& k, const Point3D& p);			// :)
+std::unique_ptr<Point3D> operator*(const Point3D& p, const long double& k);	// :)
+std::unique_ptr<Point3D> operator*(const long double& k, const Point3D& p);	// :)
+std::unique_ptr<Point3D> operator/(const Point3D& p, const LSN& k);			// :)
 //Point3D operator/(const LSN& k, const Point3D& p);			// :)
-Point3D operator/(const Point3D& p, const long double& k);	// :)
+std::unique_ptr<Point3D> operator/(const Point3D& p, const long double& k);	// :)
 //Point3D operator/(const long double& k, const Point3D& p);	// :)
 
 /*

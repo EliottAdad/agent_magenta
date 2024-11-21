@@ -192,9 +192,10 @@ int main(int argc, char* argv[]){
 	printf("\n Test /= end \n");
 
 	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-	//Vector3D rv5=((rv1+rv2)-rv4)+rv3;
+	Vector3D rv5;
+	rv5=(rv1+rv2);
 	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-	//rv5.print();
+	rv5.print(true, true, 1);
 	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
 }
 

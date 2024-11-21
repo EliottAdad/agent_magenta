@@ -1,5 +1,7 @@
 <map id="Oct&lt; T &gt;" name="Oct&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="9,171,92,197"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="5,5,85,32"/>
-<area shape="rect" id="node3" href="$structLSN.html" title=" " alt="" coords="67,81,114,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="69,619,152,645"/>
+<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="71,5,151,32"/>
+<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="129,209,202,235"/>
+<area shape="rect" id="node4" href="$structLSN.html" title=" " alt="" coords="122,81,169,108"/>
+<area shape="rect" id="node5" href="$classOct.html" title=" " alt="" coords="292,381,375,408"/>
 </map>

@@ -21,7 +21,7 @@
 \DoxyCodeLine{17 \textcolor{comment}{ *  Line3D :)}}
 \DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{19 \textcolor{comment}{ * A line is represented by two points.}}
-\DoxyCodeLine{20 \textcolor{comment}{ * This class present a few usefull methods}}
+\DoxyCodeLine{20 \textcolor{comment}{ * This class present a few useful methods}}
 \DoxyCodeLine{21 \textcolor{comment}{ * to compute the geometry of the objects.}}
 \DoxyCodeLine{22 \textcolor{comment}{ */}}
 \DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classLine3D}{Line3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
@@ -32,25 +32,25 @@
 \DoxyCodeLine{28     \textcolor{keywordtype}{bool} m\_delp2;}
 \DoxyCodeLine{29 }
 \DoxyCodeLine{30 \textcolor{keyword}{public}:}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{comment}{/*:)}}
-\DoxyCodeLine{33 \textcolor{comment}{     * By default constructor}}
-\DoxyCodeLine{34 \textcolor{comment}{     */}}
-\DoxyCodeLine{35     \mbox{\hyperlink{classLine3D}{Line3D}}();}
-\DoxyCodeLine{36     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
-\DoxyCodeLine{37     \mbox{\hyperlink{classLine3D}{Line3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
-\DoxyCodeLine{38     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D}}\& l);}
-\DoxyCodeLine{39     \textcolor{keyword}{virtual} \mbox{\hyperlink{classLine3D}{\string~Line3D}}();\textcolor{comment}{//:)}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     \mbox{\hyperlink{structPoint3D}{Point3D}} getP1() \textcolor{keyword}{const};   \textcolor{comment}{//:)}}
-\DoxyCodeLine{42     \mbox{\hyperlink{structPoint3D}{Point3D}}* getPP1();\textcolor{comment}{//:)}}
-\DoxyCodeLine{43     \mbox{\hyperlink{structPoint3D}{Point3D}} getP2() \textcolor{keyword}{const};   \textcolor{comment}{//:)}}
-\DoxyCodeLine{44     \mbox{\hyperlink{structPoint3D}{Point3D}}* getPP2();\textcolor{comment}{//:)}}
-\DoxyCodeLine{45     \textcolor{keywordtype}{bool} getDelP1() \textcolor{keyword}{const};  \textcolor{comment}{//:)}}
-\DoxyCodeLine{46     \textcolor{keywordtype}{bool} getDelP2() \textcolor{keyword}{const};  \textcolor{comment}{//:)}}
+\DoxyCodeLine{31     \mbox{\hyperlink{classLine3D}{Line3D}}();}
+\DoxyCodeLine{32     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
+\DoxyCodeLine{33     \mbox{\hyperlink{classLine3D}{Line3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
+\DoxyCodeLine{34     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D}}\& l);}
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \mbox{\hyperlink{classLine3D}{\string~Line3D}}();                                   \textcolor{comment}{//:)}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \mbox{\hyperlink{structPoint3D}{Point3D}} getP1() \textcolor{keyword}{const};                               \textcolor{comment}{//:)}}
+\DoxyCodeLine{38     \mbox{\hyperlink{structPoint3D}{Point3D}}* \mbox{\hyperlink{classLine3D_a1a00c2f112757a086590e6469ba0bd61}{getPP1}}() \textcolor{keyword}{const};                           \textcolor{comment}{//:)}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} setP1(\mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false}); \textcolor{comment}{//:)}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} setPP1(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});    \textcolor{comment}{//:)}}
+\DoxyCodeLine{41     \mbox{\hyperlink{structPoint3D}{Point3D}} getP2() \textcolor{keyword}{const};                               \textcolor{comment}{//:)}}
+\DoxyCodeLine{42     \mbox{\hyperlink{structPoint3D}{Point3D}}* \mbox{\hyperlink{classLine3D_a480422dac9e94a26f60fe590ec69b469}{getPP2}}() \textcolor{keyword}{const};                           \textcolor{comment}{//:)}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} setP2(\mbox{\hyperlink{structPoint3D}{Point3D}}\& p2, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false}); \textcolor{comment}{//:)}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} setPP2(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp2, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});    \textcolor{comment}{//:)}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{bool} getDelP1() \textcolor{keyword}{const};                              \textcolor{comment}{//:)}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} getDelP2() \textcolor{keyword}{const};                              \textcolor{comment}{//:)}}
 \DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{50 \};}
 \DoxyCodeLine{51 }
 \DoxyCodeLine{52 }

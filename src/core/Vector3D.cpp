@@ -105,6 +105,17 @@ Vector3D::Vector3D(const Vector3D& v) {
 	m_pp2=new Point3D(v.getP2());
 }
 
+/*
+ * Constructor 7
+ * Copy constructor
+ */
+Vector3D::Vector3D(const Vector3D* pv) {
+	m_delp1=true;
+	m_delp2=true;
+	m_pp1=new Point3D(pv->getP1());
+	m_pp2=new Point3D(pv->getP2());
+}
+
 Vector3D::~Vector3D() {
 	if (m_delp1){
 		delete m_pp1;
@@ -217,7 +228,9 @@ void Vector3D::addEnd(const Point3D& dp) {
 
 
 void Vector3D::operator=(const Vector3D& v) {
+	printf("In the equalizer of Vector3D start\n");
 	*this->m_pp2=v.getP2();
+	printf("In the equalizer of Vector3D stop\n");
 }
 
 void Vector3D::operator+=(const Vector3D& v) {
@@ -294,41 +307,45 @@ void Vector3D::print(const bool& spread, const bool& full_info, const unsigned c
 
 
 
-Vector3D operator+(const Vector3D& v1, const Vector3D& v2) {
-	Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()+v2.getP2());
+std::unique_ptr<Vector3D> operator+(const Vector3D& v1, const Vector3D& v2) {
+	//std::unique_ptr<Vector3D> a = std::make_unique(Vector3D())
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v1.getP1(), v1.getP2()+v2.getP2()));
+	//Vector3D nv(v1.getP1(), v1.getP2()+v2.getP2());
 	return *pnv;
 }
 
-Vector3D operator-(const Vector3D& v1, const Vector3D& v2) {
-	Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()-v2.getP2());
+std::unique_ptr<Vector3D> operator-(const Vector3D& v1, const Vector3D& v2) {
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v1.getP1(), v1.getP2()-v2.getP2()));
+	//Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()-v2.getP2());
 	return *pnv;
 }
 
-Vector3D operator*(const Vector3D& v, const long double& k) {
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const long double& k) {
 	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()*k);
 	return *pnv;
 }
 
-Vector3D operator*(const Vector3D& v, const LSN& k) {
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const LSN& k) {
 	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()*k);
 	return *pnv;
 }
 
-Vector3D operator/(const Vector3D& v, const long double& k) {
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const long double& k) {
 	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()/k);
 	return *pnv;
 }
 
-Vector3D operator/(const Vector3D& v, const LSN& k) {
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const LSN& k) {
 	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()/k);
 	return *pnv;
 }
 
-LSN operator*(const Vector3D& v1, const Vector3D& v2) {
-	return v1.getP2().x*v2.getP2().x + v1.getP2().y*v2.getP2().y + v1.getP2().z*v2.getP2().z;
+std::unique_ptr<LSN> operator*(const Vector3D& v1, const Vector3D& v2) {
+	std::unique_ptr<LSN> pnlsn(new LSN(v1.getP2().x*v2.getP2().x + v1.getP2().y*v2.getP2().y + v1.getP2().z*v2.getP2().z));
+	return *pnlsn;
 }
 
-Vector3D operator^(const Vector3D& v1, const Vector3D& v2) {
+std::unique_ptr<Vector3D> operator^(const Vector3D& v1, const Vector3D& v2) {
 	Vector3D* pnv=new Vector3D(v1.getP1(), {
 			{v1.getP2().y*v2.getP2().z-v1.getP2().z*v2.getP2().y},
 			{v1.getP2().z*v2.getP2().x-v1.getP2().x*v2.getP2().z},

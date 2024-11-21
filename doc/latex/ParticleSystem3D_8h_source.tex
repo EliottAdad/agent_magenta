@@ -24,7 +24,7 @@
 \DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{21 \textcolor{comment}{ * Can contain any object having -\/>x, -\/>y and -\/>z}}
 \DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classParticleSystem3D}{ParticleSystem3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
 \DoxyCodeLine{24 \textcolor{keyword}{protected}:}
 \DoxyCodeLine{25     \mbox{\hyperlink{structLSN}{LSN}} m\_a;                                                     \textcolor{comment}{// Lenght of the side of the zone}}
 \DoxyCodeLine{26     \textcolor{comment}{//std::unordered\_set<Particle3D*> m\_pparticles;                 // Pointers to the Particles (useless: already in the octree)}}
@@ -52,8 +52,8 @@
 \DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& dv);     \textcolor{comment}{// Moveable}}
 \DoxyCodeLine{49     \textcolor{comment}{//virtual void move(const Vector3D\& dp);}}
 \DoxyCodeLine{50 }
-\DoxyCodeLine{51     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{51     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
 \DoxyCodeLine{53 \};}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{55 \textcolor{comment}{/*}}

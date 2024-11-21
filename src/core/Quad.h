@@ -33,10 +33,10 @@ protected:
 	T* m_pT;							// The content of this square (NULL if nothing).
 	//Particle3D* m_pparticle;			// The content of this node.
 
-	Quad* m_pTLTree;					// Top Left corner : is NULL if nothing
-	Quad* m_pTRTree;					// Top Right corner : is NULL if nothing
-	Quad* m_pBLTree;					// Bottom Left corner : is NULL if nothing
-	Quad* m_pBRTree;					// Bottom Right corner : is NULL if nothing
+	Quad<T>* m_pTLTree;					// Top Left corner : is NULL if nothing
+	Quad<T>* m_pTRTree;					// Top Right corner : is NULL if nothing
+	Quad<T>* m_pBLTree;					// Bottom Left corner : is NULL if nothing
+	Quad<T>* m_pBRTree;					// Bottom Right corner : is NULL if nothing
 
 	static unsigned int m_NB_QUADS;		// Keeps track of the number of Quad created.
 
@@ -59,7 +59,9 @@ public:
 	unsigned int getNB_QUADS() const;
 	//float getAlpha();
 	//void setAlpha(float& alpha=0.5);
-	std::unordered_set<T*> getElements() const;//Returns all the elements contained in the tree.
+	std::unordered_set<Quad<T>*> getPTrees();						//Returns all the trees under, contained by this tree.
+	std::unordered_set<T*> getPElements() const;					//Returns all the elements contained in the tree.
+	std::unordered_set<T*> getPNeighbors(T* pelement) const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
 	//void insert(Particle3D* ppart);
@@ -210,29 +212,29 @@ template <typename T> unsigned int Quad<T>::getNB_QUADS() const {
 	return m_NB_QUADS;
 }
 
-template <typename T> std::unordered_set<T*> Quad<T>::getElements() const {
+template <typename T> std::unordered_set<T*> Quad<T>::getPElements() const {
 	std::unordered_set<T*> elmts;
 
 	if (m_pT!=NULL){
 		elmts.insert(m_pT);
 	}else{
 		if (m_pTLTree==NULL){
-			for (T* pt : m_pTLTree->getElements()){
+			for (T* pt : m_pTLTree->getPElements()){
 				elmts.insert(pt);
 			}
 		}
 		if (m_pTRTree==NULL){
-			for (T* pt : m_pTRTree->getElements()){
+			for (T* pt : m_pTRTree->getPElements()){
 				elmts.insert(pt);
 			}
 		}
 		if (m_pBLTree==NULL){
-			for (T* pt : m_pBLTree->getElements()){
+			for (T* pt : m_pBLTree->getPElements()){
 				elmts.insert(pt);
 			}
 		}
 		if (m_pBRTree==NULL){
-			for (T* pt : m_pBRTree->getElements()){
+			for (T* pt : m_pBRTree->getPElements()){
 				elmts.insert(pt);
 			}
 		}

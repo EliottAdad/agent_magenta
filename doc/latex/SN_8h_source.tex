@@ -1,0 +1,455 @@
+\hypertarget{SN_8h_source}{}\doxysection{SN.\+h}
+\label{SN_8h_source}\index{core/SN.h@{core/SN.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * LSN.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 7 mai 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SN\_H\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SN\_H\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{//\#include <iostream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{31 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structSN}{SN}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{32     M m;                        \textcolor{comment}{// Mantissa}}
+\DoxyCodeLine{33     E e;                        \textcolor{comment}{// Exponent}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \mbox{\hyperlink{structSN}{SN}}();}
+\DoxyCodeLine{36     \mbox{\hyperlink{structSN}{SN}}(M m, E e);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} recal();                                               \textcolor{comment}{//:)}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{//long double to\_long\_double() const;                           //:)}}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN}}\& nb);                             \textcolor{comment}{//:)}}
+\DoxyCodeLine{42     \textcolor{comment}{//void operator=(const long double\& nb);                        //:)}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN}}\& nb);                                \textcolor{comment}{//:)}}
+\DoxyCodeLine{44     \textcolor{comment}{//void operator+=(const long double\& nb);                       //:)}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN}}\& nb);                                \textcolor{comment}{//:)}}
+\DoxyCodeLine{46     \textcolor{comment}{//void operator-\/=(const long double\& nb);                       //:)}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN}}\& nb);                                \textcolor{comment}{//:)}}
+\DoxyCodeLine{48     \textcolor{comment}{//void operator*=(const long double\& nb);                       //:)}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN}}\& nb);                                \textcolor{comment}{//:)}}
+\DoxyCodeLine{50     \textcolor{comment}{//void operator/=(const long double\& nb);                       //:)}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);             \textcolor{comment}{//:)}}
+\DoxyCodeLine{57 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);             \textcolor{comment}{//:)}}
+\DoxyCodeLine{58 \textcolor{comment}{//bool operator!=(const SN\& nb1, const long double\& nb2);       //:)}}
+\DoxyCodeLine{59 \textcolor{comment}{//bool operator!=(const long double\& nb1, const LSN\& nb2);      //:)}}
+\DoxyCodeLine{60 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);             \textcolor{comment}{//:)}}
+\DoxyCodeLine{61 \textcolor{comment}{//bool operator<=(const SN\& nb1, const long double\& nb2);       //:)}}
+\DoxyCodeLine{62 \textcolor{comment}{//bool operator<=(const long double\& nb1, const LSN\& nb2);      //:)}}
+\DoxyCodeLine{63 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);             \textcolor{comment}{//:)}}
+\DoxyCodeLine{64 \textcolor{comment}{//bool operator>=(const SN\& nb1, const long double\& nb2);       //:)}}
+\DoxyCodeLine{65 \textcolor{comment}{//bool operator>=(const long double\& nb1, const LSN\& nb2);      //:)}}
+\DoxyCodeLine{66 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{67 \textcolor{comment}{//bool operator<(const SN\& nb1, const long double\& nb2);            //:)}}
+\DoxyCodeLine{68 \textcolor{comment}{//bool operator<(const long double\& nb1, const LSN\& nb2);           //:)}}
+\DoxyCodeLine{69 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{70 \textcolor{comment}{//bool operator>(const SN\& nb1, const long double\& nb2);            //:)}}
+\DoxyCodeLine{71 \textcolor{comment}{//bool operator>(const long double\& nb1, const LSN\& nb2);           //:)}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{74 \textcolor{comment}{//SN operator+(const SN\& nb1, const long double\& nb2);          //:)}}
+\DoxyCodeLine{75 \textcolor{comment}{//LSN operator+(const long double\& nb1, const LSN\& nb2);            //:)}}
+\DoxyCodeLine{76 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{77 \textcolor{comment}{//LSN operator-\/(const LSN\& nb1, const long double\& nb2);            //:)}}
+\DoxyCodeLine{78 \textcolor{comment}{//LSN operator-\/(const long double\& nb1, const LSN\& nb2);            //:)}}
+\DoxyCodeLine{79 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{80 \textcolor{comment}{//LSN operator*(const LSN\& nb, const long double\& k);               //:)}}
+\DoxyCodeLine{81 \textcolor{comment}{//LSN operator*(const long double\& k, const LSN\& nb);               //:)}}
+\DoxyCodeLine{82 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2);                  \textcolor{comment}{//:)}}
+\DoxyCodeLine{83 \textcolor{comment}{//LSN operator/(const LSN\& nb, const long double\& k);               //:)}}
+\DoxyCodeLine{84 \textcolor{comment}{//LSN operator/(const long double\& k, const LSN\& nb);               //:)}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} abs(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb);                                          \textcolor{comment}{//:)}}
+\DoxyCodeLine{87 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} pow(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}\& exp);                 \textcolor{comment}{//:)}}
+\DoxyCodeLine{88 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} nrt(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}\& rt);}
+\DoxyCodeLine{89 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} sqrt(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{/*}}
+\DoxyCodeLine{96 \textcolor{comment}{ * Methods of SN}}
+\DoxyCodeLine{97 \textcolor{comment}{ */}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>::SN}}() \{}
+\DoxyCodeLine{100     this-\/>m=0;}
+\DoxyCodeLine{101     this-\/>e=0;}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>::SN}}(M m, E e) \{}
+\DoxyCodeLine{105     this-\/>m=m;}
+\DoxyCodeLine{106     this-\/>e=e;}
+\DoxyCodeLine{107     this-\/>recal();}
+\DoxyCodeLine{108 \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{comment}{/*}}
+\DoxyCodeLine{111 \textcolor{comment}{ * Recalculate the LSN under scientific notation.}}
+\DoxyCodeLine{112 \textcolor{comment}{ * Ex: 1.27x10⁹}}
+\DoxyCodeLine{113 \textcolor{comment}{ */}}
+\DoxyCodeLine{114 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::recal}}() \{}
+\DoxyCodeLine{115     \textcolor{comment}{//printf(("{}Number : "{}+this-\/>to\_string()+"{}\(\backslash\)n"{}).c\_str());}}
+\DoxyCodeLine{116     \textcolor{keywordflow}{if} (m==0)\{}
+\DoxyCodeLine{117         e=0;}
+\DoxyCodeLine{118     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{119         \textcolor{comment}{//std::cout<<"{}m!=0\(\backslash\)n"{};}}
+\DoxyCodeLine{120         \textcolor{keywordtype}{int} l\_m=std::log(abs(m)) / std::log(10);\textcolor{comment}{//Number of chiffres avant/après la virgule}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122         e+=(l\_m);}
+\DoxyCodeLine{123         m/=std::pow(10, (l\_m));}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125 \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keyword}{template}<> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<float, char>::recal}}() \{\textcolor{comment}{//printf(("{}Number : "{}+this-\/>to\_string()+"{}\(\backslash\)n"{}).c\_str());}}
+\DoxyCodeLine{128     \textcolor{keywordflow}{if} (m==0)\{}
+\DoxyCodeLine{129         e=0;}
+\DoxyCodeLine{130     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{131         \textcolor{keywordtype}{int} l\_m=std::log(abs(m)) / std::log(10.);\textcolor{comment}{//Number of chiffres avant/après la virgule}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         e+=l\_m;}
+\DoxyCodeLine{134         m/=std::pow(10, l\_m);}
+\DoxyCodeLine{135 \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{comment}{/*template<typename M, typename E> long double SN<M, E>::to\_long\_double() const \{}}
+\DoxyCodeLine{138 \textcolor{comment}{    //long double ans=(this-\/>m)*(long double)(pow(10, this-\/>e));}}
+\DoxyCodeLine{139 \textcolor{comment}{    //std::cout<< this-\/>m << "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{140 \textcolor{comment}{    //std::cout<< (long double)(pow(10, this-\/>e)) << "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{141 \textcolor{comment}{    //std::cout<< (this-\/>m)*(long double)(pow(10, this-\/>e)) << "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{142 \textcolor{comment}{    return (this-\/>m)*(long double)(pow(10, this-\/>e));}}
+\DoxyCodeLine{143 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{146     this-\/>m=nb.m;}
+\DoxyCodeLine{147     this-\/>e=nb.e;}
+\DoxyCodeLine{148     this-\/>recal();}
+\DoxyCodeLine{149 \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{comment}{/*template<typename M, typename E> void SN<M, E>::operator=(const long double\& nb) \{}}
+\DoxyCodeLine{152 \textcolor{comment}{    this-\/>m=nb;}}
+\DoxyCodeLine{153 \textcolor{comment}{    this-\/>e=0;}}
+\DoxyCodeLine{154 \textcolor{comment}{    this-\/>recal();}}
+\DoxyCodeLine{155 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{158     this-\/>m+=nb.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb.e-\/this-\/>e));}
+\DoxyCodeLine{159     this-\/>recal();}
+\DoxyCodeLine{160 \}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162 \textcolor{keyword}{template}<> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<float, char>::operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& nb) \{}
+\DoxyCodeLine{163     this-\/>m+=nb.m*pow(10., (\textcolor{keywordtype}{float})(nb.e-\/this-\/>e));}
+\DoxyCodeLine{164     this-\/>recal();}
+\DoxyCodeLine{165 \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \textcolor{comment}{/*template<typename M, typename E> void SN<M, E>::operator+=(const long double\& nb) \{//X}}
+\DoxyCodeLine{168 \textcolor{comment}{    this-\/>m+=nb/pow(10., (long double)(this-\/>e));}}
+\DoxyCodeLine{169 \textcolor{comment}{    this-\/>recal();}}
+\DoxyCodeLine{170 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::operator-\/=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{173     this-\/>m-\/=nb.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb.e-\/this-\/>e));}
+\DoxyCodeLine{174     this-\/>recal();}
+\DoxyCodeLine{175 \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{comment}{/*template<typename M, typename E> void SN<M, E>::operator-\/=(const long double\& nb) \{}}
+\DoxyCodeLine{178 \textcolor{comment}{    this-\/>m-\/=nb/pow(10., (long double)(this-\/>e));}}
+\DoxyCodeLine{179 \textcolor{comment}{    this-\/>recal();}}
+\DoxyCodeLine{180 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::operator*=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{183     this-\/>m*=nb.m;}
+\DoxyCodeLine{184     this-\/>e+=nb.e;}
+\DoxyCodeLine{185     this-\/>recal();}
+\DoxyCodeLine{186 \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::operator/=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{189     this-\/>m/=nb.m;}
+\DoxyCodeLine{190     this-\/>e-\/=nb.e;}
+\DoxyCodeLine{191     this-\/>recal();}
+\DoxyCodeLine{192 \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 \textcolor{comment}{/*template<typename M, typename E> void SN<M, E>::operator*=(const long double\& k) \{}}
+\DoxyCodeLine{195 \textcolor{comment}{    this-\/>m*=k;}}
+\DoxyCodeLine{196 \textcolor{comment}{    this-\/>recal();}}
+\DoxyCodeLine{197 \textcolor{comment}{\}}}
+\DoxyCodeLine{198 \textcolor{comment}{}}
+\DoxyCodeLine{199 \textcolor{comment}{template<typename M, typename E> void SN<M, E>::operator/=(const long double\& k) \{}}
+\DoxyCodeLine{200 \textcolor{comment}{    this-\/>m/=k;}}
+\DoxyCodeLine{201 \textcolor{comment}{    this-\/>recal();}}
+\DoxyCodeLine{202 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \textcolor{comment}{/*:)}}
+\DoxyCodeLine{211 \textcolor{comment}{ *}}
+\DoxyCodeLine{212 \textcolor{comment}{ */}}
+\DoxyCodeLine{213 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{214     \textcolor{keywordflow}{if} (nb1.m==nb2.m \&\& nb1.e==nb2.e)                           \textcolor{comment}{// If e and m are the same. A and B.}}
+\DoxyCodeLine{215         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{218 \}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{comment}{/*}}
+\DoxyCodeLine{221 \textcolor{comment}{ * :)}}
+\DoxyCodeLine{222 \textcolor{comment}{ */}}
+\DoxyCodeLine{223 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{224     \textcolor{keywordflow}{if} (nb1.m!=nb2.m || nb1.e!=nb2.e)                           \textcolor{comment}{// If e and m are not the same. n(A and B)=nA or nB.}}
+\DoxyCodeLine{225         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{228 \}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{comment}{/*template<typename M, typename E> bool operator!=(const SN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{231 \textcolor{comment}{    if (nb1.m!=nb2/pow(10., (long double)nb1.e))                            //}}
+\DoxyCodeLine{232 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{233 \textcolor{comment}{}}
+\DoxyCodeLine{234 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{235 \textcolor{comment}{\}}}
+\DoxyCodeLine{236 \textcolor{comment}{}}
+\DoxyCodeLine{237 \textcolor{comment}{template<typename M, typename E> bool operator!=(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{238 \textcolor{comment}{    if (nb1/pow(10., (long double)nb2.e)!=nb2.m)                            //}}
+\DoxyCodeLine{239 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{240 \textcolor{comment}{}}
+\DoxyCodeLine{241 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{242 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244 \textcolor{comment}{/*}}
+\DoxyCodeLine{245 \textcolor{comment}{ * :)}}
+\DoxyCodeLine{246 \textcolor{comment}{ */}}
+\DoxyCodeLine{247 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{248     printf(\textcolor{stringliteral}{"{}1)\(\backslash\)n\%Lf\(\backslash\)n"{}}, nb1.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e)));}
+\DoxyCodeLine{249     printf(\textcolor{stringliteral}{"{}2)\(\backslash\)n\%Lf\(\backslash\)n"{}}, nb2.m);}
+\DoxyCodeLine{250     \textcolor{keywordflow}{if} (nb1.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e))<=nb2.m)\{ \textcolor{comment}{// .}}
+\DoxyCodeLine{251         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{252     \}}
+\DoxyCodeLine{253     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{254 \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{comment}{/*template<typename M, typename E> bool operator<=(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{257 \textcolor{comment}{    if (nb1.m*pow(10., (long double)(nb1.e))<=nb2)\{}}
+\DoxyCodeLine{258 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{259 \textcolor{comment}{    \}}}
+\DoxyCodeLine{260 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{261 \textcolor{comment}{\}}}
+\DoxyCodeLine{262 \textcolor{comment}{}}
+\DoxyCodeLine{263 \textcolor{comment}{template<typename M, typename E> bool operator<=(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{264 \textcolor{comment}{    if (nb1/pow(10., (long double)(nb2.e))<=nb2.m)\{ //}}
+\DoxyCodeLine{265 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{266 \textcolor{comment}{    \}}}
+\DoxyCodeLine{267 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{268 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{271     \textcolor{keywordflow}{if} (nb1.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e))>=nb2.m)\{ \textcolor{comment}{// .}}
+\DoxyCodeLine{272         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{273     \}}
+\DoxyCodeLine{274     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{275 \}}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277 \textcolor{comment}{/*template<typename M, typename E> bool operator>=(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{278 \textcolor{comment}{    if (nb1.m*pow(10., (long double)(nb1.e))>=nb2)\{ // .}}
+\DoxyCodeLine{279 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{280 \textcolor{comment}{    \}}}
+\DoxyCodeLine{281 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{282 \textcolor{comment}{\}}}
+\DoxyCodeLine{283 \textcolor{comment}{}}
+\DoxyCodeLine{284 \textcolor{comment}{template<typename M, typename E> bool operator>=(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{285 \textcolor{comment}{    if (nb1/pow(10., (long double)(nb2.e))>=nb2.m)\{ // .}}
+\DoxyCodeLine{286 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{287 \textcolor{comment}{    \}}}
+\DoxyCodeLine{288 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{289 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{292     \textcolor{keywordflow}{if} (nb1.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e))<nb2.m)\{  \textcolor{comment}{// .}}
+\DoxyCodeLine{293     \textcolor{comment}{//if (nb1.e<nb2.e or (nb1.e==nb2.e and nb1.m<nb2.m))\{       // Else if the e are the same but m1<m2.}}
+\DoxyCodeLine{294         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{295     \}}
+\DoxyCodeLine{296     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{297 \}}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{comment}{/*template<typename M, typename E> bool operator<(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{300 \textcolor{comment}{    if (nb1.m*pow(10., (long double)(nb1.e))<nb2)\{  // .}}
+\DoxyCodeLine{301 \textcolor{comment}{    //if (nb1.m<nb2/pow(10, nb1.e))\{}}
+\DoxyCodeLine{302 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{303 \textcolor{comment}{    \}}}
+\DoxyCodeLine{304 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{305 \textcolor{comment}{\}}}
+\DoxyCodeLine{306 \textcolor{comment}{}}
+\DoxyCodeLine{307 \textcolor{comment}{template<typename M, typename E> bool operator<(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{308 \textcolor{comment}{    if (nb1/pow(10., (long double)(nb2.e))<nb2.m)\{  // .}}
+\DoxyCodeLine{309 \textcolor{comment}{    //if (nb1/pow(10, nb2.e)<nb2.m)\{}}
+\DoxyCodeLine{310 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{311 \textcolor{comment}{    \}}}
+\DoxyCodeLine{312 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{313 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{316     \textcolor{keywordflow}{if} (nb1.m*pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e))>nb2.m)\{  \textcolor{comment}{// .}}
+\DoxyCodeLine{317     \textcolor{comment}{//if (nb1.e>nb2.e or (nb1.e==nb2.e and nb1.m>nb2.m))\{       // Else if the e are the same but m1>m2.}}
+\DoxyCodeLine{318         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{319     \}}
+\DoxyCodeLine{320     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{321 \}}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323 \textcolor{comment}{/*template<typename M, typename E> bool operator>(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{324 \textcolor{comment}{    if (nb1.m*pow(10., (long double)(nb1.e))>nb2)\{  // .}}
+\DoxyCodeLine{325 \textcolor{comment}{    //if (nb1.m>nb2/pow(10, nb1.e))\{}}
+\DoxyCodeLine{326 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{327 \textcolor{comment}{    \}}}
+\DoxyCodeLine{328 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{329 \textcolor{comment}{\}}}
+\DoxyCodeLine{330 \textcolor{comment}{}}
+\DoxyCodeLine{331 \textcolor{comment}{template<typename M, typename E> bool operator>(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{332 \textcolor{comment}{    if (nb1/pow(10., (long double)(nb2.e))>nb2.m)\{  // .}}
+\DoxyCodeLine{333 \textcolor{comment}{    //if (nb1/pow(10, nb2.e)>nb2.m)\{}}
+\DoxyCodeLine{334 \textcolor{comment}{        return true;}}
+\DoxyCodeLine{335 \textcolor{comment}{    \}}}
+\DoxyCodeLine{336 \textcolor{comment}{    return false;}}
+\DoxyCodeLine{337 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{comment}{/*:)}}
+\DoxyCodeLine{340 \textcolor{comment}{ * It's better to enter the bigger number first I think.}}
+\DoxyCodeLine{341 \textcolor{comment}{ */}}
+\DoxyCodeLine{342 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{343     \textcolor{keywordflow}{return} \{nb1.m+nb2.m/pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e)), nb1.e\};}
+\DoxyCodeLine{344 \}}
+\DoxyCodeLine{345 \textcolor{comment}{/*}}
+\DoxyCodeLine{346 \textcolor{comment}{template<typename M, typename E> LSN operator+(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{347 \textcolor{comment}{    return \{nb1.m+nb2/pow(10., (long double)nb1.e), nb1.e\};}}
+\DoxyCodeLine{348 \textcolor{comment}{\}}}
+\DoxyCodeLine{349 \textcolor{comment}{}}
+\DoxyCodeLine{350 \textcolor{comment}{template<typename M, typename E> LSN operator+(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{351 \textcolor{comment}{    return \{nb1+nb2.m*pow(10., (long double)nb2.e), 0\};}}
+\DoxyCodeLine{352 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354 \textcolor{comment}{/*:)}}
+\DoxyCodeLine{355 \textcolor{comment}{ * It's better to enter the bigger number first.}}
+\DoxyCodeLine{356 \textcolor{comment}{ */}}
+\DoxyCodeLine{357 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{358     \textcolor{keywordflow}{return} \{nb1.m-\/nb2.m/pow(10., (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})(nb1.e-\/nb2.e)), nb1.e\};}
+\DoxyCodeLine{359 \}}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{361 \textcolor{comment}{/*template<typename M, typename E> LSN operator-\/(const LSN\& nb1, const long double\& nb2) \{}}
+\DoxyCodeLine{362 \textcolor{comment}{    return \{nb1.m-\/nb2/pow(10., (long double)nb1.e), nb1.e\};}}
+\DoxyCodeLine{363 \textcolor{comment}{\}}}
+\DoxyCodeLine{364 \textcolor{comment}{}}
+\DoxyCodeLine{365 \textcolor{comment}{template<typename M, typename E> LSN operator-\/(const long double\& nb1, const LSN\& nb2) \{}}
+\DoxyCodeLine{366 \textcolor{comment}{    return \{nb1-\/nb2.m*pow(10., (long double)nb2.e), 0\};}}
+\DoxyCodeLine{367 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{370     \textcolor{keywordflow}{return} \{nb1.m*nb2.m, nb1.e+nb2.e\};}
+\DoxyCodeLine{371 \}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{373 \textcolor{comment}{/*template<typename M, typename E> LSN operator*(const LSN\& nb, const long double\& k) \{}}
+\DoxyCodeLine{374 \textcolor{comment}{    return \{nb.m*k, nb.e\};}}
+\DoxyCodeLine{375 \textcolor{comment}{\}}}
+\DoxyCodeLine{376 \textcolor{comment}{}}
+\DoxyCodeLine{377 \textcolor{comment}{template<typename M, typename E> LSN operator*(const long double\& k, const LSN\& nb) \{}}
+\DoxyCodeLine{378 \textcolor{comment}{    return \{nb.m*k, nb.e\};}}
+\DoxyCodeLine{379 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb1, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb2) \{}
+\DoxyCodeLine{382     \textcolor{keywordflow}{return} \{nb1.m/nb2.m, nb1.e-\/nb2.e\};}
+\DoxyCodeLine{383 \}}
+\DoxyCodeLine{384 }
+\DoxyCodeLine{385 \textcolor{comment}{/*template<typename M, typename E> LSN operator/(const LSN\& nb, const long double\& k) \{}}
+\DoxyCodeLine{386 \textcolor{comment}{    return \{nb.m/k, nb.e\};}}
+\DoxyCodeLine{387 \textcolor{comment}{\}}}
+\DoxyCodeLine{388 \textcolor{comment}{}}
+\DoxyCodeLine{389 \textcolor{comment}{template<typename M, typename E> LSN operator/(const long double\& k, const LSN\& nb) \{}}
+\DoxyCodeLine{390 \textcolor{comment}{    return \{nb.m/k, nb.e\};}}
+\DoxyCodeLine{391 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{structSN}{SN<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{396     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{399         mes+=\textcolor{stringliteral}{"{}LSN["{}};}
+\DoxyCodeLine{400         std::stringstream ss;}
+\DoxyCodeLine{401         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{402         mes+=ss.str();}
+\DoxyCodeLine{403         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{404         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{405         mes+=std::to\_string(m) + \textcolor{stringliteral}{"{}x10\string^"{}} + std::to\_string(e);}
+\DoxyCodeLine{406     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{407         mes+=std::to\_string(m).erase(4, std::to\_string(m).length()) + \textcolor{stringliteral}{"{}e"{}} + std::to\_string(e);}
+\DoxyCodeLine{408     \}}
+\DoxyCodeLine{409 }
+\DoxyCodeLine{410     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{411 \}}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{413 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{414     printTabs(indent);}
+\DoxyCodeLine{415     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{416 \}}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419 \textcolor{comment}{/*}}
+\DoxyCodeLine{420 \textcolor{comment}{ * Functions}}
+\DoxyCodeLine{421 \textcolor{comment}{ */}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} abs(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{424     \mbox{\hyperlink{structSN}{SN}} resp\{std::abs(nb.m), nb.e\};}
+\DoxyCodeLine{425     \textcolor{comment}{//resp.recal();}}
+\DoxyCodeLine{426     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{427 \}}
+\DoxyCodeLine{428 }
+\DoxyCodeLine{429 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} pow(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}\& e) \{}
+\DoxyCodeLine{430     \mbox{\hyperlink{structSN}{SN}} resp\{pow(nb.m, (\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})e), nb.e*e\};}
+\DoxyCodeLine{431     resp.recal();}
+\DoxyCodeLine{432     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{433 \}}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{435 \textcolor{comment}{/*// Calculate the n root of a number}}
+\DoxyCodeLine{436 \textcolor{comment}{template<typename M, typename E> LSN nrt(LSN\& nb, long int e) \{}}
+\DoxyCodeLine{437 \textcolor{comment}{    //LSN nb2=\{1, 0\};}}
+\DoxyCodeLine{438 \textcolor{comment}{    for (long int i(0) ; i<nb.e\%e ; i++)}}
+\DoxyCodeLine{439 \textcolor{comment}{    \{}}
+\DoxyCodeLine{440 \textcolor{comment}{        nb.m*=nb;}}
+\DoxyCodeLine{441 \textcolor{comment}{    \}}}
+\DoxyCodeLine{442 \textcolor{comment}{    recal(nb2);}}
+\DoxyCodeLine{443 \textcolor{comment}{    return *(new LSN\{pow(nb.m, e), nb.e*e\});}}
+\DoxyCodeLine{444 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{446 \textcolor{comment}{/*}}
+\DoxyCodeLine{447 \textcolor{comment}{ * Calculate the square root of a number.}}
+\DoxyCodeLine{448 \textcolor{comment}{ */}}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{450 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} sqrt(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{451     \mbox{\hyperlink{structSN}{SN}} resp=\{pow(nb.m, 0.5), nb.e/2\};\textcolor{comment}{//Doesn't work (exponent cast to int)}}
+\DoxyCodeLine{452     resp.recal();}
+\DoxyCodeLine{453     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{454 \}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{456 }
+\DoxyCodeLine{457 }
+\DoxyCodeLine{458 }
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SN\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

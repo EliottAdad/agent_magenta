@@ -19,52 +19,65 @@
 \DoxyCodeLine{15 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{16 \textcolor{comment}{ *  Vector3D :)}}
 \DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ * Heritage de Line ne marche pas}}
+\DoxyCodeLine{18 \textcolor{comment}{ * Heritage de Line ne marche pas (What ?)}}
 \DoxyCodeLine{19 \textcolor{comment}{ */}}
-\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classVector3D}{Vector3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classLine3D}{Line3D}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classVector3D}{Vector3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classLine3D}{Line3D}} \{}
 \DoxyCodeLine{21 \textcolor{keyword}{public}:}
 \DoxyCodeLine{22     \mbox{\hyperlink{classVector3D}{Vector3D}}();}
-\DoxyCodeLine{29     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
-\DoxyCodeLine{36     \mbox{\hyperlink{classVector3D}{Vector3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
-\DoxyCodeLine{44     \mbox{\hyperlink{classVector3D}{Vector3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
-\DoxyCodeLine{52     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
-\DoxyCodeLine{53     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
-\DoxyCodeLine{54     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3D}{\string~Vector3D}}();\textcolor{comment}{//:)}}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{59     \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classVector3D_abcdac5d071a8539cedef3f2e12c37038}{getNorm}}() \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{60     \textcolor{keywordtype}{void} setNorm(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& norm);\textcolor{comment}{// :)}}
+\DoxyCodeLine{23     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
+\DoxyCodeLine{24     \mbox{\hyperlink{classVector3D}{Vector3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
+\DoxyCodeLine{25     \mbox{\hyperlink{classVector3D}{Vector3D}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* pp1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p2);}
+\DoxyCodeLine{26     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p1, \mbox{\hyperlink{structPoint3D}{Point3D}}* pp2);}
+\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
+\DoxyCodeLine{28     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3D}{\string~Vector3D}}();\textcolor{comment}{//:)}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} setPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}\& point, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classVector3D_abcdac5d071a8539cedef3f2e12c37038}{getNorm}}() \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} setNorm(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& norm);\textcolor{comment}{// :)}}
+\DoxyCodeLine{35     \mbox{\hyperlink{structPoint3D}{Point3D}} getOrigin() \textcolor{keyword}{const};   \textcolor{comment}{//:)}}
+\DoxyCodeLine{36     \mbox{\hyperlink{structPoint3D}{Point3D}}* getPOrigin() \textcolor{keyword}{const}; \textcolor{comment}{//:)}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} setOrigin(\mbox{\hyperlink{structPoint3D}{Point3D}}\& origin, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});  \textcolor{comment}{//:)}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} setPOrigin(\mbox{\hyperlink{structPoint3D}{Point3D}}* porigin, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});   \textcolor{comment}{//:)}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} addOrigin(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& dp);   \textcolor{comment}{//:)}}
+\DoxyCodeLine{40     \mbox{\hyperlink{structPoint3D}{Point3D}} getEnd() \textcolor{keyword}{const};  \textcolor{comment}{//:)}}
+\DoxyCodeLine{41     \mbox{\hyperlink{structPoint3D}{Point3D}}* getPEnd() \textcolor{keyword}{const};    \textcolor{comment}{//:)}}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} setEnd(\mbox{\hyperlink{structPoint3D}{Point3D}}\& end, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});    \textcolor{comment}{//:)}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} setPEnd(\mbox{\hyperlink{structPoint3D}{Point3D}}* pend, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false}); \textcolor{comment}{//:)}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} addEnd(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& dp);  \textcolor{comment}{//:)}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
+\DoxyCodeLine{47     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{50     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{51     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{55     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{56     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{59     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{60 \};}
 \DoxyCodeLine{61 }
-\DoxyCodeLine{62     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
-\DoxyCodeLine{63     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
-\DoxyCodeLine{64     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);\textcolor{comment}{// :)}}
-\DoxyCodeLine{65     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{66     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{67     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator*=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{68     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator/=(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{71     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{72     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{74     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{75     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{76 \};}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78 \mbox{\hyperlink{classVector3D}{Vector3D}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
-\DoxyCodeLine{79 \mbox{\hyperlink{classVector3D}{Vector3D}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
-\DoxyCodeLine{80 \mbox{\hyperlink{classVector3D}{Vector3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{81 \mbox{\hyperlink{classVector3D}{Vector3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{82 \mbox{\hyperlink{classVector3D}{Vector3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{83 \mbox{\hyperlink{classVector3D}{Vector3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{85 \textcolor{comment}{//Scalar product}}
-\DoxyCodeLine{86 \mbox{\hyperlink{structLSN}{LSN}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{88 \textcolor{comment}{//Vector product}}
-\DoxyCodeLine{89 \mbox{\hyperlink{classVector3D}{Vector3D}} operator\string^(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{91 }
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* VECTOR3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{62 \mbox{\hyperlink{classVector3D}{Vector3D}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
+\DoxyCodeLine{63 \mbox{\hyperlink{classVector3D}{Vector3D}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
+\DoxyCodeLine{64 \mbox{\hyperlink{classVector3D}{Vector3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{65 \mbox{\hyperlink{classVector3D}{Vector3D}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{66 \mbox{\hyperlink{classVector3D}{Vector3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{67 \mbox{\hyperlink{classVector3D}{Vector3D}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& k);\textcolor{comment}{// :)}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{comment}{//Scalar product}}
+\DoxyCodeLine{70 \mbox{\hyperlink{structLSN}{LSN}} operator*(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{//Vector product}}
+\DoxyCodeLine{73 \mbox{\hyperlink{classVector3D}{Vector3D}} operator\string^(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v1, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v2);\textcolor{comment}{// :)}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* VECTOR3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

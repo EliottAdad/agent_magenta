@@ -33,14 +33,24 @@ Collaboration diagram for Line3D\+:\nopagebreak
 \mbox{\Hypertarget{classLine3D_a20e4ef6a35c6015d3b2f5800ba2ae0c1}\label{classLine3D_a20e4ef6a35c6015d3b2f5800ba2ae0c1}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}} {\bfseries get\+P1} () const
 \item 
-\mbox{\Hypertarget{classLine3D_a785b8e7a7f9a65402edf9088b8efa944}\label{classLine3D_a785b8e7a7f9a65402edf9088b8efa944}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+PP1} ()
+\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ \mbox{\hyperlink{classLine3D_a1a00c2f112757a086590e6469ba0bd61}{get\+PP1}} () const
+\item 
+\mbox{\Hypertarget{classLine3D_a39c9c3e4c32429acc93f4d38a6a977f3}\label{classLine3D_a39c9c3e4c32429acc93f4d38a6a977f3}} 
+void {\bfseries set\+P1} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&p1, const bool \&delp=false)
+\item 
+\mbox{\Hypertarget{classLine3D_ae86e9c88a9a7a7b6a366b782f98d3a99}\label{classLine3D_ae86e9c88a9a7a7b6a366b782f98d3a99}} 
+void {\bfseries set\+PP1} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$pp1, const bool \&delp=true)
 \item 
 \mbox{\Hypertarget{classLine3D_aac181fd09ea2a088c0cfcfaab97fd6a5}\label{classLine3D_aac181fd09ea2a088c0cfcfaab97fd6a5}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}} {\bfseries get\+P2} () const
 \item 
-\mbox{\Hypertarget{classLine3D_a264c3dbbc6aa4cd393c01edd489af28a}\label{classLine3D_a264c3dbbc6aa4cd393c01edd489af28a}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+PP2} ()
+\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ \mbox{\hyperlink{classLine3D_a480422dac9e94a26f60fe590ec69b469}{get\+PP2}} () const
+\item 
+\mbox{\Hypertarget{classLine3D_a4d6612a50daefe7486ae46f359d89f36}\label{classLine3D_a4d6612a50daefe7486ae46f359d89f36}} 
+void {\bfseries set\+P2} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&p2, const bool \&delp=false)
+\item 
+\mbox{\Hypertarget{classLine3D_a340b63ad899f3dd5b43e02e863431d57}\label{classLine3D_a340b63ad899f3dd5b43e02e863431d57}} 
+void {\bfseries set\+PP2} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$pp2, const bool \&delp=true)
 \item 
 \mbox{\Hypertarget{classLine3D_ac8213e6dcc7c2ea880b844b32c1bbc9c}\label{classLine3D_ac8213e6dcc7c2ea880b844b32c1bbc9c}} 
 bool {\bfseries get\+Del\+P1} () const
@@ -48,9 +58,9 @@ bool {\bfseries get\+Del\+P1} () const
 \mbox{\Hypertarget{classLine3D_a2049f19a395a5d5301653e34212a292a}\label{classLine3D_a2049f19a395a5d5301653e34212a292a}} 
 bool {\bfseries get\+Del\+P2} () const
 \item 
-virtual std\+::string \mbox{\hyperlink{classLine3D_a291425c679bf32574e603d0de6010fb8}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classLine3D_a33e744df90d83b93caf35e44787019b0}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-virtual void \mbox{\hyperlink{classLine3D_afa8bdc47243da48fde801d831d143be5}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+virtual void \mbox{\hyperlink{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -70,21 +80,33 @@ bool {\bfseries m\+\_\+delp2}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLine3D_afa8bdc47243da48fde801d831d143be5}\label{classLine3D_afa8bdc47243da48fde801d831d143be5}} 
+\mbox{\Hypertarget{classLine3D_a1a00c2f112757a086590e6469ba0bd61}\label{classLine3D_a1a00c2f112757a086590e6469ba0bd61}} 
+\index{Line3D@{Line3D}!getPP1@{getPP1}}
+\index{getPP1@{getPP1}!Line3D@{Line3D}}
+\doxysubsubsection{\texorpdfstring{getPP1()}{getPP1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ Line3\+D\+::get\+PP1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case \mbox{\Hypertarget{classLine3D_a480422dac9e94a26f60fe590ec69b469}\label{classLine3D_a480422dac9e94a26f60fe590ec69b469}} 
+\index{Line3D@{Line3D}!getPP2@{getPP2}}
+\index{getPP2@{getPP2}!Line3D@{Line3D}}
+\doxysubsubsection{\texorpdfstring{getPP2()}{getPP2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ Line3\+D\+::get\+PP2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case \mbox{\Hypertarget{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}\label{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}} 
 \index{Line3D@{Line3D}!print@{print}}
 \index{print@{print}!Line3D@{Line3D}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void Line3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Line3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
-\mbox{\Hypertarget{classLine3D_a291425c679bf32574e603d0de6010fb8}\label{classLine3D_a291425c679bf32574e603d0de6010fb8}} 
+\mbox{\Hypertarget{classLine3D_a33e744df90d83b93caf35e44787019b0}\label{classLine3D_a33e744df90d83b93caf35e44787019b0}} 
 \index{Line3D@{Line3D}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!Line3D@{Line3D}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily std\+::string Line3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::string Line3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

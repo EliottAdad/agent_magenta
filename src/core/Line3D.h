@@ -32,6 +32,7 @@ public:
 	Line3D(const Point3D& p1, const Point3D& p2);
 	Line3D(Point3D* pp1, Point3D* pp2);
 	Line3D(const Line3D& l);
+	Line3D(const Line3D* pl);
 	virtual ~Line3D();									//:)
 
 	Point3D getP1() const;								//:)

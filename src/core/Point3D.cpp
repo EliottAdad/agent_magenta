@@ -175,39 +175,46 @@ bool operator>=(const Point3D& p1, const Point3D& p2) {
 	return false;
 }
 
-Point3D operator+(const Point3D& p1, const Point3D& p2) {
+std::unique_ptr<Point3D> operator+(const Point3D& p1, const Point3D& p2) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p1.x+p2.x, p1.y+p2.y, p1.z+p2.z});
 	//Point3D* pnp=new Point3D;
-	return {p1.x+p2.x, p1.y+p2.y, p1.z+p2.z};
+	return *pnp;
 }
 
-Point3D operator-(const Point3D& p1, const Point3D& p2) {
+std::unique_ptr<Point3D> operator-(const Point3D& p1, const Point3D& p2) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p1.x-p2.x, p1.y-p2.y, p1.z-p2.z});
 	//Point3D* pnp=new Point3D{this->x-p.x, this->y-p.y, this->z-p.z};
-	return {p1.x-p2.x, p1.y-p2.y, p1.z-p2.z};
+	return *pnp;
 }
 
-Point3D operator*(const Point3D& p, const LSN& k) {
+std::unique_ptr<Point3D> operator*(const Point3D& p, const LSN& k) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x*k, p.y*k, p.z*k});
 	//Point3D* pnp=new Point3D{this->x*k, this->y*k, this->z*k};
-	return {p.x*k, p.y*k, p.z*k};
+	return *pnp;
 }
 
-Point3D operator*(const LSN& k, const Point3D& p) {
+std::unique_ptr<Point3D> operator*(const LSN& k, const Point3D& p) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x*k, p.y*k, p.z*k});
 	//Point3D* pnp=new Point3D{this->x*k, this->y*k, this->z*k};
-	return {p.x*k, p.y*k, p.z*k};
+	return *pnp;
 }
 
-Point3D operator*(const Point3D& p, const long double& k) {
+std::unique_ptr<Point3D> operator*(const Point3D& p, const long double& k) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x*k, p.y*k, p.z*k});
 	//Point3D* pnp=new Point3D
-	return {p.x*k, p.y*k, p.z*k};
+	return *pnp;
 }
 
-Point3D operator*(const long double& k, const Point3D& p) {
+std::unique_ptr<Point3D> operator*(const long double& k, const Point3D& p) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x*k, p.y*k, p.z*k});
 	//Point3D* pnp=new Point3D
-	return {p.x*k, p.y*k, p.z*k};
+	return *pnp;
 }
 
-Point3D operator/(const Point3D& p, const LSN& k) {
+std::unique_ptr<Point3D> operator/(const Point3D& p, const LSN& k) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x/k, p.y/k, p.z/k});
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
-	return {p.x/k, p.y/k, p.z/k};
+	return *pnp;
 }
 
 /*Point3D operator/(const LSN& k, const Point3D& p) {
@@ -215,9 +222,10 @@ Point3D operator/(const Point3D& p, const LSN& k) {
 	return {p.x/k, p.y/k, p.z/k};
 }*/
 
-Point3D operator/(const Point3D& p, const long double& k) {
+std::unique_ptr<Point3D> operator/(const Point3D& p, const long double& k) {
+	std::unique_ptr<Point3D> pnp(new Point3D{p.x/k, p.y/k, p.z/k});
 	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
-	return {p.x/k, p.y/k, p.z/k};
+	return *pnp;
 }
 
 /*Point3D operator/(const long double& k, const Point3D& p) {
@@ -230,6 +238,5 @@ Point3D operator/(const Point3D& p, const long double& k) {
  * Functions
  */
 LSN getDistance(const Point3D& p1, const Point3D& p2) {
-	//LSN* pnlsn=new LSN{sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² )
 	return {sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² );
 }

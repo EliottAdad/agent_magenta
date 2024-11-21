@@ -32,10 +32,46 @@ Collaboration diagram for Vector3D\+:\nopagebreak
 \mbox{\Hypertarget{classVector3D_a765ee7fc4bf9c338cb96fbd0499257a1}\label{classVector3D_a765ee7fc4bf9c338cb96fbd0499257a1}} 
 {\bfseries Vector3D} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
 \item 
+\mbox{\Hypertarget{classVector3D_ac070df3012e11b7a495296529291c722}\label{classVector3D_ac070df3012e11b7a495296529291c722}} 
+void {\bfseries set\+PPoint} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint, const bool \&delp=true)
+\item 
+\mbox{\Hypertarget{classVector3D_afe825d42490735d29bc6e987b32dbb5f}\label{classVector3D_afe825d42490735d29bc6e987b32dbb5f}} 
+void {\bfseries set\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&point, const bool \&delp=false)
+\item 
 \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classVector3D_abcdac5d071a8539cedef3f2e12c37038}{get\+Norm}} () const
 \item 
 \mbox{\Hypertarget{classVector3D_a1727a517d559b49b7ea43a9394b8ad37}\label{classVector3D_a1727a517d559b49b7ea43a9394b8ad37}} 
 void {\bfseries set\+Norm} (const \mbox{\hyperlink{structLSN}{LSN}} \&norm)
+\item 
+\mbox{\Hypertarget{classVector3D_a020f2a4d81f50a85c97b91930e94baff}\label{classVector3D_a020f2a4d81f50a85c97b91930e94baff}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}} {\bfseries get\+Origin} () const
+\item 
+\mbox{\Hypertarget{classVector3D_a1af7c65a2fbad08f801a1014b7d307e6}\label{classVector3D_a1af7c65a2fbad08f801a1014b7d307e6}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+POrigin} () const
+\item 
+\mbox{\Hypertarget{classVector3D_a8b1e20e908205f9272cb6658e424ae45}\label{classVector3D_a8b1e20e908205f9272cb6658e424ae45}} 
+void {\bfseries set\+Origin} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&origin, const bool \&delp=true)
+\item 
+\mbox{\Hypertarget{classVector3D_a20feddfc462dfdd55acfc1af4d9f5a86}\label{classVector3D_a20feddfc462dfdd55acfc1af4d9f5a86}} 
+void {\bfseries set\+POrigin} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$porigin, const bool \&delp=false)
+\item 
+\mbox{\Hypertarget{classVector3D_a9e2df82b4bb66da1d44ead17f83064a9}\label{classVector3D_a9e2df82b4bb66da1d44ead17f83064a9}} 
+void {\bfseries add\+Origin} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&dp)
+\item 
+\mbox{\Hypertarget{classVector3D_ad555df26ddf993b7f3c754bb617b24cb}\label{classVector3D_ad555df26ddf993b7f3c754bb617b24cb}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}} {\bfseries get\+End} () const
+\item 
+\mbox{\Hypertarget{classVector3D_afd9a89ffe9b47d3270aa9838123a6e19}\label{classVector3D_afd9a89ffe9b47d3270aa9838123a6e19}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+PEnd} () const
+\item 
+\mbox{\Hypertarget{classVector3D_a48e20d4263bcbbfee83288d3de16f4f9}\label{classVector3D_a48e20d4263bcbbfee83288d3de16f4f9}} 
+void {\bfseries set\+End} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&end, const bool \&delp=true)
+\item 
+\mbox{\Hypertarget{classVector3D_a1e86e12196e6d174f4d118eed4b68fca}\label{classVector3D_a1e86e12196e6d174f4d118eed4b68fca}} 
+void {\bfseries set\+PEnd} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$pend, const bool \&delp=false)
+\item 
+\mbox{\Hypertarget{classVector3D_a0058dd93f7b0073e11165dccc59ddbde}\label{classVector3D_a0058dd93f7b0073e11165dccc59ddbde}} 
+void {\bfseries add\+End} (const \mbox{\hyperlink{structPoint3D}{Point3D}} \&dp)
 \item 
 \mbox{\Hypertarget{classVector3D_aac10bda1ebe1b1481289ea10b4b0675b}\label{classVector3D_aac10bda1ebe1b1481289ea10b4b0675b}} 
 virtual void {\bfseries operator=} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
@@ -67,9 +103,9 @@ virtual bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classVector3D}{Vec
 \mbox{\Hypertarget{classVector3D_acae5d8df7f2016c442aa3ba5130d97c8}\label{classVector3D_acae5d8df7f2016c442aa3ba5130d97c8}} 
 virtual bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v) const
 \item 
-virtual std\+::string \mbox{\hyperlink{classVector3D_aaa85dc6436d7c3f2e5fb0dba71e75ea6}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classVector3D_a095dba56e8c81f0327f834fba6017576}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-virtual void \mbox{\hyperlink{classVector3D_ad54f7dd9aed34ccbfbadff81bf20b4b9}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned int \&indent=0) const
+virtual void \mbox{\hyperlink{classVector3D_a98fc8d950739889c13315810577927dc}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -151,21 +187,21 @@ Constructor4 Defined by two points
 \begin{DoxyReturn}{Returns}
 Returns the norm 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classVector3D_ad54f7dd9aed34ccbfbadff81bf20b4b9}\label{classVector3D_ad54f7dd9aed34ccbfbadff81bf20b4b9}} 
+\mbox{\Hypertarget{classVector3D_a98fc8d950739889c13315810577927dc}\label{classVector3D_a98fc8d950739889c13315810577927dc}} 
 \index{Vector3D@{Vector3D}!print@{print}}
 \index{print@{print}!Vector3D@{Vector3D}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void Vector3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Vector3\+D\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classLine3D}{Line3D}}.
 
-\mbox{\Hypertarget{classVector3D_aaa85dc6436d7c3f2e5fb0dba71e75ea6}\label{classVector3D_aaa85dc6436d7c3f2e5fb0dba71e75ea6}} 
+\mbox{\Hypertarget{classVector3D_a095dba56e8c81f0327f834fba6017576}\label{classVector3D_a095dba56e8c81f0327f834fba6017576}} 
 \index{Vector3D@{Vector3D}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!Vector3D@{Vector3D}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily std\+::string Vector3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned int \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::string Vector3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
