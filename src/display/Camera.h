@@ -15,6 +15,9 @@
 #include "../utilities/Printable.h"
 
 /*
+ * ##########
+ *  Camera :)
+ * ##########
  * This camera is a cone directed by a normal
  */
 class Camera : public Printable {
@@ -47,8 +50,8 @@ public:
 
 	bool testInFielOfView(const Point3D& p) const;
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 #endif /* CAMERA_H_ */

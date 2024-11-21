@@ -11,7 +11,11 @@
 #include <unordered_set>
 #include "TimeSensitive.h"
 
-
+/*
+ * ############
+ *  TimeLoop :)
+ * ############
+ */
 class TimeLoop {
 private:
 	bool m_loop;

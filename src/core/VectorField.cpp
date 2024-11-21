@@ -73,7 +73,7 @@ void VectorField::setT(const long double& dt){
 }
 
 
-std::string VectorField::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
+std::string VectorField::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const{// :)
 	std::string mes=(spread)?"\n":"";
 
 	if (full_info){
@@ -96,7 +96,7 @@ std::string VectorField::to_string(const bool& spread, const bool& full_info, co
 	return mes;
 }
 
-void VectorField::print(const bool& spread, const bool& full_info, const unsigned int& indent) const{// :)
+void VectorField::print(const bool& spread, const bool& full_info, const unsigned char& indent) const{// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

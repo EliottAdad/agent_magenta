@@ -12,6 +12,11 @@
 #include "../utilities/functions.h"
 #include "../utilities/Printable.h"
 
+/*
+ * #################
+ *  TimeSensitive :)
+ * #################
+ */
 class TimeSensitive : public Printable {
 public:
 	TimeSensitive();
@@ -21,8 +26,8 @@ public:
 	virtual void setT(const long double& dt);	//Used to prepare the logic behind the scenes
 	virtual void apply();						//Can used to execute an action (Ex: For the grav rule, move...)
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 #endif /* TIMESENSITIVE_H_ */

@@ -100,7 +100,7 @@ void Display1::setPoint(Point3D& point, const bool& delp){
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D{point};
+		m_ppoint=new Point3D(point);
 	}else{
 		m_ppoint=&point;
 	}
@@ -211,7 +211,7 @@ bool Display1::render() const {
 bool Display1::render(Scene* pscene) const {
 	bool success=false;
 	for (Displayable* pdisplayable : pscene->getPDisplayables()){
-		printf("pdisplayable2\n");
+		//printf("pdisplayable2\n");
 		pdisplayable->print(true);
 		render(pdisplayable);
 	}
@@ -224,7 +224,7 @@ bool Display1::render(Scene* pscene) const {
 bool Display1::render(Displayable* pdisplayable) const {
 	bool success=false;
 	if (pdisplayable!=NULL) {
-		printf("pdisplayable1\n");
+		//printf("pdisplayable1\n");
 		pdisplayable->getX().print(true);
 		pdisplayable->getY().print(true);
 		pdisplayable->getZ().print(true);
@@ -234,7 +234,7 @@ bool Display1::render(Displayable* pdisplayable) const {
 }
 
 
-std::string Display1::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string Display1::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="DISPLAY1";
@@ -242,7 +242,7 @@ std::string Display1::to_string(const bool& spread, const bool& full_info, const
 	return mes;
 }
 
-void Display1::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void Display1::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

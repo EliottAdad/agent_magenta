@@ -79,7 +79,7 @@ void ParticleSystem3D::apply(const Vector3D& dv){
 
 
 
-std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -99,7 +99,7 @@ std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_inf
 	return mes;
 }
 
-void ParticleSystem3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void ParticleSystem3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

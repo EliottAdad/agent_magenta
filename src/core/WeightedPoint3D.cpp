@@ -65,7 +65,7 @@ LSN WeightedPoint3D::getW() const {
 	return w;
 }
 
-std::string WeightedPoint3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string WeightedPoint3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -78,7 +78,7 @@ std::string WeightedPoint3D::to_string(const bool& spread, const bool& full_info
 	return mes;
 }
 
-void WeightedPoint3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void WeightedPoint3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

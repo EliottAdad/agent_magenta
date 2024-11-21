@@ -97,7 +97,7 @@ bool Camera::testInFielOfView(const Point3D& p) const {
 }
 
 
-std::string Camera::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string Camera::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="CAMERA";
@@ -105,7 +105,7 @@ std::string Camera::to_string(const bool& spread, const bool& full_info, const u
 	return mes;
 }
 
-void Camera::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void Camera::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

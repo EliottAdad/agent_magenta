@@ -20,7 +20,7 @@
  * ####################
  * Can contain any object having ->x, ->y and ->z
  */
-class ParticleSystem3D: public TimeSensitive {
+class ParticleSystem3D : public TimeSensitive {
 protected:
 	LSN m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
@@ -48,8 +48,8 @@ public:
 	virtual void apply(const Vector3D& dv);		// Moveable
 	//virtual void move(const Vector3D& dp);
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 /*

@@ -121,8 +121,16 @@ void Particle3D::setSpeed(const Vector3D& v) {
 	*m_ps=v;
 }
 
-void Particle3D::setDSpeed(const Vector3D& ds) {
+void Particle3D::setSpeed(const Point3D& p) {
+	*(m_ps->getPEnd())=p;
+}
+
+void Particle3D::addSpeed(const Vector3D& ds) {
 	*m_ps+=ds;
+}
+
+void Particle3D::addSpeed(const Point3D& p) {
+	*(m_ps->getPEnd())+=p;
 }
 
 void Particle3D::addAsForce(const Vector3D& v, const long double& dt) {
@@ -163,7 +171,7 @@ void Particle3D::apply(){
 
 
 
-std::string Particle3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Particle3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -184,7 +192,7 @@ std::string Particle3D::to_string(const bool& spread, const bool& full_info, con
 	return mes;
 }
 
-void Particle3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Particle3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

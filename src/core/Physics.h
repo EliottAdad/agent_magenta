@@ -33,7 +33,6 @@ private:
 	bool m_fcollide;
 	bool m_fpause;
 	std::unordered_set<TimeSensitive*> m_ptime_sensitives;			//List of time sensitive objects
-	//std::unordered_set<Moveable*> m_pmoveables;			//List of moveable objects
 
 public:
 	Physics();
@@ -59,8 +58,8 @@ public:
 	bool run(const unsigned int& steps=1);
 	bool iterate(const long double& dt);
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 #endif /* PHYSICS_H_ */

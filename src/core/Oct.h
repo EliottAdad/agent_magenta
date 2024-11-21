@@ -9,10 +9,11 @@
 #define OCT_H_
 
 
-#include <iostream>
+#include <cstdio>
+//#include <iostream>
 #include <cmath>
 #include <unordered_set>
-//#include "Particle3D.h"
+#include "Particle3D.h"
 #include "Point3D.h"
 #include "../utilities/Printable.h"
 
@@ -63,21 +64,22 @@ public:
 	void setA(const LSN& a);
 	unsigned int getNB_OCTS() const;
 	//float getAlpha();
-	//void setAlpha(float& alpha=0.5);
+	//static void setAlpha(float& alpha=0.5);
 	std::unordered_set<Oct<T>*> getPTrees();			//Returns all the trees under, contained by this tree.
 	std::unordered_set<T*> getPElements() const;		//Returns all the elements contained in the tree.
 	std::unordered_set<T*> getPNeighbors(T* pelement) const;		//Returns all the neighbors.
 
 	bool insert(T* pT);
+	//bool insert(Particle3D* ppart);
 	void find(const T& t, std::unordered_set<Oct<T>*>& pquads);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
-	void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;
+	//void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;// Useless
 	//std::unordered_set<T*> find(const Point3D& point);
 	T* search(Point3D* ppoint) const;
 	void recalculate();
 	bool empty();
 
-	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 template <typename T> unsigned int Oct<T>::m_NB_OCTS=0;
 template <typename T> LSN Oct<T>::m_LIM_A={1, 0};
@@ -287,12 +289,17 @@ template <typename T> std::unordered_set<T*> Oct<T>::getPElements() const {
 	return elmts;
 }
 
-template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(T* pelement) const {
+template <typename T> std::unordered_set<T*> Oct<T>::getPNeighbors(T* pelement) const {//////LOOOOK HERE !
 	static std::unordered_set<T*> neighbors;
 
 	printf("AB\n");
+	LSN r=/*m_a*/LSN{1., 0}/*((long double)1.)*//getDistance(*m_ppoint, *pelement);
+	r.print(true, true, 0);
+	LSN s=LSN{m_ALPHA, 0};
+	s.print(true, true, 0);
+	printf("\n%b\n", /*m_a*/LSN{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=LSN{m_ALPHA, 0});
 
-	if (m_a/getDistance(*m_ppoint, *pelement)<=(long double)m_ALPHA){
+	if (/*m_a*/LSN{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=LSN{m_ALPHA, 0}){
 		printf("AC\n");
 		if (m_pT!=NULL){
 			neighbors.insert(m_pT);
@@ -496,12 +503,167 @@ template <typename T> bool Oct<T>::insert(T* pT) {
 	return true;
 }
 
+/*template<> bool Oct<Point3D>::insert(Point3D* ppart){//Doesn't work for some reason.
+	return true;
+}*/
+
+/*template<> bool Oct<Particle3D>::insert(Particle3D* ppart){//Doesn't work for some reason.
+	if (ppart!=NULL){
+		Point3D p={ppart->x, ppart->y, ppart->z};
+		Point3D dp={ppart->x-m_ppoint->x, ppart->y-m_ppoint->y, ppart->z-m_ppoint->z};
+
+		if (abs(dp.x)<=m_a/2 && abs(dp.y)<=m_a/2 && abs(dp.z)<=m_a/2){// If in the cube centered on the point.
+			if (m_pT==NULL){		// If empty
+				//printf("Empty\n");
+				if (m_pTLFTree==NULL and m_pTRFTree==NULL and m_pBLFTree==NULL and m_pBRFTree==NULL
+						and m_pTRBTree==NULL and m_pTLBTree==NULL and m_pBLBTree==NULL and m_pBRBTree==NULL){	// If the cube has no Octs under (external branch)
+					m_pT=ppart;//We add in
+					m_tot_weight=ppart->w;//Set the tot_weight
+					*m_pbarycenter=p;//Set the barycenter
+				}else{																				// Else it means it is an internal branch
+
+					m_tot_weight+=ppart->w;//Add to tot_weight
+					*m_pbarycenter+=p*(ppart->w/m_tot_weight);//Add to the barycenter
+
+					if (dp.x<=0. && dp.y<=0. && dp.z<=0.){//If cube 1
+						if (m_pBLBTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a*-1,a*-1,a*-1};
+							m_pBLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pBLBTree->insert((Particle3D*)ppart);
+					}else if (dp.x>=0. && dp.y<=0. && dp.z<=0.){//If cube 2
+						if (m_pBRBTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a,a*-1,a*-1};
+							m_pBRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pBRBTree->insert(ppart);
+					}else if (dp.x>=0. && dp.y>=0. && dp.z<=0.){//If cube 3
+						if (m_pBRFTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a,a,a*-1};
+							m_pBRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pBRFTree->insert(ppart);
+					}else if (dp.x<=0. && dp.y>=0. && dp.z<=0.){//If cube 4
+						if (m_pBLFTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a*-1,a,a*-1};
+							m_pBLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pBLFTree->insert(ppart);
+					}else if (dp.x<=0. && dp.y<=0. && dp.z>=0.){//If cube 5
+						if (m_pTLBTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a*-1,a*-1,a};
+							m_pTLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pTLBTree->insert(ppart);
+					}else if (dp.x>=0. && dp.y<=0. && dp.z>=0.){//If cube 6
+						if (m_pTRBTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a,a*-1,a};
+							m_pTRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pTRBTree->insert(ppart);
+					}else if (dp.x>=0. && dp.y>=0. && dp.z>=0.){//If cube 7
+						if (m_pTRFTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a,a,a};
+							m_pTRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pTRFTree->insert(ppart);
+					}else if (dp.x<=0. && dp.y>=0. && dp.z>=0.){//If cube 8
+						if (m_pTLFTree==NULL){//If there is not yet a tree we create it
+							LSN a=m_a/4;
+							Point3D np{a*-1,a,a};
+							m_pTLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+						}
+						//m_pTLFTree->insert(ppart);
+					}
+				}
+			}else{					// Else if full
+
+				m_tot_weight=1.;//Set the tot_weight
+				*m_pbarycenter=p;//Set the barycenter
+
+				//printf("Full\n");
+
+				if (dp.x<=0. && dp.y<=0. && dp.z<=0.){//If cube 1
+					if (m_pBLBTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a*-1,a*-1,a*-1};
+						m_pBLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pBLBTree->insert(ppart);
+				}else if (dp.x>=0. && dp.y<=0. && dp.z<=0.){//If cube 2
+					if (m_pBRBTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a,a*-1,a*-1};
+						m_pBRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pBRBTree->insert(ppart);
+				}else if (dp.x>=0. && dp.y>=0. && dp.z<=0.){//If cube 3
+					if (m_pBRFTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a,a,a*-1};
+						m_pBRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pBRFTree->insert(ppart);
+				}else if (dp.x<=0. && dp.y>=0. && dp.z<=0.){//If cube 4
+					if (m_pBLFTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a*-1,a,a*-1};
+						m_pBLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pBLFTree->insert(ppart);
+				}else if (dp.x<=0. && dp.y<=0. && dp.z>=0.){//If cube 5
+					if (m_pTLBTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a*-1,a*-1,a};
+						m_pTLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pTLBTree->insert(ppart);
+				}else if (dp.x>=0. && dp.y<=0. && dp.z>=0.){//If cube 6
+					if (m_pTRBTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a,a*-1,a};
+						m_pTRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pTRBTree->insert(ppart);
+				}else if (dp.x>=0. && dp.y>=0. && dp.z>=0.){//If cube 7
+					if (m_pTRFTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a,a,a};
+						m_pTRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pTRFTree->insert(ppart);
+				}else if (dp.x<=0. && dp.y>=0. && dp.z>=0.){//If cube 8
+					if (m_pTLFTree==NULL){//If there is not yet a tree we create it
+						LSN a=m_a/4;
+						Point3D np{a*-1,a,a};
+						m_pTLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
+					}
+					//m_pTLFTree->insert(ppart);
+				}
+
+				// We reinsert the object already present.
+				Particle3D* pT2=m_pT;
+				m_pT=NULL;
+				//this->insert(pT2);
+			}
+		}
+	}
+	return true;
+}*/
+
 template <typename T> void Oct<T>::recalculate() {
 	std::unordered_set<T*> pelements=this->getPElements();
 
 	this->empty();
 
-	for (Oct<T>* pelement : pelements){
+	for (T* pelement : pelements){
 		this->insert(pelement);
 	}
 }
@@ -526,178 +688,6 @@ template <typename T> bool Oct<T>::empty() {
 
 	return true;
 }
-
-/*template<> bool Oct<Particle3D>::insert(Particle3D* ppart){//Doesn't work for some reason.
-	if (ppart!=NULL){
-		Point3D p={ppart->x, ppart->y, ppart->z};
-		Point3D dp={ppart->x-m_ppoint->x, ppart->y-m_ppoint->y, ppart->z-m_ppoint->z};
-
-		if (abs(dp.x)<=m_a/2 && abs(dp.y)<=m_a/2 && abs(dp.z)<=m_a/2){// If in the cube centered on the point.
-			if (m_pT==NULL){		// If empty
-				printf("Empty\n");
-				if (m_pBLFTree==NULL and m_pBRFTree==NULL and m_pTRFTree==NULL and m_pTLFTree==NULL
-						and m_pBLBTree==NULL and m_pBRBTree==NULL and m_pTRBTree==NULL and m_pTLBTree==NULL){	// If the square has no Quads under (external branch)
-					m_pT=ppart;//We add in
-					m_tot_weight=ppart->w;//Set the tot_weight
-					*m_pbarycenter=p;//Set the barycenter
-				}else{																				// Else it means it is an internal branch
-
-					m_tot_weight+=ppart->w;//Add to tot_weight
-					//LSN k=ppart->w/m_tot_weight;
-					if (m_tot_weight!=LSN{0,0}){
-						*m_pbarycenter+=p*(ppart->w/m_tot_weight);//Add to the barycenter
-					}else{
-						*m_pbarycenter=*m_ppoint;//Set the barycenter to the geometric center
-					}
-
-
-					if (dp.x<=0. && dp.y<=0. && dp.z<=0.){//If cube 1
-						//printf("Square1\n");
-						if (m_pBLBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a*(-1/4),m_a*(-1/4),m_a*(-1/4)};
-							m_pBLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pBLBTree->insert(ppart);
-					}else if (dp.x>0. && dp.y<0. && dp.z<0.){//If cube 2
-						//printf("Square2\n");
-						if (m_pBRBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a/4,m_a*(-1/4),m_a*(-1/4)};
-							m_pBRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pBRBTree->insert(ppart);
-					}else if (dp.x>0. && dp.y>0. && dp.z<0.){//If cube 3
-						//printf("Square3\n");
-						if (m_pBRFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a/4,m_a/4,m_a*(-1/4)};
-							m_pBRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pBRFTree->insert(ppart);
-					}else if (dp.x<0. && dp.y>0. && dp.z<0.){//If cube 4
-						//printf("Square4\n");
-						if (m_pBLFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a*(-1/4),m_a/4,m_a*(-1/4)};
-							m_pBLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pBLFTree->insert(ppart);
-					}else if (dp.x<0. && dp.y<0. && dp.z>0.){//If cube 5
-						//printf("Square1\n");
-						if (m_pTLBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a*(-1/4),m_a*(-1/4),m_a/4};
-							m_pTLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pTLBTree->insert(ppart);
-					}else if (dp.x>0. && dp.y<0. && dp.z>0.){//If cube 6
-						//printf("Square2\n");
-						if (m_pTRBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a/4,m_a*(-1/4),m_a/4};
-							m_pTRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pTRBTree->insert(ppart);
-					}else if (dp.x>0. && dp.y>0. && dp.z>0.){//If cube 7
-						//printf("Square3\n");
-						if (m_pTRFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a/4,m_a/4,m_a/4};
-							m_pTRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pTRFTree->insert(ppart);
-					}else if (dp.x<0. && dp.y>0. && dp.z>0.){//If cube 8
-						//printf("Square4\n");
-						if (m_pTLFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-							Point3D np{m_a*(-1/4),m_a/4,m_a/4};
-							m_pTLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-						}
-						m_pTLFTree->insert(ppart);
-					}
-				}
-			}else{					// Else if full
-
-				m_tot_weight=ppart->w;//+m_pT->w//Set the tot_weight
-				*m_pbarycenter=p;//Set the barycenter
-
-				printf("Full\n");
-
-				if (dp.x<=0. && dp.y<=0. && dp.z<=0.){//If cube 1
-					//printf("Square1\n");
-					if (m_pBLBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a*(-1/4),m_a*(-1/4),{0, 0}};
-						m_pBLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pBLBTree->insert(ppart);
-				}else if (dp.x>0. && dp.y<0. && dp.z<0.){//If cube 2
-					//printf("Square2\n");
-					if (m_pBRBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a/4,m_a*(-1/4),{0, 0}};
-						m_pBRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pBRBTree->insert(ppart);
-				}else if (dp.x>0. && dp.y>0. && dp.z<0.){//If cube 3
-					//printf("Square3\n");
-					if (m_pBRFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a/4,m_a/4,{0, 0}};
-						m_pBRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pBRFTree->insert(ppart);
-				}else if (dp.x<0. && dp.y>0. && dp.z<0.){//If cube 4
-					//printf("Square4\n");
-					if (m_pBLFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a*(-1/4),m_a/4,{0, 0}};
-						m_pBLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pBLFTree->insert(ppart);
-				}else if (dp.x<0. && dp.y<0. && dp.z>0.){//If cube 5
-					//printf("Square1\n");
-					if (m_pTLBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a*(-1/4),m_a*(-1/4),m_a/4};
-						m_pTLBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pTLBTree->insert(ppart);
-				}else if (dp.x>0. && dp.y<0. && dp.z>0.){//If cube 6
-					//printf("Square2\n");
-					if (m_pTRBTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a/4,m_a*(-1/4),m_a/4};
-						m_pTRBTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pTRBTree->insert(ppart);
-				}else if (dp.x>0. && dp.y>0. && dp.z>0.){//If cube 7
-					//printf("Square3\n");
-					if (m_pTRFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a/4,m_a/4,m_a/4};
-						m_pTRFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pTRFTree->insert(ppart);
-				}else if (dp.x<0. && dp.y>0. && dp.z>0.){//If cube 8
-					//printf("Square4\n");
-					if (m_pTLFTree==NULL){//If there is not yet a tree we create it
-							LSN a=m_a/4;
-						Point3D np{m_a*(-1/4),m_a/4,m_a/4};
-						m_pTLFTree=new Oct<Particle3D>(m_a/2, *m_ppoint+np);
-					}
-					m_pTLFTree->insert(ppart);
-				}
-				// We redistribute the object already present in the Quad.
-				Particle3D* pT2=m_pT;
-				m_pT=NULL;
-				this->insert(pT2);
-			}
-		}
-	}
-	return true;
-}*/
 
 template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>& pquads) {
 	Point3D p={t.x, t.y, {0, 0}};
@@ -736,8 +726,8 @@ template <typename T> void Oct<T>::find(const T& t, std::unordered_set<Oct<T>*>&
 		}
 	}
 }
-
-template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const {
+//Useless
+/*template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const {
 	if (&t!=m_pT){
 		Point3D p={t.x, t.y, t.z};
 
@@ -748,7 +738,7 @@ template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, 
 		//std::cout<<"\n"<<alpha.to_string()<<"\n";
 
 		if (alpha>=m_ALPHA){
-			Vector3D* pdv=new Vector3D(p, *m_pbarycenter);//ERROR
+			Vector3D* pdv=new Vector3D(p, *m_pbarycenter);
 			LSN nb=t.w*this->m_tot_weight;
 			LSN nb2=nb/pow(d, 2);
 			pdv->setNorm(nb2);
@@ -781,7 +771,7 @@ template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, 
 			}
 		}
 	}
-}
+}*/
 
 /*
  * Stores the octs that are to be considered given alpha.
@@ -849,7 +839,7 @@ template <typename T> T* Oct<T>::search(Point3D* ppoint) const {
 
 
 
-template <typename T> std::string Oct<T>::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+template <typename T> std::string Oct<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=((spread)?to_stringTabs(indent) : "");
 	//mes+="QUAD";
@@ -861,13 +851,16 @@ template <typename T> std::string Oct<T>::to_string(const bool& spread, const bo
 		mes+=ss.str();
 		mes+="]:";
 		mes+=m_a.to_string();						//a
-		mes+=", ";
-		mes+=m_ppoint->to_string(false, false);		//Point
-		mes+=", ";
-		mes+=m_pbarycenter->to_string(false, false);		//Barycenter
-		mes+=", ";
-		mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
-		mes+=", ";
+		mes+="|";
+		mes+=m_ppoint->to_string(false, false, 0);		//Point
+		mes+="|";
+		mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
+		mes+="|";
+		std::stringstream ss2;
+		ss2 << m_pT;
+		mes+=ss2.str();
+		//mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
+		mes+="|";
 		mes+="w:" + std::to_string(m_tot_weight.to_long_double());
 		mes+="]";
 		mes+=((spread)?"\n" : "");
@@ -914,7 +907,7 @@ template <typename T> std::string Oct<T>::to_string(const bool& spread, const bo
 	return mes;
 }
 
-template <typename T> void Oct<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+template <typename T> void Oct<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

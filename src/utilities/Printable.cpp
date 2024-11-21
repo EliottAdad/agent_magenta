@@ -23,7 +23,7 @@ Printable::Printable(const Printable &other) {
 
 
 
-std::string Printable::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Printable::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	printTabs(indent);
 
@@ -39,7 +39,7 @@ std::string Printable::to_string(const bool& spread, const bool& full_info, cons
 	return mes;
 }
 
-void Printable::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Printable::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

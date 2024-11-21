@@ -11,7 +11,12 @@
 #include "Particle3D.h"
 #include "../geometry/Mesh3D.h"
 
-class Object3D: public Particle3D {
+/*
+ * ############
+ *  Object3D :)
+ * ############
+ */
+class Object3D : public Particle3D {
 public:
 	Object3D();
 	virtual ~Object3D();

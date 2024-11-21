@@ -93,7 +93,7 @@ void VectorFieldUnidirectional::setT(const long double& dt){
 }
 
 
-std::string VectorFieldUnidirectional::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string VectorFieldUnidirectional::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="VECTOR_FIELD_UNIDIRECTIONAL";
@@ -115,7 +115,7 @@ std::string VectorFieldUnidirectional::to_string(const bool& spread, const bool&
 	return mes;
 }
 
-void VectorFieldUnidirectional::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void VectorFieldUnidirectional::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

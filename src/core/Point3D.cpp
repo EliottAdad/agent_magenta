@@ -43,6 +43,10 @@ LSN Point3D::getZ() const {
 	return z;
 }
 
+Point3D Point3D::getPosition() const {
+	return {x, y, z};
+}
+
 void Point3D::operator=(const Point3D& p) {
 	this->x=p.x;
 	this->y=p.y;
@@ -119,7 +123,7 @@ void Point3D::operator/=(const long double& k) {
 
 
 
-std::string Point3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Point3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -136,7 +140,7 @@ std::string Point3D::to_string(const bool& spread, const bool& full_info, const 
 	return mes;
 }
 
-void Point3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Point3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
@@ -225,8 +229,7 @@ Point3D operator/(const Point3D& p, const long double& k) {
 /*
  * Functions
  */
-
 LSN getDistance(const Point3D& p1, const Point3D& p2) {
-	LSN* pnlsn=new LSN{sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² )
-	return *pnlsn;
+	//LSN* pnlsn=new LSN{sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² )
+	return {sqrt(pow((p1.x-p2.x).to_long_double(), (long int)2) + pow((p1.y-p2.y).to_long_double(), (long int)2) + pow((p1.z-p2.z).to_long_double(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² );
 }

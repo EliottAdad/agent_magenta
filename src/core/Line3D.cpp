@@ -54,37 +54,77 @@ Line3D::~Line3D() {
 
 
 Point3D Line3D::getP1() const {
-	return Point3D{*(this->m_pp1)};
+	//return Point3D{*(this->m_pp1)};
+	return *m_pp1;
 }
 
-void Line3D::setP1(const Point3D& p1) {
-	*m_pp1=p1;
-}
-
-Point3D* Line3D::getPP1() {
+/**
+ * Returns the pointer to p1 (if p1 has been
+ * defined externally) or NULL in the other case
+ */
+Point3D* Line3D::getPP1() const {
 	Point3D* pp1=NULL;
+	// If it hasn't been created locally...
 	if (!m_delp1){
 		pp1=this->m_pp1;
 	}
 	return pp1;
 }
 
+void Line3D::setP1(Point3D& p1, const bool& delp) {
+	if (delp){
+		if (m_delp1){
+			delete m_pp2;
+		}
+		m_pp1=new Point3D(p1);
+	}else{
+		m_pp1=&p1;
+	}
+	m_delp1=delp;
+}
+
+void Line3D::setPP1(Point3D* pp1, const bool& delp) {
+	if (delp){
+		if (m_delp1){
+			delete m_pp2;
+		}
+		m_pp1=new Point3D(*pp1);
+	}else{
+		m_pp1=pp1;
+	}
+	m_delp1=delp;
+}
+
 Point3D Line3D::getP2() const {
-	return Point3D{*(this->m_pp2)};
+	//return Point3D{*(this->m_pp2)};
+	return *m_pp2;
 }
 
-void Line3D::setP2(const Point3D& p2) {
-	*m_pp2=p2;
-}
-
-Point3D* Line3D::getPP2() {
+/**
+ * Returns the pointer to p2 (if p2 has been
+ * defined externally) or NULL in the other case
+ */
+Point3D* Line3D::getPP2() const {
 	Point3D* pp2=nullptr;
-	// If it hasn't been defined locally.
+	// If it hasn't been created locally...
 	if (!m_delp2){
 		pp2=this->m_pp2;
 	}
 	return pp2;
 }
+
+void Line3D::setP2(Point3D& p2, const bool& delp) {
+	if (delp){
+		if (m_delp1){
+			delete m_pp2;
+		}
+		m_pp1=new Point3D(p2);
+	}else{
+		m_pp2=&p2;
+	}
+	m_delp2=delp;
+}
+
 
 bool Line3D::getDelP1() const {
 	return this->m_delp1;
@@ -95,7 +135,7 @@ bool Line3D::getDelP2() const {
 }
 
 
-std::string Line3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Line3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -115,7 +155,7 @@ std::string Line3D::to_string(const bool& spread, const bool& full_info, const u
 	return mes;
 }
 
-void Line3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Line3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

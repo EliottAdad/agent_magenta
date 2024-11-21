@@ -44,7 +44,7 @@ void Moveable::applyAsPos(const Vector3D& v) {
 
 
 
-std::string Moveable::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string Moveable::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="MOVEABLE";
@@ -65,7 +65,7 @@ std::string Moveable::to_string(const bool& spread, const bool& full_info, const
 	return mes;
 }
 
-void Moveable::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void Moveable::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

@@ -8,11 +8,12 @@
 #include "../display/Displayable.h"
 
 
-///////////
-// Scene :)
-///////////
-//Scene va contenir les Displayable
-
+/*
+ * #########
+ *  Scene :)
+ * #########
+ * Scene contains Displayables
+ */
 class Scene{
 public:
 	Scene();//:)

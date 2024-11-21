@@ -13,9 +13,9 @@
 #include "../utilities/Printable.h"
 
 /*
- * ############
+ * ###########
  *  Shape3D :)
- * ############
+ * ###########
  */
 class Shape3D : public Printable {
 protected:
@@ -29,8 +29,8 @@ public:
 	std::unordered_set<Point3D*> setPoint(Point3D* ppoint);
 	void setPPoint(Point3D* ppoint);
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
 #endif /* SHAPE3D_H_ */

@@ -31,8 +31,8 @@ struct WeightedPoint3D : public Point3D {
 
 	virtual LSN getW() const;
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 #endif /* WEIGHTEDPOINT3D_H_ */

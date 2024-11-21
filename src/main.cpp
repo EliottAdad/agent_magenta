@@ -20,7 +20,7 @@
 #include "core/Quad.h"
 #include "core/Oct.h"
 #include "core/Particle3D.h"
-#include "core/ParticleSystem3D.h"
+//#include "core/ParticleSystem3D.h"
 #include "core/System3D.h"
 #include "core/Vector3D.h"
 #include "core/VectorField.h"
@@ -57,114 +57,146 @@
 
 
 /*
- * Main core
+ * Main core (LSN, Point3D, WeightedPoint3D)
  */
-//int main(){
-//	/*
-//	 * Tests LSN
-//	 */
-//	std::cout<< "\n" << "####Tests LSN####" << "\n";
-//
-//	LSN nb1{-2000.53,20};
-//	LSN nb2{1,20};
-//	LSN nb3=nb1+nb2;
-//	nb1.print(true, 0, true);
-//	nb2.print(true, 0, true);
-//	nb3.print(true, 0, true);
-//	nb3*=2;
-//	nb3*=LSN{5,-1};
-//	nb3.print(true, 0, true);
-//
-//	std::cout<< "\n";
-//
-//	/*
-//	 * Tests Points
-//	 */
-//	std::cout<< "\n" << "####Tests Points####" << "\n";
-//
-//	Point3D p1{{0,0},{2,0},{1,0}};
-//	Point3D p2{{20,7},{2,0},{1,0}};
-//	p1-=p2;
-//	Point3D p3{{18,7},{2,0},{5,0}};
-//	Point3D p4=p1+p2-p3;
-//	p1.print(true, 0, false);
-//	p2.print(true, 0, false);
-//	p3.print(true, 0, false);
-//	p4.print(true, 0, false);
-//
-//	Quad<Point3D> q2(LSN{50, 0});
-//	q2.insert(new Point3D{{0,0},{0,0},{0,0}});
-//	q2.print(true, 0, true);
-//
-//	std::cout<< "\n";
-//
-//	/*
-//	 * Tests Weighted Points
-//	 */
-//	std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
-//
-//	WeightedPoint3D wp1{{0,0},{2,0},{1,0},{1,0}};
-//	WeightedPoint3D wp2{{20,7},{2,0},{1,0},{1,0}};
-//	WeightedPoint3D wp3{{18,7},{2,0},{5,0},{1,0}};
-//	WeightedPoint3D wp4=wp1+wp2-wp3;
-//
-//	wp1.print(true, 0, false);
-//	wp2.print(true, 0, false);
-//	wp3.print(true, 0, false);
-//	wp4.print(true, 0, false);
-//
-//
-//	/*
-//	 * Tests Time
-//	 */
-//	std::cout<< "\n" << "####Tests Time####" << "\n";
-//
-//	std::chrono::time_point t1=std::chrono::system_clock::now();
-//	//std::cout "t1=" << t1.count() << "\n";
-//	sleep(1);
-//	std::chrono::time_point t2=std::chrono::system_clock::now();
-//	std::chrono::duration dt=t2-t1;
-//	std::cout << "\n delta t = " << dt.count() << "ns\n";
-//
-//	/*
-//	 * Tests Vectors
-//	 */
-//	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
-//
-//	Vector3D v1;
-//	v1.print();
-//	Vector3D v2;
-//	v2.print();
-//	Vector3D v3;
-//	v3.print();
-//
-//
-//	printf("\n Test + start \n");
-//	Vector3D rv1=v1+v2;
-//	rv1.print();
-//	printf("\n Test + end \n");
-//
-//	printf("\n Test - start \n");
-//	Vector3D rv2=v1-v2;
-//	rv2.print();
-//	printf("\n Test - end \n");
-//
-//	printf("\n Test * start \n");
-//	Vector3D rv3=v1*2.;
-//	rv3.print();
-//	printf("\n Test * end \n");
-//
-//	printf("\n Test / start \n");
-//	Vector3D rv4=v1/2.;
-//	rv4.print();
-//	printf("\n Test / end \n");
-//
-//	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-//	//Vector3D rv5=((rv1+rv2)-rv4)+rv3;
-//	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-//	//rv5.print();
-//	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
-//
+/*int main(int argc, char* argv[]){*/
+	/*
+	 * Tests LSN
+	 */
+	/*std::cout<< "\n" << "####Tests LSN####" << "\n";
+
+	LSN nb0{2,20};			//{2,20}
+	LSN nb1=nb0*-1;			//{-2,20}
+	LSN nb2{1,20};			//{1,20}
+	LSN nb3=nb1+nb2;		//{-1,20}
+	LSN nb4=nb2;			//{-1,20}
+	//nb4+=nb0;				//{3,20}
+	nb4-=nb0;				//{-1,20}
+	printf("\nnb0:\n");
+	nb0.print(true, 0, true);
+	printf("\nnb1:\n");
+	nb1.print(true, 0, true);
+	printf("\nnb2:\n");
+	nb2.print(true, 0, true);
+	printf("\nnb3:\n");
+	nb3.print(true, 0, true);
+	printf("\nnb4:\n");
+	nb4.print(true, 0, true);
+
+	//nb3*=2.;
+
+	bool answ=(nb3>1.);
+	printf("\nansw:\n %b", answ);
+	printf("\nnb3:\n");
+	nb3.print(true, 0, true);
+
+	std::cout<< "\n";*/
+
+	/*
+	 * Tests Points
+	 */
+	/*std::cout<< "\n" << "####Tests Points####" << "\n";
+
+	Point3D p1{{0,0},{2,0},{1,0}};
+	Point3D p2{{2,8},{2,0},{1,0}};
+	p1-=p2;							// {{-2,8},{0,0},{0,0}} Doesn't work.
+	//p1+=p2;								// {{2,8},{4,0},{2,0}}
+	Point3D p3{{18,7},{2,0},{5,0}};
+	Point3D p4=p1+p2-p3;				// {{-1.8,8},{0,0},{-4,0}}
+	//p4-=p4;
+	printf("\np1:\n");
+	p1.print(true, 0, false);
+	printf("\np2:\n");
+	p2.print(true, 0, false);
+	printf("\np3:\n");
+	p3.print(true, 0, false);
+	printf("\np4:\n");
+	p4.print(true, 0, false);*/
+
+	/*Quad<Point3D> q2(LSN{50, 0});
+	q2.insert(new Point3D{{0,0},{0,0},{0,0}});
+	q2.print(true, 0, true);
+
+	std::cout<< "\n";*/
+
+	/*
+	 * Tests Weighted Points
+	 */
+	/*std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
+
+	WeightedPoint3D wp1{{0,0},{2,0},{1,0},{1,0}};
+	WeightedPoint3D wp2{{20,7},{2,0},{1,0},{1,0}};
+	WeightedPoint3D wp3{{18,7},{2,0},{5,0},{1,0}};
+	WeightedPoint3D wp4=wp1+wp2-wp3;
+
+	wp1.print(true, 0, false);
+	wp2.print(true, 0, false);
+	wp3.print(true, 0, false);
+	wp4.print(true, 0, false);
+
+
+}*/
+
+int main(int argc, char* argv[]){
+	/*
+	 * Tests Vectors
+	 */
+	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
+
+	Vector3D v1;
+	v1.print(true, true, 0);
+	Vector3D v2;
+	v2.print(true, true, 0);
+	Vector3D v3;
+	v3.print(true, true, 0);
+
+
+	printf("\n Test + start \n");
+	Vector3D rv1=v1+v2;
+	rv1.print();
+	printf("\n Test + end \n");
+
+	printf("\n Test - start \n");
+	Vector3D rv2=v1-v2;
+	rv2.print();
+	printf("\n Test - end \n");
+
+	printf("\n Test * start \n");
+	Vector3D rv3=v1*2.;
+	rv3.print();
+	printf("\n Test * end \n");
+
+	printf("\n Test / start \n");
+	Vector3D rv4=v1/2.;
+	rv4.print();
+	printf("\n Test / end \n");
+
+	printf("\n Test += start \n");
+	v3+=v1;
+	v3.print();
+	printf("\n Test += end \n");
+
+	printf("\n Test -= start \n");
+	v3-=v1;
+	v3.print();
+	printf("\n Test -= end \n");
+
+	printf("\n Test *= start \n");
+	v3*=-2.;
+	v3.print();
+	printf("\n Test *= end \n");
+
+	printf("\n Test /= start \n");
+	v3/=-2.;
+	v3.print();
+	printf("\n Test /= end \n");
+
+	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
+	//Vector3D rv5=((rv1+rv2)-rv4)+rv3;
+	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
+	//rv5.print();
+	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
+}
 
 	/*
 	 * Tests Particles
@@ -278,7 +310,7 @@
 /*
  * Main SDL
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 
     printf("Hello\n");
     Particle3D p;
@@ -286,6 +318,8 @@ int main(int argc, char* argv[]){
     p.y={1, 1};
     p.z={0, 0};
     p.w={1, 12};
+    Vector3D v({{0, 0}, {0, 0}, {0, 0}}, {{0, 0}, {0, 0}, {0, 0}});
+    p.setSpeed(v);
 
     Particle3D p2;
     p2.x={-3, 1};
@@ -293,7 +327,11 @@ int main(int argc, char* argv[]){
     p2.z={2, 1};
     p2.w={1, 12};
 
-    p.print(true, true, 1);
+    p.print(true, true, 0);
+    p2.print(true, true, 0);
+
+    LSN result=rrr2(&p, &p2);
+    result.print(true, true, 0);
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -305,15 +343,15 @@ int main(int argc, char* argv[]){
     Game g1;
 
     g1.getPScene()->addPDisplayable(&p);
-    g1.getPScene()->addPDisplayable(&p2);
+    g1.getPScene()->addPDisplayable(&p2);*/
     /*for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
     	printf("\n###1\n");
     	pdisplayable->print(true);
     	printf("\n###1\n");
     }*///OK
-    bool ans2=g1.getPPhysics()->addPTimeSensitive(&p);
+    /*bool ans2=g1.getPPhysics()->addPTimeSensitive(&p);
     g1.getPPhysics()->addPTimeSensitive(&p2);
-    printf("\naddPTimeSensitive was successful ?: %b\n", ans2);
+    printf("\naddPTimeSensitive was successful ?: %b\n", ans2);*/
     /*for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
     	//printf("\n###2\n");
     	ptime_sensitive->print(true);
@@ -322,24 +360,28 @@ int main(int argc, char* argv[]){
 
 
     // Creation of a particle system (System3D)
-    System3D<Particle3D> sys;
-    sys.setPFunc(rrr);
+    /*System3D<Particle3D> sys;
+    sys.setPFunc(rrr2);
     sys.setA({1, 3});
     sys.addPElement(&p);
     sys.addPElement(&p2);
-    printf("\nprint system1:\n");
-    sys.print(true, true, 2);
+    //sys.empty();
+    sys.recalculate();
+    printf("\nprint system1\n");
+    sys.print(true, true, 1);
     printf("\nprint system2\n");
 
     g1.getPPhysics()->addPTimeSensitive(&sys);
-    printf("\nprint physics1:\n");
-    g1.getPPhysics()->print(true);
-    printf("\nprint physics2:\n");
+    printf("\nprint physics1\n");
+    g1.getPPhysics()->print(true, true, 0);
+    printf("\nprint physics2\n");
 
     // Launch the simulation
     //g1.getPPhysics()->iterate(10);
-    g1.run(1);
+    g1.run(100);
 
+    //Quad<Particle3D> q({1, 3}, {{0,0}, {0,0}, {0,0}});
+    //q.insert(&p);
 
     printf("\nMain2\n");
 
@@ -350,7 +392,7 @@ int main(int argc, char* argv[]){
     printf("\nBye\n");
 
     return EXIT_SUCCESS;
-}
+}*/
 
 
 /*

@@ -41,7 +41,9 @@ public:
 	Vector3D getSpeed() const;
 	Vector3D* getPSpeed();
 	void setSpeed(const Vector3D& v);
-	void setDSpeed(const Vector3D& ds);
+	void setSpeed(const Point3D& p);
+	void addSpeed(const Vector3D& ds);
+	void addSpeed(const Point3D& p);
 
 	virtual void addAsForce(const Vector3D& v, const long double& dt);
 	virtual void addAsAcc(const Vector3D& v, const long double& dt);
@@ -51,8 +53,8 @@ public:
 	virtual void setT(const long double& dt);
 	virtual void apply();
 
-	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
-	void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
+	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
+	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
 #endif /* PARTICLE3D_H_ */

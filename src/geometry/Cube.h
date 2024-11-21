@@ -10,7 +10,7 @@
 
 #include "Polyhedron.h"
 
-class Cube: public Polyhedron {
+class Cube : public Polyhedron {
 public:
 	Cube();
 	virtual ~Cube();

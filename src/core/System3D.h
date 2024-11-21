@@ -27,7 +27,7 @@ protected:
 	LSN m_a;														// Lenght of the side of the zone.
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<T>* m_poctree;												// Pointer to the Octree.
-	void (*m_ptrLaw) (T*, T*, const long double&);					// Pointer to a function operating on 2 particles (Todo List)
+	LSN (*m_ptrLaw) (T*, T*);										// Pointer to a function operating on 2 particles (Todo List)
 
 	long double m_dt;
 	std::unordered_set<T*> m_pelements;
@@ -45,25 +45,27 @@ public:
 	void setAlpha(const float& alpha);
 	std::unordered_set<T*> getPElements() const;
 	bool addPElement(T* pelement);
-	std::unordered_set<T*> getPNeighbors(const T* pelement);				// Returns the list of neighbours, given the precision.
+	std::unordered_set<T*> getPNeighbors(const T* pelement) const;				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
-	//void empty();
-	void setPFunc(void (*ptrLaw) (T*, T*, const long double&));
+	void setPFunc(LSN (*ptrLaw) (T*, T*));
+	//void setPFunc(void (*ptrLaw) (T*, T*, const long double&));
 	void recalculate() const;
+	void empty();
 
 	virtual void setT(const long double& dt);	// From TimeSensitive
 	virtual void apply();						// From Moveable
 	//virtual void move(const Vector3D& dp);
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 //Functions
 template <typename T> void rrr(T* p1, T* p2, const long double& dt);
+template <typename T> LSN rrr2(T* p1, T* p2);// Returns l'acc exercée par p2 sur p1
 
 /*
- * Returns the vector immediately
+ * Returns the vector immediately (useless)
  */
 void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
 void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
@@ -86,8 +88,8 @@ void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
 	(*pv1)*=pow(dt, 2)/2;
 	(*pv2)*=pow(dt, 2)/2;
 
-	pp1->setDSpeed(*pv1);
-	pp2->setDSpeed(*pv2);
+	pp1->addSpeed(*pv1);
+	pp2->addSpeed(*pv2);
 }
 
 
@@ -144,7 +146,7 @@ template <typename T> bool System3D<T>::addPElement(T* pelement) {
 	return success;
 }
 
-template <typename T> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) {
+template <typename T> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) const {
 	return m_poctree->getPNeighbors(pelement);
 }
 
@@ -156,15 +158,38 @@ template <typename T> void System3D<T>::setT(const long double& dt) {
 	for (T* pelement : m_pelements){
 		pelement->setT(m_dt);
 
-		printf("A\n");
-		//m_poctree->getPNeighbors(pelement);//ERROR
-		printf("B\n");
-		std::unordered_set<T*> neighbors=m_poctree->getPNeighbors(pelement);
-		if(neighbors.empty()){
-			printf("Pas de neighbors\n");
-		}
-		for (T* neighbor : neighbors){
-			(*m_ptrLaw)(pelement, neighbor, m_dt);// Gérer if NULL
+		// If there is a law to apply
+		if (m_ptrLaw!=NULL){
+			printf("A\n");
+			std::unordered_set<T*> pneighbors=m_poctree->getPNeighbors(pelement);
+			printf("B\n");
+			if(pneighbors.empty()){
+				printf("Pas de neighbors\n");
+			}else{
+				printf("Neighbors\n");
+			}
+			// Apply the law
+			for (T* pneighbor : pneighbors){
+				//(*m_ptrLaw)(pelement, pneighbor, m_dt);// Probleme qd appel loi
+				LSN norm=(*m_ptrLaw)(pelement, pneighbor);// Get the norm of the acceleration
+				Line3D l;//Works
+				Vector3D v;//X Error (arrete l'execution)
+				/*Vector3D v((Point3D)(pelement->getPosition()), (Point3D)(pneighbor->getPosition()));
+				v.setNorm(norm);
+				Point3D dv=v.getEnd();
+				pelement->x+=dv.x;
+				pelement->y+=dv.y;
+				pelement->z+=dv.z;*/
+				/*pelement->x+=norm;
+				pelement->y+=norm;
+				pelement->z+=norm;*/
+				/*pelement->addSpeed(Point3D{norm, {0, 0}, {0, 0}});*///
+				LSN lsn{dt/10., 0};
+				lsn.recal();
+				pelement->x-=lsn;
+				pelement->y+=lsn;
+				pelement->z+=lsn;
+			}
 		}
 	}
 }
@@ -185,22 +210,32 @@ template <typename T> void System3D<T>::apply(){
 }*/
 
 
-template <typename T> void System3D<T>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
+/*template <typename T> void System3D<T>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
+	m_ptrLaw=ptrLaw;
+	//printf("%p\n", m_ptrLaw);
+}*/
+
+template <typename T> void System3D<T>::setPFunc(LSN (*ptrLaw) (T*, T*)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }
 
 template <typename T> void System3D<T>::recalculate() const {
-	for (Oct<T>* ptree : m_poctree->getPTrees()){
+	/*for (Oct<T>* ptree : m_poctree->getPTrees()){
 		delete ptree;
 	}
 	for (T* pelement : m_pelements){
 		m_poctree->insert(pelement);
-	}
+	}*/
+	m_poctree->recalculate();
+}
+
+template <typename T> void System3D<T>::empty() {
+	m_poctree->empty();
 }
 
 
-template <typename T> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+template <typename T> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -209,39 +244,63 @@ template <typename T> std::string System3D<T>::to_string(const bool& spread, con
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
-		mes+="]:";
+		mes+="]:\n";
+		mes+=to_stringTabs(indent+1);
+		mes+="a=" + m_a.to_string(false, false, 0);
 		mes+=((spread)?"\n" : "");
 	}
-	for (T* pelement : m_poctree->getPElements()){
-		mes+=to_stringTabs(indent+1);
-		mes+="* ";
-		mes+=pelement->to_string(false, false, 0);
-		mes+="\n";
+	if (full_info){
+		/*for (T* pelement : m_poctree->getPElements()){
+			mes+=to_stringTabs(indent+1);
+			mes+="* ";
+			mes+=pelement->to_string(false, false, 0);
+			mes+="\n";
+		}*/
+		mes+=m_poctree->to_string(spread, full_info, indent+1);
 	}
 
 	return mes;
 }
 
-template <typename T> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+template <typename T> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, indent, full_info);
 }
 
+
+
 /*
  * Functions
  */
-template <typename T> void rrr(T* p1, T* p2, const long double& dt){
+template <typename T> void rrr(T* p1, T* p2, const long double& dt) {
 	printf("Function (rrr)\n");
-	Vector3D v(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
+	Vector3D v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
+	//Vector3D* pv=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	LSN d=v.getNorm();
+	//LSN d=pv->getNorm();
 	v/=d;
+	//*pv/=d;
 	v.setNorm(G*p2->getW()/(d*d));
+	//pv->setNorm(G*p2->getW()/(d*d));
 	printf("d:\n");
-	d.print(true);
+	d.print(true, true, 1);
 	printf("\n");
 
-	p1->getPSpeed()->setEnd(p1->getPSpeed()->getEnd()+v.getEnd()*dt);//Unfinished
+	p1->getPSpeed()->addEnd({{dt, 0}, {0, 0}, {0, 0}});
+	//p1->getPSpeed()->addEnd(pv->getEnd()*dt);//+=;//Problem
+	printf("d2\n");
+	//delete pv;
 }
+
+/*
+ * Returns the acc (in norm) felt by p1 due to p2
+ */
+template <typename T> LSN rrr2(T* p1, T* p2) {
+	printf("Function (rrr2)\n");
+	LSN d=getDistance(*p1, *p2);
+	return G*p2->getW()/(d*d);
+}
+
 
 
 #endif /* SYSTEM3D_H_ */

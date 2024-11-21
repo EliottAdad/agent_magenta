@@ -142,19 +142,77 @@ void Vector3D::setNorm(const LSN& norm) {
 }
 
 Point3D Vector3D::getOrigin() const {
-	return *m_pp1;
+	return this->getP1();
 }
 
-void Vector3D::setOrigin(const Point3D& origin) {
-	*m_pp1=origin;
+Point3D* Vector3D::getPOrigin() const {
+	return this->getPP1();
+}
+
+void Vector3D::setOrigin(Point3D& origin, const bool& delp) {
+	/*if (delp){
+		if (m_delp1){
+			delete m_pp1;
+		}
+		m_pp1=new Point3D(origin);
+	}else{
+		m_pp1=&origin;
+	}
+	m_delp1=delp;*/
+	this->setP1(origin);
+}
+
+void Vector3D::setPOrigin(Point3D* porigin, const bool& delp) {
+	if (delp){
+		if (m_delp1){
+			delete m_pp1;
+		}
+		m_pp1=new Point3D(*porigin);
+	}else{
+		m_pp1=porigin;
+	}
+	m_delp1=delp;
+}
+
+void Vector3D::addOrigin(const Point3D& dp) {
+	*m_pp1+=dp;
 }
 
 Point3D Vector3D::getEnd() const {
-	return *m_pp2;
+	return this->getP2();
 }
 
-void Vector3D::setEnd(const Point3D& end) {
-	*m_pp2=end;
+Point3D* Vector3D::getPEnd() const {
+	return this->getPP2();
+}
+
+void Vector3D::setEnd(Point3D& end, const bool& delp) {
+	/*if (delp){
+		if (m_delp2){
+			delete m_pp2;
+		}
+		m_pp1=new Point3D(end);
+	}else{
+		m_pp1=&end;
+	}
+	m_delp2=delp;*/
+	this->setP2(end);
+}
+
+void Vector3D::setPEnd(Point3D* pend, const bool& delp) {
+	if (delp){
+		if (m_delp2){
+			delete m_pp2;
+		}
+		m_pp1=new Point3D(*pend);
+	}else{
+		m_pp1=pend;
+	}
+	m_delp2=delp;
+}
+
+void Vector3D::addEnd(const Point3D& dp) {
+	*m_pp2+=dp;
 }
 
 
@@ -209,7 +267,7 @@ bool Vector3D::operator>=(const Vector3D& v) const {
 }
 
 
-std::string Vector3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Vector3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -229,7 +287,7 @@ std::string Vector3D::to_string(const bool& spread, const bool& full_info, const
 	return mes;
 }
 
-void Vector3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Vector3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

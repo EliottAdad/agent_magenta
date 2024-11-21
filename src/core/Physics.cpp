@@ -140,8 +140,9 @@ bool Physics::iterate(const long double& dt) {//THE PROBLEM
 }
 
 
-std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string Physics::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
+	mes+=to_stringTabs(indent);
 
 	if (full_info){
 		mes+="PHYSICS[";
@@ -151,24 +152,26 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
-	mes+=((spread)?"\n" : " ");
-	mes+=to_stringTabs(indent);
-	mes+="speed=" + std::to_string(m_speed) + ";fcollide=" + std::to_string(m_fcollide) + ";fpause=" + std::to_string(m_fpause) + "\n";
+	//mes+=((spread)?"\n" : " ");
+	mes+=to_stringTabs(indent+1);
+	mes+="speed=" + std::to_string(m_speed) + "|fcollide=" + std::to_string(m_fcollide) + "|fpause=" + std::to_string(m_fpause) + "\n";
 
-	mes+="Time Sensitive list:\n";
-	int i=0;
+	mes+=to_stringTabs(indent+1);
+	mes+="* List Time Sensitive:\n";
+	//int i=0;
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
-		i++;
-		mes+=to_stringTabs(indent+1);
-		mes+=std::to_string(i);
-		mes+=" ";
-		mes+=ptime_sensitive->to_string(false, false, 0);
+		//i++;
+		mes+=to_stringTabs(indent+2);
+		mes+="*\n";
+		//mes+=std::to_string(i);
+		//mes+=" ";
+		mes+=ptime_sensitive->to_string(spread, full_info, indent+2);
 	}
 
 	return mes;
 }
 
-void Physics::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void Physics::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

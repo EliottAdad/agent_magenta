@@ -15,9 +15,9 @@
  * ############
  *  Vector3D :)
  * ############
- * Heritage de Line ne marche pas
+ * Heritage de Line ne marche pas (What ?)
  */
-class Vector3D: public Line3D {
+class Vector3D : public Line3D {
 public:
 	Vector3D();
 	Vector3D(const Point3D& p1, const Point3D& p2);
@@ -27,12 +27,21 @@ public:
 	Vector3D(const Vector3D& v);
 	virtual ~Vector3D();//:)
 
+	void setPPoint(Point3D* ppoint, const bool& delp=true);
+	void setPoint(Point3D& point, const bool& delp=false);
+
 	LSN getNorm() const;// :)
 	void setNorm(const LSN& norm);// :)
 	Point3D getOrigin() const;	//:)
-	void setOrigin(const Point3D& origin);	//:)
+	Point3D* getPOrigin() const;	//:)
+	void setOrigin(Point3D& origin, const bool& delp=true);	//:)
+	void setPOrigin(Point3D* porigin, const bool& delp=false);	//:)
+	void addOrigin(const Point3D& dp);	//:)
 	Point3D getEnd() const;	//:)
-	void setEnd(const Point3D& end);	//:)
+	Point3D* getPEnd() const;	//:)
+	void setEnd(Point3D& end, const bool& delp=true);	//:)
+	void setPEnd(Point3D* pend, const bool& delp=false);	//:)
+	void addEnd(const Point3D& dp);	//:)
 
 	virtual void operator=(const Vector3D& v);// :)
 	virtual void operator+=(const Vector3D& v);// :)
@@ -46,8 +55,8 @@ public:
 	virtual bool operator<=(const Vector3D& v) const;// :)
 	virtual bool operator>=(const Vector3D& v) const;// :)
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
 Vector3D operator+(const Vector3D& v1, const Vector3D& v2);// :)

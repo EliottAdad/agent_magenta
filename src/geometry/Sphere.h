@@ -12,9 +12,11 @@
 #include "../core/LSN.h"
 
 /*
- * Sphere
+ * ##########
+ *  Sphere :)
+ * ##########
  */
-class Sphere: public Shape3D {
+class Sphere : public Shape3D {
 private:
 	LSN m_r;
 

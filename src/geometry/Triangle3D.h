@@ -43,8 +43,8 @@ public:
 	Point3D* getPP3();					//
 	void setP3(const Point3D& p3);		//
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
 #endif /* TRIANGLE3D_H_ */

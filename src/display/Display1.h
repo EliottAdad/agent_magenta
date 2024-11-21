@@ -51,8 +51,8 @@ public:
 	//Display1(const Display1 &other);
 
 	Point3D* getPPoint();
-	void setPPoint(Point3D* ppoint, const bool& delp=true);
-	void setPoint(Point3D& point, const bool& delp=false);
+	void setPPoint(Point3D* ppoint, const bool& delp=false);
+	void setPoint(Point3D& point, const bool& delp=true);
 	char getDisplay() const;
 	void setDisplay(const char& display);
 	long double getScale() const;
@@ -75,8 +75,8 @@ public:
 	void renderLines(std::set<Line3D*> plines) const;//:)
 	void renderLine(Line3D* pline) const;//:)
 
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned int& indent=0) const;// :)
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 

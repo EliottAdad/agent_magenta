@@ -48,7 +48,7 @@ LSN Displayable::getZ() const{
 }
 
 
-std::string Displayable::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string Displayable::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="DISPLAYABLE";
@@ -56,7 +56,7 @@ std::string Displayable::to_string(const bool& spread, const bool& full_info, co
 	return mes;
 }
 
-void Displayable::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void Displayable::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

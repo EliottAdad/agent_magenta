@@ -32,7 +32,7 @@ void TimeSensitive::apply() {//Useless
 
 
 
-std::string TimeSensitive::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+std::string TimeSensitive::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="TIME_SENSITIVE";
@@ -40,7 +40,7 @@ std::string TimeSensitive::to_string(const bool& spread, const bool& full_info, 
 	return mes;
 }
 
-void TimeSensitive::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {// :)
+void TimeSensitive::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

@@ -13,7 +13,11 @@
 #include "Triangle3D.h"
 #include "../utilities/Printable.h"
 
-
+/*
+ * ########
+ *  Mesh :)
+ * ########
+ */
 class Mesh3D: public Printable {
 private:
 	//std::unordered_set<std::pair<Point3D*, bool>> m_ppoints;

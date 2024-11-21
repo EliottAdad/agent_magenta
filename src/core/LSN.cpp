@@ -15,12 +15,12 @@
 
 LSN::LSN() {
 	m=0;
-	exp=0;
+	e=0;
 }
 
-LSN::LSN(long double m, long int exp) {
+LSN::LSN(long double m, long int e) {
 	this->m=m;
-	this->exp=exp;
+	this->e=e;
 	this->recal();
 }
 
@@ -31,67 +31,65 @@ LSN::LSN(long double m, long int exp) {
 void LSN::recal() {//Sometimes doesn't work properly (because of the cast to an int Ex: (int)10.0000=9 when 10 is a double)
 	//printf(("Number : "+this->to_string()+"\n").c_str());
 	if (m==0){
-		//std::cout<<"m=0\n";
-		exp=0;
+		e=0;
 	}else{
 		//std::cout<<"m!=0\n";
 		int l_m=std::log(abs(m)) / std::log(10);//Number of chiffres avant/après la virgule
-		//std::cout<<"lenght mantissa "<<l_m<<"\n";
 
-		exp+=(l_m);
+		e+=(l_m);
 		m/=std::pow(10, (l_m));
 	}
 }
 
 long double LSN::to_long_double() const {
-	//long double ans=(this->m)*(long double)(pow(10, this->exp));
+	//long double ans=(this->m)*(long double)(pow(10, this->e));
 	//std::cout<< this->m << "\n";
-	//std::cout<< (long double)(pow(10, this->exp)) << "\n";
-	//std::cout<< (this->m)*(long double)(pow(10, this->exp)) << "\n";
-	return (this->m)*(long double)(pow(10, this->exp));
+	//std::cout<< (long double)(pow(10, this->e)) << "\n";
+	//std::cout<< (this->m)*(long double)(pow(10, this->e)) << "\n";
+	return (this->m)*(long double)(pow(10, this->e));
 }
 
 void LSN::operator=(const LSN& nb) {
 	this->m=nb.m;
-	this->exp=nb.exp;
+	this->e=nb.e;
 	this->recal();
 }
 
 void LSN::operator=(const long double& nb) {
 	this->m=nb;
-	this->exp=0;
+	this->e=0;
 	this->recal();
 }
 
 void LSN::operator+=(const LSN& nb) {
-	this->m+=nb.m/pow(10, (nb.exp-this->exp));
+	this->m+=nb.m*pow(10., (long double)(nb.e-this->e));
 	this->recal();
 }
 
-void LSN::operator+=(const long double& nb) {
-	this->m+=nb/pow(10, (0-this->exp));
+void LSN::operator+=(const long double& nb) {//X
+	this->m+=nb/pow(10., (long double)(this->e));
 	this->recal();
 }
 
 void LSN::operator-=(const LSN& nb) {
-	this->m-=nb.m/pow(10, (nb.exp-this->exp));
+	this->m-=nb.m*pow(10., (long double)(nb.e-this->e));
 	this->recal();
 }
 
 void LSN::operator-=(const long double& nb) {
-	this->m-=nb/pow(10, (0-this->exp));
+	this->m-=nb/pow(10., (long double)(this->e));
 	this->recal();
 }
 
 void LSN::operator*=(const LSN& nb) {
 	this->m*=nb.m;
-	this->exp+=nb.exp;
+	this->e+=nb.e;
 	this->recal();
 }
 
 void LSN::operator/=(const LSN& nb) {
 	this->m/=nb.m;
-	this->exp-=nb.exp;
+	this->e-=nb.e;
 	this->recal();
 }
 
@@ -115,7 +113,7 @@ void LSN::operator/=(const long double& k) {
  *
  */
 bool operator==(const LSN& nb1, const LSN& nb2) {
-	if (nb1.m==nb2.m && nb1.exp==nb2.exp)							// If exp and m are the same. A and B.
+	if (nb1.m==nb2.m && nb1.e==nb2.e)							// If e and m are the same. A and B.
 		return true;
 
 	return false;
@@ -125,21 +123,21 @@ bool operator==(const LSN& nb1, const LSN& nb2) {
  * :)
  */
 bool operator!=(const LSN& nb1, const LSN& nb2) {
-	if (nb1.m!=nb2.m || nb1.exp!=nb2.exp)							// If exp and m are not the same. n(A and B)=nA or nB.
+	if (nb1.m!=nb2.m || nb1.e!=nb2.e)							// If e and m are not the same. n(A and B)=nA or nB.
 		return true;
 
 	return false;
 }
 
 bool operator!=(const LSN& nb1, const long double& nb2) {
-	if (nb1.m!=nb2/pow(10, nb1.exp))							//
+	if (nb1.m!=nb2/pow(10., (long double)nb1.e))							//
 		return true;
 
 	return false;
 }
 
 bool operator!=(const long double& nb1, const LSN& nb2) {
-	if (nb1/pow(10, nb2.exp)!=nb2.m)							//
+	if (nb1/pow(10., (long double)nb2.e)!=nb2.m)							//
 		return true;
 
 	return false;
@@ -149,84 +147,92 @@ bool operator!=(const long double& nb1, const LSN& nb2) {
  * :)
  */
 bool operator<=(const LSN& nb1, const LSN& nb2) {
-	if (nb1.exp<nb2.exp or (nb1.exp==nb2.exp and nb1.m<=nb2.m)){	// Else if the exp are the same but m1<=m2.
+	printf("1)\n%Lf\n", nb1.m*pow(10., (long double)(nb1.e-nb2.e)));
+	printf("2)\n%Lf\n", nb2.m);
+	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))<=nb2.m){	// .
 		return true;
 	}
 	return false;
 }
 
 bool operator<=(const LSN& nb1, const long double& nb2) {
-	if (nb1.m<=nb2/pow(10, nb1.exp)){
+	if (nb1.m*pow(10., (long double)(nb1.e))<=nb2){
 		return true;
 	}
 	return false;
 }
 
 bool operator<=(const long double& nb1, const LSN& nb2) {
-	if (nb1/pow(10, nb2.exp)<=nb2.m){
+	if (nb1/pow(10., (long double)(nb2.e))<=nb2.m){	//
 		return true;
 	}
 	return false;
 }
 
 bool operator>=(const LSN& nb1, const LSN& nb2) {
-	if (nb1.exp>nb2.exp or (nb1.exp==nb2.exp and nb1.m>=nb2.m)){	// Else if the exp are the same but m1>=m2.
+	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))>=nb2.m){	// .
 		return true;
 	}
 	return false;
 }
 
 bool operator>=(const LSN& nb1, const long double& nb2) {
-	if (nb1.m>=nb2/pow(10, nb1.exp)){
+	if (nb1.m*pow(10., (long double)(nb1.e))>=nb2){	// .
 		return true;
 	}
 	return false;
 }
 
 bool operator>=(const long double& nb1, const LSN& nb2) {
-	if (nb1/pow(10, nb2.exp)>=nb2.m){
+	if (nb1/pow(10., (long double)(nb2.e))>=nb2.m){	// .
 		return true;
 	}
 	return false;
 }
 
 bool operator<(const LSN& nb1, const LSN& nb2) {
-	if (nb1.exp<nb2.exp or (nb1.exp==nb2.exp and nb1.m<nb2.m)){		// Else if the exp are the same but m1<m2.
+	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))<nb2.m){	// .
+	//if (nb1.e<nb2.e or (nb1.e==nb2.e and nb1.m<nb2.m)){		// Else if the e are the same but m1<m2.
 		return true;
 	}
 	return false;
 }
 
 bool operator<(const LSN& nb1, const long double& nb2) {
-	if (nb1.m<nb2/pow(10, nb1.exp)){
+	if (nb1.m*pow(10., (long double)(nb1.e))<nb2){	// .
+	//if (nb1.m<nb2/pow(10, nb1.e)){
 		return true;
 	}
 	return false;
 }
 
 bool operator<(const long double& nb1, const LSN& nb2) {
-	if (nb1/pow(10, nb2.exp)<nb2.m){
+	if (nb1/pow(10., (long double)(nb2.e))<nb2.m){	// .
+	//if (nb1/pow(10, nb2.e)<nb2.m){
 		return true;
 	}
 	return false;
 }
 
 bool operator>(const LSN& nb1, const LSN& nb2) {
-	if (nb1.exp>nb2.exp or (nb1.exp==nb2.exp and nb1.m>nb2.m)){		// Else if the exp are the same but m1>m2.
+	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))>nb2.m){	// .
+	//if (nb1.e>nb2.e or (nb1.e==nb2.e and nb1.m>nb2.m)){		// Else if the e are the same but m1>m2.
 		return true;
 	}
 	return false;
 }
 
 bool operator>(const LSN& nb1, const long double& nb2) {
-	if (nb1.m>nb2/pow(10, nb1.exp)){
+	if (nb1.m*pow(10., (long double)(nb1.e))>nb2){	// .
+	//if (nb1.m>nb2/pow(10, nb1.e)){
 		return true;
 	}
 	return false;
 }
 
 bool operator>(const long double& nb1, const LSN& nb2) {
-	if (nb1/pow(10, nb2.exp)>nb2.m){
+	if (nb1/pow(10., (long double)(nb2.e))>nb2.m){	// .
+	//if (nb1/pow(10, nb2.e)>nb2.m){
 		return true;
 	}
 	return false;
@@ -236,58 +242,58 @@ bool operator>(const long double& nb1, const LSN& nb2) {
  * It's better to enter the bigger number first I think.
  */
 LSN operator+(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m+nb2.m/pow(10, nb1.exp-nb2.exp), nb1.exp};
+	return {nb1.m+nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e};
 }
 
 LSN operator+(const LSN& nb1, const long double& nb2) {
-	return {nb1.m+nb2/pow(10, nb1.exp), nb1.exp};
+	return {nb1.m+nb2/pow(10., (long double)nb1.e), nb1.e};
 }
 
 LSN operator+(const long double& nb1, const LSN& nb2) {
-	return {nb1+nb2.m/pow(10, 0-nb2.exp), 0};
+	return {nb1+nb2.m*pow(10., (long double)nb2.e), 0};
 }
 /*:)
  * It's better to enter the bigger number first.
  */
 LSN operator-(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m-nb2.m/std::pow(10, nb1.exp-nb2.exp), nb1.exp};
+	return {nb1.m-nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e};
 }
 
 LSN operator-(const LSN& nb1, const long double& nb2) {
-	return {nb1.m-nb2/std::pow(10, nb1.exp-0), nb1.exp};
+	return {nb1.m-nb2/pow(10., (long double)nb1.e), nb1.e};
 }
 
 LSN operator-(const long double& nb1, const LSN& nb2) {
-	return {nb1-nb2.m/std::pow(10, 0-nb2.exp), 0};
+	return {nb1-nb2.m*pow(10., (long double)nb2.e), 0};
 }
 
 LSN operator*(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m*nb2.m, nb1.exp+nb2.exp};
+	return {nb1.m*nb2.m, nb1.e+nb2.e};
 }
 
 LSN operator*(const LSN& nb, const long double& k) {
-	return {nb.m*k, nb.exp};
+	return {nb.m*k, nb.e};
 }
 
 LSN operator*(const long double& k, const LSN& nb) {
-	return {nb.m*k, nb.exp};
+	return {nb.m*k, nb.e};
 }
 
 LSN operator/(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m/nb2.m, nb1.exp-nb2.exp};
+	return {nb1.m/nb2.m, nb1.e-nb2.e};
 }
 
 LSN operator/(const LSN& nb, const long double& k) {
-	return {nb.m/k, nb.exp};
+	return {nb.m/k, nb.e};
 }
 
 LSN operator/(const long double& k, const LSN& nb) {
-	return {nb.m/k, nb.exp};
+	return {nb.m/k, nb.e};
 }
 
 
 
-std::string LSN::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string LSN::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -297,13 +303,15 @@ std::string LSN::to_string(const bool& spread, const bool& full_info, const unsi
 		mes+=ss.str();
 		mes+="]:";
 		mes+=((spread)?"\n" : "");
+		mes+=std::to_string(m) + "x10^" + std::to_string(e);
+	}else{
+		mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
 	}
-	mes+=std::to_string(m) + "x10^" + std::to_string(exp);
 
 	return mes;
 }
 
-void LSN::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void LSN::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
@@ -314,26 +322,26 @@ void LSN::print(const bool& spread, const bool& full_info, const unsigned int& i
  */
 
 LSN abs(const LSN& nb) {
-	LSN resp{std::abs(nb.m), nb.exp};
+	LSN resp{std::abs(nb.m), nb.e};
 	//resp.recal();
 	return resp;
 }
 
-LSN pow(const LSN& nb, const long int& exp) {
-	LSN resp{pow(nb.m, exp), nb.exp*exp};
+LSN pow(const LSN& nb, const long int& e) {
+	LSN resp{pow(nb.m, (long double)e), nb.e*e};
 	resp.recal();
 	return resp;
 }
 
 /*// Calculate the n root of a number
-LSN nrt(LSN& nb, long int exp) {
+LSN nrt(LSN& nb, long int e) {
 	//LSN nb2={1, 0};
-	for (long int i(0) ; i<nb.exp%exp ; i++)
+	for (long int i(0) ; i<nb.e%e ; i++)
 	{
 		nb.m*=nb;
 	}
 	recal(nb2);
-	return *(new LSN{pow(nb.m, exp), nb.exp*exp});
+	return *(new LSN{pow(nb.m, e), nb.e*e});
 }*/
 
 /*
@@ -341,7 +349,7 @@ LSN nrt(LSN& nb, long int exp) {
  */
 
 LSN sqrt(const LSN& nb) {
-	LSN resp={pow(nb.m, 0.5), nb.exp/2};
+	LSN resp={pow(nb.m, 0.5), nb.e/2};//Doesn't work (exponent cast to int)
 	resp.recal();
 	return resp;
 }

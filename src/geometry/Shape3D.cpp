@@ -23,7 +23,7 @@ Shape3D::Shape3D(const Shape3D &other) {
 
 
 
-std::string Shape3D::to_string(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+std::string Shape3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -43,7 +43,7 @@ std::string Shape3D::to_string(const bool& spread, const bool& full_info, const 
 	return mes;
 }
 
-void Shape3D::print(const bool& spread, const bool& full_info, const unsigned int& indent) const {
+void Shape3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
