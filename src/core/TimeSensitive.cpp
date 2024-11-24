@@ -21,7 +21,7 @@ TimeSensitive::~TimeSensitive() {
 
 
 
-void TimeSensitive::setT(const long double& dt) {
+void TimeSensitive::setT(const float& dt) {
 	// TODO Auto-generated constructor stub
 
 }

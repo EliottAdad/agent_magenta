@@ -56,7 +56,7 @@ public:
 
 	//bool loop();
 	bool run(const unsigned int& steps=1);
-	bool iterate(const long double& dt);
+	bool iterate(const float& dt);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)

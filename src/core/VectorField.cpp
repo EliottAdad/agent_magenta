@@ -68,7 +68,7 @@ void VectorField::applyAsPos(){
 
 }*/
 
-void VectorField::setT(const long double& dt){
+void VectorField::setT(const float& dt){
 	;
 }
 

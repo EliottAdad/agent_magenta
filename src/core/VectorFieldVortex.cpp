@@ -18,13 +18,13 @@ VectorFieldVortex::~VectorFieldVortex() {
 }
 
 
-void VectorFieldVortex::applyAsForce(const long double& dt){
+void VectorFieldVortex::applyAsForce(const float& dt){
 	/*for (Particle3D* ppart : m_pparticles){
 		*(ppart->getPSpeed())+=getDistance(*m_ppoint, ppart->wp)*m_m*dt;//Il faut trouver le vecteur tangent au cercle.
 	}*/
 }
 
-void VectorFieldVortex::applyAsAcc(const long double& dt){
+void VectorFieldVortex::applyAsAcc(const float& dt){
 	/*for (Particle3D* ppart : m_pparticles){
 		*(ppart->getPSpeed())+=getDistance(*m_ppoint, ppart->wp)*m_m*dt;//Il faut trouver le vecteur tangent au cercle.
 	}*/

@@ -49,8 +49,8 @@ public:
 	virtual void operator=(const Vector3D& v);// :)
 	virtual void operator+=(const Vector3D& v);// :)
 	virtual void operator-=(const Vector3D& v);// :)
-	virtual void operator*=(const long double& k);// :)
-	virtual void operator/=(const long double& k);// :)
+	virtual void operator*=(const float& k);// :)
+	virtual void operator/=(const float& k);// :)
 	virtual void operator*=(const SN<float, char>& k);// :)
 	virtual void operator/=(const SN<float, char>& k);// :)
 
@@ -64,9 +64,9 @@ public:
 
 std::unique_ptr<Vector3D> operator+(const Vector3D& v1, const Vector3D& v2);// :)
 std::unique_ptr<Vector3D> operator-(const Vector3D& v1, const Vector3D& v2);// :)
-std::unique_ptr<Vector3D> operator*(const Vector3D& v, const long double& k);// :)
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const float& k);// :)
 std::unique_ptr<Vector3D> operator*(const Vector3D& v, const SN<float, char>& k);// :)
-std::unique_ptr<Vector3D> operator/(const Vector3D& v, const long double& k);// :)
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const float& k);// :)
 std::unique_ptr<Vector3D> operator/(const Vector3D& v, const SN<float, char>& k);// :)
 
 //Scalar product

@@ -205,21 +205,21 @@ template<typename M, typename E> void SN<M, E>::operator*=(const SN<M, E>& nb) {
 	this->recal();
 }
 
+template<typename M, typename E> void SN<M, E>::operator*=(const M& k) {
+	this->m*=k;
+	this->recal();
+}
+
 template<typename M, typename E> void SN<M, E>::operator/=(const SN<M, E>& nb) {
 	this->m/=nb.m;
 	this->e-=nb.e;
 	this->recal();
 }
 
-/*template<typename M, typename E> void SN<M, E>::operator*=(const long double& k) {
-	this->m*=k;
-	this->recal();
-}
-
-template<typename M, typename E> void SN<M, E>::operator/=(const long double& k) {
+template<typename M, typename E> void SN<M, E>::operator/=(const M& k) {
 	this->m/=k;
 	this->recal();
-}*/
+}
 
 
 
@@ -373,7 +373,10 @@ template<typename M, typename E> bool operator>(const M& nb1, const SN<M, E>& nb
  * It's better to enter the bigger number first I think.
  */
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2) {
-	return SN<M, E>{nb1.m+nb2.m/pow(10., (M)(nb1.e-nb2.e)), nb1.e};
+	M nm=nb1.m+nb2.m/pow(10., (M)(nb1.e-nb2.e));
+	E ne=nb1.e;
+	SN<M, E> nnb{nm, ne};
+	return nnb;
 }
 
 /*template<> SN<float, char> operator+(const SN<float, char>& nb1, const SN<float, char>& nb2) {
@@ -384,7 +387,10 @@ template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const S
 }*/
 
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M& nb2) {
-	return SN<M, E>{nb1.m+nb2/pow(10., (M)(nb1.e)), nb1.e};
+	M nm=nb1.m+nb2/pow(10., (M)(nb1.e));
+	E ne=nb1.e;
+	SN<M, E> nnb{nm, ne};
+	return nnb;
 }
 
 /*template<> SN<float, char> operator+(const SN<float, char>& nb1, const float& nb2) {
@@ -395,7 +401,10 @@ template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M
 }*/
 
 template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2) {
-	return SN<M, E>{nb1+nb2.m*pow(10., (M)nb2.e), 0};
+	M nm=nb1+nb2.m*pow(10., (M)nb2.e);
+	E ne=0;
+	SN<M, E> nnb{nm, ne};
+	return nnb;
 }
 
 /*template<> SN<float, char> operator+(const float& nb1, const SN<float, char>& nb2) {
@@ -409,7 +418,10 @@ template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>
  * It's better to enter the bigger number first.
  */
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2) {
-	return SN<M, E>{nb1.m-nb2.m/pow(10., (M)(nb1.e-nb2.e)), nb1.e};
+	M nm=nb1.m-nb2.m/pow(10., (M)(nb1.e-nb2.e));
+	E ne=nb1.e;
+	SN<M, E> nnb{nm, ne};
+	return nnb;
 }
 
 /*template<> SN<float, char> operator-(const SN<float, char>& nb1, const SN<float, char>& nb2) {
@@ -420,7 +432,10 @@ template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const S
 }*/
 
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M& nb2) {
-	return SN<M, E>{nb1.m-nb2/pow(10., (M)nb1.e), nb1.e};
+	M nm=nb1.m-nb2/pow(10., (M)nb1.e);
+	E ne=nb1.e;
+	SN<M, E> nnb{nm, ne};
+	return SN<M, E>{nm, ne};
 }
 
 /*template<> SN<float, char> operator-(const SN<float, char>& nb1, const float& nb2) {
@@ -431,7 +446,10 @@ template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M
 }*/
 
 template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>& nb2) {
-	return SN<M, E>{nb1-nb2.m*pow(10., (M)(nb2.e)), 0};
+	M nm=nb1-nb2.m*pow(10., (M)(nb2.e));
+	E ne=0;
+	SN<M, E> nnb{nm, ne};
+	return nnb;
 }
 
 /*template<> SN<float, char> operator-(const float& nb1, const SN<float, char>& nb2) {
@@ -442,7 +460,11 @@ template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>
 }*/
 
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2) {
-	return SN<M, E>{nb1.m*nb2.m, nb1.e+nb2.e};
+	M nm=nb1.m*nb2.m;
+	E ne=nb1.e+nb2.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<> SN<float, char> operator*(const SN<float, char>& nb1, const SN<float, char>& nb2) {
@@ -453,7 +475,11 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const S
 }*/
 
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k) {
-	return {nb.m*k, nb.e};
+	M nm=nb.m*k;
+	E ne=nb.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<> SN<float, char> operator*(const SN<float, char>& nb, const float& k) {
@@ -463,7 +489,11 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M&
 }*/
 
 template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& nb) {
-	return {nb.m*k, nb.e};
+	M nm=k*nb.m;
+	E ne=nb.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<> SN<float, char> operator*(const float& k, const SN<float, char>& nb) {
@@ -473,7 +503,11 @@ template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& 
 }*/
 
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2) {
-	return {nb1.m/nb2.m, nb1.e-nb2.e};
+	M nm=nb1.m/nb2.m;
+	E ne=nb1.e-nb2.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<typename M, typename E> SN<float, char> operator/(const SN<float, char>& nb1, const SN<float, char>& nb2) {
@@ -481,7 +515,11 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const S
 }*/
 
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M& k) {
-	return {nb.m/k, nb.e};
+	M nm=nb.m/k;
+	E ne=nb.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<> SN<float, char> operator/(const SN<float, char>& nb, const float& k) {
@@ -491,7 +529,11 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M&
 }*/
 
 template<typename M, typename E> SN<M, E> operator/(const M& k, const SN<M, E>& nb) {
-	return {k/nb.m, (-1)*nb.e};
+	M nm=k/nb.m;
+	E ne=(-1)*nb.e;
+	SN<M, E> nnb{nm, ne};
+	nnb.recal();
+	return nnb;
 }
 
 /*template<> SN<float, char> operator/(const float& k, const SN<float, char>& nb) {

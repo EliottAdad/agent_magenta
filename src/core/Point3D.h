@@ -302,7 +302,10 @@ template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p,
 //template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>& p1, const Point3D<M, E>& p2);
 
 template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
-	return SN<M, E>{sqrt(pow((p1.x-p2.x).to_m_type(), (long int)2) + pow((p1.y-p2.y).to_m_type(), (long int)2) + pow((p1.z-p2.z).to_m_type(), (long int)2)), 0};// d=sqrt( (xA-xB)²+(yA-yB)² );
+	M nm=sqrt(pow((p1.x-p2.x).to_m_type(), (long int)2) + pow((p1.y-p2.y).to_m_type(), (long int)2) + pow((p1.z-p2.z).to_m_type(), (long int)2));// d=sqrt( (xA-xB)²+(yA-yB)² )
+	SN<M, E> nnb{nm, 0};
+	nnb.recal();
+	return nnb;
 }
 
 

@@ -136,12 +136,12 @@ void Particle3D::addSpeed(const Point3D<float, char>& p) {
 	*(m_ps->getPEnd())+=p;
 }
 
-void Particle3D::addAsForce(const Vector3D& v, const long double& dt) {
+void Particle3D::addAsForce(const Vector3D& v, const float& dt) {
 	SN<float, char> a=SN<float, char>{(float)dt, 0}/this->w;
 	*m_ps+=*(v*a);
 }
 
-void Particle3D::addAsAcc(const Vector3D& v, const long double& dt) {
+void Particle3D::addAsAcc(const Vector3D& v, const float& dt) {
 	*m_ps+=*(v*dt);
 }
 
@@ -157,15 +157,15 @@ void Particle3D::addAsPos(const Vector3D& v) {
 
 
 
-void Particle3D::setT(const long double& dt) {
+void Particle3D::setT(const float& dt) {
 	m_dt=dt;
 	//printf("%Lf\n", dt);
 }
 
 void Particle3D::apply(){
-	this->x=this->x+(m_ps->getP2().x)*(float)m_dt;
-	this->y=this->y+(m_ps->getP2().y)*(float)m_dt;
-	this->z=this->z+(m_ps->getP2().z)*(float)m_dt;
+	this->x=this->x+(m_ps->getP2().x)*m_dt;
+	this->y=this->y+(m_ps->getP2().y)*m_dt;
+	this->z=this->z+(m_ps->getP2().z)*m_dt;
 	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM
 	//this->y+=(m_ps->getP2().y)*m_dt;
 	//this->z+=(m_ps->getP2().z)*m_dt;

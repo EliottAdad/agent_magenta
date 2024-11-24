@@ -23,7 +23,7 @@ class Particle3D : public WeightedPoint3D<float, char>, public TimeSensitive, pu
 protected:
 	Vector3D* m_ps;// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
 	bool m_dels;
-	long double m_dt;
+	float m_dt;
 
 public:
 	Particle3D();
@@ -45,12 +45,12 @@ public:
 	void addSpeed(const Vector3D& ds);
 	void addSpeed(const Point3D<float, char>& p);
 
-	virtual void addAsForce(const Vector3D& v, const long double& dt);
-	virtual void addAsAcc(const Vector3D& v, const long double& dt);
+	virtual void addAsForce(const Vector3D& v, const float& dt);
+	virtual void addAsAcc(const Vector3D& v, const float& dt);
 	virtual void addAsSpeed(const Vector3D& v);
 	virtual void addAsPos(const Vector3D& v);
 
-	virtual void setT(const long double& dt);
+	virtual void setT(const float& dt);
 	virtual void apply();
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;

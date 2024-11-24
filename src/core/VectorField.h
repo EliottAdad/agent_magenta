@@ -45,10 +45,10 @@ public:
 	unsigned int getMode() const;
 	void setMode(const unsigned int& mode);
 
-	/*virtual void applyAsAcc(const double& dt);
+	/*virtual void applyAsAcc(const float& dt);
 	virtual void applyAsSpeed();
 	virtual void applyAsPos();*/
-	virtual void setT(const long double& dt);//Apply given the mode (a, j, p)
+	virtual void setT(const float& dt);//Apply given the mode (a, j, p)
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)

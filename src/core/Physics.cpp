@@ -129,11 +129,11 @@ bool Physics::run(const unsigned int& steps) {
 	return m_fpause;
 }
 
-bool Physics::iterate(const long double& dt) {//THE PROBLEM
+bool Physics::iterate(const float& dt) {//THE PROBLEM
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
 		printf("\nHello1\n");
 		ptime_sensitive->setT(dt*m_speed);
-		printf("%Lf\n", dt*m_speed);
+		printf("%f\n", dt*m_speed);
 		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
 	}
 	return m_fpause;

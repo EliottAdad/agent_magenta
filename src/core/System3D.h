@@ -37,8 +37,8 @@ public:
 	//System3D(const System3D &other);
 	virtual ~System3D();
 
-	LSN getA() const;
-	void setA(const LSN& a);
+	SN<M, E> getA() const;
+	void setA(const SN<M, E>& a);
 	Oct<T, M, E>* getPOctree();
 	//void setOctree(const float& alpha);
 	float getAlpha() const;
@@ -47,7 +47,7 @@ public:
 	bool addPElement(T* pelement);
 	std::unordered_set<T*> getPNeighbors(const T* pelement) const;				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
-	void setPFunc(LSN (*ptrLaw) (T*, T*));
+	void setPFunc(SN<M, E> (*ptrLaw) (T*, T*));
 	//void setPFunc(void (*ptrLaw) (T*, T*, const long double&));
 	void recalculate() const;
 	void empty();
@@ -71,7 +71,7 @@ template <typename T> LSN rrr2(T* p1, T* p2);// Returns l'acc exercée par p2 su
 template <typename M, typename E> void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
 	Vector3D* pv1=new Vector3D({pp1->x, pp1->y, pp1->z}, {pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
 	Vector3D* pv2=new Vector3D({pp2->x, pp2->y, pp2->z}, {pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
-	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, {{0, 0}, {0, 0}, {0, 0}});
+	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<M, E>{{0, 0}, {0, 0}, {0, 0}});
 	pv1->setNorm({1, 0});
 	pv2->setNorm({1, 0});
 
@@ -93,7 +93,7 @@ template <typename M, typename E> void grav(Particle3D* pp1, Particle3D* pp2, co
 }
 
 
-template <typename T, typename M, typename E> System3D<T>::System3D() {
+template <typename T, typename M, typename E> System3D<T, M, E>::System3D() {
 	m_a={1,2};				//100m sided box
 	m_poctree=new Oct<T, M, E>(m_a);
 	m_ptrLaw=NULL;
@@ -105,39 +105,39 @@ template <typename T, typename M, typename E> System3D<T>::System3D() {
 
 }*/
 
-template <typename T, typename M, typename E> System3D<T>::~System3D() {
+template <typename T, typename M, typename E> System3D<T, M, E>::~System3D() {
 	delete m_poctree;
 	m_pelements.clear();
 }
 
 
 
-template <typename T, typename M, typename E> SN<M, E> System3D<T>::getA() const {
+template <typename T, typename M, typename E> SN<M, E> System3D<T, M, E>::getA() const {
 	return m_poctree->getA();
 }
 
-template <typename T, typename M, typename E> void System3D<T>::setA(const LSN& a) {
+template <typename T, typename M, typename E> void System3D<T, M, E>::setA(const SN<M, E>& a) {
 	m_poctree->setA(a);
 	//this->recalculate();//Possible probleme
 }
 
-template <typename T, typename M, typename E> Oct<T>* System3D<T>::getPOctree() {
+template <typename T, typename M, typename E> Oct<T, M, E>* System3D<T, M, E>::getPOctree() {
 	return m_poctree;
 }
 
-template <typename T, typename M, typename E> float System3D<T>::getAlpha() const {
+template <typename T, typename M, typename E> float System3D<T, M, E>::getAlpha() const {
 	return m_poctree->m_ALPHA;
 }
 
-template <typename T, typename M, typename E> void System3D<T>::setAlpha(const float& alpha) {
+template <typename T, typename M, typename E> void System3D<T, M, E>::setAlpha(const float& alpha) {
 	m_poctree->m_ALPHA=alpha;
 }
 
-template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T>::getPElements() const {
+template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T, M, E>::getPElements() const {
 	return m_poctree->getPElements();
 }
 
-template <typename T, typename M, typename E> bool System3D<T>::addPElement(T* pelement) {
+template <typename T, typename M, typename E> bool System3D<T, M, E>::addPElement(T* pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
@@ -146,11 +146,11 @@ template <typename T, typename M, typename E> bool System3D<T>::addPElement(T* p
 	return success;
 }
 
-template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) const {
+template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T, M, E>::getPNeighbors(const T* pelement) const {
 	return m_poctree->getPNeighbors(pelement);
 }
 
-template <typename T, typename M, typename E> void System3D<T>::setT(const long double& dt) {
+template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const long double& dt) {
 	m_dt=dt;
 
 	printf("Set T (System3D)\n");
@@ -194,7 +194,7 @@ template <typename T, typename M, typename E> void System3D<T>::setT(const long 
 	}
 }
 
-template <typename T, typename M, typename E> void System3D<T>::apply(){
+template <typename T, typename M, typename E> void System3D<T, M, E>::apply(){
 	printf("Apply (System3D)\n");
 	for (T* pelement : m_pelements){
 		pelement->apply();
@@ -210,17 +210,17 @@ template <typename T, typename M, typename E> void System3D<T>::apply(){
 }*/
 
 
-/*template <typename T> void System3D<T>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
+/*template <typename T> void System3D<T, M, E>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }*/
 
-template <typename T, typename M, typename E> void System3D<T>::setPFunc(SN<M, E> (*ptrLaw) (T*, T*)){
+template <typename T, typename M, typename E> void System3D<T, M, E>::setPFunc(SN<M, E> (*ptrLaw) (T*, T*)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }
 
-template <typename T, typename M, typename E> void System3D<T>::recalculate() const {
+template <typename T, typename M, typename E> void System3D<T, M, E>::recalculate() const {
 	/*for (Oct<T>* ptree : m_poctree->getPTrees()){
 		delete ptree;
 	}
@@ -230,12 +230,12 @@ template <typename T, typename M, typename E> void System3D<T>::recalculate() co
 	m_poctree->recalculate();
 }
 
-template <typename T, typename M, typename E> void System3D<T>::empty() {
+template <typename T, typename M, typename E> void System3D<T, M, E>::empty() {
 	m_poctree->empty();
 }
 
 
-template <typename T, typename M, typename E> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -262,7 +262,7 @@ template <typename T, typename M, typename E> std::string System3D<T>::to_string
 	return mes;
 }
 
-template <typename T, typename M, typename E> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template <typename T, typename M, typename E> void System3D<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, indent, full_info);
 }

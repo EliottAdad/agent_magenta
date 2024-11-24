@@ -83,7 +83,7 @@ void VectorFieldUnidirectional::applyAsPos(){
 /*
  * Redefines setT() from TimeSensitive
  */
-void VectorFieldUnidirectional::setT(const long double& dt){
+void VectorFieldUnidirectional::setT(const float& dt){
 	for (Moveable* pmov : m_pmoveables){
 		//Vector3D v(*m_pv);
 		//v*=pow(dt, m_mode);

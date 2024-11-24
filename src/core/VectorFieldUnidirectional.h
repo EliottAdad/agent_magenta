@@ -19,7 +19,7 @@
  *  VectorFieldUnidirectional :)
  * #############################
  */
-class VectorFieldUnidirectional: public VectorField {
+class VectorFieldUnidirectional : public VectorField {
 protected:
 	Vector3D* m_pv;
 	bool m_delv;
@@ -40,7 +40,7 @@ public:
 	//virtual void applyAsAcc(const long double& dt);
 	//virtual void applyAsSpeed();
 	//virtual void applyAsPos();
-	virtual void setT(const long double& dt=1);
+	virtual void setT(const float& dt=1);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)

@@ -15,7 +15,7 @@
  *  VectorFieldVortex :)
  * #####################
  */
-class VectorFieldVortex: public VectorField {
+class VectorFieldVortex : public VectorField {
 protected:
 	float m_m;				//Moment unit/m or N/m.
 	Point3D<float, char>* m_ppoint;		//Center.
@@ -24,8 +24,8 @@ public:
 	VectorFieldVortex();
 	virtual ~VectorFieldVortex();
 
-	void applyAsForce(const long double& dt);
-	void applyAsAcc(const long double& dt);
+	void applyAsForce(const float& dt);
+	void applyAsAcc(const float& dt);
 	void applyAsSpeed();
 	void applyAsPos();
 };
