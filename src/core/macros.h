@@ -8,6 +8,6 @@
 #ifndef MACROS_H_
 #define MACROS_H_
 
-const static LSN G=LSN{6.67430, -11};
+const static SN<float, char> G=SN<float, char>{6.67430, -11};
 
 #endif /* MACROS_H_ */

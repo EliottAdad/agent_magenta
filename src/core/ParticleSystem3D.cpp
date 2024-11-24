@@ -9,7 +9,7 @@
 
 ParticleSystem3D::ParticleSystem3D() {
 	m_a={1,1};				//10m sided box
-	m_poctree=new Oct<Particle3D>(m_a);
+	m_poctree=new Oct<Particle3D, float, char>(m_a);
 	m_dt=0;
 	pfunc=NULL;
 }
@@ -25,7 +25,7 @@ ParticleSystem3D::~ParticleSystem3D() {
 
 
 
-LSN ParticleSystem3D::getA() const {
+SN<float, char> ParticleSystem3D::getA() const {
 	return m_poctree->getA();
 }
 
@@ -33,7 +33,7 @@ LSN ParticleSystem3D::getA() const {
 	m_poctree->m_a=a;
 }*/
 
-Oct<Particle3D>* ParticleSystem3D::getPOctree() {
+Oct<Particle3D, float, char>* ParticleSystem3D::getPOctree() {
 	return m_poctree;
 }
 

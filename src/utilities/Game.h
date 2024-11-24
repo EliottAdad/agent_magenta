@@ -8,6 +8,8 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include <unordered_set>
+
 #include "../core/Physics.h"
 #include "../core/Point3D.h"
 #include "../core/Scene.h"

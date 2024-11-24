@@ -9,7 +9,7 @@
 
 VectorFieldUnidirectional::VectorFieldUnidirectional() {
 	m_k=1;
-	m_pv=new Vector3D(Point3D{LSN{0, 0}, LSN{0, 0}, LSN{0, 0}}, Point3D{LSN{1, 0}, LSN{1, 0}, LSN{1, 0}});//:?
+	m_pv=new Vector3D(Point3D<float, char>{SN<float, char>{0, 0}, SN<float, char>{0, 0}, SN<float, char>{0, 0}}, Point3D<float, char>{SN<float, char>{1, 0}, SN<float, char>{1, 0}, SN<float, char>{1, 0}});//:?
 	m_delv=true;
 }
 

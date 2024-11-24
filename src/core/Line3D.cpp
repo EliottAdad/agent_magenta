@@ -8,44 +8,44 @@
 #include "Line3D.h"
 
 Line3D::Line3D(){
+	m_pp1=new Point3D<float, char>{{0, 0}, {0, 0}, {0, 0}};
+	m_pp2=new Point3D<float, char>{{1, 0}, {1, 0}, {1, 0}};
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D{{0, 0}, {0, 0}, {0, 0}};
-	m_pp2=new Point3D{{1, 0}, {1, 0}, {1, 0}};
 }
 
-Line3D::Line3D(const Point3D& p1, const Point3D& p2){//:)
+Line3D::Line3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2){//:)
+	this->m_pp1=new Point3D<float, char>(p1);
+	this->m_pp2=new Point3D<float, char>(p2);
 	m_delp1=true;
 	m_delp2=true;
-	this->m_pp1=new Point3D(p1);
-	this->m_pp2=new Point3D(p2);
 }
 
-Line3D::Line3D(Point3D* pp1, Point3D* pp2){//:)
-	m_delp1=false;
-	m_delp2=false;
+Line3D::Line3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2){//:)
 	this->m_pp1=pp1;
 	this->m_pp2=pp2;
+	m_delp1=false;
+	m_delp2=false;
 }
 
 /*
  * Copy constructor
  */
 Line3D::Line3D(const Line3D& l){
+	m_pp1=new Point3D<float, char>(l.getP1());
+	m_pp2=new Point3D<float, char>(l.getP2());
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D(l.getP1());
-	m_pp2=new Point3D(l.getP2());
 }
 
 /*
  * Copy constructor
  */
 Line3D::Line3D(const Line3D* pl){
+	m_pp1=new Point3D<float, char>(pl->getP1());
+	m_pp2=new Point3D<float, char>(pl->getP2());
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D(pl->getP1());
-	m_pp2=new Point3D(pl->getP2());
 }
 
 Line3D::~Line3D() {
@@ -63,7 +63,7 @@ Line3D::~Line3D() {
 
 
 
-Point3D Line3D::getP1() const {
+Point3D<float, char> Line3D::getP1() const {
 	//return Point3D{*(this->m_pp1)};
 	return *m_pp1;
 }
@@ -72,8 +72,8 @@ Point3D Line3D::getP1() const {
  * Returns the pointer to p1 (if p1 has been
  * defined externally) or NULL in the other case
  */
-Point3D* Line3D::getPP1() const {
-	Point3D* pp1=NULL;
+Point3D<float, char>* Line3D::getPP1() const {
+	Point3D<float, char>* pp1=NULL;
 	// If it hasn't been created locally...
 	if (!m_delp1){
 		pp1=this->m_pp1;
@@ -81,31 +81,31 @@ Point3D* Line3D::getPP1() const {
 	return pp1;
 }
 
-void Line3D::setP1(Point3D& p1, const bool& delp) {
+void Line3D::setP1(Point3D<float, char>& p1, const bool& delp) {
 	if (delp){
 		if (m_delp1){
 			delete m_pp2;
 		}
-		m_pp1=new Point3D(p1);
+		m_pp1=new Point3D<float, char>(p1);
 	}else{
 		m_pp1=&p1;
 	}
 	m_delp1=delp;
 }
 
-void Line3D::setPP1(Point3D* pp1, const bool& delp) {
+void Line3D::setPP1(Point3D<float, char>* pp1, const bool& delp) {
 	if (delp){
 		if (m_delp1){
 			delete m_pp2;
 		}
-		m_pp1=new Point3D(*pp1);
+		m_pp1=new Point3D<float, char>(*pp1);
 	}else{
 		m_pp1=pp1;
 	}
 	m_delp1=delp;
 }
 
-Point3D Line3D::getP2() const {
+Point3D<float, char> Line3D::getP2() const {
 	//return Point3D{*(this->m_pp2)};
 	return *m_pp2;
 }
@@ -114,8 +114,8 @@ Point3D Line3D::getP2() const {
  * Returns the pointer to p2 (if p2 has been
  * defined externally) or NULL in the other case
  */
-Point3D* Line3D::getPP2() const {
-	Point3D* pp2=nullptr;
+Point3D<float, char>* Line3D::getPP2() const {
+	Point3D<float, char>* pp2=nullptr;
 	// If it hasn't been created locally...
 	if (!m_delp2){
 		pp2=this->m_pp2;
@@ -123,12 +123,12 @@ Point3D* Line3D::getPP2() const {
 	return pp2;
 }
 
-void Line3D::setP2(Point3D& p2, const bool& delp) {
+void Line3D::setP2(Point3D<float, char>& p2, const bool& delp) {
 	if (delp){
 		if (m_delp1){
 			delete m_pp2;
 		}
-		m_pp1=new Point3D(p2);
+		m_pp1=new Point3D<float, char>(p2);
 	}else{
 		m_pp2=&p2;
 	}

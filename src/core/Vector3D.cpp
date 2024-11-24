@@ -12,10 +12,10 @@
  * By default constructor
  */
 Vector3D::Vector3D() {
+	m_pp1=new Point3D<float, char>{{0, 0}, {0, 0}, {0, 0}};
+	m_pp2=new Point3D<float, char>{{1, 0}, {1, 0}, {1, 0}};
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D{{0, 0}, {0, 0}, {0, 0}};
-	m_pp2=new Point3D{{1, 0}, {1, 0}, {1, 0}};
 }
 
 /**
@@ -24,11 +24,11 @@ Vector3D::Vector3D() {
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-Vector3D::Vector3D(const Point3D& p1, const Point3D& p2) {
+Vector3D::Vector3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2) {
 	m_delp1=true;
 	m_delp2=true;
-	this->m_pp1=new Point3D(p1);
-	this->m_pp2=new Point3D(p2);
+	this->m_pp1=new Point3D<float, char>(p1);
+	this->m_pp2=new Point3D<float, char>(p2);
 }
 
 /**
@@ -37,20 +37,20 @@ Vector3D::Vector3D(const Point3D& p1, const Point3D& p2) {
  * @param p2 Second point
  * @param[in/out] Modifications to *pp1 or *pp2 outside of class definition will be passed onto p1 and p2
  */
-Vector3D::Vector3D(Point3D* pp1, Point3D* pp2) {
+Vector3D::Vector3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2) {
 	if (pp1!=NULL){
 		m_delp1=false;
 		this->m_pp1=pp1;
 	}else{
 		m_delp1=true;
-		this->m_pp1=new Point3D();
+		this->m_pp1=new Point3D<float, char>();
 	}
 	if (pp2!=NULL){
 		m_delp2=false;
 		this->m_pp2=pp2;
 	}else{
 		m_delp2=true;
-		this->m_pp2=new Point3D();
+		this->m_pp2=new Point3D<float, char>();
 	}
 }
 
@@ -61,17 +61,17 @@ Vector3D::Vector3D(Point3D* pp1, Point3D* pp2) {
  * (modifications outside of class definition will be passed onto p1)
  * @param p2 Second point
  */
-Vector3D::Vector3D(Point3D* pp1, const Point3D& p2) {
+Vector3D::Vector3D(Point3D<float, char>* pp1, const Point3D<float, char>& p2) {
 	if (pp1!=NULL){
 		m_delp1=false;
 		this->m_pp1=pp1;
 	}else{
 		m_delp1=true;
-		this->m_pp1=new Point3D();
+		this->m_pp1=new Point3D<float, char>();
 	}
 
 	m_delp2=true;
-	this->m_pp2=new Point3D(p2);
+	this->m_pp2=new Point3D<float, char>(p2);
 }
 
 /**
@@ -81,16 +81,16 @@ Vector3D::Vector3D(Point3D* pp1, const Point3D& p2) {
  * @param pp2 Pointer to the second point
  * (modifications outside of class definition will be passed onto p2)
  */
-Vector3D::Vector3D(const Point3D& p1, Point3D* pp2) {
+Vector3D::Vector3D(const Point3D<float, char>& p1, Point3D<float, char>* pp2) {
 	m_delp1=true;
-	this->m_pp1=new Point3D();
+	this->m_pp1=new Point3D<float, char>();
 
 	if (pp2!=NULL){
 		m_delp2=false;
 		this->m_pp2=pp2;
 	}else{
 		m_delp2=true;
-		this->m_pp2=new Point3D();
+		this->m_pp2=new Point3D<float, char>();
 	}
 }
 
@@ -101,8 +101,8 @@ Vector3D::Vector3D(const Point3D& p1, Point3D* pp2) {
 Vector3D::Vector3D(const Vector3D& v) {
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D(v.getP1());
-	m_pp2=new Point3D(v.getP2());
+	m_pp1=new Point3D<float, char>(v.getP1());
+	m_pp2=new Point3D<float, char>(v.getP2());
 }
 
 /*
@@ -112,24 +112,24 @@ Vector3D::Vector3D(const Vector3D& v) {
 Vector3D::Vector3D(const Vector3D* pv) {
 	m_delp1=true;
 	m_delp2=true;
-	m_pp1=new Point3D(pv->getP1());
-	m_pp2=new Point3D(pv->getP2());
+	m_pp1=new Point3D<float, char>(pv->getP1());
+	m_pp2=new Point3D<float, char>(pv->getP2());
 }
 
 Vector3D::~Vector3D() {
 	if (m_delp1){
 		delete m_pp1;
-		printf("A delete p1");
+		//printf("A delete p1");
 	}else{
 		m_pp1=NULL;
-		printf("N'a pas delete p1");
+		//printf("N'a pas delete p1");
 	}
 	if (m_delp2){
 		delete m_pp2;
-		printf("A delete p2");
+		//printf("A delete p2");
 	}else{
 		m_pp2=NULL;
-		printf("N'a pas delete p2");
+		//printf("N'a pas delete p2");
 	}
 }
 
@@ -138,29 +138,29 @@ Vector3D::~Vector3D() {
 /**
  * @return Returns the norm
  */
-LSN Vector3D::getNorm() const {
-	return getDistance(*m_pp2);
+SN<float, char> Vector3D::getNorm() const {
+	return getDistance(*m_pp2, {{0, 0},{0, 0},{0, 0}});
 }
 
-void Vector3D::setNorm(const LSN& norm) {
-	if (*m_pp2!=Point3D{{0,0},{0,0},{0,0}}){
-		LSN k=norm/getDistance(*m_pp2);
+void Vector3D::setNorm(const SN<float, char>& norm) {
+	if (*m_pp2!=Point3D<float, char>{{0,0},{0,0},{0,0}}){
+		SN<float, char> k=norm/getDistance(*m_pp2, {{0, 0},{0, 0},{0, 0}});
 		*m_pp2*=k;
 	}else{
-		*m_pp2=Point3D{{1,0},{1,0},{1,0}};
+		*m_pp2=Point3D<float, char>{{1,0},{1,0},{1,0}};
 		this->setNorm(norm);
 	}
 }
 
-Point3D Vector3D::getOrigin() const {
+Point3D<float, char> Vector3D::getOrigin() const {
 	return this->getP1();
 }
 
-Point3D* Vector3D::getPOrigin() const {
+Point3D<float, char>* Vector3D::getPOrigin() const {
 	return this->getPP1();
 }
 
-void Vector3D::setOrigin(Point3D& origin, const bool& delp) {
+void Vector3D::setOrigin(Point3D<float, char>& origin, const bool& delp) {
 	/*if (delp){
 		if (m_delp1){
 			delete m_pp1;
@@ -173,31 +173,31 @@ void Vector3D::setOrigin(Point3D& origin, const bool& delp) {
 	this->setP1(origin);
 }
 
-void Vector3D::setPOrigin(Point3D* porigin, const bool& delp) {
+void Vector3D::setPOrigin(Point3D<float, char>* porigin, const bool& delp) {
 	if (delp){
 		if (m_delp1){
 			delete m_pp1;
 		}
-		m_pp1=new Point3D(*porigin);
+		m_pp1=new Point3D<float, char>(*porigin);
 	}else{
 		m_pp1=porigin;
 	}
 	m_delp1=delp;
 }
 
-void Vector3D::addOrigin(const Point3D& dp) {
+void Vector3D::addOrigin(const Point3D<float, char>& dp) {
 	*m_pp1+=dp;
 }
 
-Point3D Vector3D::getEnd() const {
+Point3D<float, char> Vector3D::getEnd() const {
 	return this->getP2();
 }
 
-Point3D* Vector3D::getPEnd() const {
+Point3D<float, char>* Vector3D::getPEnd() const {
 	return this->getPP2();
 }
 
-void Vector3D::setEnd(Point3D& end, const bool& delp) {
+void Vector3D::setEnd(Point3D<float, char>& end, const bool& delp) {
 	/*if (delp){
 		if (m_delp2){
 			delete m_pp2;
@@ -210,27 +210,27 @@ void Vector3D::setEnd(Point3D& end, const bool& delp) {
 	this->setP2(end);
 }
 
-void Vector3D::setPEnd(Point3D* pend, const bool& delp) {
+void Vector3D::setPEnd(Point3D<float, char>* pend, const bool& delp) {
 	if (delp){
 		if (m_delp2){
 			delete m_pp2;
 		}
-		m_pp1=new Point3D(*pend);
+		m_pp1=new Point3D<float, char>(*pend);
 	}else{
 		m_pp1=pend;
 	}
 	m_delp2=delp;
 }
 
-void Vector3D::addEnd(const Point3D& dp) {
+void Vector3D::addEnd(const Point3D<float, char>& dp) {
 	*m_pp2+=dp;
 }
 
 
 void Vector3D::operator=(const Vector3D& v) {
-	printf("In the equalizer of Vector3D start\n");
+	//printf("In the equalizer of Vector3D start\n");
 	*this->m_pp2=v.getP2();
-	printf("In the equalizer of Vector3D stop\n");
+	//printf("In the equalizer of Vector3D stop\n");
 }
 
 void Vector3D::operator+=(const Vector3D& v) {
@@ -249,11 +249,11 @@ void Vector3D::operator/=(const long double& k) {
 	*this->m_pp2/=k;
 }
 
-void Vector3D::operator*=(const LSN& k) {
+void Vector3D::operator*=(const SN<float, char>& k) {
 	*this->m_pp2*=k;
 }
 
-void Vector3D::operator/=(const LSN& k) {
+void Vector3D::operator/=(const SN<float, char>& k) {
 	*this->m_pp2/=k;
 }
 
@@ -308,49 +308,45 @@ void Vector3D::print(const bool& spread, const bool& full_info, const unsigned c
 
 
 std::unique_ptr<Vector3D> operator+(const Vector3D& v1, const Vector3D& v2) {
-	//std::unique_ptr<Vector3D> a = std::make_unique(Vector3D())
 	std::unique_ptr<Vector3D> pnv(new Vector3D(v1.getP1(), v1.getP2()+v2.getP2()));
-	//Vector3D nv(v1.getP1(), v1.getP2()+v2.getP2());
-	return *pnv;
+	return pnv;
 }
 
 std::unique_ptr<Vector3D> operator-(const Vector3D& v1, const Vector3D& v2) {
 	std::unique_ptr<Vector3D> pnv(new Vector3D(v1.getP1(), v1.getP2()-v2.getP2()));
-	//Vector3D* pnv=new Vector3D(v1.getP1(), v1.getP2()-v2.getP2());
-	return *pnv;
+	return pnv;
 }
 
 std::unique_ptr<Vector3D> operator*(const Vector3D& v, const long double& k) {
-	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()*k);
-	return *pnv;
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v.getP1(), v.getP2()*k));
+	return pnv;
 }
 
-std::unique_ptr<Vector3D> operator*(const Vector3D& v, const LSN& k) {
-	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()*k);
-	return *pnv;
+std::unique_ptr<Vector3D> operator*(const Vector3D& v, const SN<float, char>& k) {
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v.getP1(), v.getP2()*k));
+	return pnv;
 }
 
 std::unique_ptr<Vector3D> operator/(const Vector3D& v, const long double& k) {
-	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()/k);
-	return *pnv;
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v.getP1(), v.getP2()/k));
+	return pnv;
 }
 
-std::unique_ptr<Vector3D> operator/(const Vector3D& v, const LSN& k) {
-	Vector3D* pnv=new Vector3D(v.getP1(), v.getP2()/k);
-	return *pnv;
+std::unique_ptr<Vector3D> operator/(const Vector3D& v, const SN<float, char>& k) {
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v.getP1(), v.getP2()/k));
+	return pnv;
 }
 
-std::unique_ptr<LSN> operator*(const Vector3D& v1, const Vector3D& v2) {
-	std::unique_ptr<LSN> pnlsn(new LSN(v1.getP2().x*v2.getP2().x + v1.getP2().y*v2.getP2().y + v1.getP2().z*v2.getP2().z));
-	return *pnlsn;
+SN<float, char> operator*(const Vector3D& v1, const Vector3D& v2) {
+	return v1.getP2().x*v2.getP2().x + v1.getP2().y*v2.getP2().y + v1.getP2().z*v2.getP2().z;
 }
 
 std::unique_ptr<Vector3D> operator^(const Vector3D& v1, const Vector3D& v2) {
-	Vector3D* pnv=new Vector3D(v1.getP1(), {
+	std::unique_ptr<Vector3D> pnv(new Vector3D(v1.getP1(), {
 			{v1.getP2().y*v2.getP2().z-v1.getP2().z*v2.getP2().y},
 			{v1.getP2().z*v2.getP2().x-v1.getP2().x*v2.getP2().z},
 			{v1.getP2().x*v2.getP2().y-v1.getP2().y*v2.getP2().x}
-	});
-	return *pnv;
+	}));
+	return pnv;
 }
 

@@ -10,6 +10,7 @@
 
 #include <unordered_set>
 
+#include "SN.h"
 #include "Particle3D.h"
 #include "Oct.h"
 #include "TimeSensitive.h"
@@ -22,9 +23,9 @@
  */
 class ParticleSystem3D : public TimeSensitive {
 protected:
-	LSN m_a;														// Lenght of the side of the zone
+	SN<float, char> m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
-	Oct<Particle3D>* m_poctree;										// Pointer to the Octree.
+	Oct<Particle3D, float, char>* m_poctree;										// Pointer to the Octree.
 	long double m_dt;
 	void (*pfunc)(TimeSensitive*, TimeSensitive*);					//Pointer to an operator
 
@@ -33,9 +34,9 @@ public:
 	//ParticleSystem3D(const ParticleSystem3D &other);
 	virtual ~ParticleSystem3D();
 
-	LSN getA() const;
+	SN<float, char> getA() const;
 	/*void setA(const LSN& a);*/
-	Oct<Particle3D>* getPOctree();
+	Oct<Particle3D, float, char>* getPOctree();
 	//void setOctree(const float& alpha);
 	float getAlpha() const;
 	void setAlpha(const float& alpha);

@@ -8,24 +8,24 @@
 #include "Triangle3D.h"
 
 Triangle3D::Triangle3D() {
-	pp1=new Point3D({{1,0},{0,0},{0,0}});
-	pp2=new Point3D({{0,0},{1,0},{0,0}});
-	pp3=new Point3D({{0,0},{0,0},{1,0}});
+	pp1=new Point3D<float, char>({{1,0},{0,0},{0,0}});
+	pp2=new Point3D<float, char>({{0,0},{1,0},{0,0}});
+	pp3=new Point3D<float, char>({{0,0},{0,0},{1,0}});
 	m_delP1=true;
 	m_delP2=true;
 	m_delP3=true;
 }
 
-Triangle3D::Triangle3D(const Point3D& p1, const Point3D& p2, const Point3D& p3) {
-	pp1=new Point3D(p1);
-	pp2=new Point3D(p2);
-	pp3=new Point3D(p3);
+Triangle3D::Triangle3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2, const Point3D<float, char>& p3) {
+	pp1=new Point3D<float, char>(p1);
+	pp2=new Point3D<float, char>(p2);
+	pp3=new Point3D<float, char>(p3);
 	m_delP1=true;
 	m_delP2=true;
 	m_delP3=true;
 }
 
-Triangle3D::Triangle3D(Point3D* pp1, Point3D* pp2, Point3D* pp3) {
+Triangle3D::Triangle3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2, Point3D<float, char>* pp3) {
 	this->pp1=pp1;
 	this->pp2=pp2;
 	this->pp3=pp3;
@@ -59,39 +59,39 @@ Triangle3D::~Triangle3D() {
 
 
 
-Point3D Triangle3D::getP1() const {
+Point3D<float, char> Triangle3D::getP1() const {
 	return *pp1;
 }
 
-Point3D* Triangle3D::getPP1() {
+Point3D<float, char>* Triangle3D::getPP1() {
 	return pp1;
 }
 
-void Triangle3D::setP1(const Point3D& p1) {
+void Triangle3D::setP1(const Point3D<float, char>& p1) {
 	*pp1=p1;
 }
 
-Point3D Triangle3D::getP2() const {
+Point3D<float, char> Triangle3D::getP2() const {
 	return *pp2;
 }
 
-Point3D* Triangle3D::getPP2() {
+Point3D<float, char>* Triangle3D::getPP2() {
 	return pp2;
 }
 
-void Triangle3D::setP2(const Point3D& p2) {
+void Triangle3D::setP2(const Point3D<float, char>& p2) {
 	*pp2=p2;
 }
 
-Point3D Triangle3D::getP3() const {
+Point3D<float, char> Triangle3D::getP3() const {
 	return *pp3;
 }
 
-Point3D* Triangle3D::getPP3() {
+Point3D<float, char>* Triangle3D::getPP3() {
 	return pp3;
 }
 
-void Triangle3D::setP3(const Point3D& p3) {
+void Triangle3D::setP3(const Point3D<float, char>& p3) {
 	*pp3=p3;
 }
 

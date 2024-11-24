@@ -22,12 +22,12 @@
  * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ()
  * If you want to use the functions (rrr, ...) you need a .getW() too
  */
-template <typename T> class System3D : public TimeSensitive {
+template <typename T, typename M, typename E> class System3D : public TimeSensitive {
 protected:
-	LSN m_a;														// Lenght of the side of the zone.
+	SN<M, E> m_a;														// Lenght of the side of the zone.
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
-	Oct<T>* m_poctree;												// Pointer to the Octree.
-	LSN (*m_ptrLaw) (T*, T*);										// Pointer to a function operating on 2 particles (Todo List)
+	Oct<T, M, E>* m_poctree;												// Pointer to the Octree.
+	SN<M, E> (*m_ptrLaw) (T*, T*);										// Pointer to a function operating on 2 particles (Todo List)
 
 	long double m_dt;
 	std::unordered_set<T*> m_pelements;
@@ -39,7 +39,7 @@ public:
 
 	LSN getA() const;
 	void setA(const LSN& a);
-	Oct<T>* getPOctree();
+	Oct<T, M, E>* getPOctree();
 	//void setOctree(const float& alpha);
 	float getAlpha() const;
 	void setAlpha(const float& alpha);
@@ -67,11 +67,11 @@ template <typename T> LSN rrr2(T* p1, T* p2);// Returns l'acc exercée par p2 su
 /*
  * Returns the vector immediately (useless)
  */
-void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
-void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
+//void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
+template <typename M, typename E> void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
 	Vector3D* pv1=new Vector3D({pp1->x, pp1->y, pp1->z}, {pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
 	Vector3D* pv2=new Vector3D({pp2->x, pp2->y, pp2->z}, {pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
-	LSN d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, {{0, 0}, {0, 0}, {0, 0}});
 	pv1->setNorm({1, 0});
 	pv2->setNorm({1, 0});
 
@@ -93,9 +93,9 @@ void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
 }
 
 
-template <typename T> System3D<T>::System3D() {
+template <typename T, typename M, typename E> System3D<T>::System3D() {
 	m_a={1,2};				//100m sided box
-	m_poctree=new Oct<T>(m_a);
+	m_poctree=new Oct<T, M, E>(m_a);
 	m_ptrLaw=NULL;
 	m_dt=0;
 }
@@ -105,39 +105,39 @@ template <typename T> System3D<T>::System3D() {
 
 }*/
 
-template <typename T> System3D<T>::~System3D() {
+template <typename T, typename M, typename E> System3D<T>::~System3D() {
 	delete m_poctree;
 	m_pelements.clear();
 }
 
 
 
-template <typename T> LSN System3D<T>::getA() const {
+template <typename T, typename M, typename E> SN<M, E> System3D<T>::getA() const {
 	return m_poctree->getA();
 }
 
-template <typename T> void System3D<T>::setA(const LSN& a) {
+template <typename T, typename M, typename E> void System3D<T>::setA(const LSN& a) {
 	m_poctree->setA(a);
 	//this->recalculate();//Possible probleme
 }
 
-template <typename T> Oct<T>* System3D<T>::getPOctree() {
+template <typename T, typename M, typename E> Oct<T>* System3D<T>::getPOctree() {
 	return m_poctree;
 }
 
-template <typename T> float System3D<T>::getAlpha() const {
+template <typename T, typename M, typename E> float System3D<T>::getAlpha() const {
 	return m_poctree->m_ALPHA;
 }
 
-template <typename T> void System3D<T>::setAlpha(const float& alpha) {
+template <typename T, typename M, typename E> void System3D<T>::setAlpha(const float& alpha) {
 	m_poctree->m_ALPHA=alpha;
 }
 
-template <typename T> std::unordered_set<T*> System3D<T>::getPElements() const {
+template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T>::getPElements() const {
 	return m_poctree->getPElements();
 }
 
-template <typename T> bool System3D<T>::addPElement(T* pelement) {
+template <typename T, typename M, typename E> bool System3D<T>::addPElement(T* pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
@@ -146,11 +146,11 @@ template <typename T> bool System3D<T>::addPElement(T* pelement) {
 	return success;
 }
 
-template <typename T> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) const {
+template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T>::getPNeighbors(const T* pelement) const {
 	return m_poctree->getPNeighbors(pelement);
 }
 
-template <typename T> void System3D<T>::setT(const long double& dt) {
+template <typename T, typename M, typename E> void System3D<T>::setT(const long double& dt) {
 	m_dt=dt;
 
 	printf("Set T (System3D)\n");
@@ -194,7 +194,7 @@ template <typename T> void System3D<T>::setT(const long double& dt) {
 	}
 }
 
-template <typename T> void System3D<T>::apply(){
+template <typename T, typename M, typename E> void System3D<T>::apply(){
 	printf("Apply (System3D)\n");
 	for (T* pelement : m_pelements){
 		pelement->apply();
@@ -215,12 +215,12 @@ template <typename T> void System3D<T>::apply(){
 	//printf("%p\n", m_ptrLaw);
 }*/
 
-template <typename T> void System3D<T>::setPFunc(LSN (*ptrLaw) (T*, T*)){
+template <typename T, typename M, typename E> void System3D<T>::setPFunc(SN<M, E> (*ptrLaw) (T*, T*)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }
 
-template <typename T> void System3D<T>::recalculate() const {
+template <typename T, typename M, typename E> void System3D<T>::recalculate() const {
 	/*for (Oct<T>* ptree : m_poctree->getPTrees()){
 		delete ptree;
 	}
@@ -230,12 +230,12 @@ template <typename T> void System3D<T>::recalculate() const {
 	m_poctree->recalculate();
 }
 
-template <typename T> void System3D<T>::empty() {
+template <typename T, typename M, typename E> void System3D<T>::empty() {
 	m_poctree->empty();
 }
 
 
-template <typename T> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template <typename T, typename M, typename E> std::string System3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -262,7 +262,7 @@ template <typename T> std::string System3D<T>::to_string(const bool& spread, con
 	return mes;
 }
 
-template <typename T> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template <typename T, typename M, typename E> void System3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, indent, full_info);
 }
@@ -272,11 +272,11 @@ template <typename T> void System3D<T>::print(const bool& spread, const bool& fu
 /*
  * Functions
  */
-template <typename T> void rrr(T* p1, T* p2, const long double& dt) {
+template <typename T, typename M, typename E> void rrr(T* p1, T* p2, const long double& dt) {
 	printf("Function (rrr)\n");
 	Vector3D v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	//Vector3D* pv=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
-	LSN d=v.getNorm();
+	SN<M, E> d=v.getNorm();
 	//LSN d=pv->getNorm();
 	v/=d;
 	//*pv/=d;
@@ -295,9 +295,9 @@ template <typename T> void rrr(T* p1, T* p2, const long double& dt) {
 /*
  * Returns the acc (in norm) felt by p1 due to p2
  */
-template <typename T> LSN rrr2(T* p1, T* p2) {
+template <typename T, typename M, typename E> SN<M, E> rrr2(T* p1, T* p2) {
 	printf("Function (rrr2)\n");
-	LSN d=getDistance(*p1, *p2);
+	SN<M, E> d=getDistance(*p1, *p2);
 	return G*p2->getW()/(d*d);
 }
 

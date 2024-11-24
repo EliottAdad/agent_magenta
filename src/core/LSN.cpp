@@ -42,10 +42,6 @@ void LSN::recal() {//Sometimes doesn't work properly (because of the cast to an 
 }
 
 long double LSN::to_long_double() const {
-	//long double ans=(this->m)*(long double)(pow(10, this->e));
-	//std::cout<< this->m << "\n";
-	//std::cout<< (long double)(pow(10, this->e)) << "\n";
-	//std::cout<< (this->m)*(long double)(pow(10, this->e)) << "\n";
 	return (this->m)*(long double)(pow(10, this->e));
 }
 
@@ -147,8 +143,6 @@ bool operator!=(const long double& nb1, const LSN& nb2) {
  * :)
  */
 bool operator<=(const LSN& nb1, const LSN& nb2) {
-	printf("1)\n%Lf\n", nb1.m*pow(10., (long double)(nb1.e-nb2.e)));
-	printf("2)\n%Lf\n", nb2.m);
 	if (nb1.m*pow(10., (long double)(nb1.e-nb2.e))<=nb2.m){	// .
 		return true;
 	}
@@ -246,49 +240,71 @@ LSN operator+(const LSN& nb1, const LSN& nb2) {
 }
 
 LSN operator+(const LSN& nb1, const long double& nb2) {
-	return {nb1.m+nb2/pow(10., (long double)nb1.e), nb1.e};
+	LSN nnb(nb1.m+nb2/pow(10., (long double)nb1.e), nb1.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator+(const long double& nb1, const LSN& nb2) {
-	return {nb1+nb2.m*pow(10., (long double)nb2.e), 0};
+	LSN nnb(nb1+nb2.m*pow(10., (long double)nb2.e), 0);
+	nnb.recal();
+	return nnb;
 }
 /*:)
  * It's better to enter the bigger number first.
  */
 LSN operator-(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m-nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e};
+	LSN nnb(nb1.m-nb2.m/pow(10., (long double)(nb1.e-nb2.e)), nb1.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator-(const LSN& nb1, const long double& nb2) {
-	return {nb1.m-nb2/pow(10., (long double)nb1.e), nb1.e};
+	LSN nnb(nb1.m-nb2/pow(10., (long double)nb1.e), nb1.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator-(const long double& nb1, const LSN& nb2) {
-	return {nb1-nb2.m*pow(10., (long double)nb2.e), 0};
+	LSN nnb(nb1-nb2.m*pow(10., (long double)nb2.e), 0);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator*(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m*nb2.m, nb1.e+nb2.e};
+	LSN nnb(nb1.m*nb2.m, nb1.e+nb2.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator*(const LSN& nb, const long double& k) {
-	return {nb.m*k, nb.e};
+	LSN nnb(nb.m*k, nb.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator*(const long double& k, const LSN& nb) {
-	return {nb.m*k, nb.e};
+	LSN nnb(nb.m*k, nb.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator/(const LSN& nb1, const LSN& nb2) {
-	return {nb1.m/nb2.m, nb1.e-nb2.e};
+	LSN nnb(nb1.m/nb2.m, nb1.e-nb2.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator/(const LSN& nb, const long double& k) {
-	return {nb.m/k, nb.e};
+	LSN nnb(nb.m/k, nb.e);
+	nnb.recal();
+	return nnb;
 }
 
 LSN operator/(const long double& k, const LSN& nb) {
-	return {nb.m/k, nb.e};
+	LSN nnb(nb.m/k, nb.e);
+	nnb.recal();
+	return nnb;
 }
 
 

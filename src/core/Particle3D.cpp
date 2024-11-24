@@ -5,14 +5,17 @@
  *      Author: esn
  */
 
+
 #include "Particle3D.h"
 
+
+
 Particle3D::Particle3D() {
-	this->x=LSN{1, 0};
-	this->y=LSN{1, 0};
-	this->z=LSN{1, 0};
-	this->w=LSN{1, 0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
-	m_ps=new Vector3D(NULL, Point3D{LSN{1, 0}, LSN{1, 0}, LSN{1, 0}});		// Vector3D init to end=(1, 1, 1)
+	this->x=SN<float, char>{1, 0};
+	this->y=SN<float, char>{1, 0};
+	this->z=SN<float, char>{1, 0};
+	this->w=SN<float, char>{1, 0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	m_ps=new Vector3D(NULL, Point3D<float, char>{SN<float, char>{1, 0}, SN<float, char>{1, 0}, SN<float, char>{1, 0}});		// Vector3D init to end=(1, 1, 1)
 	m_dels=true;
 	m_dt=0;
 }
@@ -37,21 +40,21 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
 	m_dt=0;
 }*/
 
-Particle3D::Particle3D(const Point3D& p) {
+Particle3D::Particle3D(const Point3D<float, char>& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
 	m_dels=true;
 	m_dt=0;
 }
 
-Particle3D::Particle3D(const LSN& x, const LSN& y, const LSN& z) {
+Particle3D::Particle3D(const SN<float, char>& x, const SN<float, char>& y, const SN<float, char>& z) {
 	this->x=x;
 	this->y=y;
 	this->z=z;
-	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
 	m_dels=true;
 	m_dt=0;
@@ -67,11 +70,11 @@ Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	m_dt=0;
 }
 
-Particle3D::Particle3D(const Point3D& p, const Vector3D& speed) {
+Particle3D::Particle3D(const Point3D<float, char>& p, const Vector3D& speed) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, speed.getP2());
 	m_dels=true;
 	m_dt=0;
@@ -97,15 +100,15 @@ Particle3D::~Particle3D() {
 
 
 
-LSN Particle3D::getX() const {
+SN<float, char> Particle3D::getX() const {
 	return x;
 }
 
-LSN Particle3D::getY() const {
+SN<float, char> Particle3D::getY() const {
 	return y;
 }
 
-LSN Particle3D::getZ() const {
+SN<float, char> Particle3D::getZ() const {
 	return z;
 }
 
@@ -121,7 +124,7 @@ void Particle3D::setSpeed(const Vector3D& v) {
 	*m_ps=v;
 }
 
-void Particle3D::setSpeed(const Point3D& p) {
+void Particle3D::setSpeed(const Point3D<float, char>& p) {
 	*(m_ps->getPEnd())=p;
 }
 
@@ -129,17 +132,17 @@ void Particle3D::addSpeed(const Vector3D& ds) {
 	*m_ps+=ds;
 }
 
-void Particle3D::addSpeed(const Point3D& p) {
+void Particle3D::addSpeed(const Point3D<float, char>& p) {
 	*(m_ps->getPEnd())+=p;
 }
 
 void Particle3D::addAsForce(const Vector3D& v, const long double& dt) {
-	LSN a=LSN{dt, 0}/this->w;
-	*m_ps+=v*a;
+	SN<float, char> a=SN<float, char>{(float)dt, 0}/this->w;
+	*m_ps+=*(v*a);
 }
 
 void Particle3D::addAsAcc(const Vector3D& v, const long double& dt) {
-	*m_ps+=v*dt;
+	*m_ps+=*(v*dt);
 }
 
 void Particle3D::addAsSpeed(const Vector3D& v) {
@@ -160,9 +163,9 @@ void Particle3D::setT(const long double& dt) {
 }
 
 void Particle3D::apply(){
-	this->x=this->x+(m_ps->getP2().x)*m_dt;
-	this->y=this->y+(m_ps->getP2().y)*m_dt;
-	this->z=this->z+(m_ps->getP2().z)*m_dt;
+	this->x=this->x+(m_ps->getP2().x)*(float)m_dt;
+	this->y=this->y+(m_ps->getP2().y)*(float)m_dt;
+	this->z=this->z+(m_ps->getP2().z)*(float)m_dt;
 	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM
 	//this->y+=(m_ps->getP2().y)*m_dt;
 	//this->z+=(m_ps->getP2().z)*m_dt;

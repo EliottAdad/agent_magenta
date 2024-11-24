@@ -28,9 +28,9 @@
  */
 class Display1 : public Printable {
 private:
-	Point3D* m_ppoint;					// Pointeur to the center of display.
+	Point3D<float, char>* m_ppoint;		// Pointeur to the center of display.
 	char m_display;						// The point of view from which it is projected (1, 2, 3).
-	long double m_scale;				// Ratio d_pixels/d_meters
+	float m_scale;						// Ratio d_pixels/d_meters
 	std::set<Scene*> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
 
 	SDL_Color* m_pbkgd_color;			// Pointeur to the background color.
@@ -45,18 +45,18 @@ private:
 
 public:
 	Display1();
-	Display1(Point3D* ppoint);
+	Display1(Point3D<float, char>* ppoint);
 	Display1(SDL_Window* pwindow, SDL_Renderer* prenderer);
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
-	Point3D* getPPoint();
-	void setPPoint(Point3D* ppoint, const bool& delp=false);
-	void setPoint(Point3D& point, const bool& delp=true);
+	Point3D<float, char>* getPPoint();
+	void setPPoint(Point3D<float, char>* ppoint, const bool& delp=false);
+	void setPoint(Point3D<float, char>& point, const bool& delp=true);
 	char getDisplay() const;
 	void setDisplay(const char& display);
-	long double getScale() const;
-	void setScale(long double m_scale);
+	float getScale() const;
+	void setScale(const float& scale);
 	SDL_Color* getPBkgdColor();
 	void setBkrdColor(int r, int g, int b, int a);
 	SDL_Color* getPDrawColor();
@@ -70,8 +70,8 @@ public:
 	bool render() const;
 	bool render(Scene* pscene) const;
 	bool render(Displayable* pdisplayable) const;
-	void renderPoints(std::set<Point3D*> ppoints) const;//:)
-	void renderPoint(Point3D* ppoint) const;//:)
+	void renderPoints(std::set<Point3D<float, char>*> ppoints) const;//:)
+	void renderPoint(Point3D<float, char>* ppoint) const;//:)
 	void renderLines(std::set<Line3D*> plines) const;//:)
 	void renderLine(Line3D* pline) const;//:)
 

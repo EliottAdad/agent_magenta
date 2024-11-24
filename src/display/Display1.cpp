@@ -8,7 +8,7 @@
 #include "Display1.h"
 
 Display1::Display1() {
-	m_ppoint=new Point3D();
+	m_ppoint=new Point3D<float, char>();
 	m_display=1;
 	m_scale=10;
 
@@ -23,7 +23,7 @@ Display1::Display1() {
 	m_fclear=true;
 }
 
-Display1::Display1(Point3D* ppoint) {
+Display1::Display1(Point3D<float, char>* ppoint) {
 	m_ppoint=ppoint;
 	m_display=1;
 	m_scale=10;
@@ -40,7 +40,7 @@ Display1::Display1(Point3D* ppoint) {
 }
 
 Display1::Display1(SDL_Window* pwindow, SDL_Renderer* prenderer) {
-	m_ppoint=new Point3D();
+	m_ppoint=new Point3D<float, char>();
 	m_display=1;
 	m_scale=10;
 
@@ -75,7 +75,7 @@ Display1::Display1(const Display1 &other) {
 
 
 
-Point3D* Display1::getPPoint(){
+Point3D<float, char>* Display1::getPPoint(){
 	return m_ppoint;
 }
 
@@ -83,24 +83,24 @@ Point3D* Display1::getPPoint(){
  * If you give a pointer, the point will be automatically considered
  * as instanciated somewhere else outside of the class.
  */
-void Display1::setPPoint(Point3D* ppoint, const bool& delp){
+void Display1::setPPoint(Point3D<float, char>* ppoint, const bool& delp){
 	if (delp){
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D{*ppoint};
+		m_ppoint=new Point3D<float, char>{*ppoint};
 	}else{
 		m_ppoint=ppoint;
 	}
 	m_delp=delp;
 }
 
-void Display1::setPoint(Point3D& point, const bool& delp){
+void Display1::setPoint(Point3D<float, char>& point, const bool& delp){
 	if (delp){
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D(point);
+		m_ppoint=new Point3D<float, char>(point);
 	}else{
 		m_ppoint=&point;
 	}
@@ -113,6 +113,14 @@ char Display1::getDisplay() const {
 
 void Display1::setDisplay(const char& display){
 	m_display=display;
+}
+
+float Display1::getScale() const {
+	return m_scale;
+}
+
+void Display1::setScale(const float& scale){
+	m_scale=scale;
 }
 
 SDL_Window* Display1::getPWindow(){
@@ -156,14 +164,14 @@ void Display1::setDrawColor(int b, int g, int r, int a){
 	m_pdraw_color->a=a;
 }
 
-void Display1::renderPoints(std::set<Point3D*> ppoints) const {//:)
-	for (Point3D* ppoint : ppoints){
+void Display1::renderPoints(std::set<Point3D<float, char>*> ppoints) const {//:)
+	for (Point3D<float, char>* ppoint : ppoints){
 		this->renderPoint(ppoint);
 	}
 }
 
-void Display1::renderPoint(Point3D* ppoint) const {//:)
-	Point3D d_point=(*ppoint)-(*m_ppoint);
+void Display1::renderPoint(Point3D<float, char>* ppoint) const {//:)
+	Point3D<float, char> d_point=(*ppoint)-(*m_ppoint);
 	ppoint->print(true);
 	m_ppoint->print(true);
 	d_point.print(true);
@@ -175,19 +183,19 @@ void Display1::renderPoint(Point3D* ppoint) const {//:)
 	int sizex(0);
 	int sizey(0);
 	SDL_GetWindowSize(m_pwindow, &sizex, &sizey);
-	LSN centerx={(long double)sizex/2, 0};
-	LSN centery={(long double)sizey/2, 0};
+	SN<float, char> centerx={(float)sizex/2, 0};
+	SN<float, char> centery={(float)sizey/2, 0};
 
 	if (m_prenderer!=NULL){
 		switch (m_display){
 			case 1://(x,y) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_long_double(), (int)(d_point.y*m_scale + centery).to_long_double());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
 				break;
 			case 2://(y,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*m_scale + centerx).to_long_double(), (int)(d_point.z*m_scale + centery).to_long_double());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 				break;
 			case 3://(x,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_long_double(), (int)(d_point.z*m_scale + centery).to_long_double());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 				break;
 		}
 	}
@@ -228,7 +236,7 @@ bool Display1::render(Displayable* pdisplayable) const {
 		pdisplayable->getX().print(true);
 		pdisplayable->getY().print(true);
 		pdisplayable->getZ().print(true);
-		this->renderPoint(new Point3D{pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ()});
+		this->renderPoint(new Point3D<float, char>{pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ()});
 	}
 	return success;
 }

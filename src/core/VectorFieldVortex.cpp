@@ -10,11 +10,11 @@
 VectorFieldVortex::VectorFieldVortex() {
 	m_k=1;
 	m_m=1;
-	m_ppoint=new Point3D();
+	this->m_ppoint=new Point3D<float, char>();
 }
 
 VectorFieldVortex::~VectorFieldVortex() {
-	delete m_ppoint;
+	delete this->m_ppoint;
 }
 
 

@@ -23,4 +23,7 @@ public:
 	Object3D(const Object3D &other);
 };
 
+
+
+
 #endif /* CORE_OBJECT3D_H_ */

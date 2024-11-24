@@ -22,27 +22,27 @@
  */
 class Line3D : public Printable {
 protected:
-	Point3D* m_pp1;
-	Point3D* m_pp2;
+	Point3D<float, char>* m_pp1;
+	Point3D<float, char>* m_pp2;
 	bool m_delp1;
 	bool m_delp2;
 
 public:
 	Line3D();
-	Line3D(const Point3D& p1, const Point3D& p2);
-	Line3D(Point3D* pp1, Point3D* pp2);
+	Line3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2);
+	Line3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2);
 	Line3D(const Line3D& l);
 	Line3D(const Line3D* pl);
 	virtual ~Line3D();									//:)
 
-	Point3D getP1() const;								//:)
-	Point3D* getPP1() const;							//:)
-	void setP1(Point3D& p1, const bool& delp=false);	//:)
-	void setPP1(Point3D* pp1, const bool& delp=true);	//:)
-	Point3D getP2() const;								//:)
-	Point3D* getPP2() const;							//:)
-	void setP2(Point3D& p2, const bool& delp=false);	//:)
-	void setPP2(Point3D* pp2, const bool& delp=true);	//:)
+	Point3D<float, char> getP1() const;								//:)
+	Point3D<float, char>* getPP1() const;							//:)
+	void setP1(Point3D<float, char>& p1, const bool& delp=false);	//:)
+	void setPP1(Point3D<float, char>* pp1, const bool& delp=true);	//:)
+	Point3D<float, char> getP2() const;								//:)
+	Point3D<float, char>* getPP2() const;							//:)
+	void setP2(Point3D<float, char>& p2, const bool& delp=false);	//:)
+	void setPP2(Point3D<float, char>* pp2, const bool& delp=true);	//:)
 	bool getDelP1() const;								//:)
 	bool getDelP2() const;								//:)
 

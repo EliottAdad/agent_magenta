@@ -1,11 +1,12 @@
 /*
  * Object3D.cpp
  *
- *  Created on: 23 oct. 2024
+ *  Created on: 24 nov. 2024
  *      Author: esn
  */
 
 #include "Object3D.h"
+
 
 Object3D::Object3D() {
 	// TODO Auto-generated constructor stub

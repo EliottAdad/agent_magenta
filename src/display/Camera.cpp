@@ -9,9 +9,9 @@
 
 Camera::Camera() {
 	m_aperture=1;
-	m_ppoint=new Point3D{};
+	m_ppoint=new Point3D<float, char>;
 	m_pnormal=new Vector3D();
-	*m_pnormal/=m_pnormal->getNorm();//Normalisation
+	*m_pnormal/=m_pnormal->getNorm();//Normalization
 	m_roll_ang=0;
 
 	m_delp=true;
@@ -37,11 +37,11 @@ Camera::~Camera() {
 }*/
 
 
-Point3D Camera::getPoint() const {
+Point3D<float, char> Camera::getPoint() const {
 	return *m_ppoint;
 }
 
-void Camera::setPoint(const Point3D& p) {
+void Camera::setPoint(const Point3D<float, char>& p) {
 	*m_ppoint=p;
 }
 
@@ -49,19 +49,21 @@ Vector3D Camera::getNormal() const {
 	return *m_pnormal;
 }
 
-Vector3D Camera::getE1() const {
-	Vector3D pv(m_ppoint, {
-			{1, 0},
-			{1, 0},
-			{-1/m_pnormal->getP2().z * (m_pnormal->getP2().x*(1-m_ppoint->x) + m_pnormal->getP2().y*(1-m_ppoint->y)) + m_ppoint->z}
-			});//One possible normal vector
-	pv/=pv.getNorm();//Normalisation
+std::unique_ptr<Vector3D> Camera::getE1() const {
+	std::unique_ptr<Vector3D> pv(new Vector3D(
+			m_ppoint, {
+			{1., 0},
+			{1., 0},
+			{(float)(-1.)/m_pnormal->getP2().z * (m_pnormal->getP2().x*((float)(1.)-m_ppoint->x) + m_pnormal->getP2().y*((float)(1.)-m_ppoint->y)) + m_ppoint->z}
+			}
+			));//One possible normal vector
+	*pv/=pv->getNorm();//Normalisation
 	return pv;
 }
 
-Vector3D Camera::getE2() const {
-	Vector3D pv(*m_pnormal^this->getE1());
-	pv/=pv.getNorm();//Normalisation
+std::unique_ptr<Vector3D> Camera::getE2() const {
+	std::unique_ptr<Vector3D> pv(new Vector3D( *(*m_pnormal^*(this->getE1())) ));
+	*pv/=pv->getNorm();//Normalisation
 	return pv;
 }
 
@@ -75,22 +77,22 @@ void Camera::renderTriangle(const Triangle3D& triangle) const {
 	;
 }
 
-void Camera::renderPoint(const Point3D& p) const {
+void Camera::renderPoint(const Point3D<float, char>& p) const {
 	Vector3D vpos(m_ppoint, p-*m_ppoint);
-	LSN projx=this->getE1()*vpos;
-	LSN projz=this->getE2()*vpos;
+	SN<float, char> projx(*(this->getE1())*vpos);
+	SN<float, char> projz=*(this->getE2())*vpos;
 
-	LSN x_prime=projx/(vpos.getNorm()*tan(m_aperture/2));
-	LSN z_prime=projz/(vpos.getNorm()*tan(m_aperture/2));
+	SN<float, char> x_prime=projx/(vpos.getNorm()*tan(m_aperture/2));
+	SN<float, char> z_prime=projz/(vpos.getNorm()*tan(m_aperture/2));
 	//Draw on the screen
 
 }
 
-bool Camera::testInFielOfView(const Point3D& p) const {
+bool Camera::testInFielOfView(const Point3D<float, char>& p) const {
 	bool test=false;
 	Vector3D vpos(m_ppoint, p-*m_ppoint);
 
-	if (m_aperture/2 >= acos( ((*m_pnormal*vpos) / (m_pnormal->getNorm()*vpos.getNorm())).to_long_double() )){
+	if (m_aperture/2. >= acos( ((*m_pnormal*vpos) / (m_pnormal->getNorm()*vpos.getNorm())).to_m_type() )){
 		test=true;
 	}
 	return test;

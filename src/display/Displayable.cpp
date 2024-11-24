@@ -35,15 +35,15 @@ Displayable::Displayable(const Displayable &other) {
 }*/
 
 
-LSN Displayable::getX() const{
+SN<float, char> Displayable::getX() const{
 	return {0, 0};
 }
 
-LSN Displayable::getY() const{
+SN<float, char> Displayable::getY() const{
 	return {0, 0};
 }
 
-LSN Displayable::getZ() const{
+SN<float, char> Displayable::getZ() const{
 	return {0, 0};
 }
 

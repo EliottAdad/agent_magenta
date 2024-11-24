@@ -27,9 +27,9 @@ struct Displayable : public Printable {
 	SDL_Color* pcolor;		// Drawing color
 	Mesh3D* pmesh;			// Pointer to the mesh to be drawn
 
-	virtual LSN getX() const;				//Gets the coords
-	virtual LSN getY() const;
-	virtual LSN getZ() const;
+	virtual SN<float, char> getX() const;				//Gets the coords
+	virtual SN<float, char> getY() const;
+	virtual SN<float, char> getZ() const;
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
