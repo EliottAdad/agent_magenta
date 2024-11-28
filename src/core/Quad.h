@@ -588,35 +588,28 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::empty() {
 
 template <typename T, typename M, typename E> std::string Quad<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
-	mes+=((spread)?to_stringTabs(indent) : "");
-	//mes+="QUAD";
+	mes+=to_stringTabs(indent);
 
-	if (full_info){
-		mes+="QUAD[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:";
-		mes+=m_a.to_string();						//a
-		mes+="|";
-		mes+=m_ppoint->to_string(false, false);		//Point
-		mes+="|";
-		mes+=m_pbarycenter->to_string(false, false);		//Barycenter
-		mes+="|";
-		std::stringstream ss2;
-		ss2 << m_pT;
-		mes+=ss2.str();
-		mes+="|";
-		mes+="w:" + std::to_string(m_tot_weight.to_m_type());
-		mes+="]";
-		mes+=((spread)?"\n" : "");
-	}
+	mes+="QUAD[";
+	std::stringstream ss;
+	ss << this;
+	mes+=ss.str();
+	mes+="]:";
+	mes+=m_a.to_string();								//a
+	mes+="|*|";
+	mes+=m_ppoint->to_string(false, false);				//Point
+	mes+="|*|";
+	mes+=m_pbarycenter->to_string(false, false);		//Barycenter
+	mes+="|*|";
+	std::stringstream ss2;
+	ss2 << m_pT;
+	mes+=ss2.str();
+	mes+="|*|";
+	mes+="w:" + std::to_string(m_tot_weight.to_m_type());
+	mes+="]";
+	mes+=((spread)?"\n" : "");
 
 	mes+=((spread)?to_stringTabs(indent+1) : "");
-	//mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
-	//mes+=", ";
-	//mes+=std::to_string(m_tot_weight.to_long_double());
-	//mes+=", ";
 	if (full_info){
 		mes+="(";
 		//std::string nulll=to_stringTabs(indent+1);

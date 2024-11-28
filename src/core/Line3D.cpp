@@ -158,18 +158,21 @@ bool Line3D::getDelP2() const {
 
 std::string Line3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
 
 	if (full_info){
-		mes+="LINE[";
+		mes+="LINE3D[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
-		mes+=((spread)?"\n" : "");
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
+		//mes+=((spread)?"\n" : "");
 	}
+	mes+=to_stringTabs(indent);
 	mes+="(";
 	if (full_info){
-		mes+="P1" + this->getP1().to_string() + ", ";
+		mes+="P1" + this->getP1().to_string() + "|*|";
 	}
 	mes+="P2" + this->getP2().to_string() + ")";
 

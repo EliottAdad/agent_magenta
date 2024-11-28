@@ -154,13 +154,14 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	}
 	//mes+=((spread)?"\n" : " ");
 	mes+=to_stringTabs(indent+1);
-	mes+="speed=" + std::to_string(m_speed) + "|fcollide=" + std::to_string(m_fcollide) + "|fpause=" + std::to_string(m_fpause) + "\n";
+	mes+="speed=" + std::to_string(m_speed) + "|*|fcollide=" + std::to_string(m_fcollide) + "|*|fpause=" + std::to_string(m_fpause) + "\n";
 
 	mes+=to_stringTabs(indent+1);
 	mes+="* List Time Sensitive:\n";
 	//int i=0;
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
 		//i++;
+		mes+="\n";
 		mes+=to_stringTabs(indent+2);
 		mes+="*\n";
 		//mes+=std::to_string(i);

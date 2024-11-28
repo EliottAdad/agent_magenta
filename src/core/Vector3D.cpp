@@ -256,16 +256,17 @@ std::string Vector3D::to_string(const bool& spread, const bool& full_info, const
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="Vector3D[";
+		mes+="VECTOR3D[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
-		mes+=((spread)?"\n" : "");
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
+	mes+=to_stringTabs(indent);
 	mes+="(";
 	if (full_info){
-		mes+="P1" + this->getOrigin().to_string() + ", ";
+		mes+="P1" + this->getOrigin().to_string() + " ; ";
 	}
 	mes+="P2" + this->getEnd().to_string() + ")";
 

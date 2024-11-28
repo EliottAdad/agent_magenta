@@ -24,6 +24,8 @@ Printable::Printable(const Printable &other) {
 
 
 std::string Printable::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::cout<<"Help1_parallel\n";
+	printf("Help1_parallel\n");
 	std::string mes=((spread)?"\n" : "");
 	printTabs(indent);
 

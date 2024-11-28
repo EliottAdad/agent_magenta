@@ -248,7 +248,7 @@ template <typename T, typename M, typename E> void Oct<T, M, E>::setPoint(Point3
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D<float, char>(point);
+		m_ppoint=new Point3D<M, E>(point);
 	}else{
 		m_ppoint=&point;
 	}
@@ -262,7 +262,7 @@ template <typename T, typename M, typename E> void Oct<T, M, E>::setPPoint(Point
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D<float, char>(*ppoint);
+		m_ppoint=new Point3D<M, E>(*ppoint);
 	}else{
 		m_ppoint=ppoint;
 	}
@@ -426,9 +426,11 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					m_tot_weight=(M)1.;//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
 					printf("A\n");
-					m_pT->print(true, true, 1);
-					m_tot_weight.print(true, true, 1);
-					m_pbarycenter->print(true, true, 1);
+					printf("\n#############\n");
+					m_pT->print(true, true, 0);
+					m_tot_weight.print(true, true, 0);
+					m_pbarycenter->print(true, true, 0);
+					printf("\n#############\n");
 				}else{																				// Else it means it is an internal branch
 					printf("B\n");
 					m_tot_weight+=1.;//Add to tot_weight
@@ -513,7 +515,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 				m_tot_weight={(M)1., (E)0.};//Set the tot_weight
 				*m_pbarycenter=p;//Set the barycenter
 
-				//printf("Full\n");
+				printf("Full\n");
 
 				if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 1
 					printf("K\n");
@@ -937,60 +939,68 @@ template <typename T, typename M, typename E> T* Oct<T, M, E>::search(const Poin
 
 
 template <typename T, typename M, typename E> std::string Oct<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printf("AAAAAA12\n");
 	std::string mes=((spread)?"\n" : "");
-	mes+=((spread)?to_stringTabs(indent) : "");
-	//mes+="QUAD";
+	mes+=to_stringTabs(indent);
 
-	//if (full_info){
-		mes+="OCT[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:";
-		mes+=m_a.to_string();						//a
-		mes+="|";
-		mes+=m_ppoint->to_string(false, false, 0);		//Point
-		mes+="|";
-		mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
-		mes+="|";
-		std::stringstream ss2;
-		ss2 << m_pT;
-		mes+=ss2.str();
-		//mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
-		mes+="|";
-		mes+="w:" + std::to_string(m_tot_weight.to_m_type());
-		mes+="]";
-		mes+=((spread)?"\n" : "");
-	//}
+	mes+="OCT[";
+	std::stringstream ss;
+	ss << this;
+	printf("AAAAAA122\n");
+	mes+=ss.str();
+	mes+="]:";
+	mes+=m_a.to_string(false, false, 0);								//a
+	mes+="|*|";
+	printf("AAAAAA123\n");
+	std::cout << m_ppoint << "\n";
+	//mes+=m_ppoint->to_string(false, false, 0);			//Point ERROR
+	mes+="|*|";
+	printf("AAAAAA124\n");
+	mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
+	mes+="|*|";
+	printf("AAAAAA125\n");
+	std::stringstream ss2;
+	ss2 << m_pT;
+	mes+=ss2.str();
+	mes+="|*|";
+	printf("AAAAAA126\n");
+	mes+="w:" + std::to_string(m_tot_weight.to_m_type());
+	mes+="]";
+	//mes+=((spread)?"\n" : "");
+	mes+="\n";
+	printf("AAAAAA127\n");
 
-	mes+=((spread)?to_stringTabs(indent+1) : "");
-	//mes+=(m_pT==NULL) ? "NULL" : std::to_string((unsigned long long)(void**)m_pT);
-	//mes+=", ";
-	//mes+=std::to_string(m_tot_weight.to_long_double());
-	//mes+=", ";
+	mes+=to_stringTabs(indent+1);
 	if (full_info){
 		mes+="(";
-		//std::string nulll=to_stringTabs(indent+1);
 		std::string nulll=((spread)?"\n" : "");
 		nulll+=((spread)?to_stringTabs(indent+1) : "");
 		nulll+="NULL";
 		nulll+=", ";
 		//nulll+=((spread)?"\n" : "");
 
+		printf("AAAAAA13\n");
 		mes+=(m_pBLBTree==NULL)?nulll : m_pBLBTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA14\n");
 		mes+=(m_pBRBTree==NULL)?nulll : m_pBRBTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA15\n");
 		mes+=(m_pBRFTree==NULL)?nulll : m_pBRFTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA16\n");
 		mes+=(m_pBLFTree==NULL)?nulll : m_pBLFTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA17\n");
 		mes+=(m_pTLBTree==NULL)?nulll : m_pTLBTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA18\n");
 		mes+=(m_pTRBTree==NULL)?nulll : m_pTRBTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA19\n");
 		mes+=(m_pTRFTree==NULL)?nulll : m_pTRFTree->to_string(spread, full_info, indent+1);
-		mes+=((spread)?to_stringTabs(indent+1) : "");
+		mes+=to_stringTabs(indent+1);
+		printf("AAAAAA20\n");
 		mes+=(m_pTLFTree==NULL)?nulll : m_pTLFTree->to_string(spread, full_info, indent+1);
 		//mes+=((spread)?to_stringTabs(indent+1) : "");
 

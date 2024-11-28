@@ -1,4 +1,4 @@
-src/main.o: ../src/main.cpp ../src/core/LSN.h \
+src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
  ../src/core/../utilities/functions.h \
  ../src/core/../utilities/Printable.h \
  ../src/core/../utilities/functions.h ../src/core/Point3D.h \

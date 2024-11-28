@@ -61,8 +61,8 @@ public:
 };
 
 //Functions
-template <typename T> void rrr(T* p1, T* p2, const long double& dt);
-template <typename T> LSN rrr2(T* p1, T* p2);// Returns l'acc exercée par p2 sur p1
+template <typename T, typename M, typename E> void rrr(T* p1, T* p2, const long double& dt);
+template <typename T, typename M, typename E> SN<M, E> rrr2(T* p1, T* p2);// Returns l'acc exercée par p2 sur p1
 
 /*
  * Returns the vector immediately (useless)
@@ -221,12 +221,6 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setPFunc(S
 }
 
 template <typename T, typename M, typename E> void System3D<T, M, E>::recalculate() const {
-	/*for (Oct<T>* ptree : m_poctree->getPTrees()){
-		delete ptree;
-	}
-	for (T* pelement : m_pelements){
-		m_poctree->insert(pelement);
-	}*/
 	m_poctree->recalculate();
 }
 
@@ -236,27 +230,20 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::empty() {
 
 
 template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printf("AAAAAA1\n");
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
-	//if (full_info){
-		mes+="SYSTEM[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:\n";
-		mes+=to_stringTabs(indent+1);
-		mes+="a=" + m_a.to_string(false, false, 0);
-		mes+=((spread)?"\n" : "");
-	//}
-	if (full_info){
-		/*for (T* pelement : m_poctree->getPElements()){
-			mes+=to_stringTabs(indent+1);
-			mes+="* ";
-			mes+=pelement->to_string(false, false, 0);
-			mes+="\n";
-		}*/
-		printf("\n%c, %d\n", indent, indent);
+	mes+="SYSTEM3D[";
+	std::stringstream ss;
+	ss << this;
+	mes+=ss.str();
+	mes+="]:\n";
+	mes+=to_stringTabs(indent+1);
+	mes+="a=" + m_a.to_string(false, false, 0);
+	mes+=((spread)?"\n" : "");
+
+	if (full_info){			// Problem
 		mes+=m_poctree->to_string(spread, full_info, indent+1);
 	}
 
@@ -265,7 +252,8 @@ template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_
 
 template <typename T, typename M, typename E> void System3D<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
-	std::cout << this->to_string(spread, indent, full_info);
+	std::cout << this->to_string(spread, full_info, indent);
+	printf("\nAAAAAA2\n");
 }
 
 

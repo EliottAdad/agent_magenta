@@ -33,7 +33,7 @@ public:
 	Line3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2);
 	Line3D(const Line3D& l);
 	Line3D(const Line3D* pl);
-	virtual ~Line3D();									//:)
+	virtual ~Line3D();												//:)
 
 	Point3D<float, char> getP1() const;								//:)
 	Point3D<float, char>* getPP1() const;							//:)
@@ -43,8 +43,8 @@ public:
 	Point3D<float, char>* getPP2() const;							//:)
 	void setP2(Point3D<float, char>& p2, const bool& delp=false);	//:)
 	void setPP2(Point3D<float, char>* pp2, const bool& delp=true);	//:)
-	bool getDelP1() const;								//:)
-	bool getDelP2() const;								//:)
+	bool getDelP1() const;											//:)
+	bool getDelP2() const;											//:)
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;

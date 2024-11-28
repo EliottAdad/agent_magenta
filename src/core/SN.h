@@ -540,6 +540,7 @@ template<typename M, typename E> SN<M, E> operator/(const M& k, const SN<M, E>& 
 
 template<typename M, typename E> std::string SN<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
 
 	if (full_info){
 		mes+="SN[";
@@ -547,10 +548,12 @@ template<typename M, typename E> std::string SN<M, E>::to_string(const bool& spr
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
+		//mes;
 	}else{
 		//mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
 	}
-	mes+=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
 	mes+=std::to_string(m) + "x10^" + std::to_string(e);
 
 	return mes;

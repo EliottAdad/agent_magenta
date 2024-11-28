@@ -179,17 +179,17 @@ std::string Particle3D::to_string(const bool& spread, const bool& full_info, con
 	mes+=to_stringTabs(indent);
 
 	if (full_info){
-		mes+="PARTICLE[";
+		mes+="PARTICLE3D[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
-		mes+=((spread)?"\n" : "");
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
 
-	mes+=to_stringTabs(indent+1);
-	mes+="(" + this->x.to_string() + ", " + this->y.to_string() + ", " + this->z.to_string()+ ", " + this->w.to_string();
-	mes+=" |:| ";
+	mes+=to_stringTabs(indent);
+	mes+="(" + this->getPosition().to_string();
+	mes+=" |*| ";
 	mes+=m_ps->to_string(false, false);
 	mes+=")";
 	return mes;

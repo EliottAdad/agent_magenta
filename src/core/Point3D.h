@@ -35,7 +35,7 @@ public:
 	virtual SN<M, E> getX() const;							// :)
 	virtual SN<M, E> getY() const;							// :)
 	virtual SN<M, E> getZ() const;							// :)
-	virtual Point3D<M, E> getPosition() const;				// :)
+	virtual Point3D<M, E> getPosition() const;				// :) To be inherited
 
 	virtual void operator=(const Point3D<M, E>& p);			// :)
 	virtual void operator=(const SN<M, E>& nb);				// :)
@@ -62,11 +62,11 @@ template<typename M, typename E> Point3D<M, E> operator+(const Point3D<M, E>& p1
 template<typename M, typename E> Point3D<M, E> operator-(const Point3D<M, E>& p1, const Point3D<M, E>& p2);	// :)
 template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
 template<typename M, typename E> Point3D<M, E> operator*(const SN<M, E>& k, const Point3D<M, E>& p);			// :)
-template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const long double& k);	// :)
-template<typename M, typename E> Point3D<M, E> operator*(const long double& k, const Point3D<M, E>& p);	// :)
+//template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const long double& k);	// :)
+//template<typename M, typename E> Point3D<M, E> operator*(const long double& k, const Point3D<M, E>& p);	// :)
 template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
 //template<typename M, typename E> Point3D operator/(const SN& k, const Point3D& p);			// :)
-template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const long double& k);	// :)
+template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const M& k);	// :)
 //template<typename M, typename E> Point3D operator/(const long double& k, const Point3D& p);	// :)
 
 
@@ -189,18 +189,21 @@ template<typename M, typename E> void Point3D<M, E>::operator/=(const M& k) {
 
 
 template<typename M, typename E> std::string Point3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::cout<<"Help1\n";
 	std::string mes=((spread)?"\n" : "");
-
+	mes+=to_stringTabs(indent);
+	printf("Help2\n");
 	if (full_info){
-		mes+="POINT[";
+		mes+="POINT3D[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
-		mes+=((spread)?"\n" : "");
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
-
-	mes+="(x:" + x.to_string() + ", y:" + y.to_string() + ", z:" + z.to_string() + ")";
+	printf("Help3\n");
+	mes+=to_stringTabs(indent);
+	mes+="(x:" + x.to_string(false, false, 0) + " ; y:" + y.to_string(false, false, 0) + " ; z:" + z.to_string(false, false, 0) + ")";
 
 	return mes;
 }
@@ -209,6 +212,9 @@ template<typename M, typename E> void Point3D<M, E>::print(const bool& spread, c
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
+
+
+
 
 
 
