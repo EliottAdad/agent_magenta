@@ -23,15 +23,15 @@
 \DoxyCodeLine{19 \textcolor{comment}{ */}}
 \DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classShape3D}{Shape3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
 \DoxyCodeLine{21 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{22     std::unordered\_set<Point3D*> m\_ppoints;}
+\DoxyCodeLine{22     std::unordered\_set<Point3D<float, char>*> m\_ppoints;}
 \DoxyCodeLine{23 }
 \DoxyCodeLine{24 \textcolor{keyword}{public}:}
 \DoxyCodeLine{25     \mbox{\hyperlink{classShape3D}{Shape3D}}();}
 \DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{classShape3D}{\string~Shape3D}}();}
 \DoxyCodeLine{27     \mbox{\hyperlink{classShape3D}{Shape3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classShape3D}{Shape3D}} \&other);}
 \DoxyCodeLine{28 }
-\DoxyCodeLine{29     std::unordered\_set<Point3D*> setPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
-\DoxyCodeLine{30     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
+\DoxyCodeLine{29     std::unordered\_set<Point3D<float, char>*> setPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint);}
 \DoxyCodeLine{31 }
 \DoxyCodeLine{32     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}

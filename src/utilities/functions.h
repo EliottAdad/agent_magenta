@@ -15,8 +15,8 @@
  * Functions
  */
 
-std::string to_stringTabs(const unsigned int& nb);
-void printTabs(const unsigned int& nb);
+std::string to_stringTabs(const unsigned char& nb);
+void printTabs(const unsigned char& nb);
 
 unsigned long long int factorial(unsigned int n);
 /*unsigned long long int binomialCoef(unsigned int n, unsigned int k);*/

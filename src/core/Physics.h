@@ -28,7 +28,7 @@
 class Physics : public Printable {
 private:
 	float m_speed;					//Ratio between simulation_speed/real_world_speed
-	unsigned int m_pps;				//Physics per second
+	unsigned char m_pps;				//Physics per second
 
 	bool m_fcollide;
 	bool m_fpause;
@@ -41,17 +41,17 @@ public:
 
 	float getSpeed() const;
 	void setSpeed(const float& speed);
-	unsigned int getPPS() const;
-	void setPPS(const unsigned int& pps);
+	unsigned char getPPS() const;
+	void setPPS(const unsigned char& pps);
 
 	std::unordered_set<TimeSensitive*> getPTimeSensitives();
 	bool addPTimeSensitive(TimeSensitive* ptime_sensitive);
 	//std::unordered_set<Moveable*> getPMoveables();
 	//bool addPMoveable(Moveable* pmoveabele);
 
-	unsigned int getFCollide() const;
+	bool getFCollide() const;
 	void setFCollide(const bool& bcollide);
-	unsigned int getFPause() const;
+	bool getFPause() const;
 	void setFPause(const bool& bpause);
 
 	//bool loop();

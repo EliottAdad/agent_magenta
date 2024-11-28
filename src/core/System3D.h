@@ -29,7 +29,7 @@ protected:
 	Oct<T, M, E>* m_poctree;												// Pointer to the Octree.
 	SN<M, E> (*m_ptrLaw) (T*, T*);										// Pointer to a function operating on 2 particles (Todo List)
 
-	long double m_dt;
+	float m_dt;
 	std::unordered_set<T*> m_pelements;
 
 public:
@@ -52,7 +52,7 @@ public:
 	void recalculate() const;
 	void empty();
 
-	virtual void setT(const long double& dt);	// From TimeSensitive
+	virtual void setT(const float& dt);	// From TimeSensitive
 	virtual void apply();						// From Moveable
 	//virtual void move(const Vector3D& dp);
 
@@ -150,11 +150,11 @@ template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T,
 	return m_poctree->getPNeighbors(pelement);
 }
 
-template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const long double& dt) {
+template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const float& dt) {
 	m_dt=dt;
 
 	printf("Set T (System3D)\n");
-	printf("%Lf\n", m_dt);
+	printf("%f\n", m_dt);
 	for (T* pelement : m_pelements){
 		pelement->setT(m_dt);
 
@@ -171,7 +171,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 			// Apply the law
 			for (T* pneighbor : pneighbors){
 				//(*m_ptrLaw)(pelement, pneighbor, m_dt);// Probleme qd appel loi
-				LSN norm=(*m_ptrLaw)(pelement, pneighbor);// Get the norm of the acceleration
+				SN<M, E> norm=(*m_ptrLaw)(pelement, pneighbor);// Get the norm of the acceleration
 				Line3D l;//Works
 				Vector3D v;//X Error (arrete l'execution)
 				/*Vector3D v((Point3D)(pelement->getPosition()), (Point3D)(pneighbor->getPosition()));
@@ -184,11 +184,11 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 				pelement->y+=norm;
 				pelement->z+=norm;*/
 				/*pelement->addSpeed(Point3D{norm, {0, 0}, {0, 0}});*///
-				LSN lsn{dt/10., 0};
-				lsn.recal();
-				pelement->x-=lsn;
-				pelement->y+=lsn;
-				pelement->z+=lsn;
+				SN<float, char> sn{(float)(dt/10.), 0};
+				sn.recal();
+				pelement->x-=sn;
+				pelement->y+=sn;
+				pelement->z+=sn;
 			}
 		}
 	}
@@ -239,7 +239,7 @@ template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
-	if (full_info){
+	//if (full_info){
 		mes+="SYSTEM[";
 		std::stringstream ss;
 		ss << this;
@@ -248,7 +248,7 @@ template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_
 		mes+=to_stringTabs(indent+1);
 		mes+="a=" + m_a.to_string(false, false, 0);
 		mes+=((spread)?"\n" : "");
-	}
+	//}
 	if (full_info){
 		/*for (T* pelement : m_poctree->getPElements()){
 			mes+=to_stringTabs(indent+1);
@@ -256,6 +256,7 @@ template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_
 			mes+=pelement->to_string(false, false, 0);
 			mes+="\n";
 		}*/
+		printf("\n%c, %d\n", indent, indent);
 		mes+=m_poctree->to_string(spread, full_info, indent+1);
 	}
 

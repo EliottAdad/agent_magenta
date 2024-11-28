@@ -63,27 +63,27 @@ template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const SN<M
 template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const M& nb2);					//:)
 template<typename M, typename E> bool operator<=(const M& nb1, const SN<M, E>& nb2);					//:)
 template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
-//bool operator>=(const SN& nb1, const long double& nb2);		//:)
-//bool operator>=(const long double& nb1, const LSN& nb2);		//:)
-template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-//bool operator<(const SN& nb1, const long double& nb2);			//:)
-//bool operator<(const long double& nb1, const LSN& nb2);			//:)
-template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-//bool operator>(const SN& nb1, const long double& nb2);			//:)
-//bool operator>(const long double& nb1, const LSN& nb2);			//:)
+template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> bool operator>=(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const M& nb2);
+template<typename M, typename E> bool operator<(const M& nb1, const SN<M, E>& nb2);
+template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+template<typename M, typename E> bool operator>(const SN<M, E>& nb1, M& nb2);							//:)
+template<typename M, typename E> bool operator>(const M& nb1, const SN<M, E>& nb2);						//:)
 
-template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-//SN operator+(const SN& nb1, const long double& nb2);			//:)
-//LSN operator+(const long double& nb1, const LSN& nb2);			//:)
-template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-//LSN operator-(const LSN& nb1, const long double& nb2);			//:)
-//LSN operator-(const long double& nb1, const LSN& nb2);			//:)
-template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k);				//:)
-//LSN operator*(const long double& k, const LSN& nb);				//:)
-template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2);					//:)
-//LSN operator/(const LSN& nb, const long double& k);				//:)
-//LSN operator/(const long double& k, const LSN& nb);				//:)
+template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k);					//:)
+template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& nb);					//:)
+template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator/(const M& nb1, const SN<M, E>& nb2);					//:)
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb);											//:)
 template<typename M, typename E> SN<M, E> pow(const SN<M, E>& nb, const E& exp);					//:)
@@ -375,7 +375,7 @@ template<typename M, typename E> bool operator>(const M& nb1, const SN<M, E>& nb
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m+nb2.m/pow(10., (M)(nb1.e-nb2.e));
 	E ne=nb1.e;
-	SN<M, E> nnb{nm, ne};
+	SN<M, E> nnb(nm, ne);
 	return nnb;
 }
 
@@ -389,7 +389,7 @@ template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const S
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M& nb2) {
 	M nm=nb1.m+nb2/pow(10., (M)(nb1.e));
 	E ne=nb1.e;
-	SN<M, E> nnb{nm, ne};
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -403,7 +403,7 @@ template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M
 template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2) {
 	M nm=nb1+nb2.m*pow(10., (M)nb2.e);
 	E ne=0;
-	SN<M, E> nnb{nm, ne};
+	SN<M, E> nnb(nm, ne);
 	return nnb;
 }
 
@@ -420,7 +420,7 @@ template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m-nb2.m/pow(10., (M)(nb1.e-nb2.e));
 	E ne=nb1.e;
-	SN<M, E> nnb{nm, ne};
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -434,8 +434,8 @@ template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const S
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M& nb2) {
 	M nm=nb1.m-nb2/pow(10., (M)nb1.e);
 	E ne=nb1.e;
-	SN<M, E> nnb{nm, ne};
-	return SN<M, E>{nm, ne};
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
 }
 
 /*template<> SN<float, char> operator-(const SN<float, char>& nb1, const float& nb2) {
@@ -448,7 +448,7 @@ template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M
 template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>& nb2) {
 	M nm=nb1-nb2.m*pow(10., (M)(nb2.e));
 	E ne=0;
-	SN<M, E> nnb{nm, ne};
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -462,8 +462,7 @@ template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m*nb2.m;
 	E ne=nb1.e+nb2.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -477,8 +476,7 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const S
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k) {
 	M nm=nb.m*k;
 	E ne=nb.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);
 	return nnb;
 }
 
@@ -491,8 +489,7 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M&
 template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& nb) {
 	M nm=k*nb.m;
 	E ne=nb.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -505,8 +502,7 @@ template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& 
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m/nb2.m;
 	E ne=nb1.e-nb2.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -517,8 +513,7 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const S
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M& k) {
 	M nm=nb.m/k;
 	E ne=nb.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -531,8 +526,7 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M&
 template<typename M, typename E> SN<M, E> operator/(const M& k, const SN<M, E>& nb) {
 	M nm=k/nb.m;
 	E ne=(-1)*nb.e;
-	SN<M, E> nnb{nm, ne};
-	nnb.recal();
+	SN<M, E> nnb(nm, ne);
 	return nnb;
 }
 
@@ -548,16 +542,16 @@ template<typename M, typename E> std::string SN<M, E>::to_string(const bool& spr
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="LSN[";
+		mes+="SN[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
-		mes+=((spread)?"\n" : "");
-		mes+=std::to_string(m) + "x10^" + std::to_string(e);
 	}else{
-		mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
+		//mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
 	}
+	mes+=((spread)?"\n" : "");
+	mes+=std::to_string(m) + "x10^" + std::to_string(e);
 
 	return mes;
 }
@@ -595,7 +589,10 @@ template<typename M, typename E> void SN<M, E>::print(const bool& spread, const 
  */
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb) {
-	SN<M, E> resp{std::abs(nb.m), nb.e};
+	printf("In the abs in SN\n");
+	M nm=std::abs(nb.m);
+	E ne=nb.e;
+	SN<M, E> resp(nm, ne);//To recal
 	//resp.recal();
 	return resp;
 }
@@ -607,7 +604,9 @@ template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb) {
 }*/
 
 template<typename M, typename E> SN<M, E> pow(const SN<M, E>& nb, const E& e) {
-	SN<M, E> resp{pow(nb.m, (long double)e), nb.e*e};
+	M nm=pow(nb.m, (M)e);
+	E ne=nb.e*e;
+	SN<M, E> resp(nm, ne);
 	resp.recal();
 	return resp;
 }
@@ -636,7 +635,9 @@ template<typename M, typename E> LSN nrt(LSN& nb, long int e) {
  * Calculate the square root of a number.
  */
 template<typename M, typename E> SN<M, E> sqrt(const SN<M, E>& nb) {
-	SN<M, E> resp={pow(nb.m, 0.5), nb.e/2};//Doesn't work (exponent cast to int)
+	M nm=pow(nb.m, 0.5);
+	E ne=nb.e/2;
+	SN<M, E> resp(nm, ne);//Doesn't work (exponent cast to int)
 	resp.recal();
 	return resp;
 }

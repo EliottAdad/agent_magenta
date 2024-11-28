@@ -13,7 +13,7 @@
  * Functions
  */
 
-std::string to_stringTabs(const unsigned int& nb) {
+std::string to_stringTabs(const unsigned char& nb) {
 	std::string mes="";
 	for (unsigned int i(0) ; i<nb ; i++){
 		mes+="\t";
@@ -21,7 +21,7 @@ std::string to_stringTabs(const unsigned int& nb) {
 	return mes;
 }
 
-void printTabs(const unsigned int& nb) {
+void printTabs(const unsigned char& nb) {
 	for (unsigned int i(0) ; i<nb ; i++){
 		std::cout<<"\t";
 	}

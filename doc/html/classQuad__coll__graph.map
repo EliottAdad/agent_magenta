@@ -1,7 +1,4 @@
-<map id="Quad&lt; T &gt;" name="Quad&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="63,501,158,528"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="71,5,151,32"/>
-<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="129,209,202,235"/>
-<area shape="rect" id="node4" href="$structLSN.html" title=" " alt="" coords="122,81,169,108"/>
-<area shape="rect" id="node5" href="$classQuad.html" title=" " alt="" coords="293,352,387,379"/>
+<map id="Quad&lt; T, M, E &gt;" name="Quad&lt; T, M, E &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="31,5,111,32"/>
 </map>

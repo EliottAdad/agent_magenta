@@ -32,9 +32,9 @@
 \DoxyCodeLine{28 \textcolor{comment}{ */}}
 \DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{classDisplay1}{Display1}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
 \DoxyCodeLine{30 \textcolor{keyword}{private}:}
-\DoxyCodeLine{31     \mbox{\hyperlink{structPoint3D}{Point3D}}* m\_ppoint;                   \textcolor{comment}{// Pointeur to the center of display.}}
+\DoxyCodeLine{31     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* m\_ppoint;     \textcolor{comment}{// Pointeur to the center of display.}}
 \DoxyCodeLine{32     \textcolor{keywordtype}{char} m\_display;                     \textcolor{comment}{// The point of view from which it is projected (1, 2, 3).}}
-\DoxyCodeLine{33     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} m\_scale;                \textcolor{comment}{// Ratio d\_pixels/d\_meters}}
+\DoxyCodeLine{33     \textcolor{keywordtype}{float} m\_scale;                      \textcolor{comment}{// Ratio d\_pixels/d\_meters}}
 \DoxyCodeLine{34     std::set<Scene*> m\_pscenes;         \textcolor{comment}{// Pointeurs to the scenes that are rendered in the display.}}
 \DoxyCodeLine{35 }
 \DoxyCodeLine{36     SDL\_Color* m\_pbkgd\_color;           \textcolor{comment}{// Pointeur to the background color.}}
@@ -49,18 +49,18 @@
 \DoxyCodeLine{45 }
 \DoxyCodeLine{46 \textcolor{keyword}{public}:}
 \DoxyCodeLine{47     \mbox{\hyperlink{classDisplay1}{Display1}}();}
-\DoxyCodeLine{48     \mbox{\hyperlink{classDisplay1}{Display1}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
+\DoxyCodeLine{48     \mbox{\hyperlink{classDisplay1}{Display1}}(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint);}
 \DoxyCodeLine{49     \mbox{\hyperlink{classDisplay1}{Display1}}(SDL\_Window* pwindow, SDL\_Renderer* prenderer);}
 \DoxyCodeLine{50     \textcolor{keyword}{virtual} \mbox{\hyperlink{classDisplay1}{\string~Display1}}();}
 \DoxyCodeLine{51     \textcolor{comment}{//Display1(const Display1 \&other);}}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{53     \mbox{\hyperlink{structPoint3D}{Point3D}}* getPPoint();}
-\DoxyCodeLine{54     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});}
-\DoxyCodeLine{55     \textcolor{keywordtype}{void} setPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}\& point, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});}
+\DoxyCodeLine{53     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPPoint();}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} setPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& point, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});}
 \DoxyCodeLine{56     \textcolor{keywordtype}{char} getDisplay() \textcolor{keyword}{const};}
 \DoxyCodeLine{57     \textcolor{keywordtype}{void} setDisplay(\textcolor{keyword}{const} \textcolor{keywordtype}{char}\& display);}
-\DoxyCodeLine{58     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} getScale() \textcolor{keyword}{const};}
-\DoxyCodeLine{59     \textcolor{keywordtype}{void} setScale(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} m\_scale);}
+\DoxyCodeLine{58     \textcolor{keywordtype}{float} getScale() \textcolor{keyword}{const};}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} setScale(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& scale);}
 \DoxyCodeLine{60     SDL\_Color* getPBkgdColor();}
 \DoxyCodeLine{61     \textcolor{keywordtype}{void} setBkrdColor(\textcolor{keywordtype}{int} r, \textcolor{keywordtype}{int} g, \textcolor{keywordtype}{int} b, \textcolor{keywordtype}{int} a);}
 \DoxyCodeLine{62     SDL\_Color* getPDrawColor();}
@@ -74,8 +74,8 @@
 \DoxyCodeLine{70     \textcolor{keywordtype}{bool} render() \textcolor{keyword}{const};}
 \DoxyCodeLine{71     \textcolor{keywordtype}{bool} render(\mbox{\hyperlink{classScene}{Scene}}* pscene) \textcolor{keyword}{const};}
 \DoxyCodeLine{72     \textcolor{keywordtype}{bool} render(\mbox{\hyperlink{structDisplayable}{Displayable}}* pdisplayable) \textcolor{keyword}{const};}
-\DoxyCodeLine{73     \textcolor{keywordtype}{void} renderPoints(std::set<Point3D*> ppoints) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
-\DoxyCodeLine{74     \textcolor{keywordtype}{void} renderPoint(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} renderPoints(std::set<\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}*> ppoints) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} renderPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
 \DoxyCodeLine{75     \textcolor{keywordtype}{void} renderLines(std::set<Line3D*> plines) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
 \DoxyCodeLine{76     \textcolor{keywordtype}{void} renderLine(\mbox{\hyperlink{classLine3D}{Line3D}}* pline) \textcolor{keyword}{const};\textcolor{comment}{//:)}}
 \DoxyCodeLine{77 }

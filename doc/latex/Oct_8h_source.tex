@@ -14,9 +14,9 @@
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <cstdio>}}
-\DoxyCodeLine{13 \textcolor{comment}{//\#include <iostream>}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <cmath>}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{13 \textcolor{comment}{//\#include <cmath>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}SN.h"{}}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
 \DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
@@ -27,896 +27,921 @@
 \DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#}}
 \DoxyCodeLine{24 \textcolor{comment}{ * Can contain any object that has x, y, z}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{26 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classOct}{Oct}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{26 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classOct}{Oct}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
 \DoxyCodeLine{27 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{28     \mbox{\hyperlink{structPoint3D}{Point3D}}* m\_ppoint;                   \textcolor{comment}{// The center of the zone.}}
-\DoxyCodeLine{29     \mbox{\hyperlink{structPoint3D}{Point3D}}* m\_pbarycenter;              \textcolor{comment}{// The center of mass given the repartition of the WeightedPoints in the zone.}}
-\DoxyCodeLine{30     \textcolor{keywordtype}{bool} m\_delppoint;                   \textcolor{comment}{// If the point should be deleted.}}
+\DoxyCodeLine{28     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* m\_ppoint;                   \textcolor{comment}{// The center of the zone.}}
+\DoxyCodeLine{29     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* m\_pbarycenter;              \textcolor{comment}{// The center of mass given the repartition of the WeightedPoints in the zone.}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} m\_delp;                    \textcolor{comment}{// If the point should be deleted.}}
 \DoxyCodeLine{31 }
-\DoxyCodeLine{32     \mbox{\hyperlink{structLSN}{LSN}} m\_a;                         \textcolor{comment}{// Length of the zone's border.}}
-\DoxyCodeLine{33     \mbox{\hyperlink{structLSN}{LSN}} m\_tot\_weight;                    \textcolor{comment}{// Total weight contained in this Oct.}}
+\DoxyCodeLine{32     \mbox{\hyperlink{structSN}{SN<M, E>}} m\_a;                           \textcolor{comment}{// Length of the zone's border.}}
+\DoxyCodeLine{33     \mbox{\hyperlink{structSN}{SN<M, E>}} m\_tot\_weight;                  \textcolor{comment}{// Total weight contained in this Oct.}}
 \DoxyCodeLine{34 }
 \DoxyCodeLine{35     T* m\_pT;                            \textcolor{comment}{// The content of this square (NULL if nothing).}}
 \DoxyCodeLine{36     \textcolor{comment}{//Particle3D* m\_pparticle;          // The content of this node.}}
 \DoxyCodeLine{37 }
-\DoxyCodeLine{38     \mbox{\hyperlink{classOct}{Oct}}* m\_pTLFTree;                 \textcolor{comment}{// Top Left corner : is NULL if nothing}}
-\DoxyCodeLine{39     \mbox{\hyperlink{classOct}{Oct}}* m\_pTRFTree;                 \textcolor{comment}{// Top Right corner : is NULL if nothing}}
-\DoxyCodeLine{40     \mbox{\hyperlink{classOct}{Oct}}* m\_pBLFTree;                 \textcolor{comment}{// Bottom Left corner : is NULL if nothing}}
-\DoxyCodeLine{41     \mbox{\hyperlink{classOct}{Oct}}* m\_pBRFTree;                 \textcolor{comment}{// Bottom Right corner : is NULL if nothing}}
-\DoxyCodeLine{42     \mbox{\hyperlink{classOct}{Oct}}* m\_pTLBTree;                 \textcolor{comment}{// Top Left corner : is NULL if nothing}}
-\DoxyCodeLine{43     \mbox{\hyperlink{classOct}{Oct}}* m\_pTRBTree;                 \textcolor{comment}{// Top Right corner : is NULL if nothing}}
-\DoxyCodeLine{44     \mbox{\hyperlink{classOct}{Oct}}* m\_pBLBTree;                 \textcolor{comment}{// Bottom Left corner : is NULL if nothing}}
-\DoxyCodeLine{45     \mbox{\hyperlink{classOct}{Oct}}* m\_pBRBTree;                 \textcolor{comment}{// Bottom Right corner : is NULL if nothing}}
+\DoxyCodeLine{38     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pTLFTree;                   \textcolor{comment}{// Top Left corner : is NULL if nothing}}
+\DoxyCodeLine{39     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pTRFTree;                   \textcolor{comment}{// Top Right corner : is NULL if nothing}}
+\DoxyCodeLine{40     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pBLFTree;                   \textcolor{comment}{// Bottom Left corner : is NULL if nothing}}
+\DoxyCodeLine{41     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pBRFTree;                   \textcolor{comment}{// Bottom Right corner : is NULL if nothing}}
+\DoxyCodeLine{42     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pTLBTree;                   \textcolor{comment}{// Top Left corner : is NULL if nothing}}
+\DoxyCodeLine{43     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pTRBTree;                   \textcolor{comment}{// Top Right corner : is NULL if nothing}}
+\DoxyCodeLine{44     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pBLBTree;                   \textcolor{comment}{// Bottom Left corner : is NULL if nothing}}
+\DoxyCodeLine{45     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_pBRBTree;                   \textcolor{comment}{// Bottom Right corner : is NULL if nothing}}
 \DoxyCodeLine{46 }
 \DoxyCodeLine{47     \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_NB\_OCTS;      \textcolor{comment}{// Keeps track of the number of Octs created.}}
 \DoxyCodeLine{48 }
 \DoxyCodeLine{49 \textcolor{keyword}{public}:}
-\DoxyCodeLine{50     \textcolor{keyword}{static} \mbox{\hyperlink{structLSN}{LSN}} m\_LIM\_A;                  \textcolor{comment}{// This indicates the limit at which we stop subdividing (useless)}}
+\DoxyCodeLine{50     \textcolor{keyword}{static} \mbox{\hyperlink{structSN}{SN<M, E>}} m\_LIM\_A;                    \textcolor{comment}{// This indicates the limit at which we stop subdividing (useless)}}
 \DoxyCodeLine{51     \textcolor{keyword}{static} \textcolor{keywordtype}{float} m\_ALPHA;               \textcolor{comment}{// The threshold m\_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.}}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{comment}{//Oct();}}
-\DoxyCodeLine{54     \textcolor{comment}{/*}}
-\DoxyCodeLine{55 \textcolor{comment}{     * Constructor1}}
-\DoxyCodeLine{56 \textcolor{comment}{     * @param a\{The side's lenght of the area\}}}
-\DoxyCodeLine{57 \textcolor{comment}{     * @param point\{The center on which is centered the Oct's area\}}}
-\DoxyCodeLine{58 \textcolor{comment}{     */}}
-\DoxyCodeLine{59     \mbox{\hyperlink{classOct}{Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& p=\{\{0,0\},\{0,0\},\{0,0\}\});}
-\DoxyCodeLine{60     \mbox{\hyperlink{classOct}{Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a, \mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint);}
-\DoxyCodeLine{61     \textcolor{keyword}{virtual} \mbox{\hyperlink{classOct}{\string~Oct}}();}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63     \mbox{\hyperlink{structLSN}{LSN}} getA() \textcolor{keyword}{const};}
-\DoxyCodeLine{64     \textcolor{keywordtype}{void} setA(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a);}
-\DoxyCodeLine{65     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getNB\_OCTS() \textcolor{keyword}{const};}
-\DoxyCodeLine{66     \textcolor{comment}{//float getAlpha();}}
-\DoxyCodeLine{67     \textcolor{comment}{//static void setAlpha(float\& alpha=0.5);}}
-\DoxyCodeLine{68     std::unordered\_set<Oct<T>*> getPTrees();            \textcolor{comment}{//Returns all the trees under, contained by this tree.}}
-\DoxyCodeLine{69     std::unordered\_set<T*> getPElements() \textcolor{keyword}{const};        \textcolor{comment}{//Returns all the elements contained in the tree.}}
-\DoxyCodeLine{70     std::unordered\_set<T*> getPNeighbors(T* pelement) \textcolor{keyword}{const};        \textcolor{comment}{//Returns all the neighbors.}}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{72     \textcolor{keywordtype}{bool} insert(T* pT);}
-\DoxyCodeLine{73     \textcolor{comment}{//bool insert(Particle3D* ppart);}}
-\DoxyCodeLine{74     \textcolor{keywordtype}{void} find(\textcolor{keyword}{const} T\& t, std::unordered\_set<\mbox{\hyperlink{classOct}{Oct<T>}}*>\& pquads);\textcolor{comment}{// It adds to the list of Octs in parameter accordingly to the ratio m\_ALPHA}}
-\DoxyCodeLine{75     \textcolor{comment}{//void computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const;// Useless}}
-\DoxyCodeLine{76     \textcolor{comment}{//std::unordered\_set<T*> find(const Point3D\& point);}}
-\DoxyCodeLine{77     T* search(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint) \textcolor{keyword}{const};}
-\DoxyCodeLine{78     \textcolor{keywordtype}{void} recalculate();}
-\DoxyCodeLine{79     \textcolor{keywordtype}{bool} empty();}
-\DoxyCodeLine{80 }
-\DoxyCodeLine{81     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{82     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{83 \};}
-\DoxyCodeLine{84 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOct}{Oct<T>::m\_NB\_OCTS}}=0;}
-\DoxyCodeLine{85 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classOct}{Oct<T>::m\_LIM\_A}}=\{1, 0\};}
-\DoxyCodeLine{86 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{float} \mbox{\hyperlink{classOct}{Oct<T>::m\_ALPHA}}=0.5;}
-\DoxyCodeLine{87 }
+\DoxyCodeLine{53     \mbox{\hyperlink{classOct}{Oct}}();}
+\DoxyCodeLine{54     \mbox{\hyperlink{classOct_afcf5934c496b75396bde3760958d2b62}{Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p=\{\{0,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{55     \mbox{\hyperlink{classOct}{Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* ppoint);}
+\DoxyCodeLine{56     \mbox{\hyperlink{classOct}{Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* poct);}
+\DoxyCodeLine{57     \textcolor{keyword}{virtual} \mbox{\hyperlink{classOct}{\string~Oct}}();}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} getPoint() \textcolor{keyword}{const};}
+\DoxyCodeLine{60     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* getPPoint() \textcolor{keyword}{const};}
+\DoxyCodeLine{61     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} getBarycenter() \textcolor{keyword}{const};}
+\DoxyCodeLine{62     \textcolor{comment}{//Point3D<M, E>* getPBarycenter() const;}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{bool} getDelP() \textcolor{keyword}{const};}
+\DoxyCodeLine{64     \mbox{\hyperlink{structSN}{SN<M, E>}} getA() \textcolor{keyword}{const};}
+\DoxyCodeLine{65     \textcolor{keywordtype}{void} setA(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a);}
+\DoxyCodeLine{66     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getNB\_OCTS() \textcolor{keyword}{const};}
+\DoxyCodeLine{67     \textcolor{comment}{//float getAlpha();}}
+\DoxyCodeLine{68     \textcolor{comment}{//static void setAlpha(float\& alpha=0.5);}}
+\DoxyCodeLine{69     std::unordered\_set<Oct<T, M, E>*> getPTrees();                      \textcolor{comment}{//Returns all the trees under, contained by this tree.}}
+\DoxyCodeLine{70     std::unordered\_set<T*> getPElements() \textcolor{keyword}{const};                    \textcolor{comment}{//Returns all the elements contained in the tree.}}
+\DoxyCodeLine{71     std::unordered\_set<T*> getPNeighbors(T* pelement) \textcolor{keyword}{const};        \textcolor{comment}{//Returns all the neighbors.}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{bool} insert(T* pT);}
+\DoxyCodeLine{74     \textcolor{comment}{//bool insert(Particle3D* ppart);}}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} find(\textcolor{keyword}{const} T\& t, std::unordered\_set<\mbox{\hyperlink{classOct}{Oct<T, M, E>}}*>\& pocts);\textcolor{comment}{// It adds to the list of Octs in parameter accordingly to the ratio m\_ALPHA}}
+\DoxyCodeLine{76     \textcolor{comment}{//void computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const;// Useless}}
+\DoxyCodeLine{77     \textcolor{comment}{//std::unordered\_set<T*> find(const Point3D\& point);}}
+\DoxyCodeLine{78     T* search(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* ppoint) \textcolor{keyword}{const};}
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} recalculate();}
+\DoxyCodeLine{80     \textcolor{keywordtype}{bool} empty();}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{84 \};}
+\DoxyCodeLine{85 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOct}{Oct<T, M, E>::m\_NB\_OCTS}}=0;}
+\DoxyCodeLine{86 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classOct}{Oct<T, M, E>::m\_LIM\_A}}=\{1, 0\};}
+\DoxyCodeLine{87 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{float} \mbox{\hyperlink{classOct}{Oct<T, M, E>::m\_ALPHA}}=0.5;}
 \DoxyCodeLine{88 }
-\DoxyCodeLine{89 \textcolor{comment}{/*}}
-\DoxyCodeLine{90 \textcolor{comment}{ * Constructor0}}
-\DoxyCodeLine{91 \textcolor{comment}{ */}}
-\DoxyCodeLine{92 \textcolor{comment}{/*template <typename T> Oct<T>::Oct() \{}}
-\DoxyCodeLine{93 \textcolor{comment}{    m\_ppoint=new Point3D();}}
-\DoxyCodeLine{94 \textcolor{comment}{    m\_pbarycenter=new Point3D(*m\_ppoint);}}
-\DoxyCodeLine{95 \textcolor{comment}{    m\_delppoint=true;}}
-\DoxyCodeLine{96 \textcolor{comment}{}}
-\DoxyCodeLine{97 \textcolor{comment}{    m\_a=0;}}
-\DoxyCodeLine{98 \textcolor{comment}{    m\_tot\_weight=0.;}}
-\DoxyCodeLine{99 \textcolor{comment}{}}
-\DoxyCodeLine{100 \textcolor{comment}{    m\_pT=NULL;}}
-\DoxyCodeLine{101 \textcolor{comment}{}}
-\DoxyCodeLine{102 \textcolor{comment}{    m\_pTLFTree=NULL;}}
-\DoxyCodeLine{103 \textcolor{comment}{    m\_pTRFTree=NULL;}}
-\DoxyCodeLine{104 \textcolor{comment}{    m\_pBLFTree=NULL;}}
-\DoxyCodeLine{105 \textcolor{comment}{    m\_pBRFTree=NULL;}}
-\DoxyCodeLine{106 \textcolor{comment}{    m\_pTLBTree=NULL;}}
-\DoxyCodeLine{107 \textcolor{comment}{    m\_pTRBTree=NULL;}}
-\DoxyCodeLine{108 \textcolor{comment}{    m\_pBLBTree=NULL;}}
-\DoxyCodeLine{109 \textcolor{comment}{    m\_pBRBTree=NULL;}}
-\DoxyCodeLine{110 \textcolor{comment}{}}
-\DoxyCodeLine{111 \textcolor{comment}{    m\_NB\_QUADS++;}}
-\DoxyCodeLine{112 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{113 }
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{/*}}
+\DoxyCodeLine{91 \textcolor{comment}{ * Constructor0}}
+\DoxyCodeLine{92 \textcolor{comment}{ */}}
+\DoxyCodeLine{93 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>::Oct}}() \{}
+\DoxyCodeLine{94     m\_ppoint=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}();}
+\DoxyCodeLine{95     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(*m\_ppoint);}
+\DoxyCodeLine{96     m\_delp=\textcolor{keyword}{true};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     m\_a=\{1,2\};}
+\DoxyCodeLine{99     m\_tot\_weight=0.;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     m\_pT=NULL;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     m\_pTLFTree=NULL;}
+\DoxyCodeLine{104     m\_pTRFTree=NULL;}
+\DoxyCodeLine{105     m\_pBLFTree=NULL;}
+\DoxyCodeLine{106     m\_pBRFTree=NULL;}
+\DoxyCodeLine{107     m\_pTLBTree=NULL;}
+\DoxyCodeLine{108     m\_pTRBTree=NULL;}
+\DoxyCodeLine{109     m\_pBLBTree=NULL;}
+\DoxyCodeLine{110     m\_pBRBTree=NULL;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     m\_NB\_OCTS++;}
+\DoxyCodeLine{113 \}}
 \DoxyCodeLine{114 }
-\DoxyCodeLine{115 \textcolor{comment}{/*}}
-\DoxyCodeLine{116 \textcolor{comment}{ * Constructor1}}
-\DoxyCodeLine{117 \textcolor{comment}{ */}}
-\DoxyCodeLine{118 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{classOct}{Oct<T>::Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D}}\& point) \{}
-\DoxyCodeLine{119     m\_ppoint=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D}}(point);}
-\DoxyCodeLine{120     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D}}(*m\_ppoint);}
-\DoxyCodeLine{121     m\_delppoint=\textcolor{keyword}{true};}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123     m\_a=a;}
-\DoxyCodeLine{124     m\_tot\_weight=0.;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{121 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>::Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& point) \{}
+\DoxyCodeLine{122     m\_ppoint=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(point);}
+\DoxyCodeLine{123     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(*m\_ppoint);}
+\DoxyCodeLine{124     m\_delp=\textcolor{keyword}{true};}
 \DoxyCodeLine{125 }
-\DoxyCodeLine{126     m\_pT=NULL;}
-\DoxyCodeLine{127 }
-\DoxyCodeLine{128     m\_pTLFTree=NULL;}
-\DoxyCodeLine{129     m\_pTRFTree=NULL;}
-\DoxyCodeLine{130     m\_pBLFTree=NULL;}
-\DoxyCodeLine{131     m\_pBRFTree=NULL;}
-\DoxyCodeLine{132     m\_pTLBTree=NULL;}
-\DoxyCodeLine{133     m\_pTRBTree=NULL;}
-\DoxyCodeLine{134     m\_pBLBTree=NULL;}
-\DoxyCodeLine{135     m\_pBRBTree=NULL;}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137     m\_NB\_OCTS++;}
-\DoxyCodeLine{138 \}}
+\DoxyCodeLine{126     m\_a=a;}
+\DoxyCodeLine{127     m\_tot\_weight=0.;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     m\_pT=NULL;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     m\_pTLFTree=NULL;}
+\DoxyCodeLine{132     m\_pTRFTree=NULL;}
+\DoxyCodeLine{133     m\_pBLFTree=NULL;}
+\DoxyCodeLine{134     m\_pBRFTree=NULL;}
+\DoxyCodeLine{135     m\_pTLBTree=NULL;}
+\DoxyCodeLine{136     m\_pTRBTree=NULL;}
+\DoxyCodeLine{137     m\_pBLBTree=NULL;}
+\DoxyCodeLine{138     m\_pBRBTree=NULL;}
 \DoxyCodeLine{139 }
-\DoxyCodeLine{140 \textcolor{comment}{/*}}
-\DoxyCodeLine{141 \textcolor{comment}{ * Constructor2}}
-\DoxyCodeLine{142 \textcolor{comment}{ */}}
-\DoxyCodeLine{143 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{classOct}{Oct<T>::Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a, \mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint) \{}
-\DoxyCodeLine{144     m\_ppoint=ppoint;}
-\DoxyCodeLine{145     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D}}(*m\_ppoint);}
-\DoxyCodeLine{146     m\_delppoint=\textcolor{keyword}{false};}
-\DoxyCodeLine{147 }
-\DoxyCodeLine{148     m\_a=a;}
-\DoxyCodeLine{149     m\_tot\_weight=0.;}
+\DoxyCodeLine{140     m\_NB\_OCTS++;}
+\DoxyCodeLine{141 \}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{comment}{/*}}
+\DoxyCodeLine{144 \textcolor{comment}{ * Constructor2}}
+\DoxyCodeLine{145 \textcolor{comment}{ */}}
+\DoxyCodeLine{146 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>::Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* ppoint) \{}
+\DoxyCodeLine{147     m\_ppoint=ppoint;}
+\DoxyCodeLine{148     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(*m\_ppoint);}
+\DoxyCodeLine{149     m\_delp=\textcolor{keyword}{false};}
 \DoxyCodeLine{150 }
-\DoxyCodeLine{151     m\_pT=NULL;}
-\DoxyCodeLine{152 }
-\DoxyCodeLine{153     m\_pTLFTree=NULL;}
-\DoxyCodeLine{154     m\_pTRFTree=NULL;}
-\DoxyCodeLine{155     m\_pBLFTree=NULL;}
-\DoxyCodeLine{156     m\_pBRFTree=NULL;}
-\DoxyCodeLine{157     m\_pTLBTree=NULL;}
-\DoxyCodeLine{158     m\_pTRBTree=NULL;}
-\DoxyCodeLine{159     m\_pBLBTree=NULL;}
-\DoxyCodeLine{160     m\_pBRBTree=NULL;}
-\DoxyCodeLine{161 }
-\DoxyCodeLine{162     m\_NB\_OCTS++;}
-\DoxyCodeLine{163 \}}
+\DoxyCodeLine{151     m\_a=a;}
+\DoxyCodeLine{152     m\_tot\_weight=0.;}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     m\_pT=NULL;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     m\_pTLFTree=NULL;}
+\DoxyCodeLine{157     m\_pTRFTree=NULL;}
+\DoxyCodeLine{158     m\_pBLFTree=NULL;}
+\DoxyCodeLine{159     m\_pBRFTree=NULL;}
+\DoxyCodeLine{160     m\_pTLBTree=NULL;}
+\DoxyCodeLine{161     m\_pTRBTree=NULL;}
+\DoxyCodeLine{162     m\_pBLBTree=NULL;}
+\DoxyCodeLine{163     m\_pBRBTree=NULL;}
 \DoxyCodeLine{164 }
-\DoxyCodeLine{165 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{classOct}{Oct<T>::\string~Oct}}() \{}
-\DoxyCodeLine{166     \textcolor{keywordflow}{if} (m\_delppoint)\{}
-\DoxyCodeLine{167         \textcolor{keyword}{delete} m\_ppoint;}
-\DoxyCodeLine{168     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{169         m\_ppoint=NULL;}
-\DoxyCodeLine{170     \}}
-\DoxyCodeLine{171     \textcolor{keyword}{delete} m\_pbarycenter;}
-\DoxyCodeLine{172 }
-\DoxyCodeLine{173     m\_pT=NULL;}
-\DoxyCodeLine{174 }
-\DoxyCodeLine{175     \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
-\DoxyCodeLine{176         \textcolor{keyword}{delete} m\_pTLFTree;}
-\DoxyCodeLine{177     \}}
-\DoxyCodeLine{178     \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
-\DoxyCodeLine{179         \textcolor{keyword}{delete} m\_pTRFTree;}
-\DoxyCodeLine{180     \}}
-\DoxyCodeLine{181     \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
-\DoxyCodeLine{182         \textcolor{keyword}{delete} m\_pBLFTree;}
-\DoxyCodeLine{183     \}}
-\DoxyCodeLine{184     \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
-\DoxyCodeLine{185         \textcolor{keyword}{delete} m\_pBRFTree;}
-\DoxyCodeLine{186     \}}
-\DoxyCodeLine{187     \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
-\DoxyCodeLine{188         \textcolor{keyword}{delete} m\_pTLBTree;}
-\DoxyCodeLine{189     \}}
-\DoxyCodeLine{190     \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
-\DoxyCodeLine{191         \textcolor{keyword}{delete} m\_pTRBTree;}
-\DoxyCodeLine{192     \}}
-\DoxyCodeLine{193     \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
-\DoxyCodeLine{194         \textcolor{keyword}{delete} m\_pBLBTree;}
-\DoxyCodeLine{195     \}}
-\DoxyCodeLine{196     \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
-\DoxyCodeLine{197         \textcolor{keyword}{delete} m\_pBRBTree;}
+\DoxyCodeLine{165     m\_NB\_OCTS++;}
+\DoxyCodeLine{166 \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \textcolor{comment}{/*}}
+\DoxyCodeLine{169 \textcolor{comment}{ * Copy constructor}}
+\DoxyCodeLine{170 \textcolor{comment}{ */}}
+\DoxyCodeLine{171 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>::Oct}}(\textcolor{keyword}{const} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* poct) \{}
+\DoxyCodeLine{172     m\_ppoint=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(poct-\/>getPoint());}
+\DoxyCodeLine{173     m\_pbarycenter=\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}(*m\_ppoint);}
+\DoxyCodeLine{174     m\_delp=\textcolor{keyword}{false};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     m\_a=poct-\/>getA();}
+\DoxyCodeLine{177     m\_tot\_weight=0.;}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     m\_pT=NULL;}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181     m\_pTLFTree=NULL;}
+\DoxyCodeLine{182     m\_pTRFTree=NULL;}
+\DoxyCodeLine{183     m\_pBLFTree=NULL;}
+\DoxyCodeLine{184     m\_pBRFTree=NULL;}
+\DoxyCodeLine{185     m\_pTLBTree=NULL;}
+\DoxyCodeLine{186     m\_pTRBTree=NULL;}
+\DoxyCodeLine{187     m\_pBLBTree=NULL;}
+\DoxyCodeLine{188     m\_pBRBTree=NULL;}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190     m\_NB\_OCTS++;}
+\DoxyCodeLine{191 \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>::\string~Oct}}() \{}
+\DoxyCodeLine{194     \textcolor{keywordflow}{if} (m\_delp)\{}
+\DoxyCodeLine{195         \textcolor{keyword}{delete} m\_ppoint;}
+\DoxyCodeLine{196     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{197         m\_ppoint=NULL;}
 \DoxyCodeLine{198     \}}
-\DoxyCodeLine{199     \textcolor{comment}{// There is one less Oct}}
-\DoxyCodeLine{200     m\_NB\_OCTS-\/-\/;}
-\DoxyCodeLine{201 \}}
+\DoxyCodeLine{199     \textcolor{keyword}{delete} m\_pbarycenter;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     m\_pT=NULL;}
 \DoxyCodeLine{202 }
-\DoxyCodeLine{203 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{structLSN}{LSN}} \mbox{\hyperlink{classOct}{Oct<T>::getA}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{204     \textcolor{keywordflow}{return} m\_a;}
-\DoxyCodeLine{205 \}}
-\DoxyCodeLine{206 }
-\DoxyCodeLine{207 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structLSN}{LSN}}\& a)\{}
-\DoxyCodeLine{208     m\_a=a;}
-\DoxyCodeLine{209 }
-\DoxyCodeLine{210 \}}
-\DoxyCodeLine{211 }
-\DoxyCodeLine{212 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOct}{Oct<T>::getNB\_OCTS}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{213     \textcolor{keywordflow}{return} m\_NB\_OCTS;}
-\DoxyCodeLine{214 \}}
-\DoxyCodeLine{215 }
-\DoxyCodeLine{216 \textcolor{comment}{/*}}
-\DoxyCodeLine{217 \textcolor{comment}{ * Returns all the trees under, contained by this tree.}}
-\DoxyCodeLine{218 \textcolor{comment}{ */}}
-\DoxyCodeLine{219 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::unordered\_set<Oct<T>*> \mbox{\hyperlink{classOct}{Oct<T>::getPTrees}}() \{}
-\DoxyCodeLine{220     std::unordered\_set<Oct*> ptrees;}
-\DoxyCodeLine{221     \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
-\DoxyCodeLine{222         ptrees.insert(m\_pTLFTree);}
-\DoxyCodeLine{223     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
-\DoxyCodeLine{224         ptrees.insert(m\_pTRFTree);}
-\DoxyCodeLine{225     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
-\DoxyCodeLine{226         ptrees.insert(m\_pBLFTree);}
-\DoxyCodeLine{227     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
-\DoxyCodeLine{228         ptrees.insert(m\_pBRFTree);}
-\DoxyCodeLine{229     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
-\DoxyCodeLine{230         ptrees.insert(m\_pTLBTree);}
-\DoxyCodeLine{231     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
-\DoxyCodeLine{232         ptrees.insert(m\_pTRBTree);}
-\DoxyCodeLine{233     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
-\DoxyCodeLine{234         ptrees.insert(m\_pBLBTree);}
-\DoxyCodeLine{235     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
-\DoxyCodeLine{236         ptrees.insert(m\_pBRBTree);}
-\DoxyCodeLine{237     \}}
-\DoxyCodeLine{238     \textcolor{keywordflow}{return} ptrees;}
-\DoxyCodeLine{239 \}}
-\DoxyCodeLine{240 }
-\DoxyCodeLine{241 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::unordered\_set<T*> \mbox{\hyperlink{classOct}{Oct<T>::getPElements}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{242     std::unordered\_set<T*> elmts;}
+\DoxyCodeLine{203     \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
+\DoxyCodeLine{204         \textcolor{keyword}{delete} m\_pTLFTree;}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206     \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
+\DoxyCodeLine{207         \textcolor{keyword}{delete} m\_pTRFTree;}
+\DoxyCodeLine{208     \}}
+\DoxyCodeLine{209     \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
+\DoxyCodeLine{210         \textcolor{keyword}{delete} m\_pBLFTree;}
+\DoxyCodeLine{211     \}}
+\DoxyCodeLine{212     \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
+\DoxyCodeLine{213         \textcolor{keyword}{delete} m\_pBRFTree;}
+\DoxyCodeLine{214     \}}
+\DoxyCodeLine{215     \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
+\DoxyCodeLine{216         \textcolor{keyword}{delete} m\_pTLBTree;}
+\DoxyCodeLine{217     \}}
+\DoxyCodeLine{218     \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
+\DoxyCodeLine{219         \textcolor{keyword}{delete} m\_pTRBTree;}
+\DoxyCodeLine{220     \}}
+\DoxyCodeLine{221     \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
+\DoxyCodeLine{222         \textcolor{keyword}{delete} m\_pBLBTree;}
+\DoxyCodeLine{223     \}}
+\DoxyCodeLine{224     \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
+\DoxyCodeLine{225         \textcolor{keyword}{delete} m\_pBRBTree;}
+\DoxyCodeLine{226     \}}
+\DoxyCodeLine{227     \textcolor{comment}{// There is one less Oct}}
+\DoxyCodeLine{228     m\_NB\_OCTS-\/-\/;}
+\DoxyCodeLine{229 \}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classOct}{Oct<T, M, E>::getPoint}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{232     \textcolor{keywordflow}{return} *m\_ppoint;}
+\DoxyCodeLine{233 \}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* \mbox{\hyperlink{classOct}{Oct<T, M, E>::getPPoint}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{236     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* pp=NULL;}
+\DoxyCodeLine{237     \textcolor{comment}{// If it hasn't been created locally...}}
+\DoxyCodeLine{238     \textcolor{keywordflow}{if} (!m\_delp)\{}
+\DoxyCodeLine{239         pp=this-\/>m\_ppoint;}
+\DoxyCodeLine{240     \}}
+\DoxyCodeLine{241     \textcolor{keywordflow}{return} pp;}
+\DoxyCodeLine{242 \}}
 \DoxyCodeLine{243 }
-\DoxyCodeLine{244     \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
-\DoxyCodeLine{245         elmts.insert(m\_pT);}
-\DoxyCodeLine{246     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{247         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
-\DoxyCodeLine{248             \textcolor{keywordflow}{for} (T* pt : m\_pTLFTree-\/>getPElements())\{}
-\DoxyCodeLine{249                 elmts.insert(pt);}
-\DoxyCodeLine{250             \}}
-\DoxyCodeLine{251         \}}
-\DoxyCodeLine{252         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
-\DoxyCodeLine{253             \textcolor{keywordflow}{for} (T* pt : m\_pTRFTree-\/>getPElements())\{}
-\DoxyCodeLine{254                 elmts.insert(pt);}
-\DoxyCodeLine{255             \}}
-\DoxyCodeLine{256         \}}
-\DoxyCodeLine{257         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
-\DoxyCodeLine{258             \textcolor{keywordflow}{for} (T* pt : m\_pBLFTree-\/>getPElements())\{}
-\DoxyCodeLine{259                 elmts.insert(pt);}
-\DoxyCodeLine{260             \}}
-\DoxyCodeLine{261         \}}
-\DoxyCodeLine{262         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
-\DoxyCodeLine{263             \textcolor{keywordflow}{for} (T* pt : m\_pBRFTree-\/>getPElements())\{}
-\DoxyCodeLine{264                 elmts.insert(pt);}
-\DoxyCodeLine{265             \}}
-\DoxyCodeLine{266         \}}
-\DoxyCodeLine{267         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
-\DoxyCodeLine{268             \textcolor{keywordflow}{for} (T* pt : m\_pTLBTree-\/>getPElements())\{}
-\DoxyCodeLine{269                 elmts.insert(pt);}
-\DoxyCodeLine{270             \}}
-\DoxyCodeLine{271         \}}
-\DoxyCodeLine{272         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
-\DoxyCodeLine{273             \textcolor{keywordflow}{for} (T* pt : m\_pTRBTree-\/>getPElements())\{}
-\DoxyCodeLine{274                 elmts.insert(pt);}
-\DoxyCodeLine{275             \}}
-\DoxyCodeLine{276         \}}
-\DoxyCodeLine{277         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
-\DoxyCodeLine{278             \textcolor{keywordflow}{for} (T* pt : m\_pBLBTree-\/>getPElements())\{}
-\DoxyCodeLine{279                 elmts.insert(pt);}
-\DoxyCodeLine{280             \}}
-\DoxyCodeLine{281         \}}
-\DoxyCodeLine{282         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
-\DoxyCodeLine{283             \textcolor{keywordflow}{for} (T* pt : m\_pBRBTree-\/>getPElements())\{}
-\DoxyCodeLine{284                 elmts.insert(pt);}
-\DoxyCodeLine{285             \}}
-\DoxyCodeLine{286         \}}
-\DoxyCodeLine{287     \}}
+\DoxyCodeLine{244 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classOct}{Oct<T, M, E>::getBarycenter}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{245     \textcolor{keywordflow}{return} *m\_pbarycenter;}
+\DoxyCodeLine{246 \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classOct}{Oct<T, M, E>::getA}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{249     \textcolor{keywordflow}{return} m\_a;}
+\DoxyCodeLine{250 \}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T, M, E>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a)\{}
+\DoxyCodeLine{253     m\_a=a;}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOct}{Oct<T, M, E>::getNB\_OCTS}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{258     \textcolor{keywordflow}{return} m\_NB\_OCTS;}
+\DoxyCodeLine{259 \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261 \textcolor{comment}{/*}}
+\DoxyCodeLine{262 \textcolor{comment}{ * Returns all the trees under, contained by this tree.}}
+\DoxyCodeLine{263 \textcolor{comment}{ */}}
+\DoxyCodeLine{264 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<Oct<T, M, E>*> \mbox{\hyperlink{classOct}{Oct<T, M, E>::getPTrees}}() \{}
+\DoxyCodeLine{265     std::unordered\_set<Oct<T, M, E>*> ptrees;}
+\DoxyCodeLine{266     \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
+\DoxyCodeLine{267         ptrees.insert(m\_pTLFTree);}
+\DoxyCodeLine{268     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
+\DoxyCodeLine{269         ptrees.insert(m\_pTRFTree);}
+\DoxyCodeLine{270     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
+\DoxyCodeLine{271         ptrees.insert(m\_pBLFTree);}
+\DoxyCodeLine{272     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
+\DoxyCodeLine{273         ptrees.insert(m\_pBRFTree);}
+\DoxyCodeLine{274     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
+\DoxyCodeLine{275         ptrees.insert(m\_pTLBTree);}
+\DoxyCodeLine{276     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
+\DoxyCodeLine{277         ptrees.insert(m\_pTRBTree);}
+\DoxyCodeLine{278     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
+\DoxyCodeLine{279         ptrees.insert(m\_pBLBTree);}
+\DoxyCodeLine{280     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
+\DoxyCodeLine{281         ptrees.insert(m\_pBRBTree);}
+\DoxyCodeLine{282     \}}
+\DoxyCodeLine{283     \textcolor{keywordflow}{return} ptrees;}
+\DoxyCodeLine{284 \}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<T*> \mbox{\hyperlink{classOct}{Oct<T, M, E>::getPElements}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{287     std::unordered\_set<T*> elmts;}
 \DoxyCodeLine{288 }
-\DoxyCodeLine{289     \textcolor{keywordflow}{return} elmts;}
-\DoxyCodeLine{290 \}}
-\DoxyCodeLine{291 }
-\DoxyCodeLine{292 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::unordered\_set<T*> \mbox{\hyperlink{classOct}{Oct<T>::getPNeighbors}}(T* pelement)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{293     \textcolor{keyword}{static} std::unordered\_set<T*> neighbors;}
-\DoxyCodeLine{294 }
-\DoxyCodeLine{295     printf(\textcolor{stringliteral}{"{}AB\(\backslash\)n"{}});}
-\DoxyCodeLine{296     \mbox{\hyperlink{structLSN}{LSN}} r=\textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structLSN}{LSN}}\{1., 0\}\textcolor{comment}{/*((long double)1.)*/}/getDistance(*m\_ppoint, *pelement);}
-\DoxyCodeLine{297     r.print(\textcolor{keyword}{true}, \textcolor{keyword}{true}, 0);}
-\DoxyCodeLine{298     \mbox{\hyperlink{structLSN}{LSN}} s=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\};}
-\DoxyCodeLine{299     s.print(\textcolor{keyword}{true}, \textcolor{keyword}{true}, 0);}
-\DoxyCodeLine{300     printf(\textcolor{stringliteral}{"{}\(\backslash\)n\%b\(\backslash\)n"{}}, \textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structLSN}{LSN}}\{1., 0\}\textcolor{comment}{/*1.*/}/getDistance(*m\_ppoint, *pelement)<=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\});}
-\DoxyCodeLine{301 }
-\DoxyCodeLine{302     \textcolor{keywordflow}{if} (\textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structLSN}{LSN}}\{1., 0\}\textcolor{comment}{/*1.*/}/getDistance(*m\_ppoint, *pelement)<=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\})\{}
-\DoxyCodeLine{303         printf(\textcolor{stringliteral}{"{}AC\(\backslash\)n"{}});}
-\DoxyCodeLine{304         \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
-\DoxyCodeLine{305             neighbors.insert(m\_pT);}
-\DoxyCodeLine{306         \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{307             neighbors.insert(\textcolor{keyword}{new} T(m\_ppoint-\/>getX(), m\_ppoint-\/>getY(), m\_ppoint-\/>getZ()));}
-\DoxyCodeLine{308         \}}
-\DoxyCodeLine{309     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{310         printf(\textcolor{stringliteral}{"{}AD\(\backslash\)n"{}});}
-\DoxyCodeLine{311         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
-\DoxyCodeLine{312             m\_pTLFTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{313         \}}
-\DoxyCodeLine{314         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
-\DoxyCodeLine{315             m\_pTRFTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{289     \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
+\DoxyCodeLine{290         elmts.insert(m\_pT);}
+\DoxyCodeLine{291     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{292         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
+\DoxyCodeLine{293             \textcolor{keywordflow}{for} (T* pt : m\_pTLFTree-\/>getPElements())\{}
+\DoxyCodeLine{294                 elmts.insert(pt);}
+\DoxyCodeLine{295             \}}
+\DoxyCodeLine{296         \}}
+\DoxyCodeLine{297         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
+\DoxyCodeLine{298             \textcolor{keywordflow}{for} (T* pt : m\_pTRFTree-\/>getPElements())\{}
+\DoxyCodeLine{299                 elmts.insert(pt);}
+\DoxyCodeLine{300             \}}
+\DoxyCodeLine{301         \}}
+\DoxyCodeLine{302         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
+\DoxyCodeLine{303             \textcolor{keywordflow}{for} (T* pt : m\_pBLFTree-\/>getPElements())\{}
+\DoxyCodeLine{304                 elmts.insert(pt);}
+\DoxyCodeLine{305             \}}
+\DoxyCodeLine{306         \}}
+\DoxyCodeLine{307         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
+\DoxyCodeLine{308             \textcolor{keywordflow}{for} (T* pt : m\_pBRFTree-\/>getPElements())\{}
+\DoxyCodeLine{309                 elmts.insert(pt);}
+\DoxyCodeLine{310             \}}
+\DoxyCodeLine{311         \}}
+\DoxyCodeLine{312         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
+\DoxyCodeLine{313             \textcolor{keywordflow}{for} (T* pt : m\_pTLBTree-\/>getPElements())\{}
+\DoxyCodeLine{314                 elmts.insert(pt);}
+\DoxyCodeLine{315             \}}
 \DoxyCodeLine{316         \}}
-\DoxyCodeLine{317         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
-\DoxyCodeLine{318             m\_pBLFTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{319         \}}
-\DoxyCodeLine{320         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
-\DoxyCodeLine{321             m\_pBRFTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{322         \}}
-\DoxyCodeLine{323         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
-\DoxyCodeLine{324             m\_pTLBTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{325         \}}
-\DoxyCodeLine{326         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
-\DoxyCodeLine{327             m\_pTRBTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{328         \}}
-\DoxyCodeLine{329         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
-\DoxyCodeLine{330             m\_pBLBTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{317         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
+\DoxyCodeLine{318             \textcolor{keywordflow}{for} (T* pt : m\_pTRBTree-\/>getPElements())\{}
+\DoxyCodeLine{319                 elmts.insert(pt);}
+\DoxyCodeLine{320             \}}
+\DoxyCodeLine{321         \}}
+\DoxyCodeLine{322         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
+\DoxyCodeLine{323             \textcolor{keywordflow}{for} (T* pt : m\_pBLBTree-\/>getPElements())\{}
+\DoxyCodeLine{324                 elmts.insert(pt);}
+\DoxyCodeLine{325             \}}
+\DoxyCodeLine{326         \}}
+\DoxyCodeLine{327         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
+\DoxyCodeLine{328             \textcolor{keywordflow}{for} (T* pt : m\_pBRBTree-\/>getPElements())\{}
+\DoxyCodeLine{329                 elmts.insert(pt);}
+\DoxyCodeLine{330             \}}
 \DoxyCodeLine{331         \}}
-\DoxyCodeLine{332         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
-\DoxyCodeLine{333             m\_pBRBTree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{334         \}}
-\DoxyCodeLine{335     \}}
+\DoxyCodeLine{332     \}}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{334     \textcolor{keywordflow}{return} elmts;}
+\DoxyCodeLine{335 \}}
 \DoxyCodeLine{336 }
-\DoxyCodeLine{337     \textcolor{keywordflow}{return} neighbors;}
-\DoxyCodeLine{338 \}}
+\DoxyCodeLine{337 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<T*> \mbox{\hyperlink{classOct}{Oct<T, M, E>::getPNeighbors}}(T* pelement)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{338     \textcolor{keyword}{static} std::unordered\_set<T*> neighbors;}
 \DoxyCodeLine{339 }
-\DoxyCodeLine{340 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOct}{Oct<T>::insert}}(T* pT) \{}
-\DoxyCodeLine{341     \textcolor{keywordflow}{if} (pT!=NULL)\{}
-\DoxyCodeLine{342         \mbox{\hyperlink{structPoint3D}{Point3D}} p=\{pT-\/>x, pT-\/>y, pT-\/>z\};}
-\DoxyCodeLine{343         \mbox{\hyperlink{structPoint3D}{Point3D}} dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, pT-\/>z-\/m\_ppoint-\/>z\};}
-\DoxyCodeLine{344 }
-\DoxyCodeLine{345         \textcolor{keywordflow}{if} (abs(dp.x)<=m\_a/2 \&\& abs(dp.y)<=m\_a/2 \&\& abs(dp.z)<=m\_a/2)\{\textcolor{comment}{// If in the cube centered on the point.}}
-\DoxyCodeLine{346             \textcolor{keywordflow}{if} (m\_pT==NULL)\{        \textcolor{comment}{// If empty}}
-\DoxyCodeLine{347                 \textcolor{comment}{//printf("{}Empty\(\backslash\)n"{});}}
-\DoxyCodeLine{348                 \textcolor{keywordflow}{if} (m\_pTLFTree==NULL and m\_pTRFTree==NULL and m\_pBLFTree==NULL and m\_pBRFTree==NULL}
-\DoxyCodeLine{349                         and m\_pTRBTree==NULL and m\_pTLBTree==NULL and m\_pBLBTree==NULL and m\_pBRBTree==NULL)\{   \textcolor{comment}{// If the cube has no Octs under (external branch)}}
-\DoxyCodeLine{350                     m\_pT=pT;\textcolor{comment}{//We add in}}
-\DoxyCodeLine{351                     m\_tot\_weight=1.;\textcolor{comment}{//Set the tot\_weight}}
-\DoxyCodeLine{352                     *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
-\DoxyCodeLine{353                 \}\textcolor{keywordflow}{else}\{                                                                              \textcolor{comment}{// Else it means it is an internal branch}}
-\DoxyCodeLine{354                     m\_tot\_weight+=1.;\textcolor{comment}{//Add to tot\_weight}}
-\DoxyCodeLine{355                     *m\_pbarycenter+=p*(1./m\_tot\_weight);\textcolor{comment}{//Add to the barycenter}}
-\DoxyCodeLine{356 }
-\DoxyCodeLine{357                     \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 1}}
-\DoxyCodeLine{358                         \textcolor{comment}{//printf("{}Square1\(\backslash\)n"{});}}
-\DoxyCodeLine{359                         \textcolor{keywordflow}{if} (m\_pBLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{360                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{361                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a*-\/1,a*-\/1\};}
-\DoxyCodeLine{362                             m\_pBLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{363                         \}}
-\DoxyCodeLine{364                         m\_pBLBTree-\/>insert(pT);}
-\DoxyCodeLine{365                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 2}}
-\DoxyCodeLine{366                         \textcolor{comment}{//printf("{}Square2\(\backslash\)n"{});}}
-\DoxyCodeLine{367                         \textcolor{keywordflow}{if} (m\_pBRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{368                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{369                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a*-\/1,a*-\/1\};}
-\DoxyCodeLine{370                             m\_pBRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{371                         \}}
-\DoxyCodeLine{372                         m\_pBRBTree-\/>insert(pT);}
-\DoxyCodeLine{373                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 3}}
-\DoxyCodeLine{374                         \textcolor{comment}{//printf("{}Square3\(\backslash\)n"{});}}
-\DoxyCodeLine{375                         \textcolor{keywordflow}{if} (m\_pBRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{376                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{377                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a,a*-\/1\};}
-\DoxyCodeLine{378                             m\_pBRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{379                         \}}
-\DoxyCodeLine{380                         m\_pBRFTree-\/>insert(pT);}
-\DoxyCodeLine{381                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 4}}
-\DoxyCodeLine{382                         \textcolor{comment}{//printf("{}Square4\(\backslash\)n"{});}}
-\DoxyCodeLine{383                         \textcolor{keywordflow}{if} (m\_pBLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{384                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{385                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a,a*-\/1\};}
-\DoxyCodeLine{386                             m\_pBLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{387                         \}}
-\DoxyCodeLine{388                         m\_pBLFTree-\/>insert(pT);}
-\DoxyCodeLine{389                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 5}}
-\DoxyCodeLine{390                         \textcolor{comment}{//printf("{}Square1\(\backslash\)n"{});}}
-\DoxyCodeLine{391                         \textcolor{keywordflow}{if} (m\_pTLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{392                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{393                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a*-\/1,a\};}
-\DoxyCodeLine{394                             m\_pTLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{395                         \}}
-\DoxyCodeLine{396                         m\_pTLBTree-\/>insert(pT);}
-\DoxyCodeLine{397                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 6}}
-\DoxyCodeLine{398                         \textcolor{comment}{//printf("{}Square2\(\backslash\)n"{});}}
-\DoxyCodeLine{399                         \textcolor{keywordflow}{if} (m\_pTRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{400                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{401                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a*-\/1,a\};}
-\DoxyCodeLine{402                             m\_pTRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{403                         \}}
-\DoxyCodeLine{404                         m\_pTRBTree-\/>insert(pT);}
-\DoxyCodeLine{405                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 7}}
-\DoxyCodeLine{406                         \textcolor{comment}{//printf("{}Square3\(\backslash\)n"{});}}
-\DoxyCodeLine{407                         \textcolor{keywordflow}{if} (m\_pTRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{408                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{409                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a,a\};}
-\DoxyCodeLine{410                             m\_pTRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{411                         \}}
-\DoxyCodeLine{412                         m\_pTRFTree-\/>insert(pT);}
-\DoxyCodeLine{413                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 8}}
-\DoxyCodeLine{414                         \textcolor{comment}{//printf("{}Square4\(\backslash\)n"{});}}
-\DoxyCodeLine{415                         \textcolor{keywordflow}{if} (m\_pTLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{416                             \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{417                             \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a,a\};}
-\DoxyCodeLine{418                             m\_pTLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{419                         \}}
-\DoxyCodeLine{420                         m\_pTLFTree-\/>insert(pT);}
-\DoxyCodeLine{421                     \}}
-\DoxyCodeLine{422                 \}}
-\DoxyCodeLine{423             \}\textcolor{keywordflow}{else}\{                  \textcolor{comment}{// Else if full}}
-\DoxyCodeLine{424 }
-\DoxyCodeLine{425                 m\_tot\_weight=1.;\textcolor{comment}{//Set the tot\_weight}}
-\DoxyCodeLine{426                 *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
-\DoxyCodeLine{427 }
-\DoxyCodeLine{428                 \textcolor{comment}{//printf("{}Full\(\backslash\)n"{});}}
-\DoxyCodeLine{429 }
-\DoxyCodeLine{430                 \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 1}}
-\DoxyCodeLine{431                     \textcolor{comment}{//printf("{}Square1\(\backslash\)n"{});}}
-\DoxyCodeLine{432                     \textcolor{keywordflow}{if} (m\_pBLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{433                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{434                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a*-\/1,a*-\/1\};}
-\DoxyCodeLine{435                         m\_pBLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{436                     \}}
-\DoxyCodeLine{437                     m\_pBLBTree-\/>insert(pT);}
-\DoxyCodeLine{438                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 2}}
-\DoxyCodeLine{439                     \textcolor{comment}{//printf("{}Square2\(\backslash\)n"{});}}
-\DoxyCodeLine{440                     \textcolor{keywordflow}{if} (m\_pBRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{441                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{442                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a*-\/1,a*-\/1\};}
-\DoxyCodeLine{443                         m\_pBRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{444                     \}}
-\DoxyCodeLine{445                     m\_pBRBTree-\/>insert(pT);}
-\DoxyCodeLine{446                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 3}}
-\DoxyCodeLine{447                     \textcolor{comment}{//printf("{}Square3\(\backslash\)n"{});}}
-\DoxyCodeLine{448                     \textcolor{keywordflow}{if} (m\_pBRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{449                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{450                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a,a*-\/1\};}
-\DoxyCodeLine{451                         m\_pBRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{452                     \}}
-\DoxyCodeLine{453                     m\_pBRFTree-\/>insert(pT);}
-\DoxyCodeLine{454                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{\textcolor{comment}{//If cube 4}}
-\DoxyCodeLine{455                     \textcolor{comment}{//printf("{}Square4\(\backslash\)n"{});}}
-\DoxyCodeLine{456                     \textcolor{keywordflow}{if} (m\_pBLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{457                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{458                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a,a*-\/1\};}
-\DoxyCodeLine{459                         m\_pBLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{460                     \}}
-\DoxyCodeLine{461                     m\_pBLFTree-\/>insert(pT);}
-\DoxyCodeLine{462                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 5}}
-\DoxyCodeLine{463                     \textcolor{comment}{//printf("{}Square1\(\backslash\)n"{});}}
-\DoxyCodeLine{464                     \textcolor{keywordflow}{if} (m\_pTLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{465                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{466                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a*-\/1,a\};}
-\DoxyCodeLine{467                         m\_pTLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{468                     \}}
-\DoxyCodeLine{469                     m\_pTLBTree-\/>insert(pT);}
-\DoxyCodeLine{470                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 6}}
-\DoxyCodeLine{471                     \textcolor{comment}{//printf("{}Square2\(\backslash\)n"{});}}
-\DoxyCodeLine{472                     \textcolor{keywordflow}{if} (m\_pTRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{473                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{474                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a*-\/1,a\};}
-\DoxyCodeLine{475                         m\_pTRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{476                     \}}
-\DoxyCodeLine{477                     m\_pTRBTree-\/>insert(pT);}
-\DoxyCodeLine{478                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 7}}
-\DoxyCodeLine{479                     \textcolor{comment}{//printf("{}Square3\(\backslash\)n"{});}}
-\DoxyCodeLine{480                     \textcolor{keywordflow}{if} (m\_pTRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{481                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{482                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a,a,a\};}
-\DoxyCodeLine{483                         m\_pTRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{484                     \}}
-\DoxyCodeLine{485                     m\_pTRFTree-\/>insert(pT);}
-\DoxyCodeLine{486                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{\textcolor{comment}{//If cube 8}}
-\DoxyCodeLine{487                     \textcolor{comment}{//printf("{}Square4\(\backslash\)n"{});}}
-\DoxyCodeLine{488                     \textcolor{keywordflow}{if} (m\_pTLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{489                         \mbox{\hyperlink{structLSN}{LSN}} a=m\_a/4;}
-\DoxyCodeLine{490                         \mbox{\hyperlink{structPoint3D}{Point3D}} np\{a*-\/1,a,a\};}
-\DoxyCodeLine{491                         m\_pTLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T>}}(m\_a/2, *m\_ppoint+np);}
-\DoxyCodeLine{492                     \}}
-\DoxyCodeLine{493                     m\_pTLFTree-\/>insert(pT);}
-\DoxyCodeLine{494                 \}}
-\DoxyCodeLine{495 }
-\DoxyCodeLine{496                 \textcolor{comment}{// We reinsert the object already present.}}
-\DoxyCodeLine{497                 T* pT2=m\_pT;}
-\DoxyCodeLine{498                 m\_pT=NULL;}
-\DoxyCodeLine{499                 this-\/>insert(pT2);}
-\DoxyCodeLine{500             \}}
-\DoxyCodeLine{501         \}}
-\DoxyCodeLine{502     \}}
-\DoxyCodeLine{503     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{504 \}}
-\DoxyCodeLine{505 }
-\DoxyCodeLine{506 \textcolor{comment}{/*template<> bool Oct<Point3D>::insert(Point3D* ppart)\{//Doesn't work for some reason.}}
-\DoxyCodeLine{507 \textcolor{comment}{    return true;}}
-\DoxyCodeLine{508 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{509 }
-\DoxyCodeLine{510 \textcolor{comment}{/*template<> bool Oct<Particle3D>::insert(Particle3D* ppart)\{//Doesn't work for some reason.}}
-\DoxyCodeLine{511 \textcolor{comment}{    if (ppart!=NULL)\{}}
-\DoxyCodeLine{512 \textcolor{comment}{        Point3D p=\{ppart-\/>x, ppart-\/>y, ppart-\/>z\};}}
-\DoxyCodeLine{513 \textcolor{comment}{        Point3D dp=\{ppart-\/>x-\/m\_ppoint-\/>x, ppart-\/>y-\/m\_ppoint-\/>y, ppart-\/>z-\/m\_ppoint-\/>z\};}}
-\DoxyCodeLine{514 \textcolor{comment}{}}
-\DoxyCodeLine{515 \textcolor{comment}{        if (abs(dp.x)<=m\_a/2 \&\& abs(dp.y)<=m\_a/2 \&\& abs(dp.z)<=m\_a/2)\{// If in the cube centered on the point.}}
-\DoxyCodeLine{516 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
-\DoxyCodeLine{517 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
-\DoxyCodeLine{518 \textcolor{comment}{                if (m\_pTLFTree==NULL and m\_pTRFTree==NULL and m\_pBLFTree==NULL and m\_pBRFTree==NULL}}
-\DoxyCodeLine{519 \textcolor{comment}{                        and m\_pTRBTree==NULL and m\_pTLBTree==NULL and m\_pBLBTree==NULL and m\_pBRBTree==NULL)\{   // If the cube has no Octs under (external branch)}}
-\DoxyCodeLine{520 \textcolor{comment}{                    m\_pT=ppart;//We add in}}
-\DoxyCodeLine{521 \textcolor{comment}{                    m\_tot\_weight=ppart-\/>w;//Set the tot\_weight}}
-\DoxyCodeLine{522 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{523 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
-\DoxyCodeLine{524 \textcolor{comment}{}}
-\DoxyCodeLine{525 \textcolor{comment}{                    m\_tot\_weight+=ppart-\/>w;//Add to tot\_weight}}
-\DoxyCodeLine{526 \textcolor{comment}{                    *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
-\DoxyCodeLine{527 \textcolor{comment}{}}
-\DoxyCodeLine{528 \textcolor{comment}{                    if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 1}}
-\DoxyCodeLine{529 \textcolor{comment}{                        if (m\_pBLBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{530 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{531 \textcolor{comment}{                            Point3D np\{a*-\/1,a*-\/1,a*-\/1\};}}
-\DoxyCodeLine{532 \textcolor{comment}{                            m\_pBLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{533 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{534 \textcolor{comment}{                        //m\_pBLBTree-\/>insert((Particle3D*)ppart);}}
-\DoxyCodeLine{535 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 2}}
-\DoxyCodeLine{536 \textcolor{comment}{                        if (m\_pBRBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{537 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{538 \textcolor{comment}{                            Point3D np\{a,a*-\/1,a*-\/1\};}}
-\DoxyCodeLine{539 \textcolor{comment}{                            m\_pBRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{540 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{541 \textcolor{comment}{                        //m\_pBRBTree-\/>insert(ppart);}}
-\DoxyCodeLine{542 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 3}}
-\DoxyCodeLine{543 \textcolor{comment}{                        if (m\_pBRFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{544 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{545 \textcolor{comment}{                            Point3D np\{a,a,a*-\/1\};}}
-\DoxyCodeLine{546 \textcolor{comment}{                            m\_pBRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{547 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{548 \textcolor{comment}{                        //m\_pBRFTree-\/>insert(ppart);}}
-\DoxyCodeLine{549 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 4}}
-\DoxyCodeLine{550 \textcolor{comment}{                        if (m\_pBLFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{551 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{552 \textcolor{comment}{                            Point3D np\{a*-\/1,a,a*-\/1\};}}
-\DoxyCodeLine{553 \textcolor{comment}{                            m\_pBLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{554 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{555 \textcolor{comment}{                        //m\_pBLFTree-\/>insert(ppart);}}
-\DoxyCodeLine{556 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 5}}
-\DoxyCodeLine{557 \textcolor{comment}{                        if (m\_pTLBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{558 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{559 \textcolor{comment}{                            Point3D np\{a*-\/1,a*-\/1,a\};}}
-\DoxyCodeLine{560 \textcolor{comment}{                            m\_pTLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{561 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{562 \textcolor{comment}{                        //m\_pTLBTree-\/>insert(ppart);}}
-\DoxyCodeLine{563 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 6}}
-\DoxyCodeLine{564 \textcolor{comment}{                        if (m\_pTRBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{565 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{566 \textcolor{comment}{                            Point3D np\{a,a*-\/1,a\};}}
-\DoxyCodeLine{567 \textcolor{comment}{                            m\_pTRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{568 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{569 \textcolor{comment}{                        //m\_pTRBTree-\/>insert(ppart);}}
-\DoxyCodeLine{570 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 7}}
-\DoxyCodeLine{571 \textcolor{comment}{                        if (m\_pTRFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{572 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{573 \textcolor{comment}{                            Point3D np\{a,a,a\};}}
-\DoxyCodeLine{574 \textcolor{comment}{                            m\_pTRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{575 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{576 \textcolor{comment}{                        //m\_pTRFTree-\/>insert(ppart);}}
-\DoxyCodeLine{577 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 8}}
-\DoxyCodeLine{578 \textcolor{comment}{                        if (m\_pTLFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{579 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{580 \textcolor{comment}{                            Point3D np\{a*-\/1,a,a\};}}
-\DoxyCodeLine{581 \textcolor{comment}{                            m\_pTLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{582 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{583 \textcolor{comment}{                        //m\_pTLFTree-\/>insert(ppart);}}
-\DoxyCodeLine{584 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{585 \textcolor{comment}{                \}}}
-\DoxyCodeLine{586 \textcolor{comment}{            \}else\{                  // Else if full}}
-\DoxyCodeLine{587 \textcolor{comment}{}}
-\DoxyCodeLine{588 \textcolor{comment}{                m\_tot\_weight=1.;//Set the tot\_weight}}
-\DoxyCodeLine{589 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{590 \textcolor{comment}{}}
-\DoxyCodeLine{591 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
-\DoxyCodeLine{592 \textcolor{comment}{}}
-\DoxyCodeLine{593 \textcolor{comment}{                if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 1}}
-\DoxyCodeLine{594 \textcolor{comment}{                    if (m\_pBLBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{595 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{596 \textcolor{comment}{                        Point3D np\{a*-\/1,a*-\/1,a*-\/1\};}}
-\DoxyCodeLine{597 \textcolor{comment}{                        m\_pBLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{598 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{599 \textcolor{comment}{                    //m\_pBLBTree-\/>insert(ppart);}}
-\DoxyCodeLine{600 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 2}}
-\DoxyCodeLine{601 \textcolor{comment}{                    if (m\_pBRBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{602 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{603 \textcolor{comment}{                        Point3D np\{a,a*-\/1,a*-\/1\};}}
-\DoxyCodeLine{604 \textcolor{comment}{                        m\_pBRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{605 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{606 \textcolor{comment}{                    //m\_pBRBTree-\/>insert(ppart);}}
-\DoxyCodeLine{607 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 3}}
-\DoxyCodeLine{608 \textcolor{comment}{                    if (m\_pBRFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{609 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{610 \textcolor{comment}{                        Point3D np\{a,a,a*-\/1\};}}
-\DoxyCodeLine{611 \textcolor{comment}{                        m\_pBRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{612 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{613 \textcolor{comment}{                    //m\_pBRFTree-\/>insert(ppart);}}
-\DoxyCodeLine{614 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 4}}
-\DoxyCodeLine{615 \textcolor{comment}{                    if (m\_pBLFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{616 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{617 \textcolor{comment}{                        Point3D np\{a*-\/1,a,a*-\/1\};}}
-\DoxyCodeLine{618 \textcolor{comment}{                        m\_pBLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{619 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{620 \textcolor{comment}{                    //m\_pBLFTree-\/>insert(ppart);}}
-\DoxyCodeLine{621 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 5}}
-\DoxyCodeLine{622 \textcolor{comment}{                    if (m\_pTLBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{623 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{624 \textcolor{comment}{                        Point3D np\{a*-\/1,a*-\/1,a\};}}
-\DoxyCodeLine{625 \textcolor{comment}{                        m\_pTLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{626 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{627 \textcolor{comment}{                    //m\_pTLBTree-\/>insert(ppart);}}
-\DoxyCodeLine{628 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 6}}
-\DoxyCodeLine{629 \textcolor{comment}{                    if (m\_pTRBTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{630 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{631 \textcolor{comment}{                        Point3D np\{a,a*-\/1,a\};}}
-\DoxyCodeLine{632 \textcolor{comment}{                        m\_pTRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{633 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{634 \textcolor{comment}{                    //m\_pTRBTree-\/>insert(ppart);}}
-\DoxyCodeLine{635 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 7}}
-\DoxyCodeLine{636 \textcolor{comment}{                    if (m\_pTRFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{637 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{638 \textcolor{comment}{                        Point3D np\{a,a,a\};}}
-\DoxyCodeLine{639 \textcolor{comment}{                        m\_pTRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{640 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{641 \textcolor{comment}{                    //m\_pTRFTree-\/>insert(ppart);}}
-\DoxyCodeLine{642 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 8}}
-\DoxyCodeLine{643 \textcolor{comment}{                    if (m\_pTLFTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{644 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{645 \textcolor{comment}{                        Point3D np\{a*-\/1,a,a\};}}
-\DoxyCodeLine{646 \textcolor{comment}{                        m\_pTLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{647 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{648 \textcolor{comment}{                    //m\_pTLFTree-\/>insert(ppart);}}
-\DoxyCodeLine{649 \textcolor{comment}{                \}}}
-\DoxyCodeLine{650 \textcolor{comment}{}}
-\DoxyCodeLine{651 \textcolor{comment}{                // We reinsert the object already present.}}
-\DoxyCodeLine{652 \textcolor{comment}{                Particle3D* pT2=m\_pT;}}
-\DoxyCodeLine{653 \textcolor{comment}{                m\_pT=NULL;}}
-\DoxyCodeLine{654 \textcolor{comment}{                //this-\/>insert(pT2);}}
-\DoxyCodeLine{655 \textcolor{comment}{            \}}}
-\DoxyCodeLine{656 \textcolor{comment}{        \}}}
-\DoxyCodeLine{657 \textcolor{comment}{    \}}}
-\DoxyCodeLine{658 \textcolor{comment}{    return true;}}
-\DoxyCodeLine{659 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{660 }
-\DoxyCodeLine{661 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T>::recalculate}}() \{}
-\DoxyCodeLine{662     std::unordered\_set<T*> pelements=this-\/>getPElements();}
-\DoxyCodeLine{663 }
-\DoxyCodeLine{664     this-\/>empty();}
-\DoxyCodeLine{665 }
-\DoxyCodeLine{666     \textcolor{keywordflow}{for} (T* pelement : pelements)\{}
-\DoxyCodeLine{667         this-\/>insert(pelement);}
-\DoxyCodeLine{668     \}}
-\DoxyCodeLine{669 \}}
-\DoxyCodeLine{670 }
-\DoxyCodeLine{671 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOct}{Oct<T>::empty}}() \{}
-\DoxyCodeLine{672     \textcolor{keywordflow}{for} (\mbox{\hyperlink{classOct}{Oct<T>}}* ptree : this-\/>getPTrees())\{}
-\DoxyCodeLine{673         \textcolor{keyword}{delete} ptree;}
-\DoxyCodeLine{674     \}}
-\DoxyCodeLine{675 }
-\DoxyCodeLine{676     m\_pTLFTree=NULL;}
-\DoxyCodeLine{677     m\_pTRFTree=NULL;}
-\DoxyCodeLine{678     m\_pBLFTree=NULL;}
-\DoxyCodeLine{679     m\_pBRFTree=NULL;}
-\DoxyCodeLine{680     m\_pTLBTree=NULL;}
-\DoxyCodeLine{681     m\_pTRBTree=NULL;}
-\DoxyCodeLine{682     m\_pBLBTree=NULL;}
-\DoxyCodeLine{683     m\_pBRBTree=NULL;}
-\DoxyCodeLine{684 }
-\DoxyCodeLine{685     *m\_pbarycenter=*m\_ppoint;}
-\DoxyCodeLine{686     m\_tot\_weight=0.;}
-\DoxyCodeLine{687     m\_pT=NULL;}
-\DoxyCodeLine{688 }
-\DoxyCodeLine{689     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{690 \}}
-\DoxyCodeLine{691 }
-\DoxyCodeLine{692 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T>::find}}(\textcolor{keyword}{const} T\& t, std::unordered\_set<\mbox{\hyperlink{classOct}{Oct<T>}}*>\& pquads) \{}
-\DoxyCodeLine{693     \mbox{\hyperlink{structPoint3D}{Point3D}} p=\{t.x, t.y, \{0, 0\}\};}
+\DoxyCodeLine{340     \textcolor{comment}{//printf("{}AB\(\backslash\)n"{});}}
+\DoxyCodeLine{341     \mbox{\hyperlink{structSN}{SN<M, E>}} r=\textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structSN}{SN<M, E>}}\{1., 0\}\textcolor{comment}{/*((long double)1.)*/}/getDistance(*m\_ppoint, *pelement);}
+\DoxyCodeLine{342     r.print(\textcolor{keyword}{true}, \textcolor{keyword}{true}, 0);}
+\DoxyCodeLine{343     \mbox{\hyperlink{structLSN}{LSN}} s=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\};}
+\DoxyCodeLine{344     s.print(\textcolor{keyword}{true}, \textcolor{keyword}{true}, 0);}
+\DoxyCodeLine{345     printf(\textcolor{stringliteral}{"{}\(\backslash\)n\%b\(\backslash\)n"{}}, \textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structLSN}{LSN}}\{1., 0\}\textcolor{comment}{/*1.*/}/getDistance(*m\_ppoint, *pelement)<=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\});}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347     \textcolor{keywordflow}{if} (\textcolor{comment}{/*m\_a*/}\mbox{\hyperlink{structLSN}{LSN}}\{1., 0\}\textcolor{comment}{/*1.*/}/getDistance(*m\_ppoint, *pelement)<=\mbox{\hyperlink{structLSN}{LSN}}\{m\_ALPHA, 0\})\{}
+\DoxyCodeLine{348         \textcolor{comment}{//printf("{}AC\(\backslash\)n"{});}}
+\DoxyCodeLine{349         \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
+\DoxyCodeLine{350             neighbors.insert(m\_pT);}
+\DoxyCodeLine{351         \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{352             neighbors.insert(\textcolor{keyword}{new} T(m\_ppoint-\/>getX(), m\_ppoint-\/>getY(), m\_ppoint-\/>getZ()));}
+\DoxyCodeLine{353         \}}
+\DoxyCodeLine{354     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{355         \textcolor{comment}{//printf("{}AD\(\backslash\)n"{});}}
+\DoxyCodeLine{356         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
+\DoxyCodeLine{357             m\_pTLFTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{358         \}}
+\DoxyCodeLine{359         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
+\DoxyCodeLine{360             m\_pTRFTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{361         \}}
+\DoxyCodeLine{362         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
+\DoxyCodeLine{363             m\_pBLFTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{364         \}}
+\DoxyCodeLine{365         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
+\DoxyCodeLine{366             m\_pBRFTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{367         \}}
+\DoxyCodeLine{368         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
+\DoxyCodeLine{369             m\_pTLBTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{370         \}}
+\DoxyCodeLine{371         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
+\DoxyCodeLine{372             m\_pTRBTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{373         \}}
+\DoxyCodeLine{374         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
+\DoxyCodeLine{375             m\_pBLBTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{376         \}}
+\DoxyCodeLine{377         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
+\DoxyCodeLine{378             m\_pBRBTree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{379         \}}
+\DoxyCodeLine{380     \}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382     \textcolor{keywordflow}{return} neighbors;}
+\DoxyCodeLine{383 \}}
+\DoxyCodeLine{384 }
+\DoxyCodeLine{385 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOct}{Oct<T, M, E>::insert}}(T* pT) \{}
+\DoxyCodeLine{386     \textcolor{keywordflow}{if} (pT!=NULL)\{}
+\DoxyCodeLine{387         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p=\{pT-\/>x, pT-\/>y, pT-\/>z\};}
+\DoxyCodeLine{388         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, pT-\/>z-\/m\_ppoint-\/>z\};}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390         \textcolor{keywordflow}{if} (abs(dp.x)<=m\_a/(M)2. \&\& abs(dp.y)<=m\_a/(M)2. \&\& abs(dp.z)<=m\_a/(M)2.)\{\textcolor{comment}{// If in the cube centered on the point.}}
+\DoxyCodeLine{391             \textcolor{keywordflow}{if} (m\_pT==NULL)\{        \textcolor{comment}{// If empty}}
+\DoxyCodeLine{392                 \textcolor{comment}{//printf("{}Empty\(\backslash\)n"{});}}
+\DoxyCodeLine{393                 \textcolor{keywordflow}{if} (m\_pTLFTree==NULL and m\_pTRFTree==NULL and m\_pBLFTree==NULL and m\_pBRFTree==NULL}
+\DoxyCodeLine{394                         and m\_pTRBTree==NULL and m\_pTLBTree==NULL and m\_pBLBTree==NULL and m\_pBRBTree==NULL)\{   \textcolor{comment}{// If the cube has no Octs under (external branch)}}
+\DoxyCodeLine{395                     m\_pT=pT;\textcolor{comment}{//We add in}}
+\DoxyCodeLine{396                     m\_tot\_weight=(M)1.;\textcolor{comment}{//Set the tot\_weight}}
+\DoxyCodeLine{397                     *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
+\DoxyCodeLine{398                 \}\textcolor{keywordflow}{else}\{                                                                              \textcolor{comment}{// Else it means it is an internal branch}}
+\DoxyCodeLine{399                     m\_tot\_weight+=1.;\textcolor{comment}{//Add to tot\_weight}}
+\DoxyCodeLine{400                     *m\_pbarycenter+=p*((float)(1.)/m\_tot\_weight);\textcolor{comment}{//Add to the barycenter}}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402                     \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 1}}
+\DoxyCodeLine{403                         \textcolor{keywordflow}{if} (m\_pBLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{404                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{405                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{406                             m\_pBLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{407                         \}}
+\DoxyCodeLine{408                         m\_pBLBTree-\/>insert(pT);}
+\DoxyCodeLine{409                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 2}}
+\DoxyCodeLine{410                         \textcolor{keywordflow}{if} (m\_pBRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{411                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{412                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{413                             m\_pBRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{414                         \}}
+\DoxyCodeLine{415                         m\_pBRBTree-\/>insert(pT);}
+\DoxyCodeLine{416                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 3}}
+\DoxyCodeLine{417                         \textcolor{keywordflow}{if} (m\_pBRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{418                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4;}
+\DoxyCodeLine{419                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{420                             m\_pBRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{421                         \}}
+\DoxyCodeLine{422                         m\_pBRFTree-\/>insert(pT);}
+\DoxyCodeLine{423                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 4}}
+\DoxyCodeLine{424                         \textcolor{keywordflow}{if} (m\_pBLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{425                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{426                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{427                             m\_pBLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{428                         \}}
+\DoxyCodeLine{429                         m\_pBLFTree-\/>insert(pT);}
+\DoxyCodeLine{430                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 5}}
+\DoxyCodeLine{431                         \textcolor{keywordflow}{if} (m\_pTLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{432                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{433                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, a\};}
+\DoxyCodeLine{434                             m\_pTLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{435                         \}}
+\DoxyCodeLine{436                         m\_pTLBTree-\/>insert(pT);}
+\DoxyCodeLine{437                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 6}}
+\DoxyCodeLine{438                         \textcolor{keywordflow}{if} (m\_pTRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{439                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{440                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, a\};}
+\DoxyCodeLine{441                             m\_pTRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{442                         \}}
+\DoxyCodeLine{443                         m\_pTRBTree-\/>insert(pT);}
+\DoxyCodeLine{444                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 7}}
+\DoxyCodeLine{445                         \textcolor{keywordflow}{if} (m\_pTRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{446                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{447                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, a\};}
+\DoxyCodeLine{448                             m\_pTRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{449                         \}}
+\DoxyCodeLine{450                         m\_pTRFTree-\/>insert(pT);}
+\DoxyCodeLine{451                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 8}}
+\DoxyCodeLine{452                         \textcolor{keywordflow}{if} (m\_pTLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{453                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{454                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, a\};}
+\DoxyCodeLine{455                             m\_pTLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{456                         \}}
+\DoxyCodeLine{457                         m\_pTLFTree-\/>insert(pT);}
+\DoxyCodeLine{458                     \}}
+\DoxyCodeLine{459                 \}}
+\DoxyCodeLine{460             \}\textcolor{keywordflow}{else}\{                  \textcolor{comment}{// Else if full}}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{462                 m\_tot\_weight=\{(M)1., (E)0.\};\textcolor{comment}{//Set the tot\_weight}}
+\DoxyCodeLine{463                 *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
+\DoxyCodeLine{464 }
+\DoxyCodeLine{465                 \textcolor{comment}{//printf("{}Full\(\backslash\)n"{});}}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{467                 \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 1}}
+\DoxyCodeLine{468                     \textcolor{keywordflow}{if} (m\_pBLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{469                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{470                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{471                         m\_pBLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{472                     \}}
+\DoxyCodeLine{473                     m\_pBLBTree-\/>insert(pT);}
+\DoxyCodeLine{474                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 2}}
+\DoxyCodeLine{475                     \textcolor{keywordflow}{if} (m\_pBRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{476                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{477                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{478                         m\_pBRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{479                     \}}
+\DoxyCodeLine{480                     m\_pBRBTree-\/>insert(pT);}
+\DoxyCodeLine{481                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 3}}
+\DoxyCodeLine{482                     \textcolor{keywordflow}{if} (m\_pBRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{483                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{484                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{485                         m\_pBRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{486                     \}}
+\DoxyCodeLine{487                     m\_pBRFTree-\/>insert(pT);}
+\DoxyCodeLine{488                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0. \&\& dp.z<=(M)0.)\{\textcolor{comment}{//If cube 4}}
+\DoxyCodeLine{489                     \textcolor{keywordflow}{if} (m\_pBLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{490                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{491                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, (M)(-\/1.)*a\};}
+\DoxyCodeLine{492                         m\_pBLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{493                     \}}
+\DoxyCodeLine{494                     m\_pBLFTree-\/>insert(pT);}
+\DoxyCodeLine{495                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 5}}
+\DoxyCodeLine{496                     \textcolor{keywordflow}{if} (m\_pTLBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{497                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{498                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, a\};}
+\DoxyCodeLine{499                         m\_pTLBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{500                     \}}
+\DoxyCodeLine{501                     m\_pTLBTree-\/>insert(pT);}
+\DoxyCodeLine{502                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 6}}
+\DoxyCodeLine{503                     \textcolor{keywordflow}{if} (m\_pTRBTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{504                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{505                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, a\};}
+\DoxyCodeLine{506                         m\_pTRBTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{507                     \}}
+\DoxyCodeLine{508                     m\_pTRBTree-\/>insert(pT);}
+\DoxyCodeLine{509                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 7}}
+\DoxyCodeLine{510                     \textcolor{keywordflow}{if} (m\_pTRFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{511                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{512                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a,a,a\};}
+\DoxyCodeLine{513                         m\_pTRFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{514                     \}}
+\DoxyCodeLine{515                     m\_pTRFTree-\/>insert(pT);}
+\DoxyCodeLine{516                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0. \&\& dp.z>=(M)0.)\{\textcolor{comment}{//If cube 8}}
+\DoxyCodeLine{517                     \textcolor{keywordflow}{if} (m\_pTLFTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{518                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{519                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, a\};}
+\DoxyCodeLine{520                         m\_pTLFTree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{521                     \}}
+\DoxyCodeLine{522                     m\_pTLFTree-\/>insert(pT);}
+\DoxyCodeLine{523                 \}}
+\DoxyCodeLine{524 }
+\DoxyCodeLine{525                 \textcolor{comment}{// We reinsert the object already present.}}
+\DoxyCodeLine{526                 T* pT2=m\_pT;}
+\DoxyCodeLine{527                 m\_pT=NULL;}
+\DoxyCodeLine{528                 this-\/>insert(pT2);}
+\DoxyCodeLine{529             \}}
+\DoxyCodeLine{530         \}}
+\DoxyCodeLine{531     \}}
+\DoxyCodeLine{532     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{533 \}}
+\DoxyCodeLine{534 }
+\DoxyCodeLine{535 \textcolor{comment}{/*template<> bool Oct<Point3D>::insert(Point3D* ppoint)\{//Doesn't work for some reason.}}
+\DoxyCodeLine{536 \textcolor{comment}{    return true;}}
+\DoxyCodeLine{537 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{538 }
+\DoxyCodeLine{539 \textcolor{comment}{/*template<> bool Oct<Particle3D>::insert(Particle3D* ppart)\{//Doesn't work for some reason.}}
+\DoxyCodeLine{540 \textcolor{comment}{    if (ppart!=NULL)\{}}
+\DoxyCodeLine{541 \textcolor{comment}{        Point3D p=\{ppart-\/>x, ppart-\/>y, ppart-\/>z\};}}
+\DoxyCodeLine{542 \textcolor{comment}{        Point3D dp=\{ppart-\/>x-\/m\_ppoint-\/>x, ppart-\/>y-\/m\_ppoint-\/>y, ppart-\/>z-\/m\_ppoint-\/>z\};}}
+\DoxyCodeLine{543 \textcolor{comment}{}}
+\DoxyCodeLine{544 \textcolor{comment}{        if (abs(dp.x)<=m\_a/2 \&\& abs(dp.y)<=m\_a/2 \&\& abs(dp.z)<=m\_a/2)\{// If in the cube centered on the point.}}
+\DoxyCodeLine{545 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
+\DoxyCodeLine{546 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
+\DoxyCodeLine{547 \textcolor{comment}{                if (m\_pTLFTree==NULL and m\_pTRFTree==NULL and m\_pBLFTree==NULL and m\_pBRFTree==NULL}}
+\DoxyCodeLine{548 \textcolor{comment}{                        and m\_pTRBTree==NULL and m\_pTLBTree==NULL and m\_pBLBTree==NULL and m\_pBRBTree==NULL)\{   // If the cube has no Octs under (external branch)}}
+\DoxyCodeLine{549 \textcolor{comment}{                    m\_pT=ppart;//We add in}}
+\DoxyCodeLine{550 \textcolor{comment}{                    m\_tot\_weight=ppart-\/>w;//Set the tot\_weight}}
+\DoxyCodeLine{551 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
+\DoxyCodeLine{552 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
+\DoxyCodeLine{553 \textcolor{comment}{}}
+\DoxyCodeLine{554 \textcolor{comment}{                    m\_tot\_weight+=ppart-\/>w;//Add to tot\_weight}}
+\DoxyCodeLine{555 \textcolor{comment}{                    *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
+\DoxyCodeLine{556 \textcolor{comment}{}}
+\DoxyCodeLine{557 \textcolor{comment}{                    if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 1}}
+\DoxyCodeLine{558 \textcolor{comment}{                        if (m\_pBLBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{559 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{560 \textcolor{comment}{                            Point3D np\{a*-\/1,a*-\/1,a*-\/1\};}}
+\DoxyCodeLine{561 \textcolor{comment}{                            m\_pBLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{562 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{563 \textcolor{comment}{                        //m\_pBLBTree-\/>insert((Particle3D*)ppart);}}
+\DoxyCodeLine{564 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 2}}
+\DoxyCodeLine{565 \textcolor{comment}{                        if (m\_pBRBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{566 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{567 \textcolor{comment}{                            Point3D np\{a,a*-\/1,a*-\/1\};}}
+\DoxyCodeLine{568 \textcolor{comment}{                            m\_pBRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{569 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{570 \textcolor{comment}{                        //m\_pBRBTree-\/>insert(ppart);}}
+\DoxyCodeLine{571 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 3}}
+\DoxyCodeLine{572 \textcolor{comment}{                        if (m\_pBRFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{573 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{574 \textcolor{comment}{                            Point3D np\{a,a,a*-\/1\};}}
+\DoxyCodeLine{575 \textcolor{comment}{                            m\_pBRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{576 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{577 \textcolor{comment}{                        //m\_pBRFTree-\/>insert(ppart);}}
+\DoxyCodeLine{578 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 4}}
+\DoxyCodeLine{579 \textcolor{comment}{                        if (m\_pBLFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{580 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{581 \textcolor{comment}{                            Point3D np\{a*-\/1,a,a*-\/1\};}}
+\DoxyCodeLine{582 \textcolor{comment}{                            m\_pBLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{583 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{584 \textcolor{comment}{                        //m\_pBLFTree-\/>insert(ppart);}}
+\DoxyCodeLine{585 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 5}}
+\DoxyCodeLine{586 \textcolor{comment}{                        if (m\_pTLBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{587 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{588 \textcolor{comment}{                            Point3D np\{a*-\/1,a*-\/1,a\};}}
+\DoxyCodeLine{589 \textcolor{comment}{                            m\_pTLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{590 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{591 \textcolor{comment}{                        //m\_pTLBTree-\/>insert(ppart);}}
+\DoxyCodeLine{592 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 6}}
+\DoxyCodeLine{593 \textcolor{comment}{                        if (m\_pTRBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{594 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{595 \textcolor{comment}{                            Point3D np\{a,a*-\/1,a\};}}
+\DoxyCodeLine{596 \textcolor{comment}{                            m\_pTRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{597 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{598 \textcolor{comment}{                        //m\_pTRBTree-\/>insert(ppart);}}
+\DoxyCodeLine{599 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 7}}
+\DoxyCodeLine{600 \textcolor{comment}{                        if (m\_pTRFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{601 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{602 \textcolor{comment}{                            Point3D np\{a,a,a\};}}
+\DoxyCodeLine{603 \textcolor{comment}{                            m\_pTRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{604 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{605 \textcolor{comment}{                        //m\_pTRFTree-\/>insert(ppart);}}
+\DoxyCodeLine{606 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 8}}
+\DoxyCodeLine{607 \textcolor{comment}{                        if (m\_pTLFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{608 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{609 \textcolor{comment}{                            Point3D np\{a*-\/1,a,a\};}}
+\DoxyCodeLine{610 \textcolor{comment}{                            m\_pTLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{611 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{612 \textcolor{comment}{                        //m\_pTLFTree-\/>insert(ppart);}}
+\DoxyCodeLine{613 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{614 \textcolor{comment}{                \}}}
+\DoxyCodeLine{615 \textcolor{comment}{            \}else\{                  // Else if full}}
+\DoxyCodeLine{616 \textcolor{comment}{}}
+\DoxyCodeLine{617 \textcolor{comment}{                m\_tot\_weight=1.;//Set the tot\_weight}}
+\DoxyCodeLine{618 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
+\DoxyCodeLine{619 \textcolor{comment}{}}
+\DoxyCodeLine{620 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
+\DoxyCodeLine{621 \textcolor{comment}{}}
+\DoxyCodeLine{622 \textcolor{comment}{                if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 1}}
+\DoxyCodeLine{623 \textcolor{comment}{                    if (m\_pBLBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{624 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{625 \textcolor{comment}{                        Point3D np\{a*-\/1,a*-\/1,a*-\/1\};}}
+\DoxyCodeLine{626 \textcolor{comment}{                        m\_pBLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{627 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{628 \textcolor{comment}{                    //m\_pBLBTree-\/>insert(ppart);}}
+\DoxyCodeLine{629 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z<=0.)\{//If cube 2}}
+\DoxyCodeLine{630 \textcolor{comment}{                    if (m\_pBRBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{631 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{632 \textcolor{comment}{                        Point3D np\{a,a*-\/1,a*-\/1\};}}
+\DoxyCodeLine{633 \textcolor{comment}{                        m\_pBRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{634 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{635 \textcolor{comment}{                    //m\_pBRBTree-\/>insert(ppart);}}
+\DoxyCodeLine{636 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 3}}
+\DoxyCodeLine{637 \textcolor{comment}{                    if (m\_pBRFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{638 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{639 \textcolor{comment}{                        Point3D np\{a,a,a*-\/1\};}}
+\DoxyCodeLine{640 \textcolor{comment}{                        m\_pBRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{641 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{642 \textcolor{comment}{                    //m\_pBRFTree-\/>insert(ppart);}}
+\DoxyCodeLine{643 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z<=0.)\{//If cube 4}}
+\DoxyCodeLine{644 \textcolor{comment}{                    if (m\_pBLFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{645 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{646 \textcolor{comment}{                        Point3D np\{a*-\/1,a,a*-\/1\};}}
+\DoxyCodeLine{647 \textcolor{comment}{                        m\_pBLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{648 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{649 \textcolor{comment}{                    //m\_pBLFTree-\/>insert(ppart);}}
+\DoxyCodeLine{650 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 5}}
+\DoxyCodeLine{651 \textcolor{comment}{                    if (m\_pTLBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{652 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{653 \textcolor{comment}{                        Point3D np\{a*-\/1,a*-\/1,a\};}}
+\DoxyCodeLine{654 \textcolor{comment}{                        m\_pTLBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{655 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{656 \textcolor{comment}{                    //m\_pTLBTree-\/>insert(ppart);}}
+\DoxyCodeLine{657 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0. \&\& dp.z>=0.)\{//If cube 6}}
+\DoxyCodeLine{658 \textcolor{comment}{                    if (m\_pTRBTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{659 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{660 \textcolor{comment}{                        Point3D np\{a,a*-\/1,a\};}}
+\DoxyCodeLine{661 \textcolor{comment}{                        m\_pTRBTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{662 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{663 \textcolor{comment}{                    //m\_pTRBTree-\/>insert(ppart);}}
+\DoxyCodeLine{664 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 7}}
+\DoxyCodeLine{665 \textcolor{comment}{                    if (m\_pTRFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{666 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{667 \textcolor{comment}{                        Point3D np\{a,a,a\};}}
+\DoxyCodeLine{668 \textcolor{comment}{                        m\_pTRFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{669 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{670 \textcolor{comment}{                    //m\_pTRFTree-\/>insert(ppart);}}
+\DoxyCodeLine{671 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0. \&\& dp.z>=0.)\{//If cube 8}}
+\DoxyCodeLine{672 \textcolor{comment}{                    if (m\_pTLFTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{673 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{674 \textcolor{comment}{                        Point3D np\{a*-\/1,a,a\};}}
+\DoxyCodeLine{675 \textcolor{comment}{                        m\_pTLFTree=new Oct<Particle3D>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{676 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{677 \textcolor{comment}{                    //m\_pTLFTree-\/>insert(ppart);}}
+\DoxyCodeLine{678 \textcolor{comment}{                \}}}
+\DoxyCodeLine{679 \textcolor{comment}{}}
+\DoxyCodeLine{680 \textcolor{comment}{                // We reinsert the object already present.}}
+\DoxyCodeLine{681 \textcolor{comment}{                Particle3D* pT2=m\_pT;}}
+\DoxyCodeLine{682 \textcolor{comment}{                m\_pT=NULL;}}
+\DoxyCodeLine{683 \textcolor{comment}{                //this-\/>insert(pT2);}}
+\DoxyCodeLine{684 \textcolor{comment}{            \}}}
+\DoxyCodeLine{685 \textcolor{comment}{        \}}}
+\DoxyCodeLine{686 \textcolor{comment}{    \}}}
+\DoxyCodeLine{687 \textcolor{comment}{    return true;}}
+\DoxyCodeLine{688 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{689 }
+\DoxyCodeLine{690 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T, M, E>::recalculate}}() \{}
+\DoxyCodeLine{691     std::unordered\_set<T*> pelements=this-\/>getPElements();}
+\DoxyCodeLine{692 }
+\DoxyCodeLine{693     this-\/>empty();}
 \DoxyCodeLine{694 }
-\DoxyCodeLine{695     \mbox{\hyperlink{structLSN}{LSN}} s=this-\/>m\_a;}
-\DoxyCodeLine{696     \mbox{\hyperlink{structLSN}{LSN}} d=getDistance(p, *m\_pbarycenter);}
-\DoxyCodeLine{697     \mbox{\hyperlink{structLSN}{LSN}} alpha=s/d;}
-\DoxyCodeLine{698     \textcolor{comment}{//std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{695     \textcolor{keywordflow}{for} (T* pelement : pelements)\{}
+\DoxyCodeLine{696         this-\/>insert(pelement);}
+\DoxyCodeLine{697     \}}
+\DoxyCodeLine{698 \}}
 \DoxyCodeLine{699 }
-\DoxyCodeLine{700     \textcolor{keywordflow}{if} (alpha>=m\_ALPHA)\{}
-\DoxyCodeLine{701         pquads.insert(\textcolor{keyword}{this});}
-\DoxyCodeLine{702     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{703         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
-\DoxyCodeLine{704             m\_pTLBTree-\/>find(t, pquads);}
-\DoxyCodeLine{705         \}}
-\DoxyCodeLine{706         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
-\DoxyCodeLine{707             m\_pTRBTree-\/>find(t, pquads);}
-\DoxyCodeLine{708         \}}
-\DoxyCodeLine{709         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
-\DoxyCodeLine{710             m\_pBLBTree-\/>find(t, pquads);}
-\DoxyCodeLine{711         \}}
-\DoxyCodeLine{712         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
-\DoxyCodeLine{713             m\_pBRBTree-\/>find(t, pquads);}
-\DoxyCodeLine{714         \}}
-\DoxyCodeLine{715         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
-\DoxyCodeLine{716             m\_pTLFTree-\/>find(t, pquads);}
-\DoxyCodeLine{717         \}}
-\DoxyCodeLine{718         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
-\DoxyCodeLine{719             m\_pTRFTree-\/>find(t, pquads);}
-\DoxyCodeLine{720         \}}
-\DoxyCodeLine{721         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
-\DoxyCodeLine{722             m\_pBLFTree-\/>find(t, pquads);}
-\DoxyCodeLine{723         \}}
-\DoxyCodeLine{724         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
-\DoxyCodeLine{725             m\_pBRFTree-\/>find(t, pquads);}
-\DoxyCodeLine{726         \}}
-\DoxyCodeLine{727     \}}
-\DoxyCodeLine{728 \}}
-\DoxyCodeLine{729 \textcolor{comment}{//Useless}}
-\DoxyCodeLine{730 \textcolor{comment}{/*template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const \{}}
-\DoxyCodeLine{731 \textcolor{comment}{    if (\&t!=m\_pT)\{}}
-\DoxyCodeLine{732 \textcolor{comment}{        Point3D p=\{t.x, t.y, t.z\};}}
-\DoxyCodeLine{733 \textcolor{comment}{}}
-\DoxyCodeLine{734 \textcolor{comment}{        LSN s=this-\/>m\_a;}}
-\DoxyCodeLine{735 \textcolor{comment}{}}
-\DoxyCodeLine{736 \textcolor{comment}{        LSN d=getDistance(p, *m\_pbarycenter);}}
-\DoxyCodeLine{737 \textcolor{comment}{        LSN alpha=s/d;}}
-\DoxyCodeLine{738 \textcolor{comment}{        //std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{739 \textcolor{comment}{}}
-\DoxyCodeLine{740 \textcolor{comment}{        if (alpha>=m\_ALPHA)\{}}
-\DoxyCodeLine{741 \textcolor{comment}{            Vector3D* pdv=new Vector3D(p, *m\_pbarycenter);}}
-\DoxyCodeLine{742 \textcolor{comment}{            LSN nb=t.w*this-\/>m\_tot\_weight;}}
-\DoxyCodeLine{743 \textcolor{comment}{            LSN nb2=nb/pow(d, 2);}}
-\DoxyCodeLine{744 \textcolor{comment}{            pdv-\/>setNorm(nb2);}}
-\DoxyCodeLine{745 \textcolor{comment}{}}
-\DoxyCodeLine{746 \textcolor{comment}{            v+=*pdv;}}
-\DoxyCodeLine{747 \textcolor{comment}{        \}else\{}}
-\DoxyCodeLine{748 \textcolor{comment}{            if (m\_pBLBTree!=NULL)\{}}
-\DoxyCodeLine{749 \textcolor{comment}{                m\_pBLBTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{750 \textcolor{comment}{            \}}}
-\DoxyCodeLine{751 \textcolor{comment}{            if (m\_pBRBTree!=NULL)\{}}
-\DoxyCodeLine{752 \textcolor{comment}{                m\_pBRBTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{753 \textcolor{comment}{            \}}}
-\DoxyCodeLine{754 \textcolor{comment}{            if (m\_pBRFTree!=NULL)\{}}
-\DoxyCodeLine{755 \textcolor{comment}{                m\_pBRFTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{756 \textcolor{comment}{            \}}}
-\DoxyCodeLine{757 \textcolor{comment}{            if (m\_pBLFTree!=NULL)\{}}
-\DoxyCodeLine{758 \textcolor{comment}{                m\_pBLFTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{759 \textcolor{comment}{            \}}}
-\DoxyCodeLine{760 \textcolor{comment}{            if (m\_pTLBTree!=NULL)\{}}
-\DoxyCodeLine{761 \textcolor{comment}{                m\_pTLBTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{762 \textcolor{comment}{            \}}}
-\DoxyCodeLine{763 \textcolor{comment}{            if (m\_pTRBTree!=NULL)\{}}
-\DoxyCodeLine{764 \textcolor{comment}{                m\_pTRBTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{765 \textcolor{comment}{            \}}}
-\DoxyCodeLine{766 \textcolor{comment}{            if (m\_pTRFTree!=NULL)\{}}
-\DoxyCodeLine{767 \textcolor{comment}{                m\_pTRFTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{768 \textcolor{comment}{            \}}}
-\DoxyCodeLine{769 \textcolor{comment}{            if (m\_pTLFTree!=NULL)\{}}
-\DoxyCodeLine{770 \textcolor{comment}{                m\_pTLFTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{771 \textcolor{comment}{            \}}}
-\DoxyCodeLine{772 \textcolor{comment}{        \}}}
-\DoxyCodeLine{773 \textcolor{comment}{    \}}}
-\DoxyCodeLine{774 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{775 }
-\DoxyCodeLine{776 \textcolor{comment}{/*}}
-\DoxyCodeLine{777 \textcolor{comment}{ * Stores the octs that are to be considered given alpha.}}
-\DoxyCodeLine{778 \textcolor{comment}{ */}}
-\DoxyCodeLine{779 \textcolor{comment}{/*template <typename T> std::unordered\_set<T*> Oct<T>::find(const Point3D\& point) \{}}
-\DoxyCodeLine{780 \textcolor{comment}{    ;}}
-\DoxyCodeLine{781 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{782 }
-\DoxyCodeLine{783 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> T* \mbox{\hyperlink{classOct}{Oct<T>::search}}(\mbox{\hyperlink{structPoint3D}{Point3D}}* ppoint)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{784     T* pT=NULL;}
-\DoxyCodeLine{785 }
-\DoxyCodeLine{786     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
-\DoxyCodeLine{787         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_x=(\textcolor{keywordtype}{long} double)(ppoint-\/>x-\/m\_ppoint-\/>x);}
-\DoxyCodeLine{788         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_y=(\textcolor{keywordtype}{long} double)(ppoint-\/>y-\/m\_ppoint-\/>y);}
-\DoxyCodeLine{789         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_z=(\textcolor{keywordtype}{long} double)(ppoint-\/>z-\/m\_ppoint-\/>z);}
-\DoxyCodeLine{790 }
-\DoxyCodeLine{791         \textcolor{keywordflow}{if} (abs(delta\_x)<m\_a/2 \&\& abs(delta\_y)<m\_a/2 \&\& abs(delta\_z)<m\_a/2)\{\textcolor{comment}{//If in the square centered on the point.}}
-\DoxyCodeLine{792 }
-\DoxyCodeLine{793             \textcolor{keywordflow}{if} (m\_pT!=NULL)\{\textcolor{comment}{// This means it is a square of the smallest size possible.}}
-\DoxyCodeLine{794                 pT=m\_pT;}
-\DoxyCodeLine{795             \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{796                 \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{\textcolor{comment}{//Cube 1}}
-\DoxyCodeLine{797                     pT=m\_pTLFTree-\/>search(ppoint);}
-\DoxyCodeLine{798                 \}}
-\DoxyCodeLine{799                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{800                     \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{\textcolor{comment}{//Cube 2}}
-\DoxyCodeLine{801                         pT=m\_pTRFTree-\/>search(ppoint);}
-\DoxyCodeLine{802                     \}}
-\DoxyCodeLine{803                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{804                         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{\textcolor{comment}{//Cube 3}}
-\DoxyCodeLine{805                             pT=m\_pBLFTree-\/>search(ppoint);}
-\DoxyCodeLine{806                         \}}
-\DoxyCodeLine{807                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{808                             \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{\textcolor{comment}{//Cube 4}}
-\DoxyCodeLine{809                                 pT=m\_pBRFTree-\/>search(ppoint);}
-\DoxyCodeLine{810                             \}}
-\DoxyCodeLine{811                             \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{812                                 \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{\textcolor{comment}{//Cube 5}}
-\DoxyCodeLine{813                                     pT=m\_pTLBTree-\/>search(ppoint);}
-\DoxyCodeLine{814                                 \}}
-\DoxyCodeLine{815                                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{816                                     \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{\textcolor{comment}{//Cube 6}}
-\DoxyCodeLine{817                                         pT=m\_pTRBTree-\/>search(ppoint);}
-\DoxyCodeLine{818                                     \}}
-\DoxyCodeLine{819                                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{820                                         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{\textcolor{comment}{//Cube 7}}
-\DoxyCodeLine{821                                             pT=m\_pBLBTree-\/>search(ppoint);}
-\DoxyCodeLine{822                                         \}}
-\DoxyCodeLine{823                                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{824                                             \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{\textcolor{comment}{//Cube 8}}
-\DoxyCodeLine{825                                                 pT=m\_pBRBTree-\/>search(ppoint);}
-\DoxyCodeLine{826                                             \}}
-\DoxyCodeLine{827                                         \}}
-\DoxyCodeLine{828                                     \}}
-\DoxyCodeLine{829                                 \}}
-\DoxyCodeLine{830                             \}}
-\DoxyCodeLine{831                         \}}
+\DoxyCodeLine{700 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOct}{Oct<T, M, E>::empty}}() \{}
+\DoxyCodeLine{701     \textcolor{keywordflow}{for} (\mbox{\hyperlink{classOct}{Oct<T, M, E>}}* ptree : this-\/>getPTrees())\{}
+\DoxyCodeLine{702         \textcolor{keyword}{delete} ptree;}
+\DoxyCodeLine{703     \}}
+\DoxyCodeLine{704 }
+\DoxyCodeLine{705     m\_pTLFTree=NULL;}
+\DoxyCodeLine{706     m\_pTRFTree=NULL;}
+\DoxyCodeLine{707     m\_pBLFTree=NULL;}
+\DoxyCodeLine{708     m\_pBRFTree=NULL;}
+\DoxyCodeLine{709     m\_pTLBTree=NULL;}
+\DoxyCodeLine{710     m\_pTRBTree=NULL;}
+\DoxyCodeLine{711     m\_pBLBTree=NULL;}
+\DoxyCodeLine{712     m\_pBRBTree=NULL;}
+\DoxyCodeLine{713 }
+\DoxyCodeLine{714     *m\_pbarycenter=*m\_ppoint;}
+\DoxyCodeLine{715     m\_tot\_weight=\{(M)0., (E)0\};}
+\DoxyCodeLine{716     m\_pT=NULL;}
+\DoxyCodeLine{717 }
+\DoxyCodeLine{718     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{719 \}}
+\DoxyCodeLine{720 }
+\DoxyCodeLine{721 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T, M, E>::find}}(\textcolor{keyword}{const} T\& t, std::unordered\_set<\mbox{\hyperlink{classOct}{Oct<T, M, E>}}*>\& pocts) \{}
+\DoxyCodeLine{722     \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p=\{t.x, t.y, \{0, 0\}\};}
+\DoxyCodeLine{723 }
+\DoxyCodeLine{724     \mbox{\hyperlink{structSN}{SN<M, E>}} s=this-\/>m\_a;}
+\DoxyCodeLine{725     \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(p, *m\_pbarycenter);}
+\DoxyCodeLine{726     \mbox{\hyperlink{structSN}{SN<M, E>}} alpha=s/d;}
+\DoxyCodeLine{727     \textcolor{comment}{//std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{728 }
+\DoxyCodeLine{729     \textcolor{keywordflow}{if} (alpha>=m\_ALPHA)\{}
+\DoxyCodeLine{730         pocts.insert(\textcolor{keyword}{this});}
+\DoxyCodeLine{731     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{732         \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{}
+\DoxyCodeLine{733             m\_pTLBTree-\/>find(t, pocts);}
+\DoxyCodeLine{734         \}}
+\DoxyCodeLine{735         \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{}
+\DoxyCodeLine{736             m\_pTRBTree-\/>find(t, pocts);}
+\DoxyCodeLine{737         \}}
+\DoxyCodeLine{738         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{}
+\DoxyCodeLine{739             m\_pBLBTree-\/>find(t, pocts);}
+\DoxyCodeLine{740         \}}
+\DoxyCodeLine{741         \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{}
+\DoxyCodeLine{742             m\_pBRBTree-\/>find(t, pocts);}
+\DoxyCodeLine{743         \}}
+\DoxyCodeLine{744         \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{}
+\DoxyCodeLine{745             m\_pTLFTree-\/>find(t, pocts);}
+\DoxyCodeLine{746         \}}
+\DoxyCodeLine{747         \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{}
+\DoxyCodeLine{748             m\_pTRFTree-\/>find(t, pocts);}
+\DoxyCodeLine{749         \}}
+\DoxyCodeLine{750         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{}
+\DoxyCodeLine{751             m\_pBLFTree-\/>find(t, pocts);}
+\DoxyCodeLine{752         \}}
+\DoxyCodeLine{753         \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{}
+\DoxyCodeLine{754             m\_pBRFTree-\/>find(t, pocts);}
+\DoxyCodeLine{755         \}}
+\DoxyCodeLine{756     \}}
+\DoxyCodeLine{757 \}}
+\DoxyCodeLine{758 }
+\DoxyCodeLine{759 \textcolor{comment}{//Useless}}
+\DoxyCodeLine{760 \textcolor{comment}{/*template <typename T> void Oct<T>::computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const \{}}
+\DoxyCodeLine{761 \textcolor{comment}{    if (\&t!=m\_pT)\{}}
+\DoxyCodeLine{762 \textcolor{comment}{        Point3D p=\{t.x, t.y, t.z\};}}
+\DoxyCodeLine{763 \textcolor{comment}{}}
+\DoxyCodeLine{764 \textcolor{comment}{        LSN s=this-\/>m\_a;}}
+\DoxyCodeLine{765 \textcolor{comment}{}}
+\DoxyCodeLine{766 \textcolor{comment}{        LSN d=getDistance(p, *m\_pbarycenter);}}
+\DoxyCodeLine{767 \textcolor{comment}{        LSN alpha=s/d;}}
+\DoxyCodeLine{768 \textcolor{comment}{        //std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{769 \textcolor{comment}{}}
+\DoxyCodeLine{770 \textcolor{comment}{        if (alpha>=m\_ALPHA)\{}}
+\DoxyCodeLine{771 \textcolor{comment}{            Vector3D* pdv=new Vector3D(p, *m\_pbarycenter);}}
+\DoxyCodeLine{772 \textcolor{comment}{            LSN nb=t.w*this-\/>m\_tot\_weight;}}
+\DoxyCodeLine{773 \textcolor{comment}{            LSN nb2=nb/pow(d, 2);}}
+\DoxyCodeLine{774 \textcolor{comment}{            pdv-\/>setNorm(nb2);}}
+\DoxyCodeLine{775 \textcolor{comment}{}}
+\DoxyCodeLine{776 \textcolor{comment}{            v+=*pdv;}}
+\DoxyCodeLine{777 \textcolor{comment}{        \}else\{}}
+\DoxyCodeLine{778 \textcolor{comment}{            if (m\_pBLBTree!=NULL)\{}}
+\DoxyCodeLine{779 \textcolor{comment}{                m\_pBLBTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{780 \textcolor{comment}{            \}}}
+\DoxyCodeLine{781 \textcolor{comment}{            if (m\_pBRBTree!=NULL)\{}}
+\DoxyCodeLine{782 \textcolor{comment}{                m\_pBRBTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{783 \textcolor{comment}{            \}}}
+\DoxyCodeLine{784 \textcolor{comment}{            if (m\_pBRFTree!=NULL)\{}}
+\DoxyCodeLine{785 \textcolor{comment}{                m\_pBRFTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{786 \textcolor{comment}{            \}}}
+\DoxyCodeLine{787 \textcolor{comment}{            if (m\_pBLFTree!=NULL)\{}}
+\DoxyCodeLine{788 \textcolor{comment}{                m\_pBLFTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{789 \textcolor{comment}{            \}}}
+\DoxyCodeLine{790 \textcolor{comment}{            if (m\_pTLBTree!=NULL)\{}}
+\DoxyCodeLine{791 \textcolor{comment}{                m\_pTLBTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{792 \textcolor{comment}{            \}}}
+\DoxyCodeLine{793 \textcolor{comment}{            if (m\_pTRBTree!=NULL)\{}}
+\DoxyCodeLine{794 \textcolor{comment}{                m\_pTRBTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{795 \textcolor{comment}{            \}}}
+\DoxyCodeLine{796 \textcolor{comment}{            if (m\_pTRFTree!=NULL)\{}}
+\DoxyCodeLine{797 \textcolor{comment}{                m\_pTRFTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{798 \textcolor{comment}{            \}}}
+\DoxyCodeLine{799 \textcolor{comment}{            if (m\_pTLFTree!=NULL)\{}}
+\DoxyCodeLine{800 \textcolor{comment}{                m\_pTLFTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{801 \textcolor{comment}{            \}}}
+\DoxyCodeLine{802 \textcolor{comment}{        \}}}
+\DoxyCodeLine{803 \textcolor{comment}{    \}}}
+\DoxyCodeLine{804 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{805 }
+\DoxyCodeLine{806 \textcolor{comment}{/*}}
+\DoxyCodeLine{807 \textcolor{comment}{ * Stores the octs that are to be considered given alpha.}}
+\DoxyCodeLine{808 \textcolor{comment}{ */}}
+\DoxyCodeLine{809 \textcolor{comment}{/*template <typename T> std::unordered\_set<T*> Oct<T>::find(const Point3D\& point) \{}}
+\DoxyCodeLine{810 \textcolor{comment}{    ;}}
+\DoxyCodeLine{811 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{812 }
+\DoxyCodeLine{813 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> T* \mbox{\hyperlink{classOct}{Oct<T, M, E>::search}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}* ppoint)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{814     T* pT=NULL;}
+\DoxyCodeLine{815 }
+\DoxyCodeLine{816     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
+\DoxyCodeLine{817         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_x=(\textcolor{keywordtype}{long} double)(ppoint-\/>x-\/m\_ppoint-\/>x);}
+\DoxyCodeLine{818         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_y=(\textcolor{keywordtype}{long} double)(ppoint-\/>y-\/m\_ppoint-\/>y);}
+\DoxyCodeLine{819         \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} delta\_z=(\textcolor{keywordtype}{long} double)(ppoint-\/>z-\/m\_ppoint-\/>z);}
+\DoxyCodeLine{820 }
+\DoxyCodeLine{821         \textcolor{keywordflow}{if} (abs(delta\_x)<m\_a/2 \&\& abs(delta\_y)<m\_a/2 \&\& abs(delta\_z)<m\_a/2)\{\textcolor{comment}{//If in the square centered on the point.}}
+\DoxyCodeLine{822 }
+\DoxyCodeLine{823             \textcolor{keywordflow}{if} (m\_pT!=NULL)\{\textcolor{comment}{// This means it is a square of the smallest size possible.}}
+\DoxyCodeLine{824                 pT=m\_pT;}
+\DoxyCodeLine{825             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{826                 \textcolor{keywordflow}{if} (m\_pTLFTree!=NULL)\{\textcolor{comment}{//Cube 1}}
+\DoxyCodeLine{827                     pT=m\_pTLFTree-\/>search(ppoint);}
+\DoxyCodeLine{828                 \}}
+\DoxyCodeLine{829                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{830                     \textcolor{keywordflow}{if} (m\_pTRFTree!=NULL)\{\textcolor{comment}{//Cube 2}}
+\DoxyCodeLine{831                         pT=m\_pTRFTree-\/>search(ppoint);}
 \DoxyCodeLine{832                     \}}
-\DoxyCodeLine{833                 \}}
-\DoxyCodeLine{834             \}}
-\DoxyCodeLine{835         \}}
-\DoxyCodeLine{836     \}}
-\DoxyCodeLine{837     \textcolor{keywordflow}{return} pT;}
-\DoxyCodeLine{838 \}}
-\DoxyCodeLine{839 }
-\DoxyCodeLine{840 }
-\DoxyCodeLine{841 }
-\DoxyCodeLine{842 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classOct}{Oct<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{843     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{844     mes+=((spread)?to\_stringTabs(indent) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{845     \textcolor{comment}{//mes+="{}QUAD"{};}}
-\DoxyCodeLine{846 }
-\DoxyCodeLine{847     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{848         mes+=\textcolor{stringliteral}{"{}OCT["{}};}
-\DoxyCodeLine{849         std::stringstream ss;}
-\DoxyCodeLine{850         ss << \textcolor{keyword}{this};}
-\DoxyCodeLine{851         mes+=ss.str();}
-\DoxyCodeLine{852         mes+=\textcolor{stringliteral}{"{}]:"{}};}
-\DoxyCodeLine{853         mes+=m\_a.to\_string();                       \textcolor{comment}{//a}}
-\DoxyCodeLine{854         mes+=\textcolor{stringliteral}{"{}|"{}};}
-\DoxyCodeLine{855         mes+=m\_ppoint-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);      \textcolor{comment}{//Point}}
-\DoxyCodeLine{856         mes+=\textcolor{stringliteral}{"{}|"{}};}
-\DoxyCodeLine{857         mes+=m\_pbarycenter-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);     \textcolor{comment}{//Barycenter}}
-\DoxyCodeLine{858         mes+=\textcolor{stringliteral}{"{}|"{}};}
-\DoxyCodeLine{859         std::stringstream ss2;}
-\DoxyCodeLine{860         ss2 << m\_pT;}
-\DoxyCodeLine{861         mes+=ss2.str();}
-\DoxyCodeLine{862         \textcolor{comment}{//mes+=(m\_pT==NULL) ? "{}NULL"{} : std::to\_string((unsigned long long)(void**)m\_pT);}}
-\DoxyCodeLine{863         mes+=\textcolor{stringliteral}{"{}|"{}};}
-\DoxyCodeLine{864         mes+=\textcolor{stringliteral}{"{}w:"{}} + std::to\_string(m\_tot\_weight.to\_long\_double());}
-\DoxyCodeLine{865         mes+=\textcolor{stringliteral}{"{}]"{}};}
-\DoxyCodeLine{866         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{867     \}}
-\DoxyCodeLine{868 }
-\DoxyCodeLine{869     mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{870     \textcolor{comment}{//mes+=(m\_pT==NULL) ? "{}NULL"{} : std::to\_string((unsigned long long)(void**)m\_pT);}}
-\DoxyCodeLine{871     \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{872     \textcolor{comment}{//mes+=std::to\_string(m\_tot\_weight.to\_long\_double());}}
-\DoxyCodeLine{873     \textcolor{comment}{//mes+="{}, "{};}}
-\DoxyCodeLine{874     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{875         mes+=\textcolor{stringliteral}{"{}("{}};}
-\DoxyCodeLine{876         \textcolor{comment}{//std::string nulll=to\_stringTabs(indent+1);}}
-\DoxyCodeLine{877         std::string nulll=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{878         nulll+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{879         nulll+=\textcolor{stringliteral}{"{}NULL"{}};}
-\DoxyCodeLine{880         nulll+=\textcolor{stringliteral}{"{}, "{}};}
-\DoxyCodeLine{881         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
-\DoxyCodeLine{882 }
-\DoxyCodeLine{883         mes+=(m\_pBLBTree==NULL)?nulll : m\_pBLBTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{884         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{885         mes+=(m\_pBRBTree==NULL)?nulll : m\_pBRBTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{886         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{887         mes+=(m\_pBRFTree==NULL)?nulll : m\_pBRFTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{888         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{889         mes+=(m\_pBLFTree==NULL)?nulll : m\_pBLFTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{890         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{891         mes+=(m\_pTLBTree==NULL)?nulll : m\_pTLBTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{892         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{893         mes+=(m\_pTRBTree==NULL)?nulll : m\_pTRBTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{894         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{895         mes+=(m\_pTRFTree==NULL)?nulll : m\_pTRFTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{896         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{897         mes+=(m\_pTLFTree==NULL)?nulll : m\_pTLFTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{898         \textcolor{comment}{//mes+=((spread)?to\_stringTabs(indent+1) : "{}"{});}}
-\DoxyCodeLine{899 }
-\DoxyCodeLine{900 }
-\DoxyCodeLine{901         mes.erase(mes.length()-\/2);}
-\DoxyCodeLine{902         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{903         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{904         mes+=\textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{905     \}}
-\DoxyCodeLine{906 }
-\DoxyCodeLine{907     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{908 \}}
-\DoxyCodeLine{909 }
-\DoxyCodeLine{910 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{911     printTabs(indent);}
-\DoxyCodeLine{912     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{913 \}}
-\DoxyCodeLine{914 }
-\DoxyCodeLine{915 }
-\DoxyCodeLine{916 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* OCT\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{833                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{834                         \textcolor{keywordflow}{if} (m\_pBLFTree!=NULL)\{\textcolor{comment}{//Cube 3}}
+\DoxyCodeLine{835                             pT=m\_pBLFTree-\/>search(ppoint);}
+\DoxyCodeLine{836                         \}}
+\DoxyCodeLine{837                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{838                             \textcolor{keywordflow}{if} (m\_pBRFTree!=NULL)\{\textcolor{comment}{//Cube 4}}
+\DoxyCodeLine{839                                 pT=m\_pBRFTree-\/>search(ppoint);}
+\DoxyCodeLine{840                             \}}
+\DoxyCodeLine{841                             \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{842                                 \textcolor{keywordflow}{if} (m\_pTLBTree!=NULL)\{\textcolor{comment}{//Cube 5}}
+\DoxyCodeLine{843                                     pT=m\_pTLBTree-\/>search(ppoint);}
+\DoxyCodeLine{844                                 \}}
+\DoxyCodeLine{845                                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{846                                     \textcolor{keywordflow}{if} (m\_pTRBTree!=NULL)\{\textcolor{comment}{//Cube 6}}
+\DoxyCodeLine{847                                         pT=m\_pTRBTree-\/>search(ppoint);}
+\DoxyCodeLine{848                                     \}}
+\DoxyCodeLine{849                                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{850                                         \textcolor{keywordflow}{if} (m\_pBLBTree!=NULL)\{\textcolor{comment}{//Cube 7}}
+\DoxyCodeLine{851                                             pT=m\_pBLBTree-\/>search(ppoint);}
+\DoxyCodeLine{852                                         \}}
+\DoxyCodeLine{853                                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{854                                             \textcolor{keywordflow}{if} (m\_pBRBTree!=NULL)\{\textcolor{comment}{//Cube 8}}
+\DoxyCodeLine{855                                                 pT=m\_pBRBTree-\/>search(ppoint);}
+\DoxyCodeLine{856                                             \}}
+\DoxyCodeLine{857                                         \}}
+\DoxyCodeLine{858                                     \}}
+\DoxyCodeLine{859                                 \}}
+\DoxyCodeLine{860                             \}}
+\DoxyCodeLine{861                         \}}
+\DoxyCodeLine{862                     \}}
+\DoxyCodeLine{863                 \}}
+\DoxyCodeLine{864             \}}
+\DoxyCodeLine{865         \}}
+\DoxyCodeLine{866     \}}
+\DoxyCodeLine{867     \textcolor{keywordflow}{return} pT;}
+\DoxyCodeLine{868 \}}
+\DoxyCodeLine{869 }
+\DoxyCodeLine{870 }
+\DoxyCodeLine{871 }
+\DoxyCodeLine{872 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classOct}{Oct<T, M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{873     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{874     mes+=((spread)?to\_stringTabs(indent) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{875     \textcolor{comment}{//mes+="{}QUAD"{};}}
+\DoxyCodeLine{876 }
+\DoxyCodeLine{877     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{878         mes+=\textcolor{stringliteral}{"{}OCT["{}};}
+\DoxyCodeLine{879         std::stringstream ss;}
+\DoxyCodeLine{880         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{881         mes+=ss.str();}
+\DoxyCodeLine{882         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{883         mes+=m\_a.to\_string();                       \textcolor{comment}{//a}}
+\DoxyCodeLine{884         mes+=\textcolor{stringliteral}{"{}|"{}};}
+\DoxyCodeLine{885         mes+=m\_ppoint-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);      \textcolor{comment}{//Point}}
+\DoxyCodeLine{886         mes+=\textcolor{stringliteral}{"{}|"{}};}
+\DoxyCodeLine{887         mes+=m\_pbarycenter-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);     \textcolor{comment}{//Barycenter}}
+\DoxyCodeLine{888         mes+=\textcolor{stringliteral}{"{}|"{}};}
+\DoxyCodeLine{889         std::stringstream ss2;}
+\DoxyCodeLine{890         ss2 << m\_pT;}
+\DoxyCodeLine{891         mes+=ss2.str();}
+\DoxyCodeLine{892         \textcolor{comment}{//mes+=(m\_pT==NULL) ? "{}NULL"{} : std::to\_string((unsigned long long)(void**)m\_pT);}}
+\DoxyCodeLine{893         mes+=\textcolor{stringliteral}{"{}|"{}};}
+\DoxyCodeLine{894         mes+=\textcolor{stringliteral}{"{}w:"{}} + std::to\_string(m\_tot\_weight.to\_m\_type());}
+\DoxyCodeLine{895         mes+=\textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{896         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{897     \}}
+\DoxyCodeLine{898 }
+\DoxyCodeLine{899     mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{900     \textcolor{comment}{//mes+=(m\_pT==NULL) ? "{}NULL"{} : std::to\_string((unsigned long long)(void**)m\_pT);}}
+\DoxyCodeLine{901     \textcolor{comment}{//mes+="{}, "{};}}
+\DoxyCodeLine{902     \textcolor{comment}{//mes+=std::to\_string(m\_tot\_weight.to\_long\_double());}}
+\DoxyCodeLine{903     \textcolor{comment}{//mes+="{}, "{};}}
+\DoxyCodeLine{904     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{905         mes+=\textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{906         \textcolor{comment}{//std::string nulll=to\_stringTabs(indent+1);}}
+\DoxyCodeLine{907         std::string nulll=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{908         nulll+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{909         nulll+=\textcolor{stringliteral}{"{}NULL"{}};}
+\DoxyCodeLine{910         nulll+=\textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{911         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
+\DoxyCodeLine{912 }
+\DoxyCodeLine{913         mes+=(m\_pBLBTree==NULL)?nulll : m\_pBLBTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{914         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{915         mes+=(m\_pBRBTree==NULL)?nulll : m\_pBRBTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{916         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{917         mes+=(m\_pBRFTree==NULL)?nulll : m\_pBRFTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{918         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{919         mes+=(m\_pBLFTree==NULL)?nulll : m\_pBLFTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{920         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{921         mes+=(m\_pTLBTree==NULL)?nulll : m\_pTLBTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{922         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{923         mes+=(m\_pTRBTree==NULL)?nulll : m\_pTRBTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{924         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{925         mes+=(m\_pTRFTree==NULL)?nulll : m\_pTRFTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{926         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{927         mes+=(m\_pTLFTree==NULL)?nulll : m\_pTLFTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{928         \textcolor{comment}{//mes+=((spread)?to\_stringTabs(indent+1) : "{}"{});}}
+\DoxyCodeLine{929 }
+\DoxyCodeLine{930 }
+\DoxyCodeLine{931         mes.erase(mes.length()-\/2);}
+\DoxyCodeLine{932         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{933         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{934         mes+=\textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{935     \}}
+\DoxyCodeLine{936 }
+\DoxyCodeLine{937     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{938 \}}
+\DoxyCodeLine{939 }
+\DoxyCodeLine{940 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classOct}{Oct<T, M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{941     printTabs(indent);}
+\DoxyCodeLine{942     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{943 \}}
+\DoxyCodeLine{944 }
+\DoxyCodeLine{945 }
+\DoxyCodeLine{946 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* OCT\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

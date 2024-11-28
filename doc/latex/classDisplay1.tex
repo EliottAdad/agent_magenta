@@ -21,20 +21,20 @@ Collaboration diagram for Display1\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classDisplay1_aeba03432e8d8d430e80a257ad84e7d21}\label{classDisplay1_aeba03432e8d8d430e80a257ad84e7d21}} 
-{\bfseries Display1} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
+\mbox{\Hypertarget{classDisplay1_a845143080717fd6145deea5af0827c9d}\label{classDisplay1_a845143080717fd6145deea5af0827c9d}} 
+{\bfseries Display1} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ppoint)
 \item 
 \mbox{\Hypertarget{classDisplay1_aa3d99052256259320914a05a0c0b5e3d}\label{classDisplay1_aa3d99052256259320914a05a0c0b5e3d}} 
 {\bfseries Display1} (SDL\+\_\+\+Window $\ast$pwindow, SDL\+\_\+\+Renderer $\ast$prenderer)
 \item 
-\mbox{\Hypertarget{classDisplay1_ad3c5dcb1716fce4908651c886083729c}\label{classDisplay1_ad3c5dcb1716fce4908651c886083729c}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries get\+PPoint} ()
+\mbox{\Hypertarget{classDisplay1_a8e566a190adfcc8163bb51b186fccaac}\label{classDisplay1_a8e566a190adfcc8163bb51b186fccaac}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ {\bfseries get\+PPoint} ()
 \item 
-\mbox{\Hypertarget{classDisplay1_ad1779381a946839f4e090b7d2dabc5a8}\label{classDisplay1_ad1779381a946839f4e090b7d2dabc5a8}} 
-void {\bfseries set\+PPoint} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint, const bool \&delp=false)
+\mbox{\Hypertarget{classDisplay1_a5405b37cefb3a5c31865913ce10a6140}\label{classDisplay1_a5405b37cefb3a5c31865913ce10a6140}} 
+void {\bfseries set\+PPoint} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ppoint, const bool \&delp=false)
 \item 
-\mbox{\Hypertarget{classDisplay1_aadb5c18f79b574154bb931acc6b90e17}\label{classDisplay1_aadb5c18f79b574154bb931acc6b90e17}} 
-void {\bfseries set\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} \&point, const bool \&delp=true)
+\mbox{\Hypertarget{classDisplay1_a4318c2644f6540b3c698efe66338d106}\label{classDisplay1_a4318c2644f6540b3c698efe66338d106}} 
+void {\bfseries set\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&point, const bool \&delp=true)
 \item 
 \mbox{\Hypertarget{classDisplay1_a9a8620d7f7332fffbdac8f4ac8b89996}\label{classDisplay1_a9a8620d7f7332fffbdac8f4ac8b89996}} 
 char {\bfseries get\+Display} () const
@@ -42,11 +42,11 @@ char {\bfseries get\+Display} () const
 \mbox{\Hypertarget{classDisplay1_aa04d8311a9a097d2973bc2f28fe96f82}\label{classDisplay1_aa04d8311a9a097d2973bc2f28fe96f82}} 
 void {\bfseries set\+Display} (const char \&display)
 \item 
-\mbox{\Hypertarget{classDisplay1_a65e553a7aca4cdc530272df6d29cc0d6}\label{classDisplay1_a65e553a7aca4cdc530272df6d29cc0d6}} 
-long double {\bfseries get\+Scale} () const
+\mbox{\Hypertarget{classDisplay1_a6bc42942716b29955e06575940bd1d82}\label{classDisplay1_a6bc42942716b29955e06575940bd1d82}} 
+float {\bfseries get\+Scale} () const
 \item 
-\mbox{\Hypertarget{classDisplay1_a18105fad4d5661d32c1ae299ad85ea93}\label{classDisplay1_a18105fad4d5661d32c1ae299ad85ea93}} 
-void {\bfseries set\+Scale} (long double m\+\_\+scale)
+\mbox{\Hypertarget{classDisplay1_a6ab9fe7bf4ccd6953a123d9bf238a12d}\label{classDisplay1_a6ab9fe7bf4ccd6953a123d9bf238a12d}} 
+void {\bfseries set\+Scale} (const float \&scale)
 \item 
 \mbox{\Hypertarget{classDisplay1_a3ef080129a23ce7d23b710230a527d82}\label{classDisplay1_a3ef080129a23ce7d23b710230a527d82}} 
 SDL\+\_\+\+Color $\ast$ {\bfseries get\+PBkgd\+Color} ()
@@ -81,11 +81,11 @@ bool {\bfseries render} (\mbox{\hyperlink{classScene}{Scene}} $\ast$pscene) cons
 \mbox{\Hypertarget{classDisplay1_ac6bd3d5139a3385727ee1aea1c061dce}\label{classDisplay1_ac6bd3d5139a3385727ee1aea1c061dce}} 
 bool {\bfseries render} (\mbox{\hyperlink{structDisplayable}{Displayable}} $\ast$pdisplayable) const
 \item 
-\mbox{\Hypertarget{classDisplay1_ab4f94c823b4f6ac555984c4bdf04718e}\label{classDisplay1_ab4f94c823b4f6ac555984c4bdf04718e}} 
-void {\bfseries render\+Points} (std\+::set$<$ \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ $>$ ppoints) const
+\mbox{\Hypertarget{classDisplay1_ad095644dccecd933041aeec2b64e2222}\label{classDisplay1_ad095644dccecd933041aeec2b64e2222}} 
+void {\bfseries render\+Points} (std\+::set$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ $>$ ppoints) const
 \item 
-\mbox{\Hypertarget{classDisplay1_a2d4e94b2bf73b542ad6fc56dec1a056c}\label{classDisplay1_a2d4e94b2bf73b542ad6fc56dec1a056c}} 
-void {\bfseries render\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint) const
+\mbox{\Hypertarget{classDisplay1_a621c273f54ea34c60e76b44dbab14da4}\label{classDisplay1_a621c273f54ea34c60e76b44dbab14da4}} 
+void {\bfseries render\+Point} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ppoint) const
 \item 
 \mbox{\Hypertarget{classDisplay1_a0903d877c803cc4659690ab9a37c48df}\label{classDisplay1_a0903d877c803cc4659690ab9a37c48df}} 
 void {\bfseries render\+Lines} (std\+::set$<$ \mbox{\hyperlink{classLine3D}{Line3D}} $\ast$ $>$ plines) const

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getnorm_0',['getNorm',['../classVector3D.html#abcdac5d071a8539cedef3f2e12c37038',1,'Vector3D']]],
-  ['getpp1_1',['getPP1',['../classLine3D.html#a1a00c2f112757a086590e6469ba0bd61',1,'Line3D']]],
-  ['getpp2_2',['getPP2',['../classLine3D.html#a480422dac9e94a26f60fe590ec69b469',1,'Line3D']]]
+  ['getnorm_0',['getNorm',['../classVector3D.html#a7951335513a54530e346b9674011ba01',1,'Vector3D']]],
+  ['getpp1_1',['getPP1',['../classLine3D.html#a89771f425508acd1f82f112b3c131da5',1,'Line3D']]],
+  ['getpp2_2',['getPP2',['../classLine3D.html#afc152dfc6280e0a7427de2d1e8313bd6',1,'Line3D']]]
 ];

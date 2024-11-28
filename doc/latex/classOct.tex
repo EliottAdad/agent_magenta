@@ -1,149 +1,182 @@
-\hypertarget{classOct}{}\doxysection{Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classOct}\index{Oct$<$ T $>$@{Oct$<$ T $>$}}
+\hypertarget{classOct}{}\doxysection{Oct\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classOct}\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
 
 
-Inheritance diagram for Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Oct\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=142pt]{classOct__inherit__graph}
+\includegraphics[width=169pt]{classOct__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Oct\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Oct\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classOct__coll__graph}
+\includegraphics[width=169pt]{classOct__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classOct_a7011b6bc483f624632fa10e7fa76d11e}\label{classOct_a7011b6bc483f624632fa10e7fa76d11e}} 
-{\bfseries Oct} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}} \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
+\mbox{\hyperlink{classOct_afcf5934c496b75396bde3760958d2b62}{Oct}} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
-\mbox{\Hypertarget{classOct_ab499eead2347ff37ec5ad12fceefba81}\label{classOct_ab499eead2347ff37ec5ad12fceefba81}} 
-{\bfseries Oct} (const \mbox{\hyperlink{structLSN}{LSN}} \&a, \mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint)
+\mbox{\Hypertarget{classOct_a9e1250f04f9aa85e36fbbb3f1d7ddeb4}\label{classOct_a9e1250f04f9aa85e36fbbb3f1d7ddeb4}} 
+{\bfseries Oct} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ppoint)
 \item 
-\mbox{\Hypertarget{classOct_a05fb013b3028a499ce377f9e771dd4ee}\label{classOct_a05fb013b3028a499ce377f9e771dd4ee}} 
-\mbox{\hyperlink{structLSN}{LSN}} {\bfseries getA} () const
+\mbox{\Hypertarget{classOct_a5e09fc80ade0ebd1a22901197ad1ac6f}\label{classOct_a5e09fc80ade0ebd1a22901197ad1ac6f}} 
+{\bfseries Oct} (const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$poct)
 \item 
-\mbox{\Hypertarget{classOct_a1059e66bfeea37596c2722273025fd18}\label{classOct_a1059e66bfeea37596c2722273025fd18}} 
-void {\bfseries setA} (const \mbox{\hyperlink{structLSN}{LSN}} \&a)
+\mbox{\Hypertarget{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}\label{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Point} () const
 \item 
-\mbox{\Hypertarget{classOct_a6f9c0e0153199705b97b85e10c4b8503}\label{classOct_a6f9c0e0153199705b97b85e10c4b8503}} 
+\mbox{\Hypertarget{classOct_a76e8d91c1475006272b8a389c232f1e5}\label{classOct_a76e8d91c1475006272b8a389c232f1e5}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries get\+PPoint} () const
+\item 
+\mbox{\Hypertarget{classOct_a4358c4663c8e421420b9e138d87abcb0}\label{classOct_a4358c4663c8e421420b9e138d87abcb0}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Barycenter} () const
+\item 
+\mbox{\Hypertarget{classOct_a192b86c62da0a3a04f5ec97d78163dbf}\label{classOct_a192b86c62da0a3a04f5ec97d78163dbf}} 
+bool {\bfseries get\+DelP} () const
+\item 
+\mbox{\Hypertarget{classOct_a8438b69925fc1a6173ccedcd5020c1c2}\label{classOct_a8438b69925fc1a6173ccedcd5020c1c2}} 
+\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries getA} () const
+\item 
+\mbox{\Hypertarget{classOct_ae58bc611330af88f3a7fb60546614ea0}\label{classOct_ae58bc611330af88f3a7fb60546614ea0}} 
+void {\bfseries setA} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a)
+\item 
+\mbox{\Hypertarget{classOct_a84d69dbce8764bc3b375f56a1d88f78a}\label{classOct_a84d69dbce8764bc3b375f56a1d88f78a}} 
 unsigned int {\bfseries get\+NB\+\_\+\+OCTS} () const
 \item 
-\mbox{\Hypertarget{classOct_a577e019dbeb5e6a9c117489fa9714693}\label{classOct_a577e019dbeb5e6a9c117489fa9714693}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$ $\ast$ $>$ {\bfseries get\+PTrees} ()
+\mbox{\Hypertarget{classOct_aa68b9e8cd74f94f1f19bba143e760389}\label{classOct_aa68b9e8cd74f94f1f19bba143e760389}} 
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ $>$ {\bfseries get\+PTrees} ()
 \item 
-\mbox{\Hypertarget{classOct_a9e7564bf8cdf6aba3ab49cc57d6951fc}\label{classOct_a9e7564bf8cdf6aba3ab49cc57d6951fc}} 
+\mbox{\Hypertarget{classOct_a3e18d7129d20b90fa1c8fc9d3bd658e8}\label{classOct_a3e18d7129d20b90fa1c8fc9d3bd658e8}} 
 std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
 \item 
-\mbox{\Hypertarget{classOct_afe54c89312727bcddbdd19f11b0c3046}\label{classOct_afe54c89312727bcddbdd19f11b0c3046}} 
+\mbox{\Hypertarget{classOct_adfaab57cf2ddb43649cbfa7098ac4da8}\label{classOct_adfaab57cf2ddb43649cbfa7098ac4da8}} 
 std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PNeighbors} (T $\ast$pelement) const
 \item 
-\mbox{\Hypertarget{classOct_a27c195d322315049f35bd767238c37b7}\label{classOct_a27c195d322315049f35bd767238c37b7}} 
+\mbox{\Hypertarget{classOct_a54857d1bf3153a43384040f0cf4c27c8}\label{classOct_a54857d1bf3153a43384040f0cf4c27c8}} 
 bool {\bfseries insert} (T $\ast$pT)
 \item 
-\mbox{\Hypertarget{classOct_a2c56e3393adfdf23629541ee87e6d76f}\label{classOct_a2c56e3393adfdf23629541ee87e6d76f}} 
-void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$ $\ast$ $>$ \&pquads)
+\mbox{\Hypertarget{classOct_a1120479030e0449a67865e9012703296}\label{classOct_a1120479030e0449a67865e9012703296}} 
+void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ $>$ \&pocts)
 \item 
-\mbox{\Hypertarget{classOct_aa548888df7db2d062d0792edce30971b}\label{classOct_aa548888df7db2d062d0792edce30971b}} 
-T $\ast$ {\bfseries search} (\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ppoint) const
+\mbox{\Hypertarget{classOct_a230d9ec92c8f885bee9d0e99e0dc22e2}\label{classOct_a230d9ec92c8f885bee9d0e99e0dc22e2}} 
+T $\ast$ {\bfseries search} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ppoint) const
 \item 
-\mbox{\Hypertarget{classOct_a753a7ae0a5462ac88008a83ce9765f6b}\label{classOct_a753a7ae0a5462ac88008a83ce9765f6b}} 
+\mbox{\Hypertarget{classOct_ad06a923343a9c14938076aca970f921f}\label{classOct_ad06a923343a9c14938076aca970f921f}} 
 void {\bfseries recalculate} ()
 \item 
-\mbox{\Hypertarget{classOct_a686a0504af2daa1bc937ee4840af25a7}\label{classOct_a686a0504af2daa1bc937ee4840af25a7}} 
+\mbox{\Hypertarget{classOct_aa87ecccc543c5869fb40276849dfa1dd}\label{classOct_aa87ecccc543c5869fb40276849dfa1dd}} 
 bool {\bfseries empty} ()
 \item 
-std\+::string \mbox{\hyperlink{classOct_ac8ccdef808b64089a1bf08e2ce59d374}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+std\+::string \mbox{\hyperlink{classOct_af57f75b106ba701094820497bd3cd0d4}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-void \mbox{\hyperlink{classOct_adb714c1dd07b91c6d5dbf550ebf40a96}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+void \mbox{\hyperlink{classOct_a723ace6ad10302e4752939b5d07e223a}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classOct_a1796f44e8f21704dca70a7421199ecaa}\label{classOct_a1796f44e8f21704dca70a7421199ecaa}} 
-static \mbox{\hyperlink{structLSN}{LSN}} {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1, 0\}
+\mbox{\Hypertarget{classOct_aefdcb2a86d195c506c83bbdef8f4fdc5}\label{classOct_aefdcb2a86d195c506c83bbdef8f4fdc5}} 
+static \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1, 0\}
 \item 
-\mbox{\Hypertarget{classOct_ac0414ab190dae41cd676e888157c2605}\label{classOct_ac0414ab190dae41cd676e888157c2605}} 
+\mbox{\Hypertarget{classOct_ace0e897ada4dfa0fefd886d664ecf0ff}\label{classOct_ace0e897ada4dfa0fefd886d664ecf0ff}} 
 static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classOct_a125de0728a62a3197db632d1d0410c5f}\label{classOct_a125de0728a62a3197db632d1d0410c5f}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries m\+\_\+ppoint}
+\mbox{\Hypertarget{classOct_a6a6e69443c3b9554d4c283cd01c07fd5}\label{classOct_a6a6e69443c3b9554d4c283cd01c07fd5}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries m\+\_\+ppoint}
 \item 
-\mbox{\Hypertarget{classOct_a3c1ca4a0f2d2834369fba83e227d4db9}\label{classOct_a3c1ca4a0f2d2834369fba83e227d4db9}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}} $\ast$ {\bfseries m\+\_\+pbarycenter}
+\mbox{\Hypertarget{classOct_a3bb909b155b2b956618604d718a3145b}\label{classOct_a3bb909b155b2b956618604d718a3145b}} 
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries m\+\_\+pbarycenter}
 \item 
-\mbox{\Hypertarget{classOct_a5908182fead256a86215541292292472}\label{classOct_a5908182fead256a86215541292292472}} 
-bool {\bfseries m\+\_\+delppoint}
+\mbox{\Hypertarget{classOct_aa013bf2129f64317da3c34947635b1a6}\label{classOct_aa013bf2129f64317da3c34947635b1a6}} 
+bool {\bfseries m\+\_\+delp}
 \item 
-\mbox{\Hypertarget{classOct_ae2c608cc697435d0adcba5673a55dc77}\label{classOct_ae2c608cc697435d0adcba5673a55dc77}} 
-\mbox{\hyperlink{structLSN}{LSN}} {\bfseries m\+\_\+a}
+\mbox{\Hypertarget{classOct_afcbb7fb8e688824a91295730ef09f61f}\label{classOct_afcbb7fb8e688824a91295730ef09f61f}} 
+\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+a}
 \item 
-\mbox{\Hypertarget{classOct_a3904e95ac04837b76b1a45dfd7ad5da1}\label{classOct_a3904e95ac04837b76b1a45dfd7ad5da1}} 
-\mbox{\hyperlink{structLSN}{LSN}} {\bfseries m\+\_\+tot\+\_\+weight}
+\mbox{\Hypertarget{classOct_a3dc0e950ee376f4d3a2c0f3767299bc6}\label{classOct_a3dc0e950ee376f4d3a2c0f3767299bc6}} 
+\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+tot\+\_\+weight}
 \item 
-\mbox{\Hypertarget{classOct_a3bf9a33adbd3a7e1f4a885bc9444f9c3}\label{classOct_a3bf9a33adbd3a7e1f4a885bc9444f9c3}} 
+\mbox{\Hypertarget{classOct_aeee91a48e9aa3580ebef7385dd6849c1}\label{classOct_aeee91a48e9aa3580ebef7385dd6849c1}} 
 T $\ast$ {\bfseries m\+\_\+pT}
 \item 
-\mbox{\Hypertarget{classOct_ae8358a2f4e9cadaa1268675f6f5e644e}\label{classOct_ae8358a2f4e9cadaa1268675f6f5e644e}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+TLFTree}
+\mbox{\Hypertarget{classOct_a3877e8b7d39105d9d7112e55ee049edf}\label{classOct_a3877e8b7d39105d9d7112e55ee049edf}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TLFTree}
 \item 
-\mbox{\Hypertarget{classOct_af8dbe09d3b339264c80192f3390e2e48}\label{classOct_af8dbe09d3b339264c80192f3390e2e48}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+TRFTree}
+\mbox{\Hypertarget{classOct_a6b2f728fa8ff60b68d67bfeeabea87f4}\label{classOct_a6b2f728fa8ff60b68d67bfeeabea87f4}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TRFTree}
 \item 
-\mbox{\Hypertarget{classOct_a792054d61bef6a357453fe84e88c65e5}\label{classOct_a792054d61bef6a357453fe84e88c65e5}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+BLFTree}
+\mbox{\Hypertarget{classOct_a74ca6eb8bac51716ab500452bdb5c9b6}\label{classOct_a74ca6eb8bac51716ab500452bdb5c9b6}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BLFTree}
 \item 
-\mbox{\Hypertarget{classOct_ac0e9003cf3fa122fdf798f473af7a9c8}\label{classOct_ac0e9003cf3fa122fdf798f473af7a9c8}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+BRFTree}
+\mbox{\Hypertarget{classOct_affa0b058ec4c4148fe0f5e91f02cd002}\label{classOct_affa0b058ec4c4148fe0f5e91f02cd002}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BRFTree}
 \item 
-\mbox{\Hypertarget{classOct_ab85e1deeed3d647dd6986e3bfc9e9948}\label{classOct_ab85e1deeed3d647dd6986e3bfc9e9948}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+TLBTree}
+\mbox{\Hypertarget{classOct_a8e3077ccc31c681722b9fa104e9ae810}\label{classOct_a8e3077ccc31c681722b9fa104e9ae810}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TLBTree}
 \item 
-\mbox{\Hypertarget{classOct_a89479e4cdc889c4676902eca95f7f16e}\label{classOct_a89479e4cdc889c4676902eca95f7f16e}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+TRBTree}
+\mbox{\Hypertarget{classOct_aa11e292841abc571c98c640d26f91e47}\label{classOct_aa11e292841abc571c98c640d26f91e47}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TRBTree}
 \item 
-\mbox{\Hypertarget{classOct_ac3a2d50c9f7b942dd083091c146f2973}\label{classOct_ac3a2d50c9f7b942dd083091c146f2973}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+BLBTree}
+\mbox{\Hypertarget{classOct_aabc21ca505277cf5c74aef5c906ae545}\label{classOct_aabc21ca505277cf5c74aef5c906ae545}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BLBTree}
 \item 
-\mbox{\Hypertarget{classOct_a995600fddd1b5f3ca4d96b0ca36aadf6}\label{classOct_a995600fddd1b5f3ca4d96b0ca36aadf6}} 
-\mbox{\hyperlink{classOct}{Oct}} $\ast$ {\bfseries m\+\_\+p\+BRBTree}
+\mbox{\Hypertarget{classOct_a7bba901678fe6d9e0db0677bb4256062}\label{classOct_a7bba901678fe6d9e0db0677bb4256062}} 
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BRBTree}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classOct_ae2e97d7db7c0c4af439726d3d63b033f}\label{classOct_ae2e97d7db7c0c4af439726d3d63b033f}} 
+\mbox{\Hypertarget{classOct_a07d536e34476a058390afe16de871de3}\label{classOct_a07d536e34476a058390afe16de871de3}} 
 static unsigned int {\bfseries m\+\_\+\+NB\+\_\+\+OCTS} =0
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOct_afcf5934c496b75396bde3760958d2b62}\label{classOct_afcf5934c496b75396bde3760958d2b62}} 
+\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!Oct@{Oct}}
+\index{Oct@{Oct}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
+\doxysubsubsection{\texorpdfstring{Oct()}{Oct()}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\mbox{\hyperlink{classOct}{\+::\+Oct}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&}]{a,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{point = {\ttfamily \{\{0,0\},\{0,0\},\{0,0\}\}} }\end{DoxyParamCaption})}
+
+Constructor1 
+\begin{DoxyParams}{Parameters}
+{\em a\{\+The} & side\textquotesingle{}s lenght of the area\} \\
+\hline
+{\em point\{\+The} & center on which is centered the \mbox{\hyperlink{classOct}{Oct}}\textquotesingle{}s area\} \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classOct_adb714c1dd07b91c6d5dbf550ebf40a96}\label{classOct_adb714c1dd07b91c6d5dbf550ebf40a96}} 
-\index{Oct$<$ T $>$@{Oct$<$ T $>$}!print@{print}}
-\index{print@{print}!Oct$<$ T $>$@{Oct$<$ T $>$}}
+\mbox{\Hypertarget{classOct_a723ace6ad10302e4752939b5d07e223a}\label{classOct_a723ace6ad10302e4752939b5d07e223a}} 
+\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!print@{print}}
+\index{print@{print}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-void \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+void \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
-\mbox{\Hypertarget{classOct_ac8ccdef808b64089a1bf08e2ce59d374}\label{classOct_ac8ccdef808b64089a1bf08e2ce59d374}} 
-\index{Oct$<$ T $>$@{Oct$<$ T $>$}!to\_string@{to\_string}}
-\index{to\_string@{to\_string}!Oct$<$ T $>$@{Oct$<$ T $>$}}
+\mbox{\Hypertarget{classOct_af57f75b106ba701094820497bd3cd0d4}\label{classOct_af57f75b106ba701094820497bd3cd0d4}} 
+\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-std\+::string \mbox{\hyperlink{classOct}{Oct}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+std\+::string \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

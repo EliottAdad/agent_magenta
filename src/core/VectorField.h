@@ -30,7 +30,7 @@
 class VectorField : public TimeSensitive {
 protected:
 	// @TODO change mode to integer where it indicates the degree of differenciation (acc, jerks, ...) no speed or displacement
-	unsigned int m_mode;										// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').
+	unsigned char m_mode;										// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').
 	float m_k;													// Coeff of proportionnality to apply.
 	std::unordered_set<Moveable*> m_pmoveables;					// Pointers to the Moveables.
 
@@ -42,8 +42,8 @@ public:
 
 	std::unordered_set<Moveable*> getPMoveables() const;
 	bool addPMoveable(Moveable* pmoveable);
-	unsigned int getMode() const;
-	void setMode(const unsigned int& mode);
+	unsigned char getMode() const;
+	void setMode(const unsigned char& mode);
 
 	/*virtual void applyAsAcc(const float& dt);
 	virtual void applyAsSpeed();

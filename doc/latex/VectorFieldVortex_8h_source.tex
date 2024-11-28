@@ -19,17 +19,17 @@
 \DoxyCodeLine{15 \textcolor{comment}{ *  VectorFieldVortex :)}}
 \DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{17 \textcolor{comment}{ */}}
-\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classVectorFieldVortex}{VectorFieldVortex}}: \textcolor{keyword}{public} \mbox{\hyperlink{classVectorField}{VectorField}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classVectorFieldVortex}{VectorFieldVortex}} : \textcolor{keyword}{public} \mbox{\hyperlink{classVectorField}{VectorField}} \{}
 \DoxyCodeLine{19 \textcolor{keyword}{protected}:}
 \DoxyCodeLine{20     \textcolor{keywordtype}{float} m\_m;              \textcolor{comment}{//Moment unit/m or N/m.}}
-\DoxyCodeLine{21     \mbox{\hyperlink{structPoint3D}{Point3D}}* m\_ppoint;       \textcolor{comment}{//Center.}}
+\DoxyCodeLine{21     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* m\_ppoint;     \textcolor{comment}{//Center.}}
 \DoxyCodeLine{22 }
 \DoxyCodeLine{23 \textcolor{keyword}{public}:}
 \DoxyCodeLine{24     \mbox{\hyperlink{classVectorFieldVortex}{VectorFieldVortex}}();}
 \DoxyCodeLine{25     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVectorFieldVortex}{\string~VectorFieldVortex}}();}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{keywordtype}{void} applyAsForce(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
-\DoxyCodeLine{28     \textcolor{keywordtype}{void} applyAsAcc(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} applyAsForce(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} applyAsAcc(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
 \DoxyCodeLine{29     \textcolor{keywordtype}{void} applyAsSpeed();}
 \DoxyCodeLine{30     \textcolor{keywordtype}{void} applyAsPos();}
 \DoxyCodeLine{31 \};}

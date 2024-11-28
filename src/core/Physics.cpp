@@ -29,11 +29,11 @@ Physics::Physics(const Physics& phys) {
 
 
 
-unsigned int Physics::getPPS() const {
+unsigned char Physics::getPPS() const {
 	return m_pps;
 }
 
-void Physics::setPPS(const unsigned int& pps) {
+void Physics::setPPS(const unsigned char& pps) {
 	m_pps=pps;
 }
 
@@ -45,7 +45,7 @@ void Physics::setSpeed(const float& speed) {
 	m_speed=speed;
 }
 
-unsigned int Physics::getFCollide() const {
+bool Physics::getFCollide() const {
 	return m_fcollide;
 }
 
@@ -53,7 +53,7 @@ void Physics::setFCollide(const bool& fcollide) {
 	m_fcollide=fcollide;
 }
 
-unsigned int Physics::getFPause() const {
+bool Physics::getFPause() const {
 	return m_fpause;
 }
 
@@ -131,9 +131,9 @@ bool Physics::run(const unsigned int& steps) {
 
 bool Physics::iterate(const float& dt) {//THE PROBLEM
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
-		printf("\nHello1\n");
+		//printf("\nHello1\n");
 		ptime_sensitive->setT(dt*m_speed);
-		printf("%f\n", dt*m_speed);
+		//printf("%f\n", dt*m_speed);
 		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
 	}
 	return m_fpause;

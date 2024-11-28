@@ -58,7 +58,7 @@
 
 
 /*
- * Main core (LSN, SN, Point3D, WeightedPoint3D)
+ * Main core (LSN, Point3D, WeightedPoint3D)
  */
 /*int main(int argc, char* argv[]){
 	//
@@ -86,8 +86,9 @@
 
 	//nb3*=2.;
 
-	bool answ=(nb3>1.);
-	printf("\nansw:\n %b", answ);
+	bool answ=(nb3<1.);
+	printf("\n\nansw:\n %b\n", answ);
+
 	printf("\nnb3:\n");
 	nb3.print(true, 0, true);
 
@@ -98,12 +99,12 @@
 	//
 	std::cout<< "\n" << "####Tests Points####" << "\n";
 
-	Point3D p1{{0,0},{2,0},{1,0}};
-	Point3D p2{{2,8},{2,0},{1,0}};
-	p1-=p2;							// {{-2,8},{0,0},{0,0}} Doesn't work.
-	//p1+=p2;								// {{2,8},{4,0},{2,0}}
-	Point3D p3{{18,7},{2,0},{5,0}};
-	Point3D p4=p1+p2-p3;				// {{-1.8,8},{0,0},{-4,0}}
+	Point3D<float, char> p1{{0,0},{2,0},{1,0}};
+	Point3D<float, char> p2{{2,8},{2,0},{1,0}};
+	p1-=p2;											// {{-2,8},{0,0},{0,0}} Doesn't work.
+	//p1+=p2;										// {{2,8},{4,0},{2,0}}
+	Point3D<float, char> p3{{18,7},{2,0},{5,0}};
+	Point3D<float, char> p4=p1+p2-p3;				// {{-1.8,8},{0,0},{-4,0}}
 	//p4-=p4;
 	printf("\np1:\n");
 	p1.print(true, 0, false);
@@ -125,10 +126,10 @@
 	//
 	std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
 
-	WeightedPoint3D wp1{{0,0},{2,0},{1,0},{1,0}};
-	WeightedPoint3D wp2{{20,7},{2,0},{1,0},{1,0}};
-	WeightedPoint3D wp3{{18,7},{2,0},{5,0},{1,0}};
-	WeightedPoint3D wp4=wp1+wp2-wp3;
+	WeightedPoint3D<float, char> wp1{{0,0},{2,0},{1,0},{1,0}};
+	WeightedPoint3D<float, char> wp2{{20,7},{2,0},{1,0},{1,0}};
+	WeightedPoint3D<float, char> wp3{{18,7},{2,0},{5,0},{1,0}};
+	WeightedPoint3D<float, char> wp4=wp1+wp2-wp3;
 
 	wp1.print(true, 0, false);
 	wp2.print(true, 0, false);
@@ -137,185 +138,9 @@
 }*/
 
 
-/*
- * Main core (Vector3D)
- */
-/*int main(int argc, char* argv[]){
-	//
-	// Tests Vectors
-	//
-	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
-
-	Vector3D v1;
-	v1.print(true, true, 0);
-	Vector3D v2;
-	v2.print(true, true, 0);
-	Vector3D v3;
-	v3.print(true, true, 0);
-
-
-	printf("\n Test + start \n");
-	std::unique_ptr<Vector3D> rv1=v1+v2;
-	rv1->print();
-	printf("\n Test + end \n");
-
-	printf("\n Test - start \n");
-	std::unique_ptr<Vector3D> rv2=v1-v2;
-	rv2->print();
-	printf("\n Test - end \n");
-
-	printf("\n Test * start \n");
-	std::unique_ptr<Vector3D> rv3=v1*2.;
-	rv3->print();
-	printf("\n Test * end \n");
-
-	printf("\n Test / start \n");
-	std::unique_ptr<Vector3D> rv4=v1/2.;
-	rv4->print();
-	printf("\n Test / end \n");
-
-	printf("\n Test += start \n");
-	v3+=v1;
-	v3.print();
-	printf("\n Test += end \n");
-
-	printf("\n Test -= start \n");
-	v3-=v1;
-	v3.print();
-	printf("\n Test -= end \n");
-
-	printf("\n Test *= start \n");
-	v3*=-2.;
-	v3.print();
-	printf("\n Test *= end \n");
-
-	printf("\n Test /= start \n");
-	v3/=-2.;
-	v3.print();
-	printf("\n Test /= end \n");
-
-	// Still cannot chain operators
-	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-	std::unique_ptr<Vector3D> rv5(*rv1+*rv2);
-	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-	rv5->print(true, true, 1);
-	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
-}*/
 
 
 
-/*
- * Main core (Particle3D)
- */
-/*int main(int argc, char* argv[]){
-	printf("%lu\n", sizeof(Point3D));
-	//
-	// Tests Particles
-	//
-	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
-
-	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
-	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
-	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
-	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
-	par1.print(true, true, 0);
-	par2.print(true, true, 0);
-	par3.print(true, true, 0);
-	par4.print(true, true, 0);
-
-
-	//
-	// Tests Quads
-	//
-	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
-	Quad<Particle3D> q1(LSN{1, 2});
-	//q1.m_ALPHA=0.1;
-
-	q1.insert(&par1);
-	q1.insert(&par2);
-	q1.insert(&par3);
-	q1.insert(&par4);
-	q1.print(true, true, 0);
-
-//	std::cout << "\nArobase\n";
-//
-//	std::unordered_set<Quad<Particle3D>*> pquads;
-//	q1.find(par4, pquads);
-//	for (Quad<Particle3D>* pquad : pquads){
-//		pquad->print(true, false, 0);
-//	}
-
-	//Vector3D v(Point3D{{0,0},{0,0},{0,0}}, Point3D{{0,0},{0,0},{0,0}});
-	//q1.computeInverseSquareLawResultant(par4, v);
-	//std::cout << "\n" << v.to_string() << "\n";
-
-	//
-	// Tests Octs
-	//
-	std::cout<< "\n" << "####Tests Octs####" << "\n" << "\n";
-	Oct<Particle3D> o1(LSN{1, 2});
-
-	o1.insert(&par1);
-	o1.insert(&par2);
-	o1.insert(&par3);
-	o1.insert(&par4);
-	//o1.recalculate();
-	o1.print(true, true, 0);
-}*/
-
-
-//	/*
-//	 * Tests Particle Sets
-//	 */
-//	std::cout<< "\n" << "####Tests Particle Sets####" << "\n";
-//	ParticleSystem3D ps;
-//	ps.addPParticle(&par1);
-//	ps.addPParticle(&par2);
-//	ps.print(true, true, 0);
-//
-	/*
-	 * Tests Systems
-	 */
-//	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
-//	System3D<Particle3D> ps2;
-//	ps2.addPElement(&par1);
-//	ps2.addPElement(&par2);
-//	ps2.print(true, true, 0);
-
-//	/*
-//	 * Tests Vector Fields
-//	 */
-//	VectorFieldUnidirectional vf1;
-//	//vf1.addPMoveable(&ps);
-//	vf1.print(true, true, 0);
-
-
-	/*
-	 * Tests Physics
-	 */
-	/*std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
-	Physics phys;
-	phys.setCPS(100);
-	phys.setFPause(false);
-	printf("%b\n", phys.addPTimeSensitive(&par1));
-	printf("%b\n", phys.addPTimeSensitive(&ps2));*/
-
-	//phys.run(1);
-
-	// Affichage du mouvement
-	//vf1.print(true, 0, true);
-
-	//phys.print(true, true, 0);
-
-	/*
-	 * Tests Physics
-	 */
-
-	//std::cout<< "\n" << "####Tests Physics2####" << "\n";
-//	printf("\nBye bye\n");
-//
-//	return 0;
-//}
 
 
 

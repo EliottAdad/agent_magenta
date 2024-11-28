@@ -44,11 +44,11 @@ bool VectorField::addPMoveable(Moveable* pmoveable) {
 	return success;
 }
 
-unsigned int VectorField::getMode() const {
+unsigned char VectorField::getMode() const {
 	return m_mode;
 }
 
-void VectorField::setMode(const unsigned int& mode) {
+void VectorField::setMode(const unsigned char& mode) {
 	if (mode>=2){
 		m_mode=mode;
 	}

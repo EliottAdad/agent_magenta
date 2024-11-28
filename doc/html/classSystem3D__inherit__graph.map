@@ -1,5 +1,5 @@
-<map id="System3D&lt; T &gt;" name="System3D&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,155,132,181"/>
-<area shape="rect" id="node2" href="$classTimeSensitive.html" title=" " alt="" coords="11,80,126,107"/>
-<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="29,5,109,32"/>
+<map id="System3D&lt; T, M, E &gt;" name="System3D&lt; T, M, E &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="5,155,168,181"/>
+<area shape="rect" id="node2" href="$classTimeSensitive.html" title=" " alt="" coords="29,80,144,107"/>
+<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="47,5,127,32"/>
 </map>

@@ -12,54 +12,56 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef GAME\_H\_}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define GAME\_H\_}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../core/Physics.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../core/Scene.h"{}}}
-\DoxyCodeLine{14 \textcolor{comment}{//\#include "{}../display/Camera.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../display/Display1.h"{}}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{comment}{/*}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{19 \textcolor{comment}{ *  Game :)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../core/Physics.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../core/Scene.h"{}}}
+\DoxyCodeLine{16 \textcolor{comment}{//\#include "{}../display/Camera.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../display/Display1.h"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
 \DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{21 \textcolor{comment}{ * Contains a scene, a physics management system, and a display.}}
-\DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classGame}{Game}} \{}
-\DoxyCodeLine{24 \textcolor{keyword}{private}:}
-\DoxyCodeLine{25     SDL\_Window* m\_pwindow;              \textcolor{comment}{// Pointeur to the window.}}
-\DoxyCodeLine{26     SDL\_Renderer* m\_prenderer;          \textcolor{comment}{// Pointeur to the renderer.}}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28     \mbox{\hyperlink{classPhysics}{Physics}}* m\_pphysics;}
-\DoxyCodeLine{29     \mbox{\hyperlink{classScene}{Scene}}* m\_pscene;                   \textcolor{comment}{// A scene}}
-\DoxyCodeLine{30     \mbox{\hyperlink{classDisplay1}{Display1}}* m\_pdisplay;}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_fps;                 \textcolor{comment}{//Frames per second}}
-\DoxyCodeLine{33     \textcolor{comment}{//unsigned int m\_pps;               //Physics per second}}
-\DoxyCodeLine{34     \textcolor{keywordtype}{bool} m\_fpause;}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{keyword}{public}:}
-\DoxyCodeLine{37     \mbox{\hyperlink{classGame}{Game}}();}
-\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{classGame}{\string~Game}}();}
-\DoxyCodeLine{39     \textcolor{comment}{//Game(const Game \&other);}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     \textcolor{comment}{//SDL\_Window* getPWindow();}}
-\DoxyCodeLine{42     \textcolor{comment}{//SDL\_Renderer* getPRenderer();}}
-\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPS() \textcolor{keyword}{const};}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} setFPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& fps);}
-\DoxyCodeLine{45     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getPPS() \textcolor{keyword}{const};}
-\DoxyCodeLine{46     \textcolor{keywordtype}{void} setPPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& pps);}
-\DoxyCodeLine{47     \mbox{\hyperlink{classPhysics}{Physics}}* getPPhysics();}
-\DoxyCodeLine{48     \mbox{\hyperlink{classScene}{Scene}}* getPScene();}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50     std::unordered\_set<TimeSensitive*> getPTimeSensitives();}
-\DoxyCodeLine{51     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);  \textcolor{comment}{// Runs a certain number of frames}}
-\DoxyCodeLine{54     \textcolor{keywordtype}{bool} iterate(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);    \textcolor{comment}{// Renders once (à faire)}}
-\DoxyCodeLine{55     \textcolor{keywordtype}{bool} render() \textcolor{keyword}{const};                    \textcolor{comment}{// Draws the content of the game on the screen}}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57 \};}
+\DoxyCodeLine{21 \textcolor{comment}{ *  Game :)}}
+\DoxyCodeLine{22 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{23 \textcolor{comment}{ * Contains a scene, a physics management system, and a display.}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classGame}{Game}} \{}
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27     SDL\_Window* m\_pwindow;              \textcolor{comment}{// Pointeur to the window.}}
+\DoxyCodeLine{28     SDL\_Renderer* m\_prenderer;          \textcolor{comment}{// Pointeur to the renderer.}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{classPhysics}{Physics}}* m\_pphysics;}
+\DoxyCodeLine{31     \mbox{\hyperlink{classScene}{Scene}}* m\_pscene;                   \textcolor{comment}{// A scene}}
+\DoxyCodeLine{32     \mbox{\hyperlink{classDisplay1}{Display1}}* m\_pdisplay;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_fps;                 \textcolor{comment}{//Frames per second}}
+\DoxyCodeLine{35     \textcolor{comment}{//unsigned int m\_pps;               //Physics per second}}
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} m\_fpause;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39     \mbox{\hyperlink{classGame}{Game}}();}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{classGame}{\string~Game}}();}
+\DoxyCodeLine{41     \textcolor{comment}{//Game(const Game \&other);}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{//SDL\_Window* getPWindow();}}
+\DoxyCodeLine{44     \textcolor{comment}{//SDL\_Renderer* getPRenderer();}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFPS() \textcolor{keyword}{const};}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} setFPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& fps);}
+\DoxyCodeLine{47     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getPPS() \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} setPPS(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& pps);}
+\DoxyCodeLine{49     \mbox{\hyperlink{classPhysics}{Physics}}* getPPhysics();}
+\DoxyCodeLine{50     \mbox{\hyperlink{classScene}{Scene}}* getPScene();}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     std::unordered\_set<TimeSensitive*> getPTimeSensitives();}
+\DoxyCodeLine{53     \textcolor{keywordtype}{bool} addPTimeSensitive(\mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}* ptime\_sensitive);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{bool} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& steps=1);  \textcolor{comment}{// Runs a certain number of frames}}
+\DoxyCodeLine{56     \textcolor{keywordtype}{bool} iterate(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);    \textcolor{comment}{// Renders once (à faire)}}
+\DoxyCodeLine{57     \textcolor{keywordtype}{bool} render() \textcolor{keyword}{const};                    \textcolor{comment}{// Draws the content of the game on the screen}}
 \DoxyCodeLine{58 }
-\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* GAME\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* GAME\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,8 +1,8 @@
 <map id="VectorFieldVortex" name="VectorFieldVortex">
-<area shape="rect" id="node1" title=" " alt="" coords="48,289,184,316"/>
+<area shape="rect" id="node1" title=" " alt="" coords="72,289,208,316"/>
 <area shape="rect" id="node2" href="$classVectorField.html" title=" " alt="" coords="15,200,110,227"/>
 <area shape="rect" id="node3" href="$classTimeSensitive.html" title=" " alt="" coords="5,81,120,108"/>
 <area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="117,5,197,32"/>
-<area shape="rect" id="node5" href="$structPoint3D.html" title=" " alt="" coords="134,200,207,227"/>
-<area shape="rect" id="node6" href="$structLSN.html" title=" " alt="" coords="195,81,242,108"/>
+<area shape="rect" id="node5" href="$structPoint3D.html" title=" " alt="" coords="135,200,303,227"/>
+<area shape="rect" id="node6" href="$structSN.html" title=" " alt="" coords="195,81,330,108"/>
 </map>
