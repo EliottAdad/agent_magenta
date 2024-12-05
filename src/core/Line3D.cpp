@@ -8,8 +8,8 @@
 #include "Line3D.h"
 
 Line3D::Line3D(){
-	m_pp1=new Point3D<float, char>{{0, 0}, {0, 0}, {0, 0}};
-	m_pp2=new Point3D<float, char>{{1, 0}, {1, 0}, {1, 0}};
+	m_pp1=new Point3D<float, char>{{0,0}, {0,0}, {0,0}};
+	m_pp2=new Point3D<float, char>{{1,0}, {1,0}, {1,0}};
 	m_delp1=true;
 	m_delp2=true;
 }
@@ -22,10 +22,20 @@ Line3D::Line3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2){/
 }
 
 Line3D::Line3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2){//:)
-	this->m_pp1=pp1;
-	this->m_pp2=pp2;
-	m_delp1=false;
-	m_delp2=false;
+	if (pp1!=NULL){
+		this->m_pp1=pp1;
+		m_delp1=false;
+	}else{
+		this->m_pp1=new Point3D<float, char>{{0,0}, {0,0}, {0,0}};
+		m_delp1=true;
+	}
+	if (pp2!=NULL){
+		this->m_pp2=pp2;
+		m_delp2=false;
+	}else{
+		this->m_pp2=new Point3D<float, char>{{1,0}, {1,0}, {1,0}};
+		m_delp2=true;
+	}
 }
 
 /*
@@ -51,14 +61,14 @@ Line3D::Line3D(const Line3D* pl){
 Line3D::~Line3D() {
 	if (m_delp1){
 		delete m_pp1;
-	}else{
+	}/*else{
 		m_pp1=NULL;
-	}
+	}*/
 	if (m_delp2){
 		delete m_pp2;
-	}else{
+	}/*else{
 		m_pp2=NULL;
-	}
+	}*/
 }
 
 
@@ -82,10 +92,10 @@ Point3D<float, char>* Line3D::getPP1() const {
 }
 
 void Line3D::setP1(Point3D<float, char>& p1, const bool& delp) {
+	if (m_delp1){
+		delete m_pp1;
+	}
 	if (delp){
-		if (m_delp1){
-			delete m_pp1;
-		}
 		m_pp1=new Point3D<float, char>(p1);
 	}else{
 		m_pp1=&p1;
@@ -94,15 +104,17 @@ void Line3D::setP1(Point3D<float, char>& p1, const bool& delp) {
 }
 
 void Line3D::setPP1(Point3D<float, char>* pp1, const bool& delp) {
-	if (delp){
+	if (pp1!=NULL){
 		if (m_delp1){
 			delete m_pp1;
 		}
-		m_pp1=new Point3D<float, char>(*pp1);
-	}else{
-		m_pp1=pp1;
+		if (delp){
+			m_pp1=new Point3D<float, char>(*pp1);
+		}else{
+			m_pp1=pp1;
+		}
+		m_delp1=delp;
 	}
-	m_delp1=delp;
 }
 
 Point3D<float, char> Line3D::getP2() const {
@@ -124,10 +136,10 @@ Point3D<float, char>* Line3D::getPP2() const {
 }
 
 void Line3D::setP2(Point3D<float, char>& p2, const bool& delp) {
+	if (m_delp2){
+		delete m_pp2;
+	}
 	if (delp){
-		if (m_delp2){
-			delete m_pp2;
-		}
 		m_pp1=new Point3D<float, char>(p2);
 	}else{
 		m_pp2=&p2;
@@ -136,15 +148,17 @@ void Line3D::setP2(Point3D<float, char>& p2, const bool& delp) {
 }
 
 void Line3D::setPP2(Point3D<float, char>* pp2, const bool& delp) {
-	if (delp){
+	if (pp2!=NULL){
 		if (m_delp2){
 			delete m_pp2;
 		}
-		m_pp2=new Point3D<float, char>(*pp2);
-	}else{
-		m_pp2=pp2;
+		if (delp){
+			m_pp2=new Point3D<float, char>(*pp2);
+		}else{
+			m_pp2=pp2;
+		}
+		m_delp2=delp;
 	}
-	m_delp2=delp;
 }
 
 bool Line3D::getDelP1() const {

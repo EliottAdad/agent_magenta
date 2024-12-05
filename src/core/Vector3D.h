@@ -6,9 +6,9 @@
  */
 
 #ifndef VECTOR3D_H_
+
 #define VECTOR3D_H_
 
-#include <memory>
 
 #include "Line3D.h"
 #include "Point3D.h"
@@ -17,7 +17,6 @@
  * ############
  *  Vector3D :)
  * ############
- * Heritage de Line ne marche pas (What ?)
  */
 class Vector3D : public Line3D {
 public:
@@ -30,8 +29,8 @@ public:
 	Vector3D(const Vector3D* pv);
 	virtual ~Vector3D();//:)
 
-	void setPPoint(Point3D<float, char>* ppoint, const bool& delp=true);
-	void setPoint(Point3D<float, char>& point, const bool& delp=false);
+	//void setPPoint(Point3D<float, char>* ppoint, const bool& delp=true);
+	//void setPoint(Point3D<float, char>& point, const bool& delp=false);
 
 	SN<float, char> getNorm() const;// :)
 	void setNorm(const SN<float, char>& norm);// :)
@@ -63,6 +62,7 @@ public:
 };
 
 std::unique_ptr<Vector3D> operator+(const Vector3D& v1, const Vector3D& v2);// :)
+//std::unique_ptr<Vector3D>& operator+(const std::unique_ptr<Vector3D>& pv1, const std::unique_ptr<Vector3D>& pv2);
 std::unique_ptr<Vector3D> operator-(const Vector3D& v1, const Vector3D& v2);// :)
 std::unique_ptr<Vector3D> operator*(const Vector3D& v, const float& k);// :)
 std::unique_ptr<Vector3D> operator*(const Vector3D& v, const SN<float, char>& k);// :)

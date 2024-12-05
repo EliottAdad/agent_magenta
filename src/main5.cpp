@@ -20,7 +20,7 @@
 
 
 /*
- * Main core (Particle3D, Quads, Octs)
+ * Main core (Particle3D, System3D, Physics)
  */
 /*int main(int argc, char* argv[]){
 
@@ -63,12 +63,14 @@
 	//
 	std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
 	Physics phys;
-	phys.setPPS(100);
+	phys.setPPS(200);
 	phys.setFPause(false);
 	printf("%b\n", phys.addPTimeSensitive(&par1));
-	printf("%b\n", phys.addPTimeSensitive(&ps2));
+	printf("%b\n", phys.addPTimeSensitive(&par2));
+	printf("%b\n", phys.addPTimeSensitive(&par3));
+	//printf("%b\n", phys.addPTimeSensitive(&ps2));
 
-	phys.run(1);
+	phys.run(2000);
 
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);

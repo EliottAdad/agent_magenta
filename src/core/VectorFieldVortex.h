@@ -6,6 +6,7 @@
  */
 
 #ifndef VECTORFIELDVORTEX_H_
+
 #define VECTORFIELDVORTEX_H_
 
 #include "VectorField.h"

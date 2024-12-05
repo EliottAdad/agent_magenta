@@ -6,6 +6,7 @@
  */
 
 #ifndef PARTICLESYSTEM3D_H_
+
 #define PARTICLESYSTEM3D_H_
 
 #include <unordered_set>
@@ -26,7 +27,7 @@ protected:
 	SN<float, char> m_a;														// Lenght of the side of the zone
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<Particle3D, float, char>* m_poctree;										// Pointer to the Octree.
-	long double m_dt;
+	float m_dt;
 	void (*pfunc)(TimeSensitive*, TimeSensitive*);					//Pointer to an operator
 
 public:
@@ -45,7 +46,7 @@ public:
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
 
-	virtual void setT(const long double& dt);	// TimeSensitive
+	virtual void setT(const float& dt);	// TimeSensitive
 	virtual void apply(const Vector3D& dv);		// Moveable
 	//virtual void move(const Vector3D& dp);
 

@@ -8,9 +8,7 @@
 #ifndef MAIN4_CPP_
 #define MAIN4_CPP_
 
-#include "core/Point3D.h"
 #include "core/SN.h"
-#include "core/Vector3D.h"
 #include "core/WeightedPoint3D.h"
 #include "core/Particle3D.h"
 #include "core/Quad.h"
@@ -20,7 +18,7 @@
 /*
  * Main core (Particle3D, Quads, Octs)
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 	printf("%lu\n", sizeof(Point3D<float, char>));
 	printf("%lu\n", sizeof(WeightedPoint3D<float, char>));
 	printf("%lu\n", sizeof(Particle3D));
@@ -30,10 +28,10 @@
 	//
 	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
 
-	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
-	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
-	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
-	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
+	Particle3D par1({{-1.,0},{1.,0},{0.,0},{5.,1}});
+	Particle3D par2({{1.5,0},{1.87006,0},{0.,0},{-3.,1}});
+	Particle3D par3({{-1.75,0},{-1.9,0},{0.,0},{-2.,1}});
+	Particle3D par4({{-1.,1},{2.,1},{0.,0},{7.,1}});
 	par1.print(true, true, 0);
 	par2.print(true, true, 0);
 	par3.print(true, true, 0);
@@ -45,7 +43,7 @@
 	//
 	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
 	SN<float, char> a(1., 2);
-	Point3D<float, char> p{{0,0},{0,0},{0,0}};
+	Point3D<float, char> p{{0.,0},{0.,0},{0.,0}};
 	Quad<Particle3D, float, char> q1(a, p);
 	//q1.m_ALPHA=0.1;
 
@@ -80,8 +78,10 @@
 	//o1.recalculate();
 	o1.print(true, true, 0);
 
+	printf("\n\nBye bye\n");
+
 	return 0;
-}*/
+}
 
 
 

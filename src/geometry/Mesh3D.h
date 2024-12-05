@@ -6,6 +6,7 @@
  */
 
 #ifndef MESH3D_H_
+
 #define MESH3D_H_
 
 #include <unordered_set>

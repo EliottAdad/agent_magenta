@@ -5,8 +5,8 @@
  *      Author: esn
  */
 
-#ifndef MAIN_CPP_
-#define MAIN_CPP_
+#ifndef MAIN1_CPP_
+#define MAIN1_CPP_
 
 #include <chrono>
 #include <iostream>
@@ -135,6 +135,8 @@
 	wp2.print(true, 0, false);
 	wp3.print(true, 0, false);
 	wp4.print(true, 0, false);
+
+	printf("\n\nBye bye\n");
 }*/
 
 
@@ -144,4 +146,4 @@
 
 
 
-#endif /* MAIN_CPP_ */
+#endif /* MAIN1_CPP_ */

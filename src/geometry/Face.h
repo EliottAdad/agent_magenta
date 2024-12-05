@@ -6,6 +6,7 @@
  */
 
 #ifndef FACE_H_
+
 #define FACE_H_
 
 #include "../utilities/Printable.h"

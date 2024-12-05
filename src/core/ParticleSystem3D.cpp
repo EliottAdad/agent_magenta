@@ -8,7 +8,7 @@
 #include "ParticleSystem3D.h"
 
 ParticleSystem3D::ParticleSystem3D() {
-	m_a={1,1};				//10m sided box
+	m_a={1.,1};				//10m sided box
 	m_poctree=new Oct<Particle3D, float, char>(m_a);
 	m_dt=0;
 	pfunc=NULL;
@@ -58,7 +58,7 @@ bool ParticleSystem3D::addPParticle(Particle3D* ppart) {
 }
 
 
-void ParticleSystem3D::setT(const long double& dt) {
+void ParticleSystem3D::setT(const float& dt) {
 	m_dt=dt;
 	//this->apply()
 }
@@ -81,20 +81,23 @@ void ParticleSystem3D::apply(const Vector3D& dv){
 
 std::string ParticleSystem3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
+
+
+	mes+="PARTICLE SET[";
+	std::stringstream ss;
+	ss << this;
+	mes+=ss.str();
+	mes+="]:";
+	mes+=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="PARTICLE SET[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:";
-		mes+=((spread)?"\n" : "");
-	}
-	for (Particle3D* ppart : m_poctree->getPElements()){
-		mes+="	- ( ";
-		mes+=ppart->to_string(false, false);
-		mes+=" )";
-		mes+="\n";
+		for (Particle3D* ppart : m_poctree->getPElements()){
+			mes+="	- ( ";
+			mes+=ppart->to_string(false, false);
+			mes+=" )";
+			mes+="\n";
+		}
 	}
 	return mes;
 }

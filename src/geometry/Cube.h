@@ -6,6 +6,7 @@
  */
 
 #ifndef CUBE_H_
+
 #define CUBE_H_
 
 #include "Polyhedron.h"

@@ -6,6 +6,7 @@
  */
 
 #ifndef PARTICLE3D_H_
+
 #define PARTICLE3D_H_
 
 #include "WeightedPoint3D.h"
@@ -15,15 +16,15 @@
 
 /*
  * ####################
- *  Particle3D<M, E> :)
+ *  Particle3D<M, E> pour l'instant:)
  * ####################
  * A weighted point with a speed.
  */
-class Particle3D : public WeightedPoint3D<float, char>, public TimeSensitive, public Displayable {
+class Particle3D : public WeightedPoint3D<float, char>, public TimeSensitive, public Displayable<float, char> {
 protected:
 	Vector3D* m_ps;// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
-	bool m_dels;
 	float m_dt;
+	bool m_dels;
 
 public:
 	Particle3D();
@@ -39,7 +40,7 @@ public:
 	virtual SN<float, char> getZ() const;
 
 	Vector3D getSpeed() const;
-	Vector3D* getPSpeed();
+	Vector3D* getPSpeed() const;
 	void setSpeed(const Vector3D& v);
 	void setSpeed(const Point3D<float, char>& p);
 	void addSpeed(const Vector3D& ds);

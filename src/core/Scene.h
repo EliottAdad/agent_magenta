@@ -4,7 +4,7 @@
 #define SCENE_H
 
 
-#include <set>
+#include <unordered_set>
 #include "../display/Displayable.h"
 
 
@@ -14,20 +14,48 @@
  * #########
  * Scene contains Displayables
  */
-class Scene{
+template<typename M, typename E> class Scene : public Printable {
 public:
 	Scene();//:)
 	//Scene(std::string name, std::vector<SDL_Color*> pcolors={});//:)
 	Scene(const Scene& scene);//:/
 	~Scene();//:)
 
-	std::set<Displayable*> getPDisplayables();//:)
+	std::unordered_set<Displayable<M, E>*> getPDisplayables() const;//:)
 	//void addDisplayables(std::vector<Displayable*> pdisplayables);//:)
-	void addPDisplayable(Displayable* pdisplayable);//:)
+	bool addPDisplayable(Displayable<M, E>* pdisplayable);//:)
 
 private:
-	std::set<Displayable*> m_pdisplayables;//:)
+	std::unordered_set<Displayable<M, E>*> m_pdisplayables;//:)
 };
+
+
+
+template<typename M, typename E> Scene<M, E>::Scene(){//:)
+	;
+}
+
+template<typename M, typename E> Scene<M, E>::Scene(const Scene& scene){//:/
+	;
+}
+
+template<typename M, typename E> Scene<M, E>::~Scene(){//:)
+	;
+}
+
+template<typename M, typename E> std::unordered_set<Displayable<M, E>*> Scene<M, E>::getPDisplayables() const {//:)
+	return m_pdisplayables;
+}
+
+template<typename M, typename E> bool Scene<M, E>::addPDisplayable(Displayable<M, E>* pdisplayable){//:)
+	//m_pdisplayables.insert(pdisplayable);
+
+	bool success=false;
+	if (pdisplayable!=NULL){
+		success=m_pdisplayables.insert(pdisplayable).second;
+	}
+	return success;
+}
 
 
 

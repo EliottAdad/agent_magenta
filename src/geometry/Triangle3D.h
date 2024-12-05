@@ -6,6 +6,7 @@
  */
 
 #ifndef TRIANGLE3D_H_
+
 #define TRIANGLE3D_H_
 
 #include "../core/Point3D.h"

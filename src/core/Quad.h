@@ -6,6 +6,7 @@
  */
 
 #ifndef QUAD_H_
+
 #define QUAD_H_
 
 #include <cstdio>
@@ -43,7 +44,7 @@ public:
 	static SN<M, E> m_LIM_A;					// This indicates the limit at which we stop subdividing (useless)
 	static float m_ALPHA;				// The threshold m_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider
 
-	Quad(const SN<M, E>& a, const Point3D<M, E>& p={{0,0},{0,0},{0,0}});
+	Quad(const SN<M, E>& a, const Point3D<M, E>& p={{0.,0},{0.,0},{0.,0}});
 	Quad(const SN<M, E>& a, Point3D<M, E>* ppoint);
 	Quad(const Quad<T, M, E>* pquad);
 	virtual ~Quad();
@@ -257,14 +258,14 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 					*m_pbarycenter=p;//Set the barycenter
 				}else{																				// Else it means it is an internal branch
 
-					m_tot_weight+=1.;//Add to tot_weight
+					m_tot_weight+=(M)1.;//Add to tot_weight
 					*m_pbarycenter+=p*((M)1./m_tot_weight);//Add to the barycenter
 
 					if (dp.x<=(M)0. && dp.y<=(M)0.){//If square 1
 						if (m_pBLTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a,{0, 0}};
-							std::cout<<"1"<<np.to_string(true);
+							//std::cout<<"1"<<np.to_string(true);
 							m_pBLTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 						}
 						m_pBLTree->insert(pT);
@@ -272,7 +273,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 						if (m_pBRTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{a, (M)(-1.)*a,{0, 0}};
-							std::cout<<"2"<<np.to_string(true);
+							//std::cout<<"2"<<np.to_string(true);
 							m_pBRTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 						}
 						m_pBRTree->insert(pT);
@@ -280,7 +281,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 						if (m_pTRTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{a, a, {0, 0}};
-							std::cout<<"3"<<np.to_string(true);
+							//std::cout<<"3"<<np.to_string(true);
 							m_pTRTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 						}
 						m_pTRTree->insert(pT);
@@ -288,7 +289,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 						if (m_pTLTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, a, {0, 0}};
-							std::cout<<"4"<<np.to_string(true);
+							//std::cout<<"4"<<np.to_string(true);
 							m_pTLTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 						}
 						m_pTLTree->insert(pT);
@@ -296,7 +297,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 				}
 			}else{					// Else if full
 
-				m_tot_weight=1.;//Set the tot_weight
+				m_tot_weight=(M)1.;//Set the tot_weight
 				*m_pbarycenter=p;//Set the barycenter
 
 				//printf("Full\n");
@@ -304,7 +305,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 					if (m_pBLTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a, {0, 0}};
-						std::cout<<"5"<<np.to_string(true);
+						//std::cout<<"5"<<np.to_string(true);
 						m_pBLTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 					}
 					m_pBLTree->insert(pT);
@@ -312,15 +313,15 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 					if (m_pBRTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{a, (M)(-1.)*a, {0, 0}};
-						std::cout<<"6"<<np.to_string(true);
+						//std::cout<<"6"<<np.to_string(true);
 						m_pBRTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 					}
 					m_pBRTree->insert(pT);
 				}else if (dp.x>=(M)0. && dp.y>=(M)0.){//If square 3
 					if (m_pTRTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
-						Point3D<M, E> np{a, a, {0, 0}};
-						std::cout<<"7"<<np.to_string(true);
+						Point3D<M, E> np{a, a, {0., 0}};
+						//std::cout<<"7"<<np.to_string(true);
 						m_pTRTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 					}
 					m_pTRTree->insert(pT);
@@ -328,7 +329,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 					if (m_pTLTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, a, {0, 0}};
-						std::cout<<"8"<<np.to_string(true);
+						//std::cout<<"8"<<np.to_string(true);
 						m_pTLTree=new Quad<T, M, E>(m_a/(M)2., *m_ppoint+np);
 					}
 					m_pTLTree->insert(pT);
@@ -451,7 +452,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
  * Stores the quads that are to be considered given alpha.
  */
 template <typename T, typename M, typename E> void Quad<T, M, E>::find(const T& t, std::unordered_set<Quad<T, M, E>*>& pquads) {
-	Point3D<M, E> p={t.x, t.y, {0, 0}};
+	Point3D<M, E> p={t.x, t.y, {0., 0}};
 
 	SN<M, E> s=this->m_a;
 	SN<M, E> d=getDistance(p, *m_pbarycenter);
@@ -597,9 +598,9 @@ template <typename T, typename M, typename E> std::string Quad<T, M, E>::to_stri
 	mes+="]:";
 	mes+=m_a.to_string();								//a
 	mes+="|*|";
-	mes+=m_ppoint->to_string(false, false);				//Point
+	mes+=m_ppoint->to_string(false, false, 0);				//Point
 	mes+="|*|";
-	mes+=m_pbarycenter->to_string(false, false);		//Barycenter
+	mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
 	mes+="|*|";
 	std::stringstream ss2;
 	ss2 << m_pT;

@@ -6,7 +6,10 @@
  */
 
 #ifndef LINE3D_H_
+
 #define LINE3D_H_
+
+#include <memory>
 
 #include "Point3D.h"
 #include "../utilities/functions.h"
@@ -22,8 +25,8 @@
  */
 class Line3D : public Printable {
 protected:
-	Point3D<float, char>* m_pp1;
-	Point3D<float, char>* m_pp2;
+	std::unique_ptr<Point3D<float, char>> m_pp1;
+	std::unique_ptr<Point3D<float, char>> m_pp2;
 	bool m_delp1;
 	bool m_delp2;
 

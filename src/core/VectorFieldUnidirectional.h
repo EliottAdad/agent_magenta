@@ -6,6 +6,7 @@
  */
 
 #ifndef VECTORFIELDUNIDIRECTIONAL_H_
+
 #define VECTORFIELDUNIDIRECTIONAL_H_
 
 #include "Particle3D.h"

@@ -6,12 +6,15 @@
  */
 
 #ifndef OCT_H_
+
 #define OCT_H_
 
 
+#include <memory>
 #include <cstdio>
 //#include <cmath>
 #include <unordered_set>
+
 #include "SN.h"
 #include "Particle3D.h"
 #include "Point3D.h"
@@ -56,7 +59,7 @@ public:
 	Oct(const Oct<T, M, E>* poct);
 	virtual ~Oct();
 
-	Point3D<M, E> getPoint() const;
+	//Point3D<M, E> getPoint() const;
 	Point3D<M, E>* getPPoint() const;
 	void setPoint(Point3D<M, E> point, bool delp=false);// delp indique s'il faudra delete le point passé en argument
 	void setPPoint(Point3D<M, E>* ppoint, bool delp=true);// delp indique s'il faudra delete le point passé en argument
@@ -171,7 +174,7 @@ template <typename T, typename M, typename E> Oct<T, M, E>::Oct(const SN<M, E>& 
  * Copy constructor
  */
 template <typename T, typename M, typename E> Oct<T, M, E>::Oct(const Oct<T, M, E>* poct) {
-	m_ppoint=new Point3D<M, E>(poct->getPoint());
+	m_ppoint=new Point3D<M, E>(poct->getPPoint());
 	m_pbarycenter=new Point3D<M, E>(*m_ppoint);
 	m_delp=false;
 
@@ -230,9 +233,9 @@ template <typename T, typename M, typename E> Oct<T, M, E>::~Oct() {
 	m_NB_OCTS--;
 }
 
-template <typename T, typename M, typename E> Point3D<M, E> Oct<T, M, E>::getPoint() const {
+/*template <typename T, typename M, typename E> Point3D<M, E> Oct<T, M, E>::getPoint() const {// Because it can be NULL
 	return *m_ppoint;
-}
+}*/
 
 template <typename T, typename M, typename E> Point3D<M, E>* Oct<T, M, E>::getPPoint() const {
 	Point3D<M, E>* pp=NULL;
@@ -244,10 +247,10 @@ template <typename T, typename M, typename E> Point3D<M, E>* Oct<T, M, E>::getPP
 }
 
 template <typename T, typename M, typename E> void Oct<T, M, E>::setPoint(Point3D<M, E> point, bool delp) {
+	if (m_delp){
+		delete m_ppoint;
+	}
 	if (delp){
-		if (m_delp){
-			delete m_ppoint;
-		}
 		m_ppoint=new Point3D<M, E>(point);
 	}else{
 		m_ppoint=&point;
@@ -258,17 +261,19 @@ template <typename T, typename M, typename E> void Oct<T, M, E>::setPoint(Point3
 }
 
 template <typename T, typename M, typename E> void Oct<T, M, E>::setPPoint(Point3D<M, E>* ppoint, bool delp) {
-	if (delp){
+	if (ppoint!=NULL){
 		if (m_delp){
 			delete m_ppoint;
 		}
-		m_ppoint=new Point3D<M, E>(*ppoint);
-	}else{
-		m_ppoint=ppoint;
-	}
-	m_delp=delp;
+		if (delp){
+			m_ppoint=new Point3D<M, E>(*ppoint);
+		}else{
+			m_ppoint=ppoint;
+		}
+		m_delp=delp;
 
-	this->recalculate();
+		this->recalculate();
+	}
 }
 
 template <typename T, typename M, typename E> Point3D<M, E> Oct<T, M, E>::getBarycenter() const {
@@ -369,10 +374,10 @@ template <typename T, typename M, typename E> std::unordered_set<T*> Oct<T, M, E
 
 	//printf("AB\n");
 	SN<M, E> r=/*m_a*/SN<M, E>{1., 0}/*((long double)1.)*//getDistance(*m_ppoint, *pelement);
-	r.print(true, true, 0);
+	//r.print(true, true, 0);
 	SN<M, E> s=SN<M, E>{m_ALPHA, 0};
-	s.print(true, true, 0);
-	printf("\n%b\n", /*m_a*/SN<M, E>{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0});
+	//s.print(true, true, 0);
+	//printf("\n%b\n", /*m_a*/SN<M, E>{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0});
 
 	if (/*m_a*/SN<M, E>{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}){
 		//printf("AC\n");
@@ -419,25 +424,25 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 
 		if (abs(dp.x)<=m_a/(M)2. && abs(dp.y)<=m_a/(M)2. && abs(dp.z)<=m_a/(M)2.){// If in the cube centered on the point.
 			if (m_pT==NULL){		// If empty
-				printf("Empty\n");
+				//printf("Empty\n");
 				if (m_pTLFTree==NULL and m_pTRFTree==NULL and m_pBLFTree==NULL and m_pBRFTree==NULL
 						and m_pTRBTree==NULL and m_pTLBTree==NULL and m_pBLBTree==NULL and m_pBRBTree==NULL){	// If the cube has no Octs under (external branch)
 					m_pT=pT;//We add in
 					m_tot_weight=(M)1.;//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
-					printf("A\n");
-					printf("\n#############\n");
-					m_pT->print(true, true, 0);
-					m_tot_weight.print(true, true, 0);
-					m_pbarycenter->print(true, true, 0);
-					printf("\n#############\n");
+					//printf("A\n");
+					//printf("\n#############\n");
+					//m_pT->print(true, true, 0);
+					//m_tot_weight.print(true, true, 0);
+					//m_pbarycenter->print(true, true, 0);
+					//printf("\n#############\n");
 				}else{																				// Else it means it is an internal branch
-					printf("B\n");
+					//printf("B\n");
 					m_tot_weight+=1.;//Add to tot_weight
 					*m_pbarycenter+=p*((M)(1.)/m_tot_weight);//Add to the barycenter
 
 					if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 1
-						printf("C\n");
+						//printf("C\n");
 						if (m_pBLBTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a, (M)(-1.)*a};
@@ -446,7 +451,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pBLBTree->insert(pT);
 					}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 2
-						printf("D\n");
+						//printf("D\n");
 						if (m_pBRBTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{a, (M)(-1.)*a, (M)(-1.)*a};
@@ -455,7 +460,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pBRBTree->insert(pT);
 					}else if (dp.x>=(M)0. && dp.y>=(M)0. && dp.z<=(M)0.){//If cube 3
-						printf("E\n");
+						//printf("E\n");
 						if (m_pBRFTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4;
 							Point3D<M, E> np{a, a, (M)(-1.)*a};
@@ -464,7 +469,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pBRFTree->insert(pT);
 					}else if (dp.x<=(M)0. && dp.y>=(M)0. && dp.z<=(M)0.){//If cube 4
-						printf("F\n");
+						//printf("F\n");
 						if (m_pBLFTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, a, (M)(-1.)*a};
@@ -473,7 +478,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pBLFTree->insert(pT);
 					}else if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z>=(M)0.){//If cube 5
-						printf("G\n");
+						//printf("G\n");
 						if (m_pTLBTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a, a};
@@ -482,7 +487,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pTLBTree->insert(pT);
 					}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z>=(M)0.){//If cube 6
-						printf("H\n");
+						//printf("H\n");
 						if (m_pTRBTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{a, (M)(-1.)*a, a};
@@ -491,7 +496,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pTRBTree->insert(pT);
 					}else if (dp.x>=(M)0. && dp.y>=(M)0. && dp.z>=(M)0.){//If cube 7
-						printf("I\n");
+						//printf("I\n");
 						if (m_pTRFTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{a, a, a};
@@ -500,7 +505,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 						}
 						m_pTRFTree->insert(pT);
 					}else if (dp.x<=(M)0. && dp.y>=(M)0. && dp.z>=(M)0.){//If cube 8
-						printf("J\n");
+						//printf("J\n");
 						if (m_pTLFTree==NULL){//If there is not yet a tree we create it
 							SN<M, E> a=m_a/(M)4.;
 							Point3D<M, E> np{(M)(-1.)*a, a, a};
@@ -515,10 +520,10 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 				m_tot_weight={(M)1., (E)0.};//Set the tot_weight
 				*m_pbarycenter=p;//Set the barycenter
 
-				printf("Full\n");
+				//printf("Full\n");
 
 				if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 1
-					printf("K\n");
+					//printf("K\n");
 					if (m_pBLBTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a, (M)(-1.)*a};
@@ -527,7 +532,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pBLBTree->insert(pT);
 				}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 2
-					printf("L\n");
+					//printf("L\n");
 					if (m_pBRBTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{a, (M)(-1.)*a, (M)(-1.)*a};
@@ -536,7 +541,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pBRBTree->insert(pT);
 				}else if (dp.x>=(M)0. && dp.y>=(M)0. && dp.z<=(M)0.){//If cube 3
-					printf("M\n");
+					//printf("M\n");
 					if (m_pBRFTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{a, a, (M)(-1.)*a};
@@ -545,7 +550,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pBRFTree->insert(pT);
 				}else if (dp.x<=(M)0. && dp.y>=(M)0. && dp.z<=(M)0.){//If cube 4
-					printf("N\n");
+					//printf("N\n");
 					if (m_pBLFTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, a, (M)(-1.)*a};
@@ -554,7 +559,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pBLFTree->insert(pT);
 				}else if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z>=(M)0.){//If cube 5
-					printf("O\n");
+					//printf("O\n");
 					if (m_pTLBTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, (M)(-1.)*a, a};
@@ -563,7 +568,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pTLBTree->insert(pT);
 				}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z>=(M)0.){//If cube 6
-					printf("P\n");
+					//printf("P\n");
 					if (m_pTRBTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{a, (M)(-1.)*a, a};
@@ -572,7 +577,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pTRBTree->insert(pT);
 				}else if (dp.x>=(M)0. && dp.y>=(M)0. && dp.z>=(M)0.){//If cube 7
-					printf("Q\n");
+					//printf("Q\n");
 					if (m_pTRFTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{a,a,a};
@@ -581,7 +586,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(T* pT) {
 					}
 					m_pTRFTree->insert(pT);
 				}else if (dp.x<=(M)0. && dp.y>=(M)0. && dp.z>=(M)0.){//If cube 8
-					printf("Q\n");
+					//printf("Q\n");
 					if (m_pTLFTree==NULL){//If there is not yet a tree we create it
 						SN<M, E> a=m_a/(M)4.;
 						Point3D<M, E> np{(M)(-1.)*a, a, a};
@@ -939,36 +944,36 @@ template <typename T, typename M, typename E> T* Oct<T, M, E>::search(const Poin
 
 
 template <typename T, typename M, typename E> std::string Oct<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	printf("AAAAAA12\n");
+	//printf("AAAAAA12\n");
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
 	mes+="OCT[";
 	std::stringstream ss;
 	ss << this;
-	printf("AAAAAA122\n");
+	//printf("AAAAAA122\n");
 	mes+=ss.str();
 	mes+="]:";
 	mes+=m_a.to_string(false, false, 0);								//a
 	mes+="|*|";
-	printf("AAAAAA123\n");
+	//printf("AAAAAA123\n");
 	std::cout << m_ppoint << "\n";
-	//mes+=m_ppoint->to_string(false, false, 0);			//Point ERROR
+	mes+=m_ppoint->to_string(false, false, 0);			//Point ERROR
 	mes+="|*|";
-	printf("AAAAAA124\n");
+	//printf("AAAAAA124\n");
 	mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
 	mes+="|*|";
-	printf("AAAAAA125\n");
+	//printf("AAAAAA125\n");
 	std::stringstream ss2;
 	ss2 << m_pT;
 	mes+=ss2.str();
 	mes+="|*|";
-	printf("AAAAAA126\n");
+	//printf("AAAAAA126\n");
 	mes+="w:" + std::to_string(m_tot_weight.to_m_type());
 	mes+="]";
 	//mes+=((spread)?"\n" : "");
 	mes+="\n";
-	printf("AAAAAA127\n");
+	//printf("AAAAAA127\n");
 
 	mes+=to_stringTabs(indent+1);
 	if (full_info){
@@ -979,28 +984,28 @@ template <typename T, typename M, typename E> std::string Oct<T, M, E>::to_strin
 		nulll+=", ";
 		//nulll+=((spread)?"\n" : "");
 
-		printf("AAAAAA13\n");
+		//printf("AAAAAA13\n");
 		mes+=(m_pBLBTree==NULL)?nulll : m_pBLBTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA14\n");
+		//printf("AAAAAA14\n");
 		mes+=(m_pBRBTree==NULL)?nulll : m_pBRBTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA15\n");
+		//printf("AAAAAA15\n");
 		mes+=(m_pBRFTree==NULL)?nulll : m_pBRFTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA16\n");
+		//printf("AAAAAA16\n");
 		mes+=(m_pBLFTree==NULL)?nulll : m_pBLFTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA17\n");
+		//printf("AAAAAA17\n");
 		mes+=(m_pTLBTree==NULL)?nulll : m_pTLBTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA18\n");
+		//printf("AAAAAA18\n");
 		mes+=(m_pTRBTree==NULL)?nulll : m_pTRBTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA19\n");
+		//printf("AAAAAA19\n");
 		mes+=(m_pTRFTree==NULL)?nulll : m_pTRFTree->to_string(spread, full_info, indent+1);
 		mes+=to_stringTabs(indent+1);
-		printf("AAAAAA20\n");
+		//printf("AAAAAA20\n");
 		mes+=(m_pTLFTree==NULL)?nulll : m_pTLFTree->to_string(spread, full_info, indent+1);
 		//mes+=((spread)?to_stringTabs(indent+1) : "");
 

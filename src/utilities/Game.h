@@ -28,11 +28,11 @@ private:
 	SDL_Renderer* m_prenderer;			// Pointeur to the renderer.
 
 	Physics* m_pphysics;
-	Scene* m_pscene;					// A scene
-	Display1* m_pdisplay;
+	Scene<float, char>* m_pscene;					// A scene
+	Display1<float, char>* m_pdisplay;
 
-	unsigned int m_fps;					//Frames per second
-	//unsigned int m_pps;				//Physics per second
+	unsigned char m_fps;					// Frames per second
+	//unsigned int m_pps;				// Physics per second
 	bool m_fpause;
 
 public:
@@ -42,18 +42,32 @@ public:
 
 	//SDL_Window* getPWindow();
 	//SDL_Renderer* getPRenderer();
-	unsigned int getFPS() const;
-	void setFPS(const unsigned int& fps);
-	unsigned int getPPS() const;
-	void setPPS(const unsigned int& pps);
-	Physics* getPPhysics();
-	Scene* getPScene();
 
-	std::unordered_set<TimeSensitive*> getPTimeSensitives();
+	// Physics
+	float getSpeed() const;
+	void setSpeed(const float& speed);
+	unsigned char getPPS() const;
+	void setPPS(const unsigned char& pps);
+	unsigned char getFPS() const;
+	void setFPS(const unsigned char& fps);
+
+	// Scene
+	//std::unordered_set<Displayable*> getPDisplayables();//:)
+	bool addPDisplayable(Displayable<float, char>* pdisplayable);//:)
+
+	//Physics* getPPhysics();
+	//Scene* getPScene();
+
+	//std::unordered_set<TimeSensitive*> getPTimeSensitives();
 	bool addPTimeSensitive(TimeSensitive* ptime_sensitive);
 
+	bool getFCollide() const;
+	void setFCollide(const bool& bcollide);
+	bool getFPause() const;
+	void setFPause(const bool& bpause);
+
 	bool run(const unsigned int& steps=1);	// Runs a certain number of frames
-	bool iterate(const long double& dt);	// Renders once (à faire)
+	bool iterate(const float& dt);	// Renders once (à faire)
 	bool render() const;					// Draws the content of the game on the screen
 
 };

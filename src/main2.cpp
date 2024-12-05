@@ -6,6 +6,7 @@
  */
 
 #ifndef MAIN2_CPP_
+
 #define MAIN2_CPP_
 
 #include "core/SN.h"
@@ -56,7 +57,7 @@
 	printf("\nnb3:\n");
 	nb3.print(true, 0, true);
 
-	std::cout<< "\n";
+	printf("\n\nBye bye\n");
 }*/
 
 

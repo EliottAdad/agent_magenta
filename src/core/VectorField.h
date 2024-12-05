@@ -6,6 +6,7 @@
  */
 
 #ifndef VECTORFIELD_H_
+
 #define VECTORFIELD_H_
 
 

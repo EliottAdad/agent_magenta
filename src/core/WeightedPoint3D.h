@@ -37,10 +37,10 @@ template<typename M, typename E> struct WeightedPoint3D : public Point3D<M, E> {
 
 
 template<typename M, typename E> WeightedPoint3D<M, E>::WeightedPoint3D() {
-	this->x=SN<float, char>{0,0};
-	this->y=SN<float, char>{0,0};
-	this->z=SN<float, char>{0,0};
-	this->w=SN<float, char>{1,0};
+	this->x=SN<float, char>{0.,0};
+	this->y=SN<float, char>{0.,0};
+	this->z=SN<float, char>{0.,0};
+	this->w=SN<float, char>{1.,0};
 }
 
 template<typename M, typename E> WeightedPoint3D<M, E>::WeightedPoint3D(const Point3D<M, E>& p, const SN<M, E>& w) {
@@ -98,8 +98,12 @@ template<typename M, typename E> std::string WeightedPoint3D<M, E>::to_string(co
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="WEIGHTED POINT ():";
-		mes+=((spread)?"\n" : "");
+		mes+="WEIGHTEDPOINT3D[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
 
 	mes+="(" + this->x.to_string() + ", " + this->y.to_string() + ", " + this->z.to_string() + ", " + w.to_string()+")";

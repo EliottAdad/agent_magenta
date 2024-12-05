@@ -6,6 +6,7 @@
  */
 
 #ifndef MAIN3_CPP_
+
 #define MAIN3_CPP_
 
 #include "core/Vector3D.h"
@@ -29,7 +30,7 @@
 
 
 	printf("\n Test + start \n");
-	std::unique_ptr<Vector3D> rv1=v1+v2;
+	std::unique_ptr<Vector3D> rv1; rv1=v1+v2;
 	rv1->print();
 	printf("\n Test + end \n");
 
@@ -70,10 +71,12 @@
 
 	// Still cannot chain operators
 	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-	std::unique_ptr<Vector3D> rv5(*rv1+*rv2);
+	std::unique_ptr<Vector3D> rv5=(*rv1+*rv2);
 	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-	rv5->print(true, true, 1);
+	rv5->print();
 	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
+
+	printf("\n\nBye bye\n");
 }*/
 
 

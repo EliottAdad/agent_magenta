@@ -6,6 +6,7 @@
  */
 
 #ifndef TIMESENSITIVE_H_
+
 #define TIMESENSITIVE_H_
 
 #include <string>

@@ -6,6 +6,7 @@
  */
 
 #ifndef SYSTEM3D_H_
+
 #define SYSTEM3D_H_
 
 #include <unordered_set>
@@ -153,20 +154,20 @@ template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T,
 template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const float& dt) {
 	m_dt=dt;
 
-	printf("Set T (System3D)\n");
-	printf("%f\n", m_dt);
+	//printf("Set T (System3D)\n");
+	//printf("%f\n", m_dt);
 	for (T* pelement : m_pelements){
 		pelement->setT(m_dt);
 
 		// If there is a law to apply
 		if (m_ptrLaw!=NULL){
-			printf("A\n");
+			//printf("A\n");
 			std::unordered_set<T*> pneighbors=m_poctree->getPNeighbors(pelement);
-			printf("B\n");
+			//printf("B\n");
 			if(pneighbors.empty()){
-				printf("Pas de neighbors\n");
+				//printf("Pas de neighbors\n");
 			}else{
-				printf("Neighbors\n");
+				//printf("Neighbors\n");
 			}
 			// Apply the law
 			for (T* pneighbor : pneighbors){
@@ -195,7 +196,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 }
 
 template <typename T, typename M, typename E> void System3D<T, M, E>::apply(){
-	printf("Apply (System3D)\n");
+	//printf("Apply (System3D)\n");
 	for (T* pelement : m_pelements){
 		pelement->apply();
 	}
@@ -230,7 +231,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::empty() {
 
 
 template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	printf("AAAAAA1\n");
+	//printf("AAAAAA1\n");
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -253,7 +254,7 @@ template <typename T, typename M, typename E> std::string System3D<T, M, E>::to_
 template <typename T, typename M, typename E> void System3D<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
-	printf("\nAAAAAA2\n");
+	//printf("\nAAAAAA2\n");
 }
 
 
@@ -262,7 +263,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::print(cons
  * Functions
  */
 template <typename T, typename M, typename E> void rrr(T* p1, T* p2, const long double& dt) {
-	printf("Function (rrr)\n");
+	//printf("Function (rrr)\n");
 	Vector3D v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	//Vector3D* pv=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	SN<M, E> d=v.getNorm();
@@ -271,13 +272,13 @@ template <typename T, typename M, typename E> void rrr(T* p1, T* p2, const long 
 	//*pv/=d;
 	v.setNorm(G*p2->getW()/(d*d));
 	//pv->setNorm(G*p2->getW()/(d*d));
-	printf("d:\n");
-	d.print(true, true, 1);
-	printf("\n");
+	//printf("d:\n");
+	//d.print(true, true, 1);
+	//printf("\n");
 
 	p1->getPSpeed()->addEnd({{dt, 0}, {0, 0}, {0, 0}});
 	//p1->getPSpeed()->addEnd(pv->getEnd()*dt);//+=;//Problem
-	printf("d2\n");
+	//printf("d2\n");
 	//delete pv;
 }
 
@@ -285,7 +286,7 @@ template <typename T, typename M, typename E> void rrr(T* p1, T* p2, const long 
  * Returns the acc (in norm) felt by p1 due to p2
  */
 template <typename T, typename M, typename E> SN<M, E> rrr2(T* p1, T* p2) {
-	printf("Function (rrr2)\n");
+	//printf("Function (rrr2)\n");
 	SN<M, E> d=getDistance(*p1, *p2);
 	return G*p2->getW()/(d*d);
 }

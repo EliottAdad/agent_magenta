@@ -6,6 +6,7 @@
  */
 
 #ifndef OBJECT3D_H_
+
 #define OBJECT3D_H_
 
 #include "Particle3D.h"

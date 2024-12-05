@@ -6,6 +6,7 @@
  */
 
 #ifndef POINT3D_H_
+
 #define POINT3D_H_
 
 #include "SN.h"
@@ -73,9 +74,9 @@ template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p,
 
 
 template<typename M, typename E> Point3D<M, E>::Point3D() {
-	this->x=SN<M, E>{0,0};
-	this->y=SN<M, E>{0,0};
-	this->z=SN<M, E>{0,0};
+	this->x=SN<M, E>{0.,0};
+	this->y=SN<M, E>{0.,0};
+	this->z=SN<M, E>{0.,0};
 }
 
 template<typename M, typename E> Point3D<M, E>::Point3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z) {
@@ -189,10 +190,10 @@ template<typename M, typename E> void Point3D<M, E>::operator/=(const M& k) {
 
 
 template<typename M, typename E> std::string Point3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	std::cout<<"Help1\n";
+	//std::cout<<"Help1\n";
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
-	printf("Help2\n");
+	//printf("Help2\n");
 	if (full_info){
 		mes+="POINT3D[";
 		std::stringstream ss;
@@ -201,7 +202,7 @@ template<typename M, typename E> std::string Point3D<M, E>::to_string(const bool
 		mes+="]:";
 		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
-	printf("Help3\n");
+	//printf("Help3\n");
 	mes+=to_stringTabs(indent);
 	mes+="(x:" + x.to_string(false, false, 0) + " ; y:" + y.to_string(false, false, 0) + " ; z:" + z.to_string(false, false, 0) + ")";
 

@@ -6,6 +6,7 @@
  */
 
 #ifndef CAMERA_H_
+
 #define CAMERA_H_
 
 #include "../core/Point3D.h"

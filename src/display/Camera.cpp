@@ -52,8 +52,8 @@ Vector3D Camera::getNormal() const {
 std::unique_ptr<Vector3D> Camera::getE1() const {
 	std::unique_ptr<Vector3D> pv(new Vector3D(
 			m_ppoint, {
-			{1., 0},
-			{1., 0},
+			{1.,0},
+			{1.,0},
 			{(float)(-1.)/m_pnormal->getP2().z * (m_pnormal->getP2().x*((float)(1.)-m_ppoint->x) + m_pnormal->getP2().y*((float)(1.)-m_ppoint->y)) + m_ppoint->z}
 			}
 			));//One possible normal vector

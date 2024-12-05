@@ -4,28 +4,39 @@
 //#define SCENE2D_CPP
 //
 //
-#include "Scene.h"
+
+#ifdef D
+
+#define E
+
+//#include "Scene.h"
 
 
 
-Scene::Scene(){//:)
+template<typename M, typename E> Scene<M, E>::Scene(){//:)
 	;
 }
 
-Scene::Scene(const Scene& scene){//:/
+template<typename M, typename E> Scene<M, E>::Scene(const Scene& scene){//:/
 	;
 }
 
-Scene::~Scene(){//:)
+template<typename M, typename E> Scene<M, E>::~Scene(){//:)
 	;
 }
 
-std::set<Displayable*> Scene::getPDisplayables(){//:)
+template<typename M, typename E> std::unordered_set<Displayable*> Scene<M, E>::getPDisplayables() const {//:)
 	return m_pdisplayables;
 }
 
-void Scene::addPDisplayable(Displayable* pdisplayable){//:)
-	m_pdisplayables.insert(pdisplayable);
+template<typename M, typename E> bool Scene<M, E>::addPDisplayable(Displayable<M, E>* pdisplayable){//:)
+	//m_pdisplayables.insert(pdisplayable);
+
+	bool success=false;
+	if (pdisplayable!=NULL){
+		success=m_pdisplayables.insert(pdisplayable).second;
+	}
+	return success;
 }
 
 //
@@ -684,4 +695,4 @@ void Scene::addPDisplayable(Displayable* pdisplayable){//:)
 //	return 0;
 //}*/
 //
-//#endif
+#endif

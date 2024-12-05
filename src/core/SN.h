@@ -6,6 +6,7 @@
  */
 
 #ifndef SN_H_
+
 #define SN_H_
 
 //#include <iostream>
@@ -137,7 +138,7 @@ template<typename M, typename E> SN<M, E>::SN(const SN<M, E>* pnb) {
  */
 template<typename M, typename E> void SN<M, E>::recal() {
 	if (m==(M)0){
-		this->e=(M)0;
+		this->e=(E)0;
 	}else{
 		//std::cout<<"m!=0\n";
 		int l_m=std::log((M)abs(m)) / std::log(10);//Number of digits before/after the comma
@@ -170,7 +171,7 @@ template<typename M, typename E> void SN<M, E>::operator=(const SN<M, E>& nb) {
 
 template<typename M, typename E> void SN<M, E>::operator=(const M& nb) {
 	this->m=nb;
-	this->e=0;
+	this->e=(E)0;
 	this->recal();
 }
 
@@ -375,7 +376,7 @@ template<typename M, typename E> bool operator>(const M& nb1, const SN<M, E>& nb
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m+nb2.m/pow(10., (M)(nb1.e-nb2.e));
 	E ne=nb1.e;
-	SN<M, E> nnb(nm, ne);
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -403,7 +404,7 @@ template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M
 template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2) {
 	M nm=nb1+nb2.m*pow(10., (M)nb2.e);
 	E ne=0;
-	SN<M, E> nnb(nm, ne);
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -476,7 +477,7 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const S
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k) {
 	M nm=nb.m*k;
 	E ne=nb.e;
-	SN<M, E> nnb(nm, ne);
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -526,7 +527,7 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M&
 template<typename M, typename E> SN<M, E> operator/(const M& k, const SN<M, E>& nb) {
 	M nm=k/nb.m;
 	E ne=(-1)*nb.e;
-	SN<M, E> nnb(nm, ne);
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
@@ -592,7 +593,7 @@ template<typename M, typename E> void SN<M, E>::print(const bool& spread, const 
  */
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb) {
-	printf("In the abs in SN\n");
+	//printf("In the abs in SN\n");
 	M nm=std::abs(nb.m);
 	E ne=nb.e;
 	SN<M, E> resp(nm, ne);//To recal

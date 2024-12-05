@@ -6,6 +6,7 @@
  */
 
 #ifndef POLYHEDRON_H_
+
 #define POLYHEDRON_H_
 
 #include <unordered_set>

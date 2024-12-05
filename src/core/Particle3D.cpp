@@ -11,11 +11,14 @@
 
 
 Particle3D::Particle3D() {
-	this->x=SN<float, char>{1, 0};
-	this->y=SN<float, char>{1, 0};
-	this->z=SN<float, char>{1, 0};
-	this->w=SN<float, char>{1, 0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
-	m_ps=new Vector3D(NULL, Point3D<float, char>{SN<float, char>{1, 0}, SN<float, char>{1, 0}, SN<float, char>{1, 0}});		// Vector3D init to end=(1, 1, 1)
+	this->x=SN<float, char>{1.,0};
+	this->y=SN<float, char>{1.,0};
+	this->z=SN<float, char>{1.,0};
+	this->w=SN<float, char>{1.,0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	m_ps=new Vector3D(NULL, Point3D<float, char>{{1.,0},{1.,0},{1.,0}});		// Vector3D init to end=(1, 1, 1)
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -44,8 +47,11 @@ Particle3D::Particle3D(const Point3D<float, char>& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
-	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
+	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
+	m_ps=new Vector3D(NULL, Point3D<float, char>{{1.,0},{1.,0},{1.,0}});
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -54,8 +60,11 @@ Particle3D::Particle3D(const SN<float, char>& x, const SN<float, char>& y, const
 	this->x=x;
 	this->y=y;
 	this->z=z;
-	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
-	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
+	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
+	m_ps=new Vector3D(NULL, Point3D<float, char>{{1.,0},{1.,0},{1.,0}});
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -65,7 +74,10 @@ Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->y=wp.y;
 	this->z=wp.z;
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	m_ps=new Vector3D(NULL, {{1,0},{1,0},{1,0}});
+	m_ps=new Vector3D(NULL, Point3D<float, char>{{1.,0},{1.,0},{1.,0}});
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -74,8 +86,11 @@ Particle3D::Particle3D(const Point3D<float, char>& p, const Vector3D& speed) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=SN<float, char>{1, 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<float, char>{1.,0};// Init the Weighted Point to {x, y, y, w=1}
 	m_ps=new Vector3D(NULL, speed.getP2());
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -86,6 +101,9 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	this->z=wp.z;
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	m_ps=new Vector3D(NULL, speed.getP2());
+	m_pcolor=NULL;
+
+	m_delc=false;
 	m_dels=true;
 	m_dt=0;
 }
@@ -96,6 +114,7 @@ Particle3D::~Particle3D() {
 	}else{
 		m_ps=NULL;
 	}
+	this->~Displayable();
 }
 
 
@@ -112,12 +131,16 @@ SN<float, char> Particle3D::getZ() const {
 	return z;
 }
 
-Vector3D Particle3D::getSpeed() const {
+Vector3D Particle3D::getSpeed() const {//Yep because cant be null
 	return *m_ps;
 }
 
-Vector3D* Particle3D::getPSpeed() {
-	return m_ps;
+Vector3D* Particle3D::getPSpeed() const {
+	Vector3D* ps=NULL;
+	if (m_dels){
+		ps=m_ps;
+	}
+	return ps;
 }
 
 void Particle3D::setSpeed(const Vector3D& v) {
@@ -159,13 +182,16 @@ void Particle3D::addAsPos(const Vector3D& v) {
 
 void Particle3D::setT(const float& dt) {
 	m_dt=dt;
-	//printf("%Lf\n", dt);
+	//printf("dt:  %f\n", dt);
 }
 
 void Particle3D::apply(){
-	this->x=this->x+(m_ps->getP2().x)*m_dt;
-	this->y=this->y+(m_ps->getP2().y)*m_dt;
-	this->z=this->z+(m_ps->getP2().z)*m_dt;
+	this->x+=(m_ps->getEnd().x)*m_dt;
+	this->y+=(m_ps->getEnd().y)*m_dt;
+	this->z+=(m_ps->getEnd().z)*m_dt;
+
+	this->x.print(true, true, 2);
+
 	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM
 	//this->y+=(m_ps->getP2().y)*m_dt;
 	//this->z+=(m_ps->getP2().z)*m_dt;

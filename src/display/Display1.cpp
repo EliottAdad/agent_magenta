@@ -5,10 +5,14 @@
  *      Author: esn
  */
 
-#include "Display1.h"
+//#include "Display1.h"
 
-Display1::Display1() {
-	m_ppoint=new Point3D<float, char>();
+#ifdef D
+
+#define E
+
+template<typename M, typename E> Display1<M, E>::Display1() {
+	m_ppoint=new Point3D<M, E>();
 	m_display=1;
 	m_scale=10;
 
@@ -23,7 +27,7 @@ Display1::Display1() {
 	m_fclear=true;
 }
 
-Display1::Display1(Point3D<float, char>* ppoint) {
+template<typename M, typename E> Display1<M, E>::Display1(Point3D<float, char>* ppoint) {
 	m_ppoint=ppoint;
 	m_display=1;
 	m_scale=10;
@@ -39,7 +43,7 @@ Display1::Display1(Point3D<float, char>* ppoint) {
 	m_fclear=true;
 }
 
-Display1::Display1(SDL_Window* pwindow, SDL_Renderer* prenderer) {
+template<typename M, typename E> Display1<M, E>::Display1(SDL_Window* pwindow, SDL_Renderer* prenderer) {
 	m_ppoint=new Point3D<float, char>();
 	m_display=1;
 	m_scale=10;
@@ -55,7 +59,7 @@ Display1::Display1(SDL_Window* pwindow, SDL_Renderer* prenderer) {
 	m_fclear=true;
 }
 
-Display1::~Display1() {
+template<typename M, typename E> Display1<M, E>::~Display1() {
 	delete m_ppoint;
 	delete m_pbkgd_color;
 	delete m_pdraw_color;
@@ -75,7 +79,11 @@ Display1::Display1(const Display1 &other) {
 
 
 
-Point3D<float, char>* Display1::getPPoint(){
+template<typename M, typename E> Point3D<float, char> Display1<M, E>::getPoint() const {
+	return *m_ppoint;
+}
+
+template<typename M, typename E> Point3D<float, char>* Display1<M, E>::getPPoint() const {
 	return m_ppoint;
 }
 
@@ -83,7 +91,7 @@ Point3D<float, char>* Display1::getPPoint(){
  * If you give a pointer, the point will be automatically considered
  * as instanciated somewhere else outside of the class.
  */
-void Display1::setPPoint(Point3D<float, char>* ppoint, const bool& delp){
+template<typename M, typename E> void Display1<M, E>::setPPoint(Point3D<float, char>* ppoint, const bool& delp){
 	if (delp){
 		if (m_delp){
 			delete m_ppoint;
@@ -95,7 +103,7 @@ void Display1::setPPoint(Point3D<float, char>* ppoint, const bool& delp){
 	m_delp=delp;
 }
 
-void Display1::setPoint(Point3D<float, char>& point, const bool& delp){
+template<typename M, typename E> void Display1<M, E>::setPoint(Point3D<float, char>& point, const bool& delp){
 	if (delp){
 		if (m_delp){
 			delete m_ppoint;
@@ -107,105 +115,83 @@ void Display1::setPoint(Point3D<float, char>& point, const bool& delp){
 	m_delp=delp;
 }
 
-char Display1::getDisplay() const {
+template<typename M, typename E> char Display1<M, E>::getDisplay() const {
 	return m_display;
 }
 
-void Display1::setDisplay(const char& display){
+template<typename M, typename E> void Display1<M, E>::setDisplay(const char& display){
 	m_display=display;
 }
 
-float Display1::getScale() const {
+template<typename M, typename E> float Display1<M, E>::getScale() const {
 	return m_scale;
 }
 
-void Display1::setScale(const float& scale){
+template<typename M, typename E> void Display1<M, E>::setScale(const float& scale){
 	m_scale=scale;
 }
 
-SDL_Window* Display1::getPWindow(){
-	return m_pwindow;
+template<typename M, typename E> SDL_Color Display1<M, E>::getBkgdColor() const {
+	return *m_pbkgd_color;
 }
 
-SDL_Renderer* Display1::getPRenderer(){
-	return m_prenderer;
+template<typename M, typename E> void Display1<M, E>::setBkrdColor(unsigned char b, unsigned char g, unsigned char r, unsigned char a){
+	m_pdraw_color->b=r;
+	m_pdraw_color->g=g;
+	m_pdraw_color->r=r;
+	m_pdraw_color->a=a;
 }
 
-std::set<Scene*> Display1::getPScenes() const {
+template<typename M, typename E> SDL_Color Display1<M, E>::getDrawColor() const {
+	return *m_pdraw_color;
+}
+
+template<typename M, typename E> void Display1<M, E>::setDrawColor(unsigned char b, unsigned char g, unsigned char r, unsigned char a){
+	m_pdraw_color->b=r;
+	m_pdraw_color->g=g;
+	m_pdraw_color->r=r;
+	m_pdraw_color->a=a;
+}
+
+template<typename M, typename E> SDL_Window* Display1<M, E>::getPWindow() const {
+	SDL_Window* pwindow=NULL;
+	if (!m_delw){
+		pwindow=m_pwindow;
+	}
+	return pwindow;
+}
+
+template<typename M, typename E> void Display1<M, E>::setPWindow(SDL_Window* pwindow, const bool& delw){
+	;
+}
+
+template<typename M, typename E> SDL_Renderer* Display1<M, E>::getPRenderer() const {
+	SDL_Renderer* prenderer=NULL;
+	if (!m_delr){
+		prenderer=m_prenderer;
+	}
+	return prenderer;
+}
+
+template<typename M, typename E> void Display1<M, E>::setPRenderer(SDL_Renderer* prenderer, const bool& delr){
+	;
+}
+
+
+template<typename M, typename E> std::unordered_set<Scene*> Display1<M, E>::getPScenes() const {
 	return m_pscenes;
 }
 
-void Display1::addPScene(Scene* pscene){
+template<typename M, typename E> void Display1<M, E>::addPScene(Scene* pscene){
 	if (pscene!=NULL){
 		m_pscenes.insert(pscene);
 	}
 }
 
-SDL_Color* Display1::getPBkgdColor(){
-	return m_pbkgd_color;
-}
-
-void Display1::setBkrdColor(int b, int g, int r, int a){
-	m_pdraw_color->b=r;
-	m_pdraw_color->g=g;
-	m_pdraw_color->r=r;
-	m_pdraw_color->a=a;
-}
-
-SDL_Color* Display1::getPDrawColor(){
-	return m_pdraw_color;
-}
-
-
-void Display1::setDrawColor(int b, int g, int r, int a){
-	m_pdraw_color->b=r;
-	m_pdraw_color->g=g;
-	m_pdraw_color->r=r;
-	m_pdraw_color->a=a;
-}
-
-void Display1::renderPoints(std::set<Point3D<float, char>*> ppoints) const {//:)
-	for (Point3D<float, char>* ppoint : ppoints){
-		this->renderPoint(ppoint);
-	}
-}
-
-void Display1::renderPoint(Point3D<float, char>* ppoint) const {//:)
-	Point3D<float, char> d_point=(*ppoint)-(*m_ppoint);
-	ppoint->print(true);
-	m_ppoint->print(true);
-	d_point.print(true);
-
-	SDL_SetRenderDrawColor(m_prenderer, m_pdraw_color->r, m_pdraw_color->g, m_pdraw_color->b, m_pdraw_color->a); // Chooses the background color.
-	//SDL_RenderClear(m_prenderer); // Fill the canvas with the background color
-
-	// Get the dimensions of the window
-	int sizex(0);
-	int sizey(0);
-	SDL_GetWindowSize(m_pwindow, &sizex, &sizey);
-	SN<float, char> centerx={(float)sizex/2, 0};
-	SN<float, char> centery={(float)sizey/2, 0};
-
-	if (m_prenderer!=NULL){
-		switch (m_display){
-			case 1://(x,y) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
-				break;
-			case 2://(y,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
-				break;
-			case 3://(x,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
-				break;
-		}
-	}
-
-}
-
 /*
  *
  */
-bool Display1::render() const {
+template<typename M, typename E> bool Display1<M, E>::render() const {
 	bool success=false;
 	for (Scene* pscene : m_pscenes){
 		render(pscene);
@@ -216,12 +202,14 @@ bool Display1::render() const {
 /*
  *
  */
-bool Display1::render(Scene* pscene) const {
-	bool success=false;
-	for (Displayable* pdisplayable : pscene->getPDisplayables()){
-		//printf("pdisplayable2\n");
-		pdisplayable->print(true);
-		render(pdisplayable);
+template<typename M, typename E> bool Display1<M, E>::render(const Scene* pscene) const {
+	bool success=true;
+	if (pscene!=NULL){
+		for (Displayable* pdisplayable : pscene->getPDisplayables()){
+			//printf("pdisplayable2\n");
+			//pdisplayable->print(true);
+			success=success & render(pdisplayable);
+		}
 	}
 	return success;
 }
@@ -229,20 +217,24 @@ bool Display1::render(Scene* pscene) const {
 /*
  *
  */
-bool Display1::render(Displayable* pdisplayable) const {
+template<typename M, typename E> bool Display1<M, E>::render(const Displayable* pdisplayable) const {
 	bool success=false;
 	if (pdisplayable!=NULL) {
 		//printf("pdisplayable1\n");
-		pdisplayable->getX().print(true);
-		pdisplayable->getY().print(true);
-		pdisplayable->getZ().print(true);
-		this->renderPoint(new Point3D<float, char>{pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ()});
+		//pdisplayable->getX().print(true);
+		//pdisplayable->getY().print(true);
+		//pdisplayable->getZ().print(true);
+		Point3D<float, char> p(pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ());
+		//render(&p);
 	}
 	return success;
 }
 
 
-std::string Display1::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+
+
+
+template<typename M, typename E> std::string Display1<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="DISPLAY1";
@@ -250,10 +242,12 @@ std::string Display1::to_string(const bool& spread, const bool& full_info, const
 	return mes;
 }
 
-void Display1::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+template<typename M, typename E> void Display1<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
 
 
+// Functions
+#endif
 

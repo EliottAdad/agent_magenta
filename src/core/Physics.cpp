@@ -117,6 +117,7 @@ bool Physics::run(const unsigned int& steps) {
 			std::chrono::duration dt=t2-t1;
 
 			if (dt.count()>=1/(long double)m_pps*1000000000.){
+				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
 				this->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 
 				t1=t2;
@@ -144,14 +145,14 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	std::string mes=(spread)?"\n":"";
 	mes+=to_stringTabs(indent);
 
-	if (full_info){
+	//if (full_info){
 		mes+="PHYSICS[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();
 		mes+="]:";
 		mes+=((spread)?"\n" : "");
-	}
+	//}
 	//mes+=((spread)?"\n" : " ");
 	mes+=to_stringTabs(indent+1);
 	mes+="speed=" + std::to_string(m_speed) + "|*|fcollide=" + std::to_string(m_fcollide) + "|*|fpause=" + std::to_string(m_fpause) + "\n";
@@ -159,14 +160,17 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	mes+=to_stringTabs(indent+1);
 	mes+="* List Time Sensitive:\n";
 	//int i=0;
-	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
-		//i++;
-		mes+="\n";
-		mes+=to_stringTabs(indent+2);
-		mes+="*\n";
-		//mes+=std::to_string(i);
-		//mes+=" ";
-		mes+=ptime_sensitive->to_string(spread, full_info, indent+2);
+
+	if (full_info){
+		for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
+			//i++;
+			mes+="\n";
+			mes+=to_stringTabs(indent+2);
+			mes+="*\n";
+			//mes+=std::to_string(i);
+			//mes+=" ";
+			mes+=ptime_sensitive->to_string(spread, full_info, indent+2);
+		}
 	}
 
 	return mes;
