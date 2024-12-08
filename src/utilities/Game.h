@@ -6,8 +6,10 @@
  */
 
 #ifndef GAME_H_
+
 #define GAME_H_
 
+#include <memory>
 #include <unordered_set>
 
 #include "../core/Physics.h"
@@ -53,13 +55,13 @@ public:
 
 	// Scene
 	//std::unordered_set<Displayable*> getPDisplayables();//:)
-	bool addPDisplayable(Displayable<float, char>* pdisplayable);//:)
+	bool addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable);//:)
 
 	//Physics* getPPhysics();
 	//Scene* getPScene();
 
 	//std::unordered_set<TimeSensitive*> getPTimeSensitives();
-	bool addPTimeSensitive(TimeSensitive* ptime_sensitive);
+	bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
 
 	bool getFCollide() const;
 	void setFCollide(const bool& bcollide);

@@ -3,8 +3,9 @@
 
 #define SCENE_H
 
-
+#include <memory>
 #include <unordered_set>
+
 #include "../display/Displayable.h"
 
 
@@ -23,7 +24,7 @@ public:
 
 	std::unordered_set<Displayable<M, E>*> getPDisplayables() const;//:)
 	//void addDisplayables(std::vector<Displayable*> pdisplayables);//:)
-	bool addPDisplayable(Displayable<M, E>* pdisplayable);//:)
+	bool addPDisplayable(std::shared_ptr<Displayable<M, E>> pdisplayable);//:)
 
 private:
 	std::unordered_set<Displayable<M, E>*> m_pdisplayables;//:)
@@ -47,12 +48,12 @@ template<typename M, typename E> std::unordered_set<Displayable<M, E>*> Scene<M,
 	return m_pdisplayables;
 }
 
-template<typename M, typename E> bool Scene<M, E>::addPDisplayable(Displayable<M, E>* pdisplayable){//:)
+template<typename M, typename E> bool Scene<M, E>::addPDisplayable(std::shared_ptr<Displayable<M, E>> pdisplayable){//:)
 	//m_pdisplayables.insert(pdisplayable);
 
 	bool success=false;
 	if (pdisplayable!=NULL){
-		success=m_pdisplayables.insert(pdisplayable).second;
+		success=m_pdisplayables.insert(pdisplayable.get()).second;
 	}
 	return success;
 }

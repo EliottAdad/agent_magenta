@@ -12,20 +12,14 @@
 #include <memory>
 
 #include "core/Particle3D.h"
-//#include "core/ParticleSystem3D.h"
 #include "core/System3D.h"
 #include "core/Physics.h"
-//#include "core/Vector3D.h"
-//#include "core/WeightedPoint3D.h"
-//#include "core/Particle3D.h"
-//#include "core/Quad.h"
-//#include "core/Oct.h"
 
 
 /*
  * Main core (Particle3D, System3D, Physics)
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
 	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
 	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
@@ -43,7 +37,7 @@
 	//
 	// Tests Systems
 	//
-	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
+	std::cout<< "\n\n" << "####Tests System3Ds####" << "\n\n";
 	System3D<Particle3D, float, char> ps2;
 	bool test=ps2.addPElement(std::shared_ptr<Particle3D>(&par1));
 	printf("%b\n", test);
@@ -64,16 +58,18 @@
 	//
 	// Tests Physics
 	//
-	std::cout<< "\n" << "\n" << "####Tests Physics####" << "\n";
+	std::cout<< "\n\n" << "####Tests Physics####" << "\n\n";
+	Particle3D par4({{-1,0},{1,0},{0,0},{5,1}});
 	Physics phys;
 	phys.setPPS(200);
 	phys.setFPause(false);
-	printf("%b\n", phys.addPTimeSensitive(&par1));
-	printf("%b\n", phys.addPTimeSensitive(&par2));
-	printf("%b\n", phys.addPTimeSensitive(&par3));
+	phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4));//Doesn't work
+	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4)));
+	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par2)));
+	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par3)));
 	//printf("%b\n", phys.addPTimeSensitive(&ps2));
 
-	phys.run(2000);
+	//phys.run(1);
 
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);
@@ -88,8 +84,7 @@
 	printf("\nBye bye\n");
 
 	return 0;
-}*/
-
+}
 
 
 #endif /* MAIN5_CPP_ */

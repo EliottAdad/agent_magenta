@@ -46,7 +46,7 @@ public:
 	void setPPS(const unsigned char& pps);
 
 	std::unordered_set<TimeSensitive*> getPTimeSensitives();
-	bool addPTimeSensitive(TimeSensitive* ptime_sensitive);
+	bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
 	//std::unordered_set<Moveable*> getPMoveables();
 	//bool addPMoveable(Moveable* pmoveabele);
 

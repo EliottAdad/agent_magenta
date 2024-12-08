@@ -21,7 +21,7 @@
 /*
  * Main core (Particle3D, Quads, Octs)
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 	printf("%lu\n", sizeof(Point3D<float, char>));
 	printf("%lu\n", sizeof(WeightedPoint3D<float, char>));
 	printf("%lu\n", sizeof(Particle3D));
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]){
 	printf("\n\nBye bye\n");
 
 	return 0;
-}
+}*/
 
 
 

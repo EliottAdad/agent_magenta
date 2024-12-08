@@ -65,10 +65,10 @@ std::unordered_set<TimeSensitive*> Physics::getPTimeSensitives() {
 	return m_ptime_sensitives;
 }
 
-bool Physics::addPTimeSensitive(TimeSensitive* ptime_sensitive) {
+bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 	if (ptime_sensitive!=NULL){
-		success=m_ptime_sensitives.insert(ptime_sensitive).second;
+		success=m_ptime_sensitives.insert(ptime_sensitive.get()).second;
 	}
 	return success;
 }
@@ -130,7 +130,7 @@ bool Physics::run(const unsigned int& steps) {
 	return m_fpause;
 }
 
-bool Physics::iterate(const float& dt) {//THE PROBLEM
+bool Physics::iterate(const float& dt) {
 	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
 		//printf("\nHello1\n");
 		ptime_sensitive->setT(dt*m_speed);
@@ -155,7 +155,7 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	//}
 	//mes+=((spread)?"\n" : " ");
 	mes+=to_stringTabs(indent+1);
-	mes+="speed=" + std::to_string(m_speed) + "|*|fcollide=" + std::to_string(m_fcollide) + "|*|fpause=" + std::to_string(m_fpause) + "\n";
+	mes+="speed=" + std::to_string(m_speed) + " | fcollide=" + std::to_string(m_fcollide) + " | fpause=" + std::to_string(m_fpause) + "\n";
 
 	mes+=to_stringTabs(indent+1);
 	mes+="* List Time Sensitive:\n";

@@ -65,7 +65,7 @@ Physics* Game::getPPhysics() {
 	return m_pphysics;
 }*/
 
-bool Game::addPDisplayable(Displayable<float, char>* pdisplayable) {
+bool Game::addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable) {
 	bool success=false;
 	if (pdisplayable!=NULL){
 		success=m_pscene->addPDisplayable(pdisplayable);
@@ -77,7 +77,7 @@ bool Game::addPDisplayable(Displayable<float, char>* pdisplayable) {
 	return m_pphysics->getPTimeSensitives();
 }*/
 
-bool Game::addPTimeSensitive(TimeSensitive* ptime_sensitive) {
+bool Game::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 	if (ptime_sensitive!=NULL){
 		success=m_pphysics->addPTimeSensitive(ptime_sensitive);
