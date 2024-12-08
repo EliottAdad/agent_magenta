@@ -49,7 +49,7 @@ std::unordered_set<Particle3D*> ParticleSystem3D::getPParticles() const {
 	return m_poctree->getPElements();
 }
 
-bool ParticleSystem3D::addPParticle(Particle3D* ppart) {
+bool ParticleSystem3D::addPParticle(std::shared_ptr<Particle3D> ppart) {
 	bool success=false;
 	if (ppart!=NULL) {
 		success=m_poctree->insert(ppart);

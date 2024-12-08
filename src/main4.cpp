@@ -6,7 +6,10 @@
  */
 
 #ifndef MAIN4_CPP_
+
 #define MAIN4_CPP_
+
+#include <memory>
 
 #include "core/SN.h"
 #include "core/WeightedPoint3D.h"
@@ -28,10 +31,10 @@ int main(int argc, char* argv[]){
 	//
 	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
 
-	Particle3D par1({{-1.,0},{1.,0},{0.,0},{5.,1}});
-	Particle3D par2({{1.5,0},{1.87006,0},{0.,0},{-3.,1}});
-	Particle3D par3({{-1.75,0},{-1.9,0},{0.,0},{-2.,1}});
-	Particle3D par4({{-1.,1},{2.,1},{0.,0},{7.,1}});
+	Particle3D par1({{-1,0},{1,0},{0,0},{5,1}});
+	Particle3D par2({{1.5,0},{1.87006,0},{0,0},{-3,1}});
+	Particle3D par3({{-1.75,0},{-1.9,0},{0,0},{-2,1}});
+	Particle3D par4({{-1,1},{2,1},{0,0},{7,1}});
 	par1.print(true, true, 0);
 	par2.print(true, true, 0);
 	par3.print(true, true, 0);
@@ -41,16 +44,17 @@ int main(int argc, char* argv[]){
 	//
 	// Tests Quads
 	//
-	std::cout<< "\n" << "\n" << "####Tests Quads####" << "\n" << "\n";
-	SN<float, char> a(1., 2);
-	Point3D<float, char> p{{0.,0},{0.,0},{0.,0}};
+	std::cout<< "\n\n" << "####Tests Quads####" << "\n\n";
+	SN<float, char> a(1,2);
+	Point3D<float, char> p{{0,0},{0,0},{0,0}};
 	Quad<Particle3D, float, char> q1(a, p);
-	//q1.m_ALPHA=0.1;
-
-	q1.insert(&par1);
-	q1.insert(&par2);
-	q1.insert(&par3);
-	q1.insert(&par4);
+//	//q1.m_ALPHA=0.1;
+//
+//
+	q1.insert(std::shared_ptr<Particle3D>(&par1));
+//	q1.insert(std::shared_ptr<Particle3D>(&ar2));
+//	q1.insert(std::make_shared<Particle3D>(par3));
+//	q1.insert(std::make_shared<Particle3D>(par4));
 	q1.print(true, true, 0);
 
 //	std::cout << "\nArobase\n";
@@ -65,16 +69,17 @@ int main(int argc, char* argv[]){
 	//q1.computeInverseSquareLawResultant(par4, v);
 	//std::cout << "\n" << v.to_string() << "\n";
 
+
 	//
 	// Tests Octs
 	//
-	std::cout<< "\n" << "####Tests Octs####" << "\n" << "\n";
-	Oct<Particle3D, float, char> o1;
+	std::cout<< "\n\n" << "####Tests Octs####" << "\n\n";
+	Oct<Particle3D, float, char> o1(a, p);
 
-	o1.insert(&par1);
-	o1.insert(&par2);
-	o1.insert(&par3);
-	o1.insert(&par4);
+	o1.insert(std::shared_ptr<Particle3D>(&par1));
+	o1.insert(std::shared_ptr<Particle3D>(&par2));
+//	o1.insert(&par3);
+//	o1.insert(&par4);
 	//o1.recalculate();
 	o1.print(true, true, 0);
 

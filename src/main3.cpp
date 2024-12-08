@@ -19,34 +19,39 @@
 	//
 	// Tests Vectors
 	//
-	std::cout<< "\n" << "####Tests Vectors####" << "\n" << "\n";
+	std::cout<< "\n\n" << "####Tests Vectors####" << "\n\n";
 
-	Vector3D v1;
+	Point3D<float, char> p0{{0,0},{0,0},{0,0}};
+	Point3D<float, char> p1{{0,0},{2,0},{1,0}};
+	Point3D<float, char> p2{{2,0},{2,0},{1,0}};
+	Point3D<float, char> p3{{1,0},{-2,0},{1,0}};
+
+	Vector3D v1(p0, p1);
 	v1.print(true, true, 0);
-	Vector3D v2;
+	Vector3D v2(p0, p2);
 	v2.print(true, true, 0);
-	Vector3D v3;
+	Vector3D v3(p0, p3);
 	v3.print(true, true, 0);
 
 
 	printf("\n Test + start \n");
-	std::unique_ptr<Vector3D> rv1; rv1=v1+v2;
-	rv1->print();
+	Vector3D rv1; rv1=v1+v2;			//{{2,0},{4,0},{2,0}}
+	rv1.print();
 	printf("\n Test + end \n");
 
 	printf("\n Test - start \n");
-	std::unique_ptr<Vector3D> rv2=v1-v2;
-	rv2->print();
+	Vector3D rv2=v1-v2;
+	rv2.print();
 	printf("\n Test - end \n");
 
 	printf("\n Test * start \n");
-	std::unique_ptr<Vector3D> rv3=v1*2.;
-	rv3->print();
+	Vector3D rv3=v1*2.;
+	rv3.print();
 	printf("\n Test * end \n");
 
 	printf("\n Test / start \n");
-	std::unique_ptr<Vector3D> rv4=v1/2.;
-	rv4->print();
+	Vector3D rv4=v1/2.;
+	rv4.print();
 	printf("\n Test / end \n");
 
 	printf("\n Test += start \n");
@@ -71,9 +76,10 @@
 
 	// Still cannot chain operators
 	std::cout<< "\n" << "Vectors : chain operations test start" << "\n";
-	std::unique_ptr<Vector3D> rv5=(*rv1+*rv2);
-	//Vector3D rv5=((v1-v2)+v3)*2;// Cannot chain operators like Points3D//N'appelle pas l'égalisation des Vectors
-	rv5->print();
+	//std::shared_ptr<Vector3D> rv5=*(*rv1+*rv2)+*rv3;
+	Vector3D rv5=rv1+rv2+rv3+rv4;
+	//std::shared_ptr<Vector3D> rv5=*(*(*rv1-*rv2)+*rv3)*2.;// Now we can chain operators like Points3D
+	rv5.print();
 	std::cout<< "\n" << "Vectors : chain operations test end" << "\n";
 
 	printf("\n\nBye bye\n");

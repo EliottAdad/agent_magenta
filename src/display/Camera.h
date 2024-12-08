@@ -9,6 +9,8 @@
 
 #define CAMERA_H_
 
+#include <memory>
+
 #include "../core/Point3D.h"
 #include "../core/Vector3D.h"
 #include "../geometry/Mesh3D.h"
@@ -24,12 +26,12 @@
 class Camera : public Printable {
 private:
 	float m_aperture;		//Aperture angle in radians
-	Point3D<float, char>* m_ppoint;
+	std::shared_ptr<Point3D<float, char>> m_ppoint;
 	Vector3D* m_pnormal;
 	float m_roll_ang;		//Roll angle to the normal
 	//m_window;
 
-	bool m_delp;
+	//bool m_delp;
 	bool m_deln;
 
 public:

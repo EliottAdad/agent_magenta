@@ -6,7 +6,10 @@
  */
 
 #ifndef MAIN5_CPP_
+
 #define MAIN5_CPP_
+
+#include <memory>
 
 #include "core/Particle3D.h"
 //#include "core/ParticleSystem3D.h"
@@ -42,11 +45,11 @@
 	//
 	std::cout<< "\n" << "####Tests System3Ds####" << "\n";
 	System3D<Particle3D, float, char> ps2;
-	bool test=ps2.addPElement(&par1);
+	bool test=ps2.addPElement(std::shared_ptr<Particle3D>(&par1));
 	printf("%b\n", test);
-	test=ps2.addPElement(&par2);
+	test=ps2.addPElement(std::shared_ptr<Particle3D>(&par2));
 	printf("%b\n", test);
-	test=ps2.addPElement(&par3);
+	test=ps2.addPElement(std::shared_ptr<Particle3D>(&par3));
 	printf("%b\n", test);
 	ps2.print(true, true, 0);
 

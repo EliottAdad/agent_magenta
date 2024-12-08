@@ -23,7 +23,7 @@
 	//
 	// Tests SN
 	//
-	std::cout<< "\n" << "####Tests SN####" << "\n";
+	std::cout<< "\n\n" << "####Tests SN####" << "\n";
 
 	SN<float, char> nb0{2.,20};				//{2,20}
 	SN<float, char> nb1=nb0*(float)(-1.);	//{-2,20}

@@ -9,21 +9,16 @@
 
 Camera::Camera() {
 	m_aperture=1;
-	m_ppoint=new Point3D<float, char>;
+	m_ppoint=NULL;
 	m_pnormal=new Vector3D();
 	*m_pnormal/=m_pnormal->getNorm();//Normalization
 	m_roll_ang=0;
 
-	m_delp=true;
+	//m_delp=true;
 	m_deln=true;
 }
 
 Camera::~Camera() {
-	if (m_delp){
-		delete m_ppoint;
-	}else{
-		m_ppoint=NULL;
-	}
 	if (m_deln){
 		delete m_pnormal;
 	}else{
@@ -52,9 +47,9 @@ Vector3D Camera::getNormal() const {
 std::unique_ptr<Vector3D> Camera::getE1() const {
 	std::unique_ptr<Vector3D> pv(new Vector3D(
 			m_ppoint, {
-			{1.,0},
-			{1.,0},
-			{(float)(-1.)/m_pnormal->getP2().z * (m_pnormal->getP2().x*((float)(1.)-m_ppoint->x) + m_pnormal->getP2().y*((float)(1.)-m_ppoint->y)) + m_ppoint->z}
+			{1,0},
+			{1,0},
+			{(float)(-1.)/m_pnormal->pp2->z * (m_pnormal->pp2->x*((float)(1.)-m_ppoint->x) + m_pnormal->pp2->y*((float)(1.)-m_ppoint->y)) + m_ppoint->z}
 			}
 			));//One possible normal vector
 	*pv/=pv->getNorm();//Normalisation
@@ -62,7 +57,7 @@ std::unique_ptr<Vector3D> Camera::getE1() const {
 }
 
 std::unique_ptr<Vector3D> Camera::getE2() const {
-	std::unique_ptr<Vector3D> pv(new Vector3D( *(*m_pnormal^*(this->getE1())) ));
+	std::unique_ptr<Vector3D> pv(new Vector3D( *m_pnormal^*(this->getE1()) ));
 	*pv/=pv->getNorm();//Normalisation
 	return pv;
 }

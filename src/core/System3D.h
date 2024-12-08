@@ -9,6 +9,7 @@
 
 #define SYSTEM3D_H_
 
+#include <memory>
 #include <unordered_set>
 
 //#include "Particle3D.h"
@@ -45,7 +46,7 @@ public:
 	float getAlpha() const;
 	void setAlpha(const float& alpha);
 	std::unordered_set<T*> getPElements() const;
-	bool addPElement(T* pelement);
+	bool addPElement(std::shared_ptr<T> pelement);
 	std::unordered_set<T*> getPNeighbors(const T* pelement) const;				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
 	void setPFunc(SN<M, E> (*ptrLaw) (T*, T*));
@@ -70,11 +71,11 @@ template <typename T, typename M, typename E> SN<M, E> rrr2(T* p1, T* p2);// Ret
  */
 //void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
 template <typename M, typename E> void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt){
-	Vector3D* pv1=new Vector3D({pp1->x, pp1->y, pp1->z}, {pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
-	Vector3D* pv2=new Vector3D({pp2->x, pp2->y, pp2->z}, {pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
-	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<M, E>{{0, 0}, {0, 0}, {0, 0}});
-	pv1->setNorm({1, 0});
-	pv2->setNorm({1, 0});
+	std::shared_ptr<Vector3D> pv1=std::make_shared<Vector3D>(Point3D<float, char>{pp1->x, pp1->y, pp1->z}, Point3D<float, char>{pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	std::shared_ptr<Vector3D> pv2=std::make_shared<Vector3D>(Point3D<float, char>{pp2->x, pp2->y, pp2->z}, Point3D<float, char>{pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
+	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<M, E>{{0,0},{0,0},{0,0}});
+	pv1->setNorm({1,0});
+	pv2->setNorm({1,0});
 
 	(*pv1)*=G;
 	(*pv1)*=pp2->w;
@@ -89,8 +90,9 @@ template <typename M, typename E> void grav(Particle3D* pp1, Particle3D* pp2, co
 	(*pv1)*=pow(dt, 2)/2;
 	(*pv2)*=pow(dt, 2)/2;
 
-	pp1->addSpeed(*pv1);
-	pp2->addSpeed(*pv2);
+	*pp1->ps+=(*pv1);
+	*pp2->ps+=(*pv2);
+	//pp2->addSpeed(*pv2);
 }
 
 
@@ -138,11 +140,11 @@ template <typename T, typename M, typename E> std::unordered_set<T*> System3D<T,
 	return m_poctree->getPElements();
 }
 
-template <typename T, typename M, typename E> bool System3D<T, M, E>::addPElement(T* pelement) {
+template <typename T, typename M, typename E> bool System3D<T, M, E>::addPElement(std::shared_ptr<T> pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
-		m_pelements.insert(pelement);
+		m_pelements.insert(pelement.get());
 	}
 	return success;
 }
@@ -162,7 +164,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 		// If there is a law to apply
 		if (m_ptrLaw!=NULL){
 			//printf("A\n");
-			std::unordered_set<T*> pneighbors=m_poctree->getPNeighbors(pelement);
+			std::unordered_set<T*> pneighbors=m_poctree->getPNeighbors(std::shared_ptr<T>(pelement));
 			//printf("B\n");
 			if(pneighbors.empty()){
 				//printf("Pas de neighbors\n");

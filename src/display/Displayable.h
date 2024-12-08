@@ -9,7 +9,9 @@
 
 #define DISPLAYABLE_H_
 
+#include <memory>
 #include <SDL2/SDL.h>
+
 #include "../geometry/Mesh3D.h"
 #include "../utilities/Printable.h"
 
@@ -22,12 +24,13 @@
  */
 template<typename M, typename E> struct Displayable : public Printable {
 protected:
-	SDL_Color* m_pcolor;		// Drawing color
 	//Mesh3D* pmesh;			// Pointer to the mesh to be drawn
 
-	bool m_delc;
+	//bool m_delc;
 
 public:
+	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
+
 	Displayable();
 	virtual ~Displayable();
 	Displayable(const Displayable &other);
@@ -35,10 +38,10 @@ public:
 	virtual SN<M, E> getX() const;				//Gets the coords (changer plus tard en getPoints
 	virtual SN<M, E> getY() const;
 	virtual SN<M, E> getZ() const;
-	virtual SDL_Color getColor() const;
-	virtual SDL_Color* getPColor() const;
-	virtual void setColor(SDL_Color& color, const bool& delc=true);
-	virtual void setPColor(SDL_Color* pcolor, const bool& delc=false);
+	//virtual SDL_Color getColor() const;
+	//virtual SDL_Color* getPColor() const;
+	//virtual void setColor(SDL_Color& color, const bool& delc=true);
+	//virtual void setPColor(SDL_Color* pcolor, const bool& delc=false);
 	//render();
 
 	//virtual Image getSticker() const;
@@ -49,23 +52,17 @@ public:
 
 
 template<typename M, typename E> Displayable<M, E>::Displayable() {
-	m_pcolor=new SDL_Color{255, 255, 255, 255};		// Will be interprated as white by the cameras and displays
+	pcolor=NULL;//std::make_shared<SDL_Color>(255, 255, 255, 255);		// Will be interprated as white by the cameras and displays
 	//m_pmesh=NULL;			//
-	m_delc=true;
+	//m_delc=true;
 }
 
 template<typename M, typename E> Displayable<M, E>::~Displayable() {
-	if (m_delc){
-		delete m_pcolor;		// Will be interprated as white by the cameras
-		//pmesh=NULL;			//
-	}
+	;
 }
 
 template<typename M, typename E> Displayable<M, E>::Displayable(const Displayable &other) {
-	this->setColor(other.getColor());
-	//pmesh=other.pmesh;			//
-	//m_pcolor=new SDL_Color
-	m_delc=true;
+	pcolor=other.pcolor;
 }
 
 
@@ -90,8 +87,8 @@ template<typename M, typename E> SN<M, E> Displayable<M, E>::getZ() const {
 	return {0.,0};
 }
 
-template<typename M, typename E> SDL_Color Displayable<M, E>::getColor() const {//Yes because it cannot be null
-	return *m_pcolor;
+/*template<typename M, typename E> SDL_Color Displayable<M, E>::getColor() const {//Yes because it cannot be null
+	return *pcolor;
 }
 
 template<typename M, typename E> SDL_Color* Displayable<M, E>::getPColor() const {
@@ -105,9 +102,7 @@ template<typename M, typename E> SDL_Color* Displayable<M, E>::getPColor() const
 template<typename M, typename E> void Displayable<M, E>::setColor(SDL_Color& color, const bool& delc) {
 	if (m_delc){//Get rid of the last color
 		delete m_pcolor;
-	}/*else{
-		m_pcolor=NULL;
-	}*/
+	}
 	if (delc){//Insert the new color
 		m_pcolor=new SDL_Color(color);
 	}else{
@@ -126,7 +121,7 @@ template<typename M, typename E> void Displayable<M, E>::setPColor(SDL_Color* pc
 		m_pcolor=pcolor;
 	}
 	m_delc=delc;
-}
+}*/
 
 
 template<typename M, typename E> std::string Displayable<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)

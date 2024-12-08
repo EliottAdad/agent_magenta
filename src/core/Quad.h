@@ -9,9 +9,11 @@
 
 #define QUAD_H_
 
+#include <memory>
 #include <cstdio>
 //#include <cmath>
 #include <unordered_set>
+
 #include "Particle3D.h"
 #include "Point3D.h"
 #include "../utilities/Printable.h"
@@ -23,14 +25,14 @@
  */
 template <typename T, typename M, typename E> class Quad : public Printable {
 protected:
-	Point3D<M, E>* m_ppoint;					// The center of the zone.
-	Point3D<M, E>* m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
-	bool m_delp;					// If the point should be deleted.
+	std::shared_ptr<Point3D<M, E>> m_ppoint;					// The center of the zone.
+	std::shared_ptr<Point3D<M, E>> m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
+	//bool m_delp;					// If the point should be deleted.
 
 	SN<M, E> m_a;							// Length of the zone's border.
 	SN<M, E> m_tot_weight;					// Total weight contained in this Quad.
 
-	T* m_pT;							// The content of this square (NULL if nothing).
+	std::shared_ptr<T> m_pT;							// The content of this square (NULL if nothing).
 	//Particle3D* m_pparticle;			// The content of this node.
 
 	Quad<T, M, E>* m_pTLTree;					// Top Left corner : is NULL if nothing
@@ -45,7 +47,7 @@ public:
 	static float m_ALPHA;				// The threshold m_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider
 
 	Quad(const SN<M, E>& a, const Point3D<M, E>& p={{0.,0},{0.,0},{0.,0}});
-	Quad(const SN<M, E>& a, Point3D<M, E>* ppoint);
+	Quad(const SN<M, E>& a, std::shared_ptr<Point3D<M, E>> ppoint);
 	Quad(const Quad<T, M, E>* pquad);
 	virtual ~Quad();
 
@@ -63,7 +65,7 @@ public:
 	std::unordered_set<T*> getPElements() const;					//Returns all the elements contained in the tree.
 	std::unordered_set<T*> getPNeighbors(T* pelement) const;		//Returns all the neighbors.
 
-	bool insert(T* pT);
+	bool insert(std::shared_ptr<T> pT);
 	//void insert(Particle3D* ppart);
 	void find(const T& t, std::unordered_set<Quad<T, M, E>*>& pquads);// It adds to the list of Quads in parameter accordingly to the ratio m_ALPHA
 	//void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;
@@ -84,9 +86,9 @@ template <typename T, typename M, typename E> float Quad<T, M, E>::m_ALPHA=0.5;
  * Constructor1
  */
 template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, const Point3D<M, E>& point) {
-	m_ppoint=new Point3D<M, E>(point);
-	m_pbarycenter=new Point3D<M, E>(*m_ppoint);
-	m_delp=true;
+	m_ppoint=std::make_shared<Point3D<float, char>>(point);
+	m_pbarycenter=std::make_shared<Point3D<float, char>>(*m_ppoint);
+	//m_delp=true;
 
 	m_a=a;
 	m_tot_weight=0.;
@@ -104,10 +106,10 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>
 /*
  * Constructor2
  */
-template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, Point3D<M, E>* ppoint) {
+template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, std::shared_ptr<Point3D<M, E>> ppoint) {
 	m_ppoint=ppoint;
-	m_pbarycenter=new Point3D<M, E>(*m_ppoint);
-	m_delp=false;
+	m_pbarycenter=std::shared_ptr(new Point3D<M, E>(*m_ppoint));
+	//m_delp=false;
 
 	m_a=a;
 	m_tot_weight=0.;
@@ -126,9 +128,9 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>
  * Copy constructor
  */
 template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, M, E>* pquad) {
-	m_ppoint=new Point3D<M, E>(pquad->getPoint());
-	m_pbarycenter=new Point3D<M, E>(*m_ppoint);
-	m_delp=false;
+	m_ppoint=std::shared_ptr(new Point3D<M, E>(pquad->getPoint()));
+	m_pbarycenter=std::shared_ptr(new Point3D<M, E>(*m_ppoint));
+	//m_delp=false;
 
 	m_a=pquad->getA();
 	m_tot_weight=0.;
@@ -144,14 +146,7 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, 
 }
 
 template <typename T, typename M, typename E> Quad<T, M, E>::~Quad() {
-	if (m_delp){
-		delete m_ppoint;
-	}else{
-		m_ppoint=NULL;
-	}
-	delete m_pbarycenter;
-
-	m_pT=NULL;
+	//m_pT=NULL;
 
 	if (m_pTLTree!=NULL){
 		delete m_pTLTree;
@@ -174,12 +169,7 @@ template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getPo
 }
 
 template <typename T, typename M, typename E> Point3D<M, E>* Quad<T, M, E>::getPPoint() const {
-	Point3D<M, E>* pp=NULL;
-	// If it hasn't been created locally...
-	if (!m_delp){
-		pp=this->m_ppoint;
-	}
-	return pp;
+	return this->m_ppoint;
 }
 
 template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getBarycenter() const {
@@ -195,9 +185,9 @@ template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getBa
 	return pp;
 }*/
 
-template <typename T, typename M, typename E> bool Quad<T, M, E>::getDelP() const {
+/*template <typename T, typename M, typename E> bool Quad<T, M, E>::getDelP() const {
 	return m_delp;
-}
+}*/
 
 template <typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::getA() const {
 	return m_a;
@@ -244,7 +234,7 @@ template <typename T, typename M, typename E> std::unordered_set<T*> Quad<T, M, 
 	return elmts;
 }
 
-template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) {
+template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::shared_ptr<T> pT) {
 	if (pT!=NULL){
 		Point3D<M, E> p={pT->x, pT->y, {0, 0}/*ppart->z*/};
 		Point3D<M, E> dp={pT->x-m_ppoint->x, pT->y-m_ppoint->y, {0, 0}};
@@ -335,7 +325,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(T* pT) 
 					m_pTLTree->insert(pT);
 				}
 				// We reinsert the object already present.
-				T* pT2=m_pT;
+				std::shared_ptr<T> pT2=m_pT;
 				m_pT=NULL;
 				this->insert(pT2);
 			}
@@ -597,15 +587,15 @@ template <typename T, typename M, typename E> std::string Quad<T, M, E>::to_stri
 	mes+=ss.str();
 	mes+="]:";
 	mes+=m_a.to_string();								//a
-	mes+="|*|";
+	mes+=" | ";
 	mes+=m_ppoint->to_string(false, false, 0);				//Point
-	mes+="|*|";
+	mes+=" | ";
 	mes+=m_pbarycenter->to_string(false, false, 0);		//Barycenter
-	mes+="|*|";
+	mes+=" | ";
 	std::stringstream ss2;
 	ss2 << m_pT;
 	mes+=ss2.str();
-	mes+="|*|";
+	mes+=" | ";
 	mes+="w:" + std::to_string(m_tot_weight.to_m_type());
 	mes+="]";
 	mes+=((spread)?"\n" : "");

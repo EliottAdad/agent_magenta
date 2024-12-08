@@ -51,7 +51,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Revivaal0.0.3.1
+BUILD_ARTIFACT_NAME := Revivaal0.0.3.2
 BUILD_ARTIFACT_EXTENSION :=
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -62,19 +62,19 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 all: main-build
 
 # Main-build Target
-main-build: Revivaal0.0.3.1
+main-build: Revivaal0.0.3.2
 
 # Tool invocations
-Revivaal0.0.3.1: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+Revivaal0.0.3.2: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	g++ -L/usr/include/SDL2 -o "Revivaal0.0.3.1" $(OBJS) $(USER_OBJS) $(LIBS) -lSDL2
+	g++ -L/usr/include/SDL2 -o "Revivaal0.0.3.2" $(OBJS) $(USER_OBJS) $(LIBS) -lSDL2
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Revivaal0.0.3.1
+	-$(RM) Revivaal0.0.3.2
 	-@echo ' '
 
 .PHONY: all clean dependents main-build

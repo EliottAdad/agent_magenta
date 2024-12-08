@@ -9,6 +9,7 @@
 
 #define PARTICLESYSTEM3D_H_
 
+#include <memory>
 #include <unordered_set>
 
 #include "SN.h"
@@ -42,7 +43,7 @@ public:
 	float getAlpha() const;
 	void setAlpha(const float& alpha);
 	std::unordered_set<Particle3D*> getPParticles() const;
-	bool addPParticle(Particle3D* ppart);
+	bool addPParticle(std::shared_ptr<Particle3D> ppart);
 	//void removePParticle(Particle3D* ppart);
 	//void empty();
 

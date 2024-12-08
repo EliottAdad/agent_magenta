@@ -6,6 +6,7 @@
  */
 
 #ifndef WEIGHTEDPOINT3D_H_
+
 #define WEIGHTEDPOINT3D_H_
 
 #include "Point3D.h"
@@ -37,10 +38,10 @@ template<typename M, typename E> struct WeightedPoint3D : public Point3D<M, E> {
 
 
 template<typename M, typename E> WeightedPoint3D<M, E>::WeightedPoint3D() {
-	this->x=SN<float, char>{0.,0};
-	this->y=SN<float, char>{0.,0};
-	this->z=SN<float, char>{0.,0};
-	this->w=SN<float, char>{1.,0};
+	this->x=SN<float, char>{0,0};
+	this->y=SN<float, char>{0,0};
+	this->z=SN<float, char>{0,0};
+	this->w=SN<float, char>{1,0};
 }
 
 template<typename M, typename E> WeightedPoint3D<M, E>::WeightedPoint3D(const Point3D<M, E>& p, const SN<M, E>& w) {
@@ -106,7 +107,7 @@ template<typename M, typename E> std::string WeightedPoint3D<M, E>::to_string(co
 		mes+=((spread)?"\n" + to_stringTabs(1) : "");
 	}
 
-	mes+="(" + this->x.to_string() + ", " + this->y.to_string() + ", " + this->z.to_string() + ", " + w.to_string()+")";
+	mes+="(x:" + this->x.to_string() + " ; y:" + this->y.to_string() + " ; z:" + this->z.to_string() + " ; w:" + w.to_string()+")";
 
 	return mes;
 }

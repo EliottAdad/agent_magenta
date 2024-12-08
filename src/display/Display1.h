@@ -316,7 +316,7 @@ template<typename M, typename E> bool Display1<M, E>::render(const Displayable<M
 		//pdisplayable->getY().print(true);
 		//pdisplayable->getZ().print(true);
 		printf("\nRendering 3_2\n");
-		SDL_SetRenderDrawColor(m_prenderer, pdisplayable->getColor().r, pdisplayable->getColor().g, pdisplayable->getColor().b, pdisplayable->getColor().a);
+		SDL_SetRenderDrawColor(m_prenderer, pdisplayable->pcolor->r, pdisplayable->pcolor->g, pdisplayable->pcolor->b, pdisplayable->pcolor->a);
 		printf("\nRendering 3_3\n");
 		Point3D<M, E> p(pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ());
 		render(&p);

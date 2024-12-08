@@ -8,81 +8,54 @@
 #include "Line3D.h"
 
 Line3D::Line3D(){
-	m_pp1=new Point3D<float, char>{{0,0}, {0,0}, {0,0}};
-	m_pp2=new Point3D<float, char>{{1,0}, {1,0}, {1,0}};
-	m_delp1=true;
-	m_delp2=true;
+	this->pp1=std::make_shared<Point3D<float, char>>();
+	this->pp2=std::make_shared<Point3D<float, char>>(SN<float, char>{1,0},SN<float, char>{1,0},SN<float, char>{1,0});
 }
 
 Line3D::Line3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2){//:)
-	this->m_pp1=new Point3D<float, char>(p1);
-	this->m_pp2=new Point3D<float, char>(p2);
-	m_delp1=true;
-	m_delp2=true;
+	this->pp1=std::make_shared<Point3D<float, char>>(p1);
+	this->pp2=std::make_shared<Point3D<float, char>>(p2);
 }
 
-Line3D::Line3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2){//:)
-	if (pp1!=NULL){
-		this->m_pp1=pp1;
-		m_delp1=false;
-	}else{
-		this->m_pp1=new Point3D<float, char>{{0,0}, {0,0}, {0,0}};
-		m_delp1=true;
-	}
-	if (pp2!=NULL){
-		this->m_pp2=pp2;
-		m_delp2=false;
-	}else{
-		this->m_pp2=new Point3D<float, char>{{1,0}, {1,0}, {1,0}};
-		m_delp2=true;
-	}
+Line3D::Line3D(std::shared_ptr<Point3D<float, char>> pp1, std::shared_ptr<Point3D<float, char>> pp2){//:)
+	this->pp1=pp1;
+	this->pp2=pp2;
 }
 
 /*
  * Copy constructor
  */
 Line3D::Line3D(const Line3D& l){
-	m_pp1=new Point3D<float, char>(l.getP1());
-	m_pp2=new Point3D<float, char>(l.getP2());
-	m_delp1=true;
-	m_delp2=true;
+	this->pp1=l.pp1;
+	this->pp2=l.pp2;
 }
 
 /*
  * Copy constructor
  */
-Line3D::Line3D(const Line3D* pl){
+/*Line3D::Line3D(const Line3D* pl){
 	m_pp1=new Point3D<float, char>(pl->getP1());
 	m_pp2=new Point3D<float, char>(pl->getP2());
 	m_delp1=true;
 	m_delp2=true;
-}
+}*/
 
 Line3D::~Line3D() {
-	if (m_delp1){
-		delete m_pp1;
-	}/*else{
-		m_pp1=NULL;
-	}*/
-	if (m_delp2){
-		delete m_pp2;
-	}/*else{
-		m_pp2=NULL;
-	}*/
+	;
 }
 
 
 
-Point3D<float, char> Line3D::getP1() const {
+/*Point3D<float, char> Line3D::getP1() const {
 	//return Point3D{*(this->m_pp1)};
 	return *m_pp1;
-}
+}*/
 
 /**
  * Returns the pointer to p1 (if p1 has been
  * defined externally) or NULL in the other case
  */
-Point3D<float, char>* Line3D::getPP1() const {
+/*Point3D<float, char>* Line3D::getPP1() const {
 	Point3D<float, char>* pp1=NULL;
 	// If it hasn't been created locally...
 	if (!m_delp1){
@@ -120,13 +93,13 @@ void Line3D::setPP1(Point3D<float, char>* pp1, const bool& delp) {
 Point3D<float, char> Line3D::getP2() const {
 	//return Point3D{*(this->m_pp2)};
 	return *m_pp2;
-}
+}*/
 
 /**
  * Returns the pointer to p2 (if p2 has been
  * defined externally) or NULL in the other case
  */
-Point3D<float, char>* Line3D::getPP2() const {
+/*Point3D<float, char>* Line3D::getPP2() const {
 	Point3D<float, char>* pp2=nullptr;
 	// If it hasn't been created locally...
 	if (!m_delp2){
@@ -167,7 +140,7 @@ bool Line3D::getDelP1() const {
 
 bool Line3D::getDelP2() const {
 	return this->m_delp2;
-}
+}*/
 
 
 std::string Line3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
@@ -186,9 +159,9 @@ std::string Line3D::to_string(const bool& spread, const bool& full_info, const u
 	mes+=to_stringTabs(indent);
 	mes+="(";
 	if (full_info){
-		mes+="P1" + this->getP1().to_string() + "|*|";
+		mes+="P1" + (pp1==NULL)?:" NULL", pp1->to_string() + "|*|";
 	}
-	mes+="P2" + this->getP2().to_string() + ")";
+	mes+="P2" + (pp2==NULL)?:" NULL", pp2->to_string() + ")";
 
 	return mes;
 }

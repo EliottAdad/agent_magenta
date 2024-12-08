@@ -6,6 +6,7 @@
  */
 
 #ifndef MAIN1_CPP_
+
 #define MAIN1_CPP_
 
 #include <chrono>
@@ -64,7 +65,7 @@
 	//
 	// Tests LSN
 	//
-	std::cout<< "\n" << "####Tests LSN####" << "\n";
+	std::cout<< "\n\n" << "####Tests LSN####" << "\n";
 
 	LSN nb0{2,20};			//{2,20}
 	LSN nb1=nb0*-1;			//{-2,20}
@@ -97,7 +98,7 @@
 	//
 	// Tests Points
 	//
-	std::cout<< "\n" << "####Tests Points####" << "\n";
+	std::cout<< "\n\n" << "####Tests Points####" << "\n";
 
 	Point3D<float, char> p1{{0,0},{2,0},{1,0}};
 	Point3D<float, char> p2{{2,8},{2,0},{1,0}};
@@ -124,7 +125,7 @@
 	//
 	// Tests Weighted Points
 	//
-	std::cout<< "\n" << "####Tests Weighted Points####" << "\n";
+	std::cout<< "\n\n" << "####Tests Weighted Points####" << "\n";
 
 	WeightedPoint3D<float, char> wp1{{0,0},{2,0},{1,0},{1,0}};
 	WeightedPoint3D<float, char> wp2{{20,7},{2,0},{1,0},{1,0}};

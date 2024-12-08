@@ -9,9 +9,10 @@
 
 #define POINT3D_H_
 
+#include <memory>
+
 #include "SN.h"
 #include "../utilities/Printable.h"
-#include <memory>
 
 
 
@@ -23,7 +24,6 @@
  * #################
  */
 template<typename M, typename E> struct Point3D : public Printable {
-public:
 	SN<M, E> x;
 	SN<M, E> y;
 	SN<M, E> z;
@@ -74,9 +74,9 @@ template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p,
 
 
 template<typename M, typename E> Point3D<M, E>::Point3D() {
-	this->x=SN<M, E>{0.,0};
-	this->y=SN<M, E>{0.,0};
-	this->z=SN<M, E>{0.,0};
+	this->x=SN<M, E>{0,0};
+	this->y=SN<M, E>{0,0};
+	this->z=SN<M, E>{0,0};
 }
 
 template<typename M, typename E> Point3D<M, E>::Point3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z) {
