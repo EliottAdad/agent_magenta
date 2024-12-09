@@ -15,6 +15,14 @@ Physics::Physics() {
 	m_fpause=true;
 }
 
+Physics::Physics(const float& speed, const unsigned char& pps) {
+	m_pps=pps;//Computations per second
+	m_speed=speed;//Speed of the simulation
+
+	m_fcollide=false;
+	m_fpause=true;
+}
+
 Physics::~Physics() {
 	m_ptime_sensitives.clear();
 }
@@ -67,8 +75,10 @@ std::unordered_set<TimeSensitive*> Physics::getPTimeSensitives() {
 
 bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
+
 	if (ptime_sensitive!=NULL){
 		success=m_ptime_sensitives.insert(ptime_sensitive.get()).second;
+		printf("Shush\n");
 	}
 	return success;
 }

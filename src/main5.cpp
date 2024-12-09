@@ -59,11 +59,12 @@ int main(int argc, char* argv[]){
 	// Tests Physics
 	//
 	std::cout<< "\n\n" << "####Tests Physics####" << "\n\n";
-	Particle3D par4({{-1,0},{1,0},{0,0},{5,1}});
+	Particle3D par4;//(WeightedPoint3D<float, char>{{-1,0},{1,0},{0,0},{5,1}});
+
 	Physics phys;
 	phys.setPPS(200);
 	phys.setFPause(false);
-	phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4));//Doesn't work
+	//phys.addPTimeSensitive(std::shared_ptr<System3D<Particle3D, float, char>>(&ps2));//Doesn't work
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par2)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par3)));
@@ -74,13 +75,13 @@ int main(int argc, char* argv[]){
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);
 
-	phys.print(true, true, 0);
+	phys.print(true, true, 2);
 
 	//
 	// Tests Physics
 	//
 
-	//std::cout<< "\n" << "####Tests Physics2####" << "\n";
+	std::cout<< "\n" << "####Tests Physics2####" << "\n";
 	printf("\nBye bye\n");
 
 	return 0;

@@ -10,10 +10,11 @@
 #define PHYSICS_H_
 
 //#include <ctime>
+#include <memory>
 #include <chrono>
 #include <unordered_set>
 
-#include "TimeLoop.h"
+//#include "TimeLoop.h"
 //#include "Particle3DSet.h"
 #include "VectorField.h"
 #include "../utilities/Printable.h"
@@ -37,6 +38,7 @@ private:
 
 public:
 	Physics();
+	Physics(const float& speed, const unsigned char& pps);
 	virtual ~Physics();
 	Physics(const Physics& phys);
 

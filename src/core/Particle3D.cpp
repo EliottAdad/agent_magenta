@@ -11,11 +11,11 @@
 
 
 Particle3D::Particle3D() {
-	this->x=SN<float, char>{1.,0};
-	this->y=SN<float, char>{1.,0};
-	this->z=SN<float, char>{1.,0};
-	this->w=SN<float, char>{1.,0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
-	ps=std::make_shared<Vector3D>();		// Vector3D init to end=(1, 1, 1)
+	this->x=SN<float, char>{1,0};
+	this->y=SN<float, char>{1,0};
+	this->z=SN<float, char>{1,0};
+	this->w=SN<float, char>{1,0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	ps=std::shared_ptr<Vector3D>();		// Vector3D init to end=(1, 1, 1)
 	pcolor=NULL;
 
 	m_dt=0;
@@ -46,7 +46,7 @@ Particle3D::Particle3D(const Point3D<float, char>& p) {
 	this->y=p.y;
 	this->z=p.z;
 	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::make_shared<Vector3D>();
+	ps=std::shared_ptr<Vector3D>();
 	pcolor=NULL;
 
 	m_dt=0;
@@ -56,8 +56,8 @@ Particle3D::Particle3D(const SN<float, char>& x, const SN<float, char>& y, const
 	this->x=x;
 	this->y=y;
 	this->z=z;
-	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::make_shared<Vector3D>();
+	this->w=SN<float, char>{1,0};// Init the Weighted Point to {x, y, y, w=1}
+	ps=std::shared_ptr<Vector3D>();
 	pcolor=NULL;
 
 	m_dt=0;
@@ -68,7 +68,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->y=wp.y;
 	this->z=wp.z;
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	ps=std::make_shared<Vector3D>();
+	ps=std::shared_ptr<Vector3D>();
 	pcolor=NULL;
 
 	m_dt=0;
@@ -78,8 +78,8 @@ Particle3D::Particle3D(const Point3D<float, char>& p, const Vector3D& speed) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=SN<float, char>{1.,0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::make_shared<Vector3D>(*speed.pp2);
+	this->w=SN<float, char>{1,0};// Init the Weighted Point to {x, y, y, w=1}
+	ps=std::shared_ptr<Vector3D>(&speed);
 	pcolor=NULL;
 
 	m_dt=0;

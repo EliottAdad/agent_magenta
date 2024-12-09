@@ -10,6 +10,7 @@
 #define TIMESENSITIVE_H_
 
 #include <string>
+
 #include "../utilities/functions.h"
 #include "../utilities/Printable.h"
 
