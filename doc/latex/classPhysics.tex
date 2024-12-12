@@ -21,6 +21,9 @@ Collaboration diagram for Physics\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classPhysics_ae4786ed52e0dd3eac16df53132ea446f}\label{classPhysics_ae4786ed52e0dd3eac16df53132ea446f}} 
+{\bfseries Physics} (const float \&speed, const unsigned char \&pps)
+\item 
 \mbox{\Hypertarget{classPhysics_afcbc9f9e83c308d76788c88e3f72afe9}\label{classPhysics_afcbc9f9e83c308d76788c88e3f72afe9}} 
 {\bfseries Physics} (const \mbox{\hyperlink{classPhysics}{Physics}} \&phys)
 \item 
@@ -30,26 +33,26 @@ float {\bfseries get\+Speed} () const
 \mbox{\Hypertarget{classPhysics_a55fede2757ded5181e3541116889c532}\label{classPhysics_a55fede2757ded5181e3541116889c532}} 
 void {\bfseries set\+Speed} (const float \&speed)
 \item 
-\mbox{\Hypertarget{classPhysics_ae067500b23cd04728bef79497327d011}\label{classPhysics_ae067500b23cd04728bef79497327d011}} 
-unsigned int {\bfseries get\+PPS} () const
+\mbox{\Hypertarget{classPhysics_ab461ef6f24f22a83edae89fcdf4fc31b}\label{classPhysics_ab461ef6f24f22a83edae89fcdf4fc31b}} 
+unsigned char {\bfseries get\+PPS} () const
 \item 
-\mbox{\Hypertarget{classPhysics_a7fbf767be3e4432f68230491cecfb583}\label{classPhysics_a7fbf767be3e4432f68230491cecfb583}} 
-void {\bfseries set\+PPS} (const unsigned int \&pps)
+\mbox{\Hypertarget{classPhysics_aba61970582e56e2cba336f38af67269f}\label{classPhysics_aba61970582e56e2cba336f38af67269f}} 
+void {\bfseries set\+PPS} (const unsigned char \&pps)
 \item 
-\mbox{\Hypertarget{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}\label{classPhysics_a451bf0d7c6e4e9b5580da7fa666d17f7}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} ()
+\mbox{\Hypertarget{classPhysics_ac2e1fd28da2f565df7c815c32446b884}\label{classPhysics_ac2e1fd28da2f565df7c815c32446b884}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $>$ $>$ {\bfseries get\+PTime\+Sensitives} ()
 \item 
-\mbox{\Hypertarget{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}\label{classPhysics_a19dc0ed31b5da0c1f9324e7dd7f52f37}} 
-bool {\bfseries add\+PTime\+Sensitive} (\mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ptime\+\_\+sensitive)
+\mbox{\Hypertarget{classPhysics_a23f5df709b256f5433b5bf27960c86a2}\label{classPhysics_a23f5df709b256f5433b5bf27960c86a2}} 
+bool {\bfseries add\+PTime\+Sensitive} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $>$ ptime\+\_\+sensitive)
 \item 
-\mbox{\Hypertarget{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}\label{classPhysics_a6fce5e26a84d9e6a44d16e31e34ab1aa}} 
-unsigned int {\bfseries get\+FCollide} () const
+\mbox{\Hypertarget{classPhysics_a08bf2920a97c3ecc289b06cf20668ca4}\label{classPhysics_a08bf2920a97c3ecc289b06cf20668ca4}} 
+bool {\bfseries get\+FCollide} () const
 \item 
 \mbox{\Hypertarget{classPhysics_ab5abc94a74c372538b0ddb158cea186e}\label{classPhysics_ab5abc94a74c372538b0ddb158cea186e}} 
 void {\bfseries set\+FCollide} (const bool \&bcollide)
 \item 
-\mbox{\Hypertarget{classPhysics_a0d9fa5e0c0daab5a6791e412de4bf6b0}\label{classPhysics_a0d9fa5e0c0daab5a6791e412de4bf6b0}} 
-unsigned int {\bfseries get\+FPause} () const
+\mbox{\Hypertarget{classPhysics_adaf1acd2227a0afa11d5ca7e5200d89f}\label{classPhysics_adaf1acd2227a0afa11d5ca7e5200d89f}} 
+bool {\bfseries get\+FPause} () const
 \item 
 \mbox{\Hypertarget{classPhysics_ae0206b6f2791930d1e487008202ec1aa}\label{classPhysics_ae0206b6f2791930d1e487008202ec1aa}} 
 void {\bfseries set\+FPause} (const bool \&bpause)

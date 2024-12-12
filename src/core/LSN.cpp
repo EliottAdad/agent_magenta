@@ -18,7 +18,7 @@ LSN::LSN() {
 	e=0;
 }
 
-LSN::LSN(long double m, long int e) {
+LSN::LSN(const long double& m, const long int& e) {
 	this->m=m;
 	this->e=e;
 	this->recal();

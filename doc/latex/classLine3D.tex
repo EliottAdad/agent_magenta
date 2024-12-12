@@ -16,7 +16,7 @@ Collaboration diagram for Line3D\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=257pt]{classLine3D__coll__graph}
+\includegraphics[width=140pt]{classLine3D__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -25,78 +25,29 @@ Collaboration diagram for Line3D\+:
 \mbox{\Hypertarget{classLine3D_acba6bdbdf4502352a3df9e2389e3d4fe}\label{classLine3D_acba6bdbdf4502352a3df9e2389e3d4fe}} 
 {\bfseries Line3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p2)
 \item 
-\mbox{\Hypertarget{classLine3D_aa0e7997e19a2dc344ebbada16f0d639d}\label{classLine3D_aa0e7997e19a2dc344ebbada16f0d639d}} 
-{\bfseries Line3D} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$pp1, \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$pp2)
+\mbox{\Hypertarget{classLine3D_a3ece77c29ca0b94a5faf93c519fae038}\label{classLine3D_a3ece77c29ca0b94a5faf93c519fae038}} 
+{\bfseries Line3D} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ pp1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ pp2)
 \item 
 \mbox{\Hypertarget{classLine3D_adf1813b58572289cdb60fd7fb194b449}\label{classLine3D_adf1813b58572289cdb60fd7fb194b449}} 
 {\bfseries Line3D} (const \mbox{\hyperlink{classLine3D}{Line3D}} \&l)
-\item 
-\mbox{\Hypertarget{classLine3D_a6a645fea99cf186e6f4ff6b7cf1326bb}\label{classLine3D_a6a645fea99cf186e6f4ff6b7cf1326bb}} 
-{\bfseries Line3D} (const \mbox{\hyperlink{classLine3D}{Line3D}} $\ast$pl)
-\item 
-\mbox{\Hypertarget{classLine3D_a740d0236c7f5ffab11b22230af512bd1}\label{classLine3D_a740d0236c7f5ffab11b22230af512bd1}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ {\bfseries get\+P1} () const
-\item 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ \mbox{\hyperlink{classLine3D_a89771f425508acd1f82f112b3c131da5}{get\+PP1}} () const
-\item 
-\mbox{\Hypertarget{classLine3D_a31246b6681e2f5388f99380f86466c66}\label{classLine3D_a31246b6681e2f5388f99380f86466c66}} 
-void {\bfseries set\+P1} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p1, const bool \&delp=false)
-\item 
-\mbox{\Hypertarget{classLine3D_a1eb0b3f876abbce24fb6a8473dc2bd13}\label{classLine3D_a1eb0b3f876abbce24fb6a8473dc2bd13}} 
-void {\bfseries set\+PP1} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$pp1, const bool \&delp=true)
-\item 
-\mbox{\Hypertarget{classLine3D_a9647301cc329cb7ad501a7c0ded99493}\label{classLine3D_a9647301cc329cb7ad501a7c0ded99493}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ {\bfseries get\+P2} () const
-\item 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ \mbox{\hyperlink{classLine3D_afc152dfc6280e0a7427de2d1e8313bd6}{get\+PP2}} () const
-\item 
-\mbox{\Hypertarget{classLine3D_a37664ef9ff609fa0f19a569d09a7bcce}\label{classLine3D_a37664ef9ff609fa0f19a569d09a7bcce}} 
-void {\bfseries set\+P2} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p2, const bool \&delp=false)
-\item 
-\mbox{\Hypertarget{classLine3D_a411389d167e04f568ee741f06c8529fd}\label{classLine3D_a411389d167e04f568ee741f06c8529fd}} 
-void {\bfseries set\+PP2} (\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$pp2, const bool \&delp=true)
-\item 
-\mbox{\Hypertarget{classLine3D_ac8213e6dcc7c2ea880b844b32c1bbc9c}\label{classLine3D_ac8213e6dcc7c2ea880b844b32c1bbc9c}} 
-bool {\bfseries get\+Del\+P1} () const
-\item 
-\mbox{\Hypertarget{classLine3D_a2049f19a395a5d5301653e34212a292a}\label{classLine3D_a2049f19a395a5d5301653e34212a292a}} 
-bool {\bfseries get\+Del\+P2} () const
 \item 
 virtual std\+::string \mbox{\hyperlink{classLine3D_a33e744df90d83b93caf35e44787019b0}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classLine3D_ab8fbf26944238c6d94966f383c88e6ba}\label{classLine3D_ab8fbf26944238c6d94966f383c88e6ba}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ {\bfseries m\+\_\+pp1}
+\mbox{\Hypertarget{classLine3D_a2daeda019d6d5f4dab424de262d703b5}\label{classLine3D_a2daeda019d6d5f4dab424de262d703b5}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ {\bfseries pp1}
 \item 
-\mbox{\Hypertarget{classLine3D_a4823066b2937aa232d0412739e187271}\label{classLine3D_a4823066b2937aa232d0412739e187271}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ {\bfseries m\+\_\+pp2}
-\item 
-\mbox{\Hypertarget{classLine3D_a4380eed8402d4c5346b1c8f5230f20f9}\label{classLine3D_a4380eed8402d4c5346b1c8f5230f20f9}} 
-bool {\bfseries m\+\_\+delp1}
-\item 
-\mbox{\Hypertarget{classLine3D_aaf48869bf945a00b57384506d1e77753}\label{classLine3D_aaf48869bf945a00b57384506d1e77753}} 
-bool {\bfseries m\+\_\+delp2}
+\mbox{\Hypertarget{classLine3D_a0ee19e18a2540a42a9b2ba4be39f3de3}\label{classLine3D_a0ee19e18a2540a42a9b2ba4be39f3de3}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ {\bfseries pp2}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLine3D_a89771f425508acd1f82f112b3c131da5}\label{classLine3D_a89771f425508acd1f82f112b3c131da5}} 
-\index{Line3D@{Line3D}!getPP1@{getPP1}}
-\index{getPP1@{getPP1}!Line3D@{Line3D}}
-\doxysubsubsection{\texorpdfstring{getPP1()}{getPP1()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ Line3\+D\+::get\+PP1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case \mbox{\Hypertarget{classLine3D_afc152dfc6280e0a7427de2d1e8313bd6}\label{classLine3D_afc152dfc6280e0a7427de2d1e8313bd6}} 
-\index{Line3D@{Line3D}!getPP2@{getPP2}}
-\index{getPP2@{getPP2}!Line3D@{Line3D}}
-\doxysubsubsection{\texorpdfstring{getPP2()}{getPP2()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $\ast$ Line3\+D\+::get\+PP2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case \mbox{\Hypertarget{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}\label{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}} 
+\mbox{\Hypertarget{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}\label{classLine3D_ad7ee55266e4b10f6b67789f329c8014d}} 
 \index{Line3D@{Line3D}!print@{print}}
 \index{print@{print}!Line3D@{Line3D}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
@@ -112,9 +63,13 @@ Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
 {\footnotesize\ttfamily std\+::string Line3\+D\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
-
+Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case 
 
 Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classVector3D_a095dba56e8c81f0327f834fba6017576}{Vector3D}}.
 
 
 

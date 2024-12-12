@@ -2,8 +2,7 @@
 \label{classQuad}\index{Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}}
 
 
-Inheritance diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}
 \end{figure}
 
 
-Collaboration diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,8 +24,8 @@ Collaboration diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>
 \mbox{\Hypertarget{classQuad_a7d76088dc44446dcaad4e90772106b8a}\label{classQuad_a7d76088dc44446dcaad4e90772106b8a}} 
 {\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
-\mbox{\Hypertarget{classQuad_a92ad1dce14ef438f9b2e768be2cf67e0}\label{classQuad_a92ad1dce14ef438f9b2e768be2cf67e0}} 
-{\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ppoint)
+\mbox{\Hypertarget{classQuad_a46fde3b0cd84af4a7b71a601696c7d50}\label{classQuad_a46fde3b0cd84af4a7b71a601696c7d50}} 
+{\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint)
 \item 
 \mbox{\Hypertarget{classQuad_ae41446341b9beb8f7b6919618352e1ff}\label{classQuad_ae41446341b9beb8f7b6919618352e1ff}} 
 {\bfseries Quad} (const \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$pquad)
@@ -62,8 +60,8 @@ std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
 \mbox{\Hypertarget{classQuad_a60c3e3706d98606eb09510cc5943b91b}\label{classQuad_a60c3e3706d98606eb09510cc5943b91b}} 
 std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PNeighbors} (T $\ast$pelement) const
 \item 
-\mbox{\Hypertarget{classQuad_a9685616597f3dc2e361ecdf9cb0ebf0b}\label{classQuad_a9685616597f3dc2e361ecdf9cb0ebf0b}} 
-bool {\bfseries insert} (T $\ast$pT)
+\mbox{\Hypertarget{classQuad_a88fe91ba242b1afa6f629330b31c94b7}\label{classQuad_a88fe91ba242b1afa6f629330b31c94b7}} 
+bool {\bfseries insert} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
 \item 
 \mbox{\Hypertarget{classQuad_a5fcd91db505c4e645e607d576df23ac7}\label{classQuad_a5fcd91db505c4e645e607d576df23ac7}} 
 void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ $>$ \&pquads)
@@ -85,7 +83,7 @@ void \mbox{\hyperlink{classQuad_ad0502b0e4cbb7d5c80dafa752dbdb491}{print}} (cons
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classQuad_a2609c058b3944a60556435f41aa2f6ba}\label{classQuad_a2609c058b3944a60556435f41aa2f6ba}} 
-static \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1, 0\}
+static \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+\+LIM\+\_\+A} =\{1,0\}
 \item 
 \mbox{\Hypertarget{classQuad_a8bdccda22d77b7d9089a0099ad897e45}\label{classQuad_a8bdccda22d77b7d9089a0099ad897e45}} 
 static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
@@ -93,14 +91,11 @@ static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classQuad_abb761d60d630bdc683351ce6ee725a46}\label{classQuad_abb761d60d630bdc683351ce6ee725a46}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries m\+\_\+ppoint}
+\mbox{\Hypertarget{classQuad_aceed9ec89edc3b0fadd9dc59df7ee3bf}\label{classQuad_aceed9ec89edc3b0fadd9dc59df7ee3bf}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries m\+\_\+ppoint}
 \item 
-\mbox{\Hypertarget{classQuad_abfa3795f5774934b78ca38ac37f614a7}\label{classQuad_abfa3795f5774934b78ca38ac37f614a7}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries m\+\_\+pbarycenter}
-\item 
-\mbox{\Hypertarget{classQuad_a9b3d52451d80adae10bfe44af86ec40d}\label{classQuad_a9b3d52451d80adae10bfe44af86ec40d}} 
-bool {\bfseries m\+\_\+delp}
+\mbox{\Hypertarget{classQuad_ae37df218efaa4d789130e65b22c3e1b7}\label{classQuad_ae37df218efaa4d789130e65b22c3e1b7}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries m\+\_\+pbarycenter}
 \item 
 \mbox{\Hypertarget{classQuad_ae53418799fdfc305afa879219cd1d56a}\label{classQuad_ae53418799fdfc305afa879219cd1d56a}} 
 \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+a}
@@ -108,8 +103,8 @@ bool {\bfseries m\+\_\+delp}
 \mbox{\Hypertarget{classQuad_a6ade86080cd3dfc4b76e567d143a34ab}\label{classQuad_a6ade86080cd3dfc4b76e567d143a34ab}} 
 \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+tot\+\_\+weight}
 \item 
-\mbox{\Hypertarget{classQuad_aebb8cbed201626ed3f3b3c85d29eade6}\label{classQuad_aebb8cbed201626ed3f3b3c85d29eade6}} 
-T $\ast$ {\bfseries m\+\_\+pT}
+\mbox{\Hypertarget{classQuad_af8617db33d233445370fb0c10113b4cb}\label{classQuad_af8617db33d233445370fb0c10113b4cb}} 
+std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries m\+\_\+pT}
 \item 
 \mbox{\Hypertarget{classQuad_a803485589acb0467ae755598db9f1d8f}\label{classQuad_a803485589acb0467ae755598db9f1d8f}} 
 \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TLTree}

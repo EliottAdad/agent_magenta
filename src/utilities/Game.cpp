@@ -8,13 +8,15 @@
 #include "Game.h"
 
 Game::Game() {
-	m_pwindow=SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
-	m_prenderer=SDL_CreateRenderer(m_pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
+	pwindow.reset(SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP));
+	if (pwindow!=NULL){
+		prenderer.reset(SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE));
+	}
 
-	m_pphysics=new Physics();
-	m_pscene=new Scene<float, char>();
-	m_pdisplay=new Display1<float, char>(m_pwindow, m_prenderer);
-	m_pdisplay->addPScene(m_pscene);					// Will render the unique scene for this game
+	pphysics=std::make_shared<Physics>();
+	pscene=std::make_shared<Scene<float, char>>();
+	pdisplay=std::make_shared<Display1<float, char>>(pwindow, prenderer);
+	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
 	m_fps=30;
 	//m_pps=30;
@@ -22,9 +24,7 @@ Game::Game() {
 }
 
 Game::~Game() {
-	delete m_pphysics;
-	delete m_pscene;
-	delete m_pdisplay;
+	;
 }
 
 /*Game::Game(const Game &other) {
@@ -33,8 +33,8 @@ Game::~Game() {
 }*/
 
 
-float Game::getSpeed() const {
-	return m_pphysics->getSpeed();
+/*float Game::getSpeed() const {
+	return pphysics->getSpeed();
 }
 
 void Game::setSpeed(const float& speed) {
@@ -47,7 +47,7 @@ unsigned char Game::getPPS() const {
 
 void Game::setPPS(const unsigned char& pps) {
 	m_pphysics->setPPS(pps);
-}
+}*/
 
 unsigned char Game::getFPS() const {
 	return m_fps;
@@ -65,19 +65,19 @@ Physics* Game::getPPhysics() {
 	return m_pphysics;
 }*/
 
-bool Game::addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable) {
+/*bool Game::addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable) {
 	bool success=false;
 	if (pdisplayable!=NULL){
 		success=m_pscene->addPDisplayable(pdisplayable);
 	}
 	return success;
-}
+}*/
 
 /*std::unordered_set<TimeSensitive*> Game::getPTimeSensitives() {
 	return m_pphysics->getPTimeSensitives();
 }*/
 
-bool Game::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
+/*bool Game::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 	if (ptime_sensitive!=NULL){
 		success=m_pphysics->addPTimeSensitive(ptime_sensitive);
@@ -91,14 +91,14 @@ bool Game::getFCollide() const {
 
 void Game::setFCollide(const bool& fcollide) {
 	m_pphysics->setFCollide(fcollide);
-}
+}*/
 
 bool Game::getFPause() const {
-	return m_pphysics->getFPause();
+	return m_fpause;
 }
 
 void Game::setFPause(const bool& fpause) {
-	m_pphysics->setFPause(fpause);
+	m_fpause=fpause;
 }
 
 
@@ -115,8 +115,8 @@ bool Game::run(const unsigned int& steps){
 			std::chrono::duration dt=t2-t1;
 
 			// Calls the physics
-			if (dt.count()>=1/(long double)(m_pphysics->getPPS())*1000000000.){//The duration given by dt is in ns.
-				m_pphysics->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
+			if (dt.count()>=1/(long double)(pphysics->getPPS())*1000000000.){//The duration given by dt is in ns.
+				pphysics->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 			}
 
 			// Calls the rendering process
@@ -138,7 +138,7 @@ bool Game::render() const {
 	//SDL_SetRenderDrawColor(m_pdisplay->getPRenderer(), m_pdisplay->getBkgdColor().r, m_pdisplay->getBkgdColor().g, m_pdisplay->getBkgdColor().b, m_pdisplay->getBkgdColor().a);
 	//SDL_RenderClear(m_pdisplay->getPRenderer());
 
-	m_pdisplay->render();
+	pdisplay->render();
 
 	//SDL_RenderPresent(m_pdisplay->getPRenderer());
 

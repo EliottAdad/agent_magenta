@@ -32,35 +32,14 @@ Collaboration diagram for Particle3D\+:
 \mbox{\Hypertarget{classParticle3D_adbe0c3780c77aeefea2a655e8a276e73}\label{classParticle3D_adbe0c3780c77aeefea2a655e8a276e73}} 
 {\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}}$<$ float, char $>$ \&wp)
 \item 
-\mbox{\Hypertarget{classParticle3D_af990e42e649b035b0f185ceaf7e46f31}\label{classParticle3D_af990e42e649b035b0f185ceaf7e46f31}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&speed)
-\item 
-\mbox{\Hypertarget{classParticle3D_afcd1545c314709410b902f321a7773a8}\label{classParticle3D_afcd1545c314709410b902f321a7773a8}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}}$<$ float, char $>$ \&wp, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&speed)
+\mbox{\Hypertarget{classParticle3D_ae2542969a29d77e0cbbd922ea577287c}\label{classParticle3D_ae2542969a29d77e0cbbd922ea577287c}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{classParticle3D}{Particle3D}} \&p)
 \item 
 virtual \mbox{\hyperlink{structSN}{SN}}$<$ float, char $>$ \mbox{\hyperlink{classParticle3D_a6ae11a7b0fcb41725562c295d1c350c3}{getX}} () const
 \item 
 virtual \mbox{\hyperlink{structSN}{SN}}$<$ float, char $>$ \mbox{\hyperlink{classParticle3D_aed7d0cc9e3cda24b2d5e789c601e3332}{getY}} () const
 \item 
 virtual \mbox{\hyperlink{structSN}{SN}}$<$ float, char $>$ \mbox{\hyperlink{classParticle3D_a7cb064f19b1f6bdcaf401422697409fa}{getZ}} () const
-\item 
-\mbox{\Hypertarget{classParticle3D_a13e1a4df5f49bee0b469268a1da84b6d}\label{classParticle3D_a13e1a4df5f49bee0b469268a1da84b6d}} 
-\mbox{\hyperlink{classVector3D}{Vector3D}} {\bfseries get\+Speed} () const
-\item 
-\mbox{\Hypertarget{classParticle3D_a571c0568298d67165f5aa333d93b6b2e}\label{classParticle3D_a571c0568298d67165f5aa333d93b6b2e}} 
-\mbox{\hyperlink{classVector3D}{Vector3D}} $\ast$ {\bfseries get\+PSpeed} ()
-\item 
-\mbox{\Hypertarget{classParticle3D_adc28def25bff5df4559d193cb55f2b41}\label{classParticle3D_adc28def25bff5df4559d193cb55f2b41}} 
-void {\bfseries set\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v)
-\item 
-\mbox{\Hypertarget{classParticle3D_a1f77c700a2163364e658cc1fe78456e6}\label{classParticle3D_a1f77c700a2163364e658cc1fe78456e6}} 
-void {\bfseries set\+Speed} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p)
-\item 
-\mbox{\Hypertarget{classParticle3D_a173fb97d151038da40e10920f484987c}\label{classParticle3D_a173fb97d151038da40e10920f484987c}} 
-void {\bfseries add\+Speed} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&ds)
-\item 
-\mbox{\Hypertarget{classParticle3D_ad53a5045e402e97c49ff8bb42be58777}\label{classParticle3D_ad53a5045e402e97c49ff8bb42be58777}} 
-void {\bfseries add\+Speed} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p)
 \item 
 \mbox{\Hypertarget{classParticle3D_a3f998281de85f739b7ac89d13b5f4720}\label{classParticle3D_a3f998281de85f739b7ac89d13b5f4720}} 
 virtual void {\bfseries add\+As\+Force} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v, const float \&dt)
@@ -82,19 +61,18 @@ std\+::string \mbox{\hyperlink{classParticle3D_a8425f54a8ac32f72f7f84dbda8f1f874
 \item 
 void \mbox{\hyperlink{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classParticle3D_a5148814470d405e4da9795347a15d62d}\label{classParticle3D_a5148814470d405e4da9795347a15d62d}} 
-\mbox{\hyperlink{classVector3D}{Vector3D}} $\ast$ {\bfseries m\+\_\+ps}
-\item 
-\mbox{\Hypertarget{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}\label{classParticle3D_aa9fd89c2c0056254290f0064823a5ea0}} 
-bool {\bfseries m\+\_\+dels}
+\mbox{\Hypertarget{classParticle3D_a4bea873eb4cb2bac5d035bd535bab56b}\label{classParticle3D_a4bea873eb4cb2bac5d035bd535bab56b}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries ps}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classParticle3D_ab8307f83951e47b01554e1d4db913a5c}\label{classParticle3D_ab8307f83951e47b01554e1d4db913a5c}} 
 float {\bfseries m\+\_\+dt}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
@@ -116,7 +94,7 @@ Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
 
 
-Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ float, char $>$}}.
 
 \mbox{\Hypertarget{classParticle3D_aed7d0cc9e3cda24b2d5e789c601e3332}\label{classParticle3D_aed7d0cc9e3cda24b2d5e789c601e3332}} 
 \index{Particle3D@{Particle3D}!getY@{getY}}
@@ -126,7 +104,7 @@ Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
 
 
 
-Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ float, char $>$}}.
 
 \mbox{\Hypertarget{classParticle3D_a7cb064f19b1f6bdcaf401422697409fa}\label{classParticle3D_a7cb064f19b1f6bdcaf401422697409fa}} 
 \index{Particle3D@{Particle3D}!getZ@{getZ}}
@@ -136,7 +114,7 @@ Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
 
 
 
-Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable}}.
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ float, char $>$}}.
 
 \mbox{\Hypertarget{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}\label{classParticle3D_adb072ed8c81817f3d2297a962d6e6d4f}} 
 \index{Particle3D@{Particle3D}!print@{print}}

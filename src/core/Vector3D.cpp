@@ -23,8 +23,8 @@ Vector3D::Vector3D() {
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-Vector3D::Vector3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2) {
-	pp1=std::make_shared<Point3D<float, char>>(p1);
+Vector3D::Vector3D(const Point3D<float, char>& p2) {
+	pp1=std::make_shared<Point3D<float, char>>();
 	pp2=std::make_shared<Point3D<float, char>>(p2);
 }
 
@@ -34,8 +34,8 @@ Vector3D::Vector3D(const Point3D<float, char>& p1, const Point3D<float, char>& p
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-Vector3D::Vector3D(const Point3D<float, char>& p2) {
-	pp1=std::make_shared<Point3D<float, char>>();
+Vector3D::Vector3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2) {
+	pp1=std::make_shared<Point3D<float, char>>(p1);
 	pp2=std::make_shared<Point3D<float, char>>(p2);
 }
 

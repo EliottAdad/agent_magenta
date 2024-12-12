@@ -10,114 +10,119 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef WEIGHTEDPOINT3D\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define WEIGHTEDPOINT3D\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}LSN.h"{}}}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{comment}{/*}}
-\DoxyCodeLine{15 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{16 \textcolor{comment}{ *  WeightedPoint3D :)}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ * A point with a weight}}
-\DoxyCodeLine{19 \textcolor{comment}{ */}}
-\DoxyCodeLine{20 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{structPoint3D}{Point3D}}<M, E> \{}
-\DoxyCodeLine{21     \mbox{\hyperlink{structSN}{SN<M, E>}} w;}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}();}
-\DoxyCodeLine{24     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w=\{1,0\});}
-\DoxyCodeLine{25     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w);}
-\DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{structWeightedPoint3D}{\string~WeightedPoint3D}}();}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp);\textcolor{comment}{// :)}}
-\DoxyCodeLine{29     \textcolor{comment}{//virtual void operator+=(const Point3D\& p);// :)Not necessary}}
-\DoxyCodeLine{30     \textcolor{comment}{//virtual void operator-\/=(const Point3D\& p);// :)Not necessary}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getW() \textcolor{keyword}{const};}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{36 \};}
-\DoxyCodeLine{37 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define WEIGHTEDPOINT3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}LSN.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/*}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ *  WeightedPoint3D :)}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ * A point with a weight}}
+\DoxyCodeLine{20 \textcolor{comment}{ */}}
+\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{structPoint3D}{Point3D}}<M, E> \{}
+\DoxyCodeLine{22     \mbox{\hyperlink{structSN}{SN<M, E>}} w;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}();}
+\DoxyCodeLine{25     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w=\{1,0\});}
+\DoxyCodeLine{26     \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w);}
+\DoxyCodeLine{27     \textcolor{keyword}{virtual} \mbox{\hyperlink{structWeightedPoint3D}{\string~WeightedPoint3D}}();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp);\textcolor{comment}{// :)}}
+\DoxyCodeLine{30     \textcolor{comment}{//virtual void operator+=(const Point3D\& p);// :)Not necessary}}
+\DoxyCodeLine{31     \textcolor{comment}{//virtual void operator-\/=(const Point3D\& p);// :)Not necessary}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getW() \textcolor{keyword}{const};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{37 \};}
 \DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}() \{}
-\DoxyCodeLine{40     this-\/>x=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
-\DoxyCodeLine{41     this-\/>y=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
-\DoxyCodeLine{42     this-\/>z=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
-\DoxyCodeLine{43     this-\/>w=\mbox{\hyperlink{structSN}{SN<float, char>}}\{1,0\};}
-\DoxyCodeLine{44 \}}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w) \{}
-\DoxyCodeLine{47     this-\/>x=p.x;}
-\DoxyCodeLine{48     this-\/>y=p.y;}
-\DoxyCodeLine{49     this-\/>z=p.z;}
-\DoxyCodeLine{50     this-\/>w=w;}
-\DoxyCodeLine{51 \}}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w) \{}
-\DoxyCodeLine{54     this-\/>x=x;}
-\DoxyCodeLine{55     this-\/>y=y;}
-\DoxyCodeLine{56     this-\/>z=z;}
-\DoxyCodeLine{57     this-\/>w=w;}
-\DoxyCodeLine{58 \}}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60 \textcolor{comment}{/*}}
-\DoxyCodeLine{61 \textcolor{comment}{template<typename M, typename E> WeightedPoint3D::WeightedPoint3D(const LSN\& x, const LSN\& y, const LSN\& z, const LSN\& w) \{}}
-\DoxyCodeLine{62 \textcolor{comment}{    this-\/>x=x;}}
-\DoxyCodeLine{63 \textcolor{comment}{    this-\/>y=y;}}
-\DoxyCodeLine{64 \textcolor{comment}{    this-\/>z=z;}}
-\DoxyCodeLine{65 \textcolor{comment}{    this-\/>w=w;}}
-\DoxyCodeLine{66 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::\string~WeightedPoint3D}}() \{}
-\DoxyCodeLine{69     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
-\DoxyCodeLine{70 \}}
-\DoxyCodeLine{71 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}() \{}
+\DoxyCodeLine{41     this-\/>x=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
+\DoxyCodeLine{42     this-\/>y=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
+\DoxyCodeLine{43     this-\/>z=\mbox{\hyperlink{structSN}{SN<float, char>}}\{0,0\};}
+\DoxyCodeLine{44     this-\/>w=\mbox{\hyperlink{structSN}{SN<float, char>}}\{1,0\};}
+\DoxyCodeLine{45 \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w) \{}
+\DoxyCodeLine{48     this-\/>x=p.x;}
+\DoxyCodeLine{49     this-\/>y=p.y;}
+\DoxyCodeLine{50     this-\/>z=p.z;}
+\DoxyCodeLine{51     this-\/>w=w;}
+\DoxyCodeLine{52 \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::WeightedPoint3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w) \{}
+\DoxyCodeLine{55     this-\/>x=x;}
+\DoxyCodeLine{56     this-\/>y=y;}
+\DoxyCodeLine{57     this-\/>z=z;}
+\DoxyCodeLine{58     this-\/>w=w;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{/*}}
+\DoxyCodeLine{62 \textcolor{comment}{template<typename M, typename E> WeightedPoint3D::WeightedPoint3D(const LSN\& x, const LSN\& y, const LSN\& z, const LSN\& w) \{}}
+\DoxyCodeLine{63 \textcolor{comment}{    this-\/>x=x;}}
+\DoxyCodeLine{64 \textcolor{comment}{    this-\/>y=y;}}
+\DoxyCodeLine{65 \textcolor{comment}{    this-\/>z=z;}}
+\DoxyCodeLine{66 \textcolor{comment}{    this-\/>w=w;}}
+\DoxyCodeLine{67 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::\string~WeightedPoint3D}}() \{}
+\DoxyCodeLine{70     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
+\DoxyCodeLine{71 \}}
 \DoxyCodeLine{72 }
 \DoxyCodeLine{73 }
-\DoxyCodeLine{74 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp) \{}
-\DoxyCodeLine{75     this-\/>x=wp.x;}
-\DoxyCodeLine{76     this-\/>y=wp.y;}
-\DoxyCodeLine{77     this-\/>z=wp.z;}
-\DoxyCodeLine{78     this-\/>w=wp.w;}
-\DoxyCodeLine{79 \}}
-\DoxyCodeLine{80 \textcolor{comment}{/*}}
-\DoxyCodeLine{81 \textcolor{comment}{template<typename M, typename E> void WeightedPoint3D::operator+=(const Point3D\& p) \{}}
-\DoxyCodeLine{82 \textcolor{comment}{    x+=p.x;}}
-\DoxyCodeLine{83 \textcolor{comment}{    y+=p.y;}}
-\DoxyCodeLine{84 \textcolor{comment}{    z+=p.z;}}
-\DoxyCodeLine{85 \textcolor{comment}{\}}}
-\DoxyCodeLine{86 \textcolor{comment}{}}
-\DoxyCodeLine{87 \textcolor{comment}{template<typename M, typename E> void WeightedPoint3D::operator-\/=(const Point3D\& p) \{}}
-\DoxyCodeLine{88 \textcolor{comment}{    x-\/=p.x;}}
-\DoxyCodeLine{89 \textcolor{comment}{    y-\/=p.y;}}
-\DoxyCodeLine{90 \textcolor{comment}{    z-\/=p.z;}}
-\DoxyCodeLine{91 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::getW}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{94     \textcolor{keywordflow}{return} w;}
-\DoxyCodeLine{95 \}}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{98     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{100     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{101         mes+=\textcolor{stringliteral}{"{}WEIGHTED POINT ():"{}};}
-\DoxyCodeLine{102         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{103     \}}
-\DoxyCodeLine{104 }
-\DoxyCodeLine{105     mes+=\textcolor{stringliteral}{"{}("{}} + this-\/>x.to\_string() + \textcolor{stringliteral}{"{}, "{}} + this-\/>y.to\_string() + \textcolor{stringliteral}{"{}, "{}} + this-\/>z.to\_string() + \textcolor{stringliteral}{"{}, "{}} + w.to\_string()+\textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{106 }
-\DoxyCodeLine{107     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{108 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp) \{}
+\DoxyCodeLine{76     this-\/>x=wp.x;}
+\DoxyCodeLine{77     this-\/>y=wp.y;}
+\DoxyCodeLine{78     this-\/>z=wp.z;}
+\DoxyCodeLine{79     this-\/>w=wp.w;}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 \textcolor{comment}{/*}}
+\DoxyCodeLine{82 \textcolor{comment}{template<typename M, typename E> void WeightedPoint3D::operator+=(const Point3D\& p) \{}}
+\DoxyCodeLine{83 \textcolor{comment}{    x+=p.x;}}
+\DoxyCodeLine{84 \textcolor{comment}{    y+=p.y;}}
+\DoxyCodeLine{85 \textcolor{comment}{    z+=p.z;}}
+\DoxyCodeLine{86 \textcolor{comment}{\}}}
+\DoxyCodeLine{87 \textcolor{comment}{}}
+\DoxyCodeLine{88 \textcolor{comment}{template<typename M, typename E> void WeightedPoint3D::operator-\/=(const Point3D\& p) \{}}
+\DoxyCodeLine{89 \textcolor{comment}{    x-\/=p.x;}}
+\DoxyCodeLine{90 \textcolor{comment}{    y-\/=p.y;}}
+\DoxyCodeLine{91 \textcolor{comment}{    z-\/=p.z;}}
+\DoxyCodeLine{92 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::getW}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} w;}
+\DoxyCodeLine{96 \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{99     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{102         mes+=\textcolor{stringliteral}{"{}WEIGHTEDPOINT3D["{}};}
+\DoxyCodeLine{103         std::stringstream ss;}
+\DoxyCodeLine{104         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{105         mes+=ss.str();}
+\DoxyCodeLine{106         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{107         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} + to\_stringTabs(1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{108     \}}
 \DoxyCodeLine{109 }
-\DoxyCodeLine{110 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{111     printTabs(indent);}
-\DoxyCodeLine{112     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{110     mes+=\textcolor{stringliteral}{"{}(x:"{}} + this-\/>x.to\_string() + \textcolor{stringliteral}{"{} ; y:"{}} + this-\/>y.to\_string() + \textcolor{stringliteral}{"{} ; z:"{}} + this-\/>z.to\_string() + \textcolor{stringliteral}{"{} ; w:"{}} + w.to\_string()+\textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{keywordflow}{return} mes;}
 \DoxyCodeLine{113 \}}
 \DoxyCodeLine{114 }
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116 }
-\DoxyCodeLine{117 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WEIGHTEDPOINT3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{115 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{116     printTabs(indent);}
+\DoxyCodeLine{117     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{118 \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WEIGHTEDPOINT3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

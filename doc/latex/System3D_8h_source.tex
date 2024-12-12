@@ -10,303 +10,296 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SYSTEM3D\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SYSTEM3D\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{comment}{//\#include "{}Particle3D.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Oct.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}macros.h"{}}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18 \textcolor{comment}{/*}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{20 \textcolor{comment}{ *  System3D :)}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define SYSTEM3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{//\#include "{}Particle3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Oct.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}macros.h"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{/*}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{22 \textcolor{comment}{ * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ()}}
-\DoxyCodeLine{23 \textcolor{comment}{ * If you want to use the functions (rrr, ...) you need a .getW() too}}
-\DoxyCodeLine{24 \textcolor{comment}{ */}}
-\DoxyCodeLine{25 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classSystem3D}{System3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
-\DoxyCodeLine{26 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{27     \mbox{\hyperlink{structSN}{SN<M, E>}} m\_a;                                                       \textcolor{comment}{// Lenght of the side of the zone.}}
-\DoxyCodeLine{28     \textcolor{comment}{//std::unordered\_set<Particle3D*> m\_pparticles;                 // Pointers to the Particles (useless: already in the octree)}}
-\DoxyCodeLine{29     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_poctree;                                                \textcolor{comment}{// Pointer to the Octree.}}
-\DoxyCodeLine{30     \mbox{\hyperlink{structSN}{SN<M, E>}} (*m\_ptrLaw) (T*, T*);                                      \textcolor{comment}{// Pointer to a function operating on 2 particles (Todo List)}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} m\_dt;}
-\DoxyCodeLine{33     std::unordered\_set<T*> m\_pelements;}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{35 \textcolor{keyword}{public}:}
-\DoxyCodeLine{36     \mbox{\hyperlink{classSystem3D}{System3D}}();}
-\DoxyCodeLine{37     \textcolor{comment}{//System3D(const System3D \&other);}}
-\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSystem3D}{\string~System3D}}();}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     \mbox{\hyperlink{structSN}{SN<M, E>}} getA() \textcolor{keyword}{const};}
-\DoxyCodeLine{41     \textcolor{keywordtype}{void} setA(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a);}
-\DoxyCodeLine{42     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* getPOctree();}
-\DoxyCodeLine{43     \textcolor{comment}{//void setOctree(const float\& alpha);}}
-\DoxyCodeLine{44     \textcolor{keywordtype}{float} getAlpha() \textcolor{keyword}{const};}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} setAlpha(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha);}
-\DoxyCodeLine{46     std::unordered\_set<T*> getPElements() \textcolor{keyword}{const};}
-\DoxyCodeLine{47     \textcolor{keywordtype}{bool} addPElement(T* pelement);}
-\DoxyCodeLine{48     std::unordered\_set<T*> getPNeighbors(\textcolor{keyword}{const} T* pelement) \textcolor{keyword}{const};              \textcolor{comment}{// Returns the list of neighbours, given the precision.}}
-\DoxyCodeLine{49     \textcolor{comment}{//void removePParticle(Particle3D* ppart);}}
-\DoxyCodeLine{50     \textcolor{keywordtype}{void} setPFunc(\mbox{\hyperlink{structSN}{SN<M, E>}} (*ptrLaw) (T*, T*));}
-\DoxyCodeLine{51     \textcolor{comment}{//void setPFunc(void (*ptrLaw) (T*, T*, const long double\&));}}
-\DoxyCodeLine{52     \textcolor{keywordtype}{void} recalculate() \textcolor{keyword}{const};}
-\DoxyCodeLine{53     \textcolor{keywordtype}{void} empty();}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);   \textcolor{comment}{// From TimeSensitive}}
-\DoxyCodeLine{56     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();                       \textcolor{comment}{// From Moveable}}
-\DoxyCodeLine{57     \textcolor{comment}{//virtual void move(const Vector3D\& dp);}}
-\DoxyCodeLine{58 }
-\DoxyCodeLine{59     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{60     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{61 \};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{comment}{//Functions}}
-\DoxyCodeLine{64 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} rrr(T* p1, T* p2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
-\DoxyCodeLine{65 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \mbox{\hyperlink{structLSN}{LSN}} rrr2(T* p1, T* p2);\textcolor{comment}{// Returns l'acc exercée par p2 sur p1}}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{comment}{/*}}
-\DoxyCodeLine{68 \textcolor{comment}{ * Returns the vector immediately (useless)}}
-\DoxyCodeLine{69 \textcolor{comment}{ */}}
-\DoxyCodeLine{70 \textcolor{comment}{//void grav(Particle3D* pp1, Particle3D* pp2, const long double\& dt);}}
-\DoxyCodeLine{71 \textcolor{keyword}{template} <\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} grav(\mbox{\hyperlink{classParticle3D}{Particle3D}}* pp1, \mbox{\hyperlink{classParticle3D}{Particle3D}}* pp2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt)\{}
-\DoxyCodeLine{72     \mbox{\hyperlink{classVector3D}{Vector3D}}* pv1=\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D}}(\{pp1-\/>x, pp1-\/>y, pp1-\/>z\}, \{pp2-\/>x-\/pp1-\/>x, pp2-\/>y-\/pp1-\/>y, pp2-\/>z-\/pp1-\/>z\});}
-\DoxyCodeLine{73     \mbox{\hyperlink{classVector3D}{Vector3D}}* pv2=\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D}}(\{pp2-\/>x, pp2-\/>y, pp2-\/>z\}, \{pp1-\/>x-\/pp2-\/>x, pp1-\/>y-\/pp2-\/>y, pp1-\/>z-\/pp2-\/>z\});}
-\DoxyCodeLine{74     \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(\{pp2-\/>x-\/pp1-\/>x, pp2-\/>y-\/pp1-\/>y, pp2-\/>z-\/pp1-\/>z\}, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0, 0\}, \{0, 0\}, \{0, 0\}\});}
-\DoxyCodeLine{75     pv1-\/>setNorm(\{1, 0\});}
-\DoxyCodeLine{76     pv2-\/>setNorm(\{1, 0\});}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78     (*pv1)*=G;}
-\DoxyCodeLine{79     (*pv1)*=pp2-\/>w;}
-\DoxyCodeLine{80     (*pv1)/=d;}
-\DoxyCodeLine{81     (*pv1)/=d;}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{83     (*pv2)*=G;}
-\DoxyCodeLine{84     (*pv2)*=pp1-\/>w;}
-\DoxyCodeLine{85     (*pv2)/=d;}
-\DoxyCodeLine{86     (*pv2)/=d;}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{88     (*pv1)*=pow(dt, 2)/2;}
-\DoxyCodeLine{89     (*pv2)*=pow(dt, 2)/2;}
+\DoxyCodeLine{22 \textcolor{comment}{ *  System3D :)}}
+\DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{24 \textcolor{comment}{ * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ()}}
+\DoxyCodeLine{25 \textcolor{comment}{ * If you want to use the functions (rrr, ...) you need a .getW() too}}
+\DoxyCodeLine{26 \textcolor{comment}{ */}}
+\DoxyCodeLine{27 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classSystem3D}{System3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
+\DoxyCodeLine{28 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{29     \mbox{\hyperlink{structSN}{SN<M, E>}} m\_a;                                                       \textcolor{comment}{// Lenght of the side of the zone.}}
+\DoxyCodeLine{30     \textcolor{comment}{//std::unordered\_set<Particle3D*> m\_pparticles;                 // Pointers to the Particles (useless: already in the octree)}}
+\DoxyCodeLine{31     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* m\_poctree;                                                \textcolor{comment}{// Pointer to the Octree.}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{float} m\_dt;}
+\DoxyCodeLine{34     std::unordered\_set<std::shared\_ptr<T>> m\_pelements;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{public}:}
+\DoxyCodeLine{37     \mbox{\hyperlink{structSN}{SN<M, E>}} (*m\_ptrLaw) (T*, T*);                                      \textcolor{comment}{// Pointer to a function operating on 2 particles (Todo List)}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \mbox{\hyperlink{classSystem3D}{System3D}}();}
+\DoxyCodeLine{40     \textcolor{comment}{//System3D(const System3D \&other);}}
+\DoxyCodeLine{41     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSystem3D}{\string~System3D}}();}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \mbox{\hyperlink{structSN}{SN<M, E>}} getA() \textcolor{keyword}{const};}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} setA(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a);}
+\DoxyCodeLine{45     \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* getPOctree();}
+\DoxyCodeLine{46     \textcolor{comment}{//void setOctree(const float\& alpha);}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{float} getAlpha() \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} setAlpha(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha);}
+\DoxyCodeLine{49     std::unordered\_set<std::shared\_ptr<T>> getPElements() \textcolor{keyword}{const};}
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} addPElement(std::shared\_ptr<T> pelement);}
+\DoxyCodeLine{51     std::unordered\_set<std::shared\_ptr<T>> getPNeighbors(\textcolor{keyword}{const} std::shared\_ptr<T> pelement) \textcolor{keyword}{const};              \textcolor{comment}{// Returns the list of neighbours, given the precision.}}
+\DoxyCodeLine{52     \textcolor{comment}{//void removePParticle(Particle3D* ppart);}}
+\DoxyCodeLine{53     \textcolor{comment}{//void setPFunc(SN<M, E> (*ptrLaw) (T*, T*));}}
+\DoxyCodeLine{54     \textcolor{comment}{//void setPFunc(void (*ptrLaw) (T*, T*, const long double\&));}}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} recalculate() \textcolor{keyword}{const};}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} empty();}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt); \textcolor{comment}{// From TimeSensitive}}
+\DoxyCodeLine{59     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();                       \textcolor{comment}{// From Moveable}}
+\DoxyCodeLine{60     \textcolor{comment}{//virtual void move(const Vector3D\& dp);}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{63     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{//Functions}}
+\DoxyCodeLine{67 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} rrr(std::shared\_ptr<T> p1, std::shared\_ptr<T> p2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt);}
+\DoxyCodeLine{68 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} rrr2(std::shared\_ptr<T> p1, std::shared\_ptr<T> p2);\textcolor{comment}{// Returns l'acc exercée par p2 sur p1}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{/*}}
+\DoxyCodeLine{71 \textcolor{comment}{ * Returns the vector immediately (useless)}}
+\DoxyCodeLine{72 \textcolor{comment}{ */}}
+\DoxyCodeLine{73 \textcolor{comment}{//void grav(Particle3D* pp1, Particle3D* pp2, const long double\& dt);}}
+\DoxyCodeLine{74 \textcolor{keyword}{template} <\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} grav(std::shared\_ptr<Particle3D> pp1, std::shared\_ptr<Particle3D> pp2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt)\{}
+\DoxyCodeLine{75     std::shared\_ptr<Vector3D> pv1=std::make\_shared<Vector3D>(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\{pp1-\/>x, pp1-\/>y, pp1-\/>z\}, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\{pp2-\/>x-\/pp1-\/>x, pp2-\/>y-\/pp1-\/>y, pp2-\/>z-\/pp1-\/>z\});}
+\DoxyCodeLine{76     std::shared\_ptr<Vector3D> pv2=std::make\_shared<Vector3D>(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\{pp2-\/>x, pp2-\/>y, pp2-\/>z\}, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\{pp1-\/>x-\/pp2-\/>x, pp1-\/>y-\/pp2-\/>y, pp1-\/>z-\/pp2-\/>z\});}
+\DoxyCodeLine{77     \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(\{pp2-\/>x-\/pp1-\/>x, pp2-\/>y-\/pp1-\/>y, pp2-\/>z-\/pp1-\/>z\}, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{78     pv1-\/>setNorm(\{1,0\});}
+\DoxyCodeLine{79     pv2-\/>setNorm(\{1,0\});}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     (*pv1)*=G;}
+\DoxyCodeLine{82     (*pv1)*=pp2-\/>w;}
+\DoxyCodeLine{83     (*pv1)/=d;}
+\DoxyCodeLine{84     (*pv1)/=d;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     (*pv2)*=G;}
+\DoxyCodeLine{87     (*pv2)*=pp1-\/>w;}
+\DoxyCodeLine{88     (*pv2)/=d;}
+\DoxyCodeLine{89     (*pv2)/=d;}
 \DoxyCodeLine{90 }
-\DoxyCodeLine{91     pp1-\/>addSpeed(*pv1);}
-\DoxyCodeLine{92     pp2-\/>addSpeed(*pv2);}
-\DoxyCodeLine{93 \}}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{95 }
-\DoxyCodeLine{96 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::System3D}}() \{}
-\DoxyCodeLine{97     m\_a=\{1,2\};              \textcolor{comment}{//100m sided box}}
-\DoxyCodeLine{98     m\_poctree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a);}
-\DoxyCodeLine{99     m\_ptrLaw=NULL;}
-\DoxyCodeLine{100     m\_dt=0;}
-\DoxyCodeLine{101 \}}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103 \textcolor{comment}{/*System3D::System3D(const System3D \&other) \{}}
-\DoxyCodeLine{104 \textcolor{comment}{    // TODO Auto-\/generated constructor stub}}
-\DoxyCodeLine{105 \textcolor{comment}{}}
-\DoxyCodeLine{106 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{107 }
-\DoxyCodeLine{108 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::\string~System3D}}() \{}
-\DoxyCodeLine{109     \textcolor{keyword}{delete} m\_poctree;}
-\DoxyCodeLine{110     m\_pelements.clear();}
-\DoxyCodeLine{111 \}}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114 }
-\DoxyCodeLine{115 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getA}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{116     \textcolor{keywordflow}{return} m\_poctree-\/>getA();}
-\DoxyCodeLine{117 \}}
+\DoxyCodeLine{91     (*pv1)*=pow(dt, 2)/2;}
+\DoxyCodeLine{92     (*pv2)*=pow(dt, 2)/2;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     *pp1-\/>ps+=(*pv1);}
+\DoxyCodeLine{95     *pp2-\/>ps+=(*pv2);}
+\DoxyCodeLine{96     \textcolor{comment}{//pp2-\/>addSpeed(*pv2);}}
+\DoxyCodeLine{97 \}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::System3D}}() \{}
+\DoxyCodeLine{101     m\_a=\{1,2\};              \textcolor{comment}{//100m sided box}}
+\DoxyCodeLine{102     m\_poctree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a);}
+\DoxyCodeLine{103     m\_ptrLaw=NULL;}
+\DoxyCodeLine{104     m\_dt=0;}
+\DoxyCodeLine{105 \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{comment}{/*System3D::System3D(const System3D \&other) \{}}
+\DoxyCodeLine{108 \textcolor{comment}{    // TODO Auto-\/generated constructor stub}}
+\DoxyCodeLine{109 \textcolor{comment}{}}
+\DoxyCodeLine{110 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::\string~System3D}}() \{}
+\DoxyCodeLine{113     \textcolor{keyword}{delete} m\_poctree;}
+\DoxyCodeLine{114     m\_pelements.clear();}
+\DoxyCodeLine{115 \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 }
 \DoxyCodeLine{118 }
-\DoxyCodeLine{119 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a) \{}
-\DoxyCodeLine{120     m\_poctree-\/>setA(a);}
-\DoxyCodeLine{121     \textcolor{comment}{//this-\/>recalculate();//Possible probleme}}
-\DoxyCodeLine{122 \}}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{124 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPOctree}}() \{}
-\DoxyCodeLine{125     \textcolor{keywordflow}{return} m\_poctree;}
+\DoxyCodeLine{119 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getA}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{120     \textcolor{keywordflow}{return} m\_poctree-\/>getA();}
+\DoxyCodeLine{121 \}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a) \{}
+\DoxyCodeLine{124     m\_poctree-\/>setA(a);}
+\DoxyCodeLine{125     \textcolor{comment}{//this-\/>recalculate();//Possible probleme}}
 \DoxyCodeLine{126 \}}
 \DoxyCodeLine{127 }
-\DoxyCodeLine{128 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{float} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getAlpha}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{129     \textcolor{keywordflow}{return} m\_poctree-\/>m\_ALPHA;}
+\DoxyCodeLine{128 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classOct}{Oct<T, M, E>}}* \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPOctree}}() \{}
+\DoxyCodeLine{129     \textcolor{keywordflow}{return} m\_poctree;}
 \DoxyCodeLine{130 \}}
 \DoxyCodeLine{131 }
-\DoxyCodeLine{132 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setAlpha}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha) \{}
-\DoxyCodeLine{133     m\_poctree-\/>m\_ALPHA=alpha;}
+\DoxyCodeLine{132 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{float} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getAlpha}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} m\_poctree-\/>m\_ALPHA;}
 \DoxyCodeLine{134 \}}
 \DoxyCodeLine{135 }
-\DoxyCodeLine{136 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<T*> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPElements}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{137     \textcolor{keywordflow}{return} m\_poctree-\/>getPElements();}
+\DoxyCodeLine{136 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setAlpha}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& alpha) \{}
+\DoxyCodeLine{137     m\_poctree-\/>m\_ALPHA=alpha;}
 \DoxyCodeLine{138 \}}
 \DoxyCodeLine{139 }
-\DoxyCodeLine{140 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::addPElement}}(T* pelement) \{}
-\DoxyCodeLine{141     \textcolor{keywordtype}{bool} success=\textcolor{keyword}{false};}
-\DoxyCodeLine{142     \textcolor{keywordflow}{if} (pelement!=NULL) \{}
-\DoxyCodeLine{143         success=m\_poctree-\/>insert(pelement);}
-\DoxyCodeLine{144         m\_pelements.insert(pelement);}
-\DoxyCodeLine{145     \}}
-\DoxyCodeLine{146     \textcolor{keywordflow}{return} success;}
-\DoxyCodeLine{147 \}}
-\DoxyCodeLine{148 }
-\DoxyCodeLine{149 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<T*> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPNeighbors}}(\textcolor{keyword}{const} T* pelement)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{150     \textcolor{keywordflow}{return} m\_poctree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{140 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<T>> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPElements}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} m\_poctree-\/>getPElements();}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::addPElement}}(std::shared\_ptr<T> pelement) \{}
+\DoxyCodeLine{145     \textcolor{keywordtype}{bool} success=\textcolor{keyword}{false};}
+\DoxyCodeLine{146     \textcolor{keywordflow}{if} (pelement!=NULL) \{}
+\DoxyCodeLine{147         success=m\_poctree-\/>insert(pelement);}
+\DoxyCodeLine{148         m\_pelements.insert(pelement.get());}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} success;}
 \DoxyCodeLine{151 \}}
 \DoxyCodeLine{152 }
-\DoxyCodeLine{153 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setT}}(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt) \{}
-\DoxyCodeLine{154     m\_dt=dt;}
-\DoxyCodeLine{155 }
-\DoxyCodeLine{156     printf(\textcolor{stringliteral}{"{}Set T (System3D)\(\backslash\)n"{}});}
-\DoxyCodeLine{157     printf(\textcolor{stringliteral}{"{}\%Lf\(\backslash\)n"{}}, m\_dt);}
-\DoxyCodeLine{158     \textcolor{keywordflow}{for} (T* pelement : m\_pelements)\{}
-\DoxyCodeLine{159         pelement-\/>setT(m\_dt);}
-\DoxyCodeLine{160 }
-\DoxyCodeLine{161         \textcolor{comment}{// If there is a law to apply}}
-\DoxyCodeLine{162         \textcolor{keywordflow}{if} (m\_ptrLaw!=NULL)\{}
-\DoxyCodeLine{163             printf(\textcolor{stringliteral}{"{}A\(\backslash\)n"{}});}
-\DoxyCodeLine{164             std::unordered\_set<T*> pneighbors=m\_poctree-\/>getPNeighbors(pelement);}
-\DoxyCodeLine{165             printf(\textcolor{stringliteral}{"{}B\(\backslash\)n"{}});}
-\DoxyCodeLine{166             \textcolor{keywordflow}{if}(pneighbors.empty())\{}
-\DoxyCodeLine{167                 printf(\textcolor{stringliteral}{"{}Pas de neighbors\(\backslash\)n"{}});}
-\DoxyCodeLine{168             \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{169                 printf(\textcolor{stringliteral}{"{}Neighbors\(\backslash\)n"{}});}
-\DoxyCodeLine{170             \}}
-\DoxyCodeLine{171             \textcolor{comment}{// Apply the law}}
-\DoxyCodeLine{172             \textcolor{keywordflow}{for} (T* pneighbor : pneighbors)\{}
-\DoxyCodeLine{173                 \textcolor{comment}{//(*m\_ptrLaw)(pelement, pneighbor, m\_dt);// Probleme qd appel loi}}
-\DoxyCodeLine{174                 \mbox{\hyperlink{structLSN}{LSN}} norm=(*m\_ptrLaw)(pelement, pneighbor);\textcolor{comment}{// Get the norm of the acceleration}}
-\DoxyCodeLine{175                 \mbox{\hyperlink{classLine3D}{Line3D}} l;\textcolor{comment}{//Works}}
-\DoxyCodeLine{176                 \mbox{\hyperlink{classVector3D}{Vector3D}} v;\textcolor{comment}{//X Error (arrete l'execution)}}
-\DoxyCodeLine{177                 \textcolor{comment}{/*Vector3D v((Point3D)(pelement-\/>getPosition()), (Point3D)(pneighbor-\/>getPosition()));}}
-\DoxyCodeLine{178 \textcolor{comment}{                v.setNorm(norm);}}
-\DoxyCodeLine{179 \textcolor{comment}{                Point3D dv=v.getEnd();}}
-\DoxyCodeLine{180 \textcolor{comment}{                pelement-\/>x+=dv.x;}}
-\DoxyCodeLine{181 \textcolor{comment}{                pelement-\/>y+=dv.y;}}
-\DoxyCodeLine{182 \textcolor{comment}{                pelement-\/>z+=dv.z;*/}}
-\DoxyCodeLine{183                 \textcolor{comment}{/*pelement-\/>x+=norm;}}
-\DoxyCodeLine{184 \textcolor{comment}{                pelement-\/>y+=norm;}}
-\DoxyCodeLine{185 \textcolor{comment}{                pelement-\/>z+=norm;*/}}
-\DoxyCodeLine{186                 \textcolor{comment}{/*pelement-\/>addSpeed(Point3D\{norm, \{0, 0\}, \{0, 0\}\});*/}\textcolor{comment}{//}}
-\DoxyCodeLine{187                 \mbox{\hyperlink{structLSN}{LSN}} lsn\{dt/10., 0\};}
-\DoxyCodeLine{188                 lsn.recal();}
-\DoxyCodeLine{189                 pelement-\/>x-\/=lsn;}
-\DoxyCodeLine{190                 pelement-\/>y+=lsn;}
-\DoxyCodeLine{191                 pelement-\/>z+=lsn;}
-\DoxyCodeLine{192             \}}
-\DoxyCodeLine{193         \}}
-\DoxyCodeLine{194     \}}
-\DoxyCodeLine{195 \}}
-\DoxyCodeLine{196 }
-\DoxyCodeLine{197 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::apply}}()\{}
-\DoxyCodeLine{198     printf(\textcolor{stringliteral}{"{}Apply (System3D)\(\backslash\)n"{}});}
-\DoxyCodeLine{199     \textcolor{keywordflow}{for} (T* pelement : m\_pelements)\{}
-\DoxyCodeLine{200         pelement-\/>apply();}
-\DoxyCodeLine{201     \}}
-\DoxyCodeLine{202 \}}
-\DoxyCodeLine{203 }
-\DoxyCodeLine{204 }
-\DoxyCodeLine{205 \textcolor{comment}{/*void System3D::move(const Vector3D\& dv) \{}}
-\DoxyCodeLine{206 \textcolor{comment}{    for (Particle3D* ppart : m\_poctree-\/>getPElements())\{}}
-\DoxyCodeLine{207 \textcolor{comment}{        //ppart-\/>wp+= dp.getP2();}}
-\DoxyCodeLine{208 \textcolor{comment}{        //ppart-\/>addAsPos(dp);}}
-\DoxyCodeLine{209 \textcolor{comment}{    \}}}
-\DoxyCodeLine{210 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{211 }
-\DoxyCodeLine{212 }
-\DoxyCodeLine{213 \textcolor{comment}{/*template <typename T> void System3D<T, M, E>::setPFunc(void (*ptrLaw) (T*, T*, const long double\&))\{}}
-\DoxyCodeLine{214 \textcolor{comment}{    m\_ptrLaw=ptrLaw;}}
-\DoxyCodeLine{215 \textcolor{comment}{    //printf("{}\%p\(\backslash\)n"{}, m\_ptrLaw);}}
-\DoxyCodeLine{216 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{217 }
-\DoxyCodeLine{218 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setPFunc}}(\mbox{\hyperlink{structSN}{SN<M, E>}} (*ptrLaw) (T*, T*))\{}
-\DoxyCodeLine{219     m\_ptrLaw=ptrLaw;}
-\DoxyCodeLine{220     \textcolor{comment}{//printf("{}\%p\(\backslash\)n"{}, m\_ptrLaw);}}
-\DoxyCodeLine{221 \}}
-\DoxyCodeLine{222 }
-\DoxyCodeLine{223 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::recalculate}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{224     \textcolor{comment}{/*for (Oct<T>* ptree : m\_poctree-\/>getPTrees())\{}}
-\DoxyCodeLine{225 \textcolor{comment}{        delete ptree;}}
-\DoxyCodeLine{226 \textcolor{comment}{    \}}}
-\DoxyCodeLine{227 \textcolor{comment}{    for (T* pelement : m\_pelements)\{}}
-\DoxyCodeLine{228 \textcolor{comment}{        m\_poctree-\/>insert(pelement);}}
-\DoxyCodeLine{229 \textcolor{comment}{    \}*/}}
-\DoxyCodeLine{230     m\_poctree-\/>recalculate();}
-\DoxyCodeLine{231 \}}
-\DoxyCodeLine{232 }
-\DoxyCodeLine{233 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::empty}}() \{}
-\DoxyCodeLine{234     m\_poctree-\/>empty();}
-\DoxyCodeLine{235 \}}
-\DoxyCodeLine{236 }
-\DoxyCodeLine{237 }
-\DoxyCodeLine{238 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{239     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{240     mes+=to\_stringTabs(indent);}
-\DoxyCodeLine{241 }
-\DoxyCodeLine{242     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{243         mes+=\textcolor{stringliteral}{"{}SYSTEM["{}};}
-\DoxyCodeLine{244         std::stringstream ss;}
-\DoxyCodeLine{245         ss << \textcolor{keyword}{this};}
-\DoxyCodeLine{246         mes+=ss.str();}
-\DoxyCodeLine{247         mes+=\textcolor{stringliteral}{"{}]:\(\backslash\)n"{}};}
-\DoxyCodeLine{248         mes+=to\_stringTabs(indent+1);}
-\DoxyCodeLine{249         mes+=\textcolor{stringliteral}{"{}a="{}} + m\_a.to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);}
-\DoxyCodeLine{250         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{251     \}}
-\DoxyCodeLine{252     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{253         \textcolor{comment}{/*for (T* pelement : m\_poctree-\/>getPElements())\{}}
-\DoxyCodeLine{254 \textcolor{comment}{            mes+=to\_stringTabs(indent+1);}}
-\DoxyCodeLine{255 \textcolor{comment}{            mes+="{}* "{};}}
-\DoxyCodeLine{256 \textcolor{comment}{            mes+=pelement-\/>to\_string(false, false, 0);}}
-\DoxyCodeLine{257 \textcolor{comment}{            mes+="{}\(\backslash\)n"{};}}
-\DoxyCodeLine{258 \textcolor{comment}{        \}*/}}
-\DoxyCodeLine{259         mes+=m\_poctree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{260     \}}
-\DoxyCodeLine{261 }
-\DoxyCodeLine{262     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{263 \}}
+\DoxyCodeLine{153 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<T>> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::getPNeighbors}}(\textcolor{keyword}{const} std::shared\_ptr<T> pelement)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{154     \textcolor{keywordflow}{return} m\_poctree-\/>getPNeighbors(pelement);}
+\DoxyCodeLine{155 \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::setT}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt) \{}
+\DoxyCodeLine{158     m\_dt=dt;}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160     \textcolor{comment}{//printf("{}Set T (System3D)\(\backslash\)n"{});}}
+\DoxyCodeLine{161     \textcolor{comment}{//printf("{}\%f\(\backslash\)n"{}, m\_dt);}}
+\DoxyCodeLine{162     \textcolor{keywordflow}{for} (std::shared\_ptr<T> pelement : m\_pelements)\{}
+\DoxyCodeLine{163         pelement-\/>setT(m\_dt);}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165         \textcolor{comment}{// If there is a law to apply}}
+\DoxyCodeLine{166         \textcolor{keywordflow}{if} (m\_ptrLaw!=NULL)\{}
+\DoxyCodeLine{167             \textcolor{comment}{//printf("{}A\(\backslash\)n"{});}}
+\DoxyCodeLine{168             std::unordered\_set<std::shared\_ptr<T>> pneighbors=m\_poctree-\/>getPNeighbors(std::shared\_ptr<T>(pelement));}
+\DoxyCodeLine{169             \textcolor{comment}{//printf("{}B\(\backslash\)n"{});}}
+\DoxyCodeLine{170             \textcolor{keywordflow}{if}(pneighbors.empty())\{}
+\DoxyCodeLine{171                 \textcolor{comment}{//printf("{}Pas de neighbors\(\backslash\)n"{});}}
+\DoxyCodeLine{172             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{173                 \textcolor{comment}{//printf("{}Neighbors\(\backslash\)n"{});}}
+\DoxyCodeLine{174             \}}
+\DoxyCodeLine{175             \textcolor{comment}{// Apply the law}}
+\DoxyCodeLine{176             \textcolor{keywordflow}{for} (std::shared\_ptr<T> pneighbor : pneighbors)\{}
+\DoxyCodeLine{177                 \textcolor{comment}{//(*m\_ptrLaw)(pelement, pneighbor, m\_dt);// Probleme qd appel loi}}
+\DoxyCodeLine{178                 \mbox{\hyperlink{structSN}{SN<M, E>}} norm=(*m\_ptrLaw)(pelement, pneighbor);\textcolor{comment}{// Get the norm of the acceleration}}
+\DoxyCodeLine{179                 \mbox{\hyperlink{classLine3D}{Line3D}} l;\textcolor{comment}{//Works}}
+\DoxyCodeLine{180                 \mbox{\hyperlink{classVector3D}{Vector3D}} v;\textcolor{comment}{//X Error (arrete l'execution)}}
+\DoxyCodeLine{181                 \textcolor{comment}{/*Vector3D v((Point3D)(pelement-\/>getPosition()), (Point3D)(pneighbor-\/>getPosition()));}}
+\DoxyCodeLine{182 \textcolor{comment}{                v.setNorm(norm);}}
+\DoxyCodeLine{183 \textcolor{comment}{                Point3D dv=v.getEnd();}}
+\DoxyCodeLine{184 \textcolor{comment}{                pelement-\/>x+=dv.x;}}
+\DoxyCodeLine{185 \textcolor{comment}{                pelement-\/>y+=dv.y;}}
+\DoxyCodeLine{186 \textcolor{comment}{                pelement-\/>z+=dv.z;*/}}
+\DoxyCodeLine{187                 \textcolor{comment}{/*pelement-\/>x+=norm;}}
+\DoxyCodeLine{188 \textcolor{comment}{                pelement-\/>y+=norm;}}
+\DoxyCodeLine{189 \textcolor{comment}{                pelement-\/>z+=norm;*/}}
+\DoxyCodeLine{190                 \textcolor{comment}{/*pelement-\/>addSpeed(Point3D\{norm, \{0, 0\}, \{0, 0\}\});*/}\textcolor{comment}{//}}
+\DoxyCodeLine{191                 \mbox{\hyperlink{structSN}{SN<float, char>}} sn\{(float)(dt/10.),0\};}
+\DoxyCodeLine{192                 sn.recal();}
+\DoxyCodeLine{193                 pelement-\/>x-\/=sn;}
+\DoxyCodeLine{194                 pelement-\/>y+=sn;}
+\DoxyCodeLine{195                 pelement-\/>z+=sn;}
+\DoxyCodeLine{196             \}}
+\DoxyCodeLine{197         \}}
+\DoxyCodeLine{198     \}}
+\DoxyCodeLine{199 \}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::apply}}()\{}
+\DoxyCodeLine{202     \textcolor{comment}{//printf("{}Apply (System3D)\(\backslash\)n"{});}}
+\DoxyCodeLine{203     \textcolor{keywordflow}{for} (std::shared\_ptr<T> pelement : m\_pelements)\{}
+\DoxyCodeLine{204         pelement-\/>apply();}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206 \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209 \textcolor{comment}{/*void System3D::move(const Vector3D\& dv) \{}}
+\DoxyCodeLine{210 \textcolor{comment}{    for (Particle3D* ppart : m\_poctree-\/>getPElements())\{}}
+\DoxyCodeLine{211 \textcolor{comment}{        //ppart-\/>wp+= dp.getP2();}}
+\DoxyCodeLine{212 \textcolor{comment}{        //ppart-\/>addAsPos(dp);}}
+\DoxyCodeLine{213 \textcolor{comment}{    \}}}
+\DoxyCodeLine{214 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{comment}{/*template <typename T> void System3D<T, M, E>::setPFunc(void (*ptrLaw) (T*, T*, const long double\&))\{}}
+\DoxyCodeLine{218 \textcolor{comment}{    m\_ptrLaw=ptrLaw;}}
+\DoxyCodeLine{219 \textcolor{comment}{    //printf("{}\%p\(\backslash\)n"{}, m\_ptrLaw);}}
+\DoxyCodeLine{220 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 \textcolor{comment}{/*template <typename T, typename M, typename E> void System3D<T, M, E>::setPFunc(SN<M, E> (*ptrLaw) (T*, T*))\{}}
+\DoxyCodeLine{223 \textcolor{comment}{    m\_ptrLaw=ptrLaw;}}
+\DoxyCodeLine{224 \textcolor{comment}{    //printf("{}\%p\(\backslash\)n"{}, m\_ptrLaw);}}
+\DoxyCodeLine{225 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::recalculate}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{228     m\_poctree-\/>recalculate();}
+\DoxyCodeLine{229 \}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::empty}}() \{}
+\DoxyCodeLine{232     m\_poctree-\/>empty();}
+\DoxyCodeLine{233 \}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{237     \textcolor{comment}{//printf("{}AAAAAA1\(\backslash\)n"{});}}
+\DoxyCodeLine{238     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{239     mes+=to\_stringTabs(indent);}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241     mes+=\textcolor{stringliteral}{"{}SYSTEM3D["{}};}
+\DoxyCodeLine{242     std::stringstream ss;}
+\DoxyCodeLine{243     ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{244     mes+=ss.str();}
+\DoxyCodeLine{245     mes+=\textcolor{stringliteral}{"{}]:\(\backslash\)n"{}};}
+\DoxyCodeLine{246     mes+=to\_stringTabs(indent+1);}
+\DoxyCodeLine{247     mes+=\textcolor{stringliteral}{"{}a="{}} + m\_a.to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);}
+\DoxyCodeLine{248     mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250     \textcolor{keywordflow}{if} (full\_info)\{         \textcolor{comment}{// Problem}}
+\DoxyCodeLine{251         mes+=m\_poctree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{252     \}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{255 \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{258     printTabs(indent);}
+\DoxyCodeLine{259     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{260     \textcolor{comment}{//printf("{}\(\backslash\)nAAAAAA2\(\backslash\)n"{});}}
+\DoxyCodeLine{261 \}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263 }
 \DoxyCodeLine{264 }
-\DoxyCodeLine{265 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{266     printTabs(indent);}
-\DoxyCodeLine{267     std::cout << this-\/>to\_string(spread, indent, full\_info);}
-\DoxyCodeLine{268 \}}
-\DoxyCodeLine{269 }
-\DoxyCodeLine{270 }
-\DoxyCodeLine{271 }
-\DoxyCodeLine{272 \textcolor{comment}{/*}}
-\DoxyCodeLine{273 \textcolor{comment}{ * Functions}}
-\DoxyCodeLine{274 \textcolor{comment}{ */}}
-\DoxyCodeLine{275 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} rrr(T* p1, T* p2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt) \{}
-\DoxyCodeLine{276     printf(\textcolor{stringliteral}{"{}Function (rrr)\(\backslash\)n"{}});}
-\DoxyCodeLine{277     \mbox{\hyperlink{classVector3D}{Vector3D}} v;\textcolor{comment}{//=new Vector3D(NULL, Point3D\{p2-\/>getX(), p2-\/>getY(), p2-\/>getZ()\}-\/Point3D\{p1-\/>getX(), p1-\/>getY(), p1-\/>getZ()\});}}
-\DoxyCodeLine{278     \textcolor{comment}{//Vector3D* pv=new Vector3D(NULL, Point3D\{p2-\/>getX(), p2-\/>getY(), p2-\/>getZ()\}-\/Point3D\{p1-\/>getX(), p1-\/>getY(), p1-\/>getZ()\});}}
-\DoxyCodeLine{279     \mbox{\hyperlink{structSN}{SN<M, E>}} d=v.\mbox{\hyperlink{classVector3D_a7951335513a54530e346b9674011ba01}{getNorm}}();}
-\DoxyCodeLine{280     \textcolor{comment}{//LSN d=pv-\/>getNorm();}}
-\DoxyCodeLine{281     v/=d;}
-\DoxyCodeLine{282     \textcolor{comment}{//*pv/=d;}}
-\DoxyCodeLine{283     v.setNorm(G*p2-\/>getW()/(d*d));}
-\DoxyCodeLine{284     \textcolor{comment}{//pv-\/>setNorm(G*p2-\/>getW()/(d*d));}}
-\DoxyCodeLine{285     printf(\textcolor{stringliteral}{"{}d:\(\backslash\)n"{}});}
-\DoxyCodeLine{286     d.print(\textcolor{keyword}{true}, \textcolor{keyword}{true}, 1);}
-\DoxyCodeLine{287     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{288 }
-\DoxyCodeLine{289     p1-\/>getPSpeed()-\/>addEnd(\{\{dt, 0\}, \{0, 0\}, \{0, 0\}\});}
-\DoxyCodeLine{290     \textcolor{comment}{//p1-\/>getPSpeed()-\/>addEnd(pv-\/>getEnd()*dt);//+=;//Problem}}
-\DoxyCodeLine{291     printf(\textcolor{stringliteral}{"{}d2\(\backslash\)n"{}});}
-\DoxyCodeLine{292     \textcolor{comment}{//delete pv;}}
-\DoxyCodeLine{293 \}}
-\DoxyCodeLine{294 }
-\DoxyCodeLine{295 \textcolor{comment}{/*}}
-\DoxyCodeLine{296 \textcolor{comment}{ * Returns the acc (in norm) felt by p1 due to p2}}
-\DoxyCodeLine{297 \textcolor{comment}{ */}}
-\DoxyCodeLine{298 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} rrr2(T* p1, T* p2) \{}
-\DoxyCodeLine{299     printf(\textcolor{stringliteral}{"{}Function (rrr2)\(\backslash\)n"{}});}
-\DoxyCodeLine{300     \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(*p1, *p2);}
-\DoxyCodeLine{301     \textcolor{keywordflow}{return} G*p2-\/>getW()/(d*d);}
-\DoxyCodeLine{302 \}}
-\DoxyCodeLine{303 }
-\DoxyCodeLine{304 }
-\DoxyCodeLine{305 }
-\DoxyCodeLine{306 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{265 \textcolor{comment}{/*}}
+\DoxyCodeLine{266 \textcolor{comment}{ * Functions}}
+\DoxyCodeLine{267 \textcolor{comment}{ */}}
+\DoxyCodeLine{268 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} rrr(std::shared\_ptr<T> p1, std::shared\_ptr<T> p2, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& dt) \{}
+\DoxyCodeLine{269     \textcolor{comment}{//printf("{}Function (rrr)\(\backslash\)n"{});}}
+\DoxyCodeLine{270     \mbox{\hyperlink{classVector3D}{Vector3D}} v;\textcolor{comment}{//=new Vector3D(NULL, Point3D\{p2-\/>getX(), p2-\/>getY(), p2-\/>getZ()\}-\/Point3D\{p1-\/>getX(), p1-\/>getY(), p1-\/>getZ()\});}}
+\DoxyCodeLine{271     \textcolor{comment}{//Vector3D* pv=new Vector3D(NULL, Point3D\{p2-\/>getX(), p2-\/>getY(), p2-\/>getZ()\}-\/Point3D\{p1-\/>getX(), p1-\/>getY(), p1-\/>getZ()\});}}
+\DoxyCodeLine{272     \mbox{\hyperlink{structSN}{SN<M, E>}} d=v.\mbox{\hyperlink{classVector3D_a7951335513a54530e346b9674011ba01}{getNorm}}();}
+\DoxyCodeLine{273     \textcolor{comment}{//LSN d=pv-\/>getNorm();}}
+\DoxyCodeLine{274     v/=d;}
+\DoxyCodeLine{275     \textcolor{comment}{//*pv/=d;}}
+\DoxyCodeLine{276     v.setNorm(G*p2-\/>getW()/(d*d));}
+\DoxyCodeLine{277     \textcolor{comment}{//pv-\/>setNorm(G*p2-\/>getW()/(d*d));}}
+\DoxyCodeLine{278     \textcolor{comment}{//printf("{}d:\(\backslash\)n"{});}}
+\DoxyCodeLine{279     \textcolor{comment}{//d.print(true, true, 1);}}
+\DoxyCodeLine{280     \textcolor{comment}{//printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282     p1-\/>getPSpeed()-\/>addEnd(\{\{dt,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{283     \textcolor{comment}{//p1-\/>getPSpeed()-\/>addEnd(pv-\/>getEnd()*dt);//+=;//Problem}}
+\DoxyCodeLine{284     \textcolor{comment}{//printf("{}d2\(\backslash\)n"{});}}
+\DoxyCodeLine{285     \textcolor{comment}{//delete pv;}}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288 \textcolor{comment}{/*}}
+\DoxyCodeLine{289 \textcolor{comment}{ * Returns the acc (in norm) felt by p1 due to p2}}
+\DoxyCodeLine{290 \textcolor{comment}{ */}}
+\DoxyCodeLine{291 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} rrr2(std::shared\_ptr<T> p1, std::shared\_ptr<T> p2) \{}
+\DoxyCodeLine{292     \textcolor{comment}{//printf("{}Function (rrr2)\(\backslash\)n"{});}}
+\DoxyCodeLine{293     \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(*p1, *p2);}
+\DoxyCodeLine{294     \textcolor{keywordflow}{return} G*p2-\/>getW()/(d*d);}
+\DoxyCodeLine{295 \}}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

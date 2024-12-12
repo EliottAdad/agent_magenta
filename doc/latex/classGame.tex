@@ -3,40 +3,54 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGame_aa39ae5760f330946c386f280d3d120b5}\label{classGame_aa39ae5760f330946c386f280d3d120b5}} 
-unsigned int {\bfseries get\+FPS} () const
+\mbox{\Hypertarget{classGame_a8db24eb5d000656d6d0b7da46cb958d3}\label{classGame_a8db24eb5d000656d6d0b7da46cb958d3}} 
+unsigned char {\bfseries get\+FPS} () const
 \item 
-\mbox{\Hypertarget{classGame_a9fb75200186867b5d9754942a501e372}\label{classGame_a9fb75200186867b5d9754942a501e372}} 
-void {\bfseries set\+FPS} (const unsigned int \&fps)
+\mbox{\Hypertarget{classGame_a81968f378ba6d96740f3762d59aa97e1}\label{classGame_a81968f378ba6d96740f3762d59aa97e1}} 
+void {\bfseries set\+FPS} (const unsigned char \&fps)
 \item 
-\mbox{\Hypertarget{classGame_afa45ff1348222debd353560c443e26e5}\label{classGame_afa45ff1348222debd353560c443e26e5}} 
-unsigned int {\bfseries get\+PPS} () const
+\mbox{\Hypertarget{classGame_a085f9c239eb91a048ed33fc7fd70493f}\label{classGame_a085f9c239eb91a048ed33fc7fd70493f}} 
+bool {\bfseries get\+FPause} () const
 \item 
-\mbox{\Hypertarget{classGame_a2eba7ac938b1e42e8bd42cc077ff7954}\label{classGame_a2eba7ac938b1e42e8bd42cc077ff7954}} 
-void {\bfseries set\+PPS} (const unsigned int \&pps)
+\mbox{\Hypertarget{classGame_a76c7e0379b179f56e7ce6772c2449b27}\label{classGame_a76c7e0379b179f56e7ce6772c2449b27}} 
+void {\bfseries set\+FPause} (const bool \&bpause)
 \item 
-\mbox{\Hypertarget{classGame_a7782fb56c2ffb71c420fb40babd18d61}\label{classGame_a7782fb56c2ffb71c420fb40babd18d61}} 
-\mbox{\hyperlink{classPhysics}{Physics}} $\ast$ {\bfseries get\+PPhysics} ()
+bool \mbox{\hyperlink{classGame_a1676d62da51ef45d985cc44ddc986839}{run}} (const unsigned int \&steps=1)
 \item 
-\mbox{\Hypertarget{classGame_a81b77d743a50062c085e414832aa2602}\label{classGame_a81b77d743a50062c085e414832aa2602}} 
-\mbox{\hyperlink{classScene}{Scene}} $\ast$ {\bfseries get\+PScene} ()
-\item 
-\mbox{\Hypertarget{classGame_a945e32006542e26025066d522b3ed09b}\label{classGame_a945e32006542e26025066d522b3ed09b}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ $>$ {\bfseries get\+PTime\+Sensitives} ()
-\item 
-\mbox{\Hypertarget{classGame_a287569adeca2d9cedcf0f34b082a7104}\label{classGame_a287569adeca2d9cedcf0f34b082a7104}} 
-bool {\bfseries add\+PTime\+Sensitive} (\mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}} $\ast$ptime\+\_\+sensitive)
-\item 
-\mbox{\Hypertarget{classGame_a1676d62da51ef45d985cc44ddc986839}\label{classGame_a1676d62da51ef45d985cc44ddc986839}} 
-bool {\bfseries run} (const unsigned int \&steps=1)
-\item 
-\mbox{\Hypertarget{classGame_ae6da5df458c5fe18d65149814c5a7026}\label{classGame_ae6da5df458c5fe18d65149814c5a7026}} 
-bool {\bfseries iterate} (const long double \&dt)
+\mbox{\Hypertarget{classGame_ad9d6d89343ad8a9bb5a5e0c5d094ee31}\label{classGame_ad9d6d89343ad8a9bb5a5e0c5d094ee31}} 
+bool {\bfseries iterate} (const float \&dt)
 \item 
 \mbox{\Hypertarget{classGame_aef454bb9fcccafbd8c248780275caabd}\label{classGame_aef454bb9fcccafbd8c248780275caabd}} 
 bool {\bfseries render} () const
 \end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGame_a2f389a20011fe7260bfb5332c90fabf6}\label{classGame_a2f389a20011fe7260bfb5332c90fabf6}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Window $>$ {\bfseries pwindow}
+\item 
+\mbox{\Hypertarget{classGame_a12120cf9f643bd661dfc6347d15e5ca8}\label{classGame_a12120cf9f643bd661dfc6347d15e5ca8}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Renderer $>$ {\bfseries prenderer}
+\item 
+\mbox{\Hypertarget{classGame_a1f606a72bf3db3580c7c2957329b61e5}\label{classGame_a1f606a72bf3db3580c7c2957329b61e5}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPhysics}{Physics}} $>$ {\bfseries pphysics}
+\item 
+\mbox{\Hypertarget{classGame_a7d7c00638f8ff56c96a177a342911f2c}\label{classGame_a7d7c00638f8ff56c96a177a342911f2c}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}}$<$ float, char $>$ $>$ {\bfseries pscene}
+\item 
+\mbox{\Hypertarget{classGame_a424cbac61ecb890c53a3ef67d056c233}\label{classGame_a424cbac61ecb890c53a3ef67d056c233}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDisplay1}{Display1}}$<$ float, char $>$ $>$ {\bfseries pdisplay}
+\end{DoxyCompactItemize}
 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_a1676d62da51ef45d985cc44ddc986839}\label{classGame_a1676d62da51ef45d985cc44ddc986839}} 
+\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily bool Game\+::run (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{steps = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+Run the game for a certain number of frames 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

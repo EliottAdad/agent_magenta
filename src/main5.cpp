@@ -65,7 +65,7 @@ int main(int argc, char* argv[]){
 	phys.setPPS(200);
 	phys.setFPause(false);
 	//phys.addPTimeSensitive(std::shared_ptr<System3D<Particle3D, float, char>>(&ps2));//Doesn't work
-	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4)));
+	printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par4)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par2)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par3)));
 	//printf("%b\n", phys.addPTimeSensitive(&ps2));

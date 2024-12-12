@@ -1,10 +1,8 @@
 <map id="VectorFieldUnidirectional" name="VectorFieldUnidirectional">
-<area shape="rect" id="node1" title=" " alt="" coords="5,469,191,496"/>
-<area shape="rect" id="node2" href="$classVectorField.html" title=" " alt="" coords="28,252,123,279"/>
-<area shape="rect" id="node3" href="$classTimeSensitive.html" title=" " alt="" coords="6,81,121,108"/>
-<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="143,5,223,32"/>
-<area shape="rect" id="node6" href="$classLine3D.html" title=" " alt="" coords="125,304,191,331"/>
-<area shape="rect" id="node7" href="$structPoint3D.html" title=" " alt="" coords="195,200,363,227"/>
-<area shape="rect" id="node8" href="$structSN.html" title=" " alt="" coords="247,81,381,108"/>
-<area shape="rect" id="node5" href="$classVector3D.html" title=" " alt="" coords="116,380,197,407"/>
+<area shape="rect" id="node1" title=" " alt="" coords="26,247,211,273"/>
+<area shape="rect" id="node2" href="$classVectorField.html" title=" " alt="" coords="17,157,111,184"/>
+<area shape="rect" id="node3" href="$classTimeSensitive.html" title=" " alt="" coords="5,81,120,108"/>
+<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="79,5,159,32"/>
+<area shape="rect" id="node6" href="$classLine3D.html" title=" " alt="" coords="144,81,211,108"/>
+<area shape="rect" id="node5" href="$classVector3D.html" title=" " alt="" coords="135,157,217,184"/>
 </map>

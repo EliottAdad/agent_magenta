@@ -10,37 +10,138 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef DISPLAYABLE\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DISPLAYABLE\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SDL2/SDL.h>}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define DISPLAYABLE\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <SDL2/SDL.h>}}
 \DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{comment}{/*}}
-\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{17 \textcolor{comment}{ *  Displayable :)}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{19 \textcolor{comment}{ * Stores the color, and a mesh to use when rendering}}
-\DoxyCodeLine{20 \textcolor{comment}{ * If mesh=NULL draws a point, if SDL\_Color=NULL draws in white}}
-\DoxyCodeLine{21 \textcolor{comment}{ */}}
-\DoxyCodeLine{22 \textcolor{keyword}{struct }\mbox{\hyperlink{structDisplayable}{Displayable}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{23     \mbox{\hyperlink{structDisplayable}{Displayable}}();}
-\DoxyCodeLine{24     \textcolor{keyword}{virtual} \mbox{\hyperlink{structDisplayable}{\string~Displayable}}();}
-\DoxyCodeLine{25     \mbox{\hyperlink{structDisplayable}{Displayable}}(\textcolor{keyword}{const} \mbox{\hyperlink{structDisplayable}{Displayable}} \&other);}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     SDL\_Color* pcolor;      \textcolor{comment}{// Drawing color}}
-\DoxyCodeLine{28     \mbox{\hyperlink{classMesh3D}{Mesh3D}}* pmesh;            \textcolor{comment}{// Pointer to the mesh to be drawn}}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getX() \textcolor{keyword}{const};                \textcolor{comment}{//Gets the coords}}
-\DoxyCodeLine{31     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getY() \textcolor{keyword}{const};}
-\DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getZ() \textcolor{keyword}{const};}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{20 \textcolor{comment}{ *  Displayable :)}}
+\DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{22 \textcolor{comment}{ * Stores the color, and a mesh to use when rendering}}
+\DoxyCodeLine{23 \textcolor{comment}{ * If mesh=NULL draws a point, if SDL\_Color=NULL draws in white}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structDisplayable}{Displayable}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{26 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{27     \textcolor{comment}{//Mesh3D* pmesh;            // Pointer to the mesh to be drawn}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{//bool m\_delc;}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     std::shared\_ptr<SDL\_Color> pcolor;      \textcolor{comment}{// Drawing color}}
 \DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{36 \};}
+\DoxyCodeLine{34     \mbox{\hyperlink{structDisplayable}{Displayable}}();}
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \mbox{\hyperlink{structDisplayable}{\string~Displayable}}();}
+\DoxyCodeLine{36     \mbox{\hyperlink{structDisplayable}{Displayable}}(\textcolor{keyword}{const} \mbox{\hyperlink{structDisplayable}{Displayable}} \&other);}
 \DoxyCodeLine{37 }
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DISPLAYABLE\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getX() \textcolor{keyword}{const};              \textcolor{comment}{//Gets the coords (changer plus tard en getPoints}}
+\DoxyCodeLine{39     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getY() \textcolor{keyword}{const};}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getZ() \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \textcolor{comment}{//virtual SDL\_Color getColor() const;}}
+\DoxyCodeLine{42     \textcolor{comment}{//virtual SDL\_Color* getPColor() const;}}
+\DoxyCodeLine{43     \textcolor{comment}{//virtual void setColor(SDL\_Color\& color, const bool\& delc=true);}}
+\DoxyCodeLine{44     \textcolor{comment}{//virtual void setPColor(SDL\_Color* pcolor, const bool\& delc=false);}}
+\DoxyCodeLine{45     \textcolor{comment}{//render();}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{comment}{//virtual Image getSticker() const;}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{50     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{51 \};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::Displayable}}() \{}
+\DoxyCodeLine{55     pcolor=NULL;\textcolor{comment}{//std::make\_shared<SDL\_Color>(255, 255, 255, 255);      // Will be interprated as white by the cameras and displays}}
+\DoxyCodeLine{56     \textcolor{comment}{//m\_pmesh=NULL;         //}}
+\DoxyCodeLine{57     \textcolor{comment}{//m\_delc=true;}}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::\string~Displayable}}() \{}
+\DoxyCodeLine{61     ;}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::Displayable}}(\textcolor{keyword}{const} \mbox{\hyperlink{structDisplayable}{Displayable}} \&other) \{}
+\DoxyCodeLine{65     pcolor=other.pcolor;}
+\DoxyCodeLine{66 \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{/*void Displayable::setColor(int r, int b, int g, int a)\{}}
+\DoxyCodeLine{71 \textcolor{comment}{    m\_pcolor-\/>r=r;}}
+\DoxyCodeLine{72 \textcolor{comment}{    m\_pcolor-\/>g=g;}}
+\DoxyCodeLine{73 \textcolor{comment}{    m\_pcolor-\/>b=b;}}
+\DoxyCodeLine{74 \textcolor{comment}{    m\_pcolor-\/>a=a;}}
+\DoxyCodeLine{75 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::getX}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} \{0.,0\};}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::getY}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{83     \textcolor{keywordflow}{return} \{0.,0\};}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::getZ}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} \{0.,0\};}
+\DoxyCodeLine{88 \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{/*template<typename M, typename E> SDL\_Color Displayable<M, E>::getColor() const \{//Yes because it cannot be null}}
+\DoxyCodeLine{91 \textcolor{comment}{    return *pcolor;}}
+\DoxyCodeLine{92 \textcolor{comment}{\}}}
+\DoxyCodeLine{93 \textcolor{comment}{}}
+\DoxyCodeLine{94 \textcolor{comment}{template<typename M, typename E> SDL\_Color* Displayable<M, E>::getPColor() const \{}}
+\DoxyCodeLine{95 \textcolor{comment}{    SDL\_Color* pcolor=NULL;}}
+\DoxyCodeLine{96 \textcolor{comment}{    if (!m\_delc)\{}}
+\DoxyCodeLine{97 \textcolor{comment}{        pcolor=m\_pcolor;}}
+\DoxyCodeLine{98 \textcolor{comment}{    \}}}
+\DoxyCodeLine{99 \textcolor{comment}{    return pcolor;}}
+\DoxyCodeLine{100 \textcolor{comment}{\}}}
+\DoxyCodeLine{101 \textcolor{comment}{}}
+\DoxyCodeLine{102 \textcolor{comment}{template<typename M, typename E> void Displayable<M, E>::setColor(SDL\_Color\& color, const bool\& delc) \{}}
+\DoxyCodeLine{103 \textcolor{comment}{    if (m\_delc)\{//Get rid of the last color}}
+\DoxyCodeLine{104 \textcolor{comment}{        delete m\_pcolor;}}
+\DoxyCodeLine{105 \textcolor{comment}{    \}}}
+\DoxyCodeLine{106 \textcolor{comment}{    if (delc)\{//Insert the new color}}
+\DoxyCodeLine{107 \textcolor{comment}{        m\_pcolor=new SDL\_Color(color);}}
+\DoxyCodeLine{108 \textcolor{comment}{    \}else\{}}
+\DoxyCodeLine{109 \textcolor{comment}{        m\_pcolor=\&color;}}
+\DoxyCodeLine{110 \textcolor{comment}{    \}}}
+\DoxyCodeLine{111 \textcolor{comment}{    m\_delc=delc;}}
+\DoxyCodeLine{112 \textcolor{comment}{\}}}
+\DoxyCodeLine{113 \textcolor{comment}{}}
+\DoxyCodeLine{114 \textcolor{comment}{template<typename M, typename E> void Displayable<M, E>::setPColor(SDL\_Color* pcolor, const bool\& delc) \{}}
+\DoxyCodeLine{115 \textcolor{comment}{    if (m\_delc)\{//Get rid of the last color}}
+\DoxyCodeLine{116 \textcolor{comment}{        delete m\_pcolor;}}
+\DoxyCodeLine{117 \textcolor{comment}{    \}}}
+\DoxyCodeLine{118 \textcolor{comment}{    if (delc)\{//Insert the new color}}
+\DoxyCodeLine{119 \textcolor{comment}{        m\_pcolor=new SDL\_Color(*pcolor);}}
+\DoxyCodeLine{120 \textcolor{comment}{    \}else\{}}
+\DoxyCodeLine{121 \textcolor{comment}{        m\_pcolor=pcolor;}}
+\DoxyCodeLine{122 \textcolor{comment}{    \}}}
+\DoxyCodeLine{123 \textcolor{comment}{    m\_delc=delc;}}
+\DoxyCodeLine{124 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{128     std::string mes=(spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}}:\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130     mes+=\textcolor{stringliteral}{"{}DISPLAYABLE"{}};}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{133 \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structDisplayable}{Displayable<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{136     printTabs(indent);}
+\DoxyCodeLine{137     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{138 \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DISPLAYABLE\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

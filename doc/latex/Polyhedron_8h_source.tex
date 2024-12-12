@@ -10,35 +10,36 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef POLYHEDRON\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define POLYHEDRON\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Shape3D.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Triangle3D.h"{}}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{comment}{/*}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ *  Polyhedron :)}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{20 \textcolor{comment}{ */}}
-\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
-\DoxyCodeLine{22 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{23     std::unordered\_set<Triangle3D*> m\_ptriangs;}
-\DoxyCodeLine{24     \textcolor{comment}{//std::unordered\_set<Point3D*> m\_ppoints;}}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26 \textcolor{keyword}{public}:}
-\DoxyCodeLine{27     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}();}
-\DoxyCodeLine{28     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPolyhedron}{\string~Polyhedron}}();}
-\DoxyCodeLine{29     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron}} \&other);}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31     std::unordered\_set<Triangle3D*> getPFaces();}
-\DoxyCodeLine{32     \textcolor{keywordtype}{void} setFace(\mbox{\hyperlink{classTriangle3D}{Triangle3D}}* pface);}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{36 \};}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POLYHEDRON\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define POLYHEDRON\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Shape3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Triangle3D.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{/*}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ *  Polyhedron :)}}
+\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{24     std::unordered\_set<Triangle3D*> m\_ptriangs;}
+\DoxyCodeLine{25     \textcolor{comment}{//std::unordered\_set<Point3D*> m\_ppoints;}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}();}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPolyhedron}{\string~Polyhedron}}();}
+\DoxyCodeLine{30     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron}} \&other);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     std::unordered\_set<Triangle3D*> getPFaces();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} setFace(\mbox{\hyperlink{classTriangle3D}{Triangle3D}}* pface);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POLYHEDRON\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -84,18 +84,11 @@ Collaboration diagram for ParticleSystem3D:</div>
 <div class="dyncontent">
 <div class="center"><img src="classParticleSystem3D__coll__graph.png" border="0" usemap="#aParticleSystem3D_coll__map" alt="Collaboration graph"/></div>
 <map name="aParticleSystem3D_coll__map" id="aParticleSystem3D_coll__map">
-<area shape="rect" title=" " alt="" coords="150,799,287,825"/>
-<area shape="rect" href="classTimeSensitive.html" title=" " alt="" coords="5,439,120,465"/>
-<area shape="rect" href="classParticle3D.html" title=" " alt="" coords="304,529,392,556"/>
-<area shape="rect" href="classPrintable.html" title=" " alt="" coords="221,5,301,32"/>
-<area shape="rect" href="structSN.html" title=" " alt="" coords="299,81,434,108"/>
-<area shape="rect" href="classOct.html" title=" " alt="" coords="433,657,599,698"/>
-<area shape="rect" href="structPoint3D.html" title=" " alt="" coords="368,200,536,227"/>
-<area shape="rect" href="structDisplayable.html" title=" " alt="" coords="108,200,207,227"/>
-<area shape="rect" href="classMesh3D.html" title=" " alt="" coords="99,81,173,108"/>
-<area shape="rect" href="classLine3D.html" title=" " alt="" coords="464,311,531,338"/>
-<area shape="rect" href="structWeightedPoint3D.html" title=" " alt="" coords="257,304,439,345"/>
-<area shape="rect" href="classVector3D.html" title=" " alt="" coords="386,439,467,465"/>
+<area shape="rect" title=" " alt="" coords="71,380,209,407"/>
+<area shape="rect" href="classTimeSensitive.html" title=" " alt="" coords="5,141,120,167"/>
+<area shape="rect" href="classPrintable.html" title=" " alt="" coords="136,5,216,32"/>
+<area shape="rect" href="structSN.html" title=" " alt="" coords="109,81,243,108"/>
+<area shape="rect" href="classOct.html" title=" " alt="" coords="198,238,365,279"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -116,12 +109,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setAlpha</b> (const f
 <tr class="memitem:a6a2e1942e0831e844f332a898cd94fea"><td class="memItemLeft" align="right" valign="top"><a id="a6a2e1942e0831e844f332a898cd94fea" name="a6a2e1942e0831e844f332a898cd94fea"></a>
 std::unordered_set&lt; <a class="el" href="classParticle3D.html">Particle3D</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPParticles</b> () const</td></tr>
 <tr class="separator:a6a2e1942e0831e844f332a898cd94fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5670087e55436ff13682eea698bd9f2"><td class="memItemLeft" align="right" valign="top"><a id="aa5670087e55436ff13682eea698bd9f2" name="aa5670087e55436ff13682eea698bd9f2"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addPParticle</b> (<a class="el" href="classParticle3D.html">Particle3D</a> *ppart)</td></tr>
-<tr class="separator:aa5670087e55436ff13682eea698bd9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62d2efcabd18674904adfbc80458b809"><td class="memItemLeft" align="right" valign="top"><a id="a62d2efcabd18674904adfbc80458b809" name="a62d2efcabd18674904adfbc80458b809"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setT</b> (const long double &amp;dt)</td></tr>
-<tr class="separator:a62d2efcabd18674904adfbc80458b809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad506f8cf5d153b93938dcc935a5d302c"><td class="memItemLeft" align="right" valign="top"><a id="ad506f8cf5d153b93938dcc935a5d302c" name="ad506f8cf5d153b93938dcc935a5d302c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>addPParticle</b> (std::shared_ptr&lt; <a class="el" href="classParticle3D.html">Particle3D</a> &gt; ppart)</td></tr>
+<tr class="separator:ad506f8cf5d153b93938dcc935a5d302c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5cf2d82f7f55ff43e34c9183d16578"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticleSystem3D.html#a7e5cf2d82f7f55ff43e34c9183d16578">setT</a> (const float &amp;dt)</td></tr>
+<tr class="separator:a7e5cf2d82f7f55ff43e34c9183d16578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6972b882e165ac0338330083b3d0752"><td class="memItemLeft" align="right" valign="top"><a id="ab6972b882e165ac0338330083b3d0752" name="ab6972b882e165ac0338330083b3d0752"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;dv)</td></tr>
 <tr class="separator:ab6972b882e165ac0338330083b3d0752"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,8 +136,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b> ()<
 <tr class="memitem:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a92114b0e88e358cf04e22f2a875bb0c6" name="a92114b0e88e358cf04e22f2a875bb0c6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Printable</b> (const <a class="el" href="classPrintable.html">Printable</a> &amp;other)</td></tr>
 <tr class="separator:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a9ac4bedf9ca7270c13264e156239f9d4" name="a9ac4bedf9ca7270c13264e156239f9d4"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
+<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPrintable.html#a9ac4bedf9ca7270c13264e156239f9d4">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
 <tr class="separator:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03cce74d5fcaacb1d821c2c37710718b inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a03cce74d5fcaacb1d821c2c37710718b" name="a03cce74d5fcaacb1d821c2c37710718b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
@@ -159,9 +150,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ac124317f50a38f6a36c5e531b570dc51"><td class="memItemLeft" align="right" valign="top"><a id="ac124317f50a38f6a36c5e531b570dc51" name="ac124317f50a38f6a36c5e531b570dc51"></a>
 <a class="el" href="classOct.html">Oct</a>&lt; <a class="el" href="classParticle3D.html">Particle3D</a>, float, char &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>m_poctree</b></td></tr>
 <tr class="separator:ac124317f50a38f6a36c5e531b570dc51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ad68123f42b7b07a9ff699dfabaa439"><td class="memItemLeft" align="right" valign="top"><a id="a9ad68123f42b7b07a9ff699dfabaa439" name="a9ad68123f42b7b07a9ff699dfabaa439"></a>
-long double&#160;</td><td class="memItemRight" valign="bottom"><b>m_dt</b></td></tr>
-<tr class="separator:a9ad68123f42b7b07a9ff699dfabaa439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87b35a60221d7bb207b6af44f4492cb"><td class="memItemLeft" align="right" valign="top"><a id="aa87b35a60221d7bb207b6af44f4492cb" name="aa87b35a60221d7bb207b6af44f4492cb"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_dt</b></td></tr>
+<tr class="separator:aa87b35a60221d7bb207b6af44f4492cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bc975b847db626230c63e4213d5db9b"><td class="memItemLeft" align="right" valign="top"><a id="a9bc975b847db626230c63e4213d5db9b" name="a9bc975b847db626230c63e4213d5db9b"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>pfunc</b> )(<a class="el" href="classTimeSensitive.html">TimeSensitive</a> *, <a class="el" href="classTimeSensitive.html">TimeSensitive</a> *)</td></tr>
 <tr class="separator:a9bc975b847db626230c63e4213d5db9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,6 +189,34 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>pfunc</b> )(<a clas
           <td></td>
           <td>)</td>
           <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classTimeSensitive.html">TimeSensitive</a>.</p>
+
+</div>
+</div>
+<a id="a7e5cf2d82f7f55ff43e34c9183d16578" name="a7e5cf2d82f7f55ff43e34c9183d16578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e5cf2d82f7f55ff43e34c9183d16578">&#9670;&nbsp;</a></span>setT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParticleSystem3D::setT </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

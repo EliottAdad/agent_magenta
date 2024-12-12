@@ -7,14 +7,15 @@
 
 #include "Line3D.h"
 
+
 Line3D::Line3D(){
 	this->pp1=std::make_shared<Point3D<float, char>>();
 	this->pp2=std::make_shared<Point3D<float, char>>(SN<float, char>{1,0},SN<float, char>{1,0},SN<float, char>{1,0});
 }
 
 Line3D::Line3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2){//:)
-	this->pp1=std::make_shared<Point3D<float, char>>(p1);
-	this->pp2=std::make_shared<Point3D<float, char>>(p2);
+	this->pp1=std::make_shared<Point3D<float, char>>(p1);// Copy the point
+	this->pp2=std::make_shared<Point3D<float, char>>(p2);// Copy the point
 }
 
 Line3D::Line3D(std::shared_ptr<Point3D<float, char>> pp1, std::shared_ptr<Point3D<float, char>> pp2){//:)

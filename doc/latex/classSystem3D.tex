@@ -2,8 +2,7 @@
 \label{classSystem3D}\index{System3D$<$ T, M, E $>$@{System3D$<$ T, M, E $>$}}
 
 
-Inheritance diagram for System3D\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for System3D\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for System3D\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{
 \end{figure}
 
 
-Collaboration diagram for System3D\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for System3D\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,17 +36,14 @@ float {\bfseries get\+Alpha} () const
 \mbox{\Hypertarget{classSystem3D_a596357317661457e0af20a176e415e10}\label{classSystem3D_a596357317661457e0af20a176e415e10}} 
 void {\bfseries set\+Alpha} (const float \&alpha)
 \item 
-\mbox{\Hypertarget{classSystem3D_ab2326684418a7e5c2e369d08fb5dd5f7}\label{classSystem3D_ab2326684418a7e5c2e369d08fb5dd5f7}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
+\mbox{\Hypertarget{classSystem3D_afe389d439370c55a4e9e42b6499c6190}\label{classSystem3D_afe389d439370c55a4e9e42b6499c6190}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} () const
 \item 
-\mbox{\Hypertarget{classSystem3D_a7f3b5c22633eea005febb93c8f7da6f4}\label{classSystem3D_a7f3b5c22633eea005febb93c8f7da6f4}} 
-bool {\bfseries add\+PElement} (T $\ast$pelement)
+\mbox{\Hypertarget{classSystem3D_ac18c46c2d4b91d0d27ea827ae7468a18}\label{classSystem3D_ac18c46c2d4b91d0d27ea827ae7468a18}} 
+bool {\bfseries add\+PElement} (std\+::shared\+\_\+ptr$<$ T $>$ pelement)
 \item 
-\mbox{\Hypertarget{classSystem3D_a961c8cde2d22a6cad94a13905634ec76}\label{classSystem3D_a961c8cde2d22a6cad94a13905634ec76}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PNeighbors} (const T $\ast$pelement) const
-\item 
-\mbox{\Hypertarget{classSystem3D_ae5e63c9c0234bda38975fa704166c252}\label{classSystem3D_ae5e63c9c0234bda38975fa704166c252}} 
-void {\bfseries set\+PFunc} (\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$($\ast$ptr\+Law)(T $\ast$, T $\ast$))
+\mbox{\Hypertarget{classSystem3D_a3a43b2b9b5914d551c94762d4d0347dc}\label{classSystem3D_a3a43b2b9b5914d551c94762d4d0347dc}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PNeighbors} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
 \item 
 \mbox{\Hypertarget{classSystem3D_a193afc37eddd9b44327eca19f17c3e5d}\label{classSystem3D_a193afc37eddd9b44327eca19f17c3e5d}} 
 void {\bfseries recalculate} () const
@@ -56,14 +51,19 @@ void {\bfseries recalculate} () const
 \mbox{\Hypertarget{classSystem3D_ae91fd1c0f09781ecda438614d3a9aed2}\label{classSystem3D_ae91fd1c0f09781ecda438614d3a9aed2}} 
 void {\bfseries empty} ()
 \item 
-\mbox{\Hypertarget{classSystem3D_a28f7752b00c9b3aa6206ab267fcbbdb3}\label{classSystem3D_a28f7752b00c9b3aa6206ab267fcbbdb3}} 
-virtual void {\bfseries setT} (const long double \&dt)
+virtual void \mbox{\hyperlink{classSystem3D_ad46ad60ef4db30fd44bc28525e39809c}{setT}} (const float \&dt)
 \item 
 virtual void \mbox{\hyperlink{classSystem3D_a546e24139eb6519f0b17cbb7f805ce89}{apply}} ()
 \item 
 virtual std\+::string \mbox{\hyperlink{classSystem3D_ab6c0649c738ac4c2fe66c181e6375169}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classSystem3D_a848ece8804f9b91efddb146a0370b7ed}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSystem3D_a57b0d050b183eb611b7852efeee5ddc1}\label{classSystem3D_a57b0d050b183eb611b7852efeee5ddc1}} 
+\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$($\ast$ {\bfseries m\+\_\+ptr\+Law} )(T $\ast$, T $\ast$)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -74,14 +74,11 @@ virtual void \mbox{\hyperlink{classSystem3D_a848ece8804f9b91efddb146a0370b7ed}{p
 \mbox{\Hypertarget{classSystem3D_aed6acaa77eabcdc7617bcc21e21c74f7}\label{classSystem3D_aed6acaa77eabcdc7617bcc21e21c74f7}} 
 \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+poctree}
 \item 
-\mbox{\Hypertarget{classSystem3D_a57b0d050b183eb611b7852efeee5ddc1}\label{classSystem3D_a57b0d050b183eb611b7852efeee5ddc1}} 
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$($\ast$ {\bfseries m\+\_\+ptr\+Law} )(T $\ast$, T $\ast$)
+\mbox{\Hypertarget{classSystem3D_aa9ab5b76f10b36da701f3bd92a7f5c17}\label{classSystem3D_aa9ab5b76f10b36da701f3bd92a7f5c17}} 
+float {\bfseries m\+\_\+dt}
 \item 
-\mbox{\Hypertarget{classSystem3D_abb2620e1141aa31109ef57d8f65dd4d5}\label{classSystem3D_abb2620e1141aa31109ef57d8f65dd4d5}} 
-long double {\bfseries m\+\_\+dt}
-\item 
-\mbox{\Hypertarget{classSystem3D_a91093d3c8f80e26ab7162990dc49192a}\label{classSystem3D_a91093d3c8f80e26ab7162990dc49192a}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries m\+\_\+pelements}
+\mbox{\Hypertarget{classSystem3D_ae547c41cb4efde0294df7ba311259918}\label{classSystem3D_ae547c41cb4efde0294df7ba311259918}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries m\+\_\+pelements}
 \end{DoxyCompactItemize}
 
 
@@ -103,6 +100,17 @@ Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
 {\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
 void \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+\mbox{\Hypertarget{classSystem3D_ad46ad60ef4db30fd44bc28525e39809c}\label{classSystem3D_ad46ad60ef4db30fd44bc28525e39809c}} 
+\index{System3D$<$ T, M, E $>$@{System3D$<$ T, M, E $>$}!setT@{setT}}
+\index{setT@{setT}!System3D$<$ T, M, E $>$@{System3D$<$ T, M, E $>$}}
+\doxysubsubsection{\texorpdfstring{setT()}{setT()}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+void \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, M, E $>$\+::setT (\begin{DoxyParamCaption}\item[{const float \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

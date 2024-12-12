@@ -10,47 +10,48 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TRIANGLE3D\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define TRIANGLE3D\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Shape3D.h"{}}}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{comment}{/*}}
-\DoxyCodeLine{15 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{16 \textcolor{comment}{ *  Triangle3D :)}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ */}}
-\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classTriangle3D}{Triangle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
-\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{21     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1;}
-\DoxyCodeLine{22     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2;}
-\DoxyCodeLine{23     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp3;}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25     \textcolor{keywordtype}{bool} m\_delP1;}
-\DoxyCodeLine{26     \textcolor{keywordtype}{bool} m\_delP2;}
-\DoxyCodeLine{27     \textcolor{keywordtype}{bool} m\_delP3;}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{keyword}{public}:}
-\DoxyCodeLine{30     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}();}
-\DoxyCodeLine{31     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p3);}
-\DoxyCodeLine{32     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp3);}
-\DoxyCodeLine{33     \textcolor{keyword}{virtual} \mbox{\hyperlink{classTriangle3D}{\string~Triangle3D}}();}
-\DoxyCodeLine{34     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}} \&other);}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP1() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
-\DoxyCodeLine{37     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP1();                 \textcolor{comment}{//}}
-\DoxyCodeLine{38     \textcolor{keywordtype}{void} setP1(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1);     \textcolor{comment}{//}}
-\DoxyCodeLine{39     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP2() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
-\DoxyCodeLine{40     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP2();                 \textcolor{comment}{//}}
-\DoxyCodeLine{41     \textcolor{keywordtype}{void} setP2(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2);     \textcolor{comment}{//}}
-\DoxyCodeLine{42     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP3() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
-\DoxyCodeLine{43     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP3();                 \textcolor{comment}{//}}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} setP3(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p3);     \textcolor{comment}{//}}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{47     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{48 \};}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRIANGLE3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define TRIANGLE3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Shape3D.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/*}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ *  Triangle3D :)}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ */}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classTriangle3D}{Triangle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1;}
+\DoxyCodeLine{23     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2;}
+\DoxyCodeLine{24     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp3;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} m\_delP1;}
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} m\_delP2;}
+\DoxyCodeLine{28     \textcolor{keywordtype}{bool} m\_delP3;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}();}
+\DoxyCodeLine{32     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p3);}
+\DoxyCodeLine{33     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp3);}
+\DoxyCodeLine{34     \textcolor{keyword}{virtual} \mbox{\hyperlink{classTriangle3D}{\string~Triangle3D}}();}
+\DoxyCodeLine{35     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}} \&other);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP1() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
+\DoxyCodeLine{38     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP1();                 \textcolor{comment}{//}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} setP1(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1);     \textcolor{comment}{//}}
+\DoxyCodeLine{40     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP2() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
+\DoxyCodeLine{41     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP2();                 \textcolor{comment}{//}}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} setP2(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2);     \textcolor{comment}{//}}
+\DoxyCodeLine{43     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP3() \textcolor{keyword}{const};                 \textcolor{comment}{//}}
+\DoxyCodeLine{44     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* getPP3();                 \textcolor{comment}{//}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} setP3(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p3);     \textcolor{comment}{//}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{49 \};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRIANGLE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

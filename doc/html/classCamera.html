@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classCamera-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Camera Class Reference</div></div>
 </div><!--header-->
@@ -89,24 +90,15 @@ Collaboration diagram for Camera:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8acde7f2da8e2ded4464bad29e4a0b95"><td class="memItemLeft" align="right" valign="top"><a id="a8acde7f2da8e2ded4464bad29e4a0b95" name="a8acde7f2da8e2ded4464bad29e4a0b95"></a>
-<a class="el" href="structPoint3D.html">Point3D</a>&lt; float, char &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoint</b> () const</td></tr>
-<tr class="separator:a8acde7f2da8e2ded4464bad29e4a0b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a526e3f91dbbfb9d0a4452bf2b6cc5b31"><td class="memItemLeft" align="right" valign="top"><a id="a526e3f91dbbfb9d0a4452bf2b6cc5b31" name="a526e3f91dbbfb9d0a4452bf2b6cc5b31"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPoint</b> (const <a class="el" href="structPoint3D.html">Point3D</a>&lt; float, char &gt; &amp;p)</td></tr>
-<tr class="separator:a526e3f91dbbfb9d0a4452bf2b6cc5b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abde8266a9fb673d50b103bba0d749352"><td class="memItemLeft" align="right" valign="top"><a id="abde8266a9fb673d50b103bba0d749352" name="abde8266a9fb673d50b103bba0d749352"></a>
-<a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getNormal</b> () const</td></tr>
-<tr class="separator:abde8266a9fb673d50b103bba0d749352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a148866dd58962f4a64ce304aacf74abb"><td class="memItemLeft" align="right" valign="top"><a id="a148866dd58962f4a64ce304aacf74abb" name="a148866dd58962f4a64ce304aacf74abb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNormal</b> (const <a class="el" href="structPoint3D.html">Point3D</a>&lt; float, char &gt; &amp;p)</td></tr>
-<tr class="separator:a148866dd58962f4a64ce304aacf74abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5300f42cb1f9fb8973c26e6eabfd983c"><td class="memItemLeft" align="right" valign="top"><a id="a5300f42cb1f9fb8973c26e6eabfd983c" name="a5300f42cb1f9fb8973c26e6eabfd983c"></a>
-std::unique_ptr&lt; <a class="el" href="classVector3D.html">Vector3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getE1</b> () const</td></tr>
-<tr class="separator:a5300f42cb1f9fb8973c26e6eabfd983c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5543ab0166f1df8ce5fbac0c74f5d1a5"><td class="memItemLeft" align="right" valign="top"><a id="a5543ab0166f1df8ce5fbac0c74f5d1a5" name="a5543ab0166f1df8ce5fbac0c74f5d1a5"></a>
-std::unique_ptr&lt; <a class="el" href="classVector3D.html">Vector3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getE2</b> () const</td></tr>
-<tr class="separator:a5543ab0166f1df8ce5fbac0c74f5d1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad491e80e8096db31be3d6095475ff3f3"><td class="memItemLeft" align="right" valign="top"><a id="ad491e80e8096db31be3d6095475ff3f3" name="ad491e80e8096db31be3d6095475ff3f3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (const <a class="el" href="classCamera.html">Camera</a> &amp;other)</td></tr>
+<tr class="separator:ad491e80e8096db31be3d6095475ff3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26039257fc077643d27cdd26c62b49d6"><td class="memItemLeft" align="right" valign="top"><a id="a26039257fc077643d27cdd26c62b49d6" name="a26039257fc077643d27cdd26c62b49d6"></a>
+std::shared_ptr&lt; <a class="el" href="classVector3D.html">Vector3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getE1</b> () const</td></tr>
+<tr class="separator:a26039257fc077643d27cdd26c62b49d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b7f1cef278a17906e7884209a45ba2d"><td class="memItemLeft" align="right" valign="top"><a id="a5b7f1cef278a17906e7884209a45ba2d" name="a5b7f1cef278a17906e7884209a45ba2d"></a>
+std::shared_ptr&lt; <a class="el" href="classVector3D.html">Vector3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getE2</b> () const</td></tr>
+<tr class="separator:a5b7f1cef278a17906e7884209a45ba2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a654bda85b56835ca401bb7f7db350eb7"><td class="memItemLeft" align="right" valign="top"><a id="a654bda85b56835ca401bb7f7db350eb7" name="a654bda85b56835ca401bb7f7db350eb7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>renderMesh</b> (const <a class="el" href="classMesh3D.html">Mesh3D</a> &amp;mesh) const</td></tr>
 <tr class="separator:a654bda85b56835ca401bb7f7db350eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,12 +119,20 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>testInFielOfView</b> 
 <tr class="memitem:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a92114b0e88e358cf04e22f2a875bb0c6" name="a92114b0e88e358cf04e22f2a875bb0c6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Printable</b> (const <a class="el" href="classPrintable.html">Printable</a> &amp;other)</td></tr>
 <tr class="separator:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a9ac4bedf9ca7270c13264e156239f9d4" name="a9ac4bedf9ca7270c13264e156239f9d4"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
+<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPrintable.html#a9ac4bedf9ca7270c13264e156239f9d4">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
 <tr class="separator:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03cce74d5fcaacb1d821c2c37710718b inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a03cce74d5fcaacb1d821c2c37710718b" name="a03cce74d5fcaacb1d821c2c37710718b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
 <tr class="separator:a03cce74d5fcaacb1d821c2c37710718b inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a67901b142cce1da5715304ee8ab92f66"><td class="memItemLeft" align="right" valign="top"><a id="a67901b142cce1da5715304ee8ab92f66" name="a67901b142cce1da5715304ee8ab92f66"></a>
+std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; float, char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ppoint</b></td></tr>
+<tr class="separator:a67901b142cce1da5715304ee8ab92f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca22d46e2f0fd60facc58b65b70fe8b7"><td class="memItemLeft" align="right" valign="top"><a id="aca22d46e2f0fd60facc58b65b70fe8b7" name="aca22d46e2f0fd60facc58b65b70fe8b7"></a>
+std::shared_ptr&lt; <a class="el" href="classVector3D.html">Vector3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pnormal</b></td></tr>
+<tr class="separator:aca22d46e2f0fd60facc58b65b70fe8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aae27dd2431998513ed831db282d470a5" name="aae27dd2431998513ed831db282d470a5"></a>

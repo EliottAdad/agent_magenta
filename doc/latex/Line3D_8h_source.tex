@@ -10,51 +10,55 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef LINE3D\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define LINE3D\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{comment}{/*}}
-\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{17 \textcolor{comment}{ *  Line3D :)}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{19 \textcolor{comment}{ * A line is represented by two points.}}
-\DoxyCodeLine{20 \textcolor{comment}{ * This class present a few useful methods}}
-\DoxyCodeLine{21 \textcolor{comment}{ * to compute the geometry of the objects.}}
-\DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classLine3D}{Line3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{24 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{25     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* m\_pp1;}
-\DoxyCodeLine{26     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* m\_pp2;}
-\DoxyCodeLine{27     \textcolor{keywordtype}{bool} m\_delp1;}
-\DoxyCodeLine{28     \textcolor{keywordtype}{bool} m\_delp2;}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30 \textcolor{keyword}{public}:}
-\DoxyCodeLine{31     \mbox{\hyperlink{classLine3D}{Line3D}}();}
-\DoxyCodeLine{32     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2);}
-\DoxyCodeLine{33     \mbox{\hyperlink{classLine3D}{Line3D}}(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1, \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2);}
-\DoxyCodeLine{34     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D}}\& l);}
-\DoxyCodeLine{35     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D}}* pl);}
-\DoxyCodeLine{36     \textcolor{keyword}{virtual} \mbox{\hyperlink{classLine3D}{\string~Line3D}}();                                   \textcolor{comment}{//:)}}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP1() \textcolor{keyword}{const};                             \textcolor{comment}{//:)}}
-\DoxyCodeLine{39     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* \mbox{\hyperlink{classLine3D_a89771f425508acd1f82f112b3c131da5}{getPP1}}() \textcolor{keyword}{const};                         \textcolor{comment}{//:)}}
-\DoxyCodeLine{40     \textcolor{keywordtype}{void} setP1(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});   \textcolor{comment}{//:)}}
-\DoxyCodeLine{41     \textcolor{keywordtype}{void} setPP1(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp1, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});  \textcolor{comment}{//:)}}
-\DoxyCodeLine{42     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getP2() \textcolor{keyword}{const};                             \textcolor{comment}{//:)}}
-\DoxyCodeLine{43     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* \mbox{\hyperlink{classLine3D_afc152dfc6280e0a7427de2d1e8313bd6}{getPP2}}() \textcolor{keyword}{const};                         \textcolor{comment}{//:)}}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} setP2(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{false});   \textcolor{comment}{//:)}}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} setPP2(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* pp2, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& delp=\textcolor{keyword}{true});  \textcolor{comment}{//:)}}
-\DoxyCodeLine{46     \textcolor{keywordtype}{bool} getDelP1() \textcolor{keyword}{const};                              \textcolor{comment}{//:)}}
-\DoxyCodeLine{47     \textcolor{keywordtype}{bool} getDelP2() \textcolor{keyword}{const};                              \textcolor{comment}{//:)}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{50     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{51 \};}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define LINE3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Point3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{20 \textcolor{comment}{ *  Line3D :)}}
+\DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{22 \textcolor{comment}{ * A line is represented by two points.}}
+\DoxyCodeLine{23 \textcolor{comment}{ * This class present a few useful methods}}
+\DoxyCodeLine{24 \textcolor{comment}{ * to compute the geometry of the objects.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classLine3D}{Line3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{27 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{28     \textcolor{comment}{//bool m\_delp1;}}
+\DoxyCodeLine{29     \textcolor{comment}{//bool m\_delp2;}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     std::shared\_ptr<Point3D<float, char>> pp1;}
+\DoxyCodeLine{33     std::shared\_ptr<Point3D<float, char>> pp2;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \mbox{\hyperlink{classLine3D}{Line3D}}();}
+\DoxyCodeLine{36     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p2);}
+\DoxyCodeLine{37     \mbox{\hyperlink{classLine3D}{Line3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}> pp1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}> pp2);}
+\DoxyCodeLine{38     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D}}\& l);}
+\DoxyCodeLine{39     \textcolor{comment}{//Line3D(const Line3D* pl);}}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{classLine3D}{\string~Line3D}}();                                               \textcolor{comment}{//:)}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{comment}{//Point3D<float, char> getP1() const;                               //:)}}
+\DoxyCodeLine{43     \textcolor{comment}{//Point3D<float, char>* getPP1() const;                         //:)}}
+\DoxyCodeLine{44     \textcolor{comment}{//void setP1(Point3D<float, char>\& p1, const bool\& delp=false); //:)}}
+\DoxyCodeLine{45     \textcolor{comment}{//void setPP1(Point3D<float, char>* pp1, const bool\& delp=true);    //:)}}
+\DoxyCodeLine{46     \textcolor{comment}{//Point3D<float, char> getP2() const;                               //:)}}
+\DoxyCodeLine{47     \textcolor{comment}{//Point3D<float, char>* getPP2() const;                         //:)}}
+\DoxyCodeLine{48     \textcolor{comment}{//void setP2(Point3D<float, char>\& p2, const bool\& delp=false); //:)}}
+\DoxyCodeLine{49     \textcolor{comment}{//void setPP2(Point3D<float, char>* pp2, const bool\& delp=true);    //:)}}
+\DoxyCodeLine{50     \textcolor{comment}{//bool getDelP1() const;                                            //:)}}
+\DoxyCodeLine{51     \textcolor{comment}{//bool getDelP2() const;                                            //:)}}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LINE3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classLine3D_a33e744df90d83b93caf35e44787019b0}{to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{55 \};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LINE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

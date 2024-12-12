@@ -69,7 +69,7 @@ void Physics::setFPause(const bool& fpause) {
 	m_fpause=fpause;
 }
 
-std::unordered_set<TimeSensitive*> Physics::getPTimeSensitives() {
+std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::getPTimeSensitives() {
 	return m_ptime_sensitives;
 }
 
@@ -77,7 +77,7 @@ bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) 
 	bool success=false;
 
 	if (ptime_sensitive!=NULL){
-		success=m_ptime_sensitives.insert(ptime_sensitive.get()).second;
+		success=m_ptime_sensitives.insert(ptime_sensitive).second;
 		printf("Shush\n");
 	}
 	return success;
@@ -141,7 +141,7 @@ bool Physics::run(const unsigned int& steps) {
 }
 
 bool Physics::iterate(const float& dt) {
-	for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
+	for (std::shared_ptr<TimeSensitive> ptime_sensitive : m_ptime_sensitives){
 		//printf("\nHello1\n");
 		ptime_sensitive->setT(dt*m_speed);
 		//printf("%f\n", dt*m_speed);
@@ -172,7 +172,7 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	//int i=0;
 
 	if (full_info){
-		for (TimeSensitive* ptime_sensitive : m_ptime_sensitives){
+		for (std::shared_ptr<TimeSensitive> ptime_sensitive : m_ptime_sensitives){
 			//i++;
 			mes+="\n";
 			mes+=to_stringTabs(indent+2);

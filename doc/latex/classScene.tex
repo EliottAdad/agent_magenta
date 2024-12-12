@@ -1,20 +1,39 @@
-\hypertarget{classScene}{}\doxysection{Scene Class Reference}
-\label{classScene}\index{Scene@{Scene}}
+\hypertarget{classScene}{}\doxysection{Scene\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classScene}\index{Scene$<$ M, E $>$@{Scene$<$ M, E $>$}}
+
+
+Inheritance diagram for Scene\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classScene__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classScene_aae99632f6bac1360a8c7463c9ab0f613}\label{classScene_aae99632f6bac1360a8c7463c9ab0f613}} 
+\mbox{\Hypertarget{classScene_afda4e4c267e0e7ec4206ebd4b64b69b8}\label{classScene_afda4e4c267e0e7ec4206ebd4b64b69b8}} 
 {\bfseries Scene} (const \mbox{\hyperlink{classScene}{Scene}} \&scene)
 \item 
-\mbox{\Hypertarget{classScene_a15f1d94a918f44f0a7351607d877ffb1}\label{classScene_a15f1d94a918f44f0a7351607d877ffb1}} 
-std\+::set$<$ \mbox{\hyperlink{structDisplayable}{Displayable}} $\ast$ $>$ {\bfseries get\+PDisplayables} ()
+\mbox{\Hypertarget{classScene_a2fe624da79382182a4fbd6192f0cffb1}\label{classScene_a2fe624da79382182a4fbd6192f0cffb1}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structDisplayable}{Displayable}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PDisplayables} () const
 \item 
-\mbox{\Hypertarget{classScene_a41f33f8435e83de040e6a8a71bbb7717}\label{classScene_a41f33f8435e83de040e6a8a71bbb7717}} 
-void {\bfseries add\+PDisplayable} (\mbox{\hyperlink{structDisplayable}{Displayable}} $\ast$pdisplayable)
+\mbox{\Hypertarget{classScene_ace7a0439596863e012b46bdbeff504be}\label{classScene_ace7a0439596863e012b46bdbeff504be}} 
+bool {\bfseries add\+PDisplayable} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structDisplayable}{Displayable}}$<$ M, E $>$ $>$ pdisplayable)
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-core/Scene.\+h\item 
-core/Scene.\+cpp\end{DoxyCompactItemize}
+core/Scene.\+h\end{DoxyCompactItemize}

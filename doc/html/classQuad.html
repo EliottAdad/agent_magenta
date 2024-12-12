@@ -95,9 +95,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7d76088dc44446dcaad4e90772106b8a"><td class="memItemLeft" align="right" valign="top"><a id="a7d76088dc44446dcaad4e90772106b8a" name="a7d76088dc44446dcaad4e90772106b8a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Quad</b> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;a, const <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &amp;p={{0, 0},{0, 0},{0, 0}})</td></tr>
 <tr class="separator:a7d76088dc44446dcaad4e90772106b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92ad1dce14ef438f9b2e768be2cf67e0"><td class="memItemLeft" align="right" valign="top"><a id="a92ad1dce14ef438f9b2e768be2cf67e0" name="a92ad1dce14ef438f9b2e768be2cf67e0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Quad</b> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;a, <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; *ppoint)</td></tr>
-<tr class="separator:a92ad1dce14ef438f9b2e768be2cf67e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46fde3b0cd84af4a7b71a601696c7d50"><td class="memItemLeft" align="right" valign="top"><a id="a46fde3b0cd84af4a7b71a601696c7d50" name="a46fde3b0cd84af4a7b71a601696c7d50"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Quad</b> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;a, std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt; ppoint)</td></tr>
+<tr class="separator:a46fde3b0cd84af4a7b71a601696c7d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae41446341b9beb8f7b6919618352e1ff"><td class="memItemLeft" align="right" valign="top"><a id="ae41446341b9beb8f7b6919618352e1ff" name="ae41446341b9beb8f7b6919618352e1ff"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Quad</b> (const <a class="el" href="classQuad.html">Quad</a>&lt; T, M, E &gt; *pquad)</td></tr>
 <tr class="separator:ae41446341b9beb8f7b6919618352e1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,9 +131,9 @@ std::unordered_set&lt; T * &gt;&#160;</td><td class="memItemRight" valign="botto
 <tr class="memitem:a60c3e3706d98606eb09510cc5943b91b"><td class="memItemLeft" align="right" valign="top"><a id="a60c3e3706d98606eb09510cc5943b91b" name="a60c3e3706d98606eb09510cc5943b91b"></a>
 std::unordered_set&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPNeighbors</b> (T *pelement) const</td></tr>
 <tr class="separator:a60c3e3706d98606eb09510cc5943b91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9685616597f3dc2e361ecdf9cb0ebf0b"><td class="memItemLeft" align="right" valign="top"><a id="a9685616597f3dc2e361ecdf9cb0ebf0b" name="a9685616597f3dc2e361ecdf9cb0ebf0b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (T *pT)</td></tr>
-<tr class="separator:a9685616597f3dc2e361ecdf9cb0ebf0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88fe91ba242b1afa6f629330b31c94b7"><td class="memItemLeft" align="right" valign="top"><a id="a88fe91ba242b1afa6f629330b31c94b7" name="a88fe91ba242b1afa6f629330b31c94b7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (std::shared_ptr&lt; T &gt; pT)</td></tr>
+<tr class="separator:a88fe91ba242b1afa6f629330b31c94b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fcd91db505c4e645e607d576df23ac7"><td class="memItemLeft" align="right" valign="top"><a id="a5fcd91db505c4e645e607d576df23ac7" name="a5fcd91db505c4e645e607d576df23ac7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const T &amp;t, std::unordered_set&lt; <a class="el" href="classQuad.html">Quad</a>&lt; T, M, E &gt; * &gt; &amp;pquads)</td></tr>
 <tr class="separator:a5fcd91db505c4e645e607d576df23ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,8 +154,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> ()</td></tr
 <tr class="memitem:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a92114b0e88e358cf04e22f2a875bb0c6" name="a92114b0e88e358cf04e22f2a875bb0c6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Printable</b> (const <a class="el" href="classPrintable.html">Printable</a> &amp;other)</td></tr>
 <tr class="separator:a92114b0e88e358cf04e22f2a875bb0c6 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a9ac4bedf9ca7270c13264e156239f9d4" name="a9ac4bedf9ca7270c13264e156239f9d4"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
+<tr class="memitem:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPrintable.html#a9ac4bedf9ca7270c13264e156239f9d4">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
 <tr class="separator:a9ac4bedf9ca7270c13264e156239f9d4 inherit pub_methods_classPrintable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03cce74d5fcaacb1d821c2c37710718b inherit pub_methods_classPrintable"><td class="memItemLeft" align="right" valign="top"><a id="a03cce74d5fcaacb1d821c2c37710718b" name="a03cce74d5fcaacb1d821c2c37710718b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
@@ -164,7 +163,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (co
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a2609c058b3944a60556435f41aa2f6ba"><td class="memItemLeft" align="right" valign="top"><a id="a2609c058b3944a60556435f41aa2f6ba" name="a2609c058b3944a60556435f41aa2f6ba"></a>
-static <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_LIM_A</b> ={1, 0}</td></tr>
+static <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_LIM_A</b> ={1,0}</td></tr>
 <tr class="separator:a2609c058b3944a60556435f41aa2f6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bdccda22d77b7d9089a0099ad897e45"><td class="memItemLeft" align="right" valign="top"><a id="a8bdccda22d77b7d9089a0099ad897e45" name="a8bdccda22d77b7d9089a0099ad897e45"></a>
 static float&#160;</td><td class="memItemRight" valign="bottom"><b>m_ALPHA</b> =0.5</td></tr>
@@ -172,24 +171,21 @@ static float&#160;</td><td class="memItemRight" valign="bottom"><b>m_ALPHA</b> =
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:abb761d60d630bdc683351ce6ee725a46"><td class="memItemLeft" align="right" valign="top"><a id="abb761d60d630bdc683351ce6ee725a46" name="abb761d60d630bdc683351ce6ee725a46"></a>
-<a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>m_ppoint</b></td></tr>
-<tr class="separator:abb761d60d630bdc683351ce6ee725a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfa3795f5774934b78ca38ac37f614a7"><td class="memItemLeft" align="right" valign="top"><a id="abfa3795f5774934b78ca38ac37f614a7" name="abfa3795f5774934b78ca38ac37f614a7"></a>
-<a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pbarycenter</b></td></tr>
-<tr class="separator:abfa3795f5774934b78ca38ac37f614a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b3d52451d80adae10bfe44af86ec40d"><td class="memItemLeft" align="right" valign="top"><a id="a9b3d52451d80adae10bfe44af86ec40d" name="a9b3d52451d80adae10bfe44af86ec40d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_delp</b></td></tr>
-<tr class="separator:a9b3d52451d80adae10bfe44af86ec40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceed9ec89edc3b0fadd9dc59df7ee3bf"><td class="memItemLeft" align="right" valign="top"><a id="aceed9ec89edc3b0fadd9dc59df7ee3bf" name="aceed9ec89edc3b0fadd9dc59df7ee3bf"></a>
+std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_ppoint</b></td></tr>
+<tr class="separator:aceed9ec89edc3b0fadd9dc59df7ee3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae37df218efaa4d789130e65b22c3e1b7"><td class="memItemLeft" align="right" valign="top"><a id="ae37df218efaa4d789130e65b22c3e1b7" name="ae37df218efaa4d789130e65b22c3e1b7"></a>
+std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_pbarycenter</b></td></tr>
+<tr class="separator:ae37df218efaa4d789130e65b22c3e1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53418799fdfc305afa879219cd1d56a"><td class="memItemLeft" align="right" valign="top"><a id="ae53418799fdfc305afa879219cd1d56a" name="ae53418799fdfc305afa879219cd1d56a"></a>
 <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_a</b></td></tr>
 <tr class="separator:ae53418799fdfc305afa879219cd1d56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ade86080cd3dfc4b76e567d143a34ab"><td class="memItemLeft" align="right" valign="top"><a id="a6ade86080cd3dfc4b76e567d143a34ab" name="a6ade86080cd3dfc4b76e567d143a34ab"></a>
 <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_tot_weight</b></td></tr>
 <tr class="separator:a6ade86080cd3dfc4b76e567d143a34ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebb8cbed201626ed3f3b3c85d29eade6"><td class="memItemLeft" align="right" valign="top"><a id="aebb8cbed201626ed3f3b3c85d29eade6" name="aebb8cbed201626ed3f3b3c85d29eade6"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pT</b></td></tr>
-<tr class="separator:aebb8cbed201626ed3f3b3c85d29eade6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8617db33d233445370fb0c10113b4cb"><td class="memItemLeft" align="right" valign="top"><a id="af8617db33d233445370fb0c10113b4cb" name="af8617db33d233445370fb0c10113b4cb"></a>
+std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_pT</b></td></tr>
+<tr class="separator:af8617db33d233445370fb0c10113b4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803485589acb0467ae755598db9f1d8f"><td class="memItemLeft" align="right" valign="top"><a id="a803485589acb0467ae755598db9f1d8f" name="a803485589acb0467ae755598db9f1d8f"></a>
 <a class="el" href="classQuad.html">Quad</a>&lt; T, M, E &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pTLTree</b></td></tr>
 <tr class="separator:a803485589acb0467ae755598db9f1d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>

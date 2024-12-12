@@ -26,18 +26,17 @@
  */
 class Game {
 private:
-	SDL_Window* m_pwindow;				// Pointeur to the window.
-	SDL_Renderer* m_prenderer;			// Pointeur to the renderer.
-
-	Physics* m_pphysics;
-	Scene<float, char>* m_pscene;					// A scene
-	Display1<float, char>* m_pdisplay;
-
 	unsigned char m_fps;					// Frames per second
 	//unsigned int m_pps;				// Physics per second
 	bool m_fpause;
 
 public:
+	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
+	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	std::shared_ptr<Physics> pphysics;
+	std::shared_ptr<Scene<float, char>> pscene;					// A scene
+	std::shared_ptr<Display1<float, char>> pdisplay;
+
 	Game();
 	virtual ~Game();
 	//Game(const Game &other);
@@ -46,25 +45,25 @@ public:
 	//SDL_Renderer* getPRenderer();
 
 	// Physics
-	float getSpeed() const;
-	void setSpeed(const float& speed);
-	unsigned char getPPS() const;
-	void setPPS(const unsigned char& pps);
+	//float getSpeed() const;
+	//void setSpeed(const float& speed);
+	//unsigned char getPPS() const;
+	//void setPPS(const unsigned char& pps);
 	unsigned char getFPS() const;
 	void setFPS(const unsigned char& fps);
 
 	// Scene
 	//std::unordered_set<Displayable*> getPDisplayables();//:)
-	bool addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable);//:)
+	//bool addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable);//:)
 
 	//Physics* getPPhysics();
 	//Scene* getPScene();
 
 	//std::unordered_set<TimeSensitive*> getPTimeSensitives();
-	bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
+	//bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
 
-	bool getFCollide() const;
-	void setFCollide(const bool& bcollide);
+	//bool getFCollide() const;
+	//void setFCollide(const bool& bcollide);
 	bool getFPause() const;
 	void setFPause(const bool& bpause);
 

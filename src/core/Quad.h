@@ -46,7 +46,7 @@ public:
 	static SN<M, E> m_LIM_A;					// This indicates the limit at which we stop subdividing (useless)
 	static float m_ALPHA;				// The threshold m_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider
 
-	Quad(const SN<M, E>& a, const Point3D<M, E>& p={{0.,0},{0.,0},{0.,0}});
+	Quad(const SN<M, E>& a, const Point3D<M, E>& p={{0,0},{0,0},{0,0}});
 	Quad(const SN<M, E>& a, std::shared_ptr<Point3D<M, E>> ppoint);
 	Quad(const Quad<T, M, E>* pquad);
 	virtual ~Quad();
@@ -78,7 +78,7 @@ public:
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 template <typename T, typename M, typename E> unsigned int Quad<T, M, E>::m_NB_QUADS=0;
-template <typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::m_LIM_A={1, 0};
+template <typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::m_LIM_A={1,0};
 template <typename T, typename M, typename E> float Quad<T, M, E>::m_ALPHA=0.5;
 
 

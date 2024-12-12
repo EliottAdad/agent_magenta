@@ -18,7 +18,7 @@
 
 /*
  * ####################
- *  Particle3D<M, E> pour l'instant:)
+ *  Particle3D<M, E> pas pour l'instant:)
  * ####################
  * A weighted point with a speed.
  */
@@ -34,8 +34,8 @@ public:
 	Particle3D(const Point3D<float, char>& p);
 	Particle3D(const SN<float, char>& x, const SN<float, char>& y, const SN<float, char>& z);
 	Particle3D(const WeightedPoint3D<float, char>& wp);
-	Particle3D(const Point3D<float, char>& p, const Vector3D& speed);
-	Particle3D(const WeightedPoint3D<float, char>& wp, const Vector3D& speed);
+	//Particle3D(const Point3D<float, char>& p, const Vector3D& speed);
+	//Particle3D(const WeightedPoint3D<float, char>& wp, const Vector3D& speed);
 	Particle3D(const Particle3D& p);
 	virtual ~Particle3D();
 

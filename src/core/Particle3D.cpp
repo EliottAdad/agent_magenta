@@ -15,7 +15,7 @@ Particle3D::Particle3D() {
 	this->y=SN<float, char>{1,0};
 	this->z=SN<float, char>{1,0};
 	this->w=SN<float, char>{1,0};														// Init the Weighted Point to {x=1, y=1, y=1, w=1}
-	ps=std::shared_ptr<Vector3D>();		// Vector3D init to end=(1, 1, 1)
+	ps=NULL;		// Vector3D init to end=(1, 1, 1)
 	pcolor=NULL;
 
 	m_dt=0;
@@ -46,7 +46,7 @@ Particle3D::Particle3D(const Point3D<float, char>& p) {
 	this->y=p.y;
 	this->z=p.z;
 	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::shared_ptr<Vector3D>();
+	ps=NULL;
 	pcolor=NULL;
 
 	m_dt=0;
@@ -57,7 +57,7 @@ Particle3D::Particle3D(const SN<float, char>& x, const SN<float, char>& y, const
 	this->y=y;
 	this->z=z;
 	this->w=SN<float, char>{1,0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::shared_ptr<Vector3D>();
+	ps=NULL;
 	pcolor=NULL;
 
 	m_dt=0;
@@ -68,18 +68,18 @@ Particle3D::Particle3D(const WeightedPoint3D& wp) {
 	this->y=wp.y;
 	this->z=wp.z;
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	ps=std::shared_ptr<Vector3D>();
+	ps=NULL;
 	pcolor=NULL;
 
 	m_dt=0;
 }
 
-Particle3D::Particle3D(const Point3D<float, char>& p, const Vector3D& speed) {
+/*Particle3D::Particle3D(const Point3D<float, char>& p, const Vector3D& speed) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
 	this->w=SN<float, char>{1,0};// Init the Weighted Point to {x, y, y, w=1}
-	ps=std::shared_ptr<Vector3D>(&speed);
+	ps.reset(speed);
 	pcolor=NULL;
 
 	m_dt=0;
@@ -90,25 +90,25 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	this->y=wp.y;
 	this->z=wp.z;
 	this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	ps=std::make_shared<Vector3D>(*speed.pp2);
+	ps.reset(&speed);
 	pcolor=NULL;
 
 	m_dt=0;
-}
+}*/
 
 Particle3D::Particle3D(const Particle3D& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
 	this->w=p.w;// Init the Weighted Point to {x, y, y, w}
-	ps=std::make_shared<Vector3D>(*p.ps);
-	pcolor=NULL;
+	ps=p.ps;
+	pcolor=p.pcolor;
 
 	m_dt=0;
 }
 
 Particle3D::~Particle3D() {
-	this->~Displayable();
+	;//this->~Displayable();
 }
 
 
@@ -155,15 +155,27 @@ void Particle3D::addSpeed(const Point3D<float, char>& p) {
 
 void Particle3D::addAsForce(const Vector3D& v, const float& dt) {
 	SN<float, char> a=SN<float, char>{(float)dt, 0}/this->w;
-	*ps+=v*a;
+	if (ps!=NULL){
+		*ps+=v*a;
+	}else{
+		ps=std::make_shared<Vector3D>(v*a);
+	}
 }
 
 void Particle3D::addAsAcc(const Vector3D& v, const float& dt) {
-	*ps+=v*dt;
+	if (ps!=NULL){
+		*ps+=v*dt;
+	}else{
+		ps=std::make_shared<Vector3D>(v*dt);
+	}
 }
 
 void Particle3D::addAsSpeed(const Vector3D& v) {
-	*ps+=v;
+	if (ps!=NULL){
+		*ps+=v;
+	}else{
+		ps=std::make_shared<Vector3D>(v);
+	}
 }
 
 void Particle3D::addAsPos(const Vector3D& v) {
@@ -184,6 +196,7 @@ void Particle3D::apply(){
 	this->y+=(ps->pp2->y)*m_dt;
 	this->z+=(ps->pp2->z)*m_dt;
 
+	printf("Particle3D\n");
 	this->x.print(true, true, 2);
 
 	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM

@@ -31,7 +31,7 @@ struct LSN : public Printable {
 	long int e;						// Exponent
 
 	LSN();
-	LSN(long double m, long int e);
+	LSN(const long double& m, const long int& e);
 
 	void recal();												//:)
 

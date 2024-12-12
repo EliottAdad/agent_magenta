@@ -26,26 +26,24 @@
 class Camera : public Printable {
 private:
 	float m_aperture;		//Aperture angle in radians
-	std::shared_ptr<Point3D<float, char>> m_ppoint;
-	Vector3D* m_pnormal;
 	float m_roll_ang;		//Roll angle to the normal
 	//m_window;
 
-	//bool m_delp;
-	bool m_deln;
-
 public:
+	std::shared_ptr<Point3D<float, char>> ppoint;
+	std::shared_ptr<Vector3D> pnormal;
+
 	Camera();
 	virtual ~Camera();
-	//Camera(const Camera &other);
+	Camera(const Camera& other);
 
-	Point3D<float, char> getPoint() const;
-	void setPoint(const Point3D<float, char>& p);
+	/*Point3D<float, char> getPoint() const;
+	void setPoint(const Point3D<float, char>& p);*/
 	//Vector3D* getPNormal();
-	Vector3D getNormal() const;
-	void setNormal(const Point3D<float, char>& p);
-	std::unique_ptr<Vector3D> getE1() const;
-	std::unique_ptr<Vector3D> getE2() const;
+	/*Vector3D getNormal() const;
+	void setNormal(const Point3D<float, char>& p);*/
+	std::shared_ptr<Vector3D> getE1() const;
+	std::shared_ptr<Vector3D> getE2() const;
 
 	void renderMesh(const Mesh3D& mesh) const;
 	void renderTriangle(const Triangle3D& triangle) const;

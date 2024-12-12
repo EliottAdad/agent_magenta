@@ -10,31 +10,32 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef MOVEABLE\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define MOVEABLE\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{comment}{/*}}
-\DoxyCodeLine{16 \textcolor{comment}{ * Used to show an object can be moved (with speed).(useless, depreciated)}}
-\DoxyCodeLine{17 \textcolor{comment}{ */}}
-\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classMoveable}{Moveable}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
-\DoxyCodeLine{19 \textcolor{keyword}{public}:}
-\DoxyCodeLine{20     \mbox{\hyperlink{classMoveable}{Moveable}}();}
-\DoxyCodeLine{21     \textcolor{keyword}{virtual} \mbox{\hyperlink{classMoveable}{\string~Moveable}}();}
-\DoxyCodeLine{22     \mbox{\hyperlink{classMoveable}{Moveable}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMoveable}{Moveable}} \&other);}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();}
-\DoxyCodeLine{25     \textcolor{comment}{//virtual void apply(const Vector3D\& dv);//delta speed to add}}
-\DoxyCodeLine{26     \textcolor{comment}{//virtual void applyAsAcc(const Vector3D\& v, const long double\& dt=1);//Useless, the whole class is useless (jst to be used as an indicator to regroup)}}
-\DoxyCodeLine{27     \textcolor{comment}{//virtual void applyAsSpeed(const Vector3D\& v);//Useless}}
-\DoxyCodeLine{28     \textcolor{comment}{//virtual void applyAsPos(const Vector3D\& v);//Useless}}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{31     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{32 \};}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* MOVEABLE\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define MOVEABLE\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{/*}}
+\DoxyCodeLine{17 \textcolor{comment}{ * Used to show an object can be moved (with speed).(useless, depreciated)}}
+\DoxyCodeLine{18 \textcolor{comment}{ */}}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classMoveable}{Moveable}} : \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{classMoveable}{Moveable}}();}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \mbox{\hyperlink{classMoveable}{\string~Moveable}}();}
+\DoxyCodeLine{23     \mbox{\hyperlink{classMoveable}{Moveable}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMoveable}{Moveable}} \&other);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();}
+\DoxyCodeLine{26     \textcolor{comment}{//virtual void apply(const Vector3D\& dv);//delta speed to add}}
+\DoxyCodeLine{27     \textcolor{comment}{//virtual void applyAsAcc(const Vector3D\& v, const long double\& dt=1);//Useless, the whole class is useless (jst to be used as an indicator to regroup)}}
+\DoxyCodeLine{28     \textcolor{comment}{//virtual void applyAsSpeed(const Vector3D\& v);//Useless}}
+\DoxyCodeLine{29     \textcolor{comment}{//virtual void applyAsPos(const Vector3D\& v);//Useless}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* MOVEABLE\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

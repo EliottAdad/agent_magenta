@@ -30,11 +30,11 @@
 class Physics : public Printable {
 private:
 	float m_speed;					//Ratio between simulation_speed/real_world_speed
-	unsigned char m_pps;				//Physics per second
+	unsigned char m_pps;			//Physics per second
 
 	bool m_fcollide;
 	bool m_fpause;
-	std::unordered_set<TimeSensitive*> m_ptime_sensitives;			//List of time sensitive objects
+	std::unordered_set<std::shared_ptr<TimeSensitive>> m_ptime_sensitives;			//List of time sensitive objects
 
 public:
 	Physics();
@@ -47,7 +47,7 @@ public:
 	unsigned char getPPS() const;
 	void setPPS(const unsigned char& pps);
 
-	std::unordered_set<TimeSensitive*> getPTimeSensitives();
+	std::unordered_set<std::shared_ptr<TimeSensitive>> getPTimeSensitives();
 	bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
 	//std::unordered_set<Moveable*> getPMoveables();
 	//bool addPMoveable(Moveable* pmoveabele);

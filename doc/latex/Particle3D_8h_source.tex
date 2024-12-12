@@ -10,59 +10,64 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef PARTICLE3D\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PARTICLE3D\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}WeightedPoint3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../display/Displayable.h"{}}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{comment}{/*}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ *  Particle3D<M, E> :)}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{20 \textcolor{comment}{ * A weighted point with a speed.}}
-\DoxyCodeLine{21 \textcolor{comment}{ */}}
-\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classParticle3D}{Particle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}<float, char>, \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}, \textcolor{keyword}{public} \mbox{\hyperlink{structDisplayable}{Displayable}} \{}
-\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{24     \mbox{\hyperlink{classVector3D}{Vector3D}}* m\_ps;\textcolor{comment}{// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).}}
-\DoxyCodeLine{25     \textcolor{keywordtype}{bool} m\_dels;}
-\DoxyCodeLine{26     \textcolor{keywordtype}{float} m\_dt;}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{keyword}{public}:}
-\DoxyCodeLine{29     \mbox{\hyperlink{classParticle3D}{Particle3D}}();}
-\DoxyCodeLine{30     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
-\DoxyCodeLine{31     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& z);}
-\DoxyCodeLine{32     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<float, char>}}\& wp);}
-\DoxyCodeLine{33     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& speed);}
-\DoxyCodeLine{34     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<float, char>}}\& wp, \textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& speed);}
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} \mbox{\hyperlink{classParticle3D}{\string~Particle3D}}();}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getX() \textcolor{keyword}{const};}
-\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getY() \textcolor{keyword}{const};}
-\DoxyCodeLine{39     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getZ() \textcolor{keyword}{const};}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     \mbox{\hyperlink{classVector3D}{Vector3D}} getSpeed() \textcolor{keyword}{const};}
-\DoxyCodeLine{42     \mbox{\hyperlink{classVector3D}{Vector3D}}* getPSpeed();}
-\DoxyCodeLine{43     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} setSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} addSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& ds);}
-\DoxyCodeLine{46     \textcolor{keywordtype}{void} addSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsForce(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
-\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsAcc(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
-\DoxyCodeLine{50     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
-\DoxyCodeLine{51     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsPos(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define PARTICLE3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}WeightedPoint3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../display/Displayable.h"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{21 \textcolor{comment}{ *  Particle3D<M, E> pas pour l'instant:)}}
+\DoxyCodeLine{22 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{23 \textcolor{comment}{ * A weighted point with a speed.}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classParticle3D}{Particle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D}}<float, char>, \textcolor{keyword}{public} \mbox{\hyperlink{classTimeSensitive}{TimeSensitive}}, \textcolor{keyword}{public} \mbox{\hyperlink{structDisplayable}{Displayable}}<float, char> \{}
+\DoxyCodeLine{26 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{float} m\_dt;}
+\DoxyCodeLine{28     \textcolor{comment}{//bool m\_dels;}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31     std::shared\_ptr<Vector3D> ps;\textcolor{comment}{// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \mbox{\hyperlink{classParticle3D}{Particle3D}}();}
+\DoxyCodeLine{34     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
+\DoxyCodeLine{35     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<float, char>}}\& z);}
+\DoxyCodeLine{36     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<float, char>}}\& wp);}
+\DoxyCodeLine{37     \textcolor{comment}{//Particle3D(const Point3D<float, char>\& p, const Vector3D\& speed);}}
+\DoxyCodeLine{38     \textcolor{comment}{//Particle3D(const WeightedPoint3D<float, char>\& wp, const Vector3D\& speed);}}
+\DoxyCodeLine{39     \mbox{\hyperlink{classParticle3D}{Particle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classParticle3D}{Particle3D}}\& p);}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{classParticle3D}{\string~Particle3D}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getX() \textcolor{keyword}{const};}
+\DoxyCodeLine{43     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getY() \textcolor{keyword}{const};}
+\DoxyCodeLine{44     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<float, char>}} getZ() \textcolor{keyword}{const};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{/*Vector3D getSpeed() const;}}
+\DoxyCodeLine{47 \textcolor{comment}{    Vector3D* getPSpeed() const;}}
+\DoxyCodeLine{48 \textcolor{comment}{    void setSpeed(const Vector3D\& v);}}
+\DoxyCodeLine{49 \textcolor{comment}{    void setSpeed(const Point3D<float, char>\& p);}}
+\DoxyCodeLine{50 \textcolor{comment}{    void addSpeed(const Vector3D\& ds);}}
+\DoxyCodeLine{51 \textcolor{comment}{    void addSpeed(const Point3D<float, char>\& p);*/}}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
-\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{57     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{58 \};}
-\DoxyCodeLine{59 }
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsForce(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsAcc(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v, \textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
+\DoxyCodeLine{55     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsSpeed(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
+\DoxyCodeLine{56     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} addAsPos(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D}}\& v);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
+\DoxyCodeLine{59     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();}
 \DoxyCodeLine{60 }
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARTICLE3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{61     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARTICLE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

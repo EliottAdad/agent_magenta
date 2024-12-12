@@ -10,54 +10,55 @@
 \DoxyCodeLine{6 \textcolor{comment}{ */}}
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CAMERA\_H\_}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define CAMERA\_H\_}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../geometry/Triangle3D.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{comment}{/*}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{19 \textcolor{comment}{ *  Camera :)}}
-\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{21 \textcolor{comment}{ * This camera is a cone directed by a normal}}
-\DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classCamera}{Camera}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{24 \textcolor{keyword}{private}:}
-\DoxyCodeLine{25     \textcolor{keywordtype}{float} m\_aperture;       \textcolor{comment}{//Aperture angle in radians}}
-\DoxyCodeLine{26     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* m\_ppoint;}
-\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D}{Vector3D}}* m\_pnormal;}
-\DoxyCodeLine{28     \textcolor{keywordtype}{float} m\_roll\_ang;       \textcolor{comment}{//Roll angle to the normal}}
-\DoxyCodeLine{29     \textcolor{comment}{//m\_window;}}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31     \textcolor{keywordtype}{bool} m\_delp;}
-\DoxyCodeLine{32     \textcolor{keywordtype}{bool} m\_deln;}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34 \textcolor{keyword}{public}:}
-\DoxyCodeLine{35     \mbox{\hyperlink{classCamera}{Camera}}();}
-\DoxyCodeLine{36     \textcolor{keyword}{virtual} \mbox{\hyperlink{classCamera}{\string~Camera}}();}
-\DoxyCodeLine{37     \textcolor{comment}{//Camera(const Camera \&other);}}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39     \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}} getPoint() \textcolor{keyword}{const};}
-\DoxyCodeLine{40     \textcolor{keywordtype}{void} setPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
-\DoxyCodeLine{41     \textcolor{comment}{//Vector3D* getPNormal();}}
-\DoxyCodeLine{42     \mbox{\hyperlink{classVector3D}{Vector3D}} getNormal() \textcolor{keyword}{const};}
-\DoxyCodeLine{43     \textcolor{keywordtype}{void} setNormal(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p);}
-\DoxyCodeLine{44     std::unique\_ptr<Vector3D> getE1() \textcolor{keyword}{const};}
-\DoxyCodeLine{45     std::unique\_ptr<Vector3D> getE2() \textcolor{keyword}{const};}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47     \textcolor{keywordtype}{void} renderMesh(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh) \textcolor{keyword}{const};}
-\DoxyCodeLine{48     \textcolor{keywordtype}{void} renderTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle) \textcolor{keyword}{const};}
-\DoxyCodeLine{49     \textcolor{keywordtype}{void} renderPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p) \textcolor{keyword}{const};}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51     \textcolor{keywordtype}{bool} testInFielOfView(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p) \textcolor{keyword}{const};}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{54     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
-\DoxyCodeLine{55 \};}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAMERA\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define CAMERA\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../geometry/Triangle3D.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{/*}}
+\DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{22 \textcolor{comment}{ *  Camera :)}}
+\DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{24 \textcolor{comment}{ * This camera is a cone directed by a normal}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classCamera}{Camera}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28     \textcolor{keywordtype}{float} m\_aperture;       \textcolor{comment}{//Aperture angle in radians}}
+\DoxyCodeLine{29     \textcolor{keywordtype}{float} m\_roll\_ang;       \textcolor{comment}{//Roll angle to the normal}}
+\DoxyCodeLine{30     \textcolor{comment}{//m\_window;}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33     std::shared\_ptr<Point3D<float, char>> ppoint;}
+\DoxyCodeLine{34     std::shared\_ptr<Vector3D> pnormal;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \mbox{\hyperlink{classCamera}{Camera}}();}
+\DoxyCodeLine{37     \textcolor{keyword}{virtual} \mbox{\hyperlink{classCamera}{\string~Camera}}();}
+\DoxyCodeLine{38     \mbox{\hyperlink{classCamera}{Camera}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCamera}{Camera}}\& other);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{/*Point3D<float, char> getPoint() const;}}
+\DoxyCodeLine{41 \textcolor{comment}{    void setPoint(const Point3D<float, char>\& p);*/}}
+\DoxyCodeLine{42     \textcolor{comment}{//Vector3D* getPNormal();}}
+\DoxyCodeLine{43     \textcolor{comment}{/*Vector3D getNormal() const;}}
+\DoxyCodeLine{44 \textcolor{comment}{    void setNormal(const Point3D<float, char>\& p);*/}}
+\DoxyCodeLine{45     std::shared\_ptr<Vector3D> getE1() \textcolor{keyword}{const};}
+\DoxyCodeLine{46     std::shared\_ptr<Vector3D> getE2() \textcolor{keyword}{const};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} renderMesh(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh) \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} renderTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle) \textcolor{keyword}{const};}
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} renderPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p) \textcolor{keyword}{const};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} testInFielOfView(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}\& p) \textcolor{keyword}{const};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{55     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{56 \};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAMERA\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

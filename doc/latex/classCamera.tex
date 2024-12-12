@@ -21,23 +21,14 @@ Collaboration diagram for Camera\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCamera_a8acde7f2da8e2ded4464bad29e4a0b95}\label{classCamera_a8acde7f2da8e2ded4464bad29e4a0b95}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ {\bfseries get\+Point} () const
+\mbox{\Hypertarget{classCamera_ad491e80e8096db31be3d6095475ff3f3}\label{classCamera_ad491e80e8096db31be3d6095475ff3f3}} 
+{\bfseries Camera} (const \mbox{\hyperlink{classCamera}{Camera}} \&other)
 \item 
-\mbox{\Hypertarget{classCamera_a526e3f91dbbfb9d0a4452bf2b6cc5b31}\label{classCamera_a526e3f91dbbfb9d0a4452bf2b6cc5b31}} 
-void {\bfseries set\+Point} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p)
+\mbox{\Hypertarget{classCamera_a26039257fc077643d27cdd26c62b49d6}\label{classCamera_a26039257fc077643d27cdd26c62b49d6}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E1} () const
 \item 
-\mbox{\Hypertarget{classCamera_abde8266a9fb673d50b103bba0d749352}\label{classCamera_abde8266a9fb673d50b103bba0d749352}} 
-\mbox{\hyperlink{classVector3D}{Vector3D}} {\bfseries get\+Normal} () const
-\item 
-\mbox{\Hypertarget{classCamera_a148866dd58962f4a64ce304aacf74abb}\label{classCamera_a148866dd58962f4a64ce304aacf74abb}} 
-void {\bfseries set\+Normal} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p)
-\item 
-\mbox{\Hypertarget{classCamera_a5300f42cb1f9fb8973c26e6eabfd983c}\label{classCamera_a5300f42cb1f9fb8973c26e6eabfd983c}} 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E1} () const
-\item 
-\mbox{\Hypertarget{classCamera_a5543ab0166f1df8ce5fbac0c74f5d1a5}\label{classCamera_a5543ab0166f1df8ce5fbac0c74f5d1a5}} 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E2} () const
+\mbox{\Hypertarget{classCamera_a5b7f1cef278a17906e7884209a45ba2d}\label{classCamera_a5b7f1cef278a17906e7884209a45ba2d}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E2} () const
 \item 
 \mbox{\Hypertarget{classCamera_a654bda85b56835ca401bb7f7db350eb7}\label{classCamera_a654bda85b56835ca401bb7f7db350eb7}} 
 void {\bfseries render\+Mesh} (const \mbox{\hyperlink{classMesh3D}{Mesh3D}} \&mesh) const
@@ -54,6 +45,15 @@ bool {\bfseries test\+In\+Fiel\+Of\+View} (const \mbox{\hyperlink{structPoint3D}
 virtual std\+::string \mbox{\hyperlink{classCamera_a0a5c847fc3ac5a0f35918eaf52113bf6}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classCamera_aae27dd2431998513ed831db282d470a5}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCamera_a67901b142cce1da5715304ee8ab92f66}\label{classCamera_a67901b142cce1da5715304ee8ab92f66}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ {\bfseries ppoint}
+\item 
+\mbox{\Hypertarget{classCamera_aca22d46e2f0fd60facc58b65b70fe8b7}\label{classCamera_aca22d46e2f0fd60facc58b65b70fe8b7}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries pnormal}
 \end{DoxyCompactItemize}
 
 

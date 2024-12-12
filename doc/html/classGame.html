@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Game Class Reference</div></div>
 </div><!--header-->
@@ -71,40 +72,65 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa39ae5760f330946c386f280d3d120b5"><td class="memItemLeft" align="right" valign="top"><a id="aa39ae5760f330946c386f280d3d120b5" name="aa39ae5760f330946c386f280d3d120b5"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getFPS</b> () const</td></tr>
-<tr class="separator:aa39ae5760f330946c386f280d3d120b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fb75200186867b5d9754942a501e372"><td class="memItemLeft" align="right" valign="top"><a id="a9fb75200186867b5d9754942a501e372" name="a9fb75200186867b5d9754942a501e372"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setFPS</b> (const unsigned int &amp;fps)</td></tr>
-<tr class="separator:a9fb75200186867b5d9754942a501e372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa45ff1348222debd353560c443e26e5"><td class="memItemLeft" align="right" valign="top"><a id="afa45ff1348222debd353560c443e26e5" name="afa45ff1348222debd353560c443e26e5"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getPPS</b> () const</td></tr>
-<tr class="separator:afa45ff1348222debd353560c443e26e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eba7ac938b1e42e8bd42cc077ff7954"><td class="memItemLeft" align="right" valign="top"><a id="a2eba7ac938b1e42e8bd42cc077ff7954" name="a2eba7ac938b1e42e8bd42cc077ff7954"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPPS</b> (const unsigned int &amp;pps)</td></tr>
-<tr class="separator:a2eba7ac938b1e42e8bd42cc077ff7954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7782fb56c2ffb71c420fb40babd18d61"><td class="memItemLeft" align="right" valign="top"><a id="a7782fb56c2ffb71c420fb40babd18d61" name="a7782fb56c2ffb71c420fb40babd18d61"></a>
-<a class="el" href="classPhysics.html">Physics</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getPPhysics</b> ()</td></tr>
-<tr class="separator:a7782fb56c2ffb71c420fb40babd18d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81b77d743a50062c085e414832aa2602"><td class="memItemLeft" align="right" valign="top"><a id="a81b77d743a50062c085e414832aa2602" name="a81b77d743a50062c085e414832aa2602"></a>
-<a class="el" href="classScene.html">Scene</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getPScene</b> ()</td></tr>
-<tr class="separator:a81b77d743a50062c085e414832aa2602"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a945e32006542e26025066d522b3ed09b"><td class="memItemLeft" align="right" valign="top"><a id="a945e32006542e26025066d522b3ed09b" name="a945e32006542e26025066d522b3ed09b"></a>
-std::unordered_set&lt; <a class="el" href="classTimeSensitive.html">TimeSensitive</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPTimeSensitives</b> ()</td></tr>
-<tr class="separator:a945e32006542e26025066d522b3ed09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a287569adeca2d9cedcf0f34b082a7104"><td class="memItemLeft" align="right" valign="top"><a id="a287569adeca2d9cedcf0f34b082a7104" name="a287569adeca2d9cedcf0f34b082a7104"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addPTimeSensitive</b> (<a class="el" href="classTimeSensitive.html">TimeSensitive</a> *ptime_sensitive)</td></tr>
-<tr class="separator:a287569adeca2d9cedcf0f34b082a7104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1676d62da51ef45d985cc44ddc986839"><td class="memItemLeft" align="right" valign="top"><a id="a1676d62da51ef45d985cc44ddc986839" name="a1676d62da51ef45d985cc44ddc986839"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (const unsigned int &amp;steps=1)</td></tr>
+<tr class="memitem:a8db24eb5d000656d6d0b7da46cb958d3"><td class="memItemLeft" align="right" valign="top"><a id="a8db24eb5d000656d6d0b7da46cb958d3" name="a8db24eb5d000656d6d0b7da46cb958d3"></a>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>getFPS</b> () const</td></tr>
+<tr class="separator:a8db24eb5d000656d6d0b7da46cb958d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81968f378ba6d96740f3762d59aa97e1"><td class="memItemLeft" align="right" valign="top"><a id="a81968f378ba6d96740f3762d59aa97e1" name="a81968f378ba6d96740f3762d59aa97e1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setFPS</b> (const unsigned char &amp;fps)</td></tr>
+<tr class="separator:a81968f378ba6d96740f3762d59aa97e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085f9c239eb91a048ed33fc7fd70493f"><td class="memItemLeft" align="right" valign="top"><a id="a085f9c239eb91a048ed33fc7fd70493f" name="a085f9c239eb91a048ed33fc7fd70493f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>getFPause</b> () const</td></tr>
+<tr class="separator:a085f9c239eb91a048ed33fc7fd70493f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c7e0379b179f56e7ce6772c2449b27"><td class="memItemLeft" align="right" valign="top"><a id="a76c7e0379b179f56e7ce6772c2449b27" name="a76c7e0379b179f56e7ce6772c2449b27"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setFPause</b> (const bool &amp;bpause)</td></tr>
+<tr class="separator:a76c7e0379b179f56e7ce6772c2449b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1676d62da51ef45d985cc44ddc986839"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1676d62da51ef45d985cc44ddc986839">run</a> (const unsigned int &amp;steps=1)</td></tr>
 <tr class="separator:a1676d62da51ef45d985cc44ddc986839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6da5df458c5fe18d65149814c5a7026"><td class="memItemLeft" align="right" valign="top"><a id="ae6da5df458c5fe18d65149814c5a7026" name="ae6da5df458c5fe18d65149814c5a7026"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>iterate</b> (const long double &amp;dt)</td></tr>
-<tr class="separator:ae6da5df458c5fe18d65149814c5a7026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d6d89343ad8a9bb5a5e0c5d094ee31"><td class="memItemLeft" align="right" valign="top"><a id="ad9d6d89343ad8a9bb5a5e0c5d094ee31" name="ad9d6d89343ad8a9bb5a5e0c5d094ee31"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>iterate</b> (const float &amp;dt)</td></tr>
+<tr class="separator:ad9d6d89343ad8a9bb5a5e0c5d094ee31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef454bb9fcccafbd8c248780275caabd"><td class="memItemLeft" align="right" valign="top"><a id="aef454bb9fcccafbd8c248780275caabd" name="aef454bb9fcccafbd8c248780275caabd"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> () const</td></tr>
 <tr class="separator:aef454bb9fcccafbd8c248780275caabd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a2f389a20011fe7260bfb5332c90fabf6"><td class="memItemLeft" align="right" valign="top"><a id="a2f389a20011fe7260bfb5332c90fabf6" name="a2f389a20011fe7260bfb5332c90fabf6"></a>
+std::shared_ptr&lt; SDL_Window &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pwindow</b></td></tr>
+<tr class="separator:a2f389a20011fe7260bfb5332c90fabf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12120cf9f643bd661dfc6347d15e5ca8"><td class="memItemLeft" align="right" valign="top"><a id="a12120cf9f643bd661dfc6347d15e5ca8" name="a12120cf9f643bd661dfc6347d15e5ca8"></a>
+std::shared_ptr&lt; SDL_Renderer &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>prenderer</b></td></tr>
+<tr class="separator:a12120cf9f643bd661dfc6347d15e5ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f606a72bf3db3580c7c2957329b61e5"><td class="memItemLeft" align="right" valign="top"><a id="a1f606a72bf3db3580c7c2957329b61e5" name="a1f606a72bf3db3580c7c2957329b61e5"></a>
+std::shared_ptr&lt; <a class="el" href="classPhysics.html">Physics</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pphysics</b></td></tr>
+<tr class="separator:a1f606a72bf3db3580c7c2957329b61e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d7c00638f8ff56c96a177a342911f2c"><td class="memItemLeft" align="right" valign="top"><a id="a7d7c00638f8ff56c96a177a342911f2c" name="a7d7c00638f8ff56c96a177a342911f2c"></a>
+std::shared_ptr&lt; <a class="el" href="classScene.html">Scene</a>&lt; float, char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pscene</b></td></tr>
+<tr class="separator:a7d7c00638f8ff56c96a177a342911f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424cbac61ecb890c53a3ef67d056c233"><td class="memItemLeft" align="right" valign="top"><a id="a424cbac61ecb890c53a3ef67d056c233" name="a424cbac61ecb890c53a3ef67d056c233"></a>
+std::shared_ptr&lt; <a class="el" href="classDisplay1.html">Display1</a>&lt; float, char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pdisplay</b></td></tr>
+<tr class="separator:a424cbac61ecb890c53a3ef67d056c233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1676d62da51ef45d985cc44ddc986839" name="a1676d62da51ef45d985cc44ddc986839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1676d62da51ef45d985cc44ddc986839">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::run </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Run the game for a certain number of frames </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>utilities/<a class="el" href="Game_8h_source.html">Game.h</a></li>
 <li>utilities/Game.cpp</li>
