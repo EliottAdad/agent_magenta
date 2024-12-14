@@ -31,8 +31,8 @@ private:
 	bool m_fpause;
 
 public:
-	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
-	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	SDL_Window* pwindow;				// Pointeur to the window.
+	SDL_Renderer* prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
 	std::shared_ptr<Scene<float, char>> pscene;					// A scene
 	std::shared_ptr<Display1<float, char>> pdisplay;

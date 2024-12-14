@@ -34,7 +34,7 @@ protected:
 	std::unordered_set<std::shared_ptr<T>> m_pelements;
 
 public:
-	SN<M, E> (*m_ptrLaw) (T*, T*);										// Pointer to a function operating on 2 particles (Todo List)
+	SN<M, E> (*m_ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);										// Pointer to a function operating on 2 particles (Todo List)
 
 	System3D();
 	//System3D(const System3D &other);
@@ -71,9 +71,9 @@ template <typename T, typename M, typename E> SN<M, E> rrr2(std::shared_ptr<T> p
  * Returns the vector immediately (useless)
  */
 //void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
-template <typename M, typename E> void grav(std::shared_ptr<Particle3D> pp1, std::shared_ptr<Particle3D> pp2, const long double& dt){
-	std::shared_ptr<Vector3D> pv1=std::make_shared<Vector3D>(Point3D<float, char>{pp1->x, pp1->y, pp1->z}, Point3D<float, char>{pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
-	std::shared_ptr<Vector3D> pv2=std::make_shared<Vector3D>(Point3D<float, char>{pp2->x, pp2->y, pp2->z}, Point3D<float, char>{pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
+/*template <typename M, typename E> void grav(std::shared_ptr<Particle3D<M, E>> pp1, std::shared_ptr<Particle3D<M, E>> pp2, const float& dt){
+	std::shared_ptr<Vector3D> pv1=std::make_shared<Vector3D>(Point3D<M, E>{pp1->x, pp1->y, pp1->z}, Point3D<M, E>{pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	std::shared_ptr<Vector3D> pv2=std::make_shared<Vector3D>(Point3D<M, E>{pp2->x, pp2->y, pp2->z}, Point3D<M, E>{pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
 	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<M, E>{{0,0},{0,0},{0,0}});
 	pv1->setNorm({1,0});
 	pv2->setNorm({1,0});
@@ -94,7 +94,7 @@ template <typename M, typename E> void grav(std::shared_ptr<Particle3D> pp1, std
 	*pp1->ps+=(*pv1);
 	*pp2->ps+=(*pv2);
 	//pp2->addSpeed(*pv2);
-}
+}*/
 
 
 template <typename T, typename M, typename E> System3D<T, M, E>::System3D() {
@@ -145,7 +145,7 @@ template <typename T, typename M, typename E> bool System3D<T, M, E>::addPElemen
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
-		m_pelements.insert(pelement.get());
+		m_pelements.insert(pelement);
 	}
 	return success;
 }
@@ -165,7 +165,7 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 		// If there is a law to apply
 		if (m_ptrLaw!=NULL){
 			//printf("A\n");
-			std::unordered_set<std::shared_ptr<T>> pneighbors=m_poctree->getPNeighbors(std::shared_ptr<T>(pelement));
+			std::unordered_set<std::shared_ptr<T>> pneighbors(m_poctree->getPNeighbors(pelement));
 			//printf("B\n");
 			if(pneighbors.empty()){
 				//printf("Pas de neighbors\n");
@@ -175,9 +175,9 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::setT(const
 			// Apply the law
 			for (std::shared_ptr<T> pneighbor : pneighbors){
 				//(*m_ptrLaw)(pelement, pneighbor, m_dt);// Probleme qd appel loi
-				SN<M, E> norm=(*m_ptrLaw)(pelement, pneighbor);// Get the norm of the acceleration
-				Line3D l;//Works
-				Vector3D v;//X Error (arrete l'execution)
+				SN<float, char> norm=(*m_ptrLaw)(pelement, pneighbor);// Get the norm of the acceleration
+				Line3D<float, char> l;//Works
+				Vector3D<float, char> v;//X Error (arrete l'execution)
 				/*Vector3D v((Point3D)(pelement->getPosition()), (Point3D)(pneighbor->getPosition()));
 				v.setNorm(norm);
 				Point3D dv=v.getEnd();
@@ -267,9 +267,9 @@ template <typename T, typename M, typename E> void System3D<T, M, E>::print(cons
  */
 template <typename T, typename M, typename E> void rrr(std::shared_ptr<T> p1, std::shared_ptr<T> p2, const long double& dt) {
 	//printf("Function (rrr)\n");
-	Vector3D v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
+	Vector3D<float, char> v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	//Vector3D* pv=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
-	SN<M, E> d=v.getNorm();
+	SN<float, char> d=v.getNorm();
 	//LSN d=pv->getNorm();
 	v/=d;
 	//*pv/=d;

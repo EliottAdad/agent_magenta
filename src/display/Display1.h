@@ -42,12 +42,12 @@ public:
 
 	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
-	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
-	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	SDL_Window* pwindow;				// Pointeur to the window.
+	SDL_Renderer* prenderer;			// Pointeur to the renderer.
 
 	Display1();
 	Display1(std::shared_ptr<Point3D<M, E>> ppoint);
-	Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer);
+	Display1(SDL_Window* pwindow, SDL_Renderer* prenderer);
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
@@ -78,7 +78,7 @@ template<typename M, typename E> Display1<M, E>::Display1() {
 	pdraw_color=new SDL_Color{255, 255, 255, 255};
 	pwindow=SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN);
 	if (pwindow!=NULL){
-		prenderer=SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE);
+		prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
 	}
 
 	m_fclear=true;
@@ -97,7 +97,7 @@ template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3
 	m_fclear=true;
 }
 
-template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
+template<typename M, typename E> Display1<M, E>::Display1(SDL_Window* pwindow, SDL_Renderer* prenderer) {
 	ppoint=std::make_shared<Point3D<M, E>>();
 	m_display=1;
 	m_scale=10;
@@ -240,9 +240,9 @@ template<typename M, typename E> void Display1<M, E>::addPScene(std::shared_ptr<
 template<typename M, typename E> bool Display1<M, E>::render() const {
 	bool success=false;
 	if (prenderer!=NULL){
-		SDL_SetRenderDrawColor(prenderer.get(), pbkgd_color->r, pbkgd_color->g, pbkgd_color->b, pbkgd_color->a); // Chooses the background color.
+		SDL_SetRenderDrawColor(prenderer, pbkgd_color->r, pbkgd_color->g, pbkgd_color->b, pbkgd_color->a); // Chooses the background color.
 		if (m_fclear){
-			SDL_RenderClear(prenderer.get()); // Fill the canvas with the background color
+			SDL_RenderClear(prenderer); // Fill the canvas with the background color
 		}
 
 		printf("\nRendering 1\n");
@@ -250,7 +250,7 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
 			render(pscene);
 		}
 
-		SDL_RenderPresent(prenderer.get());
+		SDL_RenderPresent(prenderer);
 	}
 
 	return success;
@@ -282,7 +282,7 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 		//pdisplayable->getY().print(true);
 		//pdisplayable->getZ().print(true);
 		printf("\nRendering 3_2\n");
-		SDL_SetRenderDrawColor(prenderer.get(), pdisplayable->pcolor->r, pdisplayable->pcolor->g, pdisplayable->pcolor->b, pdisplayable->pcolor->a);
+		SDL_SetRenderDrawColor(prenderer, pdisplayable->pcolor->r, pdisplayable->pcolor->g, pdisplayable->pcolor->b, pdisplayable->pcolor->a);
 		printf("\nRendering 3_3\n");
 		std::shared_ptr<Point3D<M, E>> pp(new Point3D<M, E>{pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ()});
 		render(pp);
@@ -308,7 +308,7 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 				// Get the dimensions of the window
 				int sizex(0);
 				int sizey(0);
-				SDL_GetWindowSize(pwindow.get(), &sizex, &sizey);
+				SDL_GetWindowSize(pwindow, &sizex, &sizey);
 				SN<M, E> centerx={(M)(sizex/2),(E)0};
 				SN<M, E> centery={(M)(sizey/2),(E)0};
 
@@ -316,13 +316,13 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 					switch (m_display){
 						case 1://(x,y) plane
 							printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
-							SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.y*(M)m_scale + centery).to_m_type());
+							SDL_RenderDrawPoint(prenderer, (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.y*(M)m_scale + centery).to_m_type());
 							break;
 						case 2://(y,z) plane
-							SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+							SDL_RenderDrawPoint(prenderer, (int)(d_point.y*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
 							break;
 						case 3://(x,z) plane
-							SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+							SDL_RenderDrawPoint(prenderer, (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
 							break;
 					}
 				}

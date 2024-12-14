@@ -26,7 +26,7 @@
 #include "core/System3D.h"
 #include "core/Vector3D.h"
 #include "core/VectorField.h"
-#include "core/VectorFieldUnidirectional.h"
+//#include "core/VectorFieldUnidirectional.h"
 #include "core/Physics.h"
 #include "utilities/Game.h"
 //#include "utilities/functions.h"

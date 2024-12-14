@@ -17,12 +17,28 @@
  *  Object3D :)
  * ############
  */
-class Object3D : public Particle3D {
+template<typename M, typename E> class Object3D : public Particle3D<M, E> {
 public:
 	Object3D();
 	virtual ~Object3D();
-	Object3D(const Object3D &other);
+	Object3D(const Object3D<M, E> &other);
 };
+
+
+template<typename M, typename E> Object3D<M, E>::Object3D() {
+	// TODO Auto-generated constructor stub
+
+}
+
+template<typename M, typename E> Object3D<M, E>::~Object3D() {
+	// TODO Auto-generated destructor stub
+}
+
+template<typename M, typename E> Object3D<M, E>::Object3D(const Object3D<M, E> &other) {
+	// TODO Auto-generated constructor stub
+
+}
+
 
 
 

@@ -8,9 +8,9 @@
 #include "Game.h"
 
 Game::Game() {
-	pwindow.reset(SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP));
+	pwindow=SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
 	if (pwindow!=NULL){
-		prenderer.reset(SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE));
+		prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
 	}
 
 	pphysics=std::make_shared<Physics>();

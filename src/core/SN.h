@@ -550,12 +550,11 @@ template<typename M, typename E> std::string SN<M, E>::to_string(const bool& spr
 		mes+=ss.str();
 		mes+="]:";
 		mes+=((spread)?"\n" + to_stringTabs(1) : "");
-		//mes;
+		mes+=to_stringTabs(indent);
+		mes+=std::to_string(m) + "x10^" + std::to_string(e);
 	}else{
-		//mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
+		mes+=std::to_string(m).erase(4, std::to_string(m).length()) + "e" + std::to_string(e);
 	}
-	mes+=to_stringTabs(indent);
-	mes+=std::to_string(m) + "x10^" + std::to_string(e);
 
 	return mes;
 }

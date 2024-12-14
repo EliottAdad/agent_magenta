@@ -10,6 +10,7 @@
 #define VECTORFIELD_H_
 
 
+#include <memory>
 #include <vector>
 #include <unordered_set>
 #include <iostream>
