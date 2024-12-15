@@ -331,7 +331,7 @@ $(function() {
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            SDL_RenderClear(prenderer.get()); <span class="comment">// Fill the canvas with the background color</span></div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        }</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        printf(<span class="stringliteral">&quot;\nRendering 1: %ld\n&quot;</span>, m_pscenes.size());</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="comment">//printf(&quot;\nRendering 1: %ld\n&quot;, m_pscenes.size());</span></div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">for</span> (std::shared_ptr&lt;<a class="code hl_class" href="classScene.html">Scene&lt;M, E&gt;</a>&gt; pscene : m_pscenes){</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            success=success | render(pscene);</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        }</div>
@@ -347,7 +347,7 @@ $(function() {
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; <span class="keywordtype">bool</span> <a class="code hl_class" href="classDisplay1.html">Display1&lt;M, E&gt;::render</a>(<span class="keyword">const</span> std::shared_ptr&lt;<a class="code hl_class" href="classScene.html">Scene&lt;M, E&gt;</a>&gt; pscene)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordtype">bool</span> success=<span class="keyword">false</span>;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    printf(<span class="stringliteral">&quot;\nRendering 2: %li\n&quot;</span>, pscene-&gt;getPDisplayables().size());</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="comment">//printf(&quot;\nRendering 2: %li\n&quot;, pscene-&gt;getPDisplayables().size());</span></div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">if</span> (pscene!=NULL){</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="keywordflow">for</span> (std::shared_ptr&lt;<a class="code hl_struct" href="structDisplayable.html">Displayable&lt;M, E&gt;</a>&gt; pdisplayable : pscene-&gt;getPDisplayables()){</div>
@@ -362,16 +362,16 @@ $(function() {
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; <span class="keywordtype">bool</span> <a class="code hl_class" href="classDisplay1.html">Display1&lt;M, E&gt;::render</a>(<span class="keyword">const</span> std::shared_ptr&lt;<a class="code hl_struct" href="structDisplayable.html">Displayable&lt;M, E&gt;</a>&gt; pdisplayable)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordtype">bool</span> success=<span class="keyword">false</span>;</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    printf(<span class="stringliteral">&quot;\nRendering 3_1, next if: %b\n&quot;</span>, pdisplayable!=NULL);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="comment">//printf(&quot;\nRendering 3_1, next if: %b\n&quot;, pdisplayable!=NULL);</span></div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordflow">if</span> (pdisplayable!=NULL) {</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="comment">//printf(&quot;pdisplayable1\n&quot;);</span></div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="comment">//pdisplayable-&gt;getX().print(true);</span></div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="comment">//pdisplayable-&gt;getY().print(true);</span></div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="comment">//pdisplayable-&gt;getZ().print(true);</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        printf(<span class="stringliteral">&quot;\nRendering 3_2\n&quot;</span>);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        <span class="comment">//printf(&quot;\nRendering 3_2\n&quot;);</span></div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        <span class="comment">//SDL_SetRenderDrawColor(prenderer.get(), pdisplayable-&gt;pcolor-&gt;r, pdisplayable-&gt;pcolor-&gt;g, pdisplayable-&gt;pcolor-&gt;b, pdisplayable-&gt;pcolor-&gt;a);</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        printf(<span class="stringliteral">&quot;\nRendering 3_3\n&quot;</span>);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="comment">//printf(&quot;\nRendering 3_3\n&quot;);</span></div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; pp(<span class="keyword">new</span> <a class="code hl_struct" href="structPoint3D.html">Point3D&lt;M, E&gt;</a>{pdisplayable-&gt;getX(), pdisplayable-&gt;getY(), pdisplayable-&gt;getZ()});</div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        success=success | render(pp);</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    }</div>
@@ -383,7 +383,7 @@ $(function() {
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="keywordflow">if</span> (this-&gt;ppoint!=NULL){</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <a class="code hl_struct" href="structPoint3D.html">Point3D&lt;M, E&gt;</a> d_point=*ppoint-*(this-&gt;ppoint);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        printf(<span class="stringliteral">&quot;\nRendering 4\n&quot;</span>);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="comment">//printf(&quot;\nRendering 4\n&quot;);</span></div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        <span class="comment">//ppoint-&gt;print(true);</span></div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="comment">//m_ppoint-&gt;print(true);</span></div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        <span class="comment">//d_point.print(true);</span></div>
@@ -405,7 +405,7 @@ $(function() {
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>            <span class="keywordflow">if</span> (prenderer!=NULL){</div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                <span class="keywordflow">switch</span> (m_display){</div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>                    <span class="keywordflow">case</span> 1:<span class="comment">//(x,y) plane</span></div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>                        printf(<span class="stringliteral">&quot;\nx=%i\n&quot;</span>, (<span class="keywordtype">int</span>)(d_point.x*(M)m_scale + centerx).to_m_type());</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>                        <span class="comment">//printf(&quot;\nx=%i\n&quot;, (int)(d_point.x*(M)m_scale + centerx).to_m_type());</span></div>
 <div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>                        SDL_RenderDrawPoint(prenderer.get(), (<span class="keywordtype">int</span>)(d_point.x*(M)m_scale + centerx).to_m_type(), (<span class="keywordtype">int</span>)(d_point.y*(M)m_scale + centery).to_m_type());</div>
 <div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                    <span class="keywordflow">case</span> 2:<span class="comment">//(y,z) plane</span></div>

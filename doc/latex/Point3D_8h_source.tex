@@ -306,22 +306,19 @@
 \DoxyCodeLine{302 \textcolor{comment}{/*}}
 \DoxyCodeLine{303 \textcolor{comment}{ * The type T needs: .to\_long\_double(), .getX(), .getY(), .getZ() that return SNs}}
 \DoxyCodeLine{304 \textcolor{comment}{ */}}
-\DoxyCodeLine{305 \textcolor{comment}{/*template <typename T> SN getDistance(const T\& p1, const T\& p2) \{}}
-\DoxyCodeLine{306 \textcolor{comment}{    return \{sqrt(pow((p1.getX()-\/p2.getX()).to\_long\_double(), (long int)2) + pow((p1.getY()-\/p2.getY()).to\_long\_double(), (long int)2) + pow((p1.getZ()-\/p2.getZ()).to\_long\_double(), (long int)2)), 0\};// d=sqrt( (xA-\/xB)²+(yA-\/yB)² );}}
+\DoxyCodeLine{305 \textcolor{comment}{/*template<typename T, typename M, typename E> SN<M, E> getDistance(const T\& p1, const T\& p2) \{}}
+\DoxyCodeLine{306 \textcolor{comment}{    return SN<M, E>(sqrt(pow((p1.getX()-\/p2.getX()).to\_m\_type(), 2) + pow((p1.getY()-\/p2.getY()).to\_m\_type(), 2) + pow((p1.getZ()-\/p2.getZ()).to\_m\_type(), 2)), 0);// d=sqrt( (xA-\/xB)²+(yA-\/yB)² )}}
 \DoxyCodeLine{307 \textcolor{comment}{\}*/}}
 \DoxyCodeLine{308 }
 \DoxyCodeLine{309 \textcolor{comment}{//template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>\& p1, const Point3D<M, E>\& p2);}}
 \DoxyCodeLine{310 }
 \DoxyCodeLine{311 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} getDistance(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p2) \{}
-\DoxyCodeLine{312     M nm=sqrt(pow((p1.x-\/p2.x).to\_m\_type(), (\textcolor{keywordtype}{long} \textcolor{keywordtype}{int})2) + pow((p1.y-\/p2.y).to\_m\_type(), (\textcolor{keywordtype}{long} \textcolor{keywordtype}{int})2) + pow((p1.z-\/p2.z).to\_m\_type(), (\textcolor{keywordtype}{long} \textcolor{keywordtype}{int})2));\textcolor{comment}{// d=sqrt( (xA-\/xB)²+(yA-\/yB)² )}}
-\DoxyCodeLine{313     \mbox{\hyperlink{structSN}{SN<M, E>}} nnb\{nm, 0\};}
-\DoxyCodeLine{314     nnb.recal();}
-\DoxyCodeLine{315     \textcolor{keywordflow}{return} nnb;}
-\DoxyCodeLine{316 \}}
+\DoxyCodeLine{312     \textcolor{keywordflow}{return} \mbox{\hyperlink{structSN}{SN<M, E>}}(sqrt(pow((p1.x-\/p2.x).to\_m\_type(), 2) + pow((p1.y-\/p2.y).to\_m\_type(), 2) + pow((p1.z-\/p2.z).to\_m\_type(), 2)), 0);\textcolor{comment}{// d=sqrt( (xA-\/xB)²+(yA-\/yB)² )}}
+\DoxyCodeLine{313 \}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316 }
 \DoxyCodeLine{317 }
-\DoxyCodeLine{318 }
-\DoxyCodeLine{319 }
-\DoxyCodeLine{320 }
-\DoxyCodeLine{321 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

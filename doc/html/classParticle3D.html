@@ -103,9 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac62964c41c154e879a5252fe2eee5556"><td class="memItemLeft" align="right" valign="top"><a id="ac62964c41c154e879a5252fe2eee5556" name="ac62964c41c154e879a5252fe2eee5556"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Particle3D</b> (const <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &amp;p)</td></tr>
 <tr class="separator:ac62964c41c154e879a5252fe2eee5556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad84c51ab852cc170824934686b0d2e5d"><td class="memItemLeft" align="right" valign="top"><a id="ad84c51ab852cc170824934686b0d2e5d" name="ad84c51ab852cc170824934686b0d2e5d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Particle3D</b> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;x, const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;y, const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;z)</td></tr>
-<tr class="separator:ad84c51ab852cc170824934686b0d2e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afda3c3c955fae81830962cf61478e383"><td class="memItemLeft" align="right" valign="top"><a id="afda3c3c955fae81830962cf61478e383" name="afda3c3c955fae81830962cf61478e383"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Particle3D</b> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;x, const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;y, const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;z, const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;w={1, 0})</td></tr>
+<tr class="separator:afda3c3c955fae81830962cf61478e383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4326b7e72f28e23f4cd4d72076f583e3"><td class="memItemLeft" align="right" valign="top"><a id="a4326b7e72f28e23f4cd4d72076f583e3" name="a4326b7e72f28e23f4cd4d72076f583e3"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Particle3D</b> (const <a class="el" href="structWeightedPoint3D.html">WeightedPoint3D</a>&lt; M, E &gt; &amp;wp)</td></tr>
 <tr class="separator:a4326b7e72f28e23f4cd4d72076f583e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,22 +118,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a54b9dd4618439a9f0b767f059154e064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77a9b8a507d343494405ccea0e72bae3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#a77a9b8a507d343494405ccea0e72bae3">getZ</a> () const</td></tr>
 <tr class="separator:a77a9b8a507d343494405ccea0e72bae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a0c621523d58c020b882d26d949493e"><td class="memItemLeft" align="right" valign="top"><a id="a3a0c621523d58c020b882d26d949493e" name="a3a0c621523d58c020b882d26d949493e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsForce</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt; &amp;v, const float &amp;dt)</td></tr>
-<tr class="separator:a3a0c621523d58c020b882d26d949493e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ca573cb9b2739101db317e269d0aacb"><td class="memItemLeft" align="right" valign="top"><a id="a2ca573cb9b2739101db317e269d0aacb" name="a2ca573cb9b2739101db317e269d0aacb"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsAcc</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt; &amp;v, const float &amp;dt)</td></tr>
-<tr class="separator:a2ca573cb9b2739101db317e269d0aacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add65d1c0d2ebed05978f195f9b97f3dd"><td class="memItemLeft" align="right" valign="top"><a id="add65d1c0d2ebed05978f195f9b97f3dd" name="add65d1c0d2ebed05978f195f9b97f3dd"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsSpeed</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt; &amp;v)</td></tr>
-<tr class="separator:add65d1c0d2ebed05978f195f9b97f3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5faa0b2dbdd5eb54a4abbe437ce163ee"><td class="memItemLeft" align="right" valign="top"><a id="a5faa0b2dbdd5eb54a4abbe437ce163ee" name="a5faa0b2dbdd5eb54a4abbe437ce163ee"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsPos</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt; &amp;v)</td></tr>
-<tr class="separator:a5faa0b2dbdd5eb54a4abbe437ce163ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a54be67d75aa63f6faa0af084b25dee"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#a3a54be67d75aa63f6faa0af084b25dee">setT</a> (const float &amp;dt)</td></tr>
 <tr class="separator:a3a54be67d75aa63f6faa0af084b25dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a5c2f10c00409ae825759dcc227a9e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#ae5a5c2f10c00409ae825759dcc227a9e">apply</a> ()</td></tr>
 <tr class="separator:ae5a5c2f10c00409ae825759dcc227a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3568e57087d80f6e66d9ef576fa4ef43"><td class="memItemLeft" align="right" valign="top"><a id="a3568e57087d80f6e66d9ef576fa4ef43" name="a3568e57087d80f6e66d9ef576fa4ef43"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt; &amp;v)</td></tr>
+<tr class="separator:a3568e57087d80f6e66d9ef576fa4ef43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a067776db82b0e78e5c5672f1a9bc9fac"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#a067776db82b0e78e5c5672f1a9bc9fac">to_string</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
 <tr class="separator:a067776db82b0e78e5c5672f1a9bc9fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc4e6e8ff745d91431acf22fc0318a26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticle3D.html#acc4e6e8ff745d91431acf22fc0318a26">print</a> (const bool &amp;spread=false, const bool &amp;full_info=false, const unsigned char &amp;indent=0) const</td></tr>
