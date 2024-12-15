@@ -24,23 +24,17 @@ Collaboration diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>
 \mbox{\Hypertarget{classQuad_a7d76088dc44446dcaad4e90772106b8a}\label{classQuad_a7d76088dc44446dcaad4e90772106b8a}} 
 {\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
-\mbox{\Hypertarget{classQuad_a46fde3b0cd84af4a7b71a601696c7d50}\label{classQuad_a46fde3b0cd84af4a7b71a601696c7d50}} 
-{\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint)
-\item 
-\mbox{\Hypertarget{classQuad_ae41446341b9beb8f7b6919618352e1ff}\label{classQuad_ae41446341b9beb8f7b6919618352e1ff}} 
-{\bfseries Quad} (const \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$pquad)
+\mbox{\Hypertarget{classQuad_a9ecf37d2d9b445100e40705fa58488d9}\label{classQuad_a9ecf37d2d9b445100e40705fa58488d9}} 
+{\bfseries Quad} (const \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ \&quad)
 \item 
 \mbox{\Hypertarget{classQuad_a23ba45261e9cc26148a3a3279e0a6343}\label{classQuad_a23ba45261e9cc26148a3a3279e0a6343}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Point} () const
 \item 
-\mbox{\Hypertarget{classQuad_a67e0757880f9f602780c4f16968250a8}\label{classQuad_a67e0757880f9f602780c4f16968250a8}} 
-\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ {\bfseries get\+PPoint} () const
+\mbox{\Hypertarget{classQuad_a0c4249cf7c05569e5759942f63fd58d0}\label{classQuad_a0c4249cf7c05569e5759942f63fd58d0}} 
+void {\bfseries set\+Point} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&point)
 \item 
 \mbox{\Hypertarget{classQuad_afd717345ef7c6a6457df2f7aae991108}\label{classQuad_afd717345ef7c6a6457df2f7aae991108}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Barycenter} () const
-\item 
-\mbox{\Hypertarget{classQuad_af40158a49b62f1de82e382af7217afe3}\label{classQuad_af40158a49b62f1de82e382af7217afe3}} 
-bool {\bfseries get\+DelP} () const
 \item 
 \mbox{\Hypertarget{classQuad_a6688aa4f62c3c24c48f7ba6f7d57d7b1}\label{classQuad_a6688aa4f62c3c24c48f7ba6f7d57d7b1}} 
 \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries getA} () const
@@ -54,20 +48,17 @@ unsigned int {\bfseries get\+NB\+\_\+\+QUADS} () const
 \mbox{\Hypertarget{classQuad_a701b0c529d3c67bd456c3ff139907263}\label{classQuad_a701b0c529d3c67bd456c3ff139907263}} 
 std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ $>$ {\bfseries get\+PTrees} ()
 \item 
-\mbox{\Hypertarget{classQuad_ad439c5100d41748014e0730d54470d09}\label{classQuad_ad439c5100d41748014e0730d54470d09}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
+\mbox{\Hypertarget{classQuad_a4c179ec4d57e113f4dd63f457b9d226e}\label{classQuad_a4c179ec4d57e113f4dd63f457b9d226e}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} () const
 \item 
-\mbox{\Hypertarget{classQuad_a60c3e3706d98606eb09510cc5943b91b}\label{classQuad_a60c3e3706d98606eb09510cc5943b91b}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PNeighbors} (T $\ast$pelement) const
+\mbox{\Hypertarget{classQuad_abd6421fc5d08640da292ead0fa655e11}\label{classQuad_abd6421fc5d08640da292ead0fa655e11}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PNeighbors} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
 \item 
 \mbox{\Hypertarget{classQuad_a88fe91ba242b1afa6f629330b31c94b7}\label{classQuad_a88fe91ba242b1afa6f629330b31c94b7}} 
 bool {\bfseries insert} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
 \item 
-\mbox{\Hypertarget{classQuad_a5fcd91db505c4e645e607d576df23ac7}\label{classQuad_a5fcd91db505c4e645e607d576df23ac7}} 
-void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ $>$ \&pquads)
-\item 
-\mbox{\Hypertarget{classQuad_a74c6f5ac9c3470d2af37bb4a05308703}\label{classQuad_a74c6f5ac9c3470d2af37bb4a05308703}} 
-T $\ast$ {\bfseries search} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ppoint) const
+\mbox{\Hypertarget{classQuad_ad190d6f79bc85051b2cd86a3f95caf99}\label{classQuad_ad190d6f79bc85051b2cd86a3f95caf99}} 
+std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries search} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint) const
 \item 
 \mbox{\Hypertarget{classQuad_a5922d7c2561455356802835be195d21d}\label{classQuad_a5922d7c2561455356802835be195d21d}} 
 void {\bfseries recalculate} ()

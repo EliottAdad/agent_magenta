@@ -10,9 +10,9 @@
 
 
 /*
- * #########
- *  Scene :)
- * #########
+ * ###############
+ *  Scene<M, E> :)
+ * ###############
  * Scene contains Displayables
  */
 template<typename M, typename E> class Scene : public Printable {

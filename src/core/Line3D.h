@@ -16,9 +16,9 @@
 #include "../utilities/Printable.h"
 
 /*
- * ##########
- *  Line3D :)
- * ##########
+ * ################
+ *  Line3D<M, E> :)
+ * ################
  * A line is represented by two points.
  * This class present a few useful methods
  * to compute the geometry of the objects.
@@ -35,9 +35,8 @@ public:
 	Line3D();
 	Line3D(const Point3D<M, E>& p1, const Point3D<M, E>& p2);
 	Line3D(std::shared_ptr<Point3D<M, E>> pp1, std::shared_ptr<Point3D<M, E>> pp2);
-	Line3D(const Line3D<M, E>& l);
-	//Line3D(const Line3D* pl);
 	virtual ~Line3D();												//:)
+	Line3D(const Line3D<M, E>& l);
 
 	//Point3D<float, char> getP1() const;								//:)
 	//Point3D<float, char>* getPP1() const;							//:)
@@ -71,26 +70,16 @@ template<typename M, typename E> Line3D<M, E>::Line3D(std::shared_ptr<Point3D<M,
 	this->pp2=pp2;
 }
 
-/*
- * Copy constructor
- */
-template<typename M, typename E> Line3D<M, E>::Line3D(const Line3D& l){
-	this->pp1=l.pp1;
-	this->pp2=l.pp2;
+template<typename M, typename E> Line3D<M, E>::~Line3D() {
+	;
 }
 
 /*
  * Copy constructor
  */
-/*Line3D::Line3D(const Line3D* pl){
-	m_pp1=new Point3D<float, char>(pl->getP1());
-	m_pp2=new Point3D<float, char>(pl->getP2());
-	m_delp1=true;
-	m_delp2=true;
-}*/
-
-template<typename M, typename E> Line3D<M, E>::~Line3D() {
-	;
+template<typename M, typename E> Line3D<M, E>::Line3D(const Line3D<M, E>& l){
+	this->pp1=l.pp1;
+	this->pp2=l.pp2;
 }
 
 

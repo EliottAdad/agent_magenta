@@ -8,9 +8,17 @@
 #include "Game.h"
 
 Game::Game() {
-	pwindow=SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
+	pwindow=std::shared_ptr<SDL_Window>(
+			SDL_CreateWindow("Game",
+					SDL_WINDOWPOS_CENTERED,
+					SDL_WINDOWPOS_CENTERED,
+					600, 600,
+					SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE),
+			SDL_DestroyWindow);
 	if (pwindow!=NULL){
-		prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
+		prenderer=std::shared_ptr<SDL_Renderer>(
+				SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE),
+				SDL_DestroyRenderer);
 	}
 
 	pphysics=std::make_shared<Physics>();
@@ -121,7 +129,7 @@ bool Game::run(const unsigned int& steps){
 
 			// Calls the rendering process
 			if (dt.count()>=1/(long double)m_fps*1000000000.){
-				render();
+				render();		//ERROR
 
 				t1=t2;
 				if (steps!=0){//If steps is not null (allows for infinite loop when 0)
@@ -138,7 +146,9 @@ bool Game::render() const {
 	//SDL_SetRenderDrawColor(m_pdisplay->getPRenderer(), m_pdisplay->getBkgdColor().r, m_pdisplay->getBkgdColor().g, m_pdisplay->getBkgdColor().b, m_pdisplay->getBkgdColor().a);
 	//SDL_RenderClear(m_pdisplay->getPRenderer());
 
-	pdisplay->render();
+	if (pdisplay!=NULL){
+		pdisplay->render();
+	}
 
 	//SDL_RenderPresent(m_pdisplay->getPRenderer());
 

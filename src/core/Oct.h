@@ -21,9 +21,9 @@
 #include "../utilities/Printable.h"
 
 /*
- * #######
- *  Oct :)
- * #######
+ * ################
+ *  Oct<T, M, E> :)
+ * ################
  * Can contain any object that has x, y, z
  */
 template <typename T, typename M, typename E> class Oct : public Printable {
@@ -357,20 +357,16 @@ template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr
 
 template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Oct<T, M, E>::getPNeighbors(const std::shared_ptr<T> pelement) const {//////LOOOOK HERE !
 	static std::unordered_set<std::shared_ptr<T>> pneighbors;
-
-	//printf("AB\n");
-	SN<M, E> r=/*m_a*/SN<M, E>{1,0}/*((long double)1.)*//getDistance(*m_ppoint, *pelement);
-	//r.print(true, true, 0);
-	SN<M, E> s=SN<M, E>{m_ALPHA, 0};
-	//s.print(true, true, 0);
-	//printf("\n%b\n", /*m_a*/SN<M, E>{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0});
-
-	if (/*m_a*/SN<M, E>{1., 0}/*1.*//getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}){
+	printf("\nTest: %b\n", SN<M, E>{1,0}<=SN<M, E>{m_ALPHA, 0}*getDistance(*m_pbarycenter/*m_ppoint*/, *pelement));
+	if (SN<M, E>{1,0}<=SN<M, E>{m_ALPHA, 0}*getDistance(*m_pbarycenter/*m_ppoint*/, *pelement)){//SN<M, E>{1., 0}/getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}
 		//printf("AC\n");
-		if (m_pT!=NULL){
-			pneighbors.insert(m_pT);
-		}else{
-			pneighbors.insert(std::make_shared<T>(m_ppoint->getX(), m_ppoint->getY(), m_ppoint->getZ()));
+		if (m_pT!=NULL){// If the cube is not empty
+			if (m_pT!=pelement){
+				pneighbors.insert(m_pT);
+			}
+		}else{			// Else if the place is empty
+			std::shared_ptr<T> new_pT(new T(/*m_ppoint*/m_pbarycenter->getX(), m_pbarycenter/*m_ppoint*/->getY(), m_pbarycenter/*m_ppoint*/->getZ(), m_tot_weight));
+			pneighbors.insert(new_pT);
 		}
 	}else{
 		//printf("AD\n");
@@ -414,7 +410,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 				if (m_pTLFTree==NULL and m_pTRFTree==NULL and m_pBLFTree==NULL and m_pBRFTree==NULL
 						and m_pTRBTree==NULL and m_pTLBTree==NULL and m_pBLBTree==NULL and m_pBRBTree==NULL){	// If the cube has no Octs under (external branch)
 					m_pT=pT;//We add in
-					m_tot_weight=(M)1.;//Set the tot_weight
+					m_tot_weight=pT->getW();//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
 
 					//printf("A\n");
@@ -425,8 +421,8 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 					//printf("\n#############\n");
 				}else{																				// Else it means it is an internal branch
 					//printf("B\n");
-					m_tot_weight+=(M)1.;//Add to tot_weight
-					*m_pbarycenter+=p*((M)(1.)/m_tot_weight);//Add to the barycenter
+					m_tot_weight+=pT->getW();//Add to tot_weight
+					*m_pbarycenter+=p*(pT->getW()/m_tot_weight);//Add to the barycenter
 
 					if (dp.x<=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 1
 						//printf("C\n");
@@ -512,7 +508,7 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 				}
 			}else{					// Else if full
 
-				m_tot_weight={(M)1., (E)0.};//Set the tot_weight
+				m_tot_weight=pT->getW();//Set the tot_weight
 				*m_pbarycenter=p;//Set the barycenter
 
 				//printf("Full\n");

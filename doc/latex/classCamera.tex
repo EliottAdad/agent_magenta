@@ -1,78 +1,82 @@
-\hypertarget{classCamera}{}\doxysection{Camera Class Reference}
-\label{classCamera}\index{Camera@{Camera}}
+\hypertarget{classCamera}{}\doxysection{Camera\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classCamera}\index{Camera$<$ M, E $>$@{Camera$<$ M, E $>$}}
 
 
-Inheritance diagram for Camera\+:\nopagebreak
+Inheritance diagram for Camera\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=140pt]{classCamera__inherit__graph}
+\includegraphics[width=178pt]{classCamera__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Camera\+:\nopagebreak
+Collaboration diagram for Camera\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=140pt]{classCamera__coll__graph}
+\includegraphics[width=178pt]{classCamera__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCamera_ad491e80e8096db31be3d6095475ff3f3}\label{classCamera_ad491e80e8096db31be3d6095475ff3f3}} 
-{\bfseries Camera} (const \mbox{\hyperlink{classCamera}{Camera}} \&other)
+\mbox{\Hypertarget{classCamera_ade15b700810fde0e26153dd621980231}\label{classCamera_ade15b700810fde0e26153dd621980231}} 
+{\bfseries Camera} (const \mbox{\hyperlink{classCamera}{Camera}}$<$ M, E $>$ \&other)
 \item 
-\mbox{\Hypertarget{classCamera_a26039257fc077643d27cdd26c62b49d6}\label{classCamera_a26039257fc077643d27cdd26c62b49d6}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E1} () const
+\mbox{\Hypertarget{classCamera_aed4b378596a9e030d96acd4a0b28f843}\label{classCamera_aed4b378596a9e030d96acd4a0b28f843}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ $>$ {\bfseries get\+E1} () const
 \item 
-\mbox{\Hypertarget{classCamera_a5b7f1cef278a17906e7884209a45ba2d}\label{classCamera_a5b7f1cef278a17906e7884209a45ba2d}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries get\+E2} () const
+\mbox{\Hypertarget{classCamera_a4677c1be9d768d9f8905ff33cef678a1}\label{classCamera_a4677c1be9d768d9f8905ff33cef678a1}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ $>$ {\bfseries get\+E2} () const
 \item 
-\mbox{\Hypertarget{classCamera_a654bda85b56835ca401bb7f7db350eb7}\label{classCamera_a654bda85b56835ca401bb7f7db350eb7}} 
+\mbox{\Hypertarget{classCamera_aa9cce9146409ccb67c986acc135612b6}\label{classCamera_aa9cce9146409ccb67c986acc135612b6}} 
 void {\bfseries render\+Mesh} (const \mbox{\hyperlink{classMesh3D}{Mesh3D}} \&mesh) const
 \item 
-\mbox{\Hypertarget{classCamera_a5aa2a5c19441ed4f30291110d1709175}\label{classCamera_a5aa2a5c19441ed4f30291110d1709175}} 
+\mbox{\Hypertarget{classCamera_a1cde1829a98d9b3c6498482a963e527b}\label{classCamera_a1cde1829a98d9b3c6498482a963e527b}} 
 void {\bfseries render\+Triangle} (const \mbox{\hyperlink{classTriangle3D}{Triangle3D}} \&triangle) const
 \item 
-\mbox{\Hypertarget{classCamera_a028d7ac746346622a29f609bc98076b3}\label{classCamera_a028d7ac746346622a29f609bc98076b3}} 
-void {\bfseries render\+Point} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p) const
+\mbox{\Hypertarget{classCamera_a1916ba4de6c8d5d3ce0b33f5ca4d2cfc}\label{classCamera_a1916ba4de6c8d5d3ce0b33f5ca4d2cfc}} 
+void {\bfseries render\+Point} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p) const
 \item 
-\mbox{\Hypertarget{classCamera_a9e3120dadc0230e947a054daa5e84b73}\label{classCamera_a9e3120dadc0230e947a054daa5e84b73}} 
-bool {\bfseries test\+In\+Fiel\+Of\+View} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ \&p) const
+\mbox{\Hypertarget{classCamera_a413346c1fce8a2db65540b4fbda772e0}\label{classCamera_a413346c1fce8a2db65540b4fbda772e0}} 
+bool {\bfseries test\+In\+Fiel\+Of\+View} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p) const
 \item 
-virtual std\+::string \mbox{\hyperlink{classCamera_a0a5c847fc3ac5a0f35918eaf52113bf6}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classCamera_a0f58fe4cf04cdc24b216f4fbb8ea3a0e}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-virtual void \mbox{\hyperlink{classCamera_aae27dd2431998513ed831db282d470a5}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual void \mbox{\hyperlink{classCamera_adea57e94d6e02b4c95394ad9588fba4f}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCamera_a67901b142cce1da5715304ee8ab92f66}\label{classCamera_a67901b142cce1da5715304ee8ab92f66}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ float, char $>$ $>$ {\bfseries ppoint}
+\mbox{\Hypertarget{classCamera_ae2de73cb31386ef34fed39b3425d2334}\label{classCamera_ae2de73cb31386ef34fed39b3425d2334}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries ppoint}
 \item 
-\mbox{\Hypertarget{classCamera_aca22d46e2f0fd60facc58b65b70fe8b7}\label{classCamera_aca22d46e2f0fd60facc58b65b70fe8b7}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}} $>$ {\bfseries pnormal}
+\mbox{\Hypertarget{classCamera_ad889b0ca89094b6c90d5f73247aed907}\label{classCamera_ad889b0ca89094b6c90d5f73247aed907}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ $>$ {\bfseries pnormal}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classCamera_aae27dd2431998513ed831db282d470a5}\label{classCamera_aae27dd2431998513ed831db282d470a5}} 
-\index{Camera@{Camera}!print@{print}}
-\index{print@{print}!Camera@{Camera}}
+\mbox{\Hypertarget{classCamera_adea57e94d6e02b4c95394ad9588fba4f}\label{classCamera_adea57e94d6e02b4c95394ad9588fba4f}} 
+\index{Camera$<$ M, E $>$@{Camera$<$ M, E $>$}!print@{print}}
+\index{print@{print}!Camera$<$ M, E $>$@{Camera$<$ M, E $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void Camera\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classCamera}{Camera}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
-\mbox{\Hypertarget{classCamera_a0a5c847fc3ac5a0f35918eaf52113bf6}\label{classCamera_a0a5c847fc3ac5a0f35918eaf52113bf6}} 
-\index{Camera@{Camera}!to\_string@{to\_string}}
-\index{to\_string@{to\_string}!Camera@{Camera}}
+\mbox{\Hypertarget{classCamera_a0f58fe4cf04cdc24b216f4fbb8ea3a0e}\label{classCamera_a0f58fe4cf04cdc24b216f4fbb8ea3a0e}} 
+\index{Camera$<$ M, E $>$@{Camera$<$ M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Camera$<$ M, E $>$@{Camera$<$ M, E $>$}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily std\+::string Camera\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+std\+::string \mbox{\hyperlink{classCamera}{Camera}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -80,7 +84,6 @@ Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-display/Camera.\+h\item 
-display/Camera.\+cpp\end{DoxyCompactItemize}
+display/Camera.\+h\end{DoxyCompactItemize}

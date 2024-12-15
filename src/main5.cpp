@@ -19,7 +19,7 @@
 /*
  * Main core (Particle3D, System3D, Physics)
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 
 	WeightedPoint3D<float, char> w1{{-1,0},{1,0},{0,0},{5,1}};
 	WeightedPoint3D<float, char> w2{{1.5,0},{1.87006,0},{0,0},{-3,1}};
@@ -54,11 +54,13 @@ int main(int argc, char* argv[]){
 	System3D<Particle3D<float, char>, float, char> ps2;
 	bool test=ps2.addPElement(ppar1);
 	printf("%b\n", test);
-	//test=ps2.addPElement(ppar2);
-	//printf("%b\n", test);
-	//test=ps2.addPElement(ppar3);
-	//printf("%b\n", test);
+	test=ps2.addPElement(ppar2);
+	printf("%b\n", test);
+	test=ps2.addPElement(ppar3);
+	printf("%b\n", test);
 	ps2.print(true, true, 0);
+
+	std::shared_ptr<System3D<Particle3D<float, char>, float, char>> ppsys2(new System3D<Particle3D<float, char>, float, char>(ps2));
 
 	//
 	// Tests Vector Fields
@@ -77,7 +79,7 @@ int main(int argc, char* argv[]){
 	Physics phys;
 	phys.setPPS(200);
 	phys.setFPause(false);
-	//phys.addPTimeSensitive(std::shared_ptr<System3D<Particle3D, float, char>>(&ps2));//Doesn't work
+	phys.addPTimeSensitive(ppsys2);//Doesn't work
 	printf("%b\n", phys.addPTimeSensitive(ppar4));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par2)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par3)));
@@ -98,7 +100,7 @@ int main(int argc, char* argv[]){
 	printf("\nBye bye\n");
 
 	return 0;
-}
+}*/
 
 
 #endif /* MAIN5_CPP_ */

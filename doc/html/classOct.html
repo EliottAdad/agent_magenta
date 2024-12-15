@@ -94,10 +94,7 @@ Collaboration diagram for Oct&lt; T, M, E &gt;:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afcf5934c496b75396bde3760958d2b62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOct.html#afcf5934c496b75396bde3760958d2b62">Oct</a> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;a, const <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &amp;p={{0, 0},{0, 0},{0, 0}})</td></tr>
 <tr class="separator:afcf5934c496b75396bde3760958d2b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3972f62a8ace59e9eed932e0ee365bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOct.html#aa3972f62a8ace59e9eed932e0ee365bf">Oct</a> (const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;a, std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt; ppoint)</td></tr>
-<tr class="separator:aa3972f62a8ace59e9eed932e0ee365bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98d06c975b95986cc39bec2f8f1b8441"><td class="memItemLeft" align="right" valign="top"><a id="a98d06c975b95986cc39bec2f8f1b8441" name="a98d06c975b95986cc39bec2f8f1b8441"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Oct</b> (const <a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt; &amp;oct)</td></tr>
+<tr class="memitem:a98d06c975b95986cc39bec2f8f1b8441"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOct.html#a98d06c975b95986cc39bec2f8f1b8441">Oct</a> (const <a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt; &amp;oct)</td></tr>
 <tr class="separator:a98d06c975b95986cc39bec2f8f1b8441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5cfe0f9c75a94b7d83ff357ce0ead91"><td class="memItemLeft" align="right" valign="top"><a id="ac5cfe0f9c75a94b7d83ff357ce0ead91" name="ac5cfe0f9c75a94b7d83ff357ce0ead91"></a>
 <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoint</b> () const</td></tr>
@@ -117,24 +114,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setA</b> (const <a cl
 <tr class="memitem:a84d69dbce8764bc3b375f56a1d88f78a"><td class="memItemLeft" align="right" valign="top"><a id="a84d69dbce8764bc3b375f56a1d88f78a" name="a84d69dbce8764bc3b375f56a1d88f78a"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getNB_OCTS</b> () const</td></tr>
 <tr class="separator:a84d69dbce8764bc3b375f56a1d88f78a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa68b9e8cd74f94f1f19bba143e760389"><td class="memItemLeft" align="right" valign="top"><a id="aa68b9e8cd74f94f1f19bba143e760389" name="aa68b9e8cd74f94f1f19bba143e760389"></a>
-std::unordered_set&lt; <a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPTrees</b> ()</td></tr>
-<tr class="separator:aa68b9e8cd74f94f1f19bba143e760389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e18d7129d20b90fa1c8fc9d3bd658e8"><td class="memItemLeft" align="right" valign="top"><a id="a3e18d7129d20b90fa1c8fc9d3bd658e8" name="a3e18d7129d20b90fa1c8fc9d3bd658e8"></a>
-std::unordered_set&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPElements</b> () const</td></tr>
-<tr class="separator:a3e18d7129d20b90fa1c8fc9d3bd658e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b498ad474773de7210962f4ff799e37"><td class="memItemLeft" align="right" valign="top"><a id="a1b498ad474773de7210962f4ff799e37" name="a1b498ad474773de7210962f4ff799e37"></a>
-std::unordered_set&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPNeighbors</b> (std::shared_ptr&lt; T &gt; pelement) const</td></tr>
-<tr class="separator:a1b498ad474773de7210962f4ff799e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eef491e8f78755d9ad0a9432815a1d6"><td class="memItemLeft" align="right" valign="top"><a id="a5eef491e8f78755d9ad0a9432815a1d6" name="a5eef491e8f78755d9ad0a9432815a1d6"></a>
+std::unordered_set&lt; std::shared_ptr&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPElements</b> () const</td></tr>
+<tr class="separator:a5eef491e8f78755d9ad0a9432815a1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd3d3dfb8a8f9b70b9c81290007c59a"><td class="memItemLeft" align="right" valign="top"><a id="afbd3d3dfb8a8f9b70b9c81290007c59a" name="afbd3d3dfb8a8f9b70b9c81290007c59a"></a>
+std::unordered_set&lt; std::shared_ptr&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPNeighbors</b> (const std::shared_ptr&lt; T &gt; pelement) const</td></tr>
+<tr class="separator:afbd3d3dfb8a8f9b70b9c81290007c59a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe73f0989993f1d3655de48353753a97"><td class="memItemLeft" align="right" valign="top"><a id="afe73f0989993f1d3655de48353753a97" name="afe73f0989993f1d3655de48353753a97"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (std::shared_ptr&lt; T &gt; pT)</td></tr>
 <tr class="separator:afe73f0989993f1d3655de48353753a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1120479030e0449a67865e9012703296"><td class="memItemLeft" align="right" valign="top"><a id="a1120479030e0449a67865e9012703296" name="a1120479030e0449a67865e9012703296"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const T &amp;t, std::unordered_set&lt; <a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt; * &gt; &amp;pocts)</td></tr>
-<tr class="separator:a1120479030e0449a67865e9012703296"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a230d9ec92c8f885bee9d0e99e0dc22e2"><td class="memItemLeft" align="right" valign="top"><a id="a230d9ec92c8f885bee9d0e99e0dc22e2" name="a230d9ec92c8f885bee9d0e99e0dc22e2"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>search</b> (const <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; *ppoint) const</td></tr>
-<tr class="separator:a230d9ec92c8f885bee9d0e99e0dc22e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d7065fac5e6e15e6f2d39b7a8d4b27a"><td class="memItemLeft" align="right" valign="top"><a id="a0d7065fac5e6e15e6f2d39b7a8d4b27a" name="a0d7065fac5e6e15e6f2d39b7a8d4b27a"></a>
+std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>search</b> (const std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt; ppoint) const</td></tr>
+<tr class="separator:a0d7065fac5e6e15e6f2d39b7a8d4b27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad06a923343a9c14938076aca970f921f"><td class="memItemLeft" align="right" valign="top"><a id="ad06a923343a9c14938076aca970f921f" name="ad06a923343a9c14938076aca970f921f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>recalculate</b> ()</td></tr>
 <tr class="separator:ad06a923343a9c14938076aca970f921f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -250,8 +241,8 @@ template&lt;typename T , typename M , typename E &gt; </div>
 
 </div>
 </div>
-<a id="aa3972f62a8ace59e9eed932e0ee365bf" name="aa3972f62a8ace59e9eed932e0ee365bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3972f62a8ace59e9eed932e0ee365bf">&#9670;&nbsp;</a></span>Oct() <span class="overload">[2/2]</span></h2>
+<a id="a98d06c975b95986cc39bec2f8f1b8441" name="a98d06c975b95986cc39bec2f8f1b8441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98d06c975b95986cc39bec2f8f1b8441">&#9670;&nbsp;</a></span>Oct() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,19 +252,9 @@ template&lt;typename T , typename M , typename E &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt;<a class="el" href="classOct.html">::Oct</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structSN.html">SN</a>&lt; M, E &gt; &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="classOct.html">Oct</a>&lt; T, M, E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oct</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="structPoint3D.html">Point3D</a>&lt; M, E &gt; &gt;&#160;</td>
-          <td class="paramname"><em>ppoint</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

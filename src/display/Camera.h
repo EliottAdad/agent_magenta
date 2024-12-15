@@ -18,9 +18,9 @@
 #include "../utilities/Printable.h"
 
 /*
- * ##########
- *  Camera :)
- * ##########
+ * ################
+ *  Camera<M, E> :)
+ * ################
  * This camera is a cone directed by a normal
  */
 template<typename M, typename E> class Camera : public Printable {

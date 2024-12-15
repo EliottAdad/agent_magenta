@@ -51,19 +51,24 @@
 /*int main(int argc, char* argv[]){
 
     printf("Hello\n");
-    Particle3D p1;
-    p1.x={1.,0};
-    p1.y={1.,0};
-    p1.z={0.,0};
-    p1.w={1.,12};
-    Vector3D v({{0.,0},{0.,0},{0.,0}}, {{1.,0},{0.,0},{0.,0}});
-    p1.setSpeed(v);
+    Particle3D<float, char> p1;
+    p1.x={1,0};
+    p1.y={1,0};
+    p1.z={0,0};
+    p1.w={1,1};
+    Point3D<float, char> point1{{0,0},{0,0},{0,0}};
+    Point3D<float, char> point2{{1,1},{0,0},{0,0}};
+    std::shared_ptr<Vector3D<float, char>> pv(new Vector3D<float, char>(point2));
+    *p1.ps=*pv;
 
-    Particle3D p2;
-    p2.x={-3.,1};
-    p2.y={-2.,1};
-    p2.z={2.,1};
-    p2.w={1.,1};
+    Particle3D<float, char> p2;
+    p2.x={-3,1};
+    p2.y={-2,1};
+    p2.z={2,1};
+    p2.w={1,1};
+
+    std::shared_ptr<Particle3D<float, char>> pp1(new Particle3D<float, char>(p1));
+    std::shared_ptr<Particle3D<float, char>> pp2(new Particle3D<float, char>(p2));
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
@@ -77,19 +82,27 @@
         return EXIT_FAILURE;
     }
 
+    // Sys
+    std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
+    psys->addPElement(pp1);
+    psys->addPElement(pp2);
+    psys->m_ptrLaw=rrr2;
 
+    // Game
     Game g1;
 
-    g1.addPDisplayable(&p1);
-    g1.addPDisplayable(&p2);
-//    for (Displayable* pdisplayable : g1.getPScene()->getPDisplayables()){
-//    	printf("\n###1\n");
-//    	pdisplayable->print(true);
-//    	printf("\n###1\n");
-//    }//OK
-    printf("\n%b\n", g1.addPTimeSensitive(&p1));
-    printf("\n%b\n", g1.addPTimeSensitive(&p2));
-    //g1.addPTimeSensitive(&p2);
+
+//    SDL_Window* pwindow=SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
+//    SDL_Renderer* prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
+//    g1.pwindow=pwindow;
+//    g1.prenderer=prenderer;
+
+    g1.pscene->addPDisplayable(pp1);
+    g1.pscene->addPDisplayable(pp2);
+    //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp1));
+    //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp2));
+    printf("\n%b\n", g1.pphysics->addPTimeSensitive(psys));
+
     //printf("\naddPTimeSensitive was successful ?: %b\n", ans2);
     //for (TimeSensitive* ptime_sensitive : g1.getPPhysics()->getPTimeSensitives()){
     //	//printf("\n###2\n");
@@ -97,8 +110,8 @@
     //	//printf("\n###2\n");
     //}//OK
 
-    g1.setFPS(99);
-    g1.setPPS(100);
+    g1.setFPS(100);
+    g1.pphysics->setPPS(100);
     g1.setFPause(false);
 
     // Creation of a particle system (System3D)

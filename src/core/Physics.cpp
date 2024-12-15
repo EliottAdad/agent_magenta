@@ -78,7 +78,7 @@ bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) 
 
 	if (ptime_sensitive!=NULL){
 		success=m_ptime_sensitives.insert(ptime_sensitive).second;
-		printf("Shush\n");
+		//printf("Shush\n");
 	}
 	return success;
 }

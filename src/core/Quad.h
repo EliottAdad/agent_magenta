@@ -19,11 +19,11 @@
 #include "../utilities/Printable.h"
 
 /*
- * ########
- *  Quad :)
- * ########
+ * #################
+ *  Quad<T, M, E> :)
+ * #################
  */
-template <typename T, typename M, typename E> class Quad : public Printable {
+template<typename T, typename M, typename E> class Quad : public Printable {
 protected:
 	std::shared_ptr<Point3D<M, E>> m_ppoint;		// The center of the zone.
 	std::shared_ptr<Point3D<M, E>> m_pbarycenter;	// The center of mass given the repartition of the WeightedPoints in the zone.
@@ -74,15 +74,15 @@ public:
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
-template <typename T, typename M, typename E> unsigned int Quad<T, M, E>::m_NB_QUADS=0;
-template <typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::m_LIM_A={1,0};
-template <typename T, typename M, typename E> float Quad<T, M, E>::m_ALPHA=0.5;
+template<typename T, typename M, typename E> unsigned int Quad<T, M, E>::m_NB_QUADS=0;
+template<typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::m_LIM_A={1,0};
+template<typename T, typename M, typename E> float Quad<T, M, E>::m_ALPHA=0.5;
 
 
 /*
  * Constructor0
  */
-template <typename T, typename M, typename E> Quad<T, M, E>::Quad() {
+template<typename T, typename M, typename E> Quad<T, M, E>::Quad() {
 	m_ppoint=std::make_shared<Point3D<M, E>>();
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
 	//m_delp=true;
@@ -103,7 +103,7 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad() {
 /*
  * Constructor1
  */
-template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, const Point3D<M, E>& point) {
+template<typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, const Point3D<M, E>& point) {
 	m_ppoint=std::make_shared<Point3D<M, E>>(point);
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
 	//m_delp=true;
@@ -145,7 +145,7 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>
 /*
  * Copy constructor
  */
-template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, M, E>& quad) {
+template<typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, M, E>& quad) {
 	m_ppoint=std::make_shared<Point3D<M, E>>(quad.getPoint());
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
 	//m_delp=false;
@@ -163,7 +163,7 @@ template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, 
 	m_NB_QUADS++;
 }
 
-template <typename T, typename M, typename E> Quad<T, M, E>::~Quad() {
+template<typename T, typename M, typename E> Quad<T, M, E>::~Quad() {
 	if (m_pTLTree!=NULL){
 		delete m_pTLTree;
 	}
@@ -180,7 +180,7 @@ template <typename T, typename M, typename E> Quad<T, M, E>::~Quad() {
 	m_NB_QUADS--;
 }
 
-template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getPoint() const {
+template<typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getPoint() const {
 	return *m_ppoint;
 }
 
@@ -188,7 +188,7 @@ template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getPo
 	return this->m_ppoint;
 }*/
 
-template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getBarycenter() const {
+template<typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getBarycenter() const {
 	return *m_pbarycenter;
 }
 
@@ -205,20 +205,20 @@ template <typename T, typename M, typename E> Point3D<M, E> Quad<T, M, E>::getBa
 	return m_delp;
 }*/
 
-template <typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::getA() const {
+template<typename T, typename M, typename E> SN<M, E> Quad<T, M, E>::getA() const {
 	return m_a;
 }
 
-template <typename T, typename M, typename E> void Quad<T, M, E>::setA(const SN<M, E>& a) {
+template<typename T, typename M, typename E> void Quad<T, M, E>::setA(const SN<M, E>& a) {
 	m_a=a;
 	this->recalculate();
 }
 
-template <typename T, typename M, typename E> unsigned int Quad<T, M, E>::getNB_QUADS() const {
+template<typename T, typename M, typename E> unsigned int Quad<T, M, E>::getNB_QUADS() const {
 	return m_NB_QUADS;
 }
 
-template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Quad<T, M, E>::getPElements() const {
+template<typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Quad<T, M, E>::getPElements() const {
 	static std::unordered_set<std::shared_ptr<T>> elmts;
 
 	if (m_pT!=NULL){
@@ -241,7 +241,7 @@ template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr
 	return elmts;
 }
 
-template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::shared_ptr<T> pT) {
+template<typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::shared_ptr<T> pT) {
 	if (pT!=NULL){
 		Point3D<M, E> p={pT->x, pT->y, {0,0}};
 		Point3D<M, E> dp={pT->x-m_ppoint->x, pT->y-m_ppoint->y, {0,0}};
@@ -251,12 +251,12 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::sh
 				//printf("Empty\n");
 				if (m_pBLTree==NULL and m_pBRTree==NULL and m_pTRTree==NULL and m_pTLTree==NULL){	// If the square has no Quads under (external branch)
 					m_pT=pT;//We add in
-					m_tot_weight=(M)1.;//Set the tot_weight
+					m_tot_weight=pT->getW();//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
 				}else{																				// Else it means it is an internal branch
 
-					m_tot_weight+=(M)1.;//Add to tot_weight
-					*m_pbarycenter+=p*((M)1./m_tot_weight);//Add to the barycenter
+					m_tot_weight+=pT->getW();//Add to tot_weight
+					*m_pbarycenter+=p*(pT->getW()/m_tot_weight);//Add to the barycenter
 
 					if (dp.x<=(M)0. && dp.y<=(M)0.){//If square 1
 						if (m_pBLTree==NULL){//If there is not yet a tree we create it
@@ -294,7 +294,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::sh
 				}
 			}else{					// Else if full
 
-				m_tot_weight=(M)1.;//Set the tot_weight
+				m_tot_weight=pT->getW();//Set the tot_weight
 				*m_pbarycenter=p;//Set the barycenter
 
 				//printf("Full\n");
@@ -340,6 +340,106 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::sh
 	}
 	return true;
 }
+
+/*template<> bool Quad<Particle3D<float, char>, float, char>::insert(std::shared_ptr<Particle3D<float, char>> pT) {
+	if (pT!=NULL){
+		Point3D<float, char> p={pT->x, pT->y, {0,0}};
+		Point3D<float, char> dp={pT->x-m_ppoint->x, pT->y-m_ppoint->y, {0,0}};
+
+		if (abs(dp.x)<=m_a/(float)2. && abs(dp.y)<=m_a/(float)2.){// If in the square centered on the point.
+			if (m_pT==NULL){		// If empty
+				//printf("Empty\n");
+				if (m_pBLTree==NULL and m_pBRTree==NULL and m_pTRTree==NULL and m_pTLTree==NULL){	// If the square has no Quads under (external branch)
+					m_pT=pT;//We add in
+					m_tot_weight=(float)1.;//Set the tot_weight
+					*m_pbarycenter=p;//Set the barycenter
+				}else{																				// Else it means it is an internal branch
+
+					m_tot_weight+=pT->getW();//Add to tot_weight
+					*m_pbarycenter+=p*(pT->getW()/m_tot_weight);//Add to the barycenter
+
+					if (dp.x<=(float)0. && dp.y<=(float)0.){//If square 1
+						if (m_pBLTree==NULL){//If there is not yet a tree we create it
+							SN<float, char> a=m_a/(float)4.;
+							Point3D<float, char> np{(float)(-1.)*a, (float)(-1.)*a, {0,0}};
+							//std::cout<<"1"<<np.to_string(true);
+							m_pBLTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+						}
+						m_pBLTree->insert(pT);
+					}else if (dp.x>=(float)0. && dp.y<=(float)0.){//If square 2
+						if (m_pBRTree==NULL){//If there is not yet a tree we create it
+							SN<float, char> a=m_a/(float)4.;
+							Point3D<float, char> np{a, (float)(-1.)*a, {0,0}};
+							//std::cout<<"2"<<np.to_string(true);
+							m_pBRTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+						}
+						m_pBRTree->insert(pT);
+					}else if (dp.x>=(float)0. && dp.y>=(float)0.){//If square 3
+						if (m_pTRTree==NULL){//If there is not yet a tree we create it
+							SN<float, char> a=m_a/(float)4.;
+							Point3D<float, char> np{a, a, {0,0}};
+							//std::cout<<"3"<<np.to_string(true);
+							m_pTRTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+						}
+						m_pTRTree->insert(pT);
+					}else if (dp.x<=(float)0. && dp.y>=(float)0.){//If square 4
+						if (m_pTLTree==NULL){//If there is not yet a tree we create it
+							SN<float, char> a=m_a/(float)4.;
+							Point3D<float, char> np{(float)(-1.)*a, a, {0,0}};
+							//std::cout<<"4"<<np.to_string(true);
+							m_pTLTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+						}
+						m_pTLTree->insert(pT);
+					}
+				}
+			}else{					// Else if full
+
+				m_tot_weight=pT->getW();//Set the tot_weight
+				*m_pbarycenter=p;//Set the barycenter
+
+				//printf("Full\n");
+				if (dp.x<=(float)0. && dp.y<=(float)0.){//If square 1
+					if (m_pBLTree==NULL){//If there is not yet a tree we create it
+						SN<float, char> a=m_a/(float)4.;
+						Point3D<float, char> np{(float)(-1.)*a, (float)(-1.)*a, {0,0}};
+						//std::cout<<"5"<<np.to_string(true);
+						m_pBLTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+					}
+					m_pBLTree->insert(pT);
+				}else if (dp.x>=(float)0. && dp.y<=(float)0.){//If square 2
+					if (m_pBRTree==NULL){//If there is not yet a tree we create it
+						SN<float, char> a=m_a/(float)4.;
+						Point3D<float, char> np{a, (float)(-1.)*a, {0,0}};
+						//std::cout<<"6"<<np.to_string(true);
+						m_pBRTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+					}
+					m_pBRTree->insert(pT);
+				}else if (dp.x>=(float)0. && dp.y>=(float)0.){//If square 3
+					if (m_pTRTree==NULL){//If there is not yet a tree we create it
+						SN<float, char> a=m_a/(float)4.;
+						Point3D<float, char> np{a, a, {0,0}};
+						//std::cout<<"7"<<np.to_string(true);
+						m_pTRTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+					}
+					m_pTRTree->insert(pT);
+				}else if (dp.x<=(float)0. && dp.y>=(float)0.){//If square 4
+					if (m_pTLTree==NULL){//If there is not yet a tree we create it
+						SN<float, char> a=m_a/(float)4.;
+						Point3D<float, char> np{(float)(-1.)*a, a, {0,0}};
+						//std::cout<<"8"<<np.to_string(true);
+						m_pTLTree=new Quad<Particle3D<float, char>, float, char>(m_a/(float)2., *m_ppoint+np);
+					}
+					m_pTLTree->insert(pT);
+				}
+				// We reinsert the object already present.
+				std::shared_ptr<Particle3D<float, char>> pT2=m_pT;
+				m_pT=NULL;
+				this->insert(pT2);
+			}
+		}
+	}
+	return true;
+}*/
 
 /*template<> bool Quad<Point3D<M, E>, M, E>::insert(Point3D<M, E>* ppart) {// WHy does it work for Quads but not Octs
 	return true;
@@ -525,7 +625,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::insert(std::sh
 	;
 }*/
 
-template <typename T, typename M, typename E> std::shared_ptr<T> Quad<T, M, E>::search(const std::shared_ptr<Point3D<M, E>> ppoint) const {
+template<typename T, typename M, typename E> std::shared_ptr<T> Quad<T, M, E>::search(const std::shared_ptr<Point3D<M, E>> ppoint) const {
 	std::shared_ptr<T> pT=NULL;
 
 	if (ppoint!=NULL){
@@ -566,7 +666,7 @@ template<typename T, typename M, typename E> void Quad<T, M, E>::recalculate() {
 	;
 }
 
-template <typename T, typename M, typename E> bool Quad<T, M, E>::empty() {
+template<typename T, typename M, typename E> bool Quad<T, M, E>::empty() {
 	for (Quad<T, M, E>* ptree : this->getPTrees()){
 		delete ptree;
 	}
@@ -584,7 +684,7 @@ template <typename T, typename M, typename E> bool Quad<T, M, E>::empty() {
 }
 
 
-template <typename T, typename M, typename E> std::string Quad<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T, typename M, typename E> std::string Quad<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
 
@@ -636,7 +736,7 @@ template <typename T, typename M, typename E> std::string Quad<T, M, E>::to_stri
 	return mes;
 }
 
-template <typename T, typename M, typename E> void Quad<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T, typename M, typename E> void Quad<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

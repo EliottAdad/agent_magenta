@@ -99,7 +99,10 @@
 	o1.insert(ppar2);
 	o1.insert(ppar3);
 	o1.insert(ppar4);
+	std::unordered_set<std::shared_ptr<Particle3D<float, char>>> neights=o1.getPNeighbors(ppar2);
+	printf("\nnb of neighbours: %ld\n", neights.size());
 	o1.recalculate();
+	printf("\nnb of neighbours: %ld\n", neights.size());
 	o1.print(true, true, 0);
 
 	printf("\n\nBye bye\n");

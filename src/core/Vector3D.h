@@ -16,11 +16,11 @@
 #include "Point3D.h"
 
 /*
- * ############
- *  Vector3D :)
- * ############
+ * ##################
+ *  Vector3D<M, E> :)
+ * ##################
  */
-template <typename M, typename E> class Vector3D : public Line3D<M, E> {
+template<typename M, typename E> class Vector3D : public Line3D<M, E> {
 public:
 	Vector3D();
 	Vector3D(const Point3D<M, E>& p2);
@@ -63,19 +63,19 @@ public:
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
-template <typename M, typename E> Vector3D<M, E> operator+(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
+template<typename M, typename E> Vector3D<M, E> operator+(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
 //std::unique_ptr<Vector3D>& operator+(const std::unique_ptr<Vector3D>& pv1, const std::unique_ptr<Vector3D>& pv2);
-template <typename M, typename E> Vector3D<M, E> operator-(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
-template <typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const M& k);// :)
-template <typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const SN<M, E>& k);// :)
-template <typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const M& k);// :)
-template <typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const SN<M, E>& k);// :)
+template<typename M, typename E> Vector3D<M, E> operator-(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
+template<typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const M& k);// :)
+template<typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const SN<M, E>& k);// :)
+template<typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const M& k);// :)
+template<typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const SN<M, E>& k);// :)
 
 //Scalar product
-template <typename M, typename E> SN<M, E> operator*(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
+template<typename M, typename E> SN<M, E> operator*(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
 
 //Vector product
-template <typename M, typename E> Vector3D<M, E> operator^(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
+template<typename M, typename E> Vector3D<M, E> operator^(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2);// :)
 
 
 //#############
@@ -85,7 +85,7 @@ template <typename M, typename E> Vector3D<M, E> operator^(const Vector3D<M, E>&
  * Constructor 1
  * By default constructor
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D() {
+template<typename M, typename E> Vector3D<M, E>::Vector3D() {
 	this->pp1=std::make_shared<Point3D<M, E>>();
 	this->pp2=std::make_shared<Point3D<M, E>>(SN<M, E>{1,0},SN<M, E>{1,0},SN<M, E>{1,0});
 	//pp2=std::shared_ptr(new Point3D<float, char>{});
@@ -97,7 +97,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D() {
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p2) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p2) {
 	this->pp1=std::make_shared<Point3D<M, E>>();
 	this->pp2=std::make_shared<Point3D<M, E>>(p2);
 }
@@ -108,7 +108,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& 
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
 	this->pp1=std::make_shared<Point3D<M, E>>(p1);
 	this->pp2=std::make_shared<Point3D<M, E>>(p2);
 }
@@ -119,7 +119,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& 
  * @param p2 Second point
  * @param[in/out] Modifications to *pp1 or *pp2 outside of class definition will be passed onto p1 and p2
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point3D<M, E>> pp1, std::shared_ptr<Point3D<M, E>> pp2) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point3D<M, E>> pp1, std::shared_ptr<Point3D<M, E>> pp2) {
 	this->pp1=pp1;
 	this->pp2=pp2;
 }
@@ -131,7 +131,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point
  * (modifications outside of class definition will be passed onto p1)
  * @param p2 Second point
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point3D<M, E>> pp1, const Point3D<M, E>& p2) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point3D<M, E>> pp1, const Point3D<M, E>& p2) {
 	this->pp1=pp1;
 	this->pp2=std::make_shared<Point3D<M, E>>(p2);
 }
@@ -143,7 +143,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(std::shared_ptr<Point
  * @param pp2 Pointer to the second point
  * (modifications outside of class definition will be passed onto p2)
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p1, std::shared_ptr<Point3D<M, E>> pp2) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& p1, std::shared_ptr<Point3D<M, E>> pp2) {
 	this->pp1=std::make_shared<Point3D<M, E>>(p1);
 	this->pp2=pp2;
 }
@@ -152,7 +152,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(const Point3D<M, E>& 
  * Constructor 6
  * Copy constructor
  */
-template <typename M, typename E> Vector3D<M, E>::Vector3D(const Vector3D& v) {
+template<typename M, typename E> Vector3D<M, E>::Vector3D(const Vector3D& v) {
 	this->pp1=v.pp1;
 	this->pp2=v.pp2;
 }
@@ -166,7 +166,7 @@ template <typename M, typename E> Vector3D<M, E>::Vector3D(const Vector3D& v) {
 	pp2=new Point3D<float, char>(pv->getP2());
 }*/
 
-template <typename M, typename E> Vector3D<M, E>::~Vector3D() {
+template<typename M, typename E> Vector3D<M, E>::~Vector3D() {
 	;
 }
 
@@ -175,11 +175,11 @@ template <typename M, typename E> Vector3D<M, E>::~Vector3D() {
 /**
  * @return Returns the norm
  */
-template <typename M, typename E> SN<M, E> Vector3D<M, E>::getNorm() const {
+template<typename M, typename E> SN<M, E> Vector3D<M, E>::getNorm() const {
 	return getDistance(*this->pp2, Point3D<M, E>{{0,0},{0,0},{0,0}});
 }
 
-template <typename M, typename E> void Vector3D<M, E>::setNorm(const SN<M, E>& norm) {
+template<typename M, typename E> void Vector3D<M, E>::setNorm(const SN<M, E>& norm) {
 	if (*this->pp2!=Point3D<M, E>{{0,0},{0,0},{0,0}}){
 		SN<M, E> k=norm/getDistance(*this->pp2, Point3D<M, E>{{0,0},{0,0},{0,0}});
 		*this->pp2*=k;
@@ -230,50 +230,50 @@ void Vector3D::addEnd(const Point3D<float, char>& dp) {
 }*/
 
 
-template <typename M, typename E> void Vector3D<M, E>::operator=(const Vector3D<M, E>& v) {
+template<typename M, typename E> void Vector3D<M, E>::operator=(const Vector3D<M, E>& v) {
 	*this->pp2=*v.pp2;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator+=(const Vector3D<M, E>& v) {// The end of the vector must be diff than null
+template<typename M, typename E> void Vector3D<M, E>::operator+=(const Vector3D<M, E>& v) {// The end of the vector must be diff than null
 	*this->pp2+=*v.pp2;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator-=(const Vector3D<M, E>& v) {
+template<typename M, typename E> void Vector3D<M, E>::operator-=(const Vector3D<M, E>& v) {
 	*this->pp2-=*v.pp2;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator*=(const M& k) {
+template<typename M, typename E> void Vector3D<M, E>::operator*=(const M& k) {
 	*this->pp2*=k;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator/=(const M& k) {
+template<typename M, typename E> void Vector3D<M, E>::operator/=(const M& k) {
 	*this->pp2/=k;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator*=(const SN<M, E>& k) {
+template<typename M, typename E> void Vector3D<M, E>::operator*=(const SN<M, E>& k) {
 	*this->pp2*=k;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::operator/=(const SN<M, E>& k) {
+template<typename M, typename E> void Vector3D<M, E>::operator/=(const SN<M, E>& k) {
 	*this->pp2/=k;
 }
 
 
-template <typename M, typename E> bool Vector3D<M, E>::operator==(const Vector3D<M, E>& v) const {
+template<typename M, typename E> bool Vector3D<M, E>::operator==(const Vector3D<M, E>& v) const {
 	if (*this->pp1==*v.pp2){
 		return true;
 	}
 	return false;
 }
 
-template <typename M, typename E> bool Vector3D<M, E>::operator<=(const Vector3D<M, E>& v) const {
+template<typename M, typename E> bool Vector3D<M, E>::operator<=(const Vector3D<M, E>& v) const {
 	if (*this->pp1<=*v.pp2){
 		return true;
 	}
 	return false;
 }
 
-template <typename M, typename E> bool Vector3D<M, E>::operator>=(const Vector3D<M, E>& v) const {
+template<typename M, typename E> bool Vector3D<M, E>::operator>=(const Vector3D<M, E>& v) const {
 	if (*this->pp1>=*v.pp2){
 		return true;
 	}
@@ -282,7 +282,7 @@ template <typename M, typename E> bool Vector3D<M, E>::operator>=(const Vector3D
 
 
 
-template <typename M, typename E> std::string Vector3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> std::string Vector3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -307,14 +307,14 @@ template <typename M, typename E> std::string Vector3D<M, E>::to_string(const bo
 	return mes;
 }
 
-template <typename M, typename E> void Vector3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> void Vector3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
 
 
 
-template <typename M, typename E> Vector3D<M, E> operator+(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
+template<typename M, typename E> Vector3D<M, E> operator+(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v1.pp1, *v1.pp2+*v2.pp2));
 	return *pnv;
 }
@@ -324,36 +324,36 @@ template <typename M, typename E> Vector3D<M, E> operator+(const Vector3D<M, E>&
 	return pnv;
 }*/
 
-template <typename M, typename E> Vector3D<M, E> operator-(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
+template<typename M, typename E> Vector3D<M, E> operator-(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v1.pp1, *v1.pp2-*v2.pp2));
 	return *pnv;
 }
 
-template <typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const M& k) {
+template<typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const M& k) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v.pp1, *(v.pp2)*k));
 	return *pnv;
 }
 
-template <typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const SN<M, E>& k) {
+template<typename M, typename E> Vector3D<M, E> operator*(const Vector3D<M, E>& v, const SN<M, E>& k) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v.pp1, *(v.pp2)*k));
 	return *pnv;
 }
 
-template <typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const M& k) {
+template<typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const M& k) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v.pp1, *(v.pp2)/k));
 	return *pnv;
 }
 
-template <typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const SN<M, E>& k) {
+template<typename M, typename E> Vector3D<M, E> operator/(const Vector3D<M, E>& v, const SN<M, E>& k) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v.pp1, *(v.pp2)/k));
 	return *pnv;
 }
 
-template <typename M, typename E> SN<M, E> operator*(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
+template<typename M, typename E> SN<M, E> operator*(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
 	return v1.pp2->x*v2.pp2->x + v1.pp2->y*v2.pp2->y + v1.pp2->z*v2.pp2->z;
 }
 
-template <typename M, typename E> Vector3D<M, E> operator^(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
+template<typename M, typename E> Vector3D<M, E> operator^(const Vector3D<M, E>& v1, const Vector3D<M, E>& v2) {
 	std::shared_ptr<Vector3D<M, E>> pnv(new Vector3D<M, E>(v1.pp1, {
 			{v1.pp2->y*v2.pp2->z-v1.pp2->z*v2.pp2->y},
 			{v1.pp2->z*v2.pp2->x-v1.pp2->x*v2.pp2->z},

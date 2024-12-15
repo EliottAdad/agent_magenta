@@ -23,10 +23,7 @@ Collaboration diagram for Oct\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$
 \item 
 \mbox{\hyperlink{classOct_afcf5934c496b75396bde3760958d2b62}{Oct}} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
-\mbox{\hyperlink{classOct_aa3972f62a8ace59e9eed932e0ee365bf}{Oct}} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint)
-\item 
-\mbox{\Hypertarget{classOct_a98d06c975b95986cc39bec2f8f1b8441}\label{classOct_a98d06c975b95986cc39bec2f8f1b8441}} 
-{\bfseries Oct} (const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&oct)
+\mbox{\hyperlink{classOct_a98d06c975b95986cc39bec2f8f1b8441}{Oct}} (const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&oct)
 \item 
 \mbox{\Hypertarget{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}\label{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Point} () const
@@ -46,23 +43,17 @@ void {\bfseries setA} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a)
 \mbox{\Hypertarget{classOct_a84d69dbce8764bc3b375f56a1d88f78a}\label{classOct_a84d69dbce8764bc3b375f56a1d88f78a}} 
 unsigned int {\bfseries get\+NB\+\_\+\+OCTS} () const
 \item 
-\mbox{\Hypertarget{classOct_aa68b9e8cd74f94f1f19bba143e760389}\label{classOct_aa68b9e8cd74f94f1f19bba143e760389}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ $>$ {\bfseries get\+PTrees} ()
+\mbox{\Hypertarget{classOct_a5eef491e8f78755d9ad0a9432815a1d6}\label{classOct_a5eef491e8f78755d9ad0a9432815a1d6}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} () const
 \item 
-\mbox{\Hypertarget{classOct_a3e18d7129d20b90fa1c8fc9d3bd658e8}\label{classOct_a3e18d7129d20b90fa1c8fc9d3bd658e8}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PElements} () const
-\item 
-\mbox{\Hypertarget{classOct_a1b498ad474773de7210962f4ff799e37}\label{classOct_a1b498ad474773de7210962f4ff799e37}} 
-std\+::unordered\+\_\+set$<$ T $\ast$ $>$ {\bfseries get\+PNeighbors} (std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
+\mbox{\Hypertarget{classOct_afbd3d3dfb8a8f9b70b9c81290007c59a}\label{classOct_afbd3d3dfb8a8f9b70b9c81290007c59a}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PNeighbors} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
 \item 
 \mbox{\Hypertarget{classOct_afe73f0989993f1d3655de48353753a97}\label{classOct_afe73f0989993f1d3655de48353753a97}} 
 bool {\bfseries insert} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
 \item 
-\mbox{\Hypertarget{classOct_a1120479030e0449a67865e9012703296}\label{classOct_a1120479030e0449a67865e9012703296}} 
-void {\bfseries find} (const T \&t, std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ $\ast$ $>$ \&pocts)
-\item 
-\mbox{\Hypertarget{classOct_a230d9ec92c8f885bee9d0e99e0dc22e2}\label{classOct_a230d9ec92c8f885bee9d0e99e0dc22e2}} 
-T $\ast$ {\bfseries search} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $\ast$ppoint) const
+\mbox{\Hypertarget{classOct_a0d7065fac5e6e15e6f2d39b7a8d4b27a}\label{classOct_a0d7065fac5e6e15e6f2d39b7a8d4b27a}} 
+std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries search} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint) const
 \item 
 \mbox{\Hypertarget{classOct_ad06a923343a9c14938076aca970f921f}\label{classOct_ad06a923343a9c14938076aca970f921f}} 
 void {\bfseries recalculate} ()
@@ -148,12 +139,12 @@ Constructor1
 {\em point\{\+The} & center on which is centered the \mbox{\hyperlink{classOct}{Oct}}\textquotesingle{}s area\} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classOct_aa3972f62a8ace59e9eed932e0ee365bf}\label{classOct_aa3972f62a8ace59e9eed932e0ee365bf}} 
+\mbox{\Hypertarget{classOct_a98d06c975b95986cc39bec2f8f1b8441}\label{classOct_a98d06c975b95986cc39bec2f8f1b8441}} 
 \index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!Oct@{Oct}}
 \index{Oct@{Oct}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
 \doxysubsubsection{\texorpdfstring{Oct()}{Oct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
-\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\mbox{\hyperlink{classOct}{\+::\+Oct}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&}]{a,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$}]{ppoint }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\mbox{\hyperlink{classOct}{\+::\+Oct}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&}]{oct }\end{DoxyParamCaption})}
 
 Constructor1 
 \begin{DoxyParams}{Parameters}

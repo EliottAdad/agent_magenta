@@ -30,11 +30,11 @@ VectorField::~VectorField() {
 
 
 
-std::unordered_set<Moveable*> VectorField::getPMoveables() const {
+std::unordered_set<TimeSensitive*> VectorField::getPMoveables() const {
 	return m_pmoveables;
 }
 
-bool VectorField::addPMoveable(Moveable* pmoveable) {
+bool VectorField::addPMoveable(TimeSensitive* pmoveable) {
 	bool success=false;
 	if (pmoveable!=NULL){
 		success=(m_pmoveables.insert(pmoveable)).second;
@@ -88,7 +88,7 @@ std::string VectorField::to_string(const bool& spread, const bool& full_info, co
 
 	mes+="Moveables list:\n";
 	int i=0;
-	for (Moveable* pmoveable : m_pmoveables){
+	for (TimeSensitive* pmoveable : m_pmoveables){
 		i++;
 		mes+=std::to_string(i);
 		mes+=pmoveable->to_string(true, true);

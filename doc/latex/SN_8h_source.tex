@@ -543,111 +543,110 @@
 \DoxyCodeLine{550         mes+=ss.str();}
 \DoxyCodeLine{551         mes+=\textcolor{stringliteral}{"{}]:"{}};}
 \DoxyCodeLine{552         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} + to\_stringTabs(1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{553         \textcolor{comment}{//mes;}}
-\DoxyCodeLine{554     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{555         \textcolor{comment}{//mes+=std::to\_string(m).erase(4, std::to\_string(m).length()) + "{}e"{} + std::to\_string(e);}}
-\DoxyCodeLine{556     \}}
-\DoxyCodeLine{557     mes+=to\_stringTabs(indent);}
-\DoxyCodeLine{558     mes+=std::to\_string(m) + \textcolor{stringliteral}{"{}x10\string^"{}} + std::to\_string(e);}
-\DoxyCodeLine{559 }
-\DoxyCodeLine{560     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{561 \}}
-\DoxyCodeLine{562 }
-\DoxyCodeLine{563 \textcolor{comment}{/*template<> std::string SN<float, char>::to\_string(const bool\& spread, const bool\& full\_info, const unsigned char\& indent) const \{}}
-\DoxyCodeLine{564 \textcolor{comment}{    std::string mes=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
-\DoxyCodeLine{565 \textcolor{comment}{}}
-\DoxyCodeLine{566 \textcolor{comment}{    if (full\_info)\{}}
-\DoxyCodeLine{567 \textcolor{comment}{        mes+="{}LSN["{};}}
-\DoxyCodeLine{568 \textcolor{comment}{        std::stringstream ss;}}
-\DoxyCodeLine{569 \textcolor{comment}{        ss << this;}}
-\DoxyCodeLine{570 \textcolor{comment}{        mes+=ss.str();}}
-\DoxyCodeLine{571 \textcolor{comment}{        mes+="{}]:"{};}}
-\DoxyCodeLine{572 \textcolor{comment}{        mes+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
-\DoxyCodeLine{573 \textcolor{comment}{        mes+=std::to\_string(m) + "{}x10\string^"{} + std::to\_string(e);}}
-\DoxyCodeLine{574 \textcolor{comment}{    \}else\{}}
-\DoxyCodeLine{575 \textcolor{comment}{        mes+=std::to\_string(m).erase(4, std::to\_string(m).length()) + "{}e"{} + std::to\_string(e);}}
-\DoxyCodeLine{576 \textcolor{comment}{    \}}}
-\DoxyCodeLine{577 \textcolor{comment}{}}
-\DoxyCodeLine{578 \textcolor{comment}{    return mes;}}
-\DoxyCodeLine{579 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{580 }
-\DoxyCodeLine{581 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{582     printTabs(indent);}
-\DoxyCodeLine{583     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{584 \}}
-\DoxyCodeLine{585 }
-\DoxyCodeLine{586 \textcolor{comment}{/*template<> void SN<float, char>::print(const bool\& spread, const bool\& full\_info, const unsigned char\& indent) const \{}}
-\DoxyCodeLine{587 \textcolor{comment}{    printTabs(indent);}}
-\DoxyCodeLine{588 \textcolor{comment}{    std::cout << this-\/>to\_string(spread, full\_info, indent);}}
-\DoxyCodeLine{589 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{590 }
-\DoxyCodeLine{591 \textcolor{comment}{/*}}
-\DoxyCodeLine{592 \textcolor{comment}{ * Functions}}
-\DoxyCodeLine{593 \textcolor{comment}{ */}}
-\DoxyCodeLine{594 }
-\DoxyCodeLine{595 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} abs(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
-\DoxyCodeLine{596     \textcolor{comment}{//printf("{}In the abs in SN\(\backslash\)n"{});}}
-\DoxyCodeLine{597     M nm=std::abs(nb.m);}
-\DoxyCodeLine{598     E ne=nb.e;}
-\DoxyCodeLine{599     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);\textcolor{comment}{//To recal}}
-\DoxyCodeLine{600     \textcolor{comment}{//resp.recal();}}
-\DoxyCodeLine{601     \textcolor{keywordflow}{return} resp;}
-\DoxyCodeLine{602 \}}
-\DoxyCodeLine{603 }
-\DoxyCodeLine{604 \textcolor{comment}{/*template<> SN<float, char> abs(const SN<float, char>\& nb) \{}}
-\DoxyCodeLine{605 \textcolor{comment}{    SN<float, char> resp\{std::abs(nb.m), nb.e\};}}
-\DoxyCodeLine{606 \textcolor{comment}{    //resp.recal();}}
-\DoxyCodeLine{607 \textcolor{comment}{    return resp;}}
-\DoxyCodeLine{608 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{609 }
-\DoxyCodeLine{610 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} pow(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb, \textcolor{keyword}{const} E\& e) \{}
-\DoxyCodeLine{611     M nm=pow(nb.m, (M)e);}
-\DoxyCodeLine{612     E ne=nb.e*e;}
-\DoxyCodeLine{613     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);}
-\DoxyCodeLine{614     resp.recal();}
-\DoxyCodeLine{615     \textcolor{keywordflow}{return} resp;}
-\DoxyCodeLine{616 \}}
-\DoxyCodeLine{617 }
-\DoxyCodeLine{618 \textcolor{comment}{/*template<> SN<float, char> pow(const SN<float, char>\& nb, const char\& e) \{}}
-\DoxyCodeLine{619 \textcolor{comment}{    float nm(pow(nb.m, (float)e));}}
-\DoxyCodeLine{620 \textcolor{comment}{    char ne=nb.e*e;}}
-\DoxyCodeLine{621 \textcolor{comment}{    SN<float, char> resp\{  nm   ,  ne   \};}}
-\DoxyCodeLine{622 \textcolor{comment}{    //SN<float, char> resp\{pow(nb.m, (float)e), 0\};}}
-\DoxyCodeLine{623 \textcolor{comment}{    resp.recal();}}
-\DoxyCodeLine{624 \textcolor{comment}{    return resp;}}
-\DoxyCodeLine{625 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{626 }
-\DoxyCodeLine{627 \textcolor{comment}{/*// Calculate the n root of a number}}
-\DoxyCodeLine{628 \textcolor{comment}{template<typename M, typename E> LSN nrt(LSN\& nb, long int e) \{}}
-\DoxyCodeLine{629 \textcolor{comment}{    //LSN nb2=\{1, 0\};}}
-\DoxyCodeLine{630 \textcolor{comment}{    for (long int i(0) ; i<nb.e\%e ; i++)}}
-\DoxyCodeLine{631 \textcolor{comment}{    \{}}
-\DoxyCodeLine{632 \textcolor{comment}{        nb.m*=nb;}}
-\DoxyCodeLine{633 \textcolor{comment}{    \}}}
-\DoxyCodeLine{634 \textcolor{comment}{    recal(nb2);}}
-\DoxyCodeLine{635 \textcolor{comment}{    return *(new LSN\{pow(nb.m, e), nb.e*e\});}}
-\DoxyCodeLine{636 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{637 }
-\DoxyCodeLine{638 \textcolor{comment}{/*}}
-\DoxyCodeLine{639 \textcolor{comment}{ * Calculate the square root of a number.}}
-\DoxyCodeLine{640 \textcolor{comment}{ */}}
-\DoxyCodeLine{641 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} sqrt(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
-\DoxyCodeLine{642     M nm=pow(nb.m, 0.5);}
-\DoxyCodeLine{643     E ne=nb.e/2;}
-\DoxyCodeLine{644     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);\textcolor{comment}{//Doesn't work (exponent cast to int)}}
-\DoxyCodeLine{645     resp.recal();}
-\DoxyCodeLine{646     \textcolor{keywordflow}{return} resp;}
-\DoxyCodeLine{647 \}}
-\DoxyCodeLine{648 }
-\DoxyCodeLine{649 \textcolor{comment}{/*template<> SN<float, char> sqrt(const SN<float, char>\& nb) \{}}
-\DoxyCodeLine{650 \textcolor{comment}{    SN<float, char> resp=\{(float)pow(nb.m, 0.5), (char)(nb.e/2)\};//Doesn't work (exponent cast to int)}}
-\DoxyCodeLine{651 \textcolor{comment}{    resp.recal();}}
-\DoxyCodeLine{652 \textcolor{comment}{    return resp;}}
-\DoxyCodeLine{653 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{553         mes+=to\_stringTabs(indent);}
+\DoxyCodeLine{554         mes+=std::to\_string(m) + \textcolor{stringliteral}{"{}x10\string^"{}} + std::to\_string(e);}
+\DoxyCodeLine{555     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{556         mes+=std::to\_string(m).erase(4, std::to\_string(m).length()) + \textcolor{stringliteral}{"{}e"{}} + std::to\_string(e);}
+\DoxyCodeLine{557     \}}
+\DoxyCodeLine{558 }
+\DoxyCodeLine{559     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{560 \}}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{562 \textcolor{comment}{/*template<> std::string SN<float, char>::to\_string(const bool\& spread, const bool\& full\_info, const unsigned char\& indent) const \{}}
+\DoxyCodeLine{563 \textcolor{comment}{    std::string mes=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
+\DoxyCodeLine{564 \textcolor{comment}{}}
+\DoxyCodeLine{565 \textcolor{comment}{    if (full\_info)\{}}
+\DoxyCodeLine{566 \textcolor{comment}{        mes+="{}LSN["{};}}
+\DoxyCodeLine{567 \textcolor{comment}{        std::stringstream ss;}}
+\DoxyCodeLine{568 \textcolor{comment}{        ss << this;}}
+\DoxyCodeLine{569 \textcolor{comment}{        mes+=ss.str();}}
+\DoxyCodeLine{570 \textcolor{comment}{        mes+="{}]:"{};}}
+\DoxyCodeLine{571 \textcolor{comment}{        mes+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
+\DoxyCodeLine{572 \textcolor{comment}{        mes+=std::to\_string(m) + "{}x10\string^"{} + std::to\_string(e);}}
+\DoxyCodeLine{573 \textcolor{comment}{    \}else\{}}
+\DoxyCodeLine{574 \textcolor{comment}{        mes+=std::to\_string(m).erase(4, std::to\_string(m).length()) + "{}e"{} + std::to\_string(e);}}
+\DoxyCodeLine{575 \textcolor{comment}{    \}}}
+\DoxyCodeLine{576 \textcolor{comment}{}}
+\DoxyCodeLine{577 \textcolor{comment}{    return mes;}}
+\DoxyCodeLine{578 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{579 }
+\DoxyCodeLine{580 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structSN}{SN<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{581     printTabs(indent);}
+\DoxyCodeLine{582     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{583 \}}
+\DoxyCodeLine{584 }
+\DoxyCodeLine{585 \textcolor{comment}{/*template<> void SN<float, char>::print(const bool\& spread, const bool\& full\_info, const unsigned char\& indent) const \{}}
+\DoxyCodeLine{586 \textcolor{comment}{    printTabs(indent);}}
+\DoxyCodeLine{587 \textcolor{comment}{    std::cout << this-\/>to\_string(spread, full\_info, indent);}}
+\DoxyCodeLine{588 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{589 }
+\DoxyCodeLine{590 \textcolor{comment}{/*}}
+\DoxyCodeLine{591 \textcolor{comment}{ * Functions}}
+\DoxyCodeLine{592 \textcolor{comment}{ */}}
+\DoxyCodeLine{593 }
+\DoxyCodeLine{594 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} abs(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{595     \textcolor{comment}{//printf("{}In the abs in SN\(\backslash\)n"{});}}
+\DoxyCodeLine{596     M nm=std::abs(nb.m);}
+\DoxyCodeLine{597     E ne=nb.e;}
+\DoxyCodeLine{598     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);\textcolor{comment}{//To recal}}
+\DoxyCodeLine{599     \textcolor{comment}{//resp.recal();}}
+\DoxyCodeLine{600     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{601 \}}
+\DoxyCodeLine{602 }
+\DoxyCodeLine{603 \textcolor{comment}{/*template<> SN<float, char> abs(const SN<float, char>\& nb) \{}}
+\DoxyCodeLine{604 \textcolor{comment}{    SN<float, char> resp\{std::abs(nb.m), nb.e\};}}
+\DoxyCodeLine{605 \textcolor{comment}{    //resp.recal();}}
+\DoxyCodeLine{606 \textcolor{comment}{    return resp;}}
+\DoxyCodeLine{607 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{608 }
+\DoxyCodeLine{609 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} pow(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb, \textcolor{keyword}{const} E\& e) \{}
+\DoxyCodeLine{610     M nm=pow(nb.m, (M)e);}
+\DoxyCodeLine{611     E ne=nb.e*e;}
+\DoxyCodeLine{612     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);}
+\DoxyCodeLine{613     resp.recal();}
+\DoxyCodeLine{614     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{615 \}}
+\DoxyCodeLine{616 }
+\DoxyCodeLine{617 \textcolor{comment}{/*template<> SN<float, char> pow(const SN<float, char>\& nb, const char\& e) \{}}
+\DoxyCodeLine{618 \textcolor{comment}{    float nm(pow(nb.m, (float)e));}}
+\DoxyCodeLine{619 \textcolor{comment}{    char ne=nb.e*e;}}
+\DoxyCodeLine{620 \textcolor{comment}{    SN<float, char> resp\{  nm   ,  ne   \};}}
+\DoxyCodeLine{621 \textcolor{comment}{    //SN<float, char> resp\{pow(nb.m, (float)e), 0\};}}
+\DoxyCodeLine{622 \textcolor{comment}{    resp.recal();}}
+\DoxyCodeLine{623 \textcolor{comment}{    return resp;}}
+\DoxyCodeLine{624 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{625 }
+\DoxyCodeLine{626 \textcolor{comment}{/*// Calculate the n root of a number}}
+\DoxyCodeLine{627 \textcolor{comment}{template<typename M, typename E> LSN nrt(LSN\& nb, long int e) \{}}
+\DoxyCodeLine{628 \textcolor{comment}{    //LSN nb2=\{1, 0\};}}
+\DoxyCodeLine{629 \textcolor{comment}{    for (long int i(0) ; i<nb.e\%e ; i++)}}
+\DoxyCodeLine{630 \textcolor{comment}{    \{}}
+\DoxyCodeLine{631 \textcolor{comment}{        nb.m*=nb;}}
+\DoxyCodeLine{632 \textcolor{comment}{    \}}}
+\DoxyCodeLine{633 \textcolor{comment}{    recal(nb2);}}
+\DoxyCodeLine{634 \textcolor{comment}{    return *(new LSN\{pow(nb.m, e), nb.e*e\});}}
+\DoxyCodeLine{635 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{636 }
+\DoxyCodeLine{637 \textcolor{comment}{/*}}
+\DoxyCodeLine{638 \textcolor{comment}{ * Calculate the square root of a number.}}
+\DoxyCodeLine{639 \textcolor{comment}{ */}}
+\DoxyCodeLine{640 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} sqrt(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb) \{}
+\DoxyCodeLine{641     M nm=pow(nb.m, 0.5);}
+\DoxyCodeLine{642     E ne=nb.e/2;}
+\DoxyCodeLine{643     \mbox{\hyperlink{structSN}{SN<M, E>}} resp(nm, ne);\textcolor{comment}{//Doesn't work (exponent cast to int)}}
+\DoxyCodeLine{644     resp.recal();}
+\DoxyCodeLine{645     \textcolor{keywordflow}{return} resp;}
+\DoxyCodeLine{646 \}}
+\DoxyCodeLine{647 }
+\DoxyCodeLine{648 \textcolor{comment}{/*template<> SN<float, char> sqrt(const SN<float, char>\& nb) \{}}
+\DoxyCodeLine{649 \textcolor{comment}{    SN<float, char> resp=\{(float)pow(nb.m, 0.5), (char)(nb.e/2)\};//Doesn't work (exponent cast to int)}}
+\DoxyCodeLine{650 \textcolor{comment}{    resp.recal();}}
+\DoxyCodeLine{651 \textcolor{comment}{    return resp;}}
+\DoxyCodeLine{652 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{653 }
 \DoxyCodeLine{654 }
 \DoxyCodeLine{655 }
 \DoxyCodeLine{656 }
-\DoxyCodeLine{657 }
-\DoxyCodeLine{658 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SN\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{657 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SN\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

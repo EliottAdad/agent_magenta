@@ -16,9 +16,7 @@
 #include <iostream>
 
 //#include "Particle3DSet.h"
-#include "Moveable.h"
 #include "TimeSensitive.h"
-#include "Moveable.h"
 #include "../utilities/Printable.h"
 
 
@@ -34,7 +32,7 @@ protected:
 	// @TODO change mode to integer where it indicates the degree of differenciation (acc, jerks, ...) no speed or displacement
 	unsigned char m_mode;										// Indication about whether it should be applied to the particles as acceleration('a'), jerk('j') or displacement('d').
 	float m_k;													// Coeff of proportionnality to apply.
-	std::unordered_set<Moveable*> m_pmoveables;					// Pointers to the Moveables.
+	std::unordered_set<TimeSensitive*> m_pmoveables;					// Pointers to the TimeSensitives.
 
 public:
 	VectorField();
@@ -42,8 +40,8 @@ public:
 	virtual ~VectorField();
 	VectorField(const VectorField &other);
 
-	std::unordered_set<Moveable*> getPMoveables() const;
-	bool addPMoveable(Moveable* pmoveable);
+	std::unordered_set<TimeSensitive*> getPMoveables() const;
+	bool addPMoveable(TimeSensitive* pmoveable);
 	unsigned char getMode() const;
 	void setMode(const unsigned char& mode);
 

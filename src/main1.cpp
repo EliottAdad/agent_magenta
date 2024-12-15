@@ -61,7 +61,7 @@
 /*
  * Main core (LSN, Point3D, WeightedPoint3D)
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 	//
 	// Tests LSN
 	//
@@ -116,6 +116,10 @@
 	printf("\np4:\n");
 	p4.print(true, 0, false);
 
+	SN<float, char> d=getDistance(p2, p3);
+	printf("\nTest distance\n");
+	d.print();
+
 //	Quad<Point3D> q2(LSN{50, 0});
 //	q2.insert(new Point3D{{0,0},{0,0},{0,0}});
 //	q2.print(true, 0, true);
@@ -138,7 +142,7 @@
 	wp4.print(true, 0, false);
 
 	printf("\n\nBye bye\n");
-}*/
+}
 
 
 

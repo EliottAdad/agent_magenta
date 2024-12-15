@@ -18,7 +18,7 @@
 
 /*
  * ####################
- *  Particle3D<M, E> pas pour l'instant:)
+ *  Particle3D<M, E> :)
  * ####################
  * A weighted point with a speed.
  */
@@ -32,7 +32,7 @@ public:
 
 	Particle3D();
 	Particle3D(const Point3D<M, E>& p);
-	Particle3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z);
+	Particle3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z, const SN<M, E>& w={1, 0});
 	Particle3D(const WeightedPoint3D<M, E>& wp);
 	//Particle3D(const Point3D<float, char>& p, const Vector3D& speed);
 	//Particle3D(const WeightedPoint3D<float, char>& wp, const Vector3D& speed);
@@ -50,13 +50,15 @@ public:
 	void addSpeed(const Vector3D& ds);
 	void addSpeed(const Point3D<float, char>& p);*/
 
-	virtual void addAsForce(const Vector3D<M, E>& v, const float& dt);
-	virtual void addAsAcc(const Vector3D<M, E>& v, const float& dt);
-	virtual void addAsSpeed(const Vector3D<M, E>& v);
-	virtual void addAsPos(const Vector3D<M, E>& v);
+//	virtual void addAsForce(const Vector3D<M, E>& v, const float& dt);
+//	virtual void addAsAcc(const Vector3D<M, E>& v, const float& dt);
+//	virtual void addAsSpeed(const Vector3D<M, E>& v);
+//	virtual void addAsPos(const Vector3D<M, E>& v);
 
 	virtual void setT(const float& dt);
 	virtual void apply();
+
+	virtual void operator+=(const Vector3D<M, E>& v);// :)
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
@@ -100,18 +102,18 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const Point3D<M, E
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=SN<float, char>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<M, E>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
 
 	m_dt=0;
 }
 
-template<typename M, typename E> Particle3D<M, E>::Particle3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z) {
+template<typename M, typename E> Particle3D<M, E>::Particle3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z, const SN<M, E>& w) {
 	this->x=x;
 	this->y=y;
 	this->z=z;
-	this->w=SN<float, char>{1,0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=w;// Init the Weighted Point to {x, y, y, w}
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
 
@@ -208,7 +210,7 @@ void Particle3D::addSpeed(const Point3D<float, char>& p) {
 	*(m_ps->pp2)+=p;
 }*/
 
-template<typename M, typename E> void Particle3D<M, E>::addAsForce(const Vector3D<M, E>& v, const float& dt) {
+/*template<typename M, typename E> void Particle3D<M, E>::addAsForce(const Vector3D<M, E>& v, const float& dt) {
 	SN<M, E> a=SN<M, E>{(M)dt, 0}/this->w;
 	if (ps!=NULL){
 		*ps+=v*a;
@@ -237,7 +239,7 @@ template<typename M, typename E> void Particle3D<M, E>::addAsPos(const Vector3D<
 	this->x+=v.pp2->x;
 	this->y+=v.pp2->y;
 	this->z+=v.pp2->z;
-}
+}*/
 
 
 
@@ -251,14 +253,22 @@ template<typename M, typename E> void Particle3D<M, E>::apply(){
 	this->y+=(ps->pp2->y)*m_dt;
 	this->z+=(ps->pp2->z)*m_dt;
 
-	printf("Particle3D\n");
-	this->x.print(true, true, 2);
+	//printf("Particle3D\n");
+	//this->x.print(true, true, 2);
 
 	//this->x+=(m_ps->getP2().x)*m_dt;//THE PROBLEM
 	//this->y+=(m_ps->getP2().y)*m_dt;
 	//this->z+=(m_ps->getP2().z)*m_dt;
 }
 
+
+template<typename M, typename E> void Particle3D<M, E>::operator+=(const Vector3D<M, E>& v){
+	if (this->ps!=NULL){
+		*this->ps+=v;
+	}else{
+		*this->ps=v;
+	}
+}
 
 
 
@@ -278,7 +288,9 @@ template<typename M, typename E> std::string Particle3D<M, E>::to_string(const b
 	mes+=to_stringTabs(indent);
 	mes+="(" + this->getPosition().to_string();
 	mes+=" | ";
-	mes+=ps->to_string(false, false);
+	mes+="w:" + this->w.to_string();
+	mes+=" | ";
+	mes+=(ps==NULL)?"NULL":ps->to_string(false, false);
 	mes+=")";
 	return mes;
 }

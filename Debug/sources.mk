@@ -31,7 +31,6 @@ OBJS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 src/core \
-src/display \
 src/geometry \
 src \
 src/utilities \
