@@ -76,15 +76,15 @@ template<typename M, typename E> Displayable<M, E>::Displayable(const Displayabl
 
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getX() const {
-	return {0.,0};
+	return {0,0};
 }
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getY() const {
-	return {0.,0};
+	return {0,0};
 }
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getZ() const {
-	return {0.,0};
+	return {0,0};
 }
 
 /*template<typename M, typename E> SDL_Color Displayable<M, E>::getColor() const {//Yes because it cannot be null

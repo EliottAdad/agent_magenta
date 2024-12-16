@@ -322,6 +322,7 @@ template <typename T, typename M, typename E> unsigned int Oct<T, M, E>::getNB_O
 
 template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Oct<T, M, E>::getPElements() const {
 	static std::unordered_set<std::shared_ptr<T>> elmts;
+	elmts.empty();
 
 	if (m_pT!=NULL){
 		elmts.insert(m_pT);
@@ -357,42 +358,47 @@ template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr
 
 template <typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Oct<T, M, E>::getPNeighbors(const std::shared_ptr<T> pelement) const {//////LOOOOK HERE !
 	static std::unordered_set<std::shared_ptr<T>> pneighbors;
-	printf("\nTest: %b\n", SN<M, E>{1,0}<=SN<M, E>{m_ALPHA, 0}*getDistance(*m_pbarycenter/*m_ppoint*/, *pelement));
-	if (SN<M, E>{1,0}<=SN<M, E>{m_ALPHA, 0}*getDistance(*m_pbarycenter/*m_ppoint*/, *pelement)){//SN<M, E>{1., 0}/getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}
-		//printf("AC\n");
-		if (m_pT!=NULL){// If the cube is not empty
-			if (m_pT!=pelement){
-				pneighbors.insert(m_pT);
+	pneighbors.empty();
+
+	if (pelement!=NULL){
+		//printf("\nTest: %b\n", SN<M, E>{1,0}<=SN<M, E>{(M)m_ALPHA, 0}*getDistance(*m_pbarycenter, *pelement));
+		if (SN<M, E>{1,0}<=SN<M, E>{(M)m_ALPHA, 0}*getDistance(*m_pbarycenter, *pelement)){//SN<M, E>{1., 0}/getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}
+			if (m_pT!=NULL){// If the cube is not empty
+				if (m_pT!=pelement){
+					pneighbors.insert(m_pT);
+				}
+			}else{			// Else if the place is empty
+				std::shared_ptr<T> new_pT(new T(m_pbarycenter->getX(), m_pbarycenter->getY(), m_pbarycenter->getZ(), m_tot_weight));
+				//printf("\n###########\n");
+				//new_pT->print();
+				//printf("\n###########\n");
+				pneighbors.insert(new_pT);
 			}
-		}else{			// Else if the place is empty
-			std::shared_ptr<T> new_pT(new T(/*m_ppoint*/m_pbarycenter->getX(), m_pbarycenter/*m_ppoint*/->getY(), m_pbarycenter/*m_ppoint*/->getZ(), m_tot_weight));
-			pneighbors.insert(new_pT);
-		}
-	}else{
-		//printf("AD\n");
-		if (m_pTLFTree!=NULL){
-			m_pTLFTree->getPNeighbors(pelement);
-		}
-		if (m_pTRFTree!=NULL){
-			m_pTRFTree->getPNeighbors(pelement);
-		}
-		if (m_pBLFTree!=NULL){
-			m_pBLFTree->getPNeighbors(pelement);
-		}
-		if (m_pBRFTree!=NULL){
-			m_pBRFTree->getPNeighbors(pelement);
-		}
-		if (m_pTLBTree!=NULL){
-			m_pTLBTree->getPNeighbors(pelement);
-		}
-		if (m_pTRBTree!=NULL){
-			m_pTRBTree->getPNeighbors(pelement);
-		}
-		if (m_pBLBTree!=NULL){
-			m_pBLBTree->getPNeighbors(pelement);
-		}
-		if (m_pBRBTree!=NULL){
-			m_pBRBTree->getPNeighbors(pelement);
+		}else{
+			if (m_pTLFTree!=NULL){
+				m_pTLFTree->getPNeighbors(pelement);
+			}
+			if (m_pTRFTree!=NULL){
+				m_pTRFTree->getPNeighbors(pelement);
+			}
+			if (m_pBLFTree!=NULL){
+				m_pBLFTree->getPNeighbors(pelement);
+			}
+			if (m_pBRFTree!=NULL){
+				m_pBRFTree->getPNeighbors(pelement);
+			}
+			if (m_pTLBTree!=NULL){
+				m_pTLBTree->getPNeighbors(pelement);
+			}
+			if (m_pTRBTree!=NULL){
+				m_pTRBTree->getPNeighbors(pelement);
+			}
+			if (m_pBLBTree!=NULL){
+				m_pBLBTree->getPNeighbors(pelement);
+			}
+			if (m_pBRBTree!=NULL){
+				m_pBRBTree->getPNeighbors(pelement);
+			}
 		}
 	}
 
@@ -406,19 +412,11 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 
 		if (abs(dp.x)<=m_a/(M)2. && abs(dp.y)<=m_a/(M)2. && abs(dp.z)<=m_a/(M)2.){// If in the cube centered on the point.
 			if (m_pT==NULL){		// If empty
-				//printf("Empty\n");
 				if (m_pTLFTree==NULL and m_pTRFTree==NULL and m_pBLFTree==NULL and m_pBRFTree==NULL
 						and m_pTRBTree==NULL and m_pTLBTree==NULL and m_pBLBTree==NULL and m_pBRBTree==NULL){	// If the cube has no Octs under (external branch)
 					m_pT=pT;//We add in
 					m_tot_weight=pT->getW();//Set the tot_weight
 					*m_pbarycenter=p;//Set the barycenter
-
-					//printf("A\n");
-					//printf("\n#############\n");
-					//m_pT->print(true, true, 0);
-					//m_tot_weight.print(true, true, 0);
-					//m_pbarycenter->print(true, true, 0);
-					//printf("\n#############\n");
 				}else{																				// Else it means it is an internal branch
 					//printf("B\n");
 					m_tot_weight+=pT->getW();//Add to tot_weight

@@ -220,6 +220,7 @@ template<typename T, typename M, typename E> unsigned int Quad<T, M, E>::getNB_Q
 
 template<typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> Quad<T, M, E>::getPElements() const {
 	static std::unordered_set<std::shared_ptr<T>> elmts;
+	elmts.empty();
 
 	if (m_pT!=NULL){
 		elmts.insert(m_pT);

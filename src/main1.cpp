@@ -61,7 +61,7 @@
 /*
  * Main core (LSN, Point3D, WeightedPoint3D)
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 	//
 	// Tests LSN
 	//
@@ -142,7 +142,7 @@ int main(int argc, char* argv[]){
 	wp4.print(true, 0, false);
 
 	printf("\n\nBye bye\n");
-}
+}*/
 
 
 

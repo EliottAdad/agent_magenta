@@ -102,7 +102,7 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const Point3D<M, E
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
-	this->w=SN<M, E>{1., 0};// Init the Weighted Point to {x, y, y, w=1}
+	this->w=SN<M, E>{1,0};// Init the Weighted Point to {x, y, y, w=1}
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
 

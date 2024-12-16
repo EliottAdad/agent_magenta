@@ -48,7 +48,7 @@
 /*
  * Main SDL
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
     printf("Hello\n");
     Particle3D<float, char> p1;
@@ -150,7 +150,7 @@
     printf("\nBye(main0)\n");
 
     return EXIT_SUCCESS;
-}*/
+}
 
 
 #endif /* MAIN0_CPP_ */
