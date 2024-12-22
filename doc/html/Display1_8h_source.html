@@ -109,7 +109,7 @@ $(function() {
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> m_fclear;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; ppoint;          <span class="comment">// Pointeur to the center of display.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; ppoint;              <span class="comment">// Pointeur to the center of display.</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::shared_ptr&lt;SDL_Color&gt; pbkgd_color;             <span class="comment">// Pointeur to the background color.</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    std::shared_ptr&lt;SDL_Color&gt; pdraw_color;             <span class="comment">// Pointeur to the render color.</span></div>
@@ -145,7 +145,7 @@ $(function() {
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; <a class="code hl_class" href="classDisplay1.html">Display1&lt;M, E&gt;::Display1</a>() {</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    ppoint=std::make_shared&lt;Point3D&lt;M, E&gt;&gt;();</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    m_display=1;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    m_scale=10;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    m_scale=5;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    pbkgd_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{0, 0, 0, 255});</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    pdraw_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{255, 255, 255, 255});</div>
@@ -161,7 +161,7 @@ $(function() {
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; <a class="code hl_class" href="classDisplay1.html">Display1&lt;M, E&gt;::Display1</a>(std::shared_ptr&lt;<a class="code hl_struct" href="structPoint3D.html">Point3D&lt;M, E&gt;</a>&gt; ppoint) {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    this-&gt;ppoint=ppoint;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    m_display=1;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    m_scale=10;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    m_scale=5;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    pbkgd_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{0, 0, 0, 255});</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    pdraw_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{255, 255, 255, 255});</div>
@@ -177,7 +177,7 @@ $(function() {
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; <a class="code hl_class" href="classDisplay1.html">Display1&lt;M, E&gt;::Display1</a>(std::shared_ptr&lt;SDL_Window&gt; pwindow, std::shared_ptr&lt;SDL_Renderer&gt; prenderer) {</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    ppoint=std::make_shared&lt;Point3D&lt;M, E&gt;&gt;();</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    m_display=1;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    m_scale=10;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    m_scale=5;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    pbkgd_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{0, 0, 0, 255});</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    pdraw_color=std::make_shared&lt;SDL_Color&gt;(SDL_Color{255, 255, 255, 255});</div>

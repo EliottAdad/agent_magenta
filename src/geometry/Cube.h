@@ -11,11 +11,11 @@
 
 #include "Polyhedron.h"
 
-class Cube : public Polyhedron {
+template<typename M, typename E> class Cube : public Polyhedron<M, E> {
 public:
 	Cube();
 	virtual ~Cube();
-	Cube(const Cube &other);
+	Cube(const Cube<M, E> &other);
 };
 
 #endif /* CUBE_H_ */

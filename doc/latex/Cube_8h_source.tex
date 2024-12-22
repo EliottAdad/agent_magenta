@@ -15,11 +15,11 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Polyhedron.h"{}}}
 \DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classCube}{Cube}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPolyhedron}{Polyhedron}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classCube}{Cube}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPolyhedron}{Polyhedron}}<M, E> \{}
 \DoxyCodeLine{15 \textcolor{keyword}{public}:}
 \DoxyCodeLine{16     \mbox{\hyperlink{classCube}{Cube}}();}
 \DoxyCodeLine{17     \textcolor{keyword}{virtual} \mbox{\hyperlink{classCube}{\string~Cube}}();}
-\DoxyCodeLine{18     \mbox{\hyperlink{classCube}{Cube}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCube}{Cube}} \&other);}
+\DoxyCodeLine{18     \mbox{\hyperlink{classCube}{Cube}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCube}{Cube<M, E>}} \&other);}
 \DoxyCodeLine{19 \};}
 \DoxyCodeLine{20 }
 \DoxyCodeLine{21 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CUBE\_H\_ */}\textcolor{preprocessor}{}}

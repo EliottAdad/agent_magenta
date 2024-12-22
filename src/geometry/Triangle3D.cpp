@@ -7,96 +7,73 @@
 
 #include "Triangle3D.h"
 
-Triangle3D::Triangle3D() {
-	pp1=new Point3D<float, char>({{1,0},{0,0},{0,0}});
-	pp2=new Point3D<float, char>({{0,0},{1,0},{0,0}});
-	pp3=new Point3D<float, char>({{0,0},{0,0},{1,0}});
-	m_delP1=true;
-	m_delP2=true;
-	m_delP3=true;
+template<typename M, typename E> Triangle3D<M, E>::Triangle3D() {
+	pp1=new Point3D<M, E>({{1,0},{0,0},{0,0}});
+	pp2=new Point3D<M, E>({{0,0},{1,0},{0,0}});
+	pp3=new Point3D<M, E>({{0,0},{0,0},{1,0}});
 }
 
-Triangle3D::Triangle3D(const Point3D<float, char>& p1, const Point3D<float, char>& p2, const Point3D<float, char>& p3) {
-	pp1=new Point3D<float, char>(p1);
-	pp2=new Point3D<float, char>(p2);
-	pp3=new Point3D<float, char>(p3);
-	m_delP1=true;
-	m_delP2=true;
-	m_delP3=true;
+template<typename M, typename E> Triangle3D<M, E>::Triangle3D(const Point3D<M, E>& p1, const Point3D<M, E>& p2, const Point3D<M, E>& p3) {
+	pp1=new Point3D<M, E>(p1);
+	pp2=new Point3D<M, E>(p2);
+	pp3=new Point3D<M, E>(p3);
 }
 
-Triangle3D::Triangle3D(Point3D<float, char>* pp1, Point3D<float, char>* pp2, Point3D<float, char>* pp3) {
+template<typename M, typename E> Triangle3D<M, E>::Triangle3D(Point3D<M, E>* pp1, Point3D<M, E>* pp2, Point3D<M, E>* pp3) {
 	this->pp1=pp1;
 	this->pp2=pp2;
 	this->pp3=pp3;
-	m_delP1=false;
-	m_delP2=false;
-	m_delP3=false;
 }
 
-Triangle3D::~Triangle3D() {
-	if (m_delP1){
-		delete pp1;
-	}else{
-		pp1=NULL;
-	}
-	if (m_delP2){
-		delete pp2;
-	}else{
-		pp2=NULL;
-	}
-	if (m_delP3){
-		delete pp3;
-	}else{
-		pp3=NULL;
-	}
+template<typename M, typename E> Triangle3D<M, E>::~Triangle3D() {
+	;
 }
 
-/*Triangle3D::Triangle3D(const Triangle3D &other) {
+/*template<typename M, typename E> Triangle3D::Triangle3D(const Triangle3D &other) {
 	// TODO Auto-generated constructor stub
 
 }*/
 
 
 
-Point3D<float, char> Triangle3D::getP1() const {
+/*template<typename M, typename E> Point3D<M, E> Triangle3D<M, E>::getP1() const {
 	return *pp1;
 }
 
-Point3D<float, char>* Triangle3D::getPP1() {
+template<typename M, typename E> Point3D<M, E>* Triangle3D<M, E>::getPP1() {
 	return pp1;
 }
 
-void Triangle3D::setP1(const Point3D<float, char>& p1) {
+template<typename M, typename E> void Triangle3D<M, E>::setP1(const Point3D<M, E>& p1) {
 	*pp1=p1;
 }
 
-Point3D<float, char> Triangle3D::getP2() const {
+template<typename M, typename E> Point3D<M, E> Triangle3D<M, E>::getP2() const {
 	return *pp2;
 }
 
-Point3D<float, char>* Triangle3D::getPP2() {
+template<typename M, typename E> Point3D<M, E>* Triangle3D<M, E>::getPP2() {
 	return pp2;
 }
 
-void Triangle3D::setP2(const Point3D<float, char>& p2) {
+template<typename M, typename E> void Triangle3D<M, E>::setP2(const Point3D<M, E>& p2) {
 	*pp2=p2;
 }
 
-Point3D<float, char> Triangle3D::getP3() const {
+template<typename M, typename E> Point3D<M, E> Triangle3D<M, E>::getP3() const {
 	return *pp3;
 }
 
-Point3D<float, char>* Triangle3D::getPP3() {
+template<typename M, typename E> Point3D<M, E>* Triangle3D<M, E>::getPP3() {
 	return pp3;
 }
 
-void Triangle3D::setP3(const Point3D<float, char>& p3) {
+template<typename M, typename E> void Triangle3D<M, E>::setP3(const Point3D<M, E>& p3) {
 	*pp3=p3;
-}
+}*/
 
 
-std::string Triangle3D::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> std::string Triangle3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -107,16 +84,11 @@ std::string Triangle3D::to_string(const bool& spread, const bool& full_info, con
 		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
-	/*for (Particle3D* ppart : m_poctree->getPElements()){
-		mes+="	- ( ";
-		mes+=ppart->to_string(false, false);
-		mes+=" )";
-		mes+="\n";
-	}*/
+
 	return mes;
 }
 
-void Triangle3D::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> void Triangle3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

@@ -7,22 +7,22 @@
 
 #include "Polyhedron.h"
 
-Polyhedron::Polyhedron() {
+template<typename M, typename E> Polyhedron<M, E>::Polyhedron() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Polyhedron::~Polyhedron() {
+template<typename M, typename E> Polyhedron<M, E>::~Polyhedron() {
 	// TODO Auto-generated destructor stub
 }
 
-Polyhedron::Polyhedron(const Polyhedron &other) {
+template<typename M, typename E> Polyhedron<M, E>::Polyhedron(const Polyhedron<M, E> &other) {
 	// TODO Auto-generated constructor stub
 
 }
 
 
-std::string Polyhedron::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> std::string Polyhedron<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -38,7 +38,7 @@ std::string Polyhedron::to_string(const bool& spread, const bool& full_info, con
 	return mes;
 }
 
-void Polyhedron::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename M, typename E> void Polyhedron<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

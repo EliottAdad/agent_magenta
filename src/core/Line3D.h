@@ -24,10 +24,6 @@
  * to compute the geometry of the objects.
  */
 template<typename M, typename E> class Line3D : public Printable {
-protected:
-	//bool m_delp1;
-	//bool m_delp2;
-
 public:
 	std::shared_ptr<Point3D<M, E>> pp1;
 	std::shared_ptr<Point3D<M, E>> pp2;

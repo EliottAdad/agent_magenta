@@ -36,7 +36,7 @@ template<typename M, typename E> struct SN : public Printable {
 	SN();
 	SN(M m, E e);
 	SN(const SN<M, E>& nb);
-	SN(const SN<M, E>* pnb);
+	//SN(const SN<M, E>* pnb);
 
 	void recal();												//:)
 
@@ -126,11 +126,11 @@ template<typename M, typename E> SN<M, E>::SN(const SN<M, E>& nb) {
 	this->recal();
 }
 
-template<typename M, typename E> SN<M, E>::SN(const SN<M, E>* pnb) {
+/*template<typename M, typename E> SN<M, E>::SN(const SN<M, E>* pnb) {
 	this->m=pnb->m;
 	this->e=pnb->e;
 	this->recal();
-}
+}*/
 
 /*
  * Recalculate the SN under scientific notation.
@@ -592,12 +592,7 @@ template<typename M, typename E> void SN<M, E>::print(const bool& spread, const 
  */
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb) {
-	//printf("In the abs in SN\n");
-	M nm=std::abs(nb.m);
-	E ne=nb.e;
-	SN<M, E> resp(nm, ne);//To recal
-	//resp.recal();
-	return resp;
+	return SN<M, E>{(M)std::abs(nb.m), nb.e};
 }
 
 /*template<> SN<float, char> abs(const SN<float, char>& nb) {

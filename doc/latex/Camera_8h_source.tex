@@ -50,7 +50,7 @@
 \DoxyCodeLine{46     std::shared\_ptr<Vector3D<M, E>> getE2() \textcolor{keyword}{const};}
 \DoxyCodeLine{47 }
 \DoxyCodeLine{48     \textcolor{keywordtype}{void} renderMesh(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh) \textcolor{keyword}{const};}
-\DoxyCodeLine{49     \textcolor{keywordtype}{void} renderTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle) \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} renderTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}\& triangle) \textcolor{keyword}{const};}
 \DoxyCodeLine{50     \textcolor{keywordtype}{void} renderPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p) \textcolor{keyword}{const};}
 \DoxyCodeLine{51 }
 \DoxyCodeLine{52     \textcolor{keywordtype}{bool} testInFielOfView(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p) \textcolor{keyword}{const};}
@@ -68,107 +68,102 @@
 \DoxyCodeLine{64 \}}
 \DoxyCodeLine{65 }
 \DoxyCodeLine{66 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classCamera}{Camera<M, E>::\string~Camera}}() \{}
-\DoxyCodeLine{67     \textcolor{comment}{/*if (m\_deln)\{}}
-\DoxyCodeLine{68 \textcolor{comment}{        delete m\_pnormal;}}
-\DoxyCodeLine{69 \textcolor{comment}{    \}else\{}}
-\DoxyCodeLine{70 \textcolor{comment}{        m\_pnormal=NULL;}}
-\DoxyCodeLine{71 \textcolor{comment}{    \}*/}}
-\DoxyCodeLine{72     ;}
-\DoxyCodeLine{73 \}}
-\DoxyCodeLine{74 }
-\DoxyCodeLine{75 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classCamera}{Camera<M, E>::Camera}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCamera}{Camera<M, E>}}\& other) \{}
-\DoxyCodeLine{76     m\_aperture=1;}
-\DoxyCodeLine{77     m\_roll\_ang=0;}
-\DoxyCodeLine{78     this-\/>ppoint=other.ppoint;}
-\DoxyCodeLine{79     this-\/>pnormal=other.pnormal;}
-\DoxyCodeLine{80 \}}
-\DoxyCodeLine{81 }
-\DoxyCodeLine{82 }
-\DoxyCodeLine{83 \textcolor{comment}{/*Point3D<float, char> Camera::getPoint() const \{}}
-\DoxyCodeLine{84 \textcolor{comment}{    return *m\_ppoint;}}
-\DoxyCodeLine{85 \textcolor{comment}{\}}}
-\DoxyCodeLine{86 \textcolor{comment}{}}
-\DoxyCodeLine{87 \textcolor{comment}{void Camera::setPoint(const Point3D<float, char>\& p) \{}}
-\DoxyCodeLine{88 \textcolor{comment}{    *m\_ppoint=p;}}
-\DoxyCodeLine{89 \textcolor{comment}{\}}}
-\DoxyCodeLine{90 \textcolor{comment}{}}
-\DoxyCodeLine{91 \textcolor{comment}{Vector3D Camera::getNormal() const \{}}
-\DoxyCodeLine{92 \textcolor{comment}{    return *m\_pnormal;}}
-\DoxyCodeLine{93 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{95 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<Vector3D<M, E>> \mbox{\hyperlink{classCamera}{Camera<M, E>::getE1}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{96     std::shared\_ptr<Vector3D<M, E>> pv;}
-\DoxyCodeLine{97     \textcolor{keywordflow}{if} (ppoint!=NULL \&\& pnormal!=NULL)\{}
-\DoxyCodeLine{98         pv=std::make\_shared<Vector3D<M, E>>(}
-\DoxyCodeLine{99                 ppoint, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{}
-\DoxyCodeLine{100                 \{1,0\},}
-\DoxyCodeLine{101                 \{1,0\},}
-\DoxyCodeLine{102                 \{(M)(-\/1.)/pnormal-\/>pp2-\/>z * (pnormal-\/>pp2-\/>x*((M)(1.)-\/ppoint-\/>x) + pnormal-\/>pp2-\/>y*((M)(1.)-\/ppoint-\/>y)) + ppoint-\/>z\}}
-\DoxyCodeLine{103                 \}}
-\DoxyCodeLine{104                 );\textcolor{comment}{//One possible normal vector}}
-\DoxyCodeLine{105         *pv/=pv-\/>getNorm();\textcolor{comment}{//Normalisation}}
-\DoxyCodeLine{106     \}}
-\DoxyCodeLine{107     \textcolor{keywordflow}{return} pv;}
-\DoxyCodeLine{108 \}}
-\DoxyCodeLine{109 }
-\DoxyCodeLine{110 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<Vector3D<M, E>> \mbox{\hyperlink{classCamera}{Camera<M, E>::getE2}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{111     std::shared\_ptr<Vector3D<M, E>> pv;}
-\DoxyCodeLine{112     \textcolor{keywordflow}{if} (ppoint!=NULL \&\& pnormal!=NULL)\{}
-\DoxyCodeLine{113         pv=std::make\_shared<Vector3D<M, E>>( *pnormal\string^*(this-\/>getE1()) );}
-\DoxyCodeLine{114         *pv/=pv-\/>getNorm();\textcolor{comment}{//Normalisation}}
-\DoxyCodeLine{115     \}}
-\DoxyCodeLine{116     \textcolor{keywordflow}{return} pv;}
-\DoxyCodeLine{117 \}}
-\DoxyCodeLine{118 }
+\DoxyCodeLine{67     ;}
+\DoxyCodeLine{68 \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classCamera}{Camera<M, E>::Camera}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCamera}{Camera<M, E>}}\& other) \{}
+\DoxyCodeLine{71     m\_aperture=1;}
+\DoxyCodeLine{72     m\_roll\_ang=0;}
+\DoxyCodeLine{73     this-\/>ppoint=other.ppoint;}
+\DoxyCodeLine{74     this-\/>pnormal=other.pnormal;}
+\DoxyCodeLine{75 \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{/*Point3D<float, char> Camera::getPoint() const \{}}
+\DoxyCodeLine{79 \textcolor{comment}{    return *m\_ppoint;}}
+\DoxyCodeLine{80 \textcolor{comment}{\}}}
+\DoxyCodeLine{81 \textcolor{comment}{}}
+\DoxyCodeLine{82 \textcolor{comment}{void Camera::setPoint(const Point3D<float, char>\& p) \{}}
+\DoxyCodeLine{83 \textcolor{comment}{    *m\_ppoint=p;}}
+\DoxyCodeLine{84 \textcolor{comment}{\}}}
+\DoxyCodeLine{85 \textcolor{comment}{}}
+\DoxyCodeLine{86 \textcolor{comment}{Vector3D Camera::getNormal() const \{}}
+\DoxyCodeLine{87 \textcolor{comment}{    return *m\_pnormal;}}
+\DoxyCodeLine{88 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<Vector3D<M, E>> \mbox{\hyperlink{classCamera}{Camera<M, E>::getE1}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{91     std::shared\_ptr<Vector3D<M, E>> pv;}
+\DoxyCodeLine{92     \textcolor{keywordflow}{if} (ppoint!=NULL \&\& pnormal!=NULL)\{}
+\DoxyCodeLine{93         pv=std::make\_shared<Vector3D<M, E>>(}
+\DoxyCodeLine{94                 ppoint, \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{}
+\DoxyCodeLine{95                 \{1,0\},}
+\DoxyCodeLine{96                 \{1,0\},}
+\DoxyCodeLine{97                 \{(M)(-\/1.)/pnormal-\/>pp2-\/>z * (pnormal-\/>pp2-\/>x*((M)(1.)-\/ppoint-\/>x) + pnormal-\/>pp2-\/>y*((M)(1.)-\/ppoint-\/>y)) + ppoint-\/>z\}}
+\DoxyCodeLine{98                 \}}
+\DoxyCodeLine{99                 );\textcolor{comment}{//One possible normal vector}}
+\DoxyCodeLine{100         *pv/=pv-\/>getNorm();\textcolor{comment}{//Normalisation}}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102     \textcolor{keywordflow}{return} pv;}
+\DoxyCodeLine{103 \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<Vector3D<M, E>> \mbox{\hyperlink{classCamera}{Camera<M, E>::getE2}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{106     std::shared\_ptr<Vector3D<M, E>> pv;}
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (ppoint!=NULL \&\& pnormal!=NULL)\{}
+\DoxyCodeLine{108         pv=std::make\_shared<Vector3D<M, E>>( *pnormal\string^*(this-\/>getE1()) );}
+\DoxyCodeLine{109         *pv/=pv-\/>getNorm();\textcolor{comment}{//Normalisation}}
+\DoxyCodeLine{110     \}}
+\DoxyCodeLine{111     \textcolor{keywordflow}{return} pv;}
+\DoxyCodeLine{112 \}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderMesh}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{117     ;}
+\DoxyCodeLine{118 \}}
 \DoxyCodeLine{119 }
-\DoxyCodeLine{120 }
-\DoxyCodeLine{121 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderMesh}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{122     ;}
-\DoxyCodeLine{123 \}}
-\DoxyCodeLine{124 }
-\DoxyCodeLine{125 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderTriangle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{126     ;}
-\DoxyCodeLine{127 \}}
-\DoxyCodeLine{128 }
-\DoxyCodeLine{129 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderPoint}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{130     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
-\DoxyCodeLine{131         \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} vpos(ppoint, p-\/*ppoint);}
-\DoxyCodeLine{132         \mbox{\hyperlink{structSN}{SN<M, E>}} projx(*(this-\/>getE1())*vpos);}
-\DoxyCodeLine{133         \mbox{\hyperlink{structSN}{SN<M, E>}} projz=*(this-\/>getE2())*vpos;}
-\DoxyCodeLine{134 }
-\DoxyCodeLine{135         \mbox{\hyperlink{structSN}{SN<M, E>}} x\_prime=projx/(vpos.getNorm()*tan(m\_aperture/2));}
-\DoxyCodeLine{136         \mbox{\hyperlink{structSN}{SN<M, E>}} z\_prime=projz/(vpos.getNorm()*tan(m\_aperture/2));}
-\DoxyCodeLine{137         \textcolor{comment}{//Draw on the screen}}
-\DoxyCodeLine{138     \}}
-\DoxyCodeLine{139 \}}
+\DoxyCodeLine{120 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderTriangle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}\& triangle)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{121     ;}
+\DoxyCodeLine{122 \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderPoint}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{125     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
+\DoxyCodeLine{126         \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} vpos(ppoint, p-\/*ppoint);}
+\DoxyCodeLine{127         \mbox{\hyperlink{structSN}{SN<M, E>}} projx(*(this-\/>getE1())*vpos);}
+\DoxyCodeLine{128         \mbox{\hyperlink{structSN}{SN<M, E>}} projz=*(this-\/>getE2())*vpos;}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130         \mbox{\hyperlink{structSN}{SN<M, E>}} x\_prime=projx/(vpos.getNorm()*tan(m\_aperture/2));}
+\DoxyCodeLine{131         \mbox{\hyperlink{structSN}{SN<M, E>}} z\_prime=projz/(vpos.getNorm()*tan(m\_aperture/2));}
+\DoxyCodeLine{132         \textcolor{comment}{//Draw on the screen}}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCamera}{Camera<M, E>::testInFielOfView}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} test=\textcolor{keyword}{false};}
+\DoxyCodeLine{138     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
+\DoxyCodeLine{139         \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} vpos(ppoint, p-\/*ppoint);}
 \DoxyCodeLine{140 }
-\DoxyCodeLine{141 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCamera}{Camera<M, E>::testInFielOfView}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{142     \textcolor{keywordtype}{bool} test=\textcolor{keyword}{false};}
-\DoxyCodeLine{143     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
-\DoxyCodeLine{144         \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} vpos(ppoint, p-\/*ppoint);}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{146         \textcolor{keywordflow}{if} (m\_aperture/2. >= acos( ((*pnormal*vpos) / (pnormal-\/>getNorm()*vpos.getNorm())).to\_m\_type() ))\{}
-\DoxyCodeLine{147             test=\textcolor{keyword}{true};}
-\DoxyCodeLine{148         \}}
-\DoxyCodeLine{149     \}}
-\DoxyCodeLine{150     \textcolor{keywordflow}{return} test;}
-\DoxyCodeLine{151 \}}
-\DoxyCodeLine{152 }
+\DoxyCodeLine{141         \textcolor{keywordflow}{if} (m\_aperture/2. >= acos( ((*pnormal*vpos) / (pnormal-\/>getNorm()*vpos.getNorm())).to\_m\_type() ))\{}
+\DoxyCodeLine{142             test=\textcolor{keyword}{true};}
+\DoxyCodeLine{143         \}}
+\DoxyCodeLine{144     \}}
+\DoxyCodeLine{145     \textcolor{keywordflow}{return} test;}
+\DoxyCodeLine{146 \}}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classCamera}{Camera<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{150     std::string mes=(spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}}:\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     mes+=\textcolor{stringliteral}{"{}CAMERA"{}};}
 \DoxyCodeLine{153 }
-\DoxyCodeLine{154 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classCamera}{Camera<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
-\DoxyCodeLine{155     std::string mes=(spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}}:\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{154     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{155 \}}
 \DoxyCodeLine{156 }
-\DoxyCodeLine{157     mes+=\textcolor{stringliteral}{"{}CAMERA"{}};}
-\DoxyCodeLine{158 }
-\DoxyCodeLine{159     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{157 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{158     printTabs(indent);}
+\DoxyCodeLine{159     std::cout << this-\/>to\_string(spread, full\_info, indent);}
 \DoxyCodeLine{160 \}}
 \DoxyCodeLine{161 }
-\DoxyCodeLine{162 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
-\DoxyCodeLine{163     printTabs(indent);}
-\DoxyCodeLine{164     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{165 \}}
-\DoxyCodeLine{166 }
-\DoxyCodeLine{167 }
-\DoxyCodeLine{168 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAMERA\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAMERA\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

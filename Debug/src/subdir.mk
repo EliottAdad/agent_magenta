@@ -9,7 +9,8 @@ CPP_SRCS += \
 ../src/main2.cpp \
 ../src/main3.cpp \
 ../src/main4.cpp \
-../src/main5.cpp 
+../src/main5.cpp \
+../src/main6.cpp 
 
 CPP_DEPS += \
 ./src/main0.d \
@@ -17,7 +18,8 @@ CPP_DEPS += \
 ./src/main2.d \
 ./src/main3.d \
 ./src/main4.d \
-./src/main5.d 
+./src/main5.d \
+./src/main6.d 
 
 OBJS += \
 ./src/main0.o \
@@ -25,7 +27,8 @@ OBJS += \
 ./src/main2.o \
 ./src/main3.o \
 ./src/main4.o \
-./src/main5.o 
+./src/main5.o \
+./src/main6.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -40,7 +43,7 @@ src/%.o: ../src/%.cpp src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/main0.d ./src/main0.o ./src/main1.d ./src/main1.o ./src/main2.d ./src/main2.o ./src/main3.d ./src/main3.o ./src/main4.d ./src/main4.o ./src/main5.d ./src/main5.o
+	-$(RM) ./src/main0.d ./src/main0.o ./src/main1.d ./src/main1.o ./src/main2.d ./src/main2.o ./src/main3.d ./src/main3.o ./src/main4.d ./src/main4.o ./src/main5.d ./src/main5.o ./src/main6.d ./src/main6.o
 
 .PHONY: clean-src
 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <stdio.h>
 
+
 /*
  * Functions
  */
@@ -37,7 +38,6 @@ unsigned long long int factorial(unsigned int n);
 
 
 //void initSoftwareNecessery(std::string sft_name, unsigned int wd_w, unsigned int wd_h);
-
 
 
 

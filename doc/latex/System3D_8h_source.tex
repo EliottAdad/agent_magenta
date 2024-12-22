@@ -38,7 +38,7 @@
 \DoxyCodeLine{34     std::unordered\_set<std::shared\_ptr<T>> m\_pelements;}
 \DoxyCodeLine{35 }
 \DoxyCodeLine{36 \textcolor{keyword}{public}:}
-\DoxyCodeLine{37     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} (*m\_ptrLaw) (std::shared\_ptr<T>, std::shared\_ptr<T>);                                      \textcolor{comment}{// Pointer to a function operating on 2 particles (Todo List)}}
+\DoxyCodeLine{37     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} (*ptrLaw) (std::shared\_ptr<T>, std::shared\_ptr<T>);                                        \textcolor{comment}{// Pointer to a function operating on 2 particles (Todo List)}}
 \DoxyCodeLine{38 }
 \DoxyCodeLine{39     \mbox{\hyperlink{classSystem3D}{System3D}}();}
 \DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSystem3D}{\string~System3D}}();}
@@ -104,7 +104,7 @@
 \DoxyCodeLine{100 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSystem3D}{System3D<T, M, E>::System3D}}() \{}
 \DoxyCodeLine{101     m\_a=\{1,2\};              \textcolor{comment}{//100m sided box}}
 \DoxyCodeLine{102     m\_poctree=\textcolor{keyword}{new} \mbox{\hyperlink{classOct}{Oct<T, M, E>}}(m\_a);}
-\DoxyCodeLine{103     m\_ptrLaw=NULL;}
+\DoxyCodeLine{103     ptrLaw=NULL;}
 \DoxyCodeLine{104     m\_dt=0;}
 \DoxyCodeLine{105 \}}
 \DoxyCodeLine{106 }
@@ -119,7 +119,7 @@
 \DoxyCodeLine{115     \textcolor{keywordflow}{for} (std::shared\_ptr<T> pT : sys.getPElements())\{}
 \DoxyCodeLine{116         this-\/>addPElement(pT);}
 \DoxyCodeLine{117     \}}
-\DoxyCodeLine{118     m\_ptrLaw=sys.m\_ptrLaw;}
+\DoxyCodeLine{118     ptrLaw=sys.ptrLaw;}
 \DoxyCodeLine{119     m\_dt=0;}
 \DoxyCodeLine{120 \}}
 \DoxyCodeLine{121 }
@@ -174,7 +174,7 @@
 \DoxyCodeLine{170         \textcolor{comment}{//printf("{}B\(\backslash\)n"{});}}
 \DoxyCodeLine{171 }
 \DoxyCodeLine{172         \textcolor{comment}{// If there is a law to apply}}
-\DoxyCodeLine{173         \textcolor{keywordflow}{if} (m\_ptrLaw!=NULL)\{}
+\DoxyCodeLine{173         \textcolor{keywordflow}{if} (ptrLaw!=NULL)\{}
 \DoxyCodeLine{174             std::unordered\_set<std::shared\_ptr<T>> pneighbors=m\_poctree-\/>getPNeighbors(pelement);}
 \DoxyCodeLine{175             \textcolor{comment}{//printf("{}C: \%ld\(\backslash\)n"{}, pneighbors.size());}}
 \DoxyCodeLine{176             \textcolor{keywordflow}{if}(pneighbors.empty())\{}
@@ -186,7 +186,7 @@
 \DoxyCodeLine{182             \textcolor{keywordflow}{for} (std::shared\_ptr<T> pneighbor : pneighbors)\{\textcolor{comment}{// ERROR: Get neighbours doesn't work}}
 \DoxyCodeLine{183                 \textcolor{comment}{//printf("{}D\(\backslash\)n"{});}}
 \DoxyCodeLine{184                 \textcolor{comment}{//(*m\_ptrLaw)(pelement, pneighbor, m\_dt);// Probleme qd appel loi}}
-\DoxyCodeLine{185                 \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} da=(*m\_ptrLaw)(pneighbor, pelement);\textcolor{comment}{// Get the acceleration}}
+\DoxyCodeLine{185                 \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} da=(*ptrLaw)(pneighbor, pelement);\textcolor{comment}{// Get the acceleration}}
 \DoxyCodeLine{186                 \textcolor{comment}{//da.print(true, true, 3);}}
 \DoxyCodeLine{187                 \textcolor{comment}{//Line3D<float, char> l;//Works}}
 \DoxyCodeLine{188                 \textcolor{comment}{//Vector3D<float, char> v;//X Error (arrete l'execution)}}
@@ -312,27 +312,32 @@
 \DoxyCodeLine{308 \textcolor{comment}{    return *pv;}}
 \DoxyCodeLine{309 \textcolor{comment}{\}*/}}
 \DoxyCodeLine{310 }
-\DoxyCodeLine{311 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} rrr2(std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT1, std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT2) \{}
-\DoxyCodeLine{312     std::shared\_ptr<Vector3D<M, E>> pv(\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}());}
-\DoxyCodeLine{313     *pv-\/>pp2=\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\};}
-\DoxyCodeLine{314 }
-\DoxyCodeLine{315     \textcolor{keywordflow}{if} (pT1!=NULL \&\& pT2!=NULL) \{}
-\DoxyCodeLine{316         *pv-\/>pp2=pT2-\/>getPosition()-\/pT1-\/>getPosition();}
-\DoxyCodeLine{317 }
-\DoxyCodeLine{318         \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(pT1-\/>getPosition(), pT2-\/>getPosition());}
-\DoxyCodeLine{319         printf(\textcolor{stringliteral}{"{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{}});}
-\DoxyCodeLine{320         d.print();                      \textcolor{comment}{// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)}}
-\DoxyCodeLine{321         printf(\textcolor{stringliteral}{"{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{}});}
-\DoxyCodeLine{322         pv-\/>setNorm(G*pT1-\/>getW()/(d*d));}
-\DoxyCodeLine{323     \}}
-\DoxyCodeLine{324     printf(\textcolor{stringliteral}{"{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{}});}
-\DoxyCodeLine{325     pv-\/>print();}
-\DoxyCodeLine{326     printf(\textcolor{stringliteral}{"{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{}});}
-\DoxyCodeLine{327     \textcolor{keywordflow}{return} *pv;}
-\DoxyCodeLine{328 \}}
-\DoxyCodeLine{329 }
-\DoxyCodeLine{330 }
-\DoxyCodeLine{331 }
-\DoxyCodeLine{332 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{311 \textcolor{comment}{/*}}
+\DoxyCodeLine{312 \textcolor{comment}{ * Returns the acc (in norm) felt by pT2 due to pT1}}
+\DoxyCodeLine{313 \textcolor{comment}{ * @param : pT1: src, pT2: target}}
+\DoxyCodeLine{314 \textcolor{comment}{ */}}
+\DoxyCodeLine{315 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} rrr2(std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT1, std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT2) \{}
+\DoxyCodeLine{316     std::shared\_ptr<Vector3D<M, E>> pv(\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}());}
+\DoxyCodeLine{317     *pv-\/>pp1=pT2-\/>getPosition();}
+\DoxyCodeLine{318     *pv-\/>pp2=\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\};}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320     \textcolor{keywordflow}{if} (pT1!=NULL \&\& pT2!=NULL) \{}
+\DoxyCodeLine{321         *pv-\/>pp2=pT1-\/>getPosition()-\/pT2-\/>getPosition();}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323         \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(pT1-\/>getPosition(), pT2-\/>getPosition());}
+\DoxyCodeLine{324         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{325         \textcolor{comment}{//d.print();                        // Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)}}
+\DoxyCodeLine{326         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{327         pv-\/>setNorm(G*pT1-\/>getW()/(d*d));}
+\DoxyCodeLine{328     \}}
+\DoxyCodeLine{329     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{330     \textcolor{comment}{//pv-\/>print();}}
+\DoxyCodeLine{331     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{332     \textcolor{keywordflow}{return} *pv;}
+\DoxyCodeLine{333 \}}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335 }
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

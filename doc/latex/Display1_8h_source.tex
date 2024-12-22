@@ -42,7 +42,7 @@
 \DoxyCodeLine{38     \textcolor{keywordtype}{bool} m\_fclear;}
 \DoxyCodeLine{39 }
 \DoxyCodeLine{40 \textcolor{keyword}{public}:}
-\DoxyCodeLine{41     std::shared\_ptr<Point3D<M, E>> ppoint;          \textcolor{comment}{// Pointeur to the center of display.}}
+\DoxyCodeLine{41     std::shared\_ptr<Point3D<M, E>> ppoint;              \textcolor{comment}{// Pointeur to the center of display.}}
 \DoxyCodeLine{42 }
 \DoxyCodeLine{43     std::shared\_ptr<SDL\_Color> pbkgd\_color;             \textcolor{comment}{// Pointeur to the background color.}}
 \DoxyCodeLine{44     std::shared\_ptr<SDL\_Color> pdraw\_color;             \textcolor{comment}{// Pointeur to the render color.}}
@@ -78,7 +78,7 @@
 \DoxyCodeLine{74 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classDisplay1}{Display1<M, E>::Display1}}() \{}
 \DoxyCodeLine{75     ppoint=std::make\_shared<Point3D<M, E>>();}
 \DoxyCodeLine{76     m\_display=1;}
-\DoxyCodeLine{77     m\_scale=10;}
+\DoxyCodeLine{77     m\_scale=5;}
 \DoxyCodeLine{78 }
 \DoxyCodeLine{79     pbkgd\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{0, 0, 0, 255\});}
 \DoxyCodeLine{80     pdraw\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{255, 255, 255, 255\});}
@@ -94,7 +94,7 @@
 \DoxyCodeLine{90 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classDisplay1}{Display1<M, E>::Display1}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> ppoint) \{}
 \DoxyCodeLine{91     this-\/>ppoint=ppoint;}
 \DoxyCodeLine{92     m\_display=1;}
-\DoxyCodeLine{93     m\_scale=10;}
+\DoxyCodeLine{93     m\_scale=5;}
 \DoxyCodeLine{94 }
 \DoxyCodeLine{95     pbkgd\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{0, 0, 0, 255\});}
 \DoxyCodeLine{96     pdraw\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{255, 255, 255, 255\});}
@@ -110,7 +110,7 @@
 \DoxyCodeLine{106 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classDisplay1}{Display1<M, E>::Display1}}(std::shared\_ptr<SDL\_Window> pwindow, std::shared\_ptr<SDL\_Renderer> prenderer) \{}
 \DoxyCodeLine{107     ppoint=std::make\_shared<Point3D<M, E>>();}
 \DoxyCodeLine{108     m\_display=1;}
-\DoxyCodeLine{109     m\_scale=10;}
+\DoxyCodeLine{109     m\_scale=5;}
 \DoxyCodeLine{110 }
 \DoxyCodeLine{111     pbkgd\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{0, 0, 0, 255\});}
 \DoxyCodeLine{112     pdraw\_color=std::make\_shared<SDL\_Color>(SDL\_Color\{255, 255, 255, 255\});}

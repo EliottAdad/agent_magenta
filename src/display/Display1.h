@@ -38,7 +38,7 @@ private:
 	bool m_fclear;
 
 public:
-	std::shared_ptr<Point3D<M, E>> ppoint;			// Pointeur to the center of display.
+	std::shared_ptr<Point3D<M, E>> ppoint;				// Pointeur to the center of display.
 
 	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
@@ -74,7 +74,7 @@ public:
 template<typename M, typename E> Display1<M, E>::Display1() {
 	ppoint=std::make_shared<Point3D<M, E>>();
 	m_display=1;
-	m_scale=10;
+	m_scale=5;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
@@ -90,7 +90,7 @@ template<typename M, typename E> Display1<M, E>::Display1() {
 template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3D<M, E>> ppoint) {
 	this->ppoint=ppoint;
 	m_display=1;
-	m_scale=10;
+	m_scale=5;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
@@ -106,7 +106,7 @@ template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3
 template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
 	ppoint=std::make_shared<Point3D<M, E>>();
 	m_display=1;
-	m_scale=10;
+	m_scale=5;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});

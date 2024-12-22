@@ -59,6 +59,8 @@
 	test=ps2.addPElement(ppar3);
 	printf("%b\n", test);
 	ps2.print(true, true, 0);
+	ps2.ptrLaw=rrr2;
+	ps2.print(true, true, 0);
 
 	std::shared_ptr<System3D<Particle3D<float, char>, float, char>> ppsys2(new System3D<Particle3D<float, char>, float, char>(ps2));
 
@@ -79,13 +81,13 @@
 	Physics phys;
 	phys.setPPS(200);
 	phys.setFPause(false);
-	phys.addPTimeSensitive(ppsys2);//Doesn't work
-	printf("%b\n", phys.addPTimeSensitive(ppar4));
+	phys.addPTimeSensitive(ppsys2);
+	//printf("%b\n", phys.addPTimeSensitive(ppar4));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par2)));
 	//printf("%b\n", phys.addPTimeSensitive(std::shared_ptr<Particle3D>(&par3)));
 	//printf("%b\n", phys.addPTimeSensitive(&ps2));
 
-	//phys.run(1);
+	phys.run(200);
 
 	// Affichage du mouvement
 	//vf1.print(true, 0, true);

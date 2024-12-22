@@ -34,7 +34,7 @@ protected:
 	std::unordered_set<std::shared_ptr<T>> m_pelements;
 
 public:
-	Vector3D<M, E> (*m_ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);										// Pointer to a function operating on 2 particles (Todo List)
+	Vector3D<M, E> (*ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);										// Pointer to a function operating on 2 particles (Todo List)
 
 	System3D();
 	virtual ~System3D();
@@ -100,7 +100,7 @@ template<typename T, typename M, typename E> SN<M, E> rrr2(std::shared_ptr<T> p1
 template<typename T, typename M, typename E> System3D<T, M, E>::System3D() {
 	m_a={1,2};				//100m sided box
 	m_poctree=new Oct<T, M, E>(m_a);
-	m_ptrLaw=NULL;
+	ptrLaw=NULL;
 	m_dt=0;
 }
 
@@ -115,7 +115,7 @@ template<typename T, typename M, typename E> System3D<T, M, E>::System3D(const S
 	for (std::shared_ptr<T> pT : sys.getPElements()){
 		this->addPElement(pT);
 	}
-	m_ptrLaw=sys.m_ptrLaw;
+	ptrLaw=sys.ptrLaw;
 	m_dt=0;
 }
 
@@ -170,7 +170,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::setT(const 
 		//printf("B\n");
 
 		// If there is a law to apply
-		if (m_ptrLaw!=NULL){
+		if (ptrLaw!=NULL){
 			std::unordered_set<std::shared_ptr<T>> pneighbors=m_poctree->getPNeighbors(pelement);
 			//printf("C: %ld\n", pneighbors.size());
 			if(pneighbors.empty()){
@@ -182,7 +182,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::setT(const 
 			for (std::shared_ptr<T> pneighbor : pneighbors){// ERROR: Get neighbours doesn't work
 				//printf("D\n");
 				//(*m_ptrLaw)(pelement, pneighbor, m_dt);// Probleme qd appel loi
-				Vector3D<M, E> da=(*m_ptrLaw)(pneighbor, pelement);// Get the acceleration
+				Vector3D<M, E> da=(*ptrLaw)(pneighbor, pelement);// Get the acceleration
 				//da.print(true, true, 3);
 				//Line3D<float, char> l;//Works
 				//Vector3D<float, char> v;//X Error (arrete l'execution)
@@ -308,22 +308,27 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::print(const
 	return *pv;
 }*/
 
+/*
+ * Returns the acc (in norm) felt by pT2 due to pT1
+ * @param : pT1: src, pT2: target
+ */
 template<typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<Particle3D<M, E>> pT1, std::shared_ptr<Particle3D<M, E>> pT2) {
 	std::shared_ptr<Vector3D<M, E>> pv(new Vector3D<M, E>());
+	*pv->pp1=pT2->getPosition();
 	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
 
 	if (pT1!=NULL && pT2!=NULL) {
-		*pv->pp2=pT2->getPosition()-pT1->getPosition();
+		*pv->pp2=pT1->getPosition()-pT2->getPosition();
 
 		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
-		printf("\n############d\n");
-		d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
-		printf("\n############d\n");
+		//printf("\n############d\n");
+		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
+		//printf("\n############d\n");
 		pv->setNorm(G*pT1->getW()/(d*d));
 	}
-	printf("\n############pv\n");
-	pv->print();
-	printf("\n############pv\n");
+	//printf("\n############pv\n");
+	//pv->print();
+	//printf("\n############pv\n");
 	return *pv;
 }
 

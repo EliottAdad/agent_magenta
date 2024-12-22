@@ -56,19 +56,26 @@ template<typename M, typename E> struct Point3D : public Printable {
 };
 
 template<typename M, typename E> bool operator==(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
+template<typename M, typename E> bool operator==(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
+template<typename M, typename E> bool operator==(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
 template<typename M, typename E> bool operator!=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
+template<typename M, typename E> bool operator!=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
+template<typename M, typename E> bool operator!=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
 template<typename M, typename E> bool operator<=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
+template<typename M, typename E> bool operator<=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
+template<typename M, typename E> bool operator<=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
 template<typename M, typename E> bool operator>=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
+template<typename M, typename E> bool operator>=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
+template<typename M, typename E> bool operator>=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
 template<typename M, typename E> Point3D<M, E> operator+(const Point3D<M, E>& p1, const Point3D<M, E>& p2);	// :)
 template<typename M, typename E> Point3D<M, E> operator-(const Point3D<M, E>& p1, const Point3D<M, E>& p2);	// :)
 template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
 template<typename M, typename E> Point3D<M, E> operator*(const SN<M, E>& k, const Point3D<M, E>& p);			// :)
-//template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const long double& k);	// :)
-//template<typename M, typename E> Point3D<M, E> operator*(const long double& k, const Point3D<M, E>& p);	// :)
+template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const M& k);
+template<typename M, typename E> Point3D<M, E> operator*(const M& k, const Point3D<M, E>& p);
 template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
-//template<typename M, typename E> Point3D operator/(const SN& k, const Point3D& p);			// :)
 template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const M& k);	// :)
-//template<typename M, typename E> Point3D operator/(const long double& k, const Point3D& p);	// :)
+template<typename M, typename E> Point3D<M, E> abs(const Point3D<M, E>& p);	// :)
 
 
 
@@ -226,8 +233,36 @@ template<typename M, typename E> bool operator==(const Point3D<M, E>& p1, const 
 	return false;
 }
 
+template<typename M, typename E> bool operator==(const Point3D<M, E>& p, const SN<M, E>& nb) {
+	if (p.x==nb && p.y==nb && p.z==nb){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator==(const SN<M, E>& nb, const Point3D<M, E>& p) {
+	if (nb==p.x && nb==p.y && nb==p.z){
+		return true;
+	}
+	return false;
+}
+
 template<typename M, typename E> bool operator!=(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
 	if (p1.x!=p2.x && p1.y!=p2.y && p1.z!=p2.z){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator!=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+	if (p.x!=nb && p.y!=nb && p.z!=nb){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator!=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+	if (nb!=p.x && nb!=p.y && nb!=p.z){
 		return true;
 	}
 	return false;
@@ -240,8 +275,36 @@ template<typename M, typename E> bool operator<=(const Point3D<M, E>& p1, const 
 	return false;
 }
 
+template<typename M, typename E> bool operator<=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+	if (p.x<=nb && p.y<=nb && p.z<=nb){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator<=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+	if (nb<=p.x && nb<=p.y && nb<=p.z){
+		return true;
+	}
+	return false;
+}
+
 template<typename M, typename E> bool operator>=(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
 	if (p1.x>=p2.x && p1.y>=p2.y && p1.z>=p2.z){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator>=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+	if (p.x>=nb && p.y>=nb && p.z>=nb){
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> bool operator>=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+	if (nb>=p.x && nb>=p.y && nb>=p.z){
 		return true;
 	}
 	return false;
@@ -275,19 +338,13 @@ template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p,
 	return Point3D<M, E>{p.x/k, p.y/k, p.z/k};
 }
 
-/*Point3D operator/(const SN& k, const Point3D& p) {
-	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
-	return {p.x/k, p.y/k, p.z/k};
-}*/
-
 template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const M& k) {
 	return Point3D<M, E>{p.x/k, p.y/k, p.z/k};
 }
 
-/*Point3D operator/(const long double& k, const Point3D& p) {
-	//Point3D* pnp=new Point3D{this->x/k, this->y/k, this->z/k};
-	return {p.x/k, p.y/k, p.z/k};
-}*/
+template<typename M, typename E> Point3D<M, E> abs(const Point3D<M, E>& p){
+	return Point3D<M, E>{abs(p.x), abs(p.y), abs(p.z)};
+}
 
 
 

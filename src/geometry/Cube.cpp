@@ -7,16 +7,16 @@
 
 #include "Cube.h"
 
-Cube::Cube() {
+template<typename M, typename E> Cube<M, E>::Cube() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Cube::~Cube() {
+template<typename M, typename E> Cube<M, E>::~Cube() {
 	// TODO Auto-generated destructor stub
 }
 
-Cube::Cube(const Cube &other) {
+template<typename M, typename E> Cube<M, E>::Cube(const Cube<M, E>& other) {
 	// TODO Auto-generated constructor stub
 
 }

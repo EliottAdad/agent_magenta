@@ -1,4 +1,4 @@
-src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
+src/main6.o: ../src/main6.cpp ../src/core/LSN.h \
  ../src/core/../utilities/functions.h \
  ../src/core/../utilities/Printable.h \
  ../src/core/../utilities/functions.h ../src/core/Point3D.h \
@@ -25,9 +25,7 @@ src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
  ../src/utilities/../display/../core/Line3D.h \
  ../src/utilities/../display/../display/Displayable.h \
  ../src/utilities/../display/../utilities/Printable.h \
- ../src/utilities/../display/../core/Scene.h \
- ../src/utilities/functionsParticle3D.h \
- ../src/utilities/../core/Particle3D.h
+ ../src/utilities/../display/../core/Scene.h
 ../src/core/LSN.h:
 ../src/core/../utilities/functions.h:
 ../src/core/../utilities/Printable.h:
@@ -70,5 +68,3 @@ src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
 ../src/utilities/../display/../display/Displayable.h:
 ../src/utilities/../display/../utilities/Printable.h:
 ../src/utilities/../display/../core/Scene.h:
-../src/utilities/functionsParticle3D.h:
-../src/utilities/../core/Particle3D.h:

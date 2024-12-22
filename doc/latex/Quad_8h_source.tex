@@ -89,665 +89,662 @@
 \DoxyCodeLine{85 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::Quad}}() \{}
 \DoxyCodeLine{86     m\_ppoint=std::make\_shared<Point3D<M, E>>();}
 \DoxyCodeLine{87     m\_pbarycenter=std::make\_shared<Point3D<M, E>>(*m\_ppoint);}
-\DoxyCodeLine{88     \textcolor{comment}{//m\_delp=true;}}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{90     m\_a=\{1,2\};}
-\DoxyCodeLine{91     m\_tot\_weight=0.;}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93     m\_pT=NULL;}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{95     m\_pTLTree=NULL;}
-\DoxyCodeLine{96     m\_pTRTree=NULL;}
-\DoxyCodeLine{97     m\_pBLTree=NULL;}
-\DoxyCodeLine{98     m\_pBRTree=NULL;}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{100     m\_NB\_QUADS++;}
-\DoxyCodeLine{101 \}}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103 \textcolor{comment}{/*}}
-\DoxyCodeLine{104 \textcolor{comment}{ * Constructor1}}
-\DoxyCodeLine{105 \textcolor{comment}{ */}}
-\DoxyCodeLine{106 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::Quad}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& point) \{}
-\DoxyCodeLine{107     m\_ppoint=std::make\_shared<Point3D<M, E>>(point);}
-\DoxyCodeLine{108     m\_pbarycenter=std::make\_shared<Point3D<M, E>>(*m\_ppoint);}
-\DoxyCodeLine{109     \textcolor{comment}{//m\_delp=true;}}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111     m\_a=a;}
-\DoxyCodeLine{112     m\_tot\_weight=0.;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     m\_a=\{1,2\};}
+\DoxyCodeLine{90     m\_tot\_weight=0.;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     m\_pT=NULL;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     m\_pTLTree=NULL;}
+\DoxyCodeLine{95     m\_pTRTree=NULL;}
+\DoxyCodeLine{96     m\_pBLTree=NULL;}
+\DoxyCodeLine{97     m\_pBRTree=NULL;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     m\_NB\_QUADS++;}
+\DoxyCodeLine{100 \}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{comment}{/*}}
+\DoxyCodeLine{103 \textcolor{comment}{ * Constructor1}}
+\DoxyCodeLine{104 \textcolor{comment}{ */}}
+\DoxyCodeLine{105 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::Quad}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& point) \{}
+\DoxyCodeLine{106     m\_ppoint=std::make\_shared<Point3D<M, E>>(point);}
+\DoxyCodeLine{107     m\_pbarycenter=std::make\_shared<Point3D<M, E>>(*m\_ppoint);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     m\_a=a;}
+\DoxyCodeLine{110     m\_tot\_weight=0.;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     m\_pT=NULL;}
 \DoxyCodeLine{113 }
-\DoxyCodeLine{114     m\_pT=NULL;}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116     m\_pTLTree=NULL;}
-\DoxyCodeLine{117     m\_pTRTree=NULL;}
-\DoxyCodeLine{118     m\_pBLTree=NULL;}
-\DoxyCodeLine{119     m\_pBRTree=NULL;}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{121     m\_NB\_QUADS++;}
-\DoxyCodeLine{122 \}}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{124 \textcolor{comment}{/*}}
-\DoxyCodeLine{125 \textcolor{comment}{ * Constructor2}}
-\DoxyCodeLine{126 \textcolor{comment}{ */}}
-\DoxyCodeLine{127 \textcolor{comment}{/*template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>\& a, std::shared\_ptr<Point3D<M, E>> ppoint) \{}}
-\DoxyCodeLine{128 \textcolor{comment}{    m\_ppoint=ppoint;}}
-\DoxyCodeLine{129 \textcolor{comment}{    m\_pbarycenter=std::shared\_ptr(new Point3D<M, E>(*m\_ppoint));}}
-\DoxyCodeLine{130 \textcolor{comment}{    //m\_delp=false;}}
-\DoxyCodeLine{131 \textcolor{comment}{}}
-\DoxyCodeLine{132 \textcolor{comment}{    m\_a=a;}}
-\DoxyCodeLine{133 \textcolor{comment}{    m\_tot\_weight=0.;}}
+\DoxyCodeLine{114     m\_pTLTree=NULL;}
+\DoxyCodeLine{115     m\_pTRTree=NULL;}
+\DoxyCodeLine{116     m\_pBLTree=NULL;}
+\DoxyCodeLine{117     m\_pBRTree=NULL;}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     m\_NB\_QUADS++;}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{/*}}
+\DoxyCodeLine{123 \textcolor{comment}{ * Constructor2}}
+\DoxyCodeLine{124 \textcolor{comment}{ */}}
+\DoxyCodeLine{125 \textcolor{comment}{/*template <typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>\& a, std::shared\_ptr<Point3D<M, E>> ppoint) \{}}
+\DoxyCodeLine{126 \textcolor{comment}{    m\_ppoint=ppoint;}}
+\DoxyCodeLine{127 \textcolor{comment}{    m\_pbarycenter=std::shared\_ptr(new Point3D<M, E>(*m\_ppoint));}}
+\DoxyCodeLine{128 \textcolor{comment}{    //m\_delp=false;}}
+\DoxyCodeLine{129 \textcolor{comment}{}}
+\DoxyCodeLine{130 \textcolor{comment}{    m\_a=a;}}
+\DoxyCodeLine{131 \textcolor{comment}{    m\_tot\_weight=0.;}}
+\DoxyCodeLine{132 \textcolor{comment}{}}
+\DoxyCodeLine{133 \textcolor{comment}{    m\_pT=NULL;}}
 \DoxyCodeLine{134 \textcolor{comment}{}}
-\DoxyCodeLine{135 \textcolor{comment}{    m\_pT=NULL;}}
-\DoxyCodeLine{136 \textcolor{comment}{}}
-\DoxyCodeLine{137 \textcolor{comment}{    m\_pTLTree=NULL;}}
-\DoxyCodeLine{138 \textcolor{comment}{    m\_pTRTree=NULL;}}
-\DoxyCodeLine{139 \textcolor{comment}{    m\_pBLTree=NULL;}}
-\DoxyCodeLine{140 \textcolor{comment}{    m\_pBRTree=NULL;}}
-\DoxyCodeLine{141 \textcolor{comment}{}}
-\DoxyCodeLine{142 \textcolor{comment}{    m\_NB\_QUADS++;}}
-\DoxyCodeLine{143 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{144 }
-\DoxyCodeLine{145 \textcolor{comment}{/*}}
-\DoxyCodeLine{146 \textcolor{comment}{ * Copy constructor}}
-\DoxyCodeLine{147 \textcolor{comment}{ */}}
-\DoxyCodeLine{148 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::Quad}}(\textcolor{keyword}{const} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}\& quad) \{}
-\DoxyCodeLine{149     m\_ppoint=std::make\_shared<Point3D<M, E>>(quad.getPoint());}
-\DoxyCodeLine{150     m\_pbarycenter=std::make\_shared<Point3D<M, E>>(*m\_ppoint);}
-\DoxyCodeLine{151     \textcolor{comment}{//m\_delp=false;}}
+\DoxyCodeLine{135 \textcolor{comment}{    m\_pTLTree=NULL;}}
+\DoxyCodeLine{136 \textcolor{comment}{    m\_pTRTree=NULL;}}
+\DoxyCodeLine{137 \textcolor{comment}{    m\_pBLTree=NULL;}}
+\DoxyCodeLine{138 \textcolor{comment}{    m\_pBRTree=NULL;}}
+\DoxyCodeLine{139 \textcolor{comment}{}}
+\DoxyCodeLine{140 \textcolor{comment}{    m\_NB\_QUADS++;}}
+\DoxyCodeLine{141 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{comment}{/*}}
+\DoxyCodeLine{144 \textcolor{comment}{ * Copy constructor}}
+\DoxyCodeLine{145 \textcolor{comment}{ */}}
+\DoxyCodeLine{146 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::Quad}}(\textcolor{keyword}{const} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}\& quad) \{}
+\DoxyCodeLine{147     m\_ppoint=std::make\_shared<Point3D<M, E>>(quad.getPoint());}
+\DoxyCodeLine{148     m\_pbarycenter=std::make\_shared<Point3D<M, E>>(*m\_ppoint);}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     m\_a=quad.getA();}
+\DoxyCodeLine{151     m\_tot\_weight=0.;}
 \DoxyCodeLine{152 }
-\DoxyCodeLine{153     m\_a=quad.getA();}
-\DoxyCodeLine{154     m\_tot\_weight=0.;}
-\DoxyCodeLine{155 }
-\DoxyCodeLine{156     m\_pT=NULL;}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{158     m\_pTLTree=NULL;}
-\DoxyCodeLine{159     m\_pTRTree=NULL;}
-\DoxyCodeLine{160     m\_pBLTree=NULL;}
-\DoxyCodeLine{161     m\_pBRTree=NULL;}
+\DoxyCodeLine{153     m\_pT=NULL;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155     m\_pTLTree=NULL;}
+\DoxyCodeLine{156     m\_pTRTree=NULL;}
+\DoxyCodeLine{157     m\_pBLTree=NULL;}
+\DoxyCodeLine{158     m\_pBRTree=NULL;}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160     m\_NB\_QUADS++;}
+\DoxyCodeLine{161 \}}
 \DoxyCodeLine{162 }
-\DoxyCodeLine{163     m\_NB\_QUADS++;}
-\DoxyCodeLine{164 \}}
-\DoxyCodeLine{165 }
-\DoxyCodeLine{166 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::\string~Quad}}() \{}
-\DoxyCodeLine{167     \textcolor{keywordflow}{if} (m\_pTLTree!=NULL)\{}
-\DoxyCodeLine{168         \textcolor{keyword}{delete} m\_pTLTree;}
+\DoxyCodeLine{163 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::\string~Quad}}() \{}
+\DoxyCodeLine{164     \textcolor{keywordflow}{if} (m\_pTLTree!=NULL)\{}
+\DoxyCodeLine{165         \textcolor{keyword}{delete} m\_pTLTree;}
+\DoxyCodeLine{166     \}}
+\DoxyCodeLine{167     \textcolor{keywordflow}{if} (m\_pTRTree!=NULL)\{}
+\DoxyCodeLine{168         \textcolor{keyword}{delete} m\_pTRTree;}
 \DoxyCodeLine{169     \}}
-\DoxyCodeLine{170     \textcolor{keywordflow}{if} (m\_pTRTree!=NULL)\{}
-\DoxyCodeLine{171         \textcolor{keyword}{delete} m\_pTRTree;}
+\DoxyCodeLine{170     \textcolor{keywordflow}{if} (m\_pBLTree!=NULL)\{}
+\DoxyCodeLine{171         \textcolor{keyword}{delete} m\_pBLTree;}
 \DoxyCodeLine{172     \}}
-\DoxyCodeLine{173     \textcolor{keywordflow}{if} (m\_pBLTree!=NULL)\{}
-\DoxyCodeLine{174         \textcolor{keyword}{delete} m\_pBLTree;}
+\DoxyCodeLine{173     \textcolor{keywordflow}{if} (m\_pBRTree!=NULL)\{}
+\DoxyCodeLine{174         \textcolor{keyword}{delete} m\_pBRTree;}
 \DoxyCodeLine{175     \}}
-\DoxyCodeLine{176     \textcolor{keywordflow}{if} (m\_pBRTree!=NULL)\{}
-\DoxyCodeLine{177         \textcolor{keyword}{delete} m\_pBRTree;}
-\DoxyCodeLine{178     \}}
-\DoxyCodeLine{179     \textcolor{comment}{// There is one less Quad}}
-\DoxyCodeLine{180     m\_NB\_QUADS-\/-\/;}
-\DoxyCodeLine{181 \}}
-\DoxyCodeLine{182 }
-\DoxyCodeLine{183 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getPoint}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{184     \textcolor{keywordflow}{return} *m\_ppoint;}
-\DoxyCodeLine{185 \}}
-\DoxyCodeLine{186 }
-\DoxyCodeLine{187 \textcolor{comment}{/*template <typename T, typename M, typename E> Point3D<M, E>* Quad<T, M, E>::getPPoint() const \{}}
-\DoxyCodeLine{188 \textcolor{comment}{    return this-\/>m\_ppoint;}}
-\DoxyCodeLine{189 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{190 }
-\DoxyCodeLine{191 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getBarycenter}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{192     \textcolor{keywordflow}{return} *m\_pbarycenter;}
-\DoxyCodeLine{193 \}}
-\DoxyCodeLine{194 }
-\DoxyCodeLine{195 \textcolor{comment}{/*template <typename T, typename M, typename E> Point3D<M, E>* Quad<T, M, E>::getPBarycenter() const \{}}
-\DoxyCodeLine{196 \textcolor{comment}{    Point3D<M, E>* pp=NULL;}}
-\DoxyCodeLine{197 \textcolor{comment}{    // If it hasn't been created locally...}}
-\DoxyCodeLine{198 \textcolor{comment}{    if (!m\_delp)\{}}
-\DoxyCodeLine{199 \textcolor{comment}{        pp=this-\/>m\_pbarycenterpoint;}}
-\DoxyCodeLine{200 \textcolor{comment}{    \}}}
-\DoxyCodeLine{201 \textcolor{comment}{    return pp;}}
-\DoxyCodeLine{202 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{203 }
-\DoxyCodeLine{204 \textcolor{comment}{/*template <typename T, typename M, typename E> bool Quad<T, M, E>::getDelP() const \{}}
-\DoxyCodeLine{205 \textcolor{comment}{    return m\_delp;}}
-\DoxyCodeLine{206 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{207 }
-\DoxyCodeLine{208 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getA}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{209     \textcolor{keywordflow}{return} m\_a;}
-\DoxyCodeLine{210 \}}
-\DoxyCodeLine{211 }
-\DoxyCodeLine{212 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a) \{}
-\DoxyCodeLine{213     m\_a=a;}
-\DoxyCodeLine{214     this-\/>recalculate();}
-\DoxyCodeLine{215 \}}
-\DoxyCodeLine{216 }
-\DoxyCodeLine{217 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getNB\_QUADS}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{218     \textcolor{keywordflow}{return} m\_NB\_QUADS;}
-\DoxyCodeLine{219 \}}
-\DoxyCodeLine{220 }
-\DoxyCodeLine{221 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<T>> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getPElements}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{222     \textcolor{keyword}{static} std::unordered\_set<std::shared\_ptr<T>> elmts;}
-\DoxyCodeLine{223     elmts.empty();}
-\DoxyCodeLine{224 }
-\DoxyCodeLine{225     \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
-\DoxyCodeLine{226         elmts.insert(m\_pT);}
-\DoxyCodeLine{227     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{228         \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{}
-\DoxyCodeLine{229             m\_pTLTree-\/>getPElements();}
+\DoxyCodeLine{176     \textcolor{comment}{// There is one less Quad}}
+\DoxyCodeLine{177     m\_NB\_QUADS-\/-\/;}
+\DoxyCodeLine{178 \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getPoint}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{181     \textcolor{keywordflow}{return} *m\_ppoint;}
+\DoxyCodeLine{182 \}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{comment}{/*template <typename T, typename M, typename E> Point3D<M, E>* Quad<T, M, E>::getPPoint() const \{}}
+\DoxyCodeLine{185 \textcolor{comment}{    return this-\/>m\_ppoint;}}
+\DoxyCodeLine{186 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getBarycenter}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{189     \textcolor{keywordflow}{return} *m\_pbarycenter;}
+\DoxyCodeLine{190 \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192 \textcolor{comment}{/*template <typename T, typename M, typename E> Point3D<M, E>* Quad<T, M, E>::getPBarycenter() const \{}}
+\DoxyCodeLine{193 \textcolor{comment}{    Point3D<M, E>* pp=NULL;}}
+\DoxyCodeLine{194 \textcolor{comment}{    // If it hasn't been created locally...}}
+\DoxyCodeLine{195 \textcolor{comment}{    if (!m\_delp)\{}}
+\DoxyCodeLine{196 \textcolor{comment}{        pp=this-\/>m\_pbarycenterpoint;}}
+\DoxyCodeLine{197 \textcolor{comment}{    \}}}
+\DoxyCodeLine{198 \textcolor{comment}{    return pp;}}
+\DoxyCodeLine{199 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{/*template <typename T, typename M, typename E> bool Quad<T, M, E>::getDelP() const \{}}
+\DoxyCodeLine{202 \textcolor{comment}{    return m\_delp;}}
+\DoxyCodeLine{203 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getA}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{206     \textcolor{keywordflow}{return} m\_a;}
+\DoxyCodeLine{207 \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::setA}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& a) \{}
+\DoxyCodeLine{210     m\_a=a;}
+\DoxyCodeLine{211     this-\/>recalculate();}
+\DoxyCodeLine{212 \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getNB\_QUADS}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{215     \textcolor{keywordflow}{return} m\_NB\_QUADS;}
+\DoxyCodeLine{216 \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<T>> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::getPElements}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{219     \textcolor{keyword}{static} std::unordered\_set<std::shared\_ptr<T>> elmts;}
+\DoxyCodeLine{220     elmts.empty();}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     \textcolor{keywordflow}{if} (m\_pT!=NULL)\{}
+\DoxyCodeLine{223         elmts.insert(m\_pT);}
+\DoxyCodeLine{224     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{225         \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{}
+\DoxyCodeLine{226             m\_pTLTree-\/>getPElements();}
+\DoxyCodeLine{227         \}}
+\DoxyCodeLine{228         \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{}
+\DoxyCodeLine{229             m\_pTRTree-\/>getPElements();}
 \DoxyCodeLine{230         \}}
-\DoxyCodeLine{231         \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{}
-\DoxyCodeLine{232             m\_pTRTree-\/>getPElements();}
+\DoxyCodeLine{231         \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{}
+\DoxyCodeLine{232             m\_pBLTree-\/>getPElements();}
 \DoxyCodeLine{233         \}}
-\DoxyCodeLine{234         \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{}
-\DoxyCodeLine{235             m\_pBLTree-\/>getPElements();}
+\DoxyCodeLine{234         \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{}
+\DoxyCodeLine{235             m\_pBRTree-\/>getPElements();}
 \DoxyCodeLine{236         \}}
-\DoxyCodeLine{237         \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{}
-\DoxyCodeLine{238             m\_pBRTree-\/>getPElements();}
-\DoxyCodeLine{239         \}}
-\DoxyCodeLine{240     \}}
+\DoxyCodeLine{237     \}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     \textcolor{keywordflow}{return} elmts;}
+\DoxyCodeLine{240 \}}
 \DoxyCodeLine{241 }
-\DoxyCodeLine{242     \textcolor{keywordflow}{return} elmts;}
-\DoxyCodeLine{243 \}}
-\DoxyCodeLine{244 }
-\DoxyCodeLine{245 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::insert}}(std::shared\_ptr<T> pT) \{}
-\DoxyCodeLine{246     \textcolor{keywordflow}{if} (pT!=NULL)\{}
-\DoxyCodeLine{247         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p=\{pT-\/>x, pT-\/>y, \{0,0\}\};}
-\DoxyCodeLine{248         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, \{0,0\}\};}
-\DoxyCodeLine{249 }
-\DoxyCodeLine{250         \textcolor{keywordflow}{if} (abs(dp.x)<=m\_a/(M)2. \&\& abs(dp.y)<=m\_a/(M)2.)\{\textcolor{comment}{// If in the square centered on the point.}}
-\DoxyCodeLine{251             \textcolor{keywordflow}{if} (m\_pT==NULL)\{        \textcolor{comment}{// If empty}}
-\DoxyCodeLine{252                 \textcolor{comment}{//printf("{}Empty\(\backslash\)n"{});}}
-\DoxyCodeLine{253                 \textcolor{keywordflow}{if} (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   \textcolor{comment}{// If the square has no Quads under (external branch)}}
-\DoxyCodeLine{254                     m\_pT=pT;\textcolor{comment}{//We add in}}
-\DoxyCodeLine{255                     m\_tot\_weight=pT-\/>getW();\textcolor{comment}{//Set the tot\_weight}}
-\DoxyCodeLine{256                     *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
-\DoxyCodeLine{257                 \}\textcolor{keywordflow}{else}\{                                                                              \textcolor{comment}{// Else it means it is an internal branch}}
+\DoxyCodeLine{242 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::insert}}(std::shared\_ptr<T> pT) \{}
+\DoxyCodeLine{243     \textcolor{keywordflow}{if} (pT!=NULL)\{}
+\DoxyCodeLine{244         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p=\{pT-\/>x, pT-\/>y, \{0,0\}\};}
+\DoxyCodeLine{245         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, \{0,0\}\};}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247         \textcolor{keywordflow}{if} (abs(dp.x)<=m\_a/(M)2. \&\& abs(dp.y)<=m\_a/(M)2.)\{\textcolor{comment}{// If in the square centered on the point.}}
+\DoxyCodeLine{248             \textcolor{keywordflow}{if} (m\_pT==NULL)\{        \textcolor{comment}{// If empty}}
+\DoxyCodeLine{249                 \textcolor{comment}{//printf("{}Empty\(\backslash\)n"{});}}
+\DoxyCodeLine{250                 \textcolor{keywordflow}{if} (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   \textcolor{comment}{// If the square has no Quads under (external branch)}}
+\DoxyCodeLine{251                     m\_pT=pT;\textcolor{comment}{//We add in}}
+\DoxyCodeLine{252                     m\_tot\_weight=pT-\/>getW();\textcolor{comment}{//Set the tot\_weight}}
+\DoxyCodeLine{253                     *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
+\DoxyCodeLine{254                 \}\textcolor{keywordflow}{else}\{                                                                              \textcolor{comment}{// Else it means it is an internal branch}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256                     m\_tot\_weight+=pT-\/>getW();\textcolor{comment}{//Add to tot\_weight}}
+\DoxyCodeLine{257                     *m\_pbarycenter+=p*(pT-\/>getW()/m\_tot\_weight);\textcolor{comment}{//Add to the barycenter}}
 \DoxyCodeLine{258 }
-\DoxyCodeLine{259                     m\_tot\_weight+=pT-\/>getW();\textcolor{comment}{//Add to tot\_weight}}
-\DoxyCodeLine{260                     *m\_pbarycenter+=p*(pT-\/>getW()/m\_tot\_weight);\textcolor{comment}{//Add to the barycenter}}
-\DoxyCodeLine{261 }
-\DoxyCodeLine{262                     \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 1}}
-\DoxyCodeLine{263                         \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{264                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{265                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, \{0,0\}\};}
-\DoxyCodeLine{266                             \textcolor{comment}{//std::cout<<"{}1"{}<<np.to\_string(true);}}
-\DoxyCodeLine{267                             m\_pBLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{268                         \}}
-\DoxyCodeLine{269                         m\_pBLTree-\/>insert(pT);}
-\DoxyCodeLine{270                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 2}}
-\DoxyCodeLine{271                         \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{272                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{273                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, \{0,0\}\};}
-\DoxyCodeLine{274                             \textcolor{comment}{//std::cout<<"{}2"{}<<np.to\_string(true);}}
-\DoxyCodeLine{275                             m\_pBRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{276                         \}}
-\DoxyCodeLine{277                         m\_pBRTree-\/>insert(pT);}
-\DoxyCodeLine{278                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 3}}
-\DoxyCodeLine{279                         \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{280                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{281                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, \{0,0\}\};}
-\DoxyCodeLine{282                             \textcolor{comment}{//std::cout<<"{}3"{}<<np.to\_string(true);}}
-\DoxyCodeLine{283                             m\_pTRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{284                         \}}
-\DoxyCodeLine{285                         m\_pTRTree-\/>insert(pT);}
-\DoxyCodeLine{286                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 4}}
-\DoxyCodeLine{287                         \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{288                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{289                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, \{0,0\}\};}
-\DoxyCodeLine{290                             \textcolor{comment}{//std::cout<<"{}4"{}<<np.to\_string(true);}}
-\DoxyCodeLine{291                             m\_pTLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{292                         \}}
-\DoxyCodeLine{293                         m\_pTLTree-\/>insert(pT);}
-\DoxyCodeLine{294                     \}}
-\DoxyCodeLine{295                 \}}
-\DoxyCodeLine{296             \}\textcolor{keywordflow}{else}\{                  \textcolor{comment}{// Else if full}}
+\DoxyCodeLine{259                     \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 1}}
+\DoxyCodeLine{260                         \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{261                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{262                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, \{0,0\}\};}
+\DoxyCodeLine{263                             \textcolor{comment}{//std::cout<<"{}1"{}<<np.to\_string(true);}}
+\DoxyCodeLine{264                             m\_pBLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{265                         \}}
+\DoxyCodeLine{266                         m\_pBLTree-\/>insert(pT);}
+\DoxyCodeLine{267                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 2}}
+\DoxyCodeLine{268                         \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{269                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{270                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, \{0,0\}\};}
+\DoxyCodeLine{271                             \textcolor{comment}{//std::cout<<"{}2"{}<<np.to\_string(true);}}
+\DoxyCodeLine{272                             m\_pBRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{273                         \}}
+\DoxyCodeLine{274                         m\_pBRTree-\/>insert(pT);}
+\DoxyCodeLine{275                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 3}}
+\DoxyCodeLine{276                         \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{277                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{278                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, \{0,0\}\};}
+\DoxyCodeLine{279                             \textcolor{comment}{//std::cout<<"{}3"{}<<np.to\_string(true);}}
+\DoxyCodeLine{280                             m\_pTRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{281                         \}}
+\DoxyCodeLine{282                         m\_pTRTree-\/>insert(pT);}
+\DoxyCodeLine{283                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 4}}
+\DoxyCodeLine{284                         \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{285                             \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{286                             \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, \{0,0\}\};}
+\DoxyCodeLine{287                             \textcolor{comment}{//std::cout<<"{}4"{}<<np.to\_string(true);}}
+\DoxyCodeLine{288                             m\_pTLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{289                         \}}
+\DoxyCodeLine{290                         m\_pTLTree-\/>insert(pT);}
+\DoxyCodeLine{291                     \}}
+\DoxyCodeLine{292                 \}}
+\DoxyCodeLine{293             \}\textcolor{keywordflow}{else}\{                  \textcolor{comment}{// Else if full}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295                 m\_tot\_weight=pT-\/>getW();\textcolor{comment}{//Set the tot\_weight}}
+\DoxyCodeLine{296                 *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
 \DoxyCodeLine{297 }
-\DoxyCodeLine{298                 m\_tot\_weight=pT-\/>getW();\textcolor{comment}{//Set the tot\_weight}}
-\DoxyCodeLine{299                 *m\_pbarycenter=p;\textcolor{comment}{//Set the barycenter}}
-\DoxyCodeLine{300 }
-\DoxyCodeLine{301                 \textcolor{comment}{//printf("{}Full\(\backslash\)n"{});}}
-\DoxyCodeLine{302                 \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 1}}
-\DoxyCodeLine{303                     \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{304                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{305                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, \{0,0\}\};}
-\DoxyCodeLine{306                         \textcolor{comment}{//std::cout<<"{}5"{}<<np.to\_string(true);}}
-\DoxyCodeLine{307                         m\_pBLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{308                     \}}
-\DoxyCodeLine{309                     m\_pBLTree-\/>insert(pT);}
-\DoxyCodeLine{310                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 2}}
-\DoxyCodeLine{311                     \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{312                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{313                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, \{0,0\}\};}
-\DoxyCodeLine{314                         \textcolor{comment}{//std::cout<<"{}6"{}<<np.to\_string(true);}}
-\DoxyCodeLine{315                         m\_pBRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{316                     \}}
-\DoxyCodeLine{317                     m\_pBRTree-\/>insert(pT);}
-\DoxyCodeLine{318                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 3}}
-\DoxyCodeLine{319                     \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{320                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{321                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, \{0,0\}\};}
-\DoxyCodeLine{322                         \textcolor{comment}{//std::cout<<"{}7"{}<<np.to\_string(true);}}
-\DoxyCodeLine{323                         m\_pTRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{324                     \}}
-\DoxyCodeLine{325                     m\_pTRTree-\/>insert(pT);}
-\DoxyCodeLine{326                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 4}}
-\DoxyCodeLine{327                     \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
-\DoxyCodeLine{328                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
-\DoxyCodeLine{329                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, \{0,0\}\};}
-\DoxyCodeLine{330                         \textcolor{comment}{//std::cout<<"{}8"{}<<np.to\_string(true);}}
-\DoxyCodeLine{331                         m\_pTLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
-\DoxyCodeLine{332                     \}}
-\DoxyCodeLine{333                     m\_pTLTree-\/>insert(pT);}
-\DoxyCodeLine{334                 \}}
-\DoxyCodeLine{335                 \textcolor{comment}{// We reinsert the object already present.}}
-\DoxyCodeLine{336                 std::shared\_ptr<T> pT2=m\_pT;}
-\DoxyCodeLine{337                 m\_pT=NULL;}
-\DoxyCodeLine{338                 this-\/>insert(pT2);}
-\DoxyCodeLine{339             \}}
-\DoxyCodeLine{340         \}}
-\DoxyCodeLine{341     \}}
-\DoxyCodeLine{342     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{343 \}}
-\DoxyCodeLine{344 }
-\DoxyCodeLine{345 \textcolor{comment}{/*template<> bool Quad<Particle3D<float, char>, float, char>::insert(std::shared\_ptr<Particle3D<float, char>> pT) \{}}
-\DoxyCodeLine{346 \textcolor{comment}{    if (pT!=NULL)\{}}
-\DoxyCodeLine{347 \textcolor{comment}{        Point3D<float, char> p=\{pT-\/>x, pT-\/>y, \{0,0\}\};}}
-\DoxyCodeLine{348 \textcolor{comment}{        Point3D<float, char> dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, \{0,0\}\};}}
-\DoxyCodeLine{349 \textcolor{comment}{}}
-\DoxyCodeLine{350 \textcolor{comment}{        if (abs(dp.x)<=m\_a/(float)2. \&\& abs(dp.y)<=m\_a/(float)2.)\{// If in the square centered on the point.}}
-\DoxyCodeLine{351 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
-\DoxyCodeLine{352 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
-\DoxyCodeLine{353 \textcolor{comment}{                if (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   // If the square has no Quads under (external branch)}}
-\DoxyCodeLine{354 \textcolor{comment}{                    m\_pT=pT;//We add in}}
-\DoxyCodeLine{355 \textcolor{comment}{                    m\_tot\_weight=(float)1.;//Set the tot\_weight}}
-\DoxyCodeLine{356 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{357 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
+\DoxyCodeLine{298                 \textcolor{comment}{//printf("{}Full\(\backslash\)n"{});}}
+\DoxyCodeLine{299                 \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 1}}
+\DoxyCodeLine{300                     \textcolor{keywordflow}{if} (m\_pBLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{301                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{302                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, (M)(-\/1.)*a, \{0,0\}\};}
+\DoxyCodeLine{303                         \textcolor{comment}{//std::cout<<"{}5"{}<<np.to\_string(true);}}
+\DoxyCodeLine{304                         m\_pBLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{305                     \}}
+\DoxyCodeLine{306                     m\_pBLTree-\/>insert(pT);}
+\DoxyCodeLine{307                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y<=(M)0.)\{\textcolor{comment}{//If square 2}}
+\DoxyCodeLine{308                     \textcolor{keywordflow}{if} (m\_pBRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{309                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{310                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, (M)(-\/1.)*a, \{0,0\}\};}
+\DoxyCodeLine{311                         \textcolor{comment}{//std::cout<<"{}6"{}<<np.to\_string(true);}}
+\DoxyCodeLine{312                         m\_pBRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{313                     \}}
+\DoxyCodeLine{314                     m\_pBRTree-\/>insert(pT);}
+\DoxyCodeLine{315                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x>=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 3}}
+\DoxyCodeLine{316                     \textcolor{keywordflow}{if} (m\_pTRTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{317                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{318                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{a, a, \{0,0\}\};}
+\DoxyCodeLine{319                         \textcolor{comment}{//std::cout<<"{}7"{}<<np.to\_string(true);}}
+\DoxyCodeLine{320                         m\_pTRTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{321                     \}}
+\DoxyCodeLine{322                     m\_pTRTree-\/>insert(pT);}
+\DoxyCodeLine{323                 \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dp.x<=(M)0. \&\& dp.y>=(M)0.)\{\textcolor{comment}{//If square 4}}
+\DoxyCodeLine{324                     \textcolor{keywordflow}{if} (m\_pTLTree==NULL)\{\textcolor{comment}{//If there is not yet a tree we create it}}
+\DoxyCodeLine{325                         \mbox{\hyperlink{structSN}{SN<M, E>}} a=m\_a/(M)4.;}
+\DoxyCodeLine{326                         \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} np\{(M)(-\/1.)*a, a, \{0,0\}\};}
+\DoxyCodeLine{327                         \textcolor{comment}{//std::cout<<"{}8"{}<<np.to\_string(true);}}
+\DoxyCodeLine{328                         m\_pTLTree=\textcolor{keyword}{new} \mbox{\hyperlink{classQuad}{Quad<T, M, E>}}(m\_a/(M)2., *m\_ppoint+np);}
+\DoxyCodeLine{329                     \}}
+\DoxyCodeLine{330                     m\_pTLTree-\/>insert(pT);}
+\DoxyCodeLine{331                 \}}
+\DoxyCodeLine{332                 \textcolor{comment}{// We reinsert the object already present.}}
+\DoxyCodeLine{333                 std::shared\_ptr<T> pT2=m\_pT;}
+\DoxyCodeLine{334                 m\_pT=NULL;}
+\DoxyCodeLine{335                 this-\/>insert(pT2);}
+\DoxyCodeLine{336             \}}
+\DoxyCodeLine{337         \}}
+\DoxyCodeLine{338     \}}
+\DoxyCodeLine{339     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{340 \}}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342 \textcolor{comment}{/*template<> bool Quad<Particle3D<float, char>, float, char>::insert(std::shared\_ptr<Particle3D<float, char>> pT) \{}}
+\DoxyCodeLine{343 \textcolor{comment}{    if (pT!=NULL)\{}}
+\DoxyCodeLine{344 \textcolor{comment}{        Point3D<float, char> p=\{pT-\/>x, pT-\/>y, \{0,0\}\};}}
+\DoxyCodeLine{345 \textcolor{comment}{        Point3D<float, char> dp=\{pT-\/>x-\/m\_ppoint-\/>x, pT-\/>y-\/m\_ppoint-\/>y, \{0,0\}\};}}
+\DoxyCodeLine{346 \textcolor{comment}{}}
+\DoxyCodeLine{347 \textcolor{comment}{        if (abs(dp.x)<=m\_a/(float)2. \&\& abs(dp.y)<=m\_a/(float)2.)\{// If in the square centered on the point.}}
+\DoxyCodeLine{348 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
+\DoxyCodeLine{349 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
+\DoxyCodeLine{350 \textcolor{comment}{                if (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   // If the square has no Quads under (external branch)}}
+\DoxyCodeLine{351 \textcolor{comment}{                    m\_pT=pT;//We add in}}
+\DoxyCodeLine{352 \textcolor{comment}{                    m\_tot\_weight=(float)1.;//Set the tot\_weight}}
+\DoxyCodeLine{353 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
+\DoxyCodeLine{354 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
+\DoxyCodeLine{355 \textcolor{comment}{}}
+\DoxyCodeLine{356 \textcolor{comment}{                    m\_tot\_weight+=pT-\/>getW();//Add to tot\_weight}}
+\DoxyCodeLine{357 \textcolor{comment}{                    *m\_pbarycenter+=p*(pT-\/>getW()/m\_tot\_weight);//Add to the barycenter}}
 \DoxyCodeLine{358 \textcolor{comment}{}}
-\DoxyCodeLine{359 \textcolor{comment}{                    m\_tot\_weight+=pT-\/>getW();//Add to tot\_weight}}
-\DoxyCodeLine{360 \textcolor{comment}{                    *m\_pbarycenter+=p*(pT-\/>getW()/m\_tot\_weight);//Add to the barycenter}}
-\DoxyCodeLine{361 \textcolor{comment}{}}
-\DoxyCodeLine{362 \textcolor{comment}{                    if (dp.x<=(float)0. \&\& dp.y<=(float)0.)\{//If square 1}}
-\DoxyCodeLine{363 \textcolor{comment}{                        if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{364 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{365 \textcolor{comment}{                            Point3D<float, char> np\{(float)(-\/1.)*a, (float)(-\/1.)*a, \{0,0\}\};}}
-\DoxyCodeLine{366 \textcolor{comment}{                            //std::cout<<"{}1"{}<<np.to\_string(true);}}
-\DoxyCodeLine{367 \textcolor{comment}{                            m\_pBLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{368 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{369 \textcolor{comment}{                        m\_pBLTree-\/>insert(pT);}}
-\DoxyCodeLine{370 \textcolor{comment}{                    \}else if (dp.x>=(float)0. \&\& dp.y<=(float)0.)\{//If square 2}}
-\DoxyCodeLine{371 \textcolor{comment}{                        if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{372 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{373 \textcolor{comment}{                            Point3D<float, char> np\{a, (float)(-\/1.)*a, \{0,0\}\};}}
-\DoxyCodeLine{374 \textcolor{comment}{                            //std::cout<<"{}2"{}<<np.to\_string(true);}}
-\DoxyCodeLine{375 \textcolor{comment}{                            m\_pBRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{376 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{377 \textcolor{comment}{                        m\_pBRTree-\/>insert(pT);}}
-\DoxyCodeLine{378 \textcolor{comment}{                    \}else if (dp.x>=(float)0. \&\& dp.y>=(float)0.)\{//If square 3}}
-\DoxyCodeLine{379 \textcolor{comment}{                        if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{380 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{381 \textcolor{comment}{                            Point3D<float, char> np\{a, a, \{0,0\}\};}}
-\DoxyCodeLine{382 \textcolor{comment}{                            //std::cout<<"{}3"{}<<np.to\_string(true);}}
-\DoxyCodeLine{383 \textcolor{comment}{                            m\_pTRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{384 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{385 \textcolor{comment}{                        m\_pTRTree-\/>insert(pT);}}
-\DoxyCodeLine{386 \textcolor{comment}{                    \}else if (dp.x<=(float)0. \&\& dp.y>=(float)0.)\{//If square 4}}
-\DoxyCodeLine{387 \textcolor{comment}{                        if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{388 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{389 \textcolor{comment}{                            Point3D<float, char> np\{(float)(-\/1.)*a, a, \{0,0\}\};}}
-\DoxyCodeLine{390 \textcolor{comment}{                            //std::cout<<"{}4"{}<<np.to\_string(true);}}
-\DoxyCodeLine{391 \textcolor{comment}{                            m\_pTLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{392 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{393 \textcolor{comment}{                        m\_pTLTree-\/>insert(pT);}}
-\DoxyCodeLine{394 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{395 \textcolor{comment}{                \}}}
-\DoxyCodeLine{396 \textcolor{comment}{            \}else\{                  // Else if full}}
+\DoxyCodeLine{359 \textcolor{comment}{                    if (dp.x<=(float)0. \&\& dp.y<=(float)0.)\{//If square 1}}
+\DoxyCodeLine{360 \textcolor{comment}{                        if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{361 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{362 \textcolor{comment}{                            Point3D<float, char> np\{(float)(-\/1.)*a, (float)(-\/1.)*a, \{0,0\}\};}}
+\DoxyCodeLine{363 \textcolor{comment}{                            //std::cout<<"{}1"{}<<np.to\_string(true);}}
+\DoxyCodeLine{364 \textcolor{comment}{                            m\_pBLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{365 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{366 \textcolor{comment}{                        m\_pBLTree-\/>insert(pT);}}
+\DoxyCodeLine{367 \textcolor{comment}{                    \}else if (dp.x>=(float)0. \&\& dp.y<=(float)0.)\{//If square 2}}
+\DoxyCodeLine{368 \textcolor{comment}{                        if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{369 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{370 \textcolor{comment}{                            Point3D<float, char> np\{a, (float)(-\/1.)*a, \{0,0\}\};}}
+\DoxyCodeLine{371 \textcolor{comment}{                            //std::cout<<"{}2"{}<<np.to\_string(true);}}
+\DoxyCodeLine{372 \textcolor{comment}{                            m\_pBRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{373 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{374 \textcolor{comment}{                        m\_pBRTree-\/>insert(pT);}}
+\DoxyCodeLine{375 \textcolor{comment}{                    \}else if (dp.x>=(float)0. \&\& dp.y>=(float)0.)\{//If square 3}}
+\DoxyCodeLine{376 \textcolor{comment}{                        if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{377 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{378 \textcolor{comment}{                            Point3D<float, char> np\{a, a, \{0,0\}\};}}
+\DoxyCodeLine{379 \textcolor{comment}{                            //std::cout<<"{}3"{}<<np.to\_string(true);}}
+\DoxyCodeLine{380 \textcolor{comment}{                            m\_pTRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{381 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{382 \textcolor{comment}{                        m\_pTRTree-\/>insert(pT);}}
+\DoxyCodeLine{383 \textcolor{comment}{                    \}else if (dp.x<=(float)0. \&\& dp.y>=(float)0.)\{//If square 4}}
+\DoxyCodeLine{384 \textcolor{comment}{                        if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{385 \textcolor{comment}{                            SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{386 \textcolor{comment}{                            Point3D<float, char> np\{(float)(-\/1.)*a, a, \{0,0\}\};}}
+\DoxyCodeLine{387 \textcolor{comment}{                            //std::cout<<"{}4"{}<<np.to\_string(true);}}
+\DoxyCodeLine{388 \textcolor{comment}{                            m\_pTLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{389 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{390 \textcolor{comment}{                        m\_pTLTree-\/>insert(pT);}}
+\DoxyCodeLine{391 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{392 \textcolor{comment}{                \}}}
+\DoxyCodeLine{393 \textcolor{comment}{            \}else\{                  // Else if full}}
+\DoxyCodeLine{394 \textcolor{comment}{}}
+\DoxyCodeLine{395 \textcolor{comment}{                m\_tot\_weight=pT-\/>getW();//Set the tot\_weight}}
+\DoxyCodeLine{396 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
 \DoxyCodeLine{397 \textcolor{comment}{}}
-\DoxyCodeLine{398 \textcolor{comment}{                m\_tot\_weight=pT-\/>getW();//Set the tot\_weight}}
-\DoxyCodeLine{399 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{400 \textcolor{comment}{}}
-\DoxyCodeLine{401 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
-\DoxyCodeLine{402 \textcolor{comment}{                if (dp.x<=(float)0. \&\& dp.y<=(float)0.)\{//If square 1}}
-\DoxyCodeLine{403 \textcolor{comment}{                    if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{404 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{405 \textcolor{comment}{                        Point3D<float, char> np\{(float)(-\/1.)*a, (float)(-\/1.)*a, \{0,0\}\};}}
-\DoxyCodeLine{406 \textcolor{comment}{                        //std::cout<<"{}5"{}<<np.to\_string(true);}}
-\DoxyCodeLine{407 \textcolor{comment}{                        m\_pBLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{408 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{409 \textcolor{comment}{                    m\_pBLTree-\/>insert(pT);}}
-\DoxyCodeLine{410 \textcolor{comment}{                \}else if (dp.x>=(float)0. \&\& dp.y<=(float)0.)\{//If square 2}}
-\DoxyCodeLine{411 \textcolor{comment}{                    if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{412 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{413 \textcolor{comment}{                        Point3D<float, char> np\{a, (float)(-\/1.)*a, \{0,0\}\};}}
-\DoxyCodeLine{414 \textcolor{comment}{                        //std::cout<<"{}6"{}<<np.to\_string(true);}}
-\DoxyCodeLine{415 \textcolor{comment}{                        m\_pBRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{416 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{417 \textcolor{comment}{                    m\_pBRTree-\/>insert(pT);}}
-\DoxyCodeLine{418 \textcolor{comment}{                \}else if (dp.x>=(float)0. \&\& dp.y>=(float)0.)\{//If square 3}}
-\DoxyCodeLine{419 \textcolor{comment}{                    if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{420 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{421 \textcolor{comment}{                        Point3D<float, char> np\{a, a, \{0,0\}\};}}
-\DoxyCodeLine{422 \textcolor{comment}{                        //std::cout<<"{}7"{}<<np.to\_string(true);}}
-\DoxyCodeLine{423 \textcolor{comment}{                        m\_pTRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{424 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{425 \textcolor{comment}{                    m\_pTRTree-\/>insert(pT);}}
-\DoxyCodeLine{426 \textcolor{comment}{                \}else if (dp.x<=(float)0. \&\& dp.y>=(float)0.)\{//If square 4}}
-\DoxyCodeLine{427 \textcolor{comment}{                    if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{428 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
-\DoxyCodeLine{429 \textcolor{comment}{                        Point3D<float, char> np\{(float)(-\/1.)*a, a, \{0,0\}\};}}
-\DoxyCodeLine{430 \textcolor{comment}{                        //std::cout<<"{}8"{}<<np.to\_string(true);}}
-\DoxyCodeLine{431 \textcolor{comment}{                        m\_pTLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
-\DoxyCodeLine{432 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{433 \textcolor{comment}{                    m\_pTLTree-\/>insert(pT);}}
-\DoxyCodeLine{434 \textcolor{comment}{                \}}}
-\DoxyCodeLine{435 \textcolor{comment}{                // We reinsert the object already present.}}
-\DoxyCodeLine{436 \textcolor{comment}{                std::shared\_ptr<Particle3D<float, char>> pT2=m\_pT;}}
-\DoxyCodeLine{437 \textcolor{comment}{                m\_pT=NULL;}}
-\DoxyCodeLine{438 \textcolor{comment}{                this-\/>insert(pT2);}}
-\DoxyCodeLine{439 \textcolor{comment}{            \}}}
-\DoxyCodeLine{440 \textcolor{comment}{        \}}}
-\DoxyCodeLine{441 \textcolor{comment}{    \}}}
-\DoxyCodeLine{442 \textcolor{comment}{    return true;}}
-\DoxyCodeLine{443 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{444 }
-\DoxyCodeLine{445 \textcolor{comment}{/*template<> bool Quad<Point3D<M, E>, M, E>::insert(Point3D<M, E>* ppart) \{// WHy does it work for Quads but not Octs}}
-\DoxyCodeLine{446 \textcolor{comment}{    return true;}}
-\DoxyCodeLine{447 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{448 }
-\DoxyCodeLine{449 \textcolor{comment}{/*template<> bool Quad<Particle3D, M, E>::insert(Particle3D* ppart) \{// WHy does it work for Quads but not Octs}}
-\DoxyCodeLine{450 \textcolor{comment}{    if (ppart!=NULL)\{}}
-\DoxyCodeLine{451 \textcolor{comment}{        Point3D<M, E> p=\{ppart-\/>x, ppart-\/>y, \{0, 0\}\};//ppart-\/>z}}
-\DoxyCodeLine{452 \textcolor{comment}{        Point3D<M, E> dp=\{ppart-\/>x-\/m\_ppoint-\/>x, ppart-\/>y-\/m\_ppoint-\/>y, \{0, 0\}\};}}
-\DoxyCodeLine{453 \textcolor{comment}{}}
-\DoxyCodeLine{454 \textcolor{comment}{        if (abs(dp.x)<=m\_a/2 \&\& abs(dp.y)<=m\_a/2)\{// If in the square centered on the point.}}
-\DoxyCodeLine{455 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
-\DoxyCodeLine{456 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
-\DoxyCodeLine{457 \textcolor{comment}{                if (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   // If the square has no Quads under (external branch)}}
-\DoxyCodeLine{458 \textcolor{comment}{                    m\_pT=ppart;//We add in}}
-\DoxyCodeLine{459 \textcolor{comment}{                    m\_tot\_weight=ppart-\/>w;//Set the tot\_weight}}
-\DoxyCodeLine{460 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{461 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
+\DoxyCodeLine{398 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
+\DoxyCodeLine{399 \textcolor{comment}{                if (dp.x<=(float)0. \&\& dp.y<=(float)0.)\{//If square 1}}
+\DoxyCodeLine{400 \textcolor{comment}{                    if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{401 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{402 \textcolor{comment}{                        Point3D<float, char> np\{(float)(-\/1.)*a, (float)(-\/1.)*a, \{0,0\}\};}}
+\DoxyCodeLine{403 \textcolor{comment}{                        //std::cout<<"{}5"{}<<np.to\_string(true);}}
+\DoxyCodeLine{404 \textcolor{comment}{                        m\_pBLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{405 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{406 \textcolor{comment}{                    m\_pBLTree-\/>insert(pT);}}
+\DoxyCodeLine{407 \textcolor{comment}{                \}else if (dp.x>=(float)0. \&\& dp.y<=(float)0.)\{//If square 2}}
+\DoxyCodeLine{408 \textcolor{comment}{                    if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{409 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{410 \textcolor{comment}{                        Point3D<float, char> np\{a, (float)(-\/1.)*a, \{0,0\}\};}}
+\DoxyCodeLine{411 \textcolor{comment}{                        //std::cout<<"{}6"{}<<np.to\_string(true);}}
+\DoxyCodeLine{412 \textcolor{comment}{                        m\_pBRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{413 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{414 \textcolor{comment}{                    m\_pBRTree-\/>insert(pT);}}
+\DoxyCodeLine{415 \textcolor{comment}{                \}else if (dp.x>=(float)0. \&\& dp.y>=(float)0.)\{//If square 3}}
+\DoxyCodeLine{416 \textcolor{comment}{                    if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{417 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{418 \textcolor{comment}{                        Point3D<float, char> np\{a, a, \{0,0\}\};}}
+\DoxyCodeLine{419 \textcolor{comment}{                        //std::cout<<"{}7"{}<<np.to\_string(true);}}
+\DoxyCodeLine{420 \textcolor{comment}{                        m\_pTRTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{421 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{422 \textcolor{comment}{                    m\_pTRTree-\/>insert(pT);}}
+\DoxyCodeLine{423 \textcolor{comment}{                \}else if (dp.x<=(float)0. \&\& dp.y>=(float)0.)\{//If square 4}}
+\DoxyCodeLine{424 \textcolor{comment}{                    if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{425 \textcolor{comment}{                        SN<float, char> a=m\_a/(float)4.;}}
+\DoxyCodeLine{426 \textcolor{comment}{                        Point3D<float, char> np\{(float)(-\/1.)*a, a, \{0,0\}\};}}
+\DoxyCodeLine{427 \textcolor{comment}{                        //std::cout<<"{}8"{}<<np.to\_string(true);}}
+\DoxyCodeLine{428 \textcolor{comment}{                        m\_pTLTree=new Quad<Particle3D<float, char>, float, char>(m\_a/(float)2., *m\_ppoint+np);}}
+\DoxyCodeLine{429 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{430 \textcolor{comment}{                    m\_pTLTree-\/>insert(pT);}}
+\DoxyCodeLine{431 \textcolor{comment}{                \}}}
+\DoxyCodeLine{432 \textcolor{comment}{                // We reinsert the object already present.}}
+\DoxyCodeLine{433 \textcolor{comment}{                std::shared\_ptr<Particle3D<float, char>> pT2=m\_pT;}}
+\DoxyCodeLine{434 \textcolor{comment}{                m\_pT=NULL;}}
+\DoxyCodeLine{435 \textcolor{comment}{                this-\/>insert(pT2);}}
+\DoxyCodeLine{436 \textcolor{comment}{            \}}}
+\DoxyCodeLine{437 \textcolor{comment}{        \}}}
+\DoxyCodeLine{438 \textcolor{comment}{    \}}}
+\DoxyCodeLine{439 \textcolor{comment}{    return true;}}
+\DoxyCodeLine{440 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{442 \textcolor{comment}{/*template<> bool Quad<Point3D<M, E>, M, E>::insert(Point3D<M, E>* ppart) \{// WHy does it work for Quads but not Octs}}
+\DoxyCodeLine{443 \textcolor{comment}{    return true;}}
+\DoxyCodeLine{444 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{446 \textcolor{comment}{/*template<> bool Quad<Particle3D, M, E>::insert(Particle3D* ppart) \{// WHy does it work for Quads but not Octs}}
+\DoxyCodeLine{447 \textcolor{comment}{    if (ppart!=NULL)\{}}
+\DoxyCodeLine{448 \textcolor{comment}{        Point3D<M, E> p=\{ppart-\/>x, ppart-\/>y, \{0, 0\}\};//ppart-\/>z}}
+\DoxyCodeLine{449 \textcolor{comment}{        Point3D<M, E> dp=\{ppart-\/>x-\/m\_ppoint-\/>x, ppart-\/>y-\/m\_ppoint-\/>y, \{0, 0\}\};}}
+\DoxyCodeLine{450 \textcolor{comment}{}}
+\DoxyCodeLine{451 \textcolor{comment}{        if (abs(dp.x)<=m\_a/2 \&\& abs(dp.y)<=m\_a/2)\{// If in the square centered on the point.}}
+\DoxyCodeLine{452 \textcolor{comment}{            if (m\_pT==NULL)\{        // If empty}}
+\DoxyCodeLine{453 \textcolor{comment}{                //printf("{}Empty\(\backslash\)n"{});}}
+\DoxyCodeLine{454 \textcolor{comment}{                if (m\_pBLTree==NULL and m\_pBRTree==NULL and m\_pTRTree==NULL and m\_pTLTree==NULL)\{   // If the square has no Quads under (external branch)}}
+\DoxyCodeLine{455 \textcolor{comment}{                    m\_pT=ppart;//We add in}}
+\DoxyCodeLine{456 \textcolor{comment}{                    m\_tot\_weight=ppart-\/>w;//Set the tot\_weight}}
+\DoxyCodeLine{457 \textcolor{comment}{                    *m\_pbarycenter=p;//Set the barycenter}}
+\DoxyCodeLine{458 \textcolor{comment}{                \}else\{                                                                              // Else it means it is an internal branch}}
+\DoxyCodeLine{459 \textcolor{comment}{}}
+\DoxyCodeLine{460 \textcolor{comment}{                    m\_tot\_weight+=ppart-\/>w;//Add to tot\_weight}}
+\DoxyCodeLine{461 \textcolor{comment}{                    *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
 \DoxyCodeLine{462 \textcolor{comment}{}}
-\DoxyCodeLine{463 \textcolor{comment}{                    m\_tot\_weight+=ppart-\/>w;//Add to tot\_weight}}
-\DoxyCodeLine{464 \textcolor{comment}{                    *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
-\DoxyCodeLine{465 \textcolor{comment}{}}
-\DoxyCodeLine{466 \textcolor{comment}{                    if (m\_tot\_weight!=LSN\{0,0\})\{}}
-\DoxyCodeLine{467 \textcolor{comment}{                        *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
-\DoxyCodeLine{468 \textcolor{comment}{                    \}else\{}}
-\DoxyCodeLine{469 \textcolor{comment}{                        *m\_pbarycenter=*m\_ppoint;//Set the barycenter to the geometric center}}
-\DoxyCodeLine{470 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{471 \textcolor{comment}{}}
-\DoxyCodeLine{472 \textcolor{comment}{}}
-\DoxyCodeLine{473 \textcolor{comment}{                    if (dp.x<=0. \&\& dp.y<=0.)\{//If square 1}}
-\DoxyCodeLine{474 \textcolor{comment}{                        //printf("{}Square1\(\backslash\)n"{});}}
-\DoxyCodeLine{475 \textcolor{comment}{                        if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{476 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{477 \textcolor{comment}{                            Point3D<M, E> np\{a*-\/1,a*-\/1,\{0, 0\}\};}}
-\DoxyCodeLine{478 \textcolor{comment}{                            m\_pBLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{479 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{480 \textcolor{comment}{                        m\_pBLTree-\/>insert(ppart);}}
-\DoxyCodeLine{481 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0.)\{//If square 2}}
-\DoxyCodeLine{482 \textcolor{comment}{                        if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{483 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{484 \textcolor{comment}{                            Point3D<M, E> np\{a,a*-\/1,\{0, 0\}\};}}
-\DoxyCodeLine{485 \textcolor{comment}{                            m\_pBRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{486 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{487 \textcolor{comment}{                        m\_pBRTree-\/>insert(ppart);}}
-\DoxyCodeLine{488 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0.)\{//If square 3}}
-\DoxyCodeLine{489 \textcolor{comment}{                        if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{490 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{491 \textcolor{comment}{                            Point3D<M, E> np\{a,a,\{0, 0\}\};}}
-\DoxyCodeLine{492 \textcolor{comment}{                            m\_pTRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{493 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{494 \textcolor{comment}{                        m\_pTRTree-\/>insert(ppart);}}
-\DoxyCodeLine{495 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0.)\{//If square 4}}
-\DoxyCodeLine{496 \textcolor{comment}{                        if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{497 \textcolor{comment}{                            LSN a=m\_a/4;}}
-\DoxyCodeLine{498 \textcolor{comment}{                            Point3D<M, E> np\{a*-\/1,a,\{0, 0\}\};}}
-\DoxyCodeLine{499 \textcolor{comment}{                            m\_pTLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{500 \textcolor{comment}{                        \}}}
-\DoxyCodeLine{501 \textcolor{comment}{                        m\_pTLTree-\/>insert(ppart);}}
-\DoxyCodeLine{502 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{503 \textcolor{comment}{                \}}}
-\DoxyCodeLine{504 \textcolor{comment}{            \}else\{                  // Else if full}}
+\DoxyCodeLine{463 \textcolor{comment}{                    if (m\_tot\_weight!=LSN\{0,0\})\{}}
+\DoxyCodeLine{464 \textcolor{comment}{                        *m\_pbarycenter+=p*(ppart-\/>w/m\_tot\_weight);//Add to the barycenter}}
+\DoxyCodeLine{465 \textcolor{comment}{                    \}else\{}}
+\DoxyCodeLine{466 \textcolor{comment}{                        *m\_pbarycenter=*m\_ppoint;//Set the barycenter to the geometric center}}
+\DoxyCodeLine{467 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{468 \textcolor{comment}{}}
+\DoxyCodeLine{469 \textcolor{comment}{}}
+\DoxyCodeLine{470 \textcolor{comment}{                    if (dp.x<=0. \&\& dp.y<=0.)\{//If square 1}}
+\DoxyCodeLine{471 \textcolor{comment}{                        //printf("{}Square1\(\backslash\)n"{});}}
+\DoxyCodeLine{472 \textcolor{comment}{                        if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{473 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{474 \textcolor{comment}{                            Point3D<M, E> np\{a*-\/1,a*-\/1,\{0, 0\}\};}}
+\DoxyCodeLine{475 \textcolor{comment}{                            m\_pBLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{476 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{477 \textcolor{comment}{                        m\_pBLTree-\/>insert(ppart);}}
+\DoxyCodeLine{478 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y<=0.)\{//If square 2}}
+\DoxyCodeLine{479 \textcolor{comment}{                        if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{480 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{481 \textcolor{comment}{                            Point3D<M, E> np\{a,a*-\/1,\{0, 0\}\};}}
+\DoxyCodeLine{482 \textcolor{comment}{                            m\_pBRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{483 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{484 \textcolor{comment}{                        m\_pBRTree-\/>insert(ppart);}}
+\DoxyCodeLine{485 \textcolor{comment}{                    \}else if (dp.x>=0. \&\& dp.y>=0.)\{//If square 3}}
+\DoxyCodeLine{486 \textcolor{comment}{                        if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{487 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{488 \textcolor{comment}{                            Point3D<M, E> np\{a,a,\{0, 0\}\};}}
+\DoxyCodeLine{489 \textcolor{comment}{                            m\_pTRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{490 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{491 \textcolor{comment}{                        m\_pTRTree-\/>insert(ppart);}}
+\DoxyCodeLine{492 \textcolor{comment}{                    \}else if (dp.x<=0. \&\& dp.y>=0.)\{//If square 4}}
+\DoxyCodeLine{493 \textcolor{comment}{                        if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{494 \textcolor{comment}{                            LSN a=m\_a/4;}}
+\DoxyCodeLine{495 \textcolor{comment}{                            Point3D<M, E> np\{a*-\/1,a,\{0, 0\}\};}}
+\DoxyCodeLine{496 \textcolor{comment}{                            m\_pTLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{497 \textcolor{comment}{                        \}}}
+\DoxyCodeLine{498 \textcolor{comment}{                        m\_pTLTree-\/>insert(ppart);}}
+\DoxyCodeLine{499 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{500 \textcolor{comment}{                \}}}
+\DoxyCodeLine{501 \textcolor{comment}{            \}else\{                  // Else if full}}
+\DoxyCodeLine{502 \textcolor{comment}{}}
+\DoxyCodeLine{503 \textcolor{comment}{                m\_tot\_weight=ppart-\/>w;//+m\_pT-\/>w//Set the tot\_weight}}
+\DoxyCodeLine{504 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
 \DoxyCodeLine{505 \textcolor{comment}{}}
-\DoxyCodeLine{506 \textcolor{comment}{                m\_tot\_weight=ppart-\/>w;//+m\_pT-\/>w//Set the tot\_weight}}
-\DoxyCodeLine{507 \textcolor{comment}{                *m\_pbarycenter=p;//Set the barycenter}}
-\DoxyCodeLine{508 \textcolor{comment}{}}
-\DoxyCodeLine{509 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
-\DoxyCodeLine{510 \textcolor{comment}{                if (dp.x<=0. \&\& dp.y<=0.)\{//If square 1}}
-\DoxyCodeLine{511 \textcolor{comment}{                    if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{512 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{513 \textcolor{comment}{                        Point3D<M, E> np\{a*-\/1,a*-\/1,\{0, 0\}\};}}
-\DoxyCodeLine{514 \textcolor{comment}{                        m\_pBLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{515 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{516 \textcolor{comment}{                    m\_pBLTree-\/>insert(ppart);}}
-\DoxyCodeLine{517 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0.)\{//If square 2}}
-\DoxyCodeLine{518 \textcolor{comment}{                    if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{519 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{520 \textcolor{comment}{                        Point3D<M, E> np\{a,a*-\/1,\{0, 0\}\};}}
-\DoxyCodeLine{521 \textcolor{comment}{                        m\_pBRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{522 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{523 \textcolor{comment}{                    m\_pBRTree-\/>insert(ppart);}}
-\DoxyCodeLine{524 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0.)\{//If square 3}}
-\DoxyCodeLine{525 \textcolor{comment}{                    if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{526 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{527 \textcolor{comment}{                        Point3D<M, E> np\{a,a,\{0, 0\}\};}}
-\DoxyCodeLine{528 \textcolor{comment}{                        m\_pTRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{529 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{530 \textcolor{comment}{                    m\_pTRTree-\/>insert(ppart);}}
-\DoxyCodeLine{531 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0.)\{//If square 4}}
-\DoxyCodeLine{532 \textcolor{comment}{                    if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
-\DoxyCodeLine{533 \textcolor{comment}{                        LSN a=m\_a/4;}}
-\DoxyCodeLine{534 \textcolor{comment}{                        Point3D<M, E> np\{a*-\/1,a,\{0, 0\}\};}}
-\DoxyCodeLine{535 \textcolor{comment}{                        m\_pTLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
-\DoxyCodeLine{536 \textcolor{comment}{                    \}}}
-\DoxyCodeLine{537 \textcolor{comment}{                    m\_pTLTree-\/>insert(ppart);}}
-\DoxyCodeLine{538 \textcolor{comment}{                \}}}
-\DoxyCodeLine{539 \textcolor{comment}{                // We redistribute the object already present in the Quad.}}
-\DoxyCodeLine{540 \textcolor{comment}{                Particle3D* pT2=m\_pT;}}
-\DoxyCodeLine{541 \textcolor{comment}{                m\_pT=NULL;}}
-\DoxyCodeLine{542 \textcolor{comment}{                this-\/>insert(pT2);}}
-\DoxyCodeLine{543 \textcolor{comment}{            \}}}
-\DoxyCodeLine{544 \textcolor{comment}{        \}}}
-\DoxyCodeLine{545 \textcolor{comment}{    \}}}
-\DoxyCodeLine{546 \textcolor{comment}{    return true;}}
-\DoxyCodeLine{547 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{548 }
-\DoxyCodeLine{549 \textcolor{comment}{/*}}
-\DoxyCodeLine{550 \textcolor{comment}{ * Stores the quads that are to be considered given alpha.}}
-\DoxyCodeLine{551 \textcolor{comment}{ */}}
-\DoxyCodeLine{552 \textcolor{comment}{/*template <typename T, typename M, typename E> void Quad<T, M, E>::find(const T\& t, std::unordered\_set<Quad<T, M, E>*>\& pquads) \{}}
-\DoxyCodeLine{553 \textcolor{comment}{    Point3D<M, E> p=\{t.x, t.y, \{0,0\}\};}}
-\DoxyCodeLine{554 \textcolor{comment}{}}
-\DoxyCodeLine{555 \textcolor{comment}{    SN<M, E> s=this-\/>m\_a;}}
-\DoxyCodeLine{556 \textcolor{comment}{    SN<M, E> d=getDistance(p, *m\_pbarycenter);}}
-\DoxyCodeLine{557 \textcolor{comment}{    SN<M, E> alpha=s/d;}}
-\DoxyCodeLine{558 \textcolor{comment}{}}
-\DoxyCodeLine{559 \textcolor{comment}{    if (alpha>=m\_ALPHA)\{}}
-\DoxyCodeLine{560 \textcolor{comment}{        pquads.insert(this);}}
-\DoxyCodeLine{561 \textcolor{comment}{    \}else\{}}
-\DoxyCodeLine{562 \textcolor{comment}{        if (m\_pBLTree!=NULL)\{}}
-\DoxyCodeLine{563 \textcolor{comment}{            m\_pBLTree-\/>find(t, pquads);}}
+\DoxyCodeLine{506 \textcolor{comment}{                //printf("{}Full\(\backslash\)n"{});}}
+\DoxyCodeLine{507 \textcolor{comment}{                if (dp.x<=0. \&\& dp.y<=0.)\{//If square 1}}
+\DoxyCodeLine{508 \textcolor{comment}{                    if (m\_pBLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{509 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{510 \textcolor{comment}{                        Point3D<M, E> np\{a*-\/1,a*-\/1,\{0, 0\}\};}}
+\DoxyCodeLine{511 \textcolor{comment}{                        m\_pBLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{512 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{513 \textcolor{comment}{                    m\_pBLTree-\/>insert(ppart);}}
+\DoxyCodeLine{514 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y<=0.)\{//If square 2}}
+\DoxyCodeLine{515 \textcolor{comment}{                    if (m\_pBRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{516 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{517 \textcolor{comment}{                        Point3D<M, E> np\{a,a*-\/1,\{0, 0\}\};}}
+\DoxyCodeLine{518 \textcolor{comment}{                        m\_pBRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{519 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{520 \textcolor{comment}{                    m\_pBRTree-\/>insert(ppart);}}
+\DoxyCodeLine{521 \textcolor{comment}{                \}else if (dp.x>=0. \&\& dp.y>=0.)\{//If square 3}}
+\DoxyCodeLine{522 \textcolor{comment}{                    if (m\_pTRTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{523 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{524 \textcolor{comment}{                        Point3D<M, E> np\{a,a,\{0, 0\}\};}}
+\DoxyCodeLine{525 \textcolor{comment}{                        m\_pTRTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{526 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{527 \textcolor{comment}{                    m\_pTRTree-\/>insert(ppart);}}
+\DoxyCodeLine{528 \textcolor{comment}{                \}else if (dp.x<=0. \&\& dp.y>=0.)\{//If square 4}}
+\DoxyCodeLine{529 \textcolor{comment}{                    if (m\_pTLTree==NULL)\{//If there is not yet a tree we create it}}
+\DoxyCodeLine{530 \textcolor{comment}{                        LSN a=m\_a/4;}}
+\DoxyCodeLine{531 \textcolor{comment}{                        Point3D<M, E> np\{a*-\/1,a,\{0, 0\}\};}}
+\DoxyCodeLine{532 \textcolor{comment}{                        m\_pTLTree=new Quad<Particle3D, M, E>(m\_a/2, *m\_ppoint+np);}}
+\DoxyCodeLine{533 \textcolor{comment}{                    \}}}
+\DoxyCodeLine{534 \textcolor{comment}{                    m\_pTLTree-\/>insert(ppart);}}
+\DoxyCodeLine{535 \textcolor{comment}{                \}}}
+\DoxyCodeLine{536 \textcolor{comment}{                // We redistribute the object already present in the Quad.}}
+\DoxyCodeLine{537 \textcolor{comment}{                Particle3D* pT2=m\_pT;}}
+\DoxyCodeLine{538 \textcolor{comment}{                m\_pT=NULL;}}
+\DoxyCodeLine{539 \textcolor{comment}{                this-\/>insert(pT2);}}
+\DoxyCodeLine{540 \textcolor{comment}{            \}}}
+\DoxyCodeLine{541 \textcolor{comment}{        \}}}
+\DoxyCodeLine{542 \textcolor{comment}{    \}}}
+\DoxyCodeLine{543 \textcolor{comment}{    return true;}}
+\DoxyCodeLine{544 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{545 }
+\DoxyCodeLine{546 \textcolor{comment}{/*}}
+\DoxyCodeLine{547 \textcolor{comment}{ * Stores the quads that are to be considered given alpha.}}
+\DoxyCodeLine{548 \textcolor{comment}{ */}}
+\DoxyCodeLine{549 \textcolor{comment}{/*template <typename T, typename M, typename E> void Quad<T, M, E>::find(const T\& t, std::unordered\_set<Quad<T, M, E>*>\& pquads) \{}}
+\DoxyCodeLine{550 \textcolor{comment}{    Point3D<M, E> p=\{t.x, t.y, \{0,0\}\};}}
+\DoxyCodeLine{551 \textcolor{comment}{}}
+\DoxyCodeLine{552 \textcolor{comment}{    SN<M, E> s=this-\/>m\_a;}}
+\DoxyCodeLine{553 \textcolor{comment}{    SN<M, E> d=getDistance(p, *m\_pbarycenter);}}
+\DoxyCodeLine{554 \textcolor{comment}{    SN<M, E> alpha=s/d;}}
+\DoxyCodeLine{555 \textcolor{comment}{}}
+\DoxyCodeLine{556 \textcolor{comment}{    if (alpha>=m\_ALPHA)\{}}
+\DoxyCodeLine{557 \textcolor{comment}{        pquads.insert(this);}}
+\DoxyCodeLine{558 \textcolor{comment}{    \}else\{}}
+\DoxyCodeLine{559 \textcolor{comment}{        if (m\_pBLTree!=NULL)\{}}
+\DoxyCodeLine{560 \textcolor{comment}{            m\_pBLTree-\/>find(t, pquads);}}
+\DoxyCodeLine{561 \textcolor{comment}{        \}}}
+\DoxyCodeLine{562 \textcolor{comment}{        if (m\_pBRTree!=NULL)\{}}
+\DoxyCodeLine{563 \textcolor{comment}{            m\_pBRTree-\/>find(t, pquads);}}
 \DoxyCodeLine{564 \textcolor{comment}{        \}}}
-\DoxyCodeLine{565 \textcolor{comment}{        if (m\_pBRTree!=NULL)\{}}
-\DoxyCodeLine{566 \textcolor{comment}{            m\_pBRTree-\/>find(t, pquads);}}
+\DoxyCodeLine{565 \textcolor{comment}{        if (m\_pTRTree!=NULL)\{}}
+\DoxyCodeLine{566 \textcolor{comment}{            m\_pTRTree-\/>find(t, pquads);}}
 \DoxyCodeLine{567 \textcolor{comment}{        \}}}
-\DoxyCodeLine{568 \textcolor{comment}{        if (m\_pTRTree!=NULL)\{}}
-\DoxyCodeLine{569 \textcolor{comment}{            m\_pTRTree-\/>find(t, pquads);}}
+\DoxyCodeLine{568 \textcolor{comment}{        if (m\_pTLTree!=NULL)\{}}
+\DoxyCodeLine{569 \textcolor{comment}{            m\_pTLTree-\/>find(t, pquads);}}
 \DoxyCodeLine{570 \textcolor{comment}{        \}}}
-\DoxyCodeLine{571 \textcolor{comment}{        if (m\_pTLTree!=NULL)\{}}
-\DoxyCodeLine{572 \textcolor{comment}{            m\_pTLTree-\/>find(t, pquads);}}
-\DoxyCodeLine{573 \textcolor{comment}{        \}}}
-\DoxyCodeLine{574 \textcolor{comment}{    \}}}
-\DoxyCodeLine{575 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{576 }
-\DoxyCodeLine{577 \textcolor{comment}{/*}}
-\DoxyCodeLine{578 \textcolor{comment}{ * Usefull to simulate the effects of gravitation or electromagnetic interactions}}
-\DoxyCodeLine{579 \textcolor{comment}{ */}}
-\DoxyCodeLine{580 \textcolor{comment}{/*template <typename T, typename M, typename E> void Quad<T, M, E>::computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const \{}}
-\DoxyCodeLine{581 \textcolor{comment}{    if (\&t!=m\_pT)\{}}
-\DoxyCodeLine{582 \textcolor{comment}{        Point3D<M, E> p=\{t.x, t.y, \{0, 0\}\};}}
-\DoxyCodeLine{583 \textcolor{comment}{}}
-\DoxyCodeLine{584 \textcolor{comment}{        LSN s=this-\/>m\_a;}}
-\DoxyCodeLine{585 \textcolor{comment}{        LSN d=getDistance(p, *m\_pbarycenter);}}
-\DoxyCodeLine{586 \textcolor{comment}{        LSN alpha=s/d;}}
-\DoxyCodeLine{587 \textcolor{comment}{        //std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{588 \textcolor{comment}{}}
-\DoxyCodeLine{589 \textcolor{comment}{        if (alpha>=m\_ALPHA)\{}}
-\DoxyCodeLine{590 \textcolor{comment}{            Vector3D* pdv=new Vector3D(p, *m\_pbarycenter);//ERROR}}
-\DoxyCodeLine{591 \textcolor{comment}{            //Vector3D dv;//ERROR}}
-\DoxyCodeLine{592 \textcolor{comment}{            //Vector3D dv(p, *m\_pbarycenter);//ERROR}}
-\DoxyCodeLine{593 \textcolor{comment}{            //std::cout << "{}\(\backslash\)n"{} << dv.to\_string(true, true) << "{}\(\backslash\)n"{};}}
-\DoxyCodeLine{594 \textcolor{comment}{            //Line3D l;}}
-\DoxyCodeLine{595 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<l.to\_string(true, true)<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{596 \textcolor{comment}{}}
-\DoxyCodeLine{597 \textcolor{comment}{            //Vector3D dv;//ERROR}}
-\DoxyCodeLine{598 \textcolor{comment}{            //dv.setP2(Point3D<M, E>\{\{0,0\},\{0,0\},\{0,0\}\});}}
-\DoxyCodeLine{599 \textcolor{comment}{            LSN nb=t.w*this-\/>m\_tot\_weight;}}
-\DoxyCodeLine{600 \textcolor{comment}{            LSN nb2=nb/pow(d, 2);}}
-\DoxyCodeLine{601 \textcolor{comment}{            pdv-\/>setNorm(nb2);}}
-\DoxyCodeLine{602 \textcolor{comment}{}}
-\DoxyCodeLine{603 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{604 \textcolor{comment}{            //dv.print(true, 0, true);}}
-\DoxyCodeLine{605 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<dv.to\_string()<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{606 \textcolor{comment}{            v+=*pdv;}}
-\DoxyCodeLine{607 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<v.to\_string()<<"{}\(\backslash\)n"{};}}
-\DoxyCodeLine{608 \textcolor{comment}{        \}else\{}}
-\DoxyCodeLine{609 \textcolor{comment}{            if (m\_pBLTree!=NULL)\{}}
-\DoxyCodeLine{610 \textcolor{comment}{                m\_pBLTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{571 \textcolor{comment}{    \}}}
+\DoxyCodeLine{572 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{573 }
+\DoxyCodeLine{574 \textcolor{comment}{/*}}
+\DoxyCodeLine{575 \textcolor{comment}{ * Usefull to simulate the effects of gravitation or electromagnetic interactions}}
+\DoxyCodeLine{576 \textcolor{comment}{ */}}
+\DoxyCodeLine{577 \textcolor{comment}{/*template <typename T, typename M, typename E> void Quad<T, M, E>::computeInverseSquareLawResultant(const T\& t, Vector3D\& v) const \{}}
+\DoxyCodeLine{578 \textcolor{comment}{    if (\&t!=m\_pT)\{}}
+\DoxyCodeLine{579 \textcolor{comment}{        Point3D<M, E> p=\{t.x, t.y, \{0, 0\}\};}}
+\DoxyCodeLine{580 \textcolor{comment}{}}
+\DoxyCodeLine{581 \textcolor{comment}{        LSN s=this-\/>m\_a;}}
+\DoxyCodeLine{582 \textcolor{comment}{        LSN d=getDistance(p, *m\_pbarycenter);}}
+\DoxyCodeLine{583 \textcolor{comment}{        LSN alpha=s/d;}}
+\DoxyCodeLine{584 \textcolor{comment}{        //std::cout<<"{}\(\backslash\)n"{}<<alpha.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{585 \textcolor{comment}{}}
+\DoxyCodeLine{586 \textcolor{comment}{        if (alpha>=m\_ALPHA)\{}}
+\DoxyCodeLine{587 \textcolor{comment}{            Vector3D* pdv=new Vector3D(p, *m\_pbarycenter);//ERROR}}
+\DoxyCodeLine{588 \textcolor{comment}{            //Vector3D dv;//ERROR}}
+\DoxyCodeLine{589 \textcolor{comment}{            //Vector3D dv(p, *m\_pbarycenter);//ERROR}}
+\DoxyCodeLine{590 \textcolor{comment}{            //std::cout << "{}\(\backslash\)n"{} << dv.to\_string(true, true) << "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{591 \textcolor{comment}{            //Line3D l;}}
+\DoxyCodeLine{592 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<l.to\_string(true, true)<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{593 \textcolor{comment}{}}
+\DoxyCodeLine{594 \textcolor{comment}{            //Vector3D dv;//ERROR}}
+\DoxyCodeLine{595 \textcolor{comment}{            //dv.setP2(Point3D<M, E>\{\{0,0\},\{0,0\},\{0,0\}\});}}
+\DoxyCodeLine{596 \textcolor{comment}{            LSN nb=t.w*this-\/>m\_tot\_weight;}}
+\DoxyCodeLine{597 \textcolor{comment}{            LSN nb2=nb/pow(d, 2);}}
+\DoxyCodeLine{598 \textcolor{comment}{            pdv-\/>setNorm(nb2);}}
+\DoxyCodeLine{599 \textcolor{comment}{}}
+\DoxyCodeLine{600 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{601 \textcolor{comment}{            //dv.print(true, 0, true);}}
+\DoxyCodeLine{602 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<dv.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{603 \textcolor{comment}{            v+=*pdv;}}
+\DoxyCodeLine{604 \textcolor{comment}{            //std::cout<<"{}\(\backslash\)n"{}<<v.to\_string()<<"{}\(\backslash\)n"{};}}
+\DoxyCodeLine{605 \textcolor{comment}{        \}else\{}}
+\DoxyCodeLine{606 \textcolor{comment}{            if (m\_pBLTree!=NULL)\{}}
+\DoxyCodeLine{607 \textcolor{comment}{                m\_pBLTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{608 \textcolor{comment}{            \}}}
+\DoxyCodeLine{609 \textcolor{comment}{            if (m\_pBRTree!=NULL)\{}}
+\DoxyCodeLine{610 \textcolor{comment}{                m\_pBRTree-\/>computeInverseSquareLawResultant(t, v);}}
 \DoxyCodeLine{611 \textcolor{comment}{            \}}}
-\DoxyCodeLine{612 \textcolor{comment}{            if (m\_pBRTree!=NULL)\{}}
-\DoxyCodeLine{613 \textcolor{comment}{                m\_pBRTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{612 \textcolor{comment}{            if (m\_pTRTree!=NULL)\{}}
+\DoxyCodeLine{613 \textcolor{comment}{                m\_pTRTree-\/>computeInverseSquareLawResultant(t, v);}}
 \DoxyCodeLine{614 \textcolor{comment}{            \}}}
-\DoxyCodeLine{615 \textcolor{comment}{            if (m\_pTRTree!=NULL)\{}}
-\DoxyCodeLine{616 \textcolor{comment}{                m\_pTRTree-\/>computeInverseSquareLawResultant(t, v);}}
+\DoxyCodeLine{615 \textcolor{comment}{            if (m\_pTLTree!=NULL)\{}}
+\DoxyCodeLine{616 \textcolor{comment}{                m\_pTLTree-\/>computeInverseSquareLawResultant(t, v);}}
 \DoxyCodeLine{617 \textcolor{comment}{            \}}}
-\DoxyCodeLine{618 \textcolor{comment}{            if (m\_pTLTree!=NULL)\{}}
-\DoxyCodeLine{619 \textcolor{comment}{                m\_pTLTree-\/>computeInverseSquareLawResultant(t, v);}}
-\DoxyCodeLine{620 \textcolor{comment}{            \}}}
-\DoxyCodeLine{621 \textcolor{comment}{        \}}}
-\DoxyCodeLine{622 \textcolor{comment}{    \}}}
-\DoxyCodeLine{623 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{624 }
-\DoxyCodeLine{625 \textcolor{comment}{/*template <typename T, typename M, typename E> std::set<T*> Quad<T, M, E>::find(const Point3D<M, E>\& point) \{}}
-\DoxyCodeLine{626 \textcolor{comment}{    ;}}
-\DoxyCodeLine{627 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{618 \textcolor{comment}{        \}}}
+\DoxyCodeLine{619 \textcolor{comment}{    \}}}
+\DoxyCodeLine{620 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{621 }
+\DoxyCodeLine{622 \textcolor{comment}{/*template <typename T, typename M, typename E> std::set<T*> Quad<T, M, E>::find(const Point3D<M, E>\& point) \{}}
+\DoxyCodeLine{623 \textcolor{comment}{    ;}}
+\DoxyCodeLine{624 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{625 }
+\DoxyCodeLine{626 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<T> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::search}}(\textcolor{keyword}{const} std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> ppoint)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{627     std::shared\_ptr<T> pT=NULL;}
 \DoxyCodeLine{628 }
-\DoxyCodeLine{629 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::shared\_ptr<T> \mbox{\hyperlink{classQuad}{Quad<T, M, E>::search}}(\textcolor{keyword}{const} std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> ppoint)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{630     std::shared\_ptr<T> pT=NULL;}
-\DoxyCodeLine{631 }
-\DoxyCodeLine{632     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
-\DoxyCodeLine{633         M delta\_x=(M)(ppoint-\/>x-\/m\_ppoint-\/>x);}
-\DoxyCodeLine{634         M delta\_y=(M)(ppoint-\/>y-\/m\_ppoint-\/>y);}
-\DoxyCodeLine{635 }
-\DoxyCodeLine{636         \textcolor{keywordflow}{if} (abs(delta\_x)<m\_a/2 \&\& abs(delta\_y)<m\_a/2)\{\textcolor{comment}{//If in the square centered on the point.}}
-\DoxyCodeLine{637 }
-\DoxyCodeLine{638             \textcolor{keywordflow}{if} (m\_pT!=NULL)\{\textcolor{comment}{// This means it is a square of the smallest size possible.}}
-\DoxyCodeLine{639                 pT=m\_pT;}
-\DoxyCodeLine{640             \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{641                 \textcolor{keywordflow}{if} (m\_pTLTree!=NULL)\{}
-\DoxyCodeLine{642                     pT=m\_pTLTree-\/>search(ppoint);}
-\DoxyCodeLine{643                 \}}
-\DoxyCodeLine{644                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{645                     \textcolor{keywordflow}{if} (m\_pTRTree!=NULL)\{}
-\DoxyCodeLine{646                         pT=m\_pTRTree-\/>search(ppoint);}
-\DoxyCodeLine{647                     \}}
-\DoxyCodeLine{648                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{649                         \textcolor{keywordflow}{if} (m\_pBLTree!=NULL)\{}
-\DoxyCodeLine{650                             pT=m\_pBLTree-\/>search(ppoint);}
-\DoxyCodeLine{651                         \}}
-\DoxyCodeLine{652                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
-\DoxyCodeLine{653                             \textcolor{keywordflow}{if} (m\_pBRTree!=NULL)\{}
-\DoxyCodeLine{654                                 pT=m\_pBRTree-\/>search(ppoint);}
-\DoxyCodeLine{655                             \}}
-\DoxyCodeLine{656                         \}}
-\DoxyCodeLine{657                     \}}
-\DoxyCodeLine{658                 \}}
-\DoxyCodeLine{659             \}}
-\DoxyCodeLine{660         \}}
-\DoxyCodeLine{661     \}}
+\DoxyCodeLine{629     \textcolor{keywordflow}{if} (ppoint!=NULL)\{}
+\DoxyCodeLine{630         M delta\_x=(M)(ppoint-\/>x-\/m\_ppoint-\/>x);}
+\DoxyCodeLine{631         M delta\_y=(M)(ppoint-\/>y-\/m\_ppoint-\/>y);}
+\DoxyCodeLine{632 }
+\DoxyCodeLine{633         \textcolor{keywordflow}{if} (abs(delta\_x)<m\_a/2 \&\& abs(delta\_y)<m\_a/2)\{\textcolor{comment}{//If in the square centered on the point.}}
+\DoxyCodeLine{634 }
+\DoxyCodeLine{635             \textcolor{keywordflow}{if} (m\_pT!=NULL)\{\textcolor{comment}{// This means it is a square of the smallest size possible.}}
+\DoxyCodeLine{636                 pT=m\_pT;}
+\DoxyCodeLine{637             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{638                 \textcolor{keywordflow}{if} (m\_pTLTree!=NULL)\{}
+\DoxyCodeLine{639                     pT=m\_pTLTree-\/>search(ppoint);}
+\DoxyCodeLine{640                 \}}
+\DoxyCodeLine{641                 \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{642                     \textcolor{keywordflow}{if} (m\_pTRTree!=NULL)\{}
+\DoxyCodeLine{643                         pT=m\_pTRTree-\/>search(ppoint);}
+\DoxyCodeLine{644                     \}}
+\DoxyCodeLine{645                     \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{646                         \textcolor{keywordflow}{if} (m\_pBLTree!=NULL)\{}
+\DoxyCodeLine{647                             pT=m\_pBLTree-\/>search(ppoint);}
+\DoxyCodeLine{648                         \}}
+\DoxyCodeLine{649                         \textcolor{keywordflow}{if} (pT==NULL)\{\textcolor{comment}{//If it hasn't been initiated by the precedent line}}
+\DoxyCodeLine{650                             \textcolor{keywordflow}{if} (m\_pBRTree!=NULL)\{}
+\DoxyCodeLine{651                                 pT=m\_pBRTree-\/>search(ppoint);}
+\DoxyCodeLine{652                             \}}
+\DoxyCodeLine{653                         \}}
+\DoxyCodeLine{654                     \}}
+\DoxyCodeLine{655                 \}}
+\DoxyCodeLine{656             \}}
+\DoxyCodeLine{657         \}}
+\DoxyCodeLine{658     \}}
+\DoxyCodeLine{659 }
+\DoxyCodeLine{660     \textcolor{keywordflow}{return} pT;}
+\DoxyCodeLine{661 \}}
 \DoxyCodeLine{662 }
-\DoxyCodeLine{663     \textcolor{keywordflow}{return} pT;}
-\DoxyCodeLine{664 \}}
-\DoxyCodeLine{665 }
-\DoxyCodeLine{666 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::recalculate}}() \{}
-\DoxyCodeLine{667     ;}
-\DoxyCodeLine{668 \}}
-\DoxyCodeLine{669 }
-\DoxyCodeLine{670 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::empty}}() \{}
-\DoxyCodeLine{671     \textcolor{keywordflow}{for} (\mbox{\hyperlink{classQuad}{Quad<T, M, E>}}* ptree : this-\/>getPTrees())\{}
-\DoxyCodeLine{672         \textcolor{keyword}{delete} ptree;}
-\DoxyCodeLine{673     \}}
-\DoxyCodeLine{674 }
-\DoxyCodeLine{675     m\_pTLTree=NULL;}
-\DoxyCodeLine{676     m\_pTRTree=NULL;}
-\DoxyCodeLine{677     m\_pBLTree=NULL;}
-\DoxyCodeLine{678     m\_pBRTree=NULL;}
-\DoxyCodeLine{679 }
-\DoxyCodeLine{680     *m\_pbarycenter=*m\_ppoint;}
-\DoxyCodeLine{681     m\_tot\_weight=0.;}
-\DoxyCodeLine{682     m\_pT=NULL;}
+\DoxyCodeLine{663 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::recalculate}}() \{}
+\DoxyCodeLine{664     ;}
+\DoxyCodeLine{665 \}}
+\DoxyCodeLine{666 }
+\DoxyCodeLine{667 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::empty}}() \{}
+\DoxyCodeLine{668     \textcolor{keywordflow}{for} (\mbox{\hyperlink{classQuad}{Quad<T, M, E>}}* ptree : this-\/>getPTrees())\{}
+\DoxyCodeLine{669         \textcolor{keyword}{delete} ptree;}
+\DoxyCodeLine{670     \}}
+\DoxyCodeLine{671 }
+\DoxyCodeLine{672     m\_pTLTree=NULL;}
+\DoxyCodeLine{673     m\_pTRTree=NULL;}
+\DoxyCodeLine{674     m\_pBLTree=NULL;}
+\DoxyCodeLine{675     m\_pBRTree=NULL;}
+\DoxyCodeLine{676 }
+\DoxyCodeLine{677     *m\_pbarycenter=*m\_ppoint;}
+\DoxyCodeLine{678     m\_tot\_weight=0.;}
+\DoxyCodeLine{679     m\_pT=NULL;}
+\DoxyCodeLine{680 }
+\DoxyCodeLine{681     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{682 \}}
 \DoxyCodeLine{683 }
-\DoxyCodeLine{684     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{685 \}}
-\DoxyCodeLine{686 }
-\DoxyCodeLine{687 }
-\DoxyCodeLine{688 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classQuad}{Quad<T, M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{689     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{690     mes+=to\_stringTabs(indent);}
-\DoxyCodeLine{691 }
-\DoxyCodeLine{692     mes+=\textcolor{stringliteral}{"{}QUAD["{}};}
-\DoxyCodeLine{693     std::stringstream ss;}
-\DoxyCodeLine{694     ss << \textcolor{keyword}{this};}
-\DoxyCodeLine{695     mes+=ss.str();}
-\DoxyCodeLine{696     mes+=\textcolor{stringliteral}{"{}]:"{}};}
-\DoxyCodeLine{697     mes+=m\_a.to\_string();                               \textcolor{comment}{//a}}
-\DoxyCodeLine{698     mes+=\textcolor{stringliteral}{"{} | "{}};}
-\DoxyCodeLine{699     mes+=m\_ppoint-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);              \textcolor{comment}{//Point}}
-\DoxyCodeLine{700     mes+=\textcolor{stringliteral}{"{} | "{}};}
-\DoxyCodeLine{701     mes+=m\_pbarycenter-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);     \textcolor{comment}{//Barycenter}}
-\DoxyCodeLine{702     mes+=\textcolor{stringliteral}{"{} | "{}};}
-\DoxyCodeLine{703     std::stringstream ss2;}
-\DoxyCodeLine{704     ss2 << m\_pT;}
-\DoxyCodeLine{705     mes+=ss2.str();}
-\DoxyCodeLine{706     mes+=\textcolor{stringliteral}{"{} | "{}};}
-\DoxyCodeLine{707     mes+=\textcolor{stringliteral}{"{}w:"{}} + std::to\_string(m\_tot\_weight.to\_m\_type());}
-\DoxyCodeLine{708     mes+=\textcolor{stringliteral}{"{}]"{}};}
-\DoxyCodeLine{709     mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{710 }
-\DoxyCodeLine{711     mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{712     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{713         mes+=\textcolor{stringliteral}{"{}("{}};}
-\DoxyCodeLine{714         \textcolor{comment}{//std::string nulll=to\_stringTabs(indent+1);}}
-\DoxyCodeLine{715         std::string nulll=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{716         nulll+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{717         nulll+=\textcolor{stringliteral}{"{}NULL"{}};}
-\DoxyCodeLine{718         nulll+=\textcolor{stringliteral}{"{}, "{}};}
-\DoxyCodeLine{719         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
-\DoxyCodeLine{720 }
-\DoxyCodeLine{721         mes+=(m\_pTLTree==NULL)?nulll : m\_pTLTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{722         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{723         mes+=(m\_pTRTree==NULL)?nulll : m\_pTRTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{724         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{725         mes+=(m\_pBLTree==NULL)?nulll : m\_pBLTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{726         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{727         mes+=(m\_pBRTree==NULL)?nulll : m\_pBRTree-\/>to\_string(spread, full\_info, indent+1);}
-\DoxyCodeLine{728         \textcolor{comment}{//mes+=to\_stringTabs(indent+1);}}
-\DoxyCodeLine{729 }
-\DoxyCodeLine{730 }
-\DoxyCodeLine{731         mes.erase(mes.length()-\/2);}
-\DoxyCodeLine{732         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{733         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{734         mes+=\textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{735     \}}
+\DoxyCodeLine{684 }
+\DoxyCodeLine{685 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classQuad}{Quad<T, M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{686     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{687     mes+=to\_stringTabs(indent);}
+\DoxyCodeLine{688 }
+\DoxyCodeLine{689     mes+=\textcolor{stringliteral}{"{}QUAD["{}};}
+\DoxyCodeLine{690     std::stringstream ss;}
+\DoxyCodeLine{691     ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{692     mes+=ss.str();}
+\DoxyCodeLine{693     mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{694     mes+=m\_a.to\_string();                               \textcolor{comment}{//a}}
+\DoxyCodeLine{695     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{696     mes+=m\_ppoint-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);              \textcolor{comment}{//Point}}
+\DoxyCodeLine{697     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{698     mes+=m\_pbarycenter-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false}, 0);     \textcolor{comment}{//Barycenter}}
+\DoxyCodeLine{699     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{700     std::stringstream ss2;}
+\DoxyCodeLine{701     ss2 << m\_pT;}
+\DoxyCodeLine{702     mes+=ss2.str();}
+\DoxyCodeLine{703     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{704     mes+=\textcolor{stringliteral}{"{}w:"{}} + std::to\_string(m\_tot\_weight.to\_m\_type());}
+\DoxyCodeLine{705     mes+=\textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{706     mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{707 }
+\DoxyCodeLine{708     mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{709     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{710         mes+=\textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{711         \textcolor{comment}{//std::string nulll=to\_stringTabs(indent+1);}}
+\DoxyCodeLine{712         std::string nulll=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{713         nulll+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{714         nulll+=\textcolor{stringliteral}{"{}NULL"{}};}
+\DoxyCodeLine{715         nulll+=\textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{716         \textcolor{comment}{//nulll+=((spread)?"{}\(\backslash\)n"{} : "{}"{});}}
+\DoxyCodeLine{717 }
+\DoxyCodeLine{718         mes+=(m\_pTLTree==NULL)?nulll : m\_pTLTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{719         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{720         mes+=(m\_pTRTree==NULL)?nulll : m\_pTRTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{721         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{722         mes+=(m\_pBLTree==NULL)?nulll : m\_pBLTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{723         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{724         mes+=(m\_pBRTree==NULL)?nulll : m\_pBRTree-\/>to\_string(spread, full\_info, indent+1);}
+\DoxyCodeLine{725         \textcolor{comment}{//mes+=to\_stringTabs(indent+1);}}
+\DoxyCodeLine{726 }
+\DoxyCodeLine{727 }
+\DoxyCodeLine{728         mes.erase(mes.length()-\/2);}
+\DoxyCodeLine{729         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{730         mes+=((spread)?to\_stringTabs(indent+1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{731         mes+=\textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{732     \}}
+\DoxyCodeLine{733 }
+\DoxyCodeLine{734     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{735 \}}
 \DoxyCodeLine{736 }
-\DoxyCodeLine{737     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{738 \}}
-\DoxyCodeLine{739 }
-\DoxyCodeLine{740 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{741     printTabs(indent);}
-\DoxyCodeLine{742     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{743 \}}
-\DoxyCodeLine{744 }
-\DoxyCodeLine{745 }
-\DoxyCodeLine{746 }
-\DoxyCodeLine{747 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* QUAD\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{737 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuad}{Quad<T, M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{738     printTabs(indent);}
+\DoxyCodeLine{739     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{740 \}}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{742 }
+\DoxyCodeLine{743 }
+\DoxyCodeLine{744 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* QUAD\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -46,7 +46,7 @@ public:
 	std::shared_ptr<Vector3D<M, E>> getE2() const;
 
 	void renderMesh(const Mesh3D& mesh) const;
-	void renderTriangle(const Triangle3D& triangle) const;
+	void renderTriangle(const Triangle3D<M, E>& triangle) const;
 	void renderPoint(const Point3D<M, E>& p) const;
 
 	bool testInFielOfView(const Point3D<M, E>& p) const;
@@ -64,11 +64,6 @@ template<typename M, typename E> Camera<M, E>::Camera() {
 }
 
 template<typename M, typename E> Camera<M, E>::~Camera() {
-	/*if (m_deln){
-		delete m_pnormal;
-	}else{
-		m_pnormal=NULL;
-	}*/
 	;
 }
 
@@ -122,7 +117,7 @@ template<typename M, typename E> void Camera<M, E>::renderMesh(const Mesh3D& mes
 	;
 }
 
-template<typename M, typename E> void Camera<M, E>::renderTriangle(const Triangle3D& triangle) const {
+template<typename M, typename E> void Camera<M, E>::renderTriangle(const Triangle3D<M, E>& triangle) const {
 	;
 }
 

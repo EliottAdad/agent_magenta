@@ -85,7 +85,6 @@ template<typename T, typename M, typename E> float Quad<T, M, E>::m_ALPHA=0.5;
 template<typename T, typename M, typename E> Quad<T, M, E>::Quad() {
 	m_ppoint=std::make_shared<Point3D<M, E>>();
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
-	//m_delp=true;
 
 	m_a={1,2};
 	m_tot_weight=0.;
@@ -106,7 +105,6 @@ template<typename T, typename M, typename E> Quad<T, M, E>::Quad() {
 template<typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>& a, const Point3D<M, E>& point) {
 	m_ppoint=std::make_shared<Point3D<M, E>>(point);
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
-	//m_delp=true;
 
 	m_a=a;
 	m_tot_weight=0.;
@@ -148,7 +146,6 @@ template<typename T, typename M, typename E> Quad<T, M, E>::Quad(const SN<M, E>&
 template<typename T, typename M, typename E> Quad<T, M, E>::Quad(const Quad<T, M, E>& quad) {
 	m_ppoint=std::make_shared<Point3D<M, E>>(quad.getPoint());
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
-	//m_delp=false;
 
 	m_a=quad.getA();
 	m_tot_weight=0.;
