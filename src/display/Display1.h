@@ -22,9 +22,9 @@
 
 
 /*
- * ############
- *  Display1 :)
- * ############
+ * ##################
+ *  Display1<M, E> :)
+ * ##################
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
@@ -127,46 +127,6 @@ Display1::Display1(const Display1 &other) {
 
 
 
-/*template<typename M, typename E> Point3D<M, E> Display1<M, E>::getPoint() const {
-	return *m_ppoint;
-}*/
-
-/*template<typename M, typename E> std::shared_ptr<Point3D<M, E>> Display1<M, E>::getPPoint() const {
-	Point3D<M, E>* ppoint;
-	if (!m_delp){
-		ppoint=m_ppoint;
-	}
-	return ppoint;
-}*/
-
-/*
- * If you give a pointer, the point will be automatically considered
- * as instanciated somewhere else outside of the class.
- */
-/*template<typename M, typename E> void Display1<M, E>::setPPoint(Point3D<M, E>* ppoint, const bool& delp){
-	if (m_delp){
-		delete m_ppoint;
-	}
-	if (delp){
-		m_ppoint=new Point3D<float, char>(*ppoint);
-	}else{
-		m_ppoint=ppoint;
-	}
-	m_delp=delp;
-}
-
-template<typename M, typename E> void Display1<M, E>::setPoint(Point3D<M, E>& point, const bool& delp){
-	if (m_delp){
-		delete m_ppoint;
-	}
-	if (delp){
-		m_ppoint=new Point3D<float, char>(point);
-	}else{
-		m_ppoint=&point;
-	}
-	m_delp=delp;
-}*/
-
 template<typename M, typename E> char Display1<M, E>::getDisplay() const {
 	return m_display;
 }
@@ -190,53 +150,6 @@ template<typename M, typename E> bool Display1<M, E>::getFClear() const {
 template<typename M, typename E> void Display1<M, E>::setFClear(const bool& fclear){
 	m_fclear=fclear;
 }
-
-/*template<typename M, typename E> SDL_Color Display1<M, E>::getBkgdColor() const {
-	return *m_pbkgd_color;
-}
-
-template<typename M, typename E> void Display1<M, E>::setBkrdColor(const unsigned char& b, const unsigned char& g, const unsigned char& r, const unsigned char& a){
-	m_pdraw_color->b=r;
-	m_pdraw_color->g=g;
-	m_pdraw_color->r=r;
-	m_pdraw_color->a=a;
-}
-
-template<typename M, typename E> SDL_Color Display1<M, E>::getDrawColor() const {
-	return *m_pdraw_color;
-}
-
-template<typename M, typename E> void Display1<M, E>::setDrawColor(const unsigned char& b, const unsigned char& g, const unsigned char& r, const unsigned char& a){
-	m_pdraw_color->b=r;
-	m_pdraw_color->g=g;
-	m_pdraw_color->r=r;
-	m_pdraw_color->a=a;
-}
-
-template<typename M, typename E> SDL_Window* Display1<M, E>::getPWindow() const {
-	SDL_Window* pwindow=NULL;
-	if (!m_delw){
-		pwindow=m_pwindow;
-	}
-	return pwindow;
-}
-
-template<typename M, typename E> void Display1<M, E>::setPWindow(SDL_Window* pwindow, const bool& delw){
-	;
-}
-
-template<typename M, typename E> SDL_Renderer* Display1<M, E>::getPRenderer() const {
-	SDL_Renderer* prenderer=NULL;
-	if (!m_delr){
-		prenderer=m_prenderer;
-	}
-	return prenderer;
-}
-
-template<typename M, typename E> void Display1<M, E>::setPRenderer(SDL_Renderer* prenderer, const bool& delr){
-	;
-}*/
-
 
 template<typename M, typename E> std::unordered_set<std::shared_ptr<Scene<M, E>>> Display1<M, E>::getPScenes() const {
 	return m_pscenes;
@@ -290,19 +203,21 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
  *
  */
 template<typename M, typename E> bool Display1<M, E>::render(const std::shared_ptr<Displayable<M, E>> pdisplayable) const {
-	bool success=false;
-	//printf("\nRendering 3_1, next if: %b\n", pdisplayable!=NULL);
+	bool success=true;
 
 	if (pdisplayable!=NULL) {
-		//printf("pdisplayable1\n");
-		//pdisplayable->getX().print(true);
-		//pdisplayable->getY().print(true);
-		//pdisplayable->getZ().print(true);
-		//printf("\nRendering 3_2\n");
-		//SDL_SetRenderDrawColor(prenderer.get(), pdisplayable->pcolor->r, pdisplayable->pcolor->g, pdisplayable->pcolor->b, pdisplayable->pcolor->a);
-		//printf("\nRendering 3_3\n");
-		std::shared_ptr<Point3D<M, E>> pp(new Point3D<M, E>{pdisplayable->getX(), pdisplayable->getY(), pdisplayable->getZ()});
-		success=success | render(pp);
+		std::shared_ptr<Point3D<M, E>> pp(new Point3D<M, E>(pdisplayable->getPosition()));
+		//std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->getPoints();
+		success=success & render(pp);
+		/*for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+			success=success & render(ppoint);
+		}*/
+		if (pdisplayable->pmesh!=NULL){
+			std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pmesh->getPoints();
+			for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+				success=success & render(ppoint);
+			}
+		}
 	}
 	return success;
 }

@@ -1,27 +1,48 @@
-\hypertarget{classMesh3D}{}\doxysection{Mesh3D Class Reference}
-\label{classMesh3D}\index{Mesh3D@{Mesh3D}}
+\hypertarget{classMesh3D}{}\doxysection{Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classMesh3D}\index{Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}}
 
 
-Inheritance diagram for Mesh3D\+:\nopagebreak
+Inheritance diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=140pt]{classMesh3D__inherit__graph}
+\includegraphics[width=180pt]{classMesh3D__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Mesh3D\+:\nopagebreak
+Collaboration diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=140pt]{classMesh3D__coll__graph}
+\includegraphics[width=180pt]{classMesh3D__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Additional Inherited Members}
-
-
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-geometry/Mesh3\+D.\+h\item 
-geometry/Mesh3\+D.\+cpp\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classMesh3D_aedf001521d2258bc908bb8faccd2e9b4}\label{classMesh3D_aedf001521d2258bc908bb8faccd2e9b4}} 
+{\bfseries Mesh3D} (const \mbox{\hyperlink{classMesh3D}{Mesh3D}} \&mesh)
+\item 
+\mbox{\Hypertarget{classMesh3D_a63164748eb51e78d1d7f3cf39eef8e0b}\label{classMesh3D_a63164748eb51e78d1d7f3cf39eef8e0b}} 
+void {\bfseries add\+Triangle} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ ptriangle)
+\item 
+\mbox{\Hypertarget{classMesh3D_a5eb102f32d11ed74a2925134c7b10a29}\label{classMesh3D_a5eb102f32d11ed74a2925134c7b10a29}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+Points} () const
+\item 
+\mbox{\Hypertarget{classMesh3D_adb0b8b5f6e3738aee79ef8acc135e60b}\label{classMesh3D_adb0b8b5f6e3738aee79ef8acc135e60b}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+Lines} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMesh3D_ab94cbd11de3d3113667fbb04da4f5bee}\label{classMesh3D_ab94cbd11de3d3113667fbb04da4f5bee}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ $>$ {\bfseries ptriangles}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+geometry/Mesh3\+D.\+h\end{DoxyCompactItemize}

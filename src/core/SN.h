@@ -19,9 +19,9 @@
 
 
 /**
- * ######
- *  SN :)
- * ######
+ * ############
+ *  SN<M, E> :)
+ * ############
  * Scientific Number
  * It allows to store big numbers
  * under scientific notation.
@@ -36,7 +36,6 @@ template<typename M, typename E> struct SN : public Printable {
 	SN();
 	SN(M m, E e);
 	SN(const SN<M, E>& nb);
-	//SN(const SN<M, E>* pnb);
 
 	void recal();												//:)
 
@@ -104,33 +103,17 @@ template<typename M, typename E> SN<M, E>::SN() {
 	this->e=(E)0;
 }
 
-/*template<> SN<float, char>::SN() {
-	this->m=0.;
-	this->e=0;
-}*/
-
 template<typename M, typename E> SN<M, E>::SN(M m, E e) {
 	this->m=m;
 	this->e=e;
 	this->recal();
 }
 
-/*template<> SN<float, char>::SN(float m, char e) {
-	this->m=m;
-	this->e=e;
-}*/
-
 template<typename M, typename E> SN<M, E>::SN(const SN<M, E>& nb) {
 	this->m=nb.m;
 	this->e=nb.e;
 	this->recal();
 }
-
-/*template<typename M, typename E> SN<M, E>::SN(const SN<M, E>* pnb) {
-	this->m=pnb->m;
-	this->e=pnb->e;
-	this->recal();
-}*/
 
 /*
  * Recalculate the SN under scientific notation.
@@ -179,11 +162,6 @@ template<typename M, typename E> void SN<M, E>::operator+=(const SN<M, E>& nb) {
 	this->m+=nb.m*(M)pow(10., (M)(nb.e-this->e));
 	this->recal();
 }
-
-/*template<> void SN<float, char>::operator+=(const SN<float, char>& nb) {
-	this->m+=nb.m*pow(10., (float)(nb.e-this->e));
-	this->recal();
-}*/
 
 template<typename M, typename E> void SN<M, E>::operator+=(const M& nb) {//X
 	this->m+=nb/pow(10., (M)(this->e));

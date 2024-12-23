@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
 
     printf("Hello\n");
     std::unordered_set<std::shared_ptr<Particle3D<float, char>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<float, char>{{0,0},{0,0},{0,0}}, SN<float, char>{2, 1}, 3, SN<float, char>{1, 12});
+    pparts=generate2DGridParticle3D(Point3D<float, char>{{-1,1},{0,0},{0,0}}, SN<float, char>{2, 1}, 2, SN<float, char>{1, 12});
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -81,7 +81,7 @@ int main(int argc, char* argv[]){
     g1.pphysics->setPPS(100);
     g1.setFPause(false);
 
-    g1.run(1000);
+    g1.run(10000);
 
     printf("\nMain2\n");
 

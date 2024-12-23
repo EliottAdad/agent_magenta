@@ -40,7 +40,7 @@
 \DoxyCodeLine{36     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getX() \textcolor{keyword}{const};                          \textcolor{comment}{// :)}}
 \DoxyCodeLine{37     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getY() \textcolor{keyword}{const};                          \textcolor{comment}{// :)}}
 \DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{structSN}{SN<M, E>}} getZ() \textcolor{keyword}{const};                          \textcolor{comment}{// :)}}
-\DoxyCodeLine{39     \textcolor{keyword}{virtual} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} getPosition() \textcolor{keyword}{const};             \textcolor{comment}{// :) To be inherited}}
+\DoxyCodeLine{39     \textcolor{comment}{//virtual Point3D<M, E> getPosition() const;                // :) To be inherited}}
 \DoxyCodeLine{40 }
 \DoxyCodeLine{41     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p);            \textcolor{comment}{// :)}}
 \DoxyCodeLine{42     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& nb);             \textcolor{comment}{// :)}}
@@ -120,9 +120,9 @@
 \DoxyCodeLine{116     \textcolor{keywordflow}{return} z;}
 \DoxyCodeLine{117 \}}
 \DoxyCodeLine{118 }
-\DoxyCodeLine{119 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>::getPosition}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{120     \textcolor{keywordflow}{return} \{x, y, z\};}
-\DoxyCodeLine{121 \}}
+\DoxyCodeLine{119 \textcolor{comment}{/*template<typename M, typename E> Point3D<M, E> Point3D<M, E>::getPosition() const \{}}
+\DoxyCodeLine{120 \textcolor{comment}{    return \{x, y, z\};}}
+\DoxyCodeLine{121 \textcolor{comment}{\}*/}}
 \DoxyCodeLine{122 }
 \DoxyCodeLine{123 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p) \{}
 \DoxyCodeLine{124     this-\/>x=p.x;}

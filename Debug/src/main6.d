@@ -8,8 +8,9 @@ src/main6.o: ../src/main6.cpp ../src/core/LSN.h \
  ../src/core/Line3D.h ../src/core/TimeSensitive.h \
  ../src/core/../display/Displayable.h \
  ../src/core/../display/../geometry/Mesh3D.h \
- ../src/core/../display/../geometry/Triangle3D.h \
  ../src/core/../display/../geometry/../core/Point3D.h \
+ ../src/core/../display/../geometry/../core/Line3D.h \
+ ../src/core/../display/../geometry/Triangle3D.h \
  ../src/core/../display/../geometry/Shape3D.h \
  ../src/core/../display/../geometry/../utilities/Printable.h \
  ../src/core/../display/../utilities/Printable.h ../src/core/Oct.h \
@@ -42,8 +43,9 @@ src/main6.o: ../src/main6.cpp ../src/core/LSN.h \
 ../src/core/TimeSensitive.h:
 ../src/core/../display/Displayable.h:
 ../src/core/../display/../geometry/Mesh3D.h:
-../src/core/../display/../geometry/Triangle3D.h:
 ../src/core/../display/../geometry/../core/Point3D.h:
+../src/core/../display/../geometry/../core/Line3D.h:
+../src/core/../display/../geometry/Triangle3D.h:
 ../src/core/../display/../geometry/Shape3D.h:
 ../src/core/../display/../geometry/../utilities/Printable.h:
 ../src/core/../display/../utilities/Printable.h:

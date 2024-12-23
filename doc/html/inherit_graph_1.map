@@ -6,7 +6,7 @@
 <area shape="rect" id="node7" href="$classFace.html" title=" " alt="" coords="177,259,227,285"/>
 <area shape="rect" id="node8" href="$structLSN.html" title=" " alt="" coords="179,309,225,336"/>
 <area shape="rect" id="node9" href="$classLine3D.html" title=" " alt="" coords="139,360,265,387"/>
-<area shape="rect" id="node11" href="$classMesh3D.html" title=" " alt="" coords="165,411,239,437"/>
+<area shape="rect" id="node11" href="$classMesh3D.html" title=" " alt="" coords="135,411,269,437"/>
 <area shape="rect" id="node12" href="$classOct.html" title=" " alt="" coords="143,461,261,488"/>
 <area shape="rect" id="node13" href="$classPhysics.html" title=" " alt="" coords="167,512,237,539"/>
 <area shape="rect" id="node14" href="$structPoint3D.html" title=" " alt="" coords="137,157,267,184"/>
@@ -20,7 +20,7 @@
 <area shape="rect" id="node10" href="$classVector3D.html" title=" " alt="" coords="345,360,484,387"/>
 <area shape="rect" id="node15" href="$structWeightedPoint3D.html" title=" " alt="" coords="319,157,511,184"/>
 <area shape="rect" id="node20" href="$classPolyhedron.html" title=" " alt="" coords="338,664,491,691"/>
-<area shape="rect" id="node22" href="$classSphere.html" title=" " alt="" coords="381,715,448,741"/>
+<area shape="rect" id="node22" href="$classSphere.html" title=" " alt="" coords="352,715,477,741"/>
 <area shape="rect" id="node23" href="$classTriangle3D.html" title=" " alt="" coords="340,765,489,792"/>
 <area shape="rect" id="node21" href="$classCube.html" title=" " alt="" coords="575,664,689,691"/>
 <area shape="rect" id="node25" href="$classSystem3D.html" title=" " alt="" coords="333,259,496,285"/>

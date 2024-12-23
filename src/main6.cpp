@@ -52,7 +52,7 @@
 
     printf("Hello\n");
     Particle3D<float, char> p1;
-    p1.x={1,0};
+    p1.x={1,1};
     p1.y={1,0};
     p1.z={0,0};
     p1.w={1,13};
@@ -66,12 +66,28 @@
     p2.y={-2,1};
     p2.z={2,1};
     p2.w={1,12};
+    Point3D<float, char> point3{{0,0},{0,0},{0,0}};
+    Point3D<float, char> point4{{0,0},{-1,0},{0,0}};
+    std::shared_ptr<Vector3D<float, char>> pv2(new Vector3D<float, char>(point4));
+    *p2.ps=*pv2;
+
+    Particle3D<float, char> p3;
+    p3.x={-3,1};
+    p3.y={1,0};
+    p3.z={0,0};
+    p3.w={1,13};
+    Point3D<float, char> point5{{0,0},{0,0},{0,0}};
+    Point3D<float, char> point6{{0,0},{0,0},{0,0}};
+    std::shared_ptr<Vector3D<float, char>> pv3(new Vector3D<float, char>(point6));
+    *p3.ps=*pv3;
 
     std::shared_ptr<Particle3D<float, char>> pp1(new Particle3D<float, char>(p1));
     std::shared_ptr<Particle3D<float, char>> pp2(new Particle3D<float, char>(p2));
+    std::shared_ptr<Particle3D<float, char>> pp3(new Particle3D<float, char>(p3));
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
+    p3.print(true, true, 0);
 
     //SN<float, char> result=rrr2(&p, &p2);
     //result.print(true, true, 0);
@@ -86,6 +102,7 @@
     std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
     psys->addPElement(pp1);
     psys->addPElement(pp2);
+    psys->addPElement(pp3);
     psys->ptrLaw=rrr2;
 
     // Game
@@ -99,6 +116,7 @@
 
     g1.pscene->addPDisplayable(pp1);
     g1.pscene->addPDisplayable(pp2);
+    g1.pscene->addPDisplayable(pp3);
     //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp1));
     //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp2));
     printf("\n%b\n", g1.pphysics->addPTimeSensitive(psys));
@@ -133,7 +151,7 @@
 
     // Launch the simulation
     //g1.getPPhysics()->iterate(10);
-    g1.run(1000);
+    g1.run(3000);
 
     //Quad<Particle3D> q({1, 3}, {{0,0}, {0,0}, {0,0}});
     //q.insert(&p);
@@ -142,6 +160,7 @@
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
+    p3.print(true, true, 0);
 
     SDL_Delay(1000);
 

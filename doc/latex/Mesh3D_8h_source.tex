@@ -13,30 +13,61 @@
 \DoxyCodeLine{9 }
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#define MESH3D\_H\_}}
 \DoxyCodeLine{11 }
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Triangle3D.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{comment}{/*}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{19 \textcolor{comment}{ *  Mesh :)}}
-\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{21 \textcolor{comment}{ */}}
-\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classMesh3D}{Mesh3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{23 \textcolor{keyword}{private}:}
-\DoxyCodeLine{24     \textcolor{comment}{//std::unordered\_set<std::pair<Point3D*, bool>> m\_ppoints;}}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26     \textcolor{comment}{//std::unordered\_set<std::pair<Triangle3D*, bool>> m\_ptriangles;}}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{keyword}{public}:}
-\DoxyCodeLine{29     \mbox{\hyperlink{classMesh3D}{Mesh3D}}();}
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{classMesh3D}{\string~Mesh3D}}();}
-\DoxyCodeLine{31     \textcolor{comment}{//Mesh3D(const Mesh3D \&other);}}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33     \textcolor{comment}{//public ;}}
-\DoxyCodeLine{34 \};}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../core/Line3D.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Triangle3D.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{/*}}
+\DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{22 \textcolor{comment}{ *  Mesh<M, E> :)}}
+\DoxyCodeLine{23 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{24 \textcolor{comment}{ * A mesh is a set of triangles.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classMesh3D}{Mesh3D}}: \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     std::unordered\_set<std::shared\_ptr<Triangle3D<M, E>>> ptriangles;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{classMesh3D}{Mesh3D}}();}
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} \mbox{\hyperlink{classMesh3D}{\string~Mesh3D}}();}
+\DoxyCodeLine{32     \mbox{\hyperlink{classMesh3D}{Mesh3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} addTriangle(std::shared\_ptr<\mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}> ptriangle);}
 \DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* MESH3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> getPoints() \textcolor{keyword}{const};\textcolor{comment}{//To render the mesh}}
+\DoxyCodeLine{37     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> getLines() \textcolor{keyword}{const};\textcolor{comment}{//To render the mesh}}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::Mesh3D}}() \{}
+\DoxyCodeLine{41     ;}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::\string~Mesh3D}}() \{}
+\DoxyCodeLine{45     ;}
+\DoxyCodeLine{46 \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::Mesh3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh) \{}
+\DoxyCodeLine{49     ;}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::addTriangle}}(std::shared\_ptr<\mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}> ptriangle)\{}
+\DoxyCodeLine{54     ptriangles.insert(ptriangle);}
+\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::getPoints}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{58     std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> ppoints;}
+\DoxyCodeLine{59     \textcolor{keywordflow}{return} ppoints;}
+\DoxyCodeLine{60 \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>::getLines}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{63     std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> plines;}
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} plines;}
+\DoxyCodeLine{65 \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* MESH3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -32,18 +32,7 @@ public:
 	Line3D(const Point3D<M, E>& p1, const Point3D<M, E>& p2);
 	Line3D(std::shared_ptr<Point3D<M, E>> pp1, std::shared_ptr<Point3D<M, E>> pp2);
 	virtual ~Line3D();												//:)
-	Line3D(const Line3D<M, E>& l);
-
-	//Point3D<float, char> getP1() const;								//:)
-	//Point3D<float, char>* getPP1() const;							//:)
-	//void setP1(Point3D<float, char>& p1, const bool& delp=false);	//:)
-	//void setPP1(Point3D<float, char>* pp1, const bool& delp=true);	//:)
-	//Point3D<float, char> getP2() const;								//:)
-	//Point3D<float, char>* getPP2() const;							//:)
-	//void setP2(Point3D<float, char>& p2, const bool& delp=false);	//:)
-	//void setPP2(Point3D<float, char>* pp2, const bool& delp=true);	//:)
-	//bool getDelP1() const;											//:)
-	//bool getDelP2() const;											//:)
+	Line3D(const Line3D<M, E>& line);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
@@ -73,9 +62,9 @@ template<typename M, typename E> Line3D<M, E>::~Line3D() {
 /*
  * Copy constructor
  */
-template<typename M, typename E> Line3D<M, E>::Line3D(const Line3D<M, E>& l){
-	this->pp1=l.pp1;
-	this->pp2=l.pp2;
+template<typename M, typename E> Line3D<M, E>::Line3D(const Line3D<M, E>& line){
+	this->pp1=line.pp1;
+	this->pp2=line.pp2;
 }
 
 

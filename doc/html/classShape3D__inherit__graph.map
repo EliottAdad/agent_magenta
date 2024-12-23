@@ -1,8 +1,8 @@
 <map id="Shape3D" name="Shape3D">
-<area shape="rect" id="node1" title=" " alt="" coords="177,80,257,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="206,80,286,107"/>
 <area shape="rect" id="node3" href="$classPolyhedron.html" title=" " alt="" coords="5,155,159,181"/>
-<area shape="rect" id="node5" href="$classSphere.html" title=" " alt="" coords="183,155,250,181"/>
-<area shape="rect" id="node6" href="$classTriangle3D.html" title=" " alt="" coords="274,155,423,181"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="177,5,257,32"/>
+<area shape="rect" id="node5" href="$classSphere.html" title=" " alt="" coords="183,155,309,181"/>
+<area shape="rect" id="node6" href="$classTriangle3D.html" title=" " alt="" coords="333,155,482,181"/>
+<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="206,5,286,32"/>
 <area shape="rect" id="node4" href="$classCube.html" title=" " alt="" coords="25,229,139,256"/>
 </map>

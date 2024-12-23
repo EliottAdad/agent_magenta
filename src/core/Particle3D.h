@@ -28,7 +28,8 @@ protected:
 	//bool m_dels;
 
 public:
-	std::shared_ptr<Vector3D<M, E>> ps;// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
+	std::shared_ptr<Vector3D<M, E>> ps;		// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
+	std::shared_ptr<Vector3D<M, E>> prs;	// Rotational speed.
 
 	Particle3D();
 	Particle3D(const Point3D<M, E>& p);
@@ -36,8 +37,8 @@ public:
 	Particle3D(const WeightedPoint3D<M, E>& wp);
 	//Particle3D(const Point3D<float, char>& p, const Vector3D& speed);
 	//Particle3D(const WeightedPoint3D<float, char>& wp, const Vector3D& speed);
-	Particle3D(const Particle3D<M, E>& p);
 	virtual ~Particle3D();
+	Particle3D(const Particle3D<M, E>& p);
 
 	virtual SN<M, E> getX() const;
 	virtual SN<M, E> getY() const;
@@ -153,6 +154,10 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	m_dt=0;
 }*/
 
+template<typename M, typename E> Particle3D<M, E>::~Particle3D() {
+	;//this->~Displayable();
+}
+
 template<typename M, typename E> Particle3D<M, E>::Particle3D(const Particle3D<M, E>& p) {
 	this->x=p.x;
 	this->y=p.y;
@@ -162,10 +167,6 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const Particle3D<M
 	this->pcolor=p.pcolor;
 
 	m_dt=0;
-}
-
-template<typename M, typename E> Particle3D<M, E>::~Particle3D() {
-	;//this->~Displayable();
 }
 
 

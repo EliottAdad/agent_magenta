@@ -23,13 +23,9 @@
  * If mesh=NULL draws a point, if SDL_Color=NULL draws in white
  */
 template<typename M, typename E> struct Displayable : public Printable {
-protected:
-	//Mesh3D* pmesh;			// Pointer to the mesh to be drawn
-
-	//bool m_delc;
-
 public:
 	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
+	std::shared_ptr<Mesh3D<M, E>> pmesh;			// Pointer to the mesh to be drawn(NULL if none)
 
 	Displayable();
 	virtual ~Displayable();
@@ -38,10 +34,7 @@ public:
 	virtual SN<M, E> getX() const;				//Gets the coords (changer plus tard en getPoints
 	virtual SN<M, E> getY() const;
 	virtual SN<M, E> getZ() const;
-	//virtual SDL_Color getColor() const;
-	//virtual SDL_Color* getPColor() const;
-	//virtual void setColor(SDL_Color& color, const bool& delc=true);
-	//virtual void setPColor(SDL_Color* pcolor, const bool& delc=false);
+	virtual Point3D<M, E> getPosition() const;
 	//render();
 
 	//virtual Image getSticker() const;
@@ -76,15 +69,19 @@ template<typename M, typename E> Displayable<M, E>::Displayable(const Displayabl
 
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getX() const {
-	return {0,0};
+	return SN<M, E>{0,0};
 }
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getY() const {
-	return {0,0};
+	return SN<M, E>{0,0};
 }
 
 template<typename M, typename E> SN<M, E> Displayable<M, E>::getZ() const {
-	return {0,0};
+	return SN<M, E>{0,0};
+}
+
+template<typename M, typename E> Point3D<M, E> Displayable<M, E>::getPosition() const {
+	return Point3D<M, E>{this->getX(), this->getY(), this->getZ()};
 }
 
 /*template<typename M, typename E> SDL_Color Displayable<M, E>::getColor() const {//Yes because it cannot be null

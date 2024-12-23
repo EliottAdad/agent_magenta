@@ -13,21 +13,33 @@
 #include "../core/LSN.h"
 
 /*
- * ##########
- *  Sphere :)
- * ##########
+ * ################
+ *  Sphere<M, E> :)
+ * ################
  */
-class Sphere : public Shape3D {
-private:
-	LSN m_r;
-
+template<typename M, typename E> class Sphere : public Shape3D {
 public:
+	SN<M, E> r;
+
 	Sphere();
 	virtual ~Sphere();
-	Sphere(const Sphere &other);
+	Sphere(const Sphere<M, E>& sphere);
 
-	LSN getR() const;
-	void setR(const LSN& r);
+	/*SN<> getR() const;
+	void setR(const SN<M, E>& r);*/
 };
+
+template<typename M, typename E> Sphere<M, E>::Sphere() {
+	r=SN<M, E>{0,0};
+}
+
+template<typename M, typename E> Sphere<M, E>::~Sphere() {
+	r=SN<M, E>{0,0};
+}
+
+template<typename M, typename E> Sphere<M, E>::Sphere(const Sphere<M, E>& sphere) {
+	r=sphere.r;
+}
+
 
 #endif /* SPHERE_H_ */

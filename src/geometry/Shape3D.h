@@ -25,7 +25,7 @@ protected:
 public:
 	Shape3D();
 	virtual ~Shape3D();
-	Shape3D(const Shape3D &other);
+	Shape3D(const Shape3D& shape);
 
 	std::unordered_set<Point3D<float, char>*> setPoint(Point3D<float, char>* ppoint);
 	void setPPoint(Point3D<float, char>* ppoint);

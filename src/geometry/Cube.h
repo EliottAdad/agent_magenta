@@ -15,7 +15,23 @@ template<typename M, typename E> class Cube : public Polyhedron<M, E> {
 public:
 	Cube();
 	virtual ~Cube();
-	Cube(const Cube<M, E> &other);
+	Cube(const Cube<M, E>& cube);
 };
+
+
+template<typename M, typename E> Cube<M, E>::Cube() {
+	// TODO Auto-generated constructor stub
+
+}
+
+template<typename M, typename E> Cube<M, E>::~Cube() {
+	// TODO Auto-generated destructor stub
+}
+
+template<typename M, typename E> Cube<M, E>::Cube(const Cube<M, E>& other) {
+	// TODO Auto-generated constructor stub
+
+}
+
 
 #endif /* CUBE_H_ */

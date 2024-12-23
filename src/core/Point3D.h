@@ -36,7 +36,7 @@ template<typename M, typename E> struct Point3D : public Printable {
 	virtual SN<M, E> getX() const;							// :)
 	virtual SN<M, E> getY() const;							// :)
 	virtual SN<M, E> getZ() const;							// :)
-	virtual Point3D<M, E> getPosition() const;				// :) To be inherited
+	//virtual Point3D<M, E> getPosition() const;				// :) To be inherited
 
 	virtual void operator=(const Point3D<M, E>& p);			// :)
 	virtual void operator=(const SN<M, E>& nb);				// :)
@@ -116,9 +116,9 @@ template<typename M, typename E> SN<M, E> Point3D<M, E>::getZ() const {
 	return z;
 }
 
-template<typename M, typename E> Point3D<M, E> Point3D<M, E>::getPosition() const {
+/*template<typename M, typename E> Point3D<M, E> Point3D<M, E>::getPosition() const {
 	return {x, y, z};
-}
+}*/
 
 template<typename M, typename E> void Point3D<M, E>::operator=(const Point3D<M, E>& p) {
 	this->x=p.x;

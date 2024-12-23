@@ -34,12 +34,6 @@ std::string Shape3D::to_string(const bool& spread, const bool& full_info, const 
 		mes+="]:";
 		mes+=((spread)?"\n" : "");
 	}
-	/*for (Particle3D* ppart : m_poctree->getPElements()){
-		mes+="	- ( ";
-		mes+=ppart->to_string(false, false);
-		mes+=" )";
-		mes+="\n";
-	}*/
 	return mes;
 }
 
