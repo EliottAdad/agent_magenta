@@ -11,27 +11,71 @@
 
 #include <unordered_set>
 #include "../core/Point3D.h"
+#include "../core/Line3D.h"
 #include "../utilities/Printable.h"
 
 /*
- * ###########
- *  Shape3D :)
- * ###########
+ * #################
+ *  Shape3D<M, E> :)
+ * #################
  */
-class Shape3D : public Printable {
-protected:
-	std::unordered_set<Point3D<float, char>*> m_ppoints;
-
+template<typename M, typename E> class Shape3D : public Printable {
 public:
 	Shape3D();
 	virtual ~Shape3D();
-	Shape3D(const Shape3D& shape);
+	Shape3D(const Shape3D<M, E>& shape);
 
-	std::unordered_set<Point3D<float, char>*> setPoint(Point3D<float, char>* ppoint);
-	void setPPoint(Point3D<float, char>* ppoint);
+	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
+	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
+
+template<typename M, typename E> Shape3D<M, E>::Shape3D() {
+	// TODO Auto-generated constructor stub
+
+}
+
+template<typename M, typename E> Shape3D<M, E>::~Shape3D() {
+	// TODO Auto-generated destructor stub
+}
+
+template<typename M, typename E> Shape3D<M, E>::Shape3D(const Shape3D &other) {
+	// TODO Auto-generated constructor stub
+
+}
+
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Shape3D<M, E>::getPoints() const {
+	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
+	return ppoints;
+}
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Shape3D<M, E>::getLines() const {
+	std::unordered_set<std::shared_ptr<Line3D<M, E>>> plines;
+	return plines;
+}
+
+
+template<typename M, typename E> std::string Shape3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::string mes=((spread)?"\n" : "");
+
+	if (full_info){
+		mes+="SHAPE3D [";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
+		mes+=((spread)?"\n" : "");
+	}
+	return mes;
+}
+
+template<typename M, typename E> void Shape3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printTabs(indent);
+	std::cout << this->to_string(spread, full_info, indent);
+}
+
 
 #endif /* SHAPE3D_H_ */

@@ -20,7 +20,7 @@
  * ####################
  * A set of 3 points.
  */
-template<typename M, typename E> class Triangle3D : public Shape3D {
+template<typename M, typename E> class Triangle3D : public Shape3D<M, E> {
 public:
 	std::shared_ptr<Point3D<M, E>> pp1;
 	std::shared_ptr<Point3D<M, E>> pp2;
@@ -31,6 +31,9 @@ public:
 	Triangle3D(std::shared_ptr<Point3D<M, E>> pp1, std::shared_ptr<Point3D<M, E>> pp2, std::shared_ptr<Point3D<M, E>> pp3);
 	virtual ~Triangle3D();
 	Triangle3D(const Triangle3D& triangle);
+
+	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
+	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;

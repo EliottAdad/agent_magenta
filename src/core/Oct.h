@@ -294,6 +294,7 @@ template<typename T, typename M, typename E> SN<M, E> Oct<T, M, E>::getA() const
 
 template<typename T, typename M, typename E> void Oct<T, M, E>::setA(const SN<M, E>& a){
 	m_a=a;
+	this->recalculate();
 }
 
 template<typename T, typename M, typename E> unsigned int Oct<T, M, E>::getNB_OCTS() const {
@@ -363,7 +364,7 @@ template<typename T, typename M, typename E> std::unordered_set<std::shared_ptr<
 		//printf("\n");
 		//(getDistance(/**m_pbarycenter*/*m_ppoint, *pelement)/m_a).print();
 		//printf("\n");
-		if ((M)(m_ALPHA)/**abs(m_tot_weight)*/>=getDistance(/**m_pbarycenter*/*m_ppoint, *pelement)/m_a){//SN<M, E>{1., 0}/getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}
+		if (m_pT==NULL && (M)(m_ALPHA)/**abs(m_tot_weight)*/>=getDistance(*m_pbarycenter/**m_ppoint*/, *pelement)/m_a){//SN<M, E>{1., 0}/getDistance(*m_ppoint, *pelement)<=SN<M, E>{m_ALPHA, 0}
 			//printf("God3\n");
 			for (int i(0) ; i<8 ; i++){
 				if (m_ptrees[i]!=NULL){
@@ -409,7 +410,6 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 			}else{
 				*m_pbarycenter=*m_ppoint;
 			}
-			//printf("A2, is empty: %b, is leaf: %b, nb_octs: %u\n", this->isEmpty()/*TLFTree==NULL && TRFTree==NULL && BRFTree==NULL && BLFTree==NULL && TLBTree==NULL && TRBTree==NULL && BRBTree==NULL && BLBTree==NULL*/, this->isLeaf(), this->m_NB_OCTS);
 
 			if (this->isEmpty() && this->isLeaf()){		// If empty and the cube has no Octs under (if it's a leaf)
 				printf("A3\n");
@@ -423,7 +423,6 @@ template <typename T, typename M, typename E> bool Oct<T, M, E>::insert(std::sha
 					insertTLFTree(pT);
 				}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z>=(M)0.){//If cube 2
 					//printf("E\n");
-					//printf("pT est null ?%b\n", pT==NULL);
 					insertTRFTree(pT);
 				}else if (dp.x>=(M)0. && dp.y<=(M)0. && dp.z<=(M)0.){//If cube 3
 					//printf("F\n");
@@ -478,7 +477,6 @@ template<typename T, typename M, typename E> void Oct<T, M, E>::insertTRFTree(st
 		Point3D<M, E> np{(M)(1.)*a, (M)(-1.)*a, (M)(1.)*a};
 		TRFTree=new Oct<T, M, E>(m_a/(M)2., *m_ppoint+np);
 	}
-	//printf("pT est null ?%b\n", pT==NULL);
 	TRFTree->insert(pT);
 }
 
@@ -547,14 +545,12 @@ template<typename T, typename M, typename E> void Oct<T, M, E>::recalculate() {
 }
 
 template<typename T, typename M, typename E> void Oct<T, M, E>::empty() {
-
 	for (int i(0) ; i<8 ; i++){
 		if (m_ptrees[i]!=NULL){
 			delete m_ptrees[i];
 		}
 	}
 
-	*m_ppoint=Point3D<M, E>{{0,0},{0,0},{0,0}};
 	*m_pbarycenter=*m_ppoint;
 	m_tot_weight={(M)0,(E)0};
 	m_pT=NULL;
@@ -619,60 +615,6 @@ template<typename T, typename M, typename E> bool Oct<T, M, E>::isEmpty() {
 			m_pBRFTree->find(t, pocts);
 		}
 	}
-}*/
-
-//Useless
-/*template<typename T> void Oct<T>::computeInverseSquareLawResultant(const T& t, Vector3D& v) const {
-	if (&t!=m_pT){
-		Point3D p={t.x, t.y, t.z};
-
-		LSN s=this->m_a;
-
-		LSN d=getDistance(p, *m_pbarycenter);
-		LSN alpha=s/d;
-		//std::cout<<"\n"<<alpha.to_string()<<"\n";
-
-		if (alpha>=m_ALPHA){
-			Vector3D* pdv=new Vector3D(p, *m_pbarycenter);
-			LSN nb=t.w*this->m_tot_weight;
-			LSN nb2=nb/pow(d, 2);
-			pdv->setNorm(nb2);
-
-			v+=*pdv;
-		}else{
-			if (m_pBLBTree!=NULL){
-				m_pBLBTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pBRBTree!=NULL){
-				m_pBRBTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pBRFTree!=NULL){
-				m_pBRFTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pBLFTree!=NULL){
-				m_pBLFTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pTLBTree!=NULL){
-				m_pTLBTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pTRBTree!=NULL){
-				m_pTRBTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pTRFTree!=NULL){
-				m_pTRFTree->computeInverseSquareLawResultant(t, v);
-			}
-			if (m_pTLFTree!=NULL){
-				m_pTLFTree->computeInverseSquareLawResultant(t, v);
-			}
-		}
-	}
-}*/
-
-/*
- * Stores the octs that are to be considered given alpha.
- */
-/*template<typename T> std::unordered_set<T*> Oct<T>::find(const Point3D& point) {
-	;
 }*/
 
 template<typename T, typename M, typename E> std::shared_ptr<T> Oct<T, M, E>::search(const std::shared_ptr<Point3D<M, E>> ppoint) const {

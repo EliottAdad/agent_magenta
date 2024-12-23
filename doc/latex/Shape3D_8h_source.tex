@@ -15,29 +15,73 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unordered\_set>}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{comment}{/*}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ *  Shape3D :)}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{20 \textcolor{comment}{ */}}
-\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classShape3D}{Shape3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{22 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{23     std::unordered\_set<Point3D<float, char>*> m\_ppoints;}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25 \textcolor{keyword}{public}:}
-\DoxyCodeLine{26     \mbox{\hyperlink{classShape3D}{Shape3D}}();}
-\DoxyCodeLine{27     \textcolor{keyword}{virtual} \mbox{\hyperlink{classShape3D}{\string~Shape3D}}();}
-\DoxyCodeLine{28     \mbox{\hyperlink{classShape3D}{Shape3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classShape3D}{Shape3D}}\& shape);}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30     std::unordered\_set<Point3D<float, char>*> setPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint);}
-\DoxyCodeLine{31     \textcolor{keywordtype}{void} setPPoint(\mbox{\hyperlink{structPoint3D}{Point3D<float, char>}}* ppoint);}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{34     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{35 \};}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SHAPE3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/Line3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{/*}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ *  Shape3D<M, E> :)}}
+\DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classShape3D}{Shape3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{classShape3D}{Shape3D}}();}
+\DoxyCodeLine{25     \textcolor{keyword}{virtual} \mbox{\hyperlink{classShape3D}{\string~Shape3D}}();}
+\DoxyCodeLine{26     \mbox{\hyperlink{classShape3D}{Shape3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classShape3D}{Shape3D<M, E>}}\& shape);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> getPoints() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> getLines() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::Shape3D}}() \{}
+\DoxyCodeLine{36     \textcolor{comment}{// TODO Auto-\/generated constructor stub}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::\string~Shape3D}}() \{}
+\DoxyCodeLine{41     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::Shape3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classShape3D}{Shape3D}} \&other) \{}
+\DoxyCodeLine{45     \textcolor{comment}{// TODO Auto-\/generated constructor stub}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::getPoints}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{51     std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> ppoints;}
+\DoxyCodeLine{52     \textcolor{keywordflow}{return} ppoints;}
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::getLines}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{56     std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> plines;}
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} plines;}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{62     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{65         mes+=\textcolor{stringliteral}{"{}SHAPE3D ["{}};}
+\DoxyCodeLine{66         std::stringstream ss;}
+\DoxyCodeLine{67         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{68         mes+=ss.str();}
+\DoxyCodeLine{69         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{70         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{73 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classShape3D}{Shape3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{76     printTabs(indent);}
+\DoxyCodeLine{77     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{78 \}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SHAPE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

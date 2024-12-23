@@ -25,8 +25,9 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Particle3D<M
 	std::unordered_set<std::shared_ptr<Particle3D<M, E>>> pparts;
 	for (unsigned char i(0) ; i<n ; i++){
 		for (unsigned char j(0) ; j<n ; j++){
-			((M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x).print(true, true, 2);
-			std::shared_ptr<Particle3D<M, E>> ppart=std::make_shared<Particle3D<M, E>>((M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x,
+			//((M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x).print(true, true, 2);
+			std::shared_ptr<Particle3D<M, E>> ppart=std::make_shared<Particle3D<M, E>>(
+					(M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x,
 					(M)(-1)*a/(M)2+(M)j*a/(M)(n-1)+p.y,
 					SN<M, E>{0, 0}+p.z,
 					w);

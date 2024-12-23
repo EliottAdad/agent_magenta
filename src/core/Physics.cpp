@@ -8,7 +8,7 @@
 #include "Physics.h"
 
 Physics::Physics() {
-	m_pps=30;//Computations per second
+	m_pps=40;//Computations per second
 	m_speed=1;//Speed of the simulation
 
 	m_fcollide=false;

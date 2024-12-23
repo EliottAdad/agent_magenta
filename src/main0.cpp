@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
 
     printf("Hello\n");
     std::unordered_set<std::shared_ptr<Particle3D<float, char>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<float, char>{{-1,1},{0,0},{0,0}}, SN<float, char>{2, 1}, 2, SN<float, char>{1, 12});
+    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{6,1}, 13, SN<float, char>{1, 16});
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -62,6 +62,8 @@ int main(int argc, char* argv[]){
 
     // Sys
     std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
+    psys->setA(SN<float, char>{1, 2});
+    psys->setAlpha(2);
     for (std::shared_ptr<Particle3D<float, char>> ppart : pparts){
     	psys->addPElement(ppart);
     }
@@ -69,7 +71,8 @@ int main(int argc, char* argv[]){
 
     // Game
     Game g1;
-
+    g1.pdisplay->setScale(0.1);
+    //g1.pdisplay->ppoint=pparts[0];
 
     for (std::shared_ptr<Particle3D<float, char>> ppart : pparts){
         g1.pscene->addPDisplayable(ppart);
@@ -77,9 +80,10 @@ int main(int argc, char* argv[]){
 
     printf("\n%b\n", g1.pphysics->addPTimeSensitive(psys));
 
-    g1.setFPS(100);
+    g1.setFPS(30);
     g1.pphysics->setPPS(100);
     g1.setFPause(false);
+    //g1.print(true, true, 0);
 
     g1.run(10000);
 

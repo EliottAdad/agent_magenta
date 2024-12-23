@@ -24,7 +24,7 @@
 \DoxyCodeLine{20 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{21 \textcolor{comment}{ * A set of 3 points.}}
 \DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classTriangle3D}{Triangle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classTriangle3D}{Triangle3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<M, E> \{}
 \DoxyCodeLine{24 \textcolor{keyword}{public}:}
 \DoxyCodeLine{25     std::shared\_ptr<Point3D<M, E>> pp1;}
 \DoxyCodeLine{26     std::shared\_ptr<Point3D<M, E>> pp2;}
@@ -36,64 +36,67 @@
 \DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{classTriangle3D}{\string~Triangle3D}}();}
 \DoxyCodeLine{33     \mbox{\hyperlink{classTriangle3D}{Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle);}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{35     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
-\DoxyCodeLine{37 \};}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}() \{}
-\DoxyCodeLine{41     pp1=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{1,0\},\{0,0\},\{0,0\}\});}
-\DoxyCodeLine{42     pp2=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{1,0\},\{0,0\}\});}
-\DoxyCodeLine{43     pp3=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{1,0\}\});}
-\DoxyCodeLine{44 \}}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p2, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p3) \{}
-\DoxyCodeLine{47     pp1=std::make\_shared<Point3D<M, E>>(p1);}
-\DoxyCodeLine{48     pp2=std::make\_shared<Point3D<M, E>>(p2);}
-\DoxyCodeLine{49     pp3=std::make\_shared<Point3D<M, E>>(p3);}
-\DoxyCodeLine{50 \}}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp2, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp3) \{}
-\DoxyCodeLine{53     this-\/>pp1=pp1;}
-\DoxyCodeLine{54     this-\/>pp2=pp2;}
-\DoxyCodeLine{55     this-\/>pp3=pp3;}
-\DoxyCodeLine{56 \}}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::\string~Triangle3D}}() \{}
-\DoxyCodeLine{59     ;}
-\DoxyCodeLine{60 \}}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle) \{}
-\DoxyCodeLine{63     this-\/>pp1=triangle.pp1;}
-\DoxyCodeLine{64     this-\/>pp2=triangle.pp2;}
-\DoxyCodeLine{65     this-\/>pp3=triangle.pp3;}
-\DoxyCodeLine{66 \}}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 }
-\DoxyCodeLine{69 }
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> getPoints() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> getLines() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{39     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}() \{}
+\DoxyCodeLine{44     pp1=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{1,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{45     pp2=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{1,0\},\{0,0\}\});}
+\DoxyCodeLine{46     pp3=std::make\_shared<Point3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{1,0\}\});}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p2, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p3) \{}
+\DoxyCodeLine{50     pp1=std::make\_shared<Point3D<M, E>>(p1);}
+\DoxyCodeLine{51     pp2=std::make\_shared<Point3D<M, E>>(p2);}
+\DoxyCodeLine{52     pp3=std::make\_shared<Point3D<M, E>>(p3);}
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp2, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pp3) \{}
+\DoxyCodeLine{56     this-\/>pp1=pp1;}
+\DoxyCodeLine{57     this-\/>pp2=pp2;}
+\DoxyCodeLine{58     this-\/>pp3=pp3;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::\string~Triangle3D}}() \{}
+\DoxyCodeLine{62     ;}
+\DoxyCodeLine{63 \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::Triangle3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D}}\& triangle) \{}
+\DoxyCodeLine{66     this-\/>pp1=triangle.pp1;}
+\DoxyCodeLine{67     this-\/>pp2=triangle.pp2;}
+\DoxyCodeLine{68     this-\/>pp3=triangle.pp3;}
+\DoxyCodeLine{69 \}}
 \DoxyCodeLine{70 }
-\DoxyCodeLine{71 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{72     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
 \DoxyCodeLine{73 }
-\DoxyCodeLine{74     \textcolor{keywordflow}{if} (full\_info)\{}
-\DoxyCodeLine{75         mes+=\textcolor{stringliteral}{"{}TRIANGLE ["{}};}
-\DoxyCodeLine{76         std::stringstream ss;}
-\DoxyCodeLine{77         ss << \textcolor{keyword}{this};}
-\DoxyCodeLine{78         mes+=ss.str();}
-\DoxyCodeLine{79         mes+=\textcolor{stringliteral}{"{}]:"{}};}
-\DoxyCodeLine{80         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{81     \}}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{83     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{84 \}}
+\DoxyCodeLine{74 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{75     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{78         mes+=\textcolor{stringliteral}{"{}TRIANGLE ["{}};}
+\DoxyCodeLine{79         std::stringstream ss;}
+\DoxyCodeLine{80         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{81         mes+=ss.str();}
+\DoxyCodeLine{82         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{83         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{84     \}}
 \DoxyCodeLine{85 }
-\DoxyCodeLine{86 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{87     printTabs(indent);}
-\DoxyCodeLine{88     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{89 \}}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{91 }
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRIANGLE3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{86     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{87 \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{90     printTabs(indent);}
+\DoxyCodeLine{91     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRIANGLE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

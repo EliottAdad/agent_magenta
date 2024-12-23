@@ -35,8 +35,6 @@ private:
 	float m_scale;						// Ratio d_pixels/d_meters
 	std::unordered_set<std::shared_ptr<Scene<M, E>>> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
 
-	bool m_fclear;
-
 public:
 	std::shared_ptr<Point3D<M, E>> ppoint;				// Pointeur to the center of display.
 
@@ -44,6 +42,7 @@ public:
 	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
 	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
 	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	bool fclear;
 
 	Display1();
 	Display1(std::shared_ptr<Point3D<M, E>> ppoint);
@@ -55,8 +54,6 @@ public:
 	void setDisplay(const char& display);
 	float getScale() const;
 	void setScale(const float& scale);
-	bool getFClear() const;
-	void setFClear(const bool& fclear);
 
 	std::unordered_set<std::shared_ptr<Scene<M, E>>> getPScenes() const;
 	void addPScene(std::shared_ptr<Scene<M, E>> pscene);
@@ -74,7 +71,7 @@ public:
 template<typename M, typename E> Display1<M, E>::Display1() {
 	ppoint=std::make_shared<Point3D<M, E>>();
 	m_display=1;
-	m_scale=5;
+	m_scale=2;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
@@ -84,36 +81,33 @@ template<typename M, typename E> Display1<M, E>::Display1() {
 //	}
 	prenderer=NULL;
 
-	m_fclear=true;
+	fclear=true;
 }
 
 template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3D<M, E>> ppoint) {
 	this->ppoint=ppoint;
 	m_display=1;
-	m_scale=5;
+	m_scale=2;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
-	pwindow=NULL;//SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN);
-//	if (pwindow!=NULL){
-//		prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
-//	}
+	pwindow=NULL;
 	prenderer=NULL;
 
-	m_fclear=true;
+	fclear=true;
 }
 
 template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
 	ppoint=std::make_shared<Point3D<M, E>>();
 	m_display=1;
-	m_scale=5;
+	m_scale=2;
 
 	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
 	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
 	this->pwindow=pwindow;
 	this->prenderer=prenderer;
 
-	m_fclear=true;
+	fclear=true;
 }
 
 template<typename M, typename E> Display1<M, E>::~Display1() {
@@ -143,14 +137,6 @@ template<typename M, typename E> void Display1<M, E>::setScale(const float& scal
 	m_scale=scale;
 }
 
-template<typename M, typename E> bool Display1<M, E>::getFClear() const {
-	return m_fclear;
-}
-
-template<typename M, typename E> void Display1<M, E>::setFClear(const bool& fclear){
-	m_fclear=fclear;
-}
-
 template<typename M, typename E> std::unordered_set<std::shared_ptr<Scene<M, E>>> Display1<M, E>::getPScenes() const {
 	return m_pscenes;
 }
@@ -168,7 +154,7 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
 	bool success=false;
 
 	if (prenderer!=NULL){
-		if (m_fclear){
+		if (fclear){
 			SDL_SetRenderDrawColor(prenderer.get(), pbkgd_color->r, pbkgd_color->g, pbkgd_color->b, pbkgd_color->a); // Chooses the background color.
 			SDL_RenderClear(prenderer.get()); // Fill the canvas with the background color
 		}
@@ -189,13 +175,13 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
  */
 template<typename M, typename E> bool Display1<M, E>::render(const std::shared_ptr<Scene<M, E>> pscene) const {
 	bool success=false;
-	//printf("\nRendering 2: %li\n", pscene->getPDisplayables().size());
 
 	if (pscene!=NULL){
 		for (std::shared_ptr<Displayable<M, E>> pdisplayable : pscene->getPDisplayables()){
 			success=success | render(pdisplayable);
 		}
 	}
+
 	return success;
 }
 

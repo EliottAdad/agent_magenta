@@ -12,12 +12,12 @@ Game::Game() {
 			SDL_CreateWindow("Game",
 					SDL_WINDOWPOS_CENTERED,
 					SDL_WINDOWPOS_CENTERED,
-					600, 600,
-					SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE),
+					1200, 600,
+					SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN_DESKTOP),
 			SDL_DestroyWindow);
 	if (pwindow!=NULL){
 		prenderer=std::shared_ptr<SDL_Renderer>(
-				SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE),
+				SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_ACCELERATED),
 				SDL_DestroyRenderer);
 	}
 
@@ -29,6 +29,8 @@ Game::Game() {
 	m_fps=30;
 	//m_pps=30;
 	m_fpause=false;
+
+	//render();
 }
 
 Game::~Game() {
@@ -129,7 +131,7 @@ bool Game::run(const unsigned int& steps){
 
 			// Calls the rendering process
 			if (dt.count()>=1/(long double)m_fps*1000000000.){
-				render();		//ERROR
+				render();
 
 				t1=t2;
 				if (steps!=0){//If steps is not null (allows for infinite loop when 0)
@@ -142,15 +144,37 @@ bool Game::run(const unsigned int& steps){
 }
 
 bool Game::render() const {
-	// Fill the background with the background color
-	//SDL_SetRenderDrawColor(m_pdisplay->getPRenderer(), m_pdisplay->getBkgdColor().r, m_pdisplay->getBkgdColor().g, m_pdisplay->getBkgdColor().b, m_pdisplay->getBkgdColor().a);
-	//SDL_RenderClear(m_pdisplay->getPRenderer());
-
 	if (pdisplay!=NULL){
 		pdisplay->render();
 	}
 
-	//SDL_RenderPresent(m_pdisplay->getPRenderer());
-
 	return m_fpause;
+}
+
+
+std::string Game::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
+
+	mes+="GAME[";
+	std::stringstream ss;
+	ss << this;
+	mes+=ss.str();
+	mes+="]:\n";
+	mes+=to_stringTabs(indent+1);
+	mes+="fps=" + to_string(m_fps);
+	mes+=("fpause=" + to_string(m_fpause));
+	mes+=((spread)?"\n" : "");
+
+	if (full_info){
+		//mes+=pscene->to_string(spread, full_info, indent+1);
+		//mes+=pphysics->to_string(spread, full_info, indent+1);
+	}
+
+	return mes;
+}
+
+void Game::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printTabs(indent);
+	std::cout << this->to_string(spread, full_info, indent);
 }

@@ -75,8 +75,10 @@
 \DoxyCodeLine{71     \textcolor{keywordtype}{bool} iterate(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);  \textcolor{comment}{// Renders once (à faire)}}
 \DoxyCodeLine{72     \textcolor{keywordtype}{bool} render() \textcolor{keyword}{const};                    \textcolor{comment}{// Draws the content of the game on the screen}}
 \DoxyCodeLine{73 }
-\DoxyCodeLine{74 \};}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* GAME\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{74     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{75     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* GAME\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

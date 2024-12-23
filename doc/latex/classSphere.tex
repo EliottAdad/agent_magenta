@@ -7,7 +7,7 @@ Inheritance diagram for Sphere\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=174pt]{classSphere__inherit__graph}
+\includegraphics[width=184pt]{classSphere__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -17,7 +17,7 @@ Collaboration diagram for Sphere\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=174pt]{classSphere__coll__graph}
+\includegraphics[width=184pt]{classSphere__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -25,6 +25,14 @@ Collaboration diagram for Sphere\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$
 \item 
 \mbox{\Hypertarget{classSphere_ae4c63f75a14ca3a4f55f0b809e04511a}\label{classSphere_ae4c63f75a14ca3a4f55f0b809e04511a}} 
 {\bfseries Sphere} (const \mbox{\hyperlink{classSphere}{Sphere}}$<$ M, E $>$ \&sphere)
+\item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classSphere_a7ee9d23be6aca633e8a593733aa0467c}{get\+Points}} () const
+\item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classSphere_ad720da2f56c0e2f0b8fba732e2e61ad4}{get\+Lines}} () const
+\item 
+virtual std\+::string \mbox{\hyperlink{classSphere_a53915a485e5cf394331705e14e6ba260}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classSphere_a91587aed56197aadd4b17b19646a44e0}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -32,7 +40,53 @@ Collaboration diagram for Sphere\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$
 \mbox{\Hypertarget{classSphere_a0acb435301744c8f8a1c39ad4bd6e019}\label{classSphere_a0acb435301744c8f8a1c39ad4bd6e019}} 
 \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries r}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSphere_ad720da2f56c0e2f0b8fba732e2e61ad4}\label{classSphere_ad720da2f56c0e2f0b8fba732e2e61ad4}} 
+\index{Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}!getLines@{getLines}}
+\index{getLines@{getLines}!Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{getLines()}{getLines()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classSphere}{Sphere}}$<$ M, E $>$\+::get\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classSphere_a7ee9d23be6aca633e8a593733aa0467c}\label{classSphere_a7ee9d23be6aca633e8a593733aa0467c}} 
+\index{Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classSphere}{Sphere}}$<$ M, E $>$\+::get\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classSphere_a91587aed56197aadd4b17b19646a44e0}\label{classSphere_a91587aed56197aadd4b17b19646a44e0}} 
+\index{Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}!print@{print}}
+\index{print@{print}!Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual void \mbox{\hyperlink{classSphere}{Sphere}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classSphere_a53915a485e5cf394331705e14e6ba260}\label{classSphere_a53915a485e5cf394331705e14e6ba260}} 
+\index{Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Sphere$<$ M, E $>$@{Sphere$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::string \mbox{\hyperlink{classSphere}{Sphere}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

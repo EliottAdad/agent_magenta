@@ -2,7 +2,8 @@
 \label{classTriangle3D}\index{Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}}
 
 
-Inheritance diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$
 \end{figure}
 
 
-Collaboration diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,6 +32,10 @@ Collaboration diagram for Triangle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring
 \mbox{\Hypertarget{classTriangle3D_a297d8e0f1988ca11447425fdbf6dfc9f}\label{classTriangle3D_a297d8e0f1988ca11447425fdbf6dfc9f}} 
 {\bfseries Triangle3D} (const \mbox{\hyperlink{classTriangle3D}{Triangle3D}} \&triangle)
 \item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classTriangle3D_a20ed422d331734ca186302c28a8f2b8b}{get\+Points}} () const
+\item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classTriangle3D_a99701fd64c2bf5586a49fe703569fdc8}{get\+Lines}} () const
+\item 
 virtual std\+::string \mbox{\hyperlink{classTriangle3D_afa093a5a86150d85437cbc4ccb2cc632}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classTriangle3D_a91663bd973e6f03bff9300e2a05fc656}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
@@ -46,10 +52,31 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ 
 \mbox{\Hypertarget{classTriangle3D_a7d8fb85c48110c2b6a50baf01efb8a2f}\label{classTriangle3D_a7d8fb85c48110c2b6a50baf01efb8a2f}} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries pp3}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTriangle3D_a99701fd64c2bf5586a49fe703569fdc8}\label{classTriangle3D_a99701fd64c2bf5586a49fe703569fdc8}} 
+\index{Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}!getLines@{getLines}}
+\index{getLines@{getLines}!Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{getLines()}{getLines()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$\+::get\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classTriangle3D_a20ed422d331734ca186302c28a8f2b8b}\label{classTriangle3D_a20ed422d331734ca186302c28a8f2b8b}} 
+\index{Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$\+::get\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+
 \mbox{\Hypertarget{classTriangle3D_a91663bd973e6f03bff9300e2a05fc656}\label{classTriangle3D_a91663bd973e6f03bff9300e2a05fc656}} 
 \index{Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}!print@{print}}
 \index{print@{print}!Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}}
@@ -59,7 +86,7 @@ void \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$\+::print (\begin
 
 
 
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3D}}.
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
 
 \mbox{\Hypertarget{classTriangle3D_afa093a5a86150d85437cbc4ccb2cc632}\label{classTriangle3D_afa093a5a86150d85437cbc4ccb2cc632}} 
 \index{Triangle3D$<$ M, E $>$@{Triangle3D$<$ M, E $>$}!to\_string@{to\_string}}
@@ -70,7 +97,7 @@ std\+::string \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$\+::to\+
 
 
 
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3D}}.
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
 
 
 
