@@ -20,6 +20,7 @@ src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
  ../src/utilities/../core/Physics.h ../src/utilities/../core/Point3D.h \
  ../src/utilities/../core/Scene.h \
  ../src/utilities/../core/../display/Displayable.h \
+ ../src/utilities/../utilities/Printable.h \
  ../src/utilities/../display/Display1.h \
  ../src/utilities/../display/../core/LSN.h \
  ../src/utilities/../display/../core/Point3D.h \
@@ -65,6 +66,7 @@ src/main0.o: ../src/main0.cpp ../src/core/LSN.h \
 ../src/utilities/../core/Point3D.h:
 ../src/utilities/../core/Scene.h:
 ../src/utilities/../core/../display/Displayable.h:
+../src/utilities/../utilities/Printable.h:
 ../src/utilities/../display/Display1.h:
 ../src/utilities/../display/../core/LSN.h:
 ../src/utilities/../display/../core/Point3D.h:

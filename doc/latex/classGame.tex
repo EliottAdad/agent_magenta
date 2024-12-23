@@ -1,5 +1,25 @@
 \hypertarget{classGame}{}\doxysection{Game Class Reference}
 \label{classGame}\index{Game@{Game}}
+
+
+Inheritance diagram for Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classGame__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classGame__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,11 +43,9 @@ bool {\bfseries iterate} (const float \&dt)
 \mbox{\Hypertarget{classGame_aef454bb9fcccafbd8c248780275caabd}\label{classGame_aef454bb9fcccafbd8c248780275caabd}} 
 bool {\bfseries render} () const
 \item 
-\mbox{\Hypertarget{classGame_a879172a6e2120f06e887b0bd91b6649a}\label{classGame_a879172a6e2120f06e887b0bd91b6649a}} 
-virtual std\+::string {\bfseries to\+\_\+string} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classGame_a879172a6e2120f06e887b0bd91b6649a}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-\mbox{\Hypertarget{classGame_ad7a7bc93dc15295e2e588f99d1bc7c38}\label{classGame_ad7a7bc93dc15295e2e588f99d1bc7c38}} 
-virtual void {\bfseries print} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual void \mbox{\hyperlink{classGame_ad7a7bc93dc15295e2e588f99d1bc7c38}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -50,13 +68,33 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDisplay1}{Display1}}$<$ float, c
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_ad7a7bc93dc15295e2e588f99d1bc7c38}\label{classGame_ad7a7bc93dc15295e2e588f99d1bc7c38}} 
+\index{Game@{Game}!print@{print}}
+\index{print@{print}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Game\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
 \mbox{\Hypertarget{classGame_a1676d62da51ef45d985cc44ddc986839}\label{classGame_a1676d62da51ef45d985cc44ddc986839}} 
 \index{Game@{Game}!run@{run}}
 \index{run@{run}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
 {\footnotesize\ttfamily bool Game\+::run (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{steps = {\ttfamily 1} }\end{DoxyParamCaption})}
 
-Run the game for a certain number of frames 
+Run the game for a certain number of frames \mbox{\Hypertarget{classGame_a879172a6e2120f06e887b0bd91b6649a}\label{classGame_a879172a6e2120f06e887b0bd91b6649a}} 
+\index{Game@{Game}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Game\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

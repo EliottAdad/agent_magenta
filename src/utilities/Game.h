@@ -15,7 +15,7 @@
 #include "../core/Physics.h"
 #include "../core/Point3D.h"
 #include "../core/Scene.h"
-//#include "../display/Camera.h"
+#include "../utilities/Printable.h"
 #include "../display/Display1.h"
 
 /*
@@ -24,7 +24,7 @@
  * ########
  * Contains a scene, a physics management system, and a display.
  */
-class Game {
+class Game : public Printable {
 private:
 	unsigned char m_fps;					// Frames per second
 	//unsigned int m_pps;				// Physics per second
