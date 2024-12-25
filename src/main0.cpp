@@ -16,7 +16,6 @@
 #include <SDL2/SDL.h>
 
 //#include "core/SN.h"
-#include "core/LSN.h"
 #include "core/Point3D.h"
 #include "core/WeightedPoint3D.h"
 #include "core/Quad.h"
@@ -52,7 +51,7 @@ int main(int argc, char* argv[]){
 
     printf("Hello\n");
     std::unordered_set<std::shared_ptr<Particle3D<float, char>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{7,2}, 40, SN<float, char>{1, 16});
+    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{1,2}, 20, SN<float, char>{1, 16});
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){

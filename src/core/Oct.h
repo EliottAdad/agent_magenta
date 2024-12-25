@@ -44,16 +44,7 @@ protected:
 	SN<M, E> m_tot_weight;										// Total weight contained in this Oct.
 
 	std::shared_ptr<T> m_pT;					// The content of this square (NULL if nothing).
-	//Particle3D* m_pparticle;					// The content of this node.
 
-	//Oct<T, M, E>* m_pTLFTree;					// Top Left corner : is NULL if nothing
-	//Oct<T, M, E>* m_pTRFTree;					// Top Right corner : is NULL if nothing
-	//Oct<T, M, E>* m_pBLFTree;					// Bottom Left corner : is NULL if nothing
-	//Oct<T, M, E>* m_pBRFTree;					// Bottom Right corner : is NULL if nothing
-	//Oct<T, M, E>* m_pTLBTree;					// Top Left corner : is NULL if nothing
-	//Oct<T, M, E>* m_pTRBTree;					// Top Right corner : is NULL if nothing
-	//Oct<T, M, E>* m_pBLBTree;					// Bottom Left corner : is NULL if nothing
-	//Oct<T, M, E>* m_pBRBTree;					// Bottom Right corner : is NULL if nothing
 	Oct<T, M, E>* m_ptrees[8];					// Contains the trees.
 
 	static unsigned int m_NB_OCTS;				// Keeps track of the number of Octs created.
@@ -73,21 +64,15 @@ public:
 
 	Oct();
 	Oct(const SN<M, E>& a, const Point3D<M, E>& p={{0,0},{0,0},{0,0}});
-	//Oct(const SN<M, E>& a, std::shared_ptr<Point3D<M, E>> ppoint);
-	Oct(const Oct<T, M, E>& oct);
 	virtual ~Oct();
+	Oct(const Oct<T, M, E>& oct);
 
 	Point3D<M, E> getPoint() const;
 	void setPoint(const Point3D<M, E>& point);
-	//void setPPoint(Point3D<M, E>* ppoint, bool delp=true);// delp indique s'il faudra delete le point passé en argument
 	Point3D<M, E> getBarycenter() const;
-	//Point3D<M, E>* getPBarycenter() const;
-	//bool getDelP() const;
 	SN<M, E> getA() const;
 	void setA(const SN<M, E>& a);
 	unsigned int getNB_OCTS() const;
-	//float getAlpha();
-	//static void setAlpha(float& alpha=0.5);
 	//std::unordered_set<Oct<T, M, E>*> getPTrees();						//Returns all the trees under, contained by this tree.
 	std::unordered_set<std::shared_ptr<T>> getPElements(const bool& mem=false) const;					//:) Returns all the elements contained in the tree.
 	std::unordered_set<std::shared_ptr<T>> getPNeighbors(const std::shared_ptr<T> pelement, const bool& mem=false) const;		//:) Returns all the neighbors.
@@ -101,8 +86,8 @@ public:
 	void recalculate();
 	void empty();
 
-	bool isLeaf();
-	bool isEmpty();
+	bool isLeaf() const;
+	bool isEmpty() const;
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
@@ -143,7 +128,6 @@ template<typename T, typename M, typename E> Oct<T, M, E>::Oct() {
 template<typename T, typename M, typename E> Oct<T, M, E>::Oct(const SN<M, E>& a, const Point3D<M, E>& p) {
 	m_ppoint=std::make_shared<Point3D<M, E>>(p);
 	m_pbarycenter=std::make_shared<Point3D<M, E>>(*m_ppoint);
-	//m_delp=true;
 
 	m_a=a;
 	m_tot_weight=(M)0.;
@@ -209,6 +193,16 @@ template<typename T, typename M, typename E> Oct<T, M, E>::Oct(const SN<M, E>& a
 	m_NB_OCTS++;
 }*/
 
+template<typename T, typename M, typename E> Oct<T, M, E>::~Oct() {
+	for (int i(0) ; i<8 ; i++){
+		if (m_ptrees[i]!=NULL){
+			delete m_ptrees[i];
+		}
+	}
+	// There is one less Oct
+	m_NB_OCTS--;
+}
+
 /*
  * Copy constructor
  */
@@ -228,23 +222,9 @@ template<typename T, typename M, typename E> Oct<T, M, E>::Oct(const Oct<T, M, E
 	m_NB_OCTS++;
 }
 
-template<typename T, typename M, typename E> Oct<T, M, E>::~Oct() {
-	for (int i(0) ; i<8 ; i++){
-		if (m_ptrees[i]!=NULL){
-			delete m_ptrees[i];
-		}
-	}
-	// There is one less Oct
-	m_NB_OCTS--;
-}
-
 template<typename T, typename M, typename E> Point3D<M, E> Oct<T, M, E>::getPoint() const {// Because it can be NULL
 	return *m_ppoint;
 }
-
-/*template <typename T, typename M, typename E> Point3D<M, E>* Oct<T, M, E>::getPPoint() const {
-	return this->m_ppoint;
-}*/
 
 template<typename T, typename M, typename E> void Oct<T, M, E>::setPoint(const Point3D<M, E>& point) {
 	if (m_ppoint!=NULL){
@@ -256,35 +236,7 @@ template<typename T, typename M, typename E> void Oct<T, M, E>::setPoint(const P
 	this->recalculate();
 }
 
-/*template<typename T, typename M, typename E> void Oct<T, M, E>::setPPoint(Point3D<M, E>* ppoint, bool delp) {
-	if (ppoint!=NULL){
-		if (m_delp){
-			delete m_ppoint;
-		}
-		if (delp){
-			m_ppoint=new Point3D<M, E>(*ppoint);
-		}else{
-			m_ppoint=ppoint;
-		}
-		m_delp=delp;
-
-		this->recalculate();
-	}
-}*/
-
 template<typename T, typename M, typename E> Point3D<M, E> Oct<T, M, E>::getBarycenter() const {
-	/*Point3D<M, E> barycenter;
-	SN<M, E> tot_w;
-	for (std::shared_ptr<T> pelement : this->getPElements()){
-		barycenter+=pelement->getPosition()*pelement->getW();
-		tot_w+=pelement->getW();
-	}
-	if(tot_w!=0){
-		barycenter/=tot_w;
-	}else{
-		barycenter=*m_ppoint;
-	}
-	return barycenter;*/
 	return *m_pbarycenter;
 }
 
@@ -301,30 +253,6 @@ template<typename T, typename M, typename E> unsigned int Oct<T, M, E>::getNB_OC
 	return m_NB_OCTS;
 }
 
-/*
- * Returns all the trees under, contained by this tree.
- */
-/*template<typename T, typename M, typename E> std::unordered_set<Oct<T, M, E>*> Oct<T, M, E>::getPTrees() {
-	std::unordered_set<Oct<T, M, E>*> ptrees;
-	if (m_pTLFTree!=NULL){
-		ptrees.insert(m_pTLFTree);
-	}else if (m_pTRFTree!=NULL){
-		ptrees.insert(m_pTRFTree);
-	}else if (m_pBLFTree!=NULL){
-		ptrees.insert(m_pBLFTree);
-	}else if (m_pBRFTree!=NULL){
-		ptrees.insert(m_pBRFTree);
-	}else if (m_pTLBTree!=NULL){
-		ptrees.insert(m_pTLBTree);
-	}else if (m_pTRBTree!=NULL){
-		ptrees.insert(m_pTRBTree);
-	}else if (m_pBLBTree!=NULL){
-		ptrees.insert(m_pBLBTree);
-	}else if (m_pBRBTree!=NULL){
-		ptrees.insert(m_pBRBTree);
-	}
-	return ptrees;
-}*/
 /**
  * mem: flag memorise
  */
@@ -556,7 +484,7 @@ template<typename T, typename M, typename E> void Oct<T, M, E>::empty() {
 	m_pT=NULL;
 }
 
-template<typename T, typename M, typename E> bool Oct<T, M, E>::isLeaf() {
+template<typename T, typename M, typename E> bool Oct<T, M, E>::isLeaf() const {
 	bool test=false;
 
 	if (m_pT==NULL){
@@ -566,7 +494,7 @@ template<typename T, typename M, typename E> bool Oct<T, M, E>::isLeaf() {
 	return test;
 }
 
-template<typename T, typename M, typename E> bool Oct<T, M, E>::isEmpty() {
+template<typename T, typename M, typename E> bool Oct<T, M, E>::isEmpty() const {
 	bool test=true;
 
 	for (int i(0) ; i<8 ; i++){
@@ -579,45 +507,7 @@ template<typename T, typename M, typename E> bool Oct<T, M, E>::isEmpty() {
 	return test;
 }
 
-/*template<typename T, typename M, typename E> void Oct<T, M, E>::find(const T& t, std::unordered_set<Oct<T, M, E>*>& pocts) {
-	Point3D<M, E> p={t.x, t.y, {0,0}};
-
-	SN<M, E> s=this->m_a;
-	SN<M, E> d=getDistance(p, *m_pbarycenter);
-	SN<M, E> alpha=s/d;
-	//std::cout<<"\n"<<alpha.to_string()<<"\n";
-
-	if (alpha>=m_ALPHA){
-		pocts.insert(this);
-	}else{
-		if (m_pTLBTree!=NULL){
-			m_pTLBTree->find(t, pocts);
-		}
-		if (m_pTRBTree!=NULL){
-			m_pTRBTree->find(t, pocts);
-		}
-		if (m_pBLBTree!=NULL){
-			m_pBLBTree->find(t, pocts);
-		}
-		if (m_pBRBTree!=NULL){
-			m_pBRBTree->find(t, pocts);
-		}
-		if (m_pTLFTree!=NULL){
-			m_pTLFTree->find(t, pocts);
-		}
-		if (m_pTRFTree!=NULL){
-			m_pTRFTree->find(t, pocts);
-		}
-		if (m_pBLFTree!=NULL){
-			m_pBLFTree->find(t, pocts);
-		}
-		if (m_pBRFTree!=NULL){
-			m_pBRFTree->find(t, pocts);
-		}
-	}
-}*/
-
-template<typename T, typename M, typename E> std::shared_ptr<T> Oct<T, M, E>::search(const std::shared_ptr<Point3D<M, E>> ppoint) const {
+/*template<typename T, typename M, typename E> std::shared_ptr<T> Oct<T, M, E>::search(const std::shared_ptr<Point3D<M, E>> ppoint) const {
 	std::shared_ptr<T> pT=NULL;
 
 	if (ppoint!=NULL){
@@ -672,7 +562,7 @@ template<typename T, typename M, typename E> std::shared_ptr<T> Oct<T, M, E>::se
 		}
 	}
 	return pT;
-}
+}*/
 
 
 

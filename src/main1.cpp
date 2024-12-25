@@ -16,7 +16,6 @@
 #include <SDL2/SDL.h>
 
 //#include "core/SN.h"
-#include "core/LSN.h"
 #include "core/Point3D.h"
 #include "core/WeightedPoint3D.h"
 #include "core/Quad.h"

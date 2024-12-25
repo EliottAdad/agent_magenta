@@ -10,7 +10,6 @@
 #define MAIN2_CPP_
 
 #include "core/SN.h"
-#include "core/LSN.h"
 
 
 /*

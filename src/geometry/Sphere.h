@@ -10,7 +10,7 @@
 #define SPHERE_H_
 
 #include "Shape3D.h"
-#include "../core/LSN.h"
+#include "../core/SN.h"
 
 /*
  * ################
@@ -43,6 +43,26 @@ template<typename M, typename E> Sphere<M, E>::~Sphere() {
 
 template<typename M, typename E> Sphere<M, E>::Sphere(const Sphere<M, E>& sphere) {
 	r=sphere.r;
+}
+
+
+template<typename M, typename E> std::string Sphere<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	std::string mes=((spread)?"\n" : "");
+
+	if (full_info){
+		mes+="SPHERE[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
+		mes+=((spread)?"\n" : "");
+	}
+	return mes;
+}
+
+template<typename M, typename E> void Sphere<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+	printTabs(indent);
+	std::cout << this->to_string(spread, full_info, indent);
 }
 
 

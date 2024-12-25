@@ -12,10 +12,10 @@
 #include <memory>
 #include <unordered_set>
 
+#include "../utilities/macros.h"
 #include "Vector3D.h"
 #include "Oct.h"
 #include "TimeSensitive.h"
-#include "macros.h"
 
 /*
  * ############

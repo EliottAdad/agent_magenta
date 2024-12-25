@@ -9,6 +9,8 @@
 
 #define MACROS_H_
 
+#include "../core/SN.h"
+
 const static SN<float, char> G=SN<float, char>{6.67430, -11};
 
 #endif /* MACROS_H_ */
