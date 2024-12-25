@@ -55,39 +55,39 @@
     p1.x={1,1};
     p1.y={1,0};
     p1.z={0,0};
-    p1.w={1,13};
+    p1.w={1,11};
     Point3D<float, char> point1{{0,0},{0,0},{0,0}};
-    Point3D<float, char> point2{{1,0},{0,0},{0,0}};
+    Point3D<float, char> point2{{1,-3},{0,0},{0,0}};
     std::shared_ptr<Vector3D<float, char>> pv(new Vector3D<float, char>(point2));
     *p1.ps=*pv;
 
     Particle3D<float, char> p2;
-    p2.x={-3,0};
+    p2.x={-3,1};
     p2.y={-2,1};
     p2.z={2,1};
-    p2.w={1,12};
+    p2.w={1,10};
     Point3D<float, char> point3{{0,0},{0,0},{0,0}};
-    Point3D<float, char> point4{{0,0},{-1,0},{0,0}};
+    Point3D<float, char> point4{{0,0},{-3,-1},{0,0}};
     std::shared_ptr<Vector3D<float, char>> pv2(new Vector3D<float, char>(point4));
     *p2.ps=*pv2;
 
-    Particle3D<float, char> p3;
-    p3.x={-3,1};
-    p3.y={1,0};
-    p3.z={0,0};
-    p3.w={1,13};
-    Point3D<float, char> point5{{0,0},{0,0},{0,0}};
-    Point3D<float, char> point6{{0,0},{0,0},{0,0}};
-    std::shared_ptr<Vector3D<float, char>> pv3(new Vector3D<float, char>(point6));
-    *p3.ps=*pv3;
+//    Particle3D<float, char> p3;
+//    p3.x={-3,1};
+//    p3.y={1,0};
+//    p3.z={0,0};
+//    p3.w={1,13};
+//    Point3D<float, char> point5{{0,0},{0,0},{0,0}};
+//    Point3D<float, char> point6{{0,0},{-1,10},{0,0}};
+//    std::shared_ptr<Vector3D<float, char>> pv3(new Vector3D<float, char>(point6));
+//    *p3.ps=*pv3;
 
     std::shared_ptr<Particle3D<float, char>> pp1(new Particle3D<float, char>(p1));
     std::shared_ptr<Particle3D<float, char>> pp2(new Particle3D<float, char>(p2));
-    std::shared_ptr<Particle3D<float, char>> pp3(new Particle3D<float, char>(p3));
+    //std::shared_ptr<Particle3D<float, char>> pp3(new Particle3D<float, char>(p3));
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
-    p3.print(true, true, 0);
+    //p3.print(true, true, 0);
 
     //SN<float, char> result=rrr2(&p, &p2);
     //result.print(true, true, 0);
@@ -102,11 +102,13 @@
     std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
     psys->addPElement(pp1);
     psys->addPElement(pp2);
-    psys->addPElement(pp3);
+    //psys->addPElement(pp3);
     psys->ptrLaw=rrr2;
+    psys->setAlpha(10);
 
     // Game
     Game g1;
+    g1.pdisplay->setScale(1.5);
 
 
 //    SDL_Window* pwindow=SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
@@ -116,7 +118,7 @@
 
     g1.pscene->addPDisplayable(pp1);
     g1.pscene->addPDisplayable(pp2);
-    g1.pscene->addPDisplayable(pp3);
+    //g1.pscene->addPDisplayable(pp3);
     //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp1));
     //printf("\n%b\n", g1.pphysics->addPTimeSensitive(pp2));
     printf("\n%b\n", g1.pphysics->addPTimeSensitive(psys));
@@ -128,7 +130,7 @@
     //	//printf("\n###2\n");
     //}//OK
 
-    g1.setFPS(100);
+    g1.setFPS(40);
     g1.pphysics->setPPS(100);
     g1.setFPause(false);
 
@@ -160,7 +162,7 @@
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
-    p3.print(true, true, 0);
+    //p3.print(true, true, 0);
 
     SDL_Delay(1000);
 
