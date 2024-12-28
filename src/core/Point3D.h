@@ -369,7 +369,59 @@ template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>& p1, c
 	return SN<M, E>(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
 }
 
+/**
+ * Returns the points to be rendered.
+ */
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> pixelizeCircle(std::shared_ptr<Point3D<M, E>> pcenter, int radius, int spacing=8){
+    std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
 
+    // 35 / 49 is a slightly biased approximation of 1/sqrt(2)
+    //const int arrSize=roundUpToMultipleOfEight(radius*8*35/49);
+    //points.reserve(arrSize);
+
+    const int diameter=radius*2;
+
+//    int32_t x=radius-1;
+//    int32_t y=0;
+//    int32_t tx=1;
+//    int32_t ty=1;
+//    int32_t error=tx-diameter;
+    //int spacing=(int)(radius*ratio);
+    //printf("%d\n", spacing);
+    SN<M, E> x{(M)(radius-spacing),0};
+    SN<M, E> y{0,0};
+    int tx=spacing;
+    int ty=spacing;
+    int error=tx-diameter;
+
+    while(x>=y){
+        // Each of the following renders an octant of the circle
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+x, pcenter->y-y, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+x, pcenter->y+y, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-x, pcenter->y-y, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-x, pcenter->y+y, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+y, pcenter->y-x, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+y, pcenter->y+x, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-y, pcenter->y-x, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-y, pcenter->y+x, SN<M, E>{0, 0}));
+
+        if(error<=0){
+            //++y;
+        	y+=SN<M, E>{(M)spacing, 0};
+            error+=ty;
+            ty+=2*spacing;
+        }
+
+        if(error>0){
+            //--x;
+        	x-=SN<M, E>{(M)spacing, 0};
+            tx+=2*spacing;
+            error+=tx-diameter;
+        }
+    }
+
+    return ppoints; // RVO FTW
+}
 
 
 #endif /* POINT3D_H_ */

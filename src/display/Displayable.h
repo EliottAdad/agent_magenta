@@ -12,20 +12,20 @@
 #include <memory>
 #include <SDL2/SDL.h>
 
-#include "../geometry/Mesh3D.h"
+#include "../geometry/Shape3D.h"
 #include "../utilities/Printable.h"
 
 /*
  * ###############
  *  Displayable :)
  * ###############
- * Stores the color, and a mesh to use when rendering
- * If mesh=NULL draws a point, if SDL_Color=NULL draws in white
+ * Stores the color, and a shape to use when rendering
+ * If shape=NULL draws a point, if SDL_Color=NULL draws in white
  */
 template<typename M, typename E> struct Displayable : public Printable {
 public:
 	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
-	std::shared_ptr<Mesh3D<M, E>> pmesh;			// Pointer to the mesh to be drawn(NULL if none)
+	std::shared_ptr<Shape3D<M, E>> pshape;			// Pointer to the shape to be drawn(NULL if none)
 
 	Displayable();
 	virtual ~Displayable();

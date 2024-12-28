@@ -11,6 +11,7 @@
 
 #include "Shape3D.h"
 #include "../core/SN.h"
+#include "../utilities/functions.h"
 
 /*
  * ################
@@ -43,6 +44,17 @@ template<typename M, typename E> Sphere<M, E>::~Sphere() {
 
 template<typename M, typename E> Sphere<M, E>::Sphere(const Sphere<M, E>& sphere) {
 	r=sphere.r;
+}
+
+
+
+template<typename M, typename E> virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> Sphere<M, E>::getPoints() const{
+	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pixelizeCircle(ppoint, (int)(r.to_m_type()), 8);
+	return ppoints;
+}
+
+template<typename M, typename E> virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> Sphere<M, E>::getLines() const{
+	;
 }
 
 

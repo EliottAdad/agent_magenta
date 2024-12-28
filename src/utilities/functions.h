@@ -6,10 +6,15 @@
  */
 
 #ifndef FUNCTIONS_H_
+
 #define FUNCTIONS_H_
 
+#include <memory>
+#include <vector>
+#include <unordered_set>
 #include <iostream>
 #include <stdio.h>
+#include <SDL2/SDL.h>
 
 
 /*
@@ -19,7 +24,7 @@
 std::string to_stringTabs(const unsigned char& nb);
 void printTabs(const unsigned char& nb);
 
-unsigned long long int factorial(unsigned int n);
+//unsigned long long int factorial(unsigned int n);
 /*unsigned long long int binomialCoef(unsigned int n, unsigned int k);*/
 
 /*
@@ -39,6 +44,9 @@ unsigned long long int factorial(unsigned int n);
 
 //void initSoftwareNecessery(std::string sft_name, unsigned int wd_w, unsigned int wd_h);
 
+int roundUpToMultipleOfEight(int v);
+void drawCircle(SDL_Renderer* renderer, SDL_Point center, int radius);
+std::vector<SDL_Point> pixelizeCircle(SDL_Point center, int radius);
 
 
 

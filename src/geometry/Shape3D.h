@@ -27,6 +27,7 @@ public:
 
 	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
 	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
+	//virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
@@ -62,7 +63,7 @@ template<typename M, typename E> std::string Shape3D<M, E>::to_string(const bool
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
-		mes+="SHAPE3D [";
+		mes+="SHAPE3D[";
 		std::stringstream ss;
 		ss << this;
 		mes+=ss.str();

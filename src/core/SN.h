@@ -1,5 +1,5 @@
 /*
- * LSN.h
+ * SN.h
  *
  *  Created on: 7 mai 2024
  *      Author: esn
@@ -42,8 +42,12 @@ template<typename M, typename E> struct SN : public Printable {
 	M to_m_type() const;										//:)
 	void operator=(const SN<M, E>& nb);							//:)
 	void operator=(const M& nb);								//:)
+	SN<M, E> operator++();										//X
+	SN<M, E> operator++(int);									//X
 	void operator+=(const SN<M, E>& nb);						//:)
 	void operator+=(const M& nb);								//:)
+	SN<M, E> operator--();										//X
+	SN<M, E> operator--(int);									//X
 	void operator-=(const SN<M, E>& nb);						//:)
 	void operator-=(const M& nb);								//:)
 	void operator*=(const SN<M, E>& nb);						//:)
@@ -158,6 +162,18 @@ template<typename M, typename E> void SN<M, E>::operator=(const M& nb) {
 	this->recal();
 }
 
+template<typename M, typename E> SN<M, E> SN<M, E>::operator++() {
+	this->m+=(M)1;
+	this->recal();
+	return *this;
+}
+
+template<typename M, typename E> SN<M, E> SN<M, E>::operator++(int) {
+	SN<M, E> old = *this; // copy old value
+	operator++();  // prefix increment
+	return old;    // return old value
+}
+
 template<typename M, typename E> void SN<M, E>::operator+=(const SN<M, E>& nb) {
 	this->m+=nb.m*(M)pow(10., (M)(nb.e-this->e));
 	this->recal();
@@ -166,6 +182,18 @@ template<typename M, typename E> void SN<M, E>::operator+=(const SN<M, E>& nb) {
 template<typename M, typename E> void SN<M, E>::operator+=(const M& nb) {//X
 	this->m+=nb/pow(10., (M)(this->e));
 	this->recal();
+}
+
+template<typename M, typename E> SN<M, E> SN<M, E>::operator--() {
+	this->m-=(M)1;
+	this->recal();
+	return *this;
+}
+
+template<typename M, typename E> SN<M, E> SN<M, E>::operator--(int) {
+	SN<M, E> old = *this; // copy old value
+	operator--();  // prefix increment
+	return old;    // return old value
 }
 
 template<typename M, typename E> void SN<M, E>::operator-=(const SN<M, E>& nb) {

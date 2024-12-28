@@ -63,4 +63,4 @@ template<typename M, typename E> void Ball3D<M, E>::print(const bool& spread, co
 	std::cout << this->to_string(spread, full_info, indent);
 }
 
-#endif /* SPHERE_H_ */
+#endif /* BALL3D_H_ */

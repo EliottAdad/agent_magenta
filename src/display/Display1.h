@@ -17,6 +17,7 @@
 #include "../core/Line3D.h"
 #include "../display/Displayable.h"
 #include "../utilities/Printable.h"
+#include "../utilities/functions.h"
 #include "../core/Scene.h"
 
 
@@ -162,6 +163,12 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
 		for (std::shared_ptr<Scene<M, E>> pscene : m_pscenes){
 			success=success | render(pscene);
 		}
+		//drawCircle(prenderer.get(), {0, 0}, 100);
+
+		/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pixelizeCircle(ppoint, 200, 8);
+		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+			success=success & render(ppoint);
+		}*/
 
 		SDL_RenderPresent(prenderer.get());
 	}
@@ -197,11 +204,17 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 		/*for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
-		if (pdisplayable->pmesh!=NULL){
-			std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pmesh->getPoints();
+		if (pdisplayable->pshape!=NULL){
+			// For the points
+			std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
 			for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
 				success=success & render(ppoint);
 			}
+			// For the lines
+			/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
+			for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+				success=success & render(ppoint);
+			}*/
 		}
 	}
 	return success;
@@ -250,6 +263,50 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 	}
 	return success;
 }
+
+/*template<typename M, typename E> bool Display1<M, E>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints) const {
+	bool success=false;
+
+	//if (this->ppoint!=NULL){
+		Point3D<M, E> d_point=*ppoint-*(this->ppoint);
+		//printf("\nRendering 4\n");
+		//ppoint->print(true);
+		//m_ppoint->print(true);
+		//d_point.print(true);
+		//SDL_Renderer* prenderer=pdisplay->getPRenderer();
+		//SDL_Window* pwindow=pdisplay->getPWindow();
+
+		if (pwindow!=NULL && prenderer!=NULL && pdraw_color!=NULL){
+			SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
+
+			//SDL_RenderClear(m_prenderer); // Fill the canvas with the background color
+
+			// Get the dimensions of the window
+			int sizex(0);
+			int sizey(0);
+			SDL_GetWindowSize(pwindow.get(), &sizex, &sizey);
+			SN<M, E> centerx={(M)(sizex/2),(E)0};
+			SN<M, E> centery={(M)(sizey/2),(E)0};
+
+			if (prenderer!=NULL){
+				switch (m_display){
+					case 1://(x,y) plane
+						//printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.y*(M)m_scale + centery).to_m_type());
+						break;
+					case 2://(y,z) plane
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						break;
+					case 3://(x,z) plane
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						break;
+				}
+			}
+			success=true;
+		}
+	//}
+	return success;
+}*/
 
 
 
