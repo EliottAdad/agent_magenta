@@ -309,6 +309,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::print(const
 }*/
 
 /*
+ * Gravitation
  * Returns the acc (in norm) felt by pT2 due to pT1
  * @param : pT1: src, pT2: target
  */
@@ -324,7 +325,32 @@ template<typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<Particle3D<
 		//printf("\n############d\n");
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
 		//printf("\n############d\n");
-		pv->setNorm(G*pT1->getW()/(d*d));
+		pv->setNorm(G*abs(pT1->getW())/(d*d));
+	}
+	//printf("\n############pv\n");
+	//pv->print();
+	//printf("\n############pv\n");
+	return *pv;
+}
+
+/*
+ * Electromagnetics
+ * Returns the acc (in norm) felt by pT2 due to pT1
+ * @param : pT1: src, pT2: target
+ */
+template<typename M, typename E> Vector3D<M, E> rrr3(std::shared_ptr<Particle3D<M, E>> pT1, std::shared_ptr<Particle3D<M, E>> pT2) {
+	std::shared_ptr<Vector3D<M, E>> pv(new Vector3D<M, E>());
+	*pv->pp1=pT2->getPosition();
+	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
+
+	if (pT1!=NULL && pT2!=NULL) {
+		*pv->pp2=pT1->getPosition()-pT2->getPosition();
+
+		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
+		//printf("\n############d\n");
+		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
+		//printf("\n############d\n");
+		pv->setNorm((M)(-1)*K*pT1->getW()*pT2->getW()/(d*d*abs(pT2->getW())));
 	}
 	//printf("\n############pv\n");
 	//pv->print();

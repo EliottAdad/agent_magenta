@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<float, char>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{1,2}, 25, SN<float, char>{1, 16});
+    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{1,2}, 25, SN<float, char>{1, -10});
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
     for (std::shared_ptr<Particle3D<float, char>> ppart : pparts){
     	psys->addPElement(ppart);
     }
-    psys->ptrLaw=rrr2;
+    psys->ptrLaw=rrr3;
 
     // Game
     Game g1;
