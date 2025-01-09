@@ -15,8 +15,8 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
 \DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../geometry/Point3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../geometry/Vector3D.h"{}}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../geometry/Triangle3D.h"{}}}
 \DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
@@ -49,7 +49,7 @@
 \DoxyCodeLine{45     std::shared\_ptr<Vector3D<M, E>> getE1() \textcolor{keyword}{const};}
 \DoxyCodeLine{46     std::shared\_ptr<Vector3D<M, E>> getE2() \textcolor{keyword}{const};}
 \DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{keywordtype}{void} renderMesh(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh) \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} renderMesh(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>}}\& mesh) \textcolor{keyword}{const};}
 \DoxyCodeLine{49     \textcolor{keywordtype}{void} renderTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}\& triangle) \textcolor{keyword}{const};}
 \DoxyCodeLine{50     \textcolor{keywordtype}{void} renderPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p) \textcolor{keyword}{const};}
 \DoxyCodeLine{51 }
@@ -117,7 +117,7 @@
 \DoxyCodeLine{113 }
 \DoxyCodeLine{114 }
 \DoxyCodeLine{115 }
-\DoxyCodeLine{116 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderMesh}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D}}\& mesh)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{116 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera}{Camera<M, E>::renderMesh}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMesh3D}{Mesh3D<M, E>}}\& mesh)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{117     ;}
 \DoxyCodeLine{118 \}}
 \DoxyCodeLine{119 }

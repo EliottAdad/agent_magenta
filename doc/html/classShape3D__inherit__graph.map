@@ -1,9 +1,10 @@
 <map id="Shape3D&lt; M, E &gt;" name="Shape3D&lt; M, E &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="252,80,391,107"/>
-<area shape="rect" id="node3" href="$classMesh3D.html" title=" " alt="" coords="5,155,139,181"/>
-<area shape="rect" id="node4" href="$classPolyhedron.html" title=" " alt="" coords="163,155,317,181"/>
-<area shape="rect" id="node6" href="$classSphere.html" title=" " alt="" coords="341,155,467,181"/>
-<area shape="rect" id="node7" href="$classTriangle3D.html" title=" " alt="" coords="491,155,640,181"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="281,5,361,32"/>
-<area shape="rect" id="node5" href="$classCube.html" title=" " alt="" coords="183,229,297,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="252,155,391,181"/>
+<area shape="rect" id="node4" href="$classMesh3D.html" title=" " alt="" coords="5,229,139,256"/>
+<area shape="rect" id="node5" href="$classPolyhedron.html" title=" " alt="" coords="163,229,317,256"/>
+<area shape="rect" id="node7" href="$classSphere.html" title=" " alt="" coords="341,229,467,256"/>
+<area shape="rect" id="node8" href="$classTriangle3D.html" title=" " alt="" coords="491,229,640,256"/>
+<area shape="rect" id="node2" href="$structPoint3D.html" title=" " alt="" coords="256,80,387,107"/>
+<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="281,5,361,32"/>
+<area shape="rect" id="node6" href="$classCube.html" title=" " alt="" coords="183,304,297,331"/>
 </map>

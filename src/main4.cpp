@@ -12,8 +12,8 @@
 #include <memory>
 
 #include "core/SN.h"
-#include "core/WeightedPoint3D.h"
-#include "core/Particle3D.h"
+#include "geometry/WeightedPoint3D.h"
+#include "geometry/Particle3D.h"
 #include "core/Quad.h"
 #include "core/Oct.h"
 

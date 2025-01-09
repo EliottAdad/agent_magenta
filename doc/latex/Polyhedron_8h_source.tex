@@ -24,7 +24,7 @@
 \DoxyCodeLine{20 \textcolor{comment}{ *  Polyhedron<M, E> :)}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<M, E> \{}
 \DoxyCodeLine{24 \textcolor{keyword}{protected}:}
 \DoxyCodeLine{25     std::unordered\_set<std::shared\_ptr<Triangle3D<M, E>>> m\_ptriangles;}
 \DoxyCodeLine{26 }

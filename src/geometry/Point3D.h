@@ -11,7 +11,7 @@
 
 #include <memory>
 
-#include "SN.h"
+#include "../core/SN.h"
 #include "../utilities/Printable.h"
 
 

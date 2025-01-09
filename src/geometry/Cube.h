@@ -11,6 +11,12 @@
 
 #include "Polyhedron.h"
 
+/*
+ * ##############
+ *  Cube<M, E> :)
+ * ##############
+ * A cube.
+ */
 template<typename M, typename E> class Cube : public Polyhedron<M, E> {
 public:
 	Cube();

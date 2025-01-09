@@ -10,7 +10,7 @@
 #define OBJECT3D_H_
 
 #include "Particle3D.h"
-#include "../geometry/Mesh3D.h"
+#include "Mesh3D.h"
 
 /*
  * ##################
@@ -21,7 +21,7 @@ template<typename M, typename E> class Object3D : public Particle3D<M, E> {
 public:
 	Object3D();
 	virtual ~Object3D();
-	Object3D(const Object3D<M, E> &other);
+	Object3D(const Object3D<M, E>& object);
 };
 
 
@@ -34,7 +34,7 @@ template<typename M, typename E> Object3D<M, E>::~Object3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename M, typename E> Object3D<M, E>::Object3D(const Object3D<M, E> &other) {
+template<typename M, typename E> Object3D<M, E>::Object3D(const Object3D<M, E>& object) {
 	// TODO Auto-generated constructor stub
 
 }
@@ -43,4 +43,4 @@ template<typename M, typename E> Object3D<M, E>::Object3D(const Object3D<M, E> &
 
 
 
-#endif /* CORE_OBJECT3D_H_ */
+#endif /* OBJECT3D_H_ */

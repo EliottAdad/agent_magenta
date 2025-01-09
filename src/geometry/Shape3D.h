@@ -10,16 +10,15 @@
 #define SHAPE3D_H_
 
 #include <unordered_set>
-#include "../core/Point3D.h"
-#include "../core/Line3D.h"
-#include "../utilities/Printable.h"
+#include "Point3D.h"
+#include "Line3D.h"
 
 /*
  * #################
  *  Shape3D<M, E> :)
  * #################
  */
-template<typename M, typename E> class Shape3D : public Printable {
+template<typename M, typename E> class Shape3D : public Point3D<M, E> {
 public:
 	Shape3D();
 	virtual ~Shape3D();

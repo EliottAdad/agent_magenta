@@ -11,7 +11,7 @@
 
 #include <memory>
 
-#include "../core/Point3D.h"
+#include "../geometry/Point3D.h"
 #include "Shape3D.h"
 
 /*

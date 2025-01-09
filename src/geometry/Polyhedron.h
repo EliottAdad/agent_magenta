@@ -20,7 +20,7 @@
  *  Polyhedron<M, E> :)
  * ####################
  */
-template<typename M, typename E> class Polyhedron : public Shape3D {
+template<typename M, typename E> class Polyhedron : public Shape3D<M, E> {
 protected:
 	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> m_ptriangles;
 

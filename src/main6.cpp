@@ -16,14 +16,14 @@
 #include <SDL2/SDL.h>
 
 //#include "core/SN.h"
-#include "core/Point3D.h"
-#include "core/WeightedPoint3D.h"
+#include "geometry/Point3D.h"
+#include "geometry/WeightedPoint3D.h"
 #include "core/Quad.h"
 #include "core/Oct.h"
-#include "core/Particle3D.h"
+#include "geometry/Particle3D.h"
 //#include "core/ParticleSystem3D.h"
 #include "core/System3D.h"
-#include "core/Vector3D.h"
+#include "geometry/Vector3D.h"
 #include "core/VectorField.h"
 //#include "core/VectorFieldUnidirectional.h"
 #include "core/Physics.h"

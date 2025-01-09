@@ -1,0 +1,362 @@
+\hypertarget{RObject3D_8h_source}{}\doxysection{RObject3\+D.\+h}
+\label{RObject3D_8h_source}\index{geometry/RObject3D.h@{geometry/RObject3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * RObject3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 09 janv 2025}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ROBJECT3D\_H\_}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define ROBJECT3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../core/SN.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}Shape3D.cpp"{}}}
+\DoxyCodeLine{19 \textcolor{comment}{//\#include "{}Circle2D.cpp"{}}}
+\DoxyCodeLine{20 \textcolor{comment}{//\#include "{}Polygon2D.cpp"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}Object3D.h"{}}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{/*}}
+\DoxyCodeLine{25 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{26 \textcolor{comment}{ *  RObject3D<M, E> :)}}
+\DoxyCodeLine{27 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{28 \textcolor{comment}{ */}}
+\DoxyCodeLine{29 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classRObject3D}{RObject3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classObject3D}{Object3D}}<M, E> \{}
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31     std::shared\_ptr<SN<M, E>> pangle;}
+\DoxyCodeLine{32     std::shared\_ptr<Shape3D<M, E>> pcollision\_box;                                      \textcolor{comment}{// Collision box.}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \mbox{\hyperlink{classRObject3D}{RObject3D}}();\textcolor{comment}{//:)}}
+\DoxyCodeLine{35     \mbox{\hyperlink{classRObject3D}{RObject3D}}(std::string name, SDL\_Color* pcolor=NULL);\textcolor{comment}{//:)}}
+\DoxyCodeLine{36     \mbox{\hyperlink{classRObject3D}{RObject3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D}}\& robject);\textcolor{comment}{//:)}}
+\DoxyCodeLine{37     \mbox{\hyperlink{classRObject3D_aa17bdbe86bb459d6f57db7eaea2c5577}{\string~RObject3D}}();}
+\DoxyCodeLine{38     }
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} dt);\textcolor{comment}{//:)}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} spin(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} dt);\textcolor{comment}{//:)}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{comment}{//void calculateInertiaMoment();//0}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject);\textcolor{comment}{//:)}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject);\textcolor{comment}{//:)}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} operator-\/=(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject);\textcolor{comment}{//:)}}
+\DoxyCodeLine{47     \textcolor{comment}{//void operator*=(double k);//:)}}
+\DoxyCodeLine{48 \};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject1, \textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject2);\textcolor{comment}{//:)}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} testCollide(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject1, \textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject2);\textcolor{comment}{//:)}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{//void print(RObject2D* probject, unsigned int indent=0);//:)}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::RObject2D}}()\{}
+\DoxyCodeLine{58     \textcolor{comment}{//printf("{}ROBJECT: CONSTRUCTOR START\(\backslash\)n"{});}}
+\DoxyCodeLine{59     m\_name=\textcolor{stringliteral}{"{}robject"{}};}
+\DoxyCodeLine{60     m\_mass=\{1, 1\};}
+\DoxyCodeLine{61     m\_charge=\{0, 0\};}
+\DoxyCodeLine{62     \textcolor{comment}{//m\_inertia\_moment=\{1, 0\};}}
+\DoxyCodeLine{63     m\_pcolor=NULL;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     m\_pcentroid=\textcolor{keyword}{new} Point2D\{\{0, 0\}, \{0, 0\}\};}
+\DoxyCodeLine{66     \textcolor{comment}{//m\_prot\_center=new Point2D\{\{0, 0\}, \{0, 0\}\};}}
+\DoxyCodeLine{67     m\_pshape=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}shape"{}});}
+\DoxyCodeLine{68     m\_pshape-\/>setPPoint(m\_pcentroid);}
+\DoxyCodeLine{69     m\_pcollision\_box=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}collision\_box"{}});}
+\DoxyCodeLine{70     m\_pcollision\_box-\/>setPPoint(m\_pcentroid);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     m\_pforce=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}force"{}}, m\_pcentroid);}
+\DoxyCodeLine{73     m\_plin\_acceleration=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}acceleration"{}}, m\_pcentroid);}
+\DoxyCodeLine{74     m\_plin\_velocity=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}velocity"{}}, m\_pcentroid);}
+\DoxyCodeLine{75     m\_torque=\{0, 0\};}
+\DoxyCodeLine{76     m\_rot\_acceleration=0;}
+\DoxyCodeLine{77     m\_rot\_velocity=0;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{comment}{//printf("{}Hey4\(\backslash\)n"{});}}
+\DoxyCodeLine{80     m\_fmove=\textcolor{keyword}{true};}
+\DoxyCodeLine{81     m\_fcollide=\textcolor{keyword}{true};}
+\DoxyCodeLine{82     \textcolor{comment}{//printf("{}Hey5\(\backslash\)n"{});}}
+\DoxyCodeLine{83     \textcolor{comment}{//printf("{}ROBJECT: CONSTRUCTOR END\(\backslash\)n"{});}}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::RObject3D}}(std::string name, SDL\_Color* pcolor) \{}
+\DoxyCodeLine{90     \textcolor{comment}{//printf("{}ROBJECT: CONSTRUCTOR START\(\backslash\)n"{});}}
+\DoxyCodeLine{91     m\_name=name;}
+\DoxyCodeLine{92     m\_mass=\{1, 1\};}
+\DoxyCodeLine{93     m\_charge=\{0, 0\};}
+\DoxyCodeLine{94     \textcolor{comment}{//m\_inertia\_moment=\{1, 0\};}}
+\DoxyCodeLine{95     m\_pcolor=pcolor;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     printf(\textcolor{stringliteral}{"{}ROBJECT: CONSTRUCTOR2\(\backslash\)n"{}});}
+\DoxyCodeLine{98     m\_pcentroid=\textcolor{keyword}{new} Point2D\{\{0, 0\}, \{0, 0\}\};}
+\DoxyCodeLine{99     \textcolor{comment}{//m\_prot\_center=new Point2D\{\{0, 0\}, \{0, 0\}\};}}
+\DoxyCodeLine{100     printf(\textcolor{stringliteral}{"{}ROBJECT: CONSTRUCTOR3\(\backslash\)n"{}});}
+\DoxyCodeLine{101     m\_pshape=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}shape"{}});}
+\DoxyCodeLine{102     m\_pshape-\/>setPPoint(m\_pcentroid);}
+\DoxyCodeLine{103     m\_pcollision\_box=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}collision\_box"{}});}
+\DoxyCodeLine{104     m\_pcollision\_box-\/>setPPoint(m\_pcentroid);}
+\DoxyCodeLine{105     printf(\textcolor{stringliteral}{"{}ROBJECT: CONSTRUCTOR4\(\backslash\)n"{}});}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     m\_pforce=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}force"{}}, m\_pcentroid);}
+\DoxyCodeLine{108     m\_plin\_acceleration=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}acceleration"{}}, m\_pcentroid);}
+\DoxyCodeLine{109     m\_plin\_velocity=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}velocity"{}}, m\_pcentroid);}
+\DoxyCodeLine{110     m\_torque=\{0, 0\};}
+\DoxyCodeLine{111     m\_rot\_acceleration=0;}
+\DoxyCodeLine{112     m\_rot\_velocity=0;}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \textcolor{comment}{//printf("{}Hey4\(\backslash\)n"{});}}
+\DoxyCodeLine{115     m\_fmove=\textcolor{keyword}{true};}
+\DoxyCodeLine{116     m\_fcollide=\textcolor{keyword}{true};}
+\DoxyCodeLine{117     \textcolor{comment}{//printf("{}ROBJECT: CONSTRUCTOR END\(\backslash\)n"{});}}
+\DoxyCodeLine{118 \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::RObject3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D}}\& robject) \{}
+\DoxyCodeLine{121     \textcolor{comment}{//printf("{}ROBJECT COPY\_CONSTRUCTOR START\(\backslash\)n"{});}}
+\DoxyCodeLine{122     m\_name=probject-\/>getName();}
+\DoxyCodeLine{123     m\_mass=probject-\/>getMass();}
+\DoxyCodeLine{124     m\_charge=probject-\/>getCharge();}
+\DoxyCodeLine{125     \textcolor{comment}{//m\_inertia\_moment=probject-\/>getInertiaMoment();}}
+\DoxyCodeLine{126     m\_pcolor=probject-\/>getPColor();}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     m\_pcentroid=\textcolor{keyword}{new} Point2D\{*probject-\/>getPCentroid()\};}
+\DoxyCodeLine{129     \textcolor{comment}{//m\_prot\_center=new Point2D\{*pobject-\/>getPRotationCenter()\};}}
+\DoxyCodeLine{130     m\_pshape=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}shape"{}}, m\_pcentroid);}
+\DoxyCodeLine{131     \textcolor{comment}{//m\_pshape-\/>setPPoint(m\_pcentroid);}}
+\DoxyCodeLine{132     m\_pshape-\/>setPColor(m\_pcolor);}
+\DoxyCodeLine{133     m\_pcollision\_box=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}collision\_box"{}}, m\_pcentroid);}
+\DoxyCodeLine{134     \textcolor{comment}{//m\_pcollision\_box-\/>setPPoint(m\_pcentroid);}}
+\DoxyCodeLine{135     m\_pcollision\_box-\/>setPColor(m\_pcolor);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     m\_pforce=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}force"{}}, m\_pcentroid);}
+\DoxyCodeLine{138     m\_plin\_acceleration=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}acceleration"{}}, m\_pcentroid);}
+\DoxyCodeLine{139     m\_plin\_velocity=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}velocity"{}}, m\_pcentroid);}
+\DoxyCodeLine{140     m\_torque=probject-\/>getTorque();}
+\DoxyCodeLine{141     m\_rot\_acceleration=probject-\/>getRotAcceleration();}
+\DoxyCodeLine{142     m\_rot\_velocity=probject-\/>getRotVelocity();}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     m\_fmove=probject-\/>getFMove();}
+\DoxyCodeLine{145     m\_fcollide=probject-\/>getFCollide();}
+\DoxyCodeLine{146     \textcolor{comment}{//printf("{}ROBJECT COPY\_CONSTRUCTOR END\(\backslash\)n"{});}}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{152 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classRObject3D_aa17bdbe86bb459d6f57db7eaea2c5577}{RObject3D<M, E>::\string~RObject3D}}() \{}
+\DoxyCodeLine{153     \textcolor{comment}{//printf("{}ROBJECT: DESTRUCTOR START\(\backslash\)n"{});}}
+\DoxyCodeLine{154     m\_pcolor=NULL;}
+\DoxyCodeLine{155     \textcolor{comment}{/* We delete the properties.*/}}
+\DoxyCodeLine{156     \textcolor{comment}{//this-\/>delProperties();}}
+\DoxyCodeLine{157     \textcolor{comment}{/* We delete the points and segments.*/}}
+\DoxyCodeLine{158     \textcolor{comment}{//printf("{}ROBJECT: DESTRUCTOR2\(\backslash\)n"{});}}
+\DoxyCodeLine{159     \textcolor{keyword}{delete} m\_pshape;}
+\DoxyCodeLine{160     \textcolor{keyword}{delete} m\_pcollision\_box;}
+\DoxyCodeLine{161     \textcolor{comment}{//delete m\_pcollision\_box;}}
+\DoxyCodeLine{162     \textcolor{comment}{/* Give back the instances used.*/}}
+\DoxyCodeLine{163     \textcolor{comment}{//printf("{}ROBJECT: DESTRUCTOR3\(\backslash\)n"{});}}
+\DoxyCodeLine{164     \textcolor{keyword}{delete} m\_pforce;}
+\DoxyCodeLine{165     \textcolor{keyword}{delete} m\_plin\_acceleration;}
+\DoxyCodeLine{166     \textcolor{keyword}{delete} m\_plin\_velocity;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     \textcolor{comment}{//printf("{}ROBJECT: DESTRUCTOR4\(\backslash\)n"{});}}
+\DoxyCodeLine{169     \textcolor{keyword}{delete} m\_pcentroid;}
+\DoxyCodeLine{170     \textcolor{comment}{//delete m\_prot\_center;}}
+\DoxyCodeLine{171     \textcolor{comment}{//printf("{}ROBJECT: DESTRUCTOR END\(\backslash\)n"{});}}
+\DoxyCodeLine{172 \}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::move}}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} dt) \{}
+\DoxyCodeLine{178     \textcolor{keywordflow}{if} (m\_fmove)}
+\DoxyCodeLine{179     \{}
+\DoxyCodeLine{180         Point2D dp=m\_plin\_acceleration-\/>getEnd() * (1/2) * pow(dt, 2) + m\_plin\_velocity-\/>getEnd() * dt;}
+\DoxyCodeLine{181         *m\_pcentroid += dp;}
+\DoxyCodeLine{182     \}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184     \textcolor{comment}{//m\_pshape-\/>translate(dp);}}
+\DoxyCodeLine{185     \textcolor{comment}{//*m\_pcentroid += *(new Point2D\{1, 1\});}}
+\DoxyCodeLine{188 \textcolor{comment}{}\}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::spin}}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} dt) \{}
+\DoxyCodeLine{191     \textcolor{comment}{//long double angle\_plus=(1/2) * m\_rot\_acceleration * pow(dt, 2) + m\_rot\_velocity * dt;}}
+\DoxyCodeLine{192     \textcolor{comment}{//m\_pshape-\/>rotate(angle\_plus/*, m\_rot\_center*/);}}
+\DoxyCodeLine{193 \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 }
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{comment}{/*void RigidObject2D::delProperties()}}
+\DoxyCodeLine{201 \textcolor{comment}{\{}}
+\DoxyCodeLine{202 \textcolor{comment}{    int szpproperties(m\_pproperties.size());}}
+\DoxyCodeLine{203 \textcolor{comment}{    for (int i(0) ; i<szpproperties ; i++)}}
+\DoxyCodeLine{204 \textcolor{comment}{    \{}}
+\DoxyCodeLine{205 \textcolor{comment}{        delete *m\_pproperties.begin();}}
+\DoxyCodeLine{206 \textcolor{comment}{        m\_pproperties.erase(m\_pproperties.begin());}}
+\DoxyCodeLine{207 \textcolor{comment}{    \}}}
+\DoxyCodeLine{208 \textcolor{comment}{\}}}
+\DoxyCodeLine{209 \textcolor{comment}{}}
+\DoxyCodeLine{210 \textcolor{comment}{void RigidObject2D::delEdges()}}
+\DoxyCodeLine{211 \textcolor{comment}{\{}}
+\DoxyCodeLine{212 \textcolor{comment}{    int szpedges(m\_ppolygon-\/>getPoints().size());}}
+\DoxyCodeLine{213 \textcolor{comment}{    for (int i(0) ; i<szpedges ; i++)}}
+\DoxyCodeLine{214 \textcolor{comment}{    \{}}
+\DoxyCodeLine{215 \textcolor{comment}{        delete *m\_pedges.begin();}}
+\DoxyCodeLine{216 \textcolor{comment}{        m\_ppoints.erase(m\_ppoints.begin());}}
+\DoxyCodeLine{217 \textcolor{comment}{    \}}}
+\DoxyCodeLine{218 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 \textcolor{comment}{/*void RObject2D::calculateInertiaMoment()//:) I=mr**2}}
+\DoxyCodeLine{225 \textcolor{comment}{\{}}
+\DoxyCodeLine{226 \textcolor{comment}{    ;}}
+\DoxyCodeLine{227 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject) \{}
+\DoxyCodeLine{236     \textcolor{comment}{//printf("{}ROBJECT op= 1\(\backslash\)n"{});}}
+\DoxyCodeLine{237     m\_name=robject.getName();}
+\DoxyCodeLine{238     m\_mass=robject.getMass();}
+\DoxyCodeLine{239     m\_charge=robject.getCharge();}
+\DoxyCodeLine{240     \textcolor{comment}{//m\_inertia\_moment=probject-\/>getInertiaMoment();}}
+\DoxyCodeLine{241     m\_pcolor=robject.getPColor();}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243     m\_pcentroid=\textcolor{keyword}{new} Point2D\{*robject.getPCentroid()\};}
+\DoxyCodeLine{244     \textcolor{comment}{//m\_prot\_center=new Point2D\{*pobject-\/>getPRotationCenter()\};}}
+\DoxyCodeLine{245     m\_pshape=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}shape"{}}, m\_pcentroid);}
+\DoxyCodeLine{246     \textcolor{comment}{//m\_pshape-\/>setPPoint(m\_pcentroid);}}
+\DoxyCodeLine{247     m\_pshape-\/>setPColor(m\_pcolor);}
+\DoxyCodeLine{248     m\_pcollision\_box=\textcolor{keyword}{new} Polygon2D(\textcolor{stringliteral}{"{}collision\_box"{}}, m\_pcentroid);}
+\DoxyCodeLine{249     \textcolor{comment}{//m\_pcollision\_box-\/>setPPoint(m\_pcentroid);}}
+\DoxyCodeLine{250     m\_pcollision\_box-\/>setPColor(m\_pcolor);}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252     m\_pforce=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}force"{}}, m\_pcentroid);}
+\DoxyCodeLine{253     m\_plin\_acceleration=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}acceleration"{}}, m\_pcentroid);}
+\DoxyCodeLine{254     m\_plin\_velocity=\textcolor{keyword}{new} Vector2D(\textcolor{stringliteral}{"{}velocity"{}}, m\_pcentroid);}
+\DoxyCodeLine{255     m\_torque=robject.getTorque();}
+\DoxyCodeLine{256     m\_rot\_acceleration=robject.getRotAcceleration();}
+\DoxyCodeLine{257     m\_rot\_velocity=robject.getRotVelocity();}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259     m\_fmove=robject.getFMove();}
+\DoxyCodeLine{260     m\_fcollide=robject.getFCollide();}
+\DoxyCodeLine{261     \textcolor{comment}{//printf("{}ROBJECT op= 6\(\backslash\)n"{});}}
+\DoxyCodeLine{262 \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{comment}{/*void RObject2D::operator*=(double k)//:)}}
+\DoxyCodeLine{265 \textcolor{comment}{\{}}
+\DoxyCodeLine{266 \textcolor{comment}{    ;}}
+\DoxyCodeLine{267 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270 \textcolor{comment}{/*bool testCollide(RObject2D\& robject1, RObject2D\& robject2)}}
+\DoxyCodeLine{271 \textcolor{comment}{\{}}
+\DoxyCodeLine{272 \textcolor{comment}{    bool test(false);}}
+\DoxyCodeLine{273 \textcolor{comment}{}}
+\DoxyCodeLine{274 \textcolor{comment}{    if (testIntersect(*(robject1.getPolygon()), *(robject2.getPolygon())))}}
+\DoxyCodeLine{275 \textcolor{comment}{        test=true;}}
+\DoxyCodeLine{276 \textcolor{comment}{    return test;}}
+\DoxyCodeLine{277 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject1, \textcolor{keyword}{const} \mbox{\hyperlink{classRObject3D}{RObject3D<M, E>}}\& robject2) \{}
+\DoxyCodeLine{280     \textcolor{keywordtype}{bool} test(\textcolor{keyword}{false});}
+\DoxyCodeLine{281     \textcolor{keywordflow}{return} test;}
+\DoxyCodeLine{282 \}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{comment}{/*void print(RObject2D* probject, unsigned int indent)}}
+\DoxyCodeLine{287 \textcolor{comment}{\{}}
+\DoxyCodeLine{288 \textcolor{comment}{    if (probject!=NULL)}}
+\DoxyCodeLine{289 \textcolor{comment}{    \{}}
+\DoxyCodeLine{290 \textcolor{comment}{        if (indent==0)}}
+\DoxyCodeLine{291 \textcolor{comment}{        \{}}
+\DoxyCodeLine{292 \textcolor{comment}{            //printf("{}\(\backslash\)nRigidObject2D(\%lu)(\%lu) (\%p):\(\backslash\)n"{}, pobject-\/>getPPoints().size(), pobject-\/>getPEdges().size(), pobject);}}
+\DoxyCodeLine{293 \textcolor{comment}{            printf("{}\(\backslash\)nRObject2D:\(\backslash\)n"{});}}
+\DoxyCodeLine{294 \textcolor{comment}{        \}}}
+\DoxyCodeLine{295 \textcolor{comment}{}}
+\DoxyCodeLine{296 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{297 \textcolor{comment}{        printf("{}.Mass: "{});}}
+\DoxyCodeLine{298 \textcolor{comment}{        print(\&probject-\/>getMass());}}
+\DoxyCodeLine{299 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{300 \textcolor{comment}{}}
+\DoxyCodeLine{301 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{302 \textcolor{comment}{        printf("{}.Charge: "{});}}
+\DoxyCodeLine{303 \textcolor{comment}{        print(\&probject-\/>getCharge());}}
+\DoxyCodeLine{304 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{305 \textcolor{comment}{}}
+\DoxyCodeLine{306 \textcolor{comment}{//      printTabs(indent+1);}}
+\DoxyCodeLine{307 \textcolor{comment}{//      printf("{}.Inertia moment: "{});}}
+\DoxyCodeLine{308 \textcolor{comment}{//      print(\&probject-\/>getInertiaMoment());}}
+\DoxyCodeLine{309 \textcolor{comment}{//      printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{310 \textcolor{comment}{}}
+\DoxyCodeLine{311 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{312 \textcolor{comment}{        printf("{}.Centroid: \(\backslash\)n"{});}}
+\DoxyCodeLine{313 \textcolor{comment}{        print(probject-\/>getPCentroid(), indent+1);}}
+\DoxyCodeLine{314 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{315 \textcolor{comment}{}}
+\DoxyCodeLine{316 \textcolor{comment}{//      printTabs(indent+1);}}
+\DoxyCodeLine{317 \textcolor{comment}{//      printf("{}.Rot center: \(\backslash\)n"{});}}
+\DoxyCodeLine{318 \textcolor{comment}{//      print(prigid\_object-\/>getPRotationCenter(), indent+1);}}
+\DoxyCodeLine{319 \textcolor{comment}{//      printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{320 \textcolor{comment}{}}
+\DoxyCodeLine{321 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{322 \textcolor{comment}{        printf("{}.Force: \(\backslash\)n"{});}}
+\DoxyCodeLine{323 \textcolor{comment}{        print(probject-\/>getPForce(), indent+1);}}
+\DoxyCodeLine{324 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{325 \textcolor{comment}{}}
+\DoxyCodeLine{326 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{327 \textcolor{comment}{        printf("{}.Lin Acceleration: \(\backslash\)n"{});}}
+\DoxyCodeLine{328 \textcolor{comment}{        print(probject-\/>getPLinAcceleration(), indent+1);}}
+\DoxyCodeLine{329 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{330 \textcolor{comment}{}}
+\DoxyCodeLine{331 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{332 \textcolor{comment}{        printf("{}.Lin Velocity: \(\backslash\)n"{});}}
+\DoxyCodeLine{333 \textcolor{comment}{        print(probject-\/>getPLinVelocity(), indent+1);}}
+\DoxyCodeLine{334 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{335 \textcolor{comment}{}}
+\DoxyCodeLine{336 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{337 \textcolor{comment}{        printf("{}.Torque: "{});}}
+\DoxyCodeLine{338 \textcolor{comment}{        print(\&probject-\/>getTorque());}}
+\DoxyCodeLine{339 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{340 \textcolor{comment}{}}
+\DoxyCodeLine{341 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{342 \textcolor{comment}{        printf("{}.Rot Acceleration: "{});}}
+\DoxyCodeLine{343 \textcolor{comment}{        print(\&probject-\/>getRotAcceleration());}}
+\DoxyCodeLine{344 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{345 \textcolor{comment}{}}
+\DoxyCodeLine{346 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{347 \textcolor{comment}{        printf("{}.Rot Velocity: "{});}}
+\DoxyCodeLine{348 \textcolor{comment}{        print(\&probject-\/>getRotVelocity());}}
+\DoxyCodeLine{349 \textcolor{comment}{        printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{350 \textcolor{comment}{}}
+\DoxyCodeLine{351 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{352 \textcolor{comment}{        printf("{}.Move?: \%s\(\backslash\)n"{}, probject-\/>getFMove() ? "{}True"{} : "{}False"{});}}
+\DoxyCodeLine{353 \textcolor{comment}{}}
+\DoxyCodeLine{354 \textcolor{comment}{        printTabs(indent+1);}}
+\DoxyCodeLine{355 \textcolor{comment}{        printf("{}.Collide?: \%s\(\backslash\)n"{}, probject-\/>getFCollide() ? "{}True"{} : "{}False"{});}}
+\DoxyCodeLine{356 \textcolor{comment}{}}
+\DoxyCodeLine{357 \textcolor{comment}{        //printTabs(indent+1);}}
+\DoxyCodeLine{358 \textcolor{comment}{        //printf("{}.Polygon(\%lu)(\%lu): \(\backslash\)n"{}, pobject-\/>getPPoints().size(), pobject-\/>getPEdges().size());}}
+\DoxyCodeLine{359 \textcolor{comment}{        //print(pobject-\/>getPPolygon(), indent+1);}}
+\DoxyCodeLine{360 \textcolor{comment}{        //printf("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{361 \textcolor{comment}{    \}}}
+\DoxyCodeLine{362 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

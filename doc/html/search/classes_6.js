@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['object3d_0',['Object3D',['../classObject3D.html',1,'']]],
-  ['oct_1',['Oct',['../classOct.html',1,'']]]
+  ['material_0',['Material',['../classMaterial.html',1,'']]],
+  ['mesh3d_1',['Mesh3D',['../classMesh3D.html',1,'']]]
 ];

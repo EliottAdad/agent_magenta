@@ -14,7 +14,7 @@
 
 #include "WeightedPoint3D.h"
 #include "Vector3D.h"
-#include "TimeSensitive.h"
+#include "../core/TimeSensitive.h"
 #include "../display/Displayable.h"
 
 /*

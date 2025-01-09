@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['camera_0',['Camera',['../classCamera.html',1,'']]],
-  ['cube_1',['Cube',['../classCube.html',1,'']]]
+  ['ball3d_0',['Ball3D',['../classBall3D.html',1,'']]],
+  ['beziercurve3d_1',['BezierCurve3D',['../classBezierCurve3D.html',1,'']]]
 ];

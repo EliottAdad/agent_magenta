@@ -10,7 +10,7 @@
 
 #include <memory>
 
-#include "../core/Particle3D.h"
+#include "../geometry/Particle3D.h"
 
 /*
  * Functions

@@ -9,18 +9,20 @@
 
 #define QUAD_H_
 
+#include <memory>
+#include <cstdio>
+#include <unordered_set>
+
+//#include "Particle3D.h"
+#include "../geometry/Point3D.h"
+#include "../utilities/Printable.h"
+
+
 #define TLTree m_ptrees[0] 		// Top Left corner : is NULL if nothing
 #define TRTree m_ptrees[1]		// Top Right corner : is NULL if nothing
 #define BRTree m_ptrees[2]		// Bottom Right corner : is NULL if nothing
 #define BLTree m_ptrees[3]		// Bottom Left corner : is NULL if nothing
 
-#include <memory>
-#include <cstdio>
-#include <unordered_set>
-
-#include "Particle3D.h"
-#include "Point3D.h"
-#include "../utilities/Printable.h"
 
 /*
  * #################

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['object3d_0',['Object3D',['../classObject3D.html',1,'']]],
-  ['oct_1',['Oct',['../classOct.html',1,'Oct&lt; T, M, E &gt;'],['../classOct.html#afcf5934c496b75396bde3760958d2b62',1,'Oct::Oct(const SN&lt; M, E &gt; &amp;a, const Point3D&lt; M, E &gt; &amp;p={{0, 0},{0, 0},{0, 0}})'],['../classOct.html#a98d06c975b95986cc39bec2f8f1b8441',1,'Oct::Oct(const Oct&lt; T, M, E &gt; &amp;oct)']]]
+  ['material_0',['Material',['../classMaterial.html',1,'Material'],['../classMaterial.html#a96d5ae1ebc35f6b6d00880bc46bb17c0',1,'Material::Material(std::shared_ptr&lt; SDL_Color &gt; pcolor)'],['../classMaterial.html#ac0731e51ea0d30bf45ddec3fe761062e',1,'Material::Material(const Material &amp;material)']]],
+  ['mesh3d_1',['Mesh3D',['../classMesh3D.html',1,'']]]
 ];

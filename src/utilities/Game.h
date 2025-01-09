@@ -13,7 +13,7 @@
 #include <unordered_set>
 
 #include "../core/Physics.h"
-#include "../core/Point3D.h"
+#include "../geometry/Point3D.h"
 #include "../core/Scene.h"
 #include "../utilities/Printable.h"
 #include "../display/Display1.h"

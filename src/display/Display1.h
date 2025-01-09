@@ -13,8 +13,8 @@
 #include <unordered_set>
 #include <SDL2/SDL.h>
 
-#include "../core/Point3D.h"
-#include "../core/Line3D.h"
+#include "../geometry/Point3D.h"
+#include "../geometry/Line3D.h"
 #include "../display/Displayable.h"
 #include "../utilities/Printable.h"
 #include "../utilities/functions.h"

@@ -11,8 +11,8 @@
 
 #include <memory>
 
-#include "../core/Point3D.h"
-#include "../core/Vector3D.h"
+#include "../geometry/Point3D.h"
+#include "../geometry/Vector3D.h"
 #include "../geometry/Mesh3D.h"
 #include "../geometry/Triangle3D.h"
 #include "../utilities/Printable.h"
@@ -45,7 +45,7 @@ public:
 	std::shared_ptr<Vector3D<M, E>> getE1() const;
 	std::shared_ptr<Vector3D<M, E>> getE2() const;
 
-	void renderMesh(const Mesh3D& mesh) const;
+	void renderMesh(const Mesh3D<M, E>& mesh) const;
 	void renderTriangle(const Triangle3D<M, E>& triangle) const;
 	void renderPoint(const Point3D<M, E>& p) const;
 
@@ -113,7 +113,7 @@ template<typename M, typename E> std::shared_ptr<Vector3D<M, E>> Camera<M, E>::g
 
 
 
-template<typename M, typename E> void Camera<M, E>::renderMesh(const Mesh3D& mesh) const {
+template<typename M, typename E> void Camera<M, E>::renderMesh(const Mesh3D<M, E>& mesh) const {
 	;
 }
 

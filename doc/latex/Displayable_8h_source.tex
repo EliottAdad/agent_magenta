@@ -16,20 +16,20 @@
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include <SDL2/SDL.h>}}
 \DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../geometry/Shape3D.h"{}}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
 \DoxyCodeLine{17 }
 \DoxyCodeLine{18 \textcolor{comment}{/*}}
 \DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{20 \textcolor{comment}{ *  Displayable :)}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{22 \textcolor{comment}{ * Stores the color, and a mesh to use when rendering}}
-\DoxyCodeLine{23 \textcolor{comment}{ * If mesh=NULL draws a point, if SDL\_Color=NULL draws in white}}
+\DoxyCodeLine{22 \textcolor{comment}{ * Stores the color, and a shape to use when rendering}}
+\DoxyCodeLine{23 \textcolor{comment}{ * If shape=NULL draws a point, if SDL\_Color=NULL draws in white}}
 \DoxyCodeLine{24 \textcolor{comment}{ */}}
 \DoxyCodeLine{25 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structDisplayable}{Displayable}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
 \DoxyCodeLine{26 \textcolor{keyword}{public}:}
 \DoxyCodeLine{27     std::shared\_ptr<SDL\_Color> pcolor;      \textcolor{comment}{// Drawing color}}
-\DoxyCodeLine{28     std::shared\_ptr<Mesh3D<M, E>> pmesh;            \textcolor{comment}{// Pointer to the mesh to be drawn(NULL if none)}}
+\DoxyCodeLine{28     std::shared\_ptr<Shape3D<M, E>> pshape;          \textcolor{comment}{// Pointer to the shape to be drawn(NULL if none)}}
 \DoxyCodeLine{29 }
 \DoxyCodeLine{30     \mbox{\hyperlink{structDisplayable}{Displayable}}();}
 \DoxyCodeLine{31     \textcolor{keyword}{virtual} \mbox{\hyperlink{structDisplayable}{\string~Displayable}}();}

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['display1_0',['Display1',['../classDisplay1.html',1,'']]],
-  ['displayable_1',['Displayable',['../structDisplayable.html',1,'']]]
+  ['camera_0',['Camera',['../classCamera.html',1,'']]],
+  ['cube_1',['Cube',['../classCube.html',1,'']]]
 ];

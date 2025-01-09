@@ -16,7 +16,7 @@
  * ################
  *  Ball3D<M, E> :)
  * ################
- * Particle3D with radius.
+ * Particle3D with radius (useless)
  */
 template<typename M, typename E> class Ball3D : public Particle3D<M, E> {
 public:

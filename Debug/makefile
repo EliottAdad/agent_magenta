@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include src/utilities/subdir.mk
 -include src/geometry/subdir.mk
+-include src/display/subdir.mk
 -include src/core/subdir.mk
 -include src/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)

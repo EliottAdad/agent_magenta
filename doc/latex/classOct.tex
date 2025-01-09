@@ -23,7 +23,10 @@ Collaboration diagram for Oct\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>$
 \item 
 \mbox{\hyperlink{classOct_afcf5934c496b75396bde3760958d2b62}{Oct}} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
-\mbox{\hyperlink{classOct_a98d06c975b95986cc39bec2f8f1b8441}{Oct}} (const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&oct)
+virtual \mbox{\hyperlink{classOct_a5d4bbe09f504c9ee9a5edcce94878390}{$\sim$\+Oct}} ()
+\item 
+\mbox{\Hypertarget{classOct_a98d06c975b95986cc39bec2f8f1b8441}\label{classOct_a98d06c975b95986cc39bec2f8f1b8441}} 
+{\bfseries Oct} (const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&oct)
 \item 
 \mbox{\Hypertarget{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}\label{classOct_ac5cfe0f9c75a94b7d83ff357ce0ead91}} 
 \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Point} () const
@@ -59,11 +62,11 @@ void {\bfseries recalculate} ()
 \mbox{\Hypertarget{classOct_a6772611450694de25ffcb8d912d6b5e6}\label{classOct_a6772611450694de25ffcb8d912d6b5e6}} 
 void {\bfseries empty} ()
 \item 
-\mbox{\Hypertarget{classOct_a257cc86e4902031e4e7270eb3f3f8bca}\label{classOct_a257cc86e4902031e4e7270eb3f3f8bca}} 
-bool {\bfseries is\+Leaf} ()
+\mbox{\Hypertarget{classOct_a9c1d5e8bb79d5cd705bfd01e3cc4499d}\label{classOct_a9c1d5e8bb79d5cd705bfd01e3cc4499d}} 
+bool {\bfseries is\+Leaf} () const
 \item 
-\mbox{\Hypertarget{classOct_af78ad70c91dc642ded3cbb8e1cd5ac29}\label{classOct_af78ad70c91dc642ded3cbb8e1cd5ac29}} 
-bool {\bfseries is\+Empty} ()
+\mbox{\Hypertarget{classOct_a80d9d47741d1d134c1cbcd2223c67b87}\label{classOct_a80d9d47741d1d134c1cbcd2223c67b87}} 
+bool {\bfseries is\+Empty} () const
 \item 
 std\+::string \mbox{\hyperlink{classOct_af57f75b106ba701094820497bd3cd0d4}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
@@ -138,7 +141,7 @@ static unsigned int {\bfseries m\+\_\+\+NB\+\_\+\+OCTS} =0
 \mbox{\Hypertarget{classOct_afcf5934c496b75396bde3760958d2b62}\label{classOct_afcf5934c496b75396bde3760958d2b62}} 
 \index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!Oct@{Oct}}
 \index{Oct@{Oct}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Oct()}{Oct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{Oct()}{Oct()}}
 {\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
 \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\mbox{\hyperlink{classOct}{\+::\+Oct}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&}]{a,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p = {\ttfamily \{\{0,0\},\{0,0\},\{0,0\}\}} }\end{DoxyParamCaption})}
 
@@ -149,12 +152,12 @@ Constructor1
 {\em point\{\+The} & center on which is centered the \mbox{\hyperlink{classOct}{Oct}}\textquotesingle{}s area\} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classOct_a98d06c975b95986cc39bec2f8f1b8441}\label{classOct_a98d06c975b95986cc39bec2f8f1b8441}} 
-\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!Oct@{Oct}}
-\index{Oct@{Oct}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Oct()}{Oct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\mbox{\Hypertarget{classOct_a5d4bbe09f504c9ee9a5edcce94878390}\label{classOct_a5d4bbe09f504c9ee9a5edcce94878390}} 
+\index{Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}!````~Oct@{$\sim$Oct}}
+\index{````~Oct@{$\sim$Oct}!Oct$<$ T, M, E $>$@{Oct$<$ T, M, E $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Oct()}{~Oct()}}
 {\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
-\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\mbox{\hyperlink{classOct}{\+::\+Oct}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$ \&}]{oct }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classOct}{Oct}}$<$ T, M, E $>$\+::$\sim$\mbox{\hyperlink{classOct}{Oct}}\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Constructor1 
 \begin{DoxyParams}{Parameters}

@@ -21,8 +21,7 @@ Collaboration diagram for Quad\texorpdfstring{$<$}{<} T, M, E \texorpdfstring{$>
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classQuad_a7d76088dc44446dcaad4e90772106b8a}\label{classQuad_a7d76088dc44446dcaad4e90772106b8a}} 
-{\bfseries Quad} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
+\mbox{\hyperlink{classQuad_a7d76088dc44446dcaad4e90772106b8a}{Quad}} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p=\{\{0, 0\},\{0, 0\},\{0, 0\}\})
 \item 
 \mbox{\Hypertarget{classQuad_a9ecf37d2d9b445100e40705fa58488d9}\label{classQuad_a9ecf37d2d9b445100e40705fa58488d9}} 
 {\bfseries Quad} (const \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ \&quad)
@@ -45,14 +44,10 @@ void {\bfseries setA} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&a)
 \mbox{\Hypertarget{classQuad_a6516b4b4401ece53432aa40ed16b653c}\label{classQuad_a6516b4b4401ece53432aa40ed16b653c}} 
 unsigned int {\bfseries get\+NB\+\_\+\+QUADS} () const
 \item 
-\mbox{\Hypertarget{classQuad_a701b0c529d3c67bd456c3ff139907263}\label{classQuad_a701b0c529d3c67bd456c3ff139907263}} 
-std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ $>$ {\bfseries get\+PTrees} ()
+\mbox{\Hypertarget{classQuad_ab4dea211be8ede117cf3a4b2fdb5a507}\label{classQuad_ab4dea211be8ede117cf3a4b2fdb5a507}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} (const bool \&mem=false) const
 \item 
-\mbox{\Hypertarget{classQuad_a4c179ec4d57e113f4dd63f457b9d226e}\label{classQuad_a4c179ec4d57e113f4dd63f457b9d226e}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} () const
-\item 
-\mbox{\Hypertarget{classQuad_abd6421fc5d08640da292ead0fa655e11}\label{classQuad_abd6421fc5d08640da292ead0fa655e11}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PNeighbors} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlink{classQuad_a02469c4fba96aa181455ff44124feb14}{get\+PNeighbors}} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement, const bool \&mem=false) const
 \item 
 \mbox{\Hypertarget{classQuad_a88fe91ba242b1afa6f629330b31c94b7}\label{classQuad_a88fe91ba242b1afa6f629330b31c94b7}} 
 bool {\bfseries insert} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
@@ -63,8 +58,14 @@ std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries search} (const std\+::shared\+\_\+ptr
 \mbox{\Hypertarget{classQuad_a5922d7c2561455356802835be195d21d}\label{classQuad_a5922d7c2561455356802835be195d21d}} 
 void {\bfseries recalculate} ()
 \item 
-\mbox{\Hypertarget{classQuad_a073d7a860d557e69680243692f9e6314}\label{classQuad_a073d7a860d557e69680243692f9e6314}} 
-bool {\bfseries empty} ()
+\mbox{\Hypertarget{classQuad_a95e4e2b99a2e36ee2fbb9eff06ceee48}\label{classQuad_a95e4e2b99a2e36ee2fbb9eff06ceee48}} 
+void {\bfseries empty} ()
+\item 
+\mbox{\Hypertarget{classQuad_a362746b7920bf9ce9ef67267c0e0f636}\label{classQuad_a362746b7920bf9ce9ef67267c0e0f636}} 
+bool {\bfseries is\+Leaf} () const
+\item 
+\mbox{\Hypertarget{classQuad_aabd339955f9df342fb5810997bd781d4}\label{classQuad_aabd339955f9df342fb5810997bd781d4}} 
+bool {\bfseries is\+Empty} () const
 \item 
 std\+::string \mbox{\hyperlink{classQuad_a272d1d5d5bfc6e9625d01189896acfbd}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
@@ -78,6 +79,21 @@ static \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries m\+\_\+\+LIM\+\_\+
 \item 
 \mbox{\Hypertarget{classQuad_a8bdccda22d77b7d9089a0099ad897e45}\label{classQuad_a8bdccda22d77b7d9089a0099ad897e45}} 
 static float {\bfseries m\+\_\+\+ALPHA} =0.\+5
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQuad_a4f0dc74dca3e71b27f9ef47c6a047bbf}\label{classQuad_a4f0dc74dca3e71b27f9ef47c6a047bbf}} 
+void {\bfseries insert\+TLTree} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
+\item 
+\mbox{\Hypertarget{classQuad_a2d907b20c1ed99fb72b0182eeca7169e}\label{classQuad_a2d907b20c1ed99fb72b0182eeca7169e}} 
+void {\bfseries insert\+TRTree} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
+\item 
+\mbox{\Hypertarget{classQuad_ae236c6b232dd234b62b72b29e6e13544}\label{classQuad_ae236c6b232dd234b62b72b29e6e13544}} 
+void {\bfseries insert\+BRTree} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
+\item 
+\mbox{\Hypertarget{classQuad_ae08d8cc9bf3fc5c1b021d5533209f67c}\label{classQuad_ae08d8cc9bf3fc5c1b021d5533209f67c}} 
+void {\bfseries insert\+BLTree} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -97,17 +113,8 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ 
 \mbox{\Hypertarget{classQuad_af8617db33d233445370fb0c10113b4cb}\label{classQuad_af8617db33d233445370fb0c10113b4cb}} 
 std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries m\+\_\+pT}
 \item 
-\mbox{\Hypertarget{classQuad_a803485589acb0467ae755598db9f1d8f}\label{classQuad_a803485589acb0467ae755598db9f1d8f}} 
-\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TLTree}
-\item 
-\mbox{\Hypertarget{classQuad_a90fca4f5a991bf9be797fad26fb12491}\label{classQuad_a90fca4f5a991bf9be797fad26fb12491}} 
-\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+TRTree}
-\item 
-\mbox{\Hypertarget{classQuad_ad9edc43066b0c6aa357796cbb6e5d7e0}\label{classQuad_ad9edc43066b0c6aa357796cbb6e5d7e0}} 
-\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BLTree}
-\item 
-\mbox{\Hypertarget{classQuad_ace9db5a1837bdc152a348324055ab321}\label{classQuad_ace9db5a1837bdc152a348324055ab321}} 
-\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+p\+BRTree}
+\mbox{\Hypertarget{classQuad_a84cd3e86c441becd2b50f8cc0b89376f}\label{classQuad_a84cd3e86c441becd2b50f8cc0b89376f}} 
+\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$ $\ast$ {\bfseries m\+\_\+ptrees} \mbox{[}8\mbox{]}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -117,8 +124,34 @@ static unsigned int {\bfseries m\+\_\+\+NB\+\_\+\+QUADS} =0
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classQuad_a7d76088dc44446dcaad4e90772106b8a}\label{classQuad_a7d76088dc44446dcaad4e90772106b8a}} 
+\index{Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}!Quad@{Quad}}
+\index{Quad@{Quad}!Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}}
+\doxysubsubsection{\texorpdfstring{Quad()}{Quad()}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+\mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$\mbox{\hyperlink{classQuad}{\+::\+Quad}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&}]{a,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{point = {\ttfamily \{\{0,0\},\{0,0\},\{0,0\}\}} }\end{DoxyParamCaption})}
+
+Constructor1 
+\begin{DoxyParams}{Parameters}
+{\em a\{\+The} & side\textquotesingle{}s lenght of the area\} \\
+\hline
+{\em point\{\+The} & center on which is centered the \mbox{\hyperlink{classOct}{Oct}}\textquotesingle{}s area\} \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classQuad_ad0502b0e4cbb7d5c80dafa752dbdb491}\label{classQuad_ad0502b0e4cbb7d5c80dafa752dbdb491}} 
+\mbox{\Hypertarget{classQuad_a02469c4fba96aa181455ff44124feb14}\label{classQuad_a02469c4fba96aa181455ff44124feb14}} 
+\index{Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}!getPNeighbors@{getPNeighbors}}
+\index{getPNeighbors@{getPNeighbors}!Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}}
+\doxysubsubsection{\texorpdfstring{getPNeighbors()}{getPNeighbors()}}
+{\footnotesize\ttfamily template$<$typename T , typename M , typename E $>$ \\
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlink{classQuad}{Quad}}$<$ T, M, E $>$\+::get\+PNeighbors (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ T $>$}]{pelement,  }\item[{const bool \&}]{mem = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+h abs(m\+\_\+tot\+\_\+weight)
+
+m\+\_\+ppoint\mbox{\Hypertarget{classQuad_ad0502b0e4cbb7d5c80dafa752dbdb491}\label{classQuad_ad0502b0e4cbb7d5c80dafa752dbdb491}} 
 \index{Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}!print@{print}}
 \index{print@{print}!Quad$<$ T, M, E $>$@{Quad$<$ T, M, E $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}

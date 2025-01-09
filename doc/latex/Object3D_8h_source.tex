@@ -1,5 +1,5 @@
 \hypertarget{Object3D_8h_source}{}\doxysection{Object3\+D.\+h}
-\label{Object3D_8h_source}\index{core/Object3D.h@{core/Object3D.h}}
+\label{Object3D_8h_source}\index{geometry/Object3D.h@{geometry/Object3D.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{/*}}
@@ -14,7 +14,7 @@
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#define OBJECT3D\_H\_}}
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../geometry/Mesh3D.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Mesh3D.h"{}}}
 \DoxyCodeLine{14 }
 \DoxyCodeLine{15 \textcolor{comment}{/*}}
 \DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
@@ -25,7 +25,7 @@
 \DoxyCodeLine{21 \textcolor{keyword}{public}:}
 \DoxyCodeLine{22     \mbox{\hyperlink{classObject3D}{Object3D}}();}
 \DoxyCodeLine{23     \textcolor{keyword}{virtual} \mbox{\hyperlink{classObject3D}{\string~Object3D}}();}
-\DoxyCodeLine{24     \mbox{\hyperlink{classObject3D}{Object3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classObject3D}{Object3D<M, E>}} \&other);}
+\DoxyCodeLine{24     \mbox{\hyperlink{classObject3D}{Object3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classObject3D}{Object3D<M, E>}}\& \textcolor{keywordtype}{object});}
 \DoxyCodeLine{25 \};}
 \DoxyCodeLine{26 }
 \DoxyCodeLine{27 }
@@ -38,7 +38,7 @@
 \DoxyCodeLine{34     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
 \DoxyCodeLine{35 \}}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classObject3D}{Object3D<M, E>::Object3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classObject3D}{Object3D<M, E>}} \&other) \{}
+\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classObject3D}{Object3D<M, E>::Object3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classObject3D}{Object3D<M, E>}}\& \textcolor{keywordtype}{object}) \{}
 \DoxyCodeLine{38     \textcolor{comment}{// TODO Auto-\/generated constructor stub}}
 \DoxyCodeLine{39 }
 \DoxyCodeLine{40 \}}
@@ -47,6 +47,6 @@
 \DoxyCodeLine{43 }
 \DoxyCodeLine{44 }
 \DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CORE\_OBJECT3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* OBJECT3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

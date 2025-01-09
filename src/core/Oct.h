@@ -9,6 +9,17 @@
 
 #define OCT_H_
 
+#include <memory>
+#include <cstdio>
+//#include <cmath>
+#include <unordered_set>
+
+#include "SN.h"
+//#include "../geometry/Particle3D.h"
+#include "../geometry/Point3D.h"
+#include "../utilities/Printable.h"
+
+
 #define TLFTree m_ptrees[0] 	// Top Left Front corner : is NULL if nothing
 #define TRFTree m_ptrees[1]		// Top Right Front corner : is NULL if nothing
 #define BRFTree m_ptrees[2]		// Bottom Right Front corner : is NULL if nothing
@@ -17,16 +28,6 @@
 #define TRBTree m_ptrees[5]		// Top Right Back corner : is NULL if nothing
 #define BRBTree m_ptrees[6]		// Bottom Right Back corner : is NULL if nothing
 #define BLBTree m_ptrees[7]		// Bottom Left Back corner : is NULL if nothing
-
-#include <memory>
-#include <cstdio>
-//#include <cmath>
-#include <unordered_set>
-
-#include "SN.h"
-#include "Particle3D.h"
-#include "Point3D.h"
-#include "../utilities/Printable.h"
 
 
 /*

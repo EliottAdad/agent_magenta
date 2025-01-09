@@ -16,10 +16,10 @@
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unordered\_set>}}
 \DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Oct.h"{}}}
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}macros.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/macros.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../geometry/Vector3D.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Oct.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}TimeSensitive.h"{}}}
 \DoxyCodeLine{19 }
 \DoxyCodeLine{20 \textcolor{comment}{/*}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#}}
@@ -313,31 +313,57 @@
 \DoxyCodeLine{309 \textcolor{comment}{\}*/}}
 \DoxyCodeLine{310 }
 \DoxyCodeLine{311 \textcolor{comment}{/*}}
-\DoxyCodeLine{312 \textcolor{comment}{ * Returns the acc (in norm) felt by pT2 due to pT1}}
-\DoxyCodeLine{313 \textcolor{comment}{ * @param : pT1: src, pT2: target}}
-\DoxyCodeLine{314 \textcolor{comment}{ */}}
-\DoxyCodeLine{315 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} rrr2(std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT1, std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT2) \{}
-\DoxyCodeLine{316     std::shared\_ptr<Vector3D<M, E>> pv(\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}());}
-\DoxyCodeLine{317     *pv-\/>pp1=pT2-\/>getPosition();}
-\DoxyCodeLine{318     *pv-\/>pp2=\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\};}
-\DoxyCodeLine{319 }
-\DoxyCodeLine{320     \textcolor{keywordflow}{if} (pT1!=NULL \&\& pT2!=NULL) \{}
-\DoxyCodeLine{321         *pv-\/>pp2=pT1-\/>getPosition()-\/pT2-\/>getPosition();}
-\DoxyCodeLine{322 }
-\DoxyCodeLine{323         \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(pT1-\/>getPosition(), pT2-\/>getPosition());}
-\DoxyCodeLine{324         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
-\DoxyCodeLine{325         \textcolor{comment}{//d.print();                        // Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)}}
-\DoxyCodeLine{326         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
-\DoxyCodeLine{327         pv-\/>setNorm(G*pT1-\/>getW()/(d*d));}
-\DoxyCodeLine{328     \}}
-\DoxyCodeLine{329     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
-\DoxyCodeLine{330     \textcolor{comment}{//pv-\/>print();}}
-\DoxyCodeLine{331     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
-\DoxyCodeLine{332     \textcolor{keywordflow}{return} *pv;}
-\DoxyCodeLine{333 \}}
-\DoxyCodeLine{334 }
+\DoxyCodeLine{312 \textcolor{comment}{ * Gravitation}}
+\DoxyCodeLine{313 \textcolor{comment}{ * Returns the acc (in norm) felt by pT2 due to pT1}}
+\DoxyCodeLine{314 \textcolor{comment}{ * @param : pT1: src, pT2: target}}
+\DoxyCodeLine{315 \textcolor{comment}{ */}}
+\DoxyCodeLine{316 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} rrr2(std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT1, std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT2) \{}
+\DoxyCodeLine{317     std::shared\_ptr<Vector3D<M, E>> pv(\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}());}
+\DoxyCodeLine{318     *pv-\/>pp1=pT2-\/>getPosition();}
+\DoxyCodeLine{319     *pv-\/>pp2=\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\};}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321     \textcolor{keywordflow}{if} (pT1!=NULL \&\& pT2!=NULL) \{}
+\DoxyCodeLine{322         *pv-\/>pp2=pT1-\/>getPosition()-\/pT2-\/>getPosition();}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324         \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(pT1-\/>getPosition(), pT2-\/>getPosition());}
+\DoxyCodeLine{325         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{326         \textcolor{comment}{//d.print();                        // Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)}}
+\DoxyCodeLine{327         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{328         pv-\/>setNorm(G*abs(pT1-\/>getW())/(d*d));}
+\DoxyCodeLine{329     \}}
+\DoxyCodeLine{330     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{331     \textcolor{comment}{//pv-\/>print();}}
+\DoxyCodeLine{332     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{333     \textcolor{keywordflow}{return} *pv;}
+\DoxyCodeLine{334 \}}
 \DoxyCodeLine{335 }
-\DoxyCodeLine{336 }
-\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{336 \textcolor{comment}{/*}}
+\DoxyCodeLine{337 \textcolor{comment}{ * Electromagnetics}}
+\DoxyCodeLine{338 \textcolor{comment}{ * Returns the acc (in norm) felt by pT2 due to pT1}}
+\DoxyCodeLine{339 \textcolor{comment}{ * @param : pT1: src, pT2: target}}
+\DoxyCodeLine{340 \textcolor{comment}{ */}}
+\DoxyCodeLine{341 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} rrr3(std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT1, std::shared\_ptr<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}> pT2) \{}
+\DoxyCodeLine{342     std::shared\_ptr<Vector3D<M, E>> pv(\textcolor{keyword}{new} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}());}
+\DoxyCodeLine{343     *pv-\/>pp1=pT2-\/>getPosition();}
+\DoxyCodeLine{344     *pv-\/>pp2=\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\};}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346     \textcolor{keywordflow}{if} (pT1!=NULL \&\& pT2!=NULL) \{}
+\DoxyCodeLine{347         *pv-\/>pp2=pT1-\/>getPosition()-\/pT2-\/>getPosition();}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{349         \mbox{\hyperlink{structSN}{SN<M, E>}} d=getDistance(pT1-\/>getPosition(), pT2-\/>getPosition());}
+\DoxyCodeLine{350         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{351         \textcolor{comment}{//d.print();                        // Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)}}
+\DoxyCodeLine{352         \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#d\(\backslash\)n"{});}}
+\DoxyCodeLine{353         pv-\/>setNorm((M)(-\/1)*K*pT1-\/>getW()*pT2-\/>getW()/(d*d*abs(pT2-\/>getW())));}
+\DoxyCodeLine{354     \}}
+\DoxyCodeLine{355     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{356     \textcolor{comment}{//pv-\/>print();}}
+\DoxyCodeLine{357     \textcolor{comment}{//printf("{}\(\backslash\)n\#\#\#\#\#\#\#\#\#\#\#\#pv\(\backslash\)n"{});}}
+\DoxyCodeLine{358     \textcolor{keywordflow}{return} *pv;}
+\DoxyCodeLine{359 \}}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -11,6 +11,12 @@
 
 #include "../utilities/Printable.h"
 
+/*
+ * ##############
+ *  Face<M, E> :)
+ * ##############
+ * .
+ */
 class Face: public Printable {
 public:
 	Face();

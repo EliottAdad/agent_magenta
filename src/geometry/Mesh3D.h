@@ -12,8 +12,8 @@
 #include <memory>
 #include <unordered_set>
 
-#include "../core/Point3D.h"
-#include "../core/Line3D.h"
+#include "Point3D.h"
+#include "Line3D.h"
 #include "Triangle3D.h"
 #include "Shape3D.h"
 #include "../utilities/Printable.h"

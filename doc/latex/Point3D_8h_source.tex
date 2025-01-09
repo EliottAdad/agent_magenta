@@ -1,5 +1,5 @@
 \hypertarget{Point3D_8h_source}{}\doxysection{Point3\+D.\+h}
-\label{Point3D_8h_source}\index{core/Point3D.h@{core/Point3D.h}}
+\label{Point3D_8h_source}\index{geometry/Point3D.h@{geometry/Point3D.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{/*}}
@@ -15,7 +15,7 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
 \DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}SN.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/SN.h"{}}}
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
 \DoxyCodeLine{16 }
 \DoxyCodeLine{17 }
@@ -373,9 +373,58 @@
 \DoxyCodeLine{369     \textcolor{keywordflow}{return} \mbox{\hyperlink{structSN}{SN<M, E>}}(sqrt(pow((p1.x-\/p2.x).to\_m\_type(), 2) + pow((p1.y-\/p2.y).to\_m\_type(), 2) + pow((p1.z-\/p2.z).to\_m\_type(), 2)), 0);\textcolor{comment}{// d=sqrt( (xA-\/xB)²+(yA-\/yB)² )}}
 \DoxyCodeLine{370 \}}
 \DoxyCodeLine{371 }
-\DoxyCodeLine{372 }
-\DoxyCodeLine{373 }
-\DoxyCodeLine{374 }
-\DoxyCodeLine{375 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{375 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> pixelizeCircle(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}> pcenter, \textcolor{keywordtype}{int} radius, \textcolor{keywordtype}{int} spacing=8)\{}
+\DoxyCodeLine{376     std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> ppoints;}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{378     \textcolor{comment}{// 35 / 49 is a slightly biased approximation of 1/sqrt(2)}}
+\DoxyCodeLine{379     \textcolor{comment}{//const int arrSize=roundUpToMultipleOfEight(radius*8*35/49);}}
+\DoxyCodeLine{380     \textcolor{comment}{//points.reserve(arrSize);}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382     \textcolor{keyword}{const} \textcolor{keywordtype}{int} diameter=radius*2;}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384 \textcolor{comment}{//    int32\_t x=radius-\/1;}}
+\DoxyCodeLine{385 \textcolor{comment}{//    int32\_t y=0;}}
+\DoxyCodeLine{386 \textcolor{comment}{//    int32\_t tx=1;}}
+\DoxyCodeLine{387 \textcolor{comment}{//    int32\_t ty=1;}}
+\DoxyCodeLine{388 \textcolor{comment}{//    int32\_t error=tx-\/diameter;}}
+\DoxyCodeLine{389     \textcolor{comment}{//int spacing=(int)(radius*ratio);}}
+\DoxyCodeLine{390     \textcolor{comment}{//printf("{}\%d\(\backslash\)n"{}, spacing);}}
+\DoxyCodeLine{391     \mbox{\hyperlink{structSN}{SN<M, E>}} x\{(M)(radius-\/spacing),0\};}
+\DoxyCodeLine{392     \mbox{\hyperlink{structSN}{SN<M, E>}} y\{0,0\};}
+\DoxyCodeLine{393     \textcolor{keywordtype}{int} tx=spacing;}
+\DoxyCodeLine{394     \textcolor{keywordtype}{int} ty=spacing;}
+\DoxyCodeLine{395     \textcolor{keywordtype}{int} error=tx-\/diameter;}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{397     \textcolor{keywordflow}{while}(x>=y)\{}
+\DoxyCodeLine{398         \textcolor{comment}{// Each of the following renders an octant of the circle}}
+\DoxyCodeLine{399         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x+x, pcenter-\/>y-\/y, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{400         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x+x, pcenter-\/>y+y, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{401         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x-\/x, pcenter-\/>y-\/y, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{402         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x-\/x, pcenter-\/>y+y, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{403         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x+y, pcenter-\/>y-\/x, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{404         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x+y, pcenter-\/>y+x, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{405         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x-\/y, pcenter-\/>y-\/x, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{406         ppoints.insert(std::make\_shared<\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}>(pcenter-\/>x-\/y, pcenter-\/>y+x, \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}));}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408         \textcolor{keywordflow}{if}(error<=0)\{}
+\DoxyCodeLine{409             \textcolor{comment}{//++y;}}
+\DoxyCodeLine{410             y+=\mbox{\hyperlink{structSN}{SN<M, E>}}\{(M)spacing, 0\};}
+\DoxyCodeLine{411             error+=ty;}
+\DoxyCodeLine{412             ty+=2*spacing;}
+\DoxyCodeLine{413         \}}
+\DoxyCodeLine{414 }
+\DoxyCodeLine{415         \textcolor{keywordflow}{if}(error>0)\{}
+\DoxyCodeLine{416             \textcolor{comment}{//-\/-\/x;}}
+\DoxyCodeLine{417             x-\/=\mbox{\hyperlink{structSN}{SN<M, E>}}\{(M)spacing, 0\};}
+\DoxyCodeLine{418             tx+=2*spacing;}
+\DoxyCodeLine{419             error+=tx-\/diameter;}
+\DoxyCodeLine{420         \}}
+\DoxyCodeLine{421     \}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423     \textcolor{keywordflow}{return} ppoints; \textcolor{comment}{// RVO FTW}}
+\DoxyCodeLine{424 \}}
+\DoxyCodeLine{425 }
+\DoxyCodeLine{426 }
+\DoxyCodeLine{427 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* POINT3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

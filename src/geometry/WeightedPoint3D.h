@@ -10,13 +10,12 @@
 #define WEIGHTEDPOINT3D_H_
 
 #include "Point3D.h"
-//#include "LSN.h"
 
 /*
  * #########################
  *  WeightedPoint3D<M, E> :)
  * #########################
- * A point with a weight
+ * A point with a weight (useless)
  */
 template<typename M, typename E> struct WeightedPoint3D : public Point3D<M, E> {
 	SN<M, E> w;

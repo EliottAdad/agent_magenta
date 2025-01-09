@@ -1,0 +1,72 @@
+\hypertarget{Ball3D_8h_source}{}\doxysection{Ball3\+D.\+h}
+\label{Ball3D_8h_source}\index{geometry/Ball3D.h@{geometry/Ball3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Ball3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 22 oct. 2024}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef BALL3D\_H\_}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define BALL3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/SN.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/*}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ *  Ball3D<M, E> :)}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{19 \textcolor{comment}{ * Particle3D with radius (useless)}}
+\DoxyCodeLine{20 \textcolor{comment}{ */}}
+\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classBall3D}{Ball3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classParticle3D}{Particle3D}}<M, E> \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \mbox{\hyperlink{structSN}{SN<M, E>}} r;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \mbox{\hyperlink{classBall3D}{Ball3D}}();}
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{classBall3D}{\string~Ball3D}}();}
+\DoxyCodeLine{27     \mbox{\hyperlink{classBall3D}{Ball3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBall3D}{Ball3D<M, E>}}\& ball);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{30     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBall3D}{Ball3D<M, E>::Ball3D}}() \{}
+\DoxyCodeLine{35     r=\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\};}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBall3D}{Ball3D<M, E>::\string~Ball3D}}() \{}
+\DoxyCodeLine{39     ;}
+\DoxyCodeLine{40 \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBall3D}{Ball3D<M, E>::Ball3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBall3D}{Ball3D<M, E>}}\& ball) \{}
+\DoxyCodeLine{43     r=ball.r;}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classBall3D}{Ball3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{48     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{51         mes+=\textcolor{stringliteral}{"{}BALL3D["{}};}
+\DoxyCodeLine{52         std::stringstream ss;}
+\DoxyCodeLine{53         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{54         mes+=ss.str();}
+\DoxyCodeLine{55         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{56         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classBall3D}{Ball3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{62     printTabs(indent);}
+\DoxyCodeLine{63     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{64 \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* BALL3D\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
