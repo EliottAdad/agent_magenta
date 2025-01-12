@@ -1,5 +1,5 @@
 /*
- * Point3DSS.h
+ * Point3DS.h
  *
  *  Created on: 14 mai 2024
  *      Author: esn
@@ -20,7 +20,7 @@
 
 /*
  * ###############
- *  Point3DSS<T> :)
+ *  Point3DS<T> :)
  * ###############
  */
 template<typename T> struct Point3DS : public Printable {

@@ -40,6 +40,7 @@ private:
 public:
 	std::shared_ptr<CoordinateSystem3D<M, E>> pcoordinate_system;
 	std::shared_ptr<Point3D<M, E>> ppoint;				// Pointeur to the center of display.
+	std::shared_ptr<Vector3D<M, E>> pnormal;				// Pointeur to the center of display.
 
 	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.

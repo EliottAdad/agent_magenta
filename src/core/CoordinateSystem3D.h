@@ -14,9 +14,9 @@
 #include "../core/Vector3D.h"
 
 /*
- * ##########################
+ * ############################
  *  CoordinateSystem3D<M, E> :)
- * ##########################
+ * ############################
  * An coordinate system defined by
  * its 3 own unary vectors expressed
  * in world coordinates
@@ -29,6 +29,8 @@ template<typename M, typename E> struct CoordinateSystem3D {
 	CoordinateSystem3D();
 	virtual ~CoordinateSystem3D();
 	CoordinateSystem3D(const CoordinateSystem3D<M, E>& coordsystem);
+
+	Eigen::Matrix<SN<M, E>, 3, 3> getM() const;
 };
 
 /**
@@ -48,7 +50,14 @@ template<typename M, typename E> CoordinateSystem3D<M, E>::CoordinateSystem3D(co
 	e1=coordsystem.e1;
 	e2=coordsystem.e2;
 	e3=coordsystem.e3;
+}
 
+template<typename M, typename E> Eigen::Matrix<SN<M, E>, 3, 3> CoordinateSystem3D<M, E>::getM() const{
+	return Eigen::Matrix<SN<M, E>, 3, 3>{
+		{e1.ppoint2->x,e2.ppoint2->x,e3.ppoint2->x},
+		{e2.ppoint2->y,e2.ppoint2->y,e2.ppoint2->y},
+		{e3.ppoint2->z,e3.ppoint2->z,e3.ppoint2->z}
+	};
 }
 
 #endif /* COORDINATESYSTEM3D_H_ */

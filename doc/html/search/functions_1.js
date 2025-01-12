@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getnorm_0',['getNorm',['../classVector3D.html#a1eb8df4c7e0265ae59cd7780b2bfaa71',1,'Vector3D']]],
+  ['getnorm_0',['getNorm',['../classVector3D.html#a1eb8df4c7e0265ae59cd7780b2bfaa71',1,'Vector3D::getNorm()'],['../classVector3DS.html#a8ef72923330f9d97441c97d7031bc105',1,'Vector3DS::getNorm()']]],
   ['getpelements_1',['getPElements',['../classOct.html#aa2973e2ea364d5d6eaef7922ffe077f6',1,'Oct']]],
   ['getpneighbors_2',['getPNeighbors',['../classOct.html#ac0a1c1cb320ced6a607b90a213d3c0dc',1,'Oct::getPNeighbors()'],['../classQuad.html#a02469c4fba96aa181455ff44124feb14',1,'Quad::getPNeighbors()']]]
 ];
