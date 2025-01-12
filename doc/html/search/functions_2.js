@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oct_0',['Oct',['../classOct.html#afcf5934c496b75396bde3760958d2b62',1,'Oct']]]
+  ['material_0',['Material',['../classMaterial.html#a96d5ae1ebc35f6b6d00880bc46bb17c0',1,'Material::Material(std::shared_ptr&lt; SDL_Color &gt; pcolor)'],['../classMaterial.html#ac0731e51ea0d30bf45ddec3fe761062e',1,'Material::Material(const Material &amp;material)']]]
 ];

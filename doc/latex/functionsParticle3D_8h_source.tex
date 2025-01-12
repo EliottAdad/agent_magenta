@@ -47,17 +47,20 @@
 \DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} i(0) ; i<n ; i++)\{}
 \DoxyCodeLine{50         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} j(0) ; j<n ; j++)\{}
 \DoxyCodeLine{51             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} k(0) ; k<n ; k++)\{}
-\DoxyCodeLine{52                 pparts.insert(std::make\_shared<\mbox{\hyperlink{classParticle3D}{Particle3D<M, E>}}>((M)(-\/1)*a/(M)2+(M)i*a/(M)(n-\/1)+p.x,}
-\DoxyCodeLine{53                         (M)(-\/1)*a/(M)2+(M)j*a/(M)(n-\/1)+p.y,}
-\DoxyCodeLine{54                         (M)(-\/1)*a/(M)2+(M)k*a/(M)(n-\/1)+p.z,}
-\DoxyCodeLine{55                         w));}
-\DoxyCodeLine{56             \}}
-\DoxyCodeLine{57         \}}
-\DoxyCodeLine{58     \}}
-\DoxyCodeLine{59     \textcolor{keywordflow}{return} pparts;}
-\DoxyCodeLine{60 \}}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FUNCTIONS\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{52                 std::shared\_ptr<Particle3D<M, E>> ppart=std::make\_shared<Particle3D<M, E>>(}
+\DoxyCodeLine{53                         (M)(-\/1)*a/(M)2+(M)i*a/(M)(n-\/1)+p.x,}
+\DoxyCodeLine{54                         (M)(-\/1)*a/(M)2+(M)j*a/(M)(n-\/1)+p.y,}
+\DoxyCodeLine{55                         (M)(-\/1)*a/(M)2+(M)k*a/(M)(n-\/1)+p.z,}
+\DoxyCodeLine{56                         w);}
+\DoxyCodeLine{57                 ppart-\/>ps=std::make\_shared<Vector3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{58                 pparts.insert(ppart);}
+\DoxyCodeLine{59             \}}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} pparts;}
+\DoxyCodeLine{63 \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FUNCTIONSPARTICLE3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

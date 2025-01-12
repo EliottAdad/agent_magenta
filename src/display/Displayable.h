@@ -10,22 +10,26 @@
 #define DISPLAYABLE_H_
 
 #include <memory>
+#include <unordered_set>
 #include <SDL2/SDL.h>
 
-#include "../geometry/Shape3D.h"
+#include "../core/Point3D.h"
+#include "../core/Triangle3D.h"
 #include "../utilities/Printable.h"
+#include "../core/CoordinateSystem3D.h"
 
 /*
- * ###############
- *  Displayable :)
- * ###############
+ * #####################
+ *  Displayable<M, E> :)
+ * #####################
  * Stores the color, and a shape to use when rendering
  * If shape=NULL draws a point, if SDL_Color=NULL draws in white
  */
 template<typename M, typename E> struct Displayable : public Printable {
 public:
+	std::shared_ptr<CoordinateSystem3D<M, E>> psys;								// The coords system in wich it is expressed
 	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
-	std::shared_ptr<Shape3D<M, E>> pshape;			// Pointer to the shape to be drawn(NULL if none)
+	//std::shared_ptr<Shape3D<M, E>> pshape;			// Pointer to the shape to be drawn(NULL if none)
 
 	Displayable();
 	virtual ~Displayable();
@@ -37,6 +41,9 @@ public:
 	virtual Point3D<M, E> getPosition() const;
 	//render();
 
+	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPPoints() const;
+	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getPLines() const;
+	virtual std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> getPTriangles() const;
 	//virtual Image getSticker() const;
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
@@ -119,6 +126,22 @@ template<typename M, typename E> void Displayable<M, E>::setPColor(SDL_Color* pc
 	}
 	m_delc=delc;
 }*/
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Displayable<M, E>::getPPoints() const {
+	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
+	return ppoints;
+}
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Displayable<M, E>::getPLines() const {
+	std::unordered_set<std::shared_ptr<Line3D<M, E>>> plines;
+	return plines;
+}
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> Displayable<M, E>::getPTriangles() const {
+	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> ptriangles;
+	return ptriangles;
+}
+
 
 
 template<typename M, typename E> std::string Displayable<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)

@@ -1,7 +1,8 @@
 <map id="Polyhedron&lt; M, E &gt;" name="Polyhedron&lt; M, E &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,229,159,256"/>
-<area shape="rect" id="node5" href="$classCube.html" title=" " alt="" coords="25,304,139,331"/>
-<area shape="rect" id="node2" href="$classShape3D.html" title=" " alt="" coords="13,155,151,181"/>
-<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="17,80,147,107"/>
-<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="42,5,122,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="78,229,231,256"/>
+<area shape="rect" id="node6" href="$classCube.html" title=" " alt="" coords="98,304,211,331"/>
+<area shape="rect" id="node2" href="$classShape3D.html" title=" " alt="" coords="85,155,224,181"/>
+<area shape="rect" id="node3" href="$structPoint3D.html" title=" " alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="115,5,195,32"/>
+<area shape="rect" id="node5" href="$structDisplayable.html" title=" " alt="" coords="160,80,317,107"/>
 </map>

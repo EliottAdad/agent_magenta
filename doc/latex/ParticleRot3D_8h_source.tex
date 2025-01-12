@@ -1,0 +1,262 @@
+\hypertarget{ParticleRot3D_8h_source}{}\doxysection{Particle\+Rot3\+D.\+h}
+\label{ParticleRot3D_8h_source}\index{geometry/ParticleRot3D.h@{geometry/ParticleRot3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * ParticleRot3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 12 jan. 2025}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef PARTICLEROT3D\_H\_}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define PARTICLEROT3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Particle3D.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{//template<typename M, typename E> enum<M, E> Property \{SN<M, E>, \};}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{/*}}
+\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{18 \textcolor{comment}{ *  ParticleRot3D<M, E> :)}}
+\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{20 \textcolor{comment}{ * A particle with added rotational capabilities}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classParticle3D}{Particle3D}}<M, E>\{}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     std::shared\_ptr<Vector3D<M, E>> prs;                                        \textcolor{comment}{// Rotational speed.}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}}();}
+\DoxyCodeLine{27     \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p);}
+\DoxyCodeLine{28     \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w=\{1, 0\});}
+\DoxyCodeLine{29     \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp);}
+\DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{classParticleRot3D}{\string~ParticleRot3D}}();}
+\DoxyCodeLine{31     \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setT(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt);}
+\DoxyCodeLine{34     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apply();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}\& v);\textcolor{comment}{// :)}}
+\DoxyCodeLine{37     \textcolor{comment}{//virtual void operator+=(const ParticleRot3D<M, E>\& p);// :)}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p2);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::ParticleRot3D}}() \{}
+\DoxyCodeLine{48     this-\/>x=\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\};}
+\DoxyCodeLine{49     this-\/>y=\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\};}
+\DoxyCodeLine{50     this-\/>z=\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\};}
+\DoxyCodeLine{51     \textcolor{comment}{//this-\/>w=SN<M, E>\{1,0\};                        // Init the Weighted Point to \{x=1, y=1, y=1, w=1\}}}
+\DoxyCodeLine{52     pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}
+\DoxyCodeLine{53     pfields-\/>insert(\{\textcolor{stringliteral}{"{}mass"{}}, std::make\_shared<SN<M, E>>(\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\})\});}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     ps=std::make\_shared<Vector3D<M, E>>();      \textcolor{comment}{// Vector3D init to end=(1, 1, 1)}}
+\DoxyCodeLine{56     this-\/>pcolor=NULL;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     m\_dt=0;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{/*ParticleRot3D::ParticleRot3D(const Point3D\& p, Vector* pspeed) \{}}
+\DoxyCodeLine{62 \textcolor{comment}{    x=p.x;}}
+\DoxyCodeLine{63 \textcolor{comment}{    y=p.y;}}
+\DoxyCodeLine{64 \textcolor{comment}{    z=p.z;}}
+\DoxyCodeLine{65 \textcolor{comment}{    w=LSN\{1, 0\};// Init the Weighted Point to \{x, y, y, w=1\}}}
+\DoxyCodeLine{66 \textcolor{comment}{    m\_ps=pspeed;}}
+\DoxyCodeLine{67 \textcolor{comment}{    m\_dels=false;}}
+\DoxyCodeLine{68 \textcolor{comment}{    m\_dt=0;}}
+\DoxyCodeLine{69 \textcolor{comment}{\}}}
+\DoxyCodeLine{70 \textcolor{comment}{}}
+\DoxyCodeLine{71 \textcolor{comment}{ParticleRot3D::ParticleRot3D(const WeightedPoint3D\& wp, Vector* pspeed) \{}}
+\DoxyCodeLine{72 \textcolor{comment}{    x=wp.x;}}
+\DoxyCodeLine{73 \textcolor{comment}{    y=wp.y;}}
+\DoxyCodeLine{74 \textcolor{comment}{    z=wp.z;}}
+\DoxyCodeLine{75 \textcolor{comment}{    w=wp.w;// Init the Weighted Point to \{x, y, y, w\}}}
+\DoxyCodeLine{76 \textcolor{comment}{    m\_ps=pspeed;}}
+\DoxyCodeLine{77 \textcolor{comment}{    m\_dels=false;}}
+\DoxyCodeLine{78 \textcolor{comment}{    m\_dt=0;}}
+\DoxyCodeLine{79 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& p) \{}
+\DoxyCodeLine{82     this-\/>x=p.x;}
+\DoxyCodeLine{83     this-\/>y=p.y;}
+\DoxyCodeLine{84     this-\/>z=p.z;}
+\DoxyCodeLine{85     \textcolor{comment}{//this-\/>w=SN<M, E>\{1,0\};// Init the Weighted Point to \{x, y, y, w=1\}}}
+\DoxyCodeLine{86     pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}
+\DoxyCodeLine{87     pfields-\/>insert(\{\textcolor{stringliteral}{"{}mass"{}}, std::make\_shared<SN<M, E>>(\mbox{\hyperlink{structSN}{SN<M, E>}}\{1,0\})\});}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     ps=std::make\_shared<Vector3D<M, E>>();}
+\DoxyCodeLine{90     this-\/>pcolor=NULL;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     m\_dt=0;}
+\DoxyCodeLine{93 \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& y, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& z, \textcolor{keyword}{const} \mbox{\hyperlink{structSN}{SN<M, E>}}\& w) \{}
+\DoxyCodeLine{96     this-\/>x=x;}
+\DoxyCodeLine{97     this-\/>y=y;}
+\DoxyCodeLine{98     this-\/>z=z;}
+\DoxyCodeLine{99     pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}
+\DoxyCodeLine{100     pfields-\/>insert(\{\textcolor{stringliteral}{"{}mass"{}}, std::make\_shared<SN<M, E>>(w)\});}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     ps=std::make\_shared<Vector3D<M, E>>();}
+\DoxyCodeLine{103     this-\/>pcolor=NULL;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     m\_dt=0;}
+\DoxyCodeLine{106 \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWeightedPoint3D}{WeightedPoint3D<M, E>}}\& wp) \{}
+\DoxyCodeLine{109     this-\/>x=wp.x;}
+\DoxyCodeLine{110     this-\/>y=wp.y;}
+\DoxyCodeLine{111     this-\/>z=wp.z;}
+\DoxyCodeLine{112     \textcolor{comment}{//this-\/>w=wp.w;// Init the Weighted Point to \{x, y, y, w\}}}
+\DoxyCodeLine{113     pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}
+\DoxyCodeLine{114     pfields-\/>insert(\{\textcolor{stringliteral}{"{}mass"{}}, std::make\_shared<SN<M, E>>(wp.w)\});}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     ps=std::make\_shared<Vector3D<M, E>>();}
+\DoxyCodeLine{117     this-\/>pcolor=NULL;}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     m\_dt=0;}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{/*ParticleRot3D::ParticleRot3D(const Point3D<float, char>\& p, const Vector3D\& speed) \{}}
+\DoxyCodeLine{123 \textcolor{comment}{    this-\/>x=p.x;}}
+\DoxyCodeLine{124 \textcolor{comment}{    this-\/>y=p.y;}}
+\DoxyCodeLine{125 \textcolor{comment}{    this-\/>z=p.z;}}
+\DoxyCodeLine{126 \textcolor{comment}{    this-\/>w=SN<float, char>\{1,0\};// Init the Weighted Point to \{x, y, y, w=1\}}}
+\DoxyCodeLine{127 \textcolor{comment}{    ps.reset(speed);}}
+\DoxyCodeLine{128 \textcolor{comment}{    pcolor=NULL;}}
+\DoxyCodeLine{129 \textcolor{comment}{}}
+\DoxyCodeLine{130 \textcolor{comment}{    m\_dt=0;}}
+\DoxyCodeLine{131 \textcolor{comment}{\}}}
+\DoxyCodeLine{132 \textcolor{comment}{}}
+\DoxyCodeLine{133 \textcolor{comment}{ParticleRot3D::ParticleRot3D(const WeightedPoint3D\& wp, const Vector3D\& speed) \{}}
+\DoxyCodeLine{134 \textcolor{comment}{    this-\/>x=wp.x;}}
+\DoxyCodeLine{135 \textcolor{comment}{    this-\/>y=wp.y;}}
+\DoxyCodeLine{136 \textcolor{comment}{    this-\/>z=wp.z;}}
+\DoxyCodeLine{137 \textcolor{comment}{    this-\/>w=wp.w;// Init the Weighted Point to \{x, y, y, w\}}}
+\DoxyCodeLine{138 \textcolor{comment}{    ps.reset(\&speed);}}
+\DoxyCodeLine{139 \textcolor{comment}{    pcolor=NULL;}}
+\DoxyCodeLine{140 \textcolor{comment}{}}
+\DoxyCodeLine{141 \textcolor{comment}{    m\_dt=0;}}
+\DoxyCodeLine{142 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::\string~ParticleRot3D}}() \{}
+\DoxyCodeLine{145     ;\textcolor{comment}{//this-\/>\string~Displayable();}}
+\DoxyCodeLine{146 \}}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::ParticleRot3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p) \{}
+\DoxyCodeLine{149     this-\/>x=p.x;}
+\DoxyCodeLine{150     this-\/>y=p.y;}
+\DoxyCodeLine{151     this-\/>z=p.z;}
+\DoxyCodeLine{152     \textcolor{comment}{//this-\/>w=p.w;// Init the Weighted Point to \{x, y, y, w\}}}
+\DoxyCodeLine{153     \textcolor{comment}{//pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}}
+\DoxyCodeLine{154     pfields=p-\/>pfields;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     ps=p.ps;}
+\DoxyCodeLine{157     this-\/>pcolor=p.pcolor;}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     m\_dt=0;}
+\DoxyCodeLine{160 \}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::getX}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{165     \textcolor{keywordflow}{return} this-\/>x;}
+\DoxyCodeLine{166 \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::getY}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{169     \textcolor{keywordflow}{return} this-\/>y;}
+\DoxyCodeLine{170 \}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::getZ}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{173     \textcolor{keywordflow}{return} this-\/>z;}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structSN}{SN<M, E>}} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::getW}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{177     \mbox{\hyperlink{structSN}{SN<M, E>}} w\{1,0\};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     \textcolor{keywordflow}{if} (pfields!=NULL \textcolor{comment}{/*\&\& pfields-\/>contains("{}mass"{})*/})\{}
+\DoxyCodeLine{180         w=*((*pfields)[\textcolor{stringliteral}{"{}mass"{}}]);}
+\DoxyCodeLine{181     \}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183     \textcolor{keywordflow}{return} w;}
+\DoxyCodeLine{184 \}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::setT}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& dt) \{}
+\DoxyCodeLine{187     m\_dt=dt;}
+\DoxyCodeLine{188 \}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::apply}}()\{}
+\DoxyCodeLine{191     this-\/>x+=(ps-\/>pp2-\/>x)*m\_dt;}
+\DoxyCodeLine{192     this-\/>y+=(ps-\/>pp2-\/>y)*m\_dt;}
+\DoxyCodeLine{193     this-\/>z+=(ps-\/>pp2-\/>z)*m\_dt;}
+\DoxyCodeLine{194 \}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}}\& v)\{}
+\DoxyCodeLine{198     \textcolor{keywordflow}{if} (this-\/>ps!=NULL)\{}
+\DoxyCodeLine{199         *this-\/>ps+=v;}
+\DoxyCodeLine{200     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{201         *this-\/>ps=v;}
+\DoxyCodeLine{202     \}}
+\DoxyCodeLine{203 \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{comment}{/*template<typename M, typename E> void ParticleRot3D<M, E>::operator+=(const ParticleRot3D<M, E>\& p)\{}}
+\DoxyCodeLine{206 \textcolor{comment}{    if (this-\/>ps!=NULL)\{}}
+\DoxyCodeLine{207 \textcolor{comment}{        *this-\/>ps+=v;}}
+\DoxyCodeLine{208 \textcolor{comment}{    \}else\{}}
+\DoxyCodeLine{209 \textcolor{comment}{        *this-\/>ps=v;}}
+\DoxyCodeLine{210 \textcolor{comment}{    \}}}
+\DoxyCodeLine{211 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{216     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{217     mes+=to\_stringTabs(indent);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     \textcolor{keywordflow}{if} (full\_info)\{}
+\DoxyCodeLine{220         mes+=\textcolor{stringliteral}{"{}PARTICLE3D["{}};}
+\DoxyCodeLine{221         std::stringstream ss;}
+\DoxyCodeLine{222         ss << \textcolor{keyword}{this};}
+\DoxyCodeLine{223         mes+=ss.str();}
+\DoxyCodeLine{224         mes+=\textcolor{stringliteral}{"{}]:"{}};}
+\DoxyCodeLine{225         mes+=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} + to\_stringTabs(1) : \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{226     \}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     mes+=to\_stringTabs(indent);}
+\DoxyCodeLine{229     mes+=\textcolor{stringliteral}{"{}("{}} + this-\/>getPosition().to\_string();}
+\DoxyCodeLine{230     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{231     mes+=\textcolor{stringliteral}{"{}w:"{}};\textcolor{comment}{// + this-\/>w.to\_string();}}
+\DoxyCodeLine{232     mes+=\textcolor{stringliteral}{"{} | "{}};}
+\DoxyCodeLine{233     mes+=(ps==NULL)?\textcolor{stringliteral}{"{}NULL"{}}:ps-\/>to\_string(\textcolor{keyword}{false}, \textcolor{keyword}{false});}
+\DoxyCodeLine{234     mes+=\textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{235     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{236 \}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{239     printTabs(indent);}
+\DoxyCodeLine{240     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{241 \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{classParticleRot3D}{ParticleRot3D<M, E>}}\& p2)\{}
+\DoxyCodeLine{244     std::shared\_ptr<ParticleRot3D<M, E>> pparticle=std::make\_shared<ParticleRot3D<M, E>>();}
+\DoxyCodeLine{245     *(pparticle-\/>ps)=*(p1-\/>ps)+*(p2-\/>ps);}
+\DoxyCodeLine{246     *(pparticle-\/>prs)=*(p1-\/>prs)+*(p2-\/>prs);}
+\DoxyCodeLine{247     pparticle-\/>pfields=std::make\_shared<std::unordered\_map<std::string, std::shared\_ptr<SN<M, E>>>>();}
+\DoxyCodeLine{248     \textcolor{keywordflow}{if} (p1-\/>pfields!=NULL \&\& p1-\/>pfields-\/>contains(\textcolor{stringliteral}{"{}mass"{}}) \&\& p2-\/>pfields!=NULL \&\& p2-\/>pfields-\/>contains(\textcolor{stringliteral}{"{}mass"{}})) \{}
+\DoxyCodeLine{249         pparticle-\/>pfields-\/>insert(\{\textcolor{stringliteral}{"{}mass"{}}, *(p1-\/>pfields)[\textcolor{stringliteral}{"{}mass"{}}]+*(p2-\/>pfields)[\textcolor{stringliteral}{"{}mass"{}}]\});}
+\DoxyCodeLine{250     \}}
+\DoxyCodeLine{251 \}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARTICLE3D\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -16,17 +16,17 @@
 #include <SDL2/SDL.h>
 
 //#include "core/SN.h"
-#include "geometry/Point3D.h"
 #include "geometry/WeightedPoint3D.h"
 #include "core/Quad.h"
 #include "core/Oct.h"
 #include "geometry/Particle3D.h"
 //#include "core/ParticleSystem3D.h"
 #include "core/System3D.h"
-#include "geometry/Vector3D.h"
 #include "core/VectorField.h"
 //#include "core/VectorFieldUnidirectional.h"
 #include "core/Physics.h"
+#include "core/Point3D.h"
+#include "core/Vector3D.h"
 #include "utilities/Game.h"
 #include "utilities/functionsParticle3D.h"
 
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<float, char>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{1,2}, 25, SN<float, char>{1, -10});
+    pparts=generate2DGridParticle3D(Point3D<float, char>{{2,1},{0,0},{0,0}}, SN<float, char>{1,3}, 5, SN<float, char>{1, 15});
 
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -61,12 +61,12 @@ int main(int argc, char* argv[]){
 
     // Sys
     std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
-    psys->setA(SN<float, char>{1, 4});
-    psys->setAlpha(1);
+    psys->setA(SN<float, char>{1, 5});
+    psys->setAlpha(5);
     for (std::shared_ptr<Particle3D<float, char>> ppart : pparts){
     	psys->addPElement(ppart);
     }
-    psys->ptrLaw=rrr3;
+    psys->ptrLaw=rrr2;
 
     // Game
     Game g1;

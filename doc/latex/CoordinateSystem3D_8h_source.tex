@@ -1,0 +1,55 @@
+\hypertarget{CoordinateSystem3D_8h_source}{}\doxysection{Coordinate\+System3\+D.\+h}
+\label{CoordinateSystem3D_8h_source}\index{core/CoordinateSystem3D.h@{core/CoordinateSystem3D.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * CoordinateSystem3D.h}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: 12 janv. 2025}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: esn}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef COORDINATESYSTEM3D\_H\_}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define COORDINATESYSTEM3D\_H\_}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{/*}}
+\DoxyCodeLine{15 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{16 \textcolor{comment}{ *  CoordinateSystem3D<M, E> :)}}
+\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{18 \textcolor{comment}{ * An coordinate system defined by}}
+\DoxyCodeLine{19 \textcolor{comment}{ * its 3 own unary vectors expressed}}
+\DoxyCodeLine{20 \textcolor{comment}{ * in world coordinates}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}} \{}
+\DoxyCodeLine{23     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e1;}
+\DoxyCodeLine{24     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e2;}
+\DoxyCodeLine{25     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e3;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D}}();}
+\DoxyCodeLine{28     \textcolor{keyword}{virtual} \mbox{\hyperlink{structCoordinateSystem3D}{\string~CoordinateSystem3D}}();}
+\DoxyCodeLine{29     \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<M, E>}}\& coordsystem);}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D<M, E>::CoordinateSystem3D}}() \{}
+\DoxyCodeLine{36     e1.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{1,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{37     e2.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{1,0\},\{0,0\}\});}
+\DoxyCodeLine{38     e3.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{1,0\}\});}
+\DoxyCodeLine{39 \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<M, E>::\string~CoordinateSystem3D}}() \{}
+\DoxyCodeLine{42     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
+\DoxyCodeLine{43 \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D<M, E>::CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}}\& coordsystem) \{}
+\DoxyCodeLine{46     e1=coordsystem.e1;}
+\DoxyCodeLine{47     e2=coordsystem.e2;}
+\DoxyCodeLine{48     e3=coordsystem.e3;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* COORDINATESYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

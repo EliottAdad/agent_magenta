@@ -68,7 +68,7 @@ main-build: Revivaal0.0.3.2
 Revivaal0.0.3.2: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	g++ -L/usr/include/SDL2 -o "Revivaal0.0.3.2" $(OBJS) $(USER_OBJS) $(LIBS) -lSDL2
+	g++ -L/usr/include/SDL2 -L/usr/include/eigen3 -o "Revivaal0.0.3.2" $(OBJS) $(USER_OBJS) $(LIBS) -lSDL2
 	@echo 'Finished building target: $@'
 	@echo ' '
 

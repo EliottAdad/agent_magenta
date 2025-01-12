@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['material_0',['Material',['../classMaterial.html#a96d5ae1ebc35f6b6d00880bc46bb17c0',1,'Material::Material(std::shared_ptr&lt; SDL_Color &gt; pcolor)'],['../classMaterial.html#ac0731e51ea0d30bf45ddec3fe761062e',1,'Material::Material(const Material &amp;material)']]]
+  ['getnorm_0',['getNorm',['../classVector3D.html#a1eb8df4c7e0265ae59cd7780b2bfaa71',1,'Vector3D']]],
+  ['getpelements_1',['getPElements',['../classOct.html#aa2973e2ea364d5d6eaef7922ffe077f6',1,'Oct']]],
+  ['getpneighbors_2',['getPNeighbors',['../classOct.html#ac0a1c1cb320ced6a607b90a213d3c0dc',1,'Oct::getPNeighbors()'],['../classQuad.html#a02469c4fba96aa181455ff44124feb14',1,'Quad::getPNeighbors()']]]
 ];

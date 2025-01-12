@@ -20,6 +20,9 @@
  * #################
  */
 class TimeSensitive : public Printable {
+protected:
+	float m_dt;
+
 public:
 	TimeSensitive();
 	virtual ~TimeSensitive();

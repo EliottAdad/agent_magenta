@@ -13,8 +13,8 @@
 #include <unordered_set>
 #include <SDL2/SDL.h>
 
-#include "../geometry/Point3D.h"
-#include "../geometry/Line3D.h"
+#include "../core/Point3D.h"
+#include "../core/Line3D.h"
 #include "../display/Displayable.h"
 #include "../utilities/Printable.h"
 #include "../utilities/functions.h"
@@ -204,18 +204,17 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 		/*for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
-		if (pdisplayable->pshape!=NULL){
-			// For the points
-			std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
-			for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
-				success=success & render(ppoint);
-			}
-			// For the lines
-			/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
-			for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
-				success=success & render(ppoint);
-			}*/
+
+		// For the points
+		std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->getPPoints();
+		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+			success=success & render(ppoint);
 		}
+		// For the lines
+		/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
+		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+			success=success & render(ppoint);
+		}*/
 	}
 	return success;
 }

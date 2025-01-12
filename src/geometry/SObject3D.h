@@ -14,11 +14,11 @@
 #include <string>
 #include <unordered_set>
 
+#include "../core/Point3D.h"
 #include "../utilities/functions.h"
 #include "../core/SN.h"
-#include "Point3D.h"
+#include "../core/Vector3D.h"
 #include "Particle3D.h"
-#include "Vector3D.h"
 #include "Object3D.h"
 //#include "/home/elitim/Documents/EliottL/C++/Tools/Maths/Matrix.cpp"
 

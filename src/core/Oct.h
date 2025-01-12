@@ -16,7 +16,7 @@
 
 #include "SN.h"
 //#include "../geometry/Particle3D.h"
-#include "../geometry/Point3D.h"
+#include "Point3D.h"
 #include "../utilities/Printable.h"
 
 

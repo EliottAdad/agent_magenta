@@ -79,8 +79,8 @@ $(function() {
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../utilities/functions.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Point3D.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../core/Point3D.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../utilities/functions.h&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/*</span></div>
@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classBezierCurve3D.html">BezierCurve3D</a>(<span class="keyword">const</span> <a class="code hl_class" href="classBezierCurve3D.html">BezierCurve3D&lt;M, E&gt;</a>&amp; bezier_curve);<span class="comment">//:)</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classBezierCurve3D.html">~BezierCurve3D</a>();<span class="comment">//:)</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; <a class="code hl_function" href="classBezierCurve3D.html#a63ebd6721184d9e461b1ba6a61db641b">getImage</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; t);<span class="comment">//:) t is between 0 and 1.</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">//std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; getImage(const float&amp; t);//:) t is between 0 and 1.</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> testOnLine(<span class="keyword">const</span> <a class="code hl_struct" href="structPoint3D.html">Point3D&lt;M, E&gt;</a>&amp; point);<span class="comment">//:)</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">//Line2D* getPerpendicularLine(Point2D* ppoint);//:) Get a perpendicular line passing throug the point in parameter.</span></div>
@@ -121,24 +121,22 @@ $(function() {
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    }*/</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classBezierCurve3D.html#a63ebd6721184d9e461b1ba6a61db641b">   56</a></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> M, <span class="keyword">typename</span> E&gt; std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; <a class="code hl_function" href="classBezierCurve3D.html#a63ebd6721184d9e461b1ba6a61db641b">BezierCurve3D&lt;M, E&gt;::getImage</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; t) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="structSN.html">SN&lt;M, E&gt;</a> x{0, 0}, y{0, 0};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i(0) ; i&lt;(int)m_ppoints.size() ; i++)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        x+=binomialCoef(m_ppoints.size(), i)*pow(1-t, (<span class="keywordtype">int</span>)m_ppoints.size()-i)*pow(t, i)*m_ppoints[i]-&gt;x;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        y+=binomialCoef(m_ppoints.size(), i)*pow(1-t, (<span class="keywordtype">int</span>)m_ppoints.size()-i)*pow(t, i)*m_ppoints[i]-&gt;y;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_struct" href="structPoint3D.html">Point3D</a>{x, y};</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/*template&lt;typename M, typename E&gt; std::shared_ptr&lt;Point3D&lt;M, E&gt;&gt; BezierCurve3D&lt;M, E&gt;::getImage(const float&amp; t) {</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    SN&lt;M, E&gt; x{0, 0}, y{0, 0};</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"></span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    for (int i(0) ; i&lt;(int)m_ppoints.size() ; i++)</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">        x+=binomialCoef(m_ppoints.size(), i)*pow(1-t, (int)m_ppoints.size()-i)*pow(t, i)*m_ppoints[i]-&gt;x;</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">        y+=binomialCoef(m_ppoints.size(), i)*pow(1-t, (int)m_ppoints.size()-i)*pow(t, i)*m_ppoints[i]-&gt;y;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"></span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    return new Point3D{x, y};</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">}*/</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassBezierCurve3D_html"><div class="ttname"><a href="classBezierCurve3D.html">BezierCurve3D</a></div><div class="ttdef"><b>Definition:</b> BezierCurve3D.h:21</div></div>
-<div class="ttc" id="aclassBezierCurve3D_html_a63ebd6721184d9e461b1ba6a61db641b"><div class="ttname"><a href="classBezierCurve3D.html#a63ebd6721184d9e461b1ba6a61db641b">BezierCurve3D::getImage</a></div><div class="ttdeci">std::shared_ptr&lt; Point3D&lt; M, E &gt; &gt; getImage(const float &amp;t)</div><div class="ttdef"><b>Definition:</b> BezierCurve3D.h:56</div></div>
 <div class="ttc" id="astructPoint3D_html"><div class="ttname"><a href="structPoint3D.html">Point3D</a></div><div class="ttdef"><b>Definition:</b> Point3D.h:26</div></div>
-<div class="ttc" id="astructSN_html"><div class="ttname"><a href="structSN.html">SN</a></div><div class="ttdef"><b>Definition:</b> SN.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

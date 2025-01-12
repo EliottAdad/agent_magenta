@@ -11,8 +11,8 @@
 
 #include <memory>
 
-#include "../geometry/Point3D.h"
-#include "../geometry/Vector3D.h"
+#include "../core/Point3D.h"
+#include "../core/Vector3D.h"
 #include "../geometry/Mesh3D.h"
 #include "../geometry/Triangle3D.h"
 #include "../utilities/Printable.h"

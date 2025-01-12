@@ -37,6 +37,15 @@ virtual \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries getZ} () const
 \mbox{\Hypertarget{structDisplayable_acfd1d7539a23152004090c726820d971}\label{structDisplayable_acfd1d7539a23152004090c726820d971}} 
 virtual \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ {\bfseries get\+Position} () const
 \item 
+\mbox{\Hypertarget{structDisplayable_ad61a0fb42973b2d1f934e2f2eea15c0c}\label{structDisplayable_ad61a0fb42973b2d1f934e2f2eea15c0c}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PPoints} () const
+\item 
+\mbox{\Hypertarget{structDisplayable_a38f6f0b24658a12d20f03a411c7281dc}\label{structDisplayable_a38f6f0b24658a12d20f03a411c7281dc}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PLines} () const
+\item 
+\mbox{\Hypertarget{structDisplayable_a1f5285cae02aef04fdf4c437a82aeb7f}\label{structDisplayable_a1f5285cae02aef04fdf4c437a82aeb7f}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PTriangles} () const
+\item 
 virtual std\+::string \mbox{\hyperlink{structDisplayable_a8952543575cee93a88c9fbe26d571227}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{structDisplayable_af1a8d2507e3efbda2568826d7dcc8c57}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
@@ -44,11 +53,11 @@ virtual void \mbox{\hyperlink{structDisplayable_af1a8d2507e3efbda2568826d7dcc8c5
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{structDisplayable_a06d63f833c1bed74b4cbadcf34890010}\label{structDisplayable_a06d63f833c1bed74b4cbadcf34890010}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ M, E $>$ $>$ {\bfseries psys}
+\item 
 \mbox{\Hypertarget{structDisplayable_a65d91005d27c6b5fbeec1fb3db321452}\label{structDisplayable_a65d91005d27c6b5fbeec1fb3db321452}} 
 std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Color $>$ {\bfseries pcolor}
-\item 
-\mbox{\Hypertarget{structDisplayable_a7b286fc8dcd3cc94ac815f42f448f93d}\label{structDisplayable_a7b286fc8dcd3cc94ac815f42f448f93d}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classShape3D}{Shape3D}}$<$ M, E $>$ $>$ {\bfseries pshape}
 \end{DoxyCompactItemize}
 
 

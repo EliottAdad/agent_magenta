@@ -1,11 +1,12 @@
 <map id="TimeSensitive" name="TimeSensitive">
-<area shape="rect" id="node1" title=" " alt="" coords="265,80,380,107"/>
-<area shape="rect" id="node3" href="$classParticle3D.html" title=" " alt="" coords="71,155,217,181"/>
-<area shape="rect" id="node8" href="$classSystem3D.html" title=" " alt="" coords="241,155,404,181"/>
-<area shape="rect" id="node9" href="$classVectorField.html" title=" " alt="" coords="429,155,523,181"/>
-<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="283,5,363,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="344,80,459,107"/>
+<area shape="rect" id="node3" href="$classParticle3D.html" title=" " alt="" coords="149,155,296,181"/>
+<area shape="rect" id="node9" href="$classSystem3D.html" title=" " alt="" coords="320,155,483,181"/>
+<area shape="rect" id="node10" href="$classVectorField.html" title=" " alt="" coords="507,155,602,181"/>
+<area shape="rect" id="node2" href="$classPrintable.html" title=" " alt="" coords="361,5,441,32"/>
 <area shape="rect" id="node4" href="$classBall3D.html" title=" " alt="" coords="5,229,128,256"/>
 <area shape="rect" id="node5" href="$classObject3D.html" title=" " alt="" coords="153,229,293,256"/>
+<area shape="rect" id="node8" href="$classParticleRot3D.html" title=" " alt="" coords="317,229,485,256"/>
 <area shape="rect" id="node6" href="$classRObject3D.html" title=" " alt="" coords="61,304,211,331"/>
 <area shape="rect" id="node7" href="$classSObject3D.html" title=" " alt="" coords="235,304,383,331"/>
 </map>

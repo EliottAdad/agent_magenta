@@ -1,0 +1,115 @@
+\hypertarget{classParticleRot3D}{}\doxysection{Particle\+Rot3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classParticleRot3D}\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+
+
+Inheritance diagram for Particle\+Rot3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classParticleRot3D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Rot3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classParticleRot3D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParticleRot3D_a00425fecda3ba59ef0c209149cab4a81}\label{classParticleRot3D_a00425fecda3ba59ef0c209149cab4a81}} 
+{\bfseries Particle\+Rot3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p)
+\item 
+\mbox{\Hypertarget{classParticleRot3D_a27a48931ec09d0a6be334496c335b46e}\label{classParticleRot3D_a27a48931ec09d0a6be334496c335b46e}} 
+{\bfseries Particle\+Rot3D} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&x, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&y, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&z, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&w=\{1, 0\})
+\item 
+\mbox{\Hypertarget{classParticleRot3D_abfa357e52f388c25cb773d68f35d92e3}\label{classParticleRot3D_abfa357e52f388c25cb773d68f35d92e3}} 
+{\bfseries Particle\+Rot3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}}$<$ M, E $>$ \&wp)
+\item 
+\mbox{\Hypertarget{classParticleRot3D_a4f3767846ea169394eda8a72e579c581}\label{classParticleRot3D_a4f3767846ea169394eda8a72e579c581}} 
+{\bfseries Particle\+Rot3D} (const \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$ \&p)
+\item 
+virtual void \mbox{\hyperlink{classParticleRot3D_a060bfb8d1b0e980aa1e712b3d9378192}{setT}} (const float \&dt)
+\item 
+virtual void \mbox{\hyperlink{classParticleRot3D_a68f1f0a5778d13b82b40d1c505c6fbf4}{apply}} ()
+\item 
+virtual void \mbox{\hyperlink{classParticleRot3D_aee1b215a7f31205bd77202792e85f33e}{operator+=}} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&v)
+\item 
+std\+::string \mbox{\hyperlink{classParticleRot3D_a530472f613fb478dcc0b983e9ce429cd}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+void \mbox{\hyperlink{classParticleRot3D_ad05568df6d9145d694e59fced35e845b}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParticleRot3D_aefed10f4ec251f840838d52921229f35}\label{classParticleRot3D_aefed10f4ec251f840838d52921229f35}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ $>$ {\bfseries prs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParticleRot3D_a68f1f0a5778d13b82b40d1c505c6fbf4}\label{classParticleRot3D_a68f1f0a5778d13b82b40d1c505c6fbf4}} 
+\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}!apply@{apply}}
+\index{apply@{apply}!ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$\+::apply\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classParticle3D}{Particle3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classParticleRot3D_aee1b215a7f31205bd77202792e85f33e}\label{classParticleRot3D_aee1b215a7f31205bd77202792e85f33e}} 
+\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classParticle3D}{Particle3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classParticleRot3D_ad05568df6d9145d694e59fced35e845b}\label{classParticleRot3D_ad05568df6d9145d694e59fced35e845b}} 
+\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}!print@{print}}
+\index{print@{print}!ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classParticle3D}{Particle3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classParticleRot3D_a060bfb8d1b0e980aa1e712b3d9378192}\label{classParticleRot3D_a060bfb8d1b0e980aa1e712b3d9378192}} 
+\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}!setT@{setT}}
+\index{setT@{setT}!ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{setT()}{setT()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$\+::setT (\begin{DoxyParamCaption}\item[{const float \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classParticle3D}{Particle3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classParticleRot3D_a530472f613fb478dcc0b983e9ce429cd}\label{classParticleRot3D_a530472f613fb478dcc0b983e9ce429cd}} 
+\index{ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!ParticleRot3D$<$ M, E $>$@{ParticleRot3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+std\+::string \mbox{\hyperlink{classParticleRot3D}{Particle\+Rot3D}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classParticle3D}{Particle3\+D$<$ M, E $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+geometry/Particle\+Rot3\+D.\+h\end{DoxyCompactItemize}

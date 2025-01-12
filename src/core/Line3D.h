@@ -11,7 +11,7 @@
 
 #include <memory>
 
-#include "Point3D.h"
+#include "../core/Point3D.h"
 #include "../utilities/functions.h"
 #include "../utilities/Printable.h"
 

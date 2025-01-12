@@ -424,4 +424,5 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E
 }
 
 
+
 #endif /* POINT3D_H_ */

@@ -49,10 +49,13 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Particle3D<M
 	for (unsigned char i(0) ; i<n ; i++){
 		for (unsigned char j(0) ; j<n ; j++){
 			for (unsigned char k(0) ; k<n ; k++){
-				pparts.insert(std::make_shared<Particle3D<M, E>>((M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x,
+				std::shared_ptr<Particle3D<M, E>> ppart=std::make_shared<Particle3D<M, E>>(
+						(M)(-1)*a/(M)2+(M)i*a/(M)(n-1)+p.x,
 						(M)(-1)*a/(M)2+(M)j*a/(M)(n-1)+p.y,
 						(M)(-1)*a/(M)2+(M)k*a/(M)(n-1)+p.z,
-						w));
+						w);
+				ppart->ps=std::make_shared<Vector3D<M, E>>(Point3D<M, E>{{0,0},{0,0},{0,0}});
+				pparts.insert(ppart);
 			}
 		}
 	}
@@ -60,4 +63,4 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Particle3D<M
 }
 
 
-#endif /* FUNCTIONS_H_ */
+#endif /* FUNCTIONSPARTICLE3D_H_ */

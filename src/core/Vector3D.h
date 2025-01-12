@@ -12,8 +12,8 @@
 
 #include <memory>
 
-#include "Line3D.h"
-#include "Point3D.h"
+#include "../core/Line3D.h"
+#include "../core/Point3D.h"
 
 /*
  * ##################

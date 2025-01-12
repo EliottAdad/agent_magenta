@@ -1,11 +1,12 @@
 <map id="Particle3D&lt; M, E &gt;" name="Particle3D&lt; M, E &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="144,155,291,181"/>
-<area shape="rect" id="node6" href="$classBall3D.html" title=" " alt="" coords="79,229,201,256"/>
-<area shape="rect" id="node7" href="$classObject3D.html" title=" " alt="" coords="226,229,366,256"/>
-<area shape="rect" id="node2" href="$structPoint3D.html" title=" " alt="" coords="5,80,136,107"/>
-<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="177,5,257,32"/>
-<area shape="rect" id="node4" href="$classTimeSensitive.html" title=" " alt="" coords="160,80,275,107"/>
-<area shape="rect" id="node5" href="$structDisplayable.html" title=" " alt="" coords="299,80,456,107"/>
-<area shape="rect" id="node8" href="$classRObject3D.html" title=" " alt="" coords="135,304,284,331"/>
-<area shape="rect" id="node9" href="$classSObject3D.html" title=" " alt="" coords="309,304,457,331"/>
+<area shape="rect" id="node1" title=" " alt="" coords="149,155,296,181"/>
+<area shape="rect" id="node6" href="$classBall3D.html" title=" " alt="" coords="5,229,128,256"/>
+<area shape="rect" id="node7" href="$classObject3D.html" title=" " alt="" coords="153,229,293,256"/>
+<area shape="rect" id="node10" href="$classParticleRot3D.html" title=" " alt="" coords="317,229,485,256"/>
+<area shape="rect" id="node2" href="$structPoint3D.html" title=" " alt="" coords="11,80,141,107"/>
+<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="183,5,263,32"/>
+<area shape="rect" id="node4" href="$classTimeSensitive.html" title=" " alt="" coords="165,80,280,107"/>
+<area shape="rect" id="node5" href="$structDisplayable.html" title=" " alt="" coords="304,80,461,107"/>
+<area shape="rect" id="node8" href="$classRObject3D.html" title=" " alt="" coords="61,304,211,331"/>
+<area shape="rect" id="node9" href="$classSObject3D.html" title=" " alt="" coords="235,304,383,331"/>
 </map>

@@ -9,7 +9,7 @@
 
 #define MAIN3_CPP_
 
-#include "geometry/Vector3D.h"
+#include "core/Vector3D.h"
 
 
 /*

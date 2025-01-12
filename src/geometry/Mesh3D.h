@@ -12,8 +12,8 @@
 #include <memory>
 #include <unordered_set>
 
-#include "Point3D.h"
-#include "Line3D.h"
+#include "../core/Line3D.h"
+#include "../core/Point3D.h"
 #include "Triangle3D.h"
 #include "Shape3D.h"
 #include "../utilities/Printable.h"
@@ -24,7 +24,7 @@
  * ##############
  * A mesh is a set of triangles.
  */
-template<typename M, typename E> class Mesh3D: public Shape3D<M, E> {
+template<typename M, typename E> class Mesh3D : public Shape3D<M, E> {
 public:
 	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> ptriangles;
 

@@ -10,22 +10,28 @@
 #define SHAPE3D_H_
 
 #include <unordered_set>
-#include "Point3D.h"
-#include "Line3D.h"
+
+#include "../core/Line3D.h"
+#include "../core/Point3D.h"
+#include "../display/Displayable.h"
 
 /*
  * #################
  *  Shape3D<M, E> :)
  * #################
  */
-template<typename M, typename E> class Shape3D : public Point3D<M, E> {
+template<typename M, typename E> class Shape3D : public Point3D<M, E>, public Displayable<M, E> {
 public:
 	Shape3D();
 	virtual ~Shape3D();
 	Shape3D(const Shape3D<M, E>& shape);
 
-	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
-	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
+	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPPoints() const;
+	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getPLines() const;
+	virtual std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> getPTriangles() const;
+
+	//virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
+	//virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
 	//virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
@@ -47,14 +53,19 @@ template<typename M, typename E> Shape3D<M, E>::Shape3D(const Shape3D &other) {
 }
 
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Shape3D<M, E>::getPoints() const {
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Shape3D<M, E>::getPPoints() const {
 	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
 	return ppoints;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Shape3D<M, E>::getLines() const {
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Shape3D<M, E>::getPLines() const {
 	std::unordered_set<std::shared_ptr<Line3D<M, E>>> plines;
 	return plines;
+}
+
+template<typename M, typename E> std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> Shape3D<M, E>::getPTriangles() const {
+	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> ptriangles;
+	return ptriangles;
 }
 
 

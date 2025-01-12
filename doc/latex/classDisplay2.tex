@@ -1,0 +1,117 @@
+\hypertarget{classDisplay2}{}\doxysection{Display2\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classDisplay2}\index{Display2$<$ M, E $>$@{Display2$<$ M, E $>$}}
+
+
+Inheritance diagram for Display2\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classDisplay2__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Display2\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classDisplay2__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDisplay2_aa229f4feea452dee438623b22ec331d0}\label{classDisplay2_aa229f4feea452dee438623b22ec331d0}} 
+{\bfseries Display2} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint)
+\item 
+\mbox{\Hypertarget{classDisplay2_ac3974dbbd6448e90d894e7dbbbe5ae56}\label{classDisplay2_ac3974dbbd6448e90d894e7dbbbe5ae56}} 
+{\bfseries Display2} (std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Window $>$ pwindow, std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Renderer $>$ prenderer)
+\item 
+\mbox{\Hypertarget{classDisplay2_a7f86f300945ebeda12f967fe52f1fdb8}\label{classDisplay2_a7f86f300945ebeda12f967fe52f1fdb8}} 
+char {\bfseries get\+Display} () const
+\item 
+\mbox{\Hypertarget{classDisplay2_a857f28df477948299b26d27c4c0b12ec}\label{classDisplay2_a857f28df477948299b26d27c4c0b12ec}} 
+void {\bfseries set\+Display} (const char \&display)
+\item 
+\mbox{\Hypertarget{classDisplay2_a19fafe750334fcb00afee819cfa6add8}\label{classDisplay2_a19fafe750334fcb00afee819cfa6add8}} 
+float {\bfseries get\+Scale} () const
+\item 
+\mbox{\Hypertarget{classDisplay2_ad7862c54c938c07dcf49a36aa3cbd7e9}\label{classDisplay2_ad7862c54c938c07dcf49a36aa3cbd7e9}} 
+void {\bfseries set\+Scale} (const float \&scale)
+\item 
+\mbox{\Hypertarget{classDisplay2_aaf5c8c1ed05b58353065f4ef4df0643f}\label{classDisplay2_aaf5c8c1ed05b58353065f4ef4df0643f}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PScenes} () const
+\item 
+\mbox{\Hypertarget{classDisplay2_a597a3830a8281f9458c41e3c82c10013}\label{classDisplay2_a597a3830a8281f9458c41e3c82c10013}} 
+void {\bfseries add\+PScene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}}$<$ M, E $>$ $>$ pscene)
+\item 
+\mbox{\Hypertarget{classDisplay2_a19888b1ce0a394ffe4cc45f945191d85}\label{classDisplay2_a19888b1ce0a394ffe4cc45f945191d85}} 
+bool {\bfseries render} () const
+\item 
+\mbox{\Hypertarget{classDisplay2_a828054f61607780dc429ae9c52aa97aa}\label{classDisplay2_a828054f61607780dc429ae9c52aa97aa}} 
+bool {\bfseries render} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}}$<$ M, E $>$ $>$ pscene) const
+\item 
+\mbox{\Hypertarget{classDisplay2_af8a36f954eb2f3ee2b5d024971c0e5f5}\label{classDisplay2_af8a36f954eb2f3ee2b5d024971c0e5f5}} 
+bool {\bfseries render} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structDisplayable}{Displayable}}$<$ M, E $>$ $>$ pdisplayable) const
+\item 
+\mbox{\Hypertarget{classDisplay2_a0b592eb2b134dfd109f6b3f8210c131d}\label{classDisplay2_a0b592eb2b134dfd109f6b3f8210c131d}} 
+bool {\bfseries render} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ ppoint) const
+\item 
+virtual std\+::string \mbox{\hyperlink{classDisplay2_a657964e991405d7a28d7323b4e1f59de}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classDisplay2_abf229ee55a2cbee2c07f03f2d97f2c58}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDisplay2_ab8f9b1e7b0725c17878dc179393612d0}\label{classDisplay2_ab8f9b1e7b0725c17878dc179393612d0}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ M, E $>$ $>$ {\bfseries pcoordinate\+\_\+system}
+\item 
+\mbox{\Hypertarget{classDisplay2_a99ccadbcfa0f2179fd16943cb1dae164}\label{classDisplay2_a99ccadbcfa0f2179fd16943cb1dae164}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries ppoint}
+\item 
+\mbox{\Hypertarget{classDisplay2_a0ad92aaa51f28f6351fdefdc4332aeeb}\label{classDisplay2_a0ad92aaa51f28f6351fdefdc4332aeeb}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Color $>$ {\bfseries pbkgd\+\_\+color}
+\item 
+\mbox{\Hypertarget{classDisplay2_a54fcd8b0a7beae0e33cda7dfcd9e1f22}\label{classDisplay2_a54fcd8b0a7beae0e33cda7dfcd9e1f22}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Color $>$ {\bfseries pdraw\+\_\+color}
+\item 
+\mbox{\Hypertarget{classDisplay2_a5fc9558438ccf42a4502cc639affe4d2}\label{classDisplay2_a5fc9558438ccf42a4502cc639affe4d2}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Window $>$ {\bfseries pwindow}
+\item 
+\mbox{\Hypertarget{classDisplay2_aaae8c9e10860884f0048d72387d97bdc}\label{classDisplay2_aaae8c9e10860884f0048d72387d97bdc}} 
+std\+::shared\+\_\+ptr$<$ SDL\+\_\+\+Renderer $>$ {\bfseries prenderer}
+\item 
+\mbox{\Hypertarget{classDisplay2_a9ab8f9f1485a7ea553c66ba52114f022}\label{classDisplay2_a9ab8f9f1485a7ea553c66ba52114f022}} 
+bool {\bfseries fclear}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDisplay2_abf229ee55a2cbee2c07f03f2d97f2c58}\label{classDisplay2_abf229ee55a2cbee2c07f03f2d97f2c58}} 
+\index{Display2$<$ M, E $>$@{Display2$<$ M, E $>$}!print@{print}}
+\index{print@{print}!Display2$<$ M, E $>$@{Display2$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+void \mbox{\hyperlink{classDisplay2}{Display2}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{classDisplay2_a657964e991405d7a28d7323b4e1f59de}\label{classDisplay2_a657964e991405d7a28d7323b4e1f59de}} 
+\index{Display2$<$ M, E $>$@{Display2$<$ M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Display2$<$ M, E $>$@{Display2$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+std\+::string \mbox{\hyperlink{classDisplay2}{Display2}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+display/Display2.\+h\end{DoxyCompactItemize}

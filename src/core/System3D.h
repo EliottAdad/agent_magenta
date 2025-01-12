@@ -13,7 +13,7 @@
 #include <unordered_set>
 
 #include "../utilities/macros.h"
-#include "../geometry/Vector3D.h"
+#include "../core/Vector3D.h"
 #include "Oct.h"
 #include "TimeSensitive.h"
 
@@ -30,7 +30,6 @@ protected:
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
 	Oct<T, M, E>* m_poctree;												// Pointer to the Octree.
 
-	float m_dt;
 	std::unordered_set<std::shared_ptr<T>> m_pelements;
 
 public:
@@ -318,14 +317,14 @@ template<typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<Particle3D<
 	*pv->pp1=pT2->getPosition();
 	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
 
-	if (pT1!=NULL && pT2!=NULL) {
+	if (pT1!=NULL && pT2!=NULL && pT1->pfields!=NULL /*&& pT1->pfields->contains("mass")*/) {
 		*pv->pp2=pT1->getPosition()-pT2->getPosition();
 
 		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
 		//printf("\n############d\n");
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
 		//printf("\n############d\n");
-		pv->setNorm(G*abs(pT1->getW())/(d*d));
+		pv->setNorm(G*abs(*((*pT1->pfields)["mass"])/*pT1->getW()*/)/(d*d));
 	}
 	//printf("\n############pv\n");
 	//pv->print();

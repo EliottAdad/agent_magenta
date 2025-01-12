@@ -9,7 +9,7 @@
 
 #define WEIGHTEDPOINT3D_H_
 
-#include "Point3D.h"
+#include "../core/Point3D.h"
 
 /*
  * #########################

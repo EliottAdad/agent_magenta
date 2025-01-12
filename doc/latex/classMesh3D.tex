@@ -2,22 +2,20 @@
 \label{classMesh3D}\index{Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}}
 
 
-Inheritance diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{classMesh3D__inherit__graph}
+\includegraphics[width=314pt]{classMesh3D__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{classMesh3D__coll__graph}
+\includegraphics[width=314pt]{classMesh3D__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -29,9 +27,11 @@ Collaboration diagram for Mesh3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$
 \mbox{\Hypertarget{classMesh3D_a63164748eb51e78d1d7f3cf39eef8e0b}\label{classMesh3D_a63164748eb51e78d1d7f3cf39eef8e0b}} 
 void {\bfseries add\+Triangle} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ ptriangle)
 \item 
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classMesh3D_a804afa5faceafaa12b01b024ebb02055}{get\+Points}} () const
+\mbox{\Hypertarget{classMesh3D_a804afa5faceafaa12b01b024ebb02055}\label{classMesh3D_a804afa5faceafaa12b01b024ebb02055}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+Points} () const
 \item 
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classMesh3D_a7b6a3a9da3fac66f0022f0fdcc4926fb}{get\+Lines}} () const
+\mbox{\Hypertarget{classMesh3D_a7b6a3a9da3fac66f0022f0fdcc4926fb}\label{classMesh3D_a7b6a3a9da3fac66f0022f0fdcc4926fb}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+Lines} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -39,31 +39,6 @@ virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{
 \mbox{\Hypertarget{classMesh3D_ab94cbd11de3d3113667fbb04da4f5bee}\label{classMesh3D_ab94cbd11de3d3113667fbb04da4f5bee}} 
 std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ $>$ {\bfseries ptriangles}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classMesh3D_a7b6a3a9da3fac66f0022f0fdcc4926fb}\label{classMesh3D_a7b6a3a9da3fac66f0022f0fdcc4926fb}} 
-\index{Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}!getLines@{getLines}}
-\index{getLines@{getLines}!Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{getLines()}{getLines()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classMesh3D}{Mesh3D}}$<$ M, E $>$\+::get\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
-
-\mbox{\Hypertarget{classMesh3D_a804afa5faceafaa12b01b024ebb02055}\label{classMesh3D_a804afa5faceafaa12b01b024ebb02055}} 
-\index{Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}!getPoints@{getPoints}}
-\index{getPoints@{getPoints}!Mesh3D$<$ M, E $>$@{Mesh3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ $>$ \mbox{\hyperlink{classMesh3D}{Mesh3D}}$<$ M, E $>$\+::get\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
-
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -22,12 +22,11 @@ TimeSensitive::~TimeSensitive() {
 
 
 void TimeSensitive::setT(const float& dt) {
-	// TODO Auto-generated constructor stub
-
+	m_dt=dt;
 }
 
 void TimeSensitive::apply() {//Useless
-	;
+	m_dt=0;
 }
 
 

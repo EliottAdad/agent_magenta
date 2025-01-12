@@ -1,3 +1,33 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classTimeLoop.html" title=" " alt="" coords="5,5,92,32"/>
+<area shape="rect" id="node1" href="$classPrintable.html" title=" " alt="" coords="5,360,85,387"/>
+<area shape="rect" id="node2" href="$classCamera.html" title=" " alt="" coords="147,5,277,32"/>
+<area shape="rect" id="node3" href="$classDisplay1.html" title=" " alt="" coords="143,56,281,83"/>
+<area shape="rect" id="node4" href="$classDisplay2.html" title=" " alt="" coords="143,107,281,133"/>
+<area shape="rect" id="node5" href="$structDisplayable.html" title=" " alt="" coords="133,208,291,235"/>
+<area shape="rect" id="node17" href="$classFace.html" title=" " alt="" coords="187,309,237,336"/>
+<area shape="rect" id="node18" href="$classGame.html" title=" " alt="" coords="181,360,243,387"/>
+<area shape="rect" id="node19" href="$classLine3D.html" title=" " alt="" coords="149,411,275,437"/>
+<area shape="rect" id="node21" href="$classOct.html" title=" " alt="" coords="153,461,271,488"/>
+<area shape="rect" id="node22" href="$classPhysics.html" title=" " alt="" coords="177,512,247,539"/>
+<area shape="rect" id="node23" href="$structPoint3D.html" title=" " alt="" coords="147,157,277,184"/>
+<area shape="rect" id="node25" href="$structPoint3DS.html" title=" " alt="" coords="153,563,271,589"/>
+<area shape="rect" id="node26" href="$classQuad.html" title=" " alt="" coords="147,613,277,640"/>
+<area shape="rect" id="node27" href="$structSN.html" title=" " alt="" coords="163,664,261,691"/>
+<area shape="rect" id="node28" href="$classScene.html" title=" " alt="" coords="153,715,271,741"/>
+<area shape="rect" id="node29" href="$classTimeSensitive.html" title=" " alt="" coords="155,259,269,285"/>
+<area shape="rect" id="node6" href="$classParticle3D.html" title=" " alt="" coords="361,208,508,235"/>
+<area shape="rect" id="node12" href="$classShape3D.html" title=" " alt="" coords="365,157,504,184"/>
+<area shape="rect" id="node7" href="$classBall3D.html" title=" " alt="" coords="601,208,724,235"/>
+<area shape="rect" id="node8" href="$classObject3D.html" title=" " alt="" coords="593,259,733,285"/>
+<area shape="rect" id="node11" href="$classParticleRot3D.html" title=" " alt="" coords="579,309,747,336"/>
+<area shape="rect" id="node9" href="$classRObject3D.html" title=" " alt="" coords="795,233,944,260"/>
+<area shape="rect" id="node10" href="$classSObject3D.html" title=" " alt="" coords="795,284,943,311"/>
+<area shape="rect" id="node13" href="$classMesh3D.html" title=" " alt="" coords="596,56,729,83"/>
+<area shape="rect" id="node14" href="$classPolyhedron.html" title=" " alt="" coords="586,107,739,133"/>
+<area shape="rect" id="node16" href="$classSphere.html" title=" " alt="" coords="600,157,725,184"/>
+<area shape="rect" id="node15" href="$classCube.html" title=" " alt="" coords="813,107,926,133"/>
+<area shape="rect" id="node20" href="$classVector3D.html" title=" " alt="" coords="365,411,504,437"/>
+<area shape="rect" id="node24" href="$structWeightedPoint3D.html" title=" " alt="" coords="339,107,531,133"/>
+<area shape="rect" id="node30" href="$classSystem3D.html" title=" " alt="" coords="353,259,516,285"/>
+<area shape="rect" id="node31" href="$classVectorField.html" title=" " alt="" coords="387,309,482,336"/>
 </map>

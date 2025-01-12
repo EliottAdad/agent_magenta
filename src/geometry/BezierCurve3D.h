@@ -8,8 +8,8 @@
 #include <vector>
 #include <unordered_set>
 
+#include "../core/Point3D.h"
 #include "../utilities/functions.h"
-#include "Point3D.h"
 
 
 /*
@@ -26,7 +26,7 @@ template<typename M, typename E> class BezierCurve3D {
 	BezierCurve3D(const BezierCurve3D<M, E>& bezier_curve);//:)
 	~BezierCurve3D();//:)
 	
-	std::shared_ptr<Point3D<M, E>> getImage(const float& t);//:) t is between 0 and 1.
+	//std::shared_ptr<Point3D<M, E>> getImage(const float& t);//:) t is between 0 and 1.
 
 	bool testOnLine(const Point3D<M, E>& point);//:)
 	//Line2D* getPerpendicularLine(Point2D* ppoint);//:) Get a perpendicular line passing throug the point in parameter.
@@ -53,7 +53,7 @@ template<typename M, typename E> BezierCurve3D<M, E>::~BezierCurve3D() {
 /**
  * Get the image on the line given the factor t.
  */
-template<typename M, typename E> std::shared_ptr<Point3D<M, E>> BezierCurve3D<M, E>::getImage(const float& t) {
+/*template<typename M, typename E> std::shared_ptr<Point3D<M, E>> BezierCurve3D<M, E>::getImage(const float& t) {
 	SN<M, E> x{0, 0}, y{0, 0};
 
 	for (int i(0) ; i<(int)m_ppoints.size() ; i++)
@@ -63,7 +63,7 @@ template<typename M, typename E> std::shared_ptr<Point3D<M, E>> BezierCurve3D<M,
 	}
 
 	return new Point3D{x, y};
-}
+}*/
 
 
 #endif

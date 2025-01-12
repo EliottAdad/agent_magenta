@@ -14,7 +14,7 @@
 #include <unordered_set>
 
 //#include "Particle3D.h"
-#include "../geometry/Point3D.h"
+#include "Point3D.h"
 #include "../utilities/Printable.h"
 
 

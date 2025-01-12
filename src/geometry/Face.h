@@ -17,7 +17,7 @@
  * ##############
  * .
  */
-class Face: public Printable {
+class Face : public Printable {
 public:
 	Face();
 	virtual ~Face();

@@ -10,12 +10,17 @@
 #define PARTICLE3D_H_
 
 #include <memory>
-#include <vector>
+#include <unordered_set>
+#include <string>
+#include <unordered_map>
 
 #include "WeightedPoint3D.h"
-#include "Vector3D.h"
+#include "../core/CoordinateSystem3D.h"
 #include "../core/TimeSensitive.h"
+#include "../core/Vector3D.h"
 #include "../display/Displayable.h"
+
+//template<typename M, typename E> enum<M, E> Property {SN<M, E>, };
 
 /*
  * ####################
@@ -23,14 +28,12 @@
  * ####################
  * A point with a speed.
  */
-template<typename M, typename E> class Particle3D : public Point3D<M, E>/*public WeightedPoint3D<M, E>*/, public TimeSensitive, public Displayable<M, E> {
-protected:
-	float m_dt;
-
+template<typename M, typename E> class Particle3D : public Point3D<M, E>, public TimeSensitive, public Displayable<M, E> {
 public:
+	std::shared_ptr<CoordinateSystem3D<M, E>> psys;								// The coords system in wich it is expressed
 	std::shared_ptr<Vector3D<M, E>> ps;											// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
-	std::shared_ptr<Vector3D<M, E>> prs;										// Rotational speed.
-	std::shared_ptr<std::vector<std::shared_ptr<SN<M, E>>>> pfields;		// Numeric fields
+	std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>> pfields;		// Numeric fields
+	//std::shared_ptr<std::map<std::string, std::shared_ptr<void>>> pproperties;		// Properties
 
 	Particle3D();
 	Particle3D(const Point3D<M, E>& p);
@@ -60,11 +63,13 @@ public:
 	virtual void apply();
 
 	virtual void operator+=(const Vector3D<M, E>& v);// :)
+	//virtual void operator+=(const Particle3D<M, E>& p);// :)
 
 	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
+template<typename M, typename E> Particle3D<M, E> operator+(const Particle3D<M, E>& p1, const Particle3D<M, E>& p2);
 
 
 
@@ -73,8 +78,8 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D() {
 	this->y=SN<M, E>{1,0};
 	this->z=SN<M, E>{1,0};
 	//this->w=SN<M, E>{1,0};						// Init the Weighted Point to {x=1, y=1, y=1, w=1}
-	pfields=std::make_shared<std::vector<std::shared_ptr<SN<M, E>>>>();
-	pfields->push_back(std::make_shared<SN<M, E>>(SN<M, E>{1,0}));
+	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	pfields->insert({"mass", std::make_shared<SN<M, E>>(SN<M, E>{1,0})});
 
 	ps=std::make_shared<Vector3D<M, E>>();		// Vector3D init to end=(1, 1, 1)
 	this->pcolor=NULL;
@@ -107,8 +112,8 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const Point3D<M, E
 	this->y=p.y;
 	this->z=p.z;
 	//this->w=SN<M, E>{1,0};// Init the Weighted Point to {x, y, y, w=1}
-	pfields=std::make_shared<std::vector<std::shared_ptr<SN<M, E>>>>();
-	pfields->push_back(std::make_shared<SN<M, E>>(SN<M, E>{1,0}));
+	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	pfields->insert({"mass", std::make_shared<SN<M, E>>(SN<M, E>{1,0})});
 
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
@@ -120,8 +125,8 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const SN<M, E>& x,
 	this->x=x;
 	this->y=y;
 	this->z=z;
-	pfields=std::make_shared<std::vector<std::shared_ptr<SN<M, E>>>>();
-	pfields->push_back(std::make_shared<SN<M, E>>(w));
+	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	pfields->insert({"mass", std::make_shared<SN<M, E>>(w)});
 
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
@@ -134,8 +139,8 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const WeightedPoin
 	this->y=wp.y;
 	this->z=wp.z;
 	//this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	pfields=std::make_shared<std::vector<std::shared_ptr<SN<M, E>>>>();
-	pfields->push_back(std::make_shared<SN<M, E>>(wp.w));
+	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	pfields->insert({"mass", std::make_shared<SN<M, E>>(wp.w)});
 
 	ps=std::make_shared<Vector3D<M, E>>();
 	this->pcolor=NULL;
@@ -174,8 +179,8 @@ template<typename M, typename E> Particle3D<M, E>::Particle3D(const Particle3D<M
 	this->y=p.y;
 	this->z=p.z;
 	//this->w=p.w;// Init the Weighted Point to {x, y, y, w}
-	pfields=std::make_shared<std::vector<std::shared_ptr<SN<M, E>>>>();
-	*pfields=*(p->pfields);
+	//pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	pfields=p->pfields;
 
 	ps=p.ps;
 	this->pcolor=p.pcolor;
@@ -200,77 +205,15 @@ template<typename M, typename E> SN<M, E> Particle3D<M, E>::getZ() const {
 template<typename M, typename E> SN<M, E> Particle3D<M, E>::getW() const {
 	SN<M, E> w{1,0};
 
-	if (pfields!=NULL && (*pfields)[0]!=NULL){
-		w=*((*pfields)[0]);
+	if (pfields!=NULL /*&& pfields->contains("mass")*/){
+		w=*((*pfields)["mass"]);
 	}
 
 	return w;
 }
 
-/*Vector3D Particle3D::getSpeed() const {//Yep because cant be null
-	return *m_ps;
-}
-
-Vector3D* Particle3D::getPSpeed() const {
-	Vector3D* ps=NULL;
-	if (m_dels){
-		ps=m_ps;
-	}
-	return ps;
-}
-
-void Particle3D::setSpeed(const Vector3D& v) {
-	*m_ps=v;
-}
-
-void Particle3D::setSpeed(const Point3D<float, char>& p) {
-	*(m_ps->pp2)=p;
-}
-
-void Particle3D::addSpeed(const Vector3D& ds) {
-	*m_ps+=ds;
-}
-
-void Particle3D::addSpeed(const Point3D<float, char>& p) {
-	*(m_ps->pp2)+=p;
-}*/
-
-/*template<typename M, typename E> void Particle3D<M, E>::addAsForce(const Vector3D<M, E>& v, const float& dt) {
-	SN<M, E> a=SN<M, E>{(M)dt, 0}/this->w;
-	if (ps!=NULL){
-		*ps+=v*a;
-	}else{
-		ps=std::make_shared<Vector3D<M, E>>(v*a);
-	}
-}
-
-template<typename M, typename E> void Particle3D<M, E>::addAsAcc(const Vector3D<M, E>& v, const float& dt) {
-	if (ps!=NULL){
-		*ps+=v*(M)dt;
-	}else{
-		ps=std::make_shared<Vector3D<M, E>>(v*(M)dt);
-	}
-}
-
-template<typename M, typename E> void Particle3D<M, E>::addAsSpeed(const Vector3D<M, E>& v) {
-	if (ps!=NULL){
-		*ps+=v;
-	}else{
-		ps=std::make_shared<Vector3D<M, E>>(v);
-	}
-}
-
-template<typename M, typename E> void Particle3D<M, E>::addAsPos(const Vector3D<M, E>& v) {
-	this->x+=v.pp2->x;
-	this->y+=v.pp2->y;
-	this->z+=v.pp2->z;
-}*/
-
-
-
 template<typename M, typename E> void Particle3D<M, E>::setT(const float& dt) {
 	m_dt=dt;
-	//printf("dt:  %f\n", dt);
 }
 
 template<typename M, typename E> void Particle3D<M, E>::apply(){
@@ -287,6 +230,14 @@ template<typename M, typename E> void Particle3D<M, E>::operator+=(const Vector3
 		*this->ps=v;
 	}
 }
+
+/*template<typename M, typename E> void Particle3D<M, E>::operator+=(const Particle3D<M, E>& p){
+	if (this->ps!=NULL){
+		*this->ps+=v;
+	}else{
+		*this->ps=v;
+	}
+}*/
 
 
 
@@ -317,6 +268,18 @@ template<typename M, typename E> void Particle3D<M, E>::print(const bool& spread
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
+
+template<typename M, typename E> Particle3D<M, E> operator+(const Particle3D<M, E>& p1, const Particle3D<M, E>& p2){
+	std::shared_ptr<Particle3D<M, E>> pparticle=std::make_shared<Particle3D<M, E>>();
+	*(pparticle->ps)=*(p1->ps)+*(p2->ps);
+	*(pparticle->prs)=*(p1->prs)+*(p2->prs);
+	pparticle->pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<SN<M, E>>>>();
+	if (p1->pfields!=NULL && p1->pfields->contains("mass") && p2->pfields!=NULL && p2->pfields->contains("mass")) {
+		pparticle->pfields->insert({"mass", *(p1->pfields)["mass"]+*(p2->pfields)["mass"]});
+	}
+}
+
+
 
 
 #endif /* PARTICLE3D_H_ */
