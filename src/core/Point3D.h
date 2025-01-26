@@ -11,92 +11,84 @@
 
 #include <memory>
 
-#include "../core/SN.h"
-#include "../utilities/Printable.h"
+#include "SN.h"
+#include "Printable.h"
 
 
 
 
 
 /*
- * #################
- *  Point3D<M, E> :)
- * #################
+ * ##############
+ *  Point3D<T> :)
+ * ##############
  */
-template<typename M, typename E> struct Point3D : public Printable {
-	SN<M, E> x;
-	SN<M, E> y;
-	SN<M, E> z;
+template<typename T> struct Point3D : public Printable {
+	T x;
+	T y;
+	T z;
 
 	Point3D();
-	Point3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z);
+	Point3D(const T& x, const T& y, const T& z);
 	virtual ~Point3D();
-	Point3D(const Point3D<M, E>& point);//Copy constructor
+	Point3D(const Point3D<T>& point);//Copy constructor
 
-	virtual SN<M, E> getX() const;							// :)
-	virtual SN<M, E> getY() const;							// :)
-	virtual SN<M, E> getZ() const;							// :)
-	//virtual Point3D<M, E> getPosition() const;				// :) To be inherited
+	virtual T getX() const;							// :)
+	virtual T getY() const;							// :)
+	virtual T getZ() const;							// :)
 
-	virtual void operator=(const Point3D<M, E>& p);			// :)
-	virtual void operator=(const SN<M, E>& nb);				// :)
-	virtual void operator+=(const Point3D<M, E>& p);			// :)
-	virtual void operator+=(const SN<M, E>& nb);				// :)
-	virtual void operator+=(const M& nb);		// :)
-	virtual void operator-=(const Point3D<M, E>& p);			// :)
-	virtual void operator-=(const SN<M, E>& nb);				// :)
-	virtual void operator-=(const M& nb);		// :)
-	virtual void operator*=(const SN<M, E>& k);				// :)
-	virtual void operator*=(const M& k);		// :)
-	virtual void operator/=(const SN<M, E>& k);				// :)
-	virtual void operator/=(const M& k);		// :)
+	virtual void operator=(const Point3D<T>& p);			// :)
+	virtual void operator=(const T& nb);				// :)
+	virtual void operator+=(const Point3D<T>& p);			// :)
+	virtual void operator+=(const T& nb);				// :)
+	virtual void operator-=(const Point3D<T>& p);			// :)
+	virtual void operator-=(const T& nb);				// :)
+	virtual void operator*=(const T& k);				// :)
+	virtual void operator/=(const T& k);				// :)
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
-template<typename M, typename E> bool operator==(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
-template<typename M, typename E> bool operator==(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
-template<typename M, typename E> bool operator==(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
-template<typename M, typename E> bool operator!=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
-template<typename M, typename E> bool operator!=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
-template<typename M, typename E> bool operator!=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
-template<typename M, typename E> bool operator<=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
-template<typename M, typename E> bool operator<=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
-template<typename M, typename E> bool operator<=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
-template<typename M, typename E> bool operator>=(const Point3D<M, E>& p1, const Point3D<M, E>& p2);		// :)
-template<typename M, typename E> bool operator>=(const Point3D<M, E>& p, const SN<M, E>& nb);		// :)
-template<typename M, typename E> bool operator>=(const SN<M, E>& nb, const Point3D<M, E>& p);		// :)
-template<typename M, typename E> Point3D<M, E> operator+(const Point3D<M, E>& p1, const Point3D<M, E>& p2);	// :)
-template<typename M, typename E> Point3D<M, E> operator-(const Point3D<M, E>& p1, const Point3D<M, E>& p2);	// :)
-template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
-template<typename M, typename E> Point3D<M, E> operator*(const SN<M, E>& k, const Point3D<M, E>& p);			// :)
-template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const M& k);
-template<typename M, typename E> Point3D<M, E> operator*(const M& k, const Point3D<M, E>& p);
-template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const SN<M, E>& k);			// :)
-template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const M& k);	// :)
-template<typename M, typename E> Point3D<M, E> abs(const Point3D<M, E>& p);	// :)
+template<typename T> bool operator==(const Point3D<T>& p1, const Point3D<T>& p2);		// :)
+template<typename T> bool operator==(const Point3D<T>& p, const T& nb);		// :)
+template<typename T> bool operator==(const T& nb, const Point3D<T>& p);		// :)
+template<typename T> bool operator!=(const Point3D<T>& p1, const Point3D<T>& p2);		// :)
+template<typename T> bool operator!=(const Point3D<T>& p, const T& nb);		// :)
+template<typename T> bool operator!=(const T& nb, const Point3D<T>& p);		// :)
+template<typename T> bool operator<=(const Point3D<T>& p1, const Point3D<T>& p2);		// :)
+template<typename T> bool operator<=(const Point3D<T>& p, const T& nb);		// :)
+template<typename T> bool operator<=(const T& nb, const Point3D<T>& p);		// :)
+template<typename T> bool operator>=(const Point3D<T>& p1, const Point3D<T>& p2);		// :)
+template<typename T> bool operator>=(const Point3D<T>& p, const T& nb);		// :)
+template<typename T> bool operator>=(const T& nb, const Point3D<T>& p);		// :)
+template<typename T> Point3D<T> operator+(const Point3D<T>& p1, const Point3D<T>& p2);	// :)
+template<typename T> Point3D<T> operator-(const Point3D<T>& p1, const Point3D<T>& p2);	// :)
+template<typename T> Point3D<T> operator*(const Point3D<T>& p, const T& k);			// :)
+template<typename T> Point3D<T> operator*(const T& k, const Point3D<T>& p);			// :)
+template<typename T> Point3D<T> operator/(const Point3D<T>& p, const T& k);			// :)
+template<typename T> Point3D<T> abs(const Point3D<T>& p);	// :)
 
 
 
 
-template<typename M, typename E> Point3D<M, E>::Point3D() {
-	this->x=SN<M, E>{0,0};
-	this->y=SN<M, E>{0,0};
-	this->z=SN<M, E>{0,0};
+template<typename T> Point3D<T>::Point3D() {
+	this->x=T{0,0};
+	this->y=T{0,0};
+	this->z=T{0,0};
 }
 
-template<typename M, typename E> Point3D<M, E>::Point3D(const SN<M, E>& x, const SN<M, E>& y, const SN<M, E>& z) {
+template<typename T> Point3D<T>::Point3D(const T& x, const T& y, const T& z) {
 	this->x=x;
 	this->y=y;
 	this->z=z;
 }
 
-template<typename M, typename E> Point3D<M, E>::~Point3D() {
+template<typename T> Point3D<T>::~Point3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename M, typename E> Point3D<M, E>::Point3D(const Point3D<M, E>& point) {
+template<typename T> Point3D<T>::Point3D(const Point3D<T>& point) {
 	this->x=point.x;
 	this->y=point.y;
 	this->z=point.z;
@@ -104,89 +96,65 @@ template<typename M, typename E> Point3D<M, E>::Point3D(const Point3D<M, E>& poi
 
 
 
-template<typename M, typename E> SN<M, E> Point3D<M, E>::getX() const {
+template<typename T> T Point3D<T>::getX() const {
 	return x;
 }
 
-template<typename M, typename E> SN<M, E> Point3D<M, E>::getY() const {
+template<typename T> T Point3D<T>::getY() const {
 	return y;
 }
 
-template<typename M, typename E> SN<M, E> Point3D<M, E>::getZ() const {
+template<typename T> T Point3D<T>::getZ() const {
 	return z;
 }
 
-/*template<typename M, typename E> Point3D<M, E> Point3D<M, E>::getPosition() const {
+/*template<typename T> Point3D<T> Point3D<T>::getPosition() const {
 	return {x, y, z};
 }*/
 
-template<typename M, typename E> void Point3D<M, E>::operator=(const Point3D<M, E>& p) {
+template<typename T> void Point3D<T>::operator=(const Point3D<T>& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator=(const SN<M, E>& nb) {
+template<typename T> void Point3D<T>::operator=(const T& nb) {
 	this->x=nb;
 	this->y=nb;
 	this->z=nb;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator+=(const Point3D<M, E>& p) {
+template<typename T> void Point3D<T>::operator+=(const Point3D<T>& p) {
 	this->x+=p.x;
 	this->y+=p.y;
 	this->z+=p.z;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator+=(const SN<M, E>& nb) {
+template<typename T> void Point3D<T>::operator+=(const T& nb) {
 	this->x+=nb;
 	this->y+=nb;
 	this->z+=nb;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator+=(const M& nb) {
-	this->x+=nb;
-	this->y+=nb;
-	this->z+=nb;
-}
-
-template<typename M, typename E> void Point3D<M, E>::operator-=(const Point3D<M, E>& p) {
+template<typename T> void Point3D<T>::operator-=(const Point3D<T>& p) {
 	this->x-=p.x;
 	this->y-=p.y;
 	this->z-=p.z;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator-=(const SN<M, E>& nb) {
+template<typename T> void Point3D<T>::operator-=(const T& nb) {
 	this->x-=nb;
 	this->y-=nb;
 	this->z-=nb;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator-=(const M& nb) {
-	this->x-=nb;
-	this->y-=nb;
-	this->z-=nb;
-}
-
-template<typename M, typename E> void Point3D<M, E>::operator*=(const SN<M, E>& k) {
+template<typename T> void Point3D<T>::operator*=(const T& k) {
 	this->x*=k;
 	this->y*=k;
 	this->z*=k;
 }
 
-template<typename M, typename E> void Point3D<M, E>::operator*=(const M& k) {
-	this->x*=k;
-	this->y*=k;
-	this->z*=k;
-}
-
-template<typename M, typename E> void Point3D<M, E>::operator/=(const SN<M, E>& k) {
-	this->x/=k;
-	this->y/=k;
-	this->z/=k;
-}
-
-template<typename M, typename E> void Point3D<M, E>::operator/=(const M& k) {
+template<typename T> void Point3D<T>::operator/=(const T& k) {
 	this->x/=k;
 	this->y/=k;
 	this->z/=k;
@@ -196,7 +164,7 @@ template<typename M, typename E> void Point3D<M, E>::operator/=(const M& k) {
 
 
 
-template<typename M, typename E> std::string Point3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> std::string Point3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	//std::cout<<"Help1\n";
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
@@ -216,7 +184,7 @@ template<typename M, typename E> std::string Point3D<M, E>::to_string(const bool
 	return mes;
 }
 
-template<typename M, typename E> void Point3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> void Point3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
@@ -226,124 +194,112 @@ template<typename M, typename E> void Point3D<M, E>::print(const bool& spread, c
 
 
 
-template<typename M, typename E> bool operator==(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
+template<typename T> bool operator==(const Point3D<T>& p1, const Point3D<T>& p2) {
 	if (p1.x==p2.x && p1.y==p2.y && p1.z==p2.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator==(const Point3D<M, E>& p, const SN<M, E>& nb) {
+template<typename T> bool operator==(const Point3D<T>& p, const T& nb) {
 	if (p.x==nb && p.y==nb && p.z==nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator==(const SN<M, E>& nb, const Point3D<M, E>& p) {
+template<typename T> bool operator==(const T& nb, const Point3D<T>& p) {
 	if (nb==p.x && nb==p.y && nb==p.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator!=(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
+template<typename T> bool operator!=(const Point3D<T>& p1, const Point3D<T>& p2) {
 	if (p1.x!=p2.x && p1.y!=p2.y && p1.z!=p2.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator!=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+template<typename T> bool operator!=(const Point3D<T>& p, const T& nb) {
 	if (p.x!=nb && p.y!=nb && p.z!=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator!=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+template<typename T> bool operator!=(const T& nb, const Point3D<T>& p) {
 	if (nb!=p.x && nb!=p.y && nb!=p.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator<=(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
+template<typename T> bool operator<=(const Point3D<T>& p1, const Point3D<T>& p2) {
 	if (p1.x<=p2.x && p1.y<=p2.y && p1.z<=p2.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator<=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+template<typename T> bool operator<=(const Point3D<T>& p, const T& nb) {
 	if (p.x<=nb && p.y<=nb && p.z<=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator<=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+template<typename T> bool operator<=(const T& nb, const Point3D<T>& p) {
 	if (nb<=p.x && nb<=p.y && nb<=p.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator>=(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
+template<typename T> bool operator>=(const Point3D<T>& p1, const Point3D<T>& p2) {
 	if (p1.x>=p2.x && p1.y>=p2.y && p1.z>=p2.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator>=(const Point3D<M, E>& p, const SN<M, E>& nb) {
+template<typename T> bool operator>=(const Point3D<T>& p, const T& nb) {
 	if (p.x>=nb && p.y>=nb && p.z>=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> bool operator>=(const SN<M, E>& nb, const Point3D<M, E>& p) {
+template<typename T> bool operator>=(const T& nb, const Point3D<T>& p) {
 	if (nb>=p.x && nb>=p.y && nb>=p.z){
 		return true;
 	}
 	return false;
 }
 
-template<typename M, typename E> Point3D<M, E> operator+(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
-	return Point3D<M, E>{p1.x+p2.x, p1.y+p2.y, p1.z+p2.z};
+template<typename T> Point3D<T> operator+(const Point3D<T>& p1, const Point3D<T>& p2) {
+	return Point3D<T>{p1.x+p2.x, p1.y+p2.y, p1.z+p2.z};
 }
 
-template<typename M, typename E> Point3D<M, E> operator-(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
-	return Point3D<M, E>{p1.x-p2.x, p1.y-p2.y, p1.z-p2.z};
+template<typename T> Point3D<T> operator-(const Point3D<T>& p1, const Point3D<T>& p2) {
+	return Point3D<T>{p1.x-p2.x, p1.y-p2.y, p1.z-p2.z};
 }
 
-template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const SN<M, E>& k) {
-	return Point3D<M, E>{p.x*k, p.y*k, p.z*k};
+template<typename T> Point3D<T> operator*(const Point3D<T>& p, const T& k) {
+	return Point3D<T>{p.x*k, p.y*k, p.z*k};
 }
 
-template<typename M, typename E> Point3D<M, E> operator*(const SN<M, E>& k, const Point3D<M, E>& p) {
-	return Point3D<M, E>{k*p.x, k*p.y, k*p.z};
+template<typename T> Point3D<T> operator*(const T& k, const Point3D<T>& p) {
+	return Point3D<T>{k*p.x, k*p.y, k*p.z};
 }
 
-template<typename M, typename E> Point3D<M, E> operator*(const Point3D<M, E>& p, const M& k) {
-	return Point3D<M, E>{p.x*k, p.y*k, p.z*k};
+template<typename T> Point3D<T> operator/(const Point3D<T>& p, const T& k) {
+	return Point3D<T>{p.x/k, p.y/k, p.z/k};
 }
 
-template<typename M, typename E> Point3D<M, E> operator*(const M& k, const Point3D<M, E>& p) {
-	return Point3D<M, E>{k*p.x, k*p.y, k*p.z};
-}
-
-template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const SN<M, E>& k) {
-	return Point3D<M, E>{p.x/k, p.y/k, p.z/k};
-}
-
-template<typename M, typename E> Point3D<M, E> operator/(const Point3D<M, E>& p, const M& k) {
-	return Point3D<M, E>{p.x/k, p.y/k, p.z/k};
-}
-
-template<typename M, typename E> Point3D<M, E> abs(const Point3D<M, E>& p){
-	return Point3D<M, E>{abs(p.x), abs(p.y), abs(p.z)};
+template<typename T> Point3D<T> abs(const Point3D<T>& p){
+	return Point3D<T>{abs(p.x), abs(p.y), abs(p.z)};
 }
 
 
@@ -359,21 +315,21 @@ template<typename M, typename E> Point3D<M, E> abs(const Point3D<M, E>& p){
 /*
  * The type T needs: .to_long_double(), .getX(), .getY(), .getZ() that return SNs
  */
-/*template<typename T, typename M, typename E> SN<M, E> getDistance(const T& p1, const T& p2) {
-	return SN<M, E>(sqrt(pow((p1.getX()-p2.getX()).to_m_type(), 2) + pow((p1.getY()-p2.getY()).to_m_type(), 2) + pow((p1.getZ()-p2.getZ()).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
+/*template<typename T, typename M, typename E> T getDistance(const T& p1, const T& p2) {
+	return T(sqrt(pow((p1.getX()-p2.getX()).to_m_type(), 2) + pow((p1.getY()-p2.getY()).to_m_type(), 2) + pow((p1.getZ()-p2.getZ()).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
 }*/
 
-//template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>& p1, const Point3D<M, E>& p2);
+//template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2);
 
-template<typename M, typename E> SN<M, E> getDistance(const Point3D<M, E>& p1, const Point3D<M, E>& p2) {
-	return SN<M, E>(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
+template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2) {
+	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
 }
 
 /**
  * Returns the points to be rendered.
  */
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> pixelizeCircle(std::shared_ptr<Point3D<M, E>> pcenter, int radius, int spacing=8){
-    std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
+template<typename T> std::unordered_set<std::shared_ptr<Point3D<T>>> pixelizeCircle(std::shared_ptr<Point3D<T>> pcenter, int radius, int spacing=8){
+    std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
 
     // 35 / 49 is a slightly biased approximation of 1/sqrt(2)
     //const int arrSize=roundUpToMultipleOfEight(radius*8*35/49);
@@ -388,33 +344,33 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E
 //    int32_t error=tx-diameter;
     //int spacing=(int)(radius*ratio);
     //printf("%d\n", spacing);
-    SN<M, E> x{(M)(radius-spacing),0};
-    SN<M, E> y{0,0};
+    T x=(T)(radius-spacing);
+    T y=0;
     int tx=spacing;
     int ty=spacing;
     int error=tx-diameter;
 
     while(x>=y){
         // Each of the following renders an octant of the circle
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+x, pcenter->y-y, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+x, pcenter->y+y, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-x, pcenter->y-y, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-x, pcenter->y+y, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+y, pcenter->y-x, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x+y, pcenter->y+x, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-y, pcenter->y-x, SN<M, E>{0, 0}));
-        ppoints.insert(std::make_shared<Point3D<M, E>>(pcenter->x-y, pcenter->y+x, SN<M, E>{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x+x, pcenter->y-y, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x+x, pcenter->y+y, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x-x, pcenter->y-y, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x-x, pcenter->y+y, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x+y, pcenter->y-x, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x+y, pcenter->y+x, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x-y, pcenter->y-x, T{0, 0}));
+        ppoints.insert(std::make_shared<Point3D<T>>(pcenter->x-y, pcenter->y+x, T{0, 0}));
 
         if(error<=0){
             //++y;
-        	y+=SN<M, E>{(M)spacing, 0};
+        	y+=(T)spacing;
             error+=ty;
             ty+=2*spacing;
         }
 
         if(error>0){
             //--x;
-        	x-=SN<M, E>{(M)spacing, 0};
+        	x-=(T)spacing;
             tx+=2*spacing;
             error+=tx-diameter;
         }
@@ -424,5 +380,4 @@ template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E
 }
 
 
-
-#endif /* POINT3D_H_ */
+#endif /* POINT3DS_H_ */
