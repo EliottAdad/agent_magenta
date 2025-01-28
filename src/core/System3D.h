@@ -24,24 +24,24 @@
  * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ(), .getPosition()
  * If you want to use the functions (rrr, ...) you need a .getW() too
  */
-template<typename T, typename M, typename E> class System3D : public TimeSensitive {
+template<typename T, typename U> class System3D : public TimeSensitive {
 protected:
-	SN<M, E> m_a;														// Lenght of the side of the zone.
+	T m_a;														// Lenght of the side of the zone.
 	//std::unordered_set<Particle3D*> m_pparticles;					// Pointers to the Particles (useless: already in the octree)
-	Oct<T, M, E>* m_poctree;												// Pointer to the Octree.
+	Oct<T, U>* m_poctree;												// Pointer to the Octree.
 
 	std::unordered_set<std::shared_ptr<T>> m_pelements;
 
 public:
-	Vector3D<M, E> (*ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);										// Pointer to a function operating on 2 particles (Todo List)
+	Vector3D<T> (*ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);										// Pointer to a function operating on 2 particles (Todo List)
 
 	System3D();
 	virtual ~System3D();
-	System3D(const System3D<T, M, E>& sys);
+	System3D(const System3D<T, U>& sys);
 
-	SN<M, E> getA() const;
-	void setA(const SN<M, E>& a);
-	Oct<T, M, E>* getPOctree();
+	T getA() const;
+	void setA(const T& a);
+	Oct<T, U>* getPOctree();
 	//void setOctree(const float& alpha);
 	float getAlpha() const;
 	void setAlpha(const float& alpha);
@@ -49,7 +49,7 @@ public:
 	bool addPElement(std::shared_ptr<T> pelement);
 	std::unordered_set<std::shared_ptr<T>> getPNeighbors(const std::shared_ptr<T> pelement) const;				// Returns the list of neighbours, given the precision.
 	//void removePParticle(Particle3D* ppart);
-	//void setPFunc(SN<M, E> (*ptrLaw) (T*, T*));
+	//void setPFunc(T (*ptrLaw) (T*, T*));
 	//void setPFunc(void (*ptrLaw) (T*, T*, const long double&));
 	void recalculate() const;
 	void empty();
@@ -63,17 +63,17 @@ public:
 };
 
 //Functions
-template<typename T, typename M, typename E> void rrr(std::shared_ptr<T> p1, std::shared_ptr<T> p2, const long double& dt);
-template<typename T, typename M, typename E> SN<M, E> rrr2(std::shared_ptr<T> p1, std::shared_ptr<T> p2);// Returns l'acc exercée par p2 sur p1
+template<typename T, typename U> void rrr(std::shared_ptr<T> p1, std::shared_ptr<T> p2, const long double& dt);
+template<typename T, typename U> T rrr2(std::shared_ptr<T> p1, std::shared_ptr<T> p2);// Returns l'acc exercée par p2 sur p1
 
 /*
  * Returns the vector immediately (useless)
  */
 //void grav(Particle3D* pp1, Particle3D* pp2, const long double& dt);
-/*template<typename M, typename E> void grav(std::shared_ptr<Particle3D<M, E>> pp1, std::shared_ptr<Particle3D<M, E>> pp2, const float& dt){
-	std::shared_ptr<Vector3D> pv1=std::make_shared<Vector3D>(Point3D<M, E>{pp1->x, pp1->y, pp1->z}, Point3D<M, E>{pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
-	std::shared_ptr<Vector3D> pv2=std::make_shared<Vector3D>(Point3D<M, E>{pp2->x, pp2->y, pp2->z}, Point3D<M, E>{pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
-	SN<M, E> d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<M, E>{{0,0},{0,0},{0,0}});
+/*template<typename T> void grav(std::shared_ptr<Particle3D<T>> pp1, std::shared_ptr<Particle3D<T>> pp2, const float& dt){
+	std::shared_ptr<Vector3D> pv1=std::make_shared<Vector3D>(Point3D<T>{pp1->x, pp1->y, pp1->z}, Point3D<T>{pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z});
+	std::shared_ptr<Vector3D> pv2=std::make_shared<Vector3D>(Point3D<T>{pp2->x, pp2->y, pp2->z}, Point3D<T>{pp1->x-pp2->x, pp1->y-pp2->y, pp1->z-pp2->z});
+	T d=getDistance({pp2->x-pp1->x, pp2->y-pp1->y, pp2->z-pp1->z}, Point3D<T>{{0,0},{0,0},{0,0}});
 	pv1->setNorm({1,0});
 	pv2->setNorm({1,0});
 
@@ -96,21 +96,21 @@ template<typename T, typename M, typename E> SN<M, E> rrr2(std::shared_ptr<T> p1
 }*/
 
 
-template<typename T, typename M, typename E> System3D<T, M, E>::System3D() {
+template<typename T, typename U> System3D<T, U>::System3D() {
 	m_a={1,2};				//100m sided box
-	m_poctree=new Oct<T, M, E>(m_a);
+	m_poctree=new Oct<T, U>(m_a);
 	ptrLaw=NULL;
 	m_dt=0;
 }
 
-template<typename T, typename M, typename E> System3D<T, M, E>::~System3D() {
+template<typename T, typename U> System3D<T, U>::~System3D() {
 	delete m_poctree;
 	m_pelements.clear();
 }
 
-template<typename T, typename M, typename E> System3D<T, M, E>::System3D(const System3D<T, M, E>& sys) {
+template<typename T, typename U> System3D<T, U>::System3D(const System3D<T, U>& sys) {
 	m_a=sys.getA();
-	m_poctree=new Oct<T, M, E>(m_a);
+	m_poctree=new Oct<T, U>(m_a);
 	for (std::shared_ptr<T> pT : sys.getPElements()){
 		this->addPElement(pT);
 	}
@@ -120,32 +120,32 @@ template<typename T, typename M, typename E> System3D<T, M, E>::System3D(const S
 
 
 
-template<typename T, typename M, typename E> SN<M, E> System3D<T, M, E>::getA() const {
+template<typename T, typename U> T System3D<T, U>::getA() const {
 	return m_poctree->getA();
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::setA(const SN<M, E>& a) {
+template<typename T, typename U> void System3D<T, U>::setA(const T& a) {
 	m_poctree->setA(a);
 	//this->recalculate();//Possible probleme
 }
 
-template<typename T, typename M, typename E> Oct<T, M, E>* System3D<T, M, E>::getPOctree() {
+template<typename T, typename U> Oct<T, U>* System3D<T, U>::getPOctree() {
 	return m_poctree;
 }
 
-template<typename T, typename M, typename E> float System3D<T, M, E>::getAlpha() const {
+template<typename T, typename U> float System3D<T, U>::getAlpha() const {
 	return m_poctree->m_ALPHA;
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::setAlpha(const float& alpha) {
+template<typename T, typename U> void System3D<T, U>::setAlpha(const float& alpha) {
 	m_poctree->m_ALPHA=alpha;
 }
 
-template<typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> System3D<T, M, E>::getPElements() const {
+template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> System3D<T, U>::getPElements() const {
 	return m_poctree->getPElements();
 }
 
-template<typename T, typename M, typename E> bool System3D<T, M, E>::addPElement(std::shared_ptr<T> pelement) {
+template<typename T, typename U> bool System3D<T, U>::addPElement(std::shared_ptr<T> pelement) {
 	bool success=false;
 	if (pelement!=NULL) {
 		success=m_poctree->insert(pelement);
@@ -154,11 +154,11 @@ template<typename T, typename M, typename E> bool System3D<T, M, E>::addPElement
 	return success;
 }
 
-template<typename T, typename M, typename E> std::unordered_set<std::shared_ptr<T>> System3D<T, M, E>::getPNeighbors(const std::shared_ptr<T> pelement) const {
+template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> System3D<T, U>::getPNeighbors(const std::shared_ptr<T> pelement) const {
 	return m_poctree->getPNeighbors(pelement);
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::setT(const float& dt) {
+template<typename T, typename U> void System3D<T, U>::setT(const float& dt) {
 	m_dt=dt;
 
 	//printf("Set T (System3D)\n");
@@ -181,7 +181,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::setT(const 
 			for (std::shared_ptr<T> pneighbor : pneighbors){// ERROR: Get neighbours doesn't work
 				//printf("D\n");
 				//(*m_ptrLaw)(pelement, pneighbor, m_dt);// Probleme qd appel loi
-				Vector3D<M, E> da=(*ptrLaw)(pneighbor, pelement);// Get the acceleration
+				Vector3D<T> da=(*ptrLaw)(pneighbor, pelement);// Get the acceleration
 				//da.print(true, true, 3);
 				//Line3D<float, char> l;//Works
 				//Vector3D<float, char> v;//X Error (arrete l'execution)
@@ -203,7 +203,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::setT(const 
 	}
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::apply(){
+template<typename T, typename U> void System3D<T, U>::apply(){
 	//printf("Apply (System3D)\n");
 	for (std::shared_ptr<T> pelement : m_pelements){
 		pelement->apply();
@@ -219,26 +219,26 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::apply(){
 }*/
 
 
-/*template<typename T> void System3D<T, M, E>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
+/*template<typename T> void System3D<T, U>::setPFunc(void (*ptrLaw) (T*, T*, const long double&)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }*/
 
-/*template<typename T, typename M, typename E> void System3D<T, M, E>::setPFunc(SN<M, E> (*ptrLaw) (T*, T*)){
+/*template<typename T, typename U> void System3D<T, U>::setPFunc(T (*ptrLaw) (T*, T*)){
 	m_ptrLaw=ptrLaw;
 	//printf("%p\n", m_ptrLaw);
 }*/
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::recalculate() const {
+template<typename T, typename U> void System3D<T, U>::recalculate() const {
 	m_poctree->recalculate();
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::empty() {
+template<typename T, typename U> void System3D<T, U>::empty() {
 	m_poctree->empty();
 }
 
 
-template<typename T, typename M, typename E> std::string System3D<T, M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T, typename U> std::string System3D<T, U>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	//printf("AAAAAA1\n");
 	std::string mes=((spread)?"\n" : "");
 	mes+=to_stringTabs(indent);
@@ -259,7 +259,7 @@ template<typename T, typename M, typename E> std::string System3D<T, M, E>::to_s
 	return mes;
 }
 
-template<typename T, typename M, typename E> void System3D<T, M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T, typename U> void System3D<T, U>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 	//printf("\nAAAAAA2\n");
@@ -270,7 +270,7 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::print(const
 /*
  * Functions
  */
-/*template<typename T, typename M, typename E> void rrr(std::shared_ptr<T> p1, std::shared_ptr<T> p2, const long double& dt) {
+/*template<typename T, typename U> void rrr(std::shared_ptr<T> p1, std::shared_ptr<T> p2, const long double& dt) {
 	//printf("Function (rrr)\n");
 	Vector3D<float, char> v;//=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
 	//Vector3D* pv=new Vector3D(NULL, Point3D{p2->getX(), p2->getY(), p2->getZ()}-Point3D{p1->getX(), p1->getY(), p1->getZ()});
@@ -294,14 +294,14 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::print(const
  * Returns the acc (in norm) felt by pT2 due to pT1
  * @param : pT1: src, pT2: target
  */
-/*template<typename T, typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<T> pT1, std::shared_ptr<T> pT2) {
-	std::shared_ptr<Vector3D<M, E>> pv(new Vector3D<M, E>();
-	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
+/*template<typename T, typename U> Vector3D<T> rrr2(std::shared_ptr<T> pT1, std::shared_ptr<T> pT2) {
+	std::shared_ptr<Vector3D<T>> pv(new Vector3D<T>();
+	*pv->pp2=Point3D<T>{{0,0},{0,0},{0,0}};
 
 	if (pT1!=NULL && pT2!=NULL) {
-		pv=std::make_shared<Vector3D<M, E>>(pT2->getPosition()-pT1->getPosition());
+		pv=std::make_shared<Vector3D<T>>(pT2->getPosition()-pT1->getPosition());
 
-		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
+		T d=getDistance(pT1->getPosition(), pT2->getPosition());
 		pv->setNorm(G*pT1->getW()/(d*d));
 	}
 	return *pv;
@@ -312,15 +312,15 @@ template<typename T, typename M, typename E> void System3D<T, M, E>::print(const
  * Returns the acc (in norm) felt by pT2 due to pT1
  * @param : pT1: src, pT2: target
  */
-template<typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<Particle3D<M, E>> pT1, std::shared_ptr<Particle3D<M, E>> pT2) {
-	std::shared_ptr<Vector3D<M, E>> pv(new Vector3D<M, E>());
+template<typename T> Vector3D<T> rrr2(std::shared_ptr<Particle3D<T>> pT1, std::shared_ptr<Particle3D<T>> pT2) {
+	std::shared_ptr<Vector3D<T>> pv(new Vector3D<T>());
 	*pv->pp1=pT2->getPosition();
-	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
+	*pv->pp2=Point3D<T>{(T)0,(T)0,(T)0};
 
 	if (pT1!=NULL && pT2!=NULL && pT1->pfields!=NULL /*&& pT1->pfields->contains("mass")*/) {
 		*pv->pp2=pT1->getPosition()-pT2->getPosition();
 
-		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
+		T d=getDistance(pT1->getPosition(), pT2->getPosition());
 		//printf("\n############d\n");
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
 		//printf("\n############d\n");
@@ -337,19 +337,19 @@ template<typename M, typename E> Vector3D<M, E> rrr2(std::shared_ptr<Particle3D<
  * Returns the acc (in norm) felt by pT2 due to pT1
  * @param : pT1: src, pT2: target
  */
-template<typename M, typename E> Vector3D<M, E> rrr3(std::shared_ptr<Particle3D<M, E>> pT1, std::shared_ptr<Particle3D<M, E>> pT2) {
-	std::shared_ptr<Vector3D<M, E>> pv(new Vector3D<M, E>());
+template<typename T> Vector3D<T> rrr3(std::shared_ptr<Particle3D<T>> pT1, std::shared_ptr<Particle3D<T>> pT2) {
+	std::shared_ptr<Vector3D<T>> pv(new Vector3D<T>());
 	*pv->pp1=pT2->getPosition();
-	*pv->pp2=Point3D<M, E>{{0,0},{0,0},{0,0}};
+	*pv->pp2=Point3D<T>{(T)0,(T)0,(T)0};
 
 	if (pT1!=NULL && pT2!=NULL) {
 		*pv->pp2=pT1->getPosition()-pT2->getPosition();
 
-		SN<M, E> d=getDistance(pT1->getPosition(), pT2->getPosition());
+		T d=getDistance(pT1->getPosition(), pT2->getPosition());
 		//printf("\n############d\n");
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
 		//printf("\n############d\n");
-		pv->setNorm((M)(-1)*K*pT1->getW()*pT2->getW()/(d*d*abs(pT2->getW())));
+		pv->setNorm((T)(-1)*K*pT1->getW()*pT2->getW()/(d*d*abs(pT2->getW())));
 	}
 	//printf("\n############pv\n");
 	//pv->print();

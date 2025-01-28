@@ -24,21 +24,21 @@
 
 
 /*
- * ###################
- *  SObject3D<M, E> :)
- * ###################
+ * ################
+ *  SObject3D<T> :)
+ * ################
  */
-template<typename M, typename E> class SObject3D : public Object3D<M, E> {
+template<typename T> class SObject3D : public Object3D<T> {
 	public:
 	SObject3D();//:)
-	SObject3D(std::string name="sobject", SDL_Color pcolor=NULL);//:)
-	SObject3D(SObject3D* psobject);//:)
+	//SObject3D(std::string name="sobject", SDL_Color pcolor=NULL);//:)
+	SObject3D(const SObject3D& sobject);//:)
 	~SObject3D();
 
-	SN<M, E>& getMass();//:)
-	void setMass(SN<M, E> mass={1, 1});//:)
-	SN<M, E>& getCharge();//:)
-	void setCharge(SN<M, E> charge={0, 0});//:)
+	T& getMass();//:)
+	void setMass(T mass=(T)1);//:)
+	T& getCharge();//:)
+	void setCharge(T charge=(T)0);//:)
 	//LSN& getInertiaMoment();//:)
 	//void setInertiaMoment(LSN inertia_moment={1, 0});//:)
 
@@ -87,10 +87,10 @@ template<typename M, typename E> class SObject3D : public Object3D<M, E> {
 
 
 	private:
-	std::unordered_set<std::shared_ptr<Particle3D<M, E>>> m_pparticules;							// Array of particules forming the mesh.
+	std::unordered_set<std::shared_ptr<Particle3D<T>>> m_pparticules;							// Array of particules forming the mesh.
 	Matrix<float> m_C;														// Matrix of the coefficients.
-	Matrix<SN<M, E>> m_Di;													// Matrix of the initial distances between the particules.
-	Matrix<SN<M, E>> m_D;														// Matrix of the actual distances between the particules.
+	Matrix<T> m_Di;													// Matrix of the initial distances between the particules.
+	Matrix<T> m_D;														// Matrix of the actual distances between the particules.
 	
 	//Vector2D* m_pforce;												// Resultant force
 	//Vector2D* m_plin_acceleration;									// Resultant acceleration vector
@@ -105,8 +105,8 @@ template<typename M, typename E> class SObject3D : public Object3D<M, E> {
 //void print(SObject2D* psobject, unsigned int indent=0);//:)
 
 
-template<typename M, typename E> SObject3D<M, E>::SObject3D() {
-	m_mass={1, 1};
+template<typename T> SObject3D<T>::SObject3D() {
+	/*m_mass=1;
 	m_charge={0, 0};
 	m_inertia_moment={1, 0};
 	m_pcolor=NULL;
@@ -128,12 +128,11 @@ template<typename M, typename E> SObject3D<M, E>::SObject3D() {
 	//printf("Hey4\n");
 	m_fmove=true;
 	m_fcollide=true;
-	//printf("Hey5\n");
+	//printf("Hey5\n");*/
 }
 
-template<typename M, typename E> SObject3D<M, E>::SObject3D(std::string name, SDL_Color pcolor)
-{
-	m_name=name;
+template<typename T> SObject3D<T>::SObject3D(std::string name, SDL_Color pcolor) {
+	/*m_name=name;
 	m_mass={1, 1};
 	m_charge={0, 0};
 	m_inertia_moment={1, 0};
@@ -156,11 +155,11 @@ template<typename M, typename E> SObject3D<M, E>::SObject3D(std::string name, SD
 	//printf("Hey4\n");
 	m_fmove=true;
 	m_fcollide=true;
-	//printf("Hey5\n");
+	//printf("Hey5\n");*/
 }
 
-template<typename M, typename E> SObject3D<M, E>::SObject3D(const SObject3D& sobject) {
-	printf("OU1\n");
+template<typename T> SObject3D<T>::SObject3D(const SObject3D& sobject) {
+	/*printf("OU1\n");
 	m_name=psobject->getName();
 	printf("OU2\n");
 	m_mass=psobject->getMass();
@@ -191,11 +190,11 @@ template<typename M, typename E> SObject3D<M, E>::SObject3D(const SObject3D& sob
 	m_rot_velocity=psobject->getRotVelocity();
 
 	m_fmove=psobject->getFMove();
-	m_fcollide=psobject->getFCollide();
+	m_fcollide=psobject->getFCollide();*/
 }
 
-template<typename M, typename E> SObject3D<M, E>::~SObject3D() {
-	m_pcolor=NULL;
+template<typename T> SObject3D<T>::~SObject3D() {
+	//m_pcolor=NULL;
 	/* We delete the properties.*/
 	//this->delProperties();
 	/* We delete the points and segments.*/
@@ -476,7 +475,7 @@ void Object2D::setRotVelocity(LSN rot_velocity, bool fadd)//:|
 	//this->calculateRotation(delta_t);
 }*/
 
-template<typename M, typename E> void SObject3D<M, E>::move(long double delta_t) {
+template<typename T> void SObject3D<T>::move(long double delta_t) {
 	printf("C1\n");
 	//printf("*Norm velocity: %Lgx10^%lim/s.\n", m_plin_velocity->getNorm().m, m_plin_velocity->getNorm().exp);
 	//m_lin_velocity * delta_t;
@@ -499,7 +498,7 @@ template<typename M, typename E> void SObject3D<M, E>::move(long double delta_t)
 	////printf("C3\n");
 }
 
-template<typename M, typename E> void SObject3D<M, E>::spin(long double delta_t) {
+template<typename T> void SObject3D<T>::spin(long double delta_t) {
 	long double angle_plus=(1/2) * m_rot_acceleration * pow(delta_t, 2) + m_rot_velocity * delta_t;
 	//m_ppolygon->rotate(angle_plus/*, m_rot_center*/);
 }

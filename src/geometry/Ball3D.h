@@ -13,38 +13,38 @@
 #include "Particle3D.h"
 
 /*
- * ################
- *  Ball3D<M, E> :)
- * ################
+ * #############
+ *  Ball3D<T> :)
+ * #############
  * Particle3D with radius (useless)
  */
-template<typename M, typename E> class Ball3D : public Particle3D<M, E> {
+template<typename T> class Ball3D : public Particle3D<T> {
 public:
-	SN<M, E> r;
+	T r;
 
 	Ball3D();
 	virtual ~Ball3D();
-	Ball3D(const Ball3D<M, E>& ball);
+	Ball3D(const Ball3D<T>& ball);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 
 };
 
-template<typename M, typename E> Ball3D<M, E>::Ball3D() {
-	r=SN<M, E>{1,0};
+template<typename T> Ball3D<T>::Ball3D() {
+	r=(T)1;
 }
 
-template<typename M, typename E> Ball3D<M, E>::~Ball3D() {
+template<typename T> Ball3D<T>::~Ball3D() {
 	;
 }
 
-template<typename M, typename E> Ball3D<M, E>::Ball3D(const Ball3D<M, E>& ball) {
+template<typename T> Ball3D<T>::Ball3D(const Ball3D<T>& ball) {
 	r=ball.r;
 }
 
 
-template<typename M, typename E> std::string Ball3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> std::string Ball3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -58,7 +58,7 @@ template<typename M, typename E> std::string Ball3D<M, E>::to_string(const bool&
 	return mes;
 }
 
-template<typename M, typename E> void Ball3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> void Ball3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

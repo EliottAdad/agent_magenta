@@ -15,50 +15,50 @@
 
 /*
  * ################
- *  Sphere<M, E> :)
+ *  Sphere<T> :)
  * ################
  */
-template<typename M, typename E> class Sphere : public Shape3D<M, E> {
+template<typename T> class Sphere : public Shape3D<T> {
 public:
-	SN<M, E> r;
+	T r;
 
 	Sphere();
 	virtual ~Sphere();
-	Sphere(const Sphere<M, E>& sphere);
+	Sphere(const Sphere<T>& sphere);
 
-	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
-	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
+	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPoints() const;//To render the shape
+	virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 
 };
 
-template<typename M, typename E> Sphere<M, E>::Sphere() {
-	r=SN<M, E>{0,0};
+template<typename T> Sphere<T>::Sphere() {
+	r=T{0,0};
 }
 
-template<typename M, typename E> Sphere<M, E>::~Sphere() {
+template<typename T> Sphere<T>::~Sphere() {
 	;
 }
 
-template<typename M, typename E> Sphere<M, E>::Sphere(const Sphere<M, E>& sphere) {
+template<typename T> Sphere<T>::Sphere(const Sphere<T>& sphere) {
 	r=sphere.r;
 }
 
 
 
-template<typename M, typename E> virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> Sphere<M, E>::getPoints() const{
-	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pixelizeCircle(ppoint, (int)(r.to_m_type()), 8);
+template<typename T> virtual std::unordered_set<std::shared_ptr<Point3D<T>>> Sphere<T>::getPoints() const{
+	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pixelizeCircle(ppoint, (int)(r.to_m_type()), 8);
 	return ppoints;
 }
 
-template<typename M, typename E> virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> Sphere<M, E>::getLines() const{
+template<typename T> virtual std::unordered_set<std::shared_ptr<Line3D<T>>> Sphere<T>::getLines() const{
 	;
 }
 
 
-template<typename M, typename E> std::string Sphere<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> std::string Sphere<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -72,7 +72,7 @@ template<typename M, typename E> std::string Sphere<M, E>::to_string(const bool&
 	return mes;
 }
 
-template<typename M, typename E> void Sphere<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> void Sphere<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

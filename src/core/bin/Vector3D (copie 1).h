@@ -50,8 +50,8 @@ public:
 	virtual void operator=(const Vector3D<T>& v);// :)
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	virtual void operator-=(const Vector3D<T>& v);// :)
-//	virtual void operator*=(const M& k);// :)
-//	virtual void operator/=(const M& k);// :)
+	virtual void operator*=(const M& k);// :)
+	virtual void operator/=(const M& k);// :)
 	virtual void operator*=(const T& k);// :)
 	virtual void operator/=(const T& k);// :)
 
@@ -178,7 +178,7 @@ template<typename T> T Vector3D<T>::getNorm() const {
 }
 
 template<typename T> void Vector3D<T>::setNorm(const T& norm) {
-	if (*this->pp2!=Point3D<T>{(T)0,(T)0,(T)0}){
+	if (*this->pp2!=Point3D<T>{{0,0},{0,0},{0,0}}){
 		T k=norm/getDistance(*this->pp2, Point3D<T>{(T)0,(T)0,(T)0});
 		*this->pp2*=k;
 	}else{

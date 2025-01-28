@@ -10,45 +10,45 @@
 
 
 /*
- * ###############
- *  Scene<M, E> :)
- * ###############
+ * ############
+ *  Scene<T> :)
+ * ############
  * Scene contains Displayables
  */
-template<typename M, typename E> class Scene : public Printable {
+template<typename T> class Scene : public Printable {
 public:
 	Scene();//:)
 	//Scene(std::string name, std::vector<SDL_Color*> pcolors={});//:)
 	Scene(const Scene& scene);//:/
 	~Scene();//:)
 
-	std::unordered_set<std::shared_ptr<Displayable<M, E>>> getPDisplayables() const;//:)
+	std::unordered_set<std::shared_ptr<Displayable<T>>> getPDisplayables() const;//:)
 	//void addDisplayables(std::vector<Displayable*> pdisplayables);//:)
-	bool addPDisplayable(std::shared_ptr<Displayable<M, E>> pdisplayable);//:)
+	bool addPDisplayable(std::shared_ptr<Displayable<T>> pdisplayable);//:)
 
 private:
-	std::unordered_set<std::shared_ptr<Displayable<M, E>>> m_pdisplayables;//:)
+	std::unordered_set<std::shared_ptr<Displayable<T>>> m_pdisplayables;//:)
 };
 
 
 
-template<typename M, typename E> Scene<M, E>::Scene(){//:)
+template<typename T> Scene<T>::Scene(){//:)
 	;
 }
 
-template<typename M, typename E> Scene<M, E>::Scene(const Scene& scene){//:/
+template<typename T> Scene<T>::Scene(const Scene& scene){//:/
 	;
 }
 
-template<typename M, typename E> Scene<M, E>::~Scene(){//:)
+template<typename T> Scene<T>::~Scene(){//:)
 	;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Displayable<M, E>>> Scene<M, E>::getPDisplayables() const {//:)
+template<typename T> std::unordered_set<std::shared_ptr<Displayable<T>>> Scene<T>::getPDisplayables() const {//:)
 	return m_pdisplayables;
 }
 
-template<typename M, typename E> bool Scene<M, E>::addPDisplayable(std::shared_ptr<Displayable<M, E>> pdisplayable){//:)
+template<typename T> bool Scene<T>::addPDisplayable(std::shared_ptr<Displayable<T>> pdisplayable){//:)
 	bool success=false;
 	if (pdisplayable!=NULL){
 		success=m_pdisplayables.insert(pdisplayable).second;

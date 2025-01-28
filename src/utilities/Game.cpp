@@ -22,8 +22,8 @@ Game::Game() {
 	}
 
 	pphysics=std::make_shared<Physics>();
-	pscene=std::make_shared<Scene<float, char>>();
-	pdisplay=std::make_shared<Display1<float, char>>(pwindow, prenderer);
+	pscene=std::make_shared<Scene<SN<float, char>>>();
+	pdisplay=std::make_shared<Display1<SN<float, char>>>(pwindow, prenderer);
 	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
 	m_fps=30;
@@ -75,7 +75,7 @@ Physics* Game::getPPhysics() {
 	return m_pphysics;
 }*/
 
-/*bool Game::addPDisplayable(std::shared_ptr<Displayable<float, char>> pdisplayable) {
+/*bool Game::addPDisplayable(std::shared_ptr<Displayable<SN<float, char>>> pdisplayable) {
 	bool success=false;
 	if (pdisplayable!=NULL){
 		success=m_pscene->addPDisplayable(pdisplayable);

@@ -17,59 +17,59 @@
 
 /*
  * #################
- *  Shape3D<M, E> :)
+ *  Shape3D<T> :)
  * #################
  */
-template<typename M, typename E> class Shape3D : public Point3D<M, E>, public Displayable<M, E> {
+template<typename T> class Shape3D : public Point3D<T>, public Displayable<T> {
 public:
 	Shape3D();
 	virtual ~Shape3D();
-	Shape3D(const Shape3D<M, E>& shape);
+	Shape3D(const Shape3D<T>& shape);
 
-	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPPoints() const;
-	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getPLines() const;
-	virtual std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> getPTriangles() const;
+	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const;
+	virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
+	virtual std::unordered_set<std::shared_ptr<Triangle3D<T>>> getPTriangles() const;
 
-	//virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPoints() const;//To render the shape
-	//virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
-	//virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getLines() const;//To render the shape
+	//virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPoints() const;//To render the shape
+	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getLines() const;//To render the shape
+	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getLines() const;//To render the shape
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
-template<typename M, typename E> Shape3D<M, E>::Shape3D() {
+template<typename T> Shape3D<T>::Shape3D() {
 	// TODO Auto-generated constructor stub
 
 }
 
-template<typename M, typename E> Shape3D<M, E>::~Shape3D() {
+template<typename T> Shape3D<T>::~Shape3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename M, typename E> Shape3D<M, E>::Shape3D(const Shape3D &other) {
+template<typename T> Shape3D<T>::Shape3D(const Shape3D &other) {
 	// TODO Auto-generated constructor stub
 
 }
 
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Shape3D<M, E>::getPPoints() const {
-	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
+template<typename T> std::unordered_set<std::shared_ptr<Point3D<T>>> Shape3D<T>::getPPoints() const {
+	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
 	return ppoints;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Shape3D<M, E>::getPLines() const {
-	std::unordered_set<std::shared_ptr<Line3D<M, E>>> plines;
+template<typename T> std::unordered_set<std::shared_ptr<Line3D<T>>> Shape3D<T>::getPLines() const {
+	std::unordered_set<std::shared_ptr<Line3D<T>>> plines;
 	return plines;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> Shape3D<M, E>::getPTriangles() const {
-	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> ptriangles;
+template<typename T> std::unordered_set<std::shared_ptr<Triangle3D<T>>> Shape3D<T>::getPTriangles() const {
+	std::unordered_set<std::shared_ptr<Triangle3D<T>>> ptriangles;
 	return ptriangles;
 }
 
 
-template<typename M, typename E> std::string Shape3D<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> std::string Shape3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -83,7 +83,7 @@ template<typename M, typename E> std::string Shape3D<M, E>::to_string(const bool
 	return mes;
 }
 
-template<typename M, typename E> void Shape3D<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> void Shape3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

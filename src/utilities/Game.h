@@ -34,8 +34,8 @@ public:
 	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
 	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
-	std::shared_ptr<Scene<float, char>> pscene;					// A scene
-	std::shared_ptr<Display1<float, char>> pdisplay;
+	std::shared_ptr<Scene<SN<float, char>>> pscene;					// A scene
+	std::shared_ptr<Display1<SN<float, char>>> pdisplay;
 
 	Game();
 	virtual ~Game();

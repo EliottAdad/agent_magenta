@@ -23,20 +23,20 @@
 
 /*
  * ##################
- *  Display1<M, E> :)
+ *  Display1<T> :)
  * ##################
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
  */
-template<typename M, typename E> class Display1 : public Printable {
+template<typename T> class Display1 : public Printable {
 private:
 	char m_display;						// The point of view from which it is projected (1, 2, 3).
 	float m_scale;						// Ratio d_pixels/d_meters
-	std::unordered_set<std::shared_ptr<Scene<M, E>>> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
+	std::unordered_set<std::shared_ptr<Scene<T>>> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
 
 public:
-	std::shared_ptr<Point3D<M, E>> ppoint;				// Pointeur to the center of display.
+	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
 	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
@@ -45,7 +45,7 @@ public:
 	bool fclear;
 
 	Display1();
-	Display1(std::shared_ptr<Point3D<M, E>> ppoint);
+	Display1(std::shared_ptr<Point3D<T>> ppoint);
 	Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer);
 	virtual ~Display1();
 	//Display1(const Display1 &other);
@@ -55,21 +55,21 @@ public:
 	float getScale() const;
 	void setScale(const float& scale);
 
-	std::unordered_set<std::shared_ptr<Scene<M, E>>> getPScenes() const;
-	void addPScene(std::shared_ptr<Scene<M, E>> pscene);
+	std::unordered_set<std::shared_ptr<Scene<T>>> getPScenes() const;
+	void addPScene(std::shared_ptr<Scene<T>> pscene);
 
 	bool render() const;
-	bool render(const std::shared_ptr<Scene<M, E>> pscene) const;
-	bool render(const std::shared_ptr<Displayable<M, E>> pdisplayable) const;
-	bool render(const std::shared_ptr<Point3D<M, E>> ppoint) const;
+	bool render(const std::shared_ptr<Scene<T>> pscene) const;
+	bool render(const std::shared_ptr<Displayable<T>> pdisplayable) const;
+	bool render(const std::shared_ptr<Point3D<T>> ppoint) const;
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 
-template<typename M, typename E> Display1<M, E>::Display1() {
-	ppoint=std::make_shared<Point3D<M, E>>();
+template<typename T> Display1<T>::Display1() {
+	ppoint=std::make_shared<Point3D<T>>();
 	m_display=1;
 	m_scale=2;
 
@@ -84,7 +84,7 @@ template<typename M, typename E> Display1<M, E>::Display1() {
 	fclear=true;
 }
 
-template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3D<M, E>> ppoint) {
+template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 	this->ppoint=ppoint;
 	m_display=1;
 	m_scale=2;
@@ -97,8 +97,8 @@ template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<Point3
 	fclear=true;
 }
 
-template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
-	ppoint=std::make_shared<Point3D<M, E>>();
+template<typename T> Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
+	ppoint=std::make_shared<Point3D<T>>();
 	m_display=1;
 	m_scale=2;
 
@@ -110,7 +110,7 @@ template<typename M, typename E> Display1<M, E>::Display1(std::shared_ptr<SDL_Wi
 	fclear=true;
 }
 
-template<typename M, typename E> Display1<M, E>::~Display1() {
+template<typename T> Display1<T>::~Display1() {
 	;
 }
 
@@ -121,27 +121,27 @@ Display1::Display1(const Display1 &other) {
 
 
 
-template<typename M, typename E> char Display1<M, E>::getDisplay() const {
+template<typename T> char Display1<T>::getDisplay() const {
 	return m_display;
 }
 
-template<typename M, typename E> void Display1<M, E>::setDisplay(const char& display){
+template<typename T> void Display1<T>::setDisplay(const char& display){
 	m_display=display;
 }
 
-template<typename M, typename E> float Display1<M, E>::getScale() const {
+template<typename T> float Display1<T>::getScale() const {
 	return m_scale;
 }
 
-template<typename M, typename E> void Display1<M, E>::setScale(const float& scale){
+template<typename T> void Display1<T>::setScale(const float& scale){
 	m_scale=scale;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Scene<M, E>>> Display1<M, E>::getPScenes() const {
+template<typename T> std::unordered_set<std::shared_ptr<Scene<T>>> Display1<T>::getPScenes() const {
 	return m_pscenes;
 }
 
-template<typename M, typename E> void Display1<M, E>::addPScene(std::shared_ptr<Scene<M, E>> pscene){
+template<typename T> void Display1<T>::addPScene(std::shared_ptr<Scene<T>> pscene){
 	if (pscene!=NULL){
 		m_pscenes.insert(pscene);
 	}
@@ -150,7 +150,7 @@ template<typename M, typename E> void Display1<M, E>::addPScene(std::shared_ptr<
 /*
  *
  */
-template<typename M, typename E> bool Display1<M, E>::render() const {
+template<typename T> bool Display1<T>::render() const {
 	bool success=false;
 
 	if (prenderer!=NULL){
@@ -160,13 +160,13 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
 		}
 
 		//printf("\nRendering 1: %ld\n", m_pscenes.size());
-		for (std::shared_ptr<Scene<M, E>> pscene : m_pscenes){
+		for (std::shared_ptr<Scene<T>> pscene : m_pscenes){
 			success=success | render(pscene);
 		}
 		//drawCircle(prenderer.get(), {0, 0}, 100);
 
-		/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pixelizeCircle(ppoint, 200, 8);
-		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+		/*std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pixelizeCircle(ppoint, 200, 8);
+		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
 
@@ -179,11 +179,11 @@ template<typename M, typename E> bool Display1<M, E>::render() const {
 /*
  *
  */
-template<typename M, typename E> bool Display1<M, E>::render(const std::shared_ptr<Scene<M, E>> pscene) const {
+template<typename T> bool Display1<T>::render(const std::shared_ptr<Scene<T>> pscene) const {
 	bool success=false;
 
 	if (pscene!=NULL){
-		for (std::shared_ptr<Displayable<M, E>> pdisplayable : pscene->getPDisplayables()){
+		for (std::shared_ptr<Displayable<T>> pdisplayable : pscene->getPDisplayables()){
 			success=success | render(pdisplayable);
 		}
 	}
@@ -194,42 +194,36 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 /*
  *
  */
-template<typename M, typename E> bool Display1<M, E>::render(const std::shared_ptr<Displayable<M, E>> pdisplayable) const {
+template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<T>> pdisplayable) const {
 	bool success=true;
 
 	if (pdisplayable!=NULL) {
-		std::shared_ptr<Point3D<M, E>> pp(new Point3D<M, E>(pdisplayable->getPosition()));
-		//std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->getPoints();
+		std::shared_ptr<Point3D<T>> pp(new Point3D<T>(pdisplayable->getPosition()));
+		//std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->getPoints();
 		success=success & render(pp);
-		/*for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+		/*for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
 
 		// For the points
-		std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->getPPoints();
-		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+		std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->getPPoints();
+		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}
 		// For the lines
-		/*std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints=pdisplayable->pshape->getPoints();
-		for (std::shared_ptr<Point3D<M, E>> ppoint : ppoints){
+		/*std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->pshape->getPoints();
+		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
 	}
 	return success;
 }
 
-template<typename M, typename E> bool Display1<M, E>::render(const std::shared_ptr<Point3D<M, E>> ppoint) const {
+template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> ppoint) const {
 	bool success=false;
 
 	if (this->ppoint!=NULL){
-		Point3D<M, E> d_point=*ppoint-*(this->ppoint);
-		//printf("\nRendering 4\n");
-		//ppoint->print(true);
-		//m_ppoint->print(true);
-		//d_point.print(true);
-		//SDL_Renderer* prenderer=pdisplay->getPRenderer();
-		//SDL_Window* pwindow=pdisplay->getPWindow();
+		Point3D<T> d_point=*ppoint-*(this->ppoint);
 
 		if (pwindow!=NULL && prenderer!=NULL && pdraw_color!=NULL){
 			SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
@@ -240,20 +234,20 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 			int sizex(0);
 			int sizey(0);
 			SDL_GetWindowSize(pwindow.get(), &sizex, &sizey);
-			SN<M, E> centerx={(M)(sizex/2),(E)0};
-			SN<M, E> centery={(M)(sizey/2),(E)0};
+			T centerx=(T)(sizex/2);
+			T centery=(T)(sizey/2);
 
 			if (prenderer!=NULL){
 				switch (m_display){
 					case 1://(x,y) plane
 						//printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.y*(M)m_scale + centery).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 						break;
 					case 3://(x,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 						break;
 				}
 			}
@@ -263,11 +257,11 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 	return success;
 }
 
-/*template<typename M, typename E> bool Display1<M, E>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints) const {
+/*template<typename T> bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
 	bool success=false;
 
 	//if (this->ppoint!=NULL){
-		Point3D<M, E> d_point=*ppoint-*(this->ppoint);
+		Point3D<T> d_point=*ppoint-*(this->ppoint);
 		//printf("\nRendering 4\n");
 		//ppoint->print(true);
 		//m_ppoint->print(true);
@@ -284,8 +278,8 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 			int sizex(0);
 			int sizey(0);
 			SDL_GetWindowSize(pwindow.get(), &sizex, &sizey);
-			SN<M, E> centerx={(M)(sizex/2),(E)0};
-			SN<M, E> centery={(M)(sizey/2),(E)0};
+			SN<T> centerx={(M)(sizex/2),(E)0};
+			SN<T> centery={(M)(sizey/2),(E)0};
 
 			if (prenderer!=NULL){
 				switch (m_display){
@@ -311,7 +305,7 @@ template<typename M, typename E> bool Display1<M, E>::render(const std::shared_p
 
 
 
-template<typename M, typename E> std::string Display1<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+template<typename T> std::string Display1<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="DISPLAY1";
@@ -319,7 +313,7 @@ template<typename M, typename E> std::string Display1<M, E>::to_string(const boo
 	return mes;
 }
 
-template<typename M, typename E> void Display1<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+template<typename T> void Display1<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
@@ -328,10 +322,10 @@ template<typename M, typename E> void Display1<M, E>::print(const bool& spread, 
 // Functions
 
 
-//template<typename M, typename E> bool render(const Display1<M, E>* pdisplay, const Point3D<M, E>* ppoint);
-//template<typename T, typename M, typename E> bool render(const Display1<M, E>* pdisplay, const T* pt);
-//template<typename M, typename E> void renderPoints(const Display1* pdisplay, std::unordered_set<Point3D<M, E>*> ppoints);//:)
-//template<typename M, typename E> void renderPoint(const Display1* pdisplay, const Point3D<M, E>* ppoint);//:)
+//template<typename T> bool render(const Display1<T>* pdisplay, const Point3D<T>* ppoint);
+//template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt);
+//template<typename T> void renderPoints(const Display1* pdisplay, std::unordered_set<Point3D<T>*> ppoints);//:)
+//template<typename T> void renderPoint(const Display1* pdisplay, const Point3D<T>* ppoint);//:)
 //void renderLines(const Display1* pdisplay, std::unordered_set<Line3D*> plines);//:)
 //void renderLine(const Display1* pdisplay, Line3D* pline);//:)
 
@@ -340,14 +334,14 @@ template<typename M, typename E> void Display1<M, E>::print(const bool& spread, 
 /*
  *
  */
-/*template<typename T, typename M, typename E> bool render(const Display1<M, E>* pdisplay, const T* pt) {
+/*template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt) {
 	bool success=false;
 	if (pt!=NULL) {
 		//printf("pdisplayable1\n");
 		//pdisplayable->getX().print(true);
 		//pdisplayable->getY().print(true);
 		//pdisplayable->getZ().print(true);
-		Point3D<M, E> p{pt->getX(), pt->getY(), pt->getZ()};
+		Point3D<T> p{pt->getX(), pt->getY(), pt->getZ()};
 		render(pdisplay, &p);
 	}
 	return success;

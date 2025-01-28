@@ -12,29 +12,29 @@
 #include "Polyhedron.h"
 
 /*
- * ##############
- *  Cube<M, E> :)
- * ##############
+ * ###########
+ *  Cube<T> :)
+ * ###########
  * A cube.
  */
-template<typename M, typename E> class Cube : public Polyhedron<M, E> {
+template<typename T> class Cube : public Polyhedron<T> {
 public:
 	Cube();
 	virtual ~Cube();
-	Cube(const Cube<M, E>& cube);
+	Cube(const Cube<T>& cube);
 };
 
 
-template<typename M, typename E> Cube<M, E>::Cube() {
+template<typename T> Cube<T>::Cube() {
 	// TODO Auto-generated constructor stub
 
 }
 
-template<typename M, typename E> Cube<M, E>::~Cube() {
+template<typename T> Cube<T>::~Cube() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename M, typename E> Cube<M, E>::Cube(const Cube<M, E>& other) {
+template<typename T> Cube<T>::Cube(const Cube<T>& other) {
 	// TODO Auto-generated constructor stub
 
 }

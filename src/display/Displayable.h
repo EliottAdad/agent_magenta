@@ -19,31 +19,31 @@
 #include "../core/CoordinateSystem3D.h"
 
 /*
- * #####################
- *  Displayable<M, E> :)
- * #####################
+ * ##################
+ *  Displayable<T> :)
+ * ##################
  * Stores the color, and a shape to use when rendering
  * If shape=NULL draws a point, if SDL_Color=NULL draws in white
  */
-template<typename M, typename E> struct Displayable : public Printable {
+template<typename T> struct Displayable : public Printable {
 public:
-	std::shared_ptr<CoordinateSystem3D<M, E>> psys;								// The coords system in wich it is expressed
+	std::shared_ptr<CoordinateSystem3D<T>> psys;								// The coords system in wich it is expressed
 	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
-	//std::shared_ptr<Shape3D<M, E>> pshape;			// Pointer to the shape to be drawn(NULL if none)
+	//std::shared_ptr<Shape3D<T>> pshape;			// Pointer to the shape to be drawn(NULL if none)
 
 	Displayable();
 	virtual ~Displayable();
 	Displayable(const Displayable &other);
 
-	virtual SN<M, E> getX() const;				//Gets the coords (changer plus tard en getPoints
-	virtual SN<M, E> getY() const;
-	virtual SN<M, E> getZ() const;
-	virtual Point3D<M, E> getPosition() const;
+	virtual T getX() const;				//Gets the coords (changer plus tard en getPoints
+	virtual T getY() const;
+	virtual T getZ() const;
+	virtual Point3D<T> getPosition() const;
 	//render();
 
-	virtual std::unordered_set<std::shared_ptr<Point3D<M, E>>> getPPoints() const;
-	virtual std::unordered_set<std::shared_ptr<Line3D<M, E>>> getPLines() const;
-	virtual std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> getPTriangles() const;
+	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const;
+	virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
+	virtual std::unordered_set<std::shared_ptr<Triangle3D<T>>> getPTriangles() const;
 	//virtual Image getSticker() const;
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
@@ -51,17 +51,17 @@ public:
 };
 
 
-template<typename M, typename E> Displayable<M, E>::Displayable() {
+template<typename T> Displayable<T>::Displayable() {
 	pcolor=NULL;//std::make_shared<SDL_Color>(255, 255, 255, 255);		// Will be interprated as white by the cameras and displays
 	//m_pmesh=NULL;			//
 	//m_delc=true;
 }
 
-template<typename M, typename E> Displayable<M, E>::~Displayable() {
+template<typename T> Displayable<T>::~Displayable() {
 	;
 }
 
-template<typename M, typename E> Displayable<M, E>::Displayable(const Displayable &other) {
+template<typename T> Displayable<T>::Displayable(const Displayable &other) {
 	pcolor=other.pcolor;
 }
 
@@ -75,27 +75,27 @@ template<typename M, typename E> Displayable<M, E>::Displayable(const Displayabl
 }*/
 
 
-template<typename M, typename E> SN<M, E> Displayable<M, E>::getX() const {
-	return SN<M, E>{0,0};
+template<typename T> T Displayable<T>::getX() const {
+	return (T)0;
 }
 
-template<typename M, typename E> SN<M, E> Displayable<M, E>::getY() const {
-	return SN<M, E>{0,0};
+template<typename T> T Displayable<T>::getY() const {
+	return (T)0;
 }
 
-template<typename M, typename E> SN<M, E> Displayable<M, E>::getZ() const {
-	return SN<M, E>{0,0};
+template<typename T> T Displayable<T>::getZ() const {
+	return (T)0;
 }
 
-template<typename M, typename E> Point3D<M, E> Displayable<M, E>::getPosition() const {
-	return Point3D<M, E>{this->getX(), this->getY(), this->getZ()};
+template<typename T> Point3D<T> Displayable<T>::getPosition() const {
+	return Point3D<T>{this->getX(), this->getY(), this->getZ()};
 }
 
-/*template<typename M, typename E> SDL_Color Displayable<M, E>::getColor() const {//Yes because it cannot be null
+/*template<typename T> SDL_Color Displayable<T>::getColor() const {//Yes because it cannot be null
 	return *pcolor;
 }
 
-template<typename M, typename E> SDL_Color* Displayable<M, E>::getPColor() const {
+template<typename T> SDL_Color* Displayable<T>::getPColor() const {
 	SDL_Color* pcolor=NULL;
 	if (!m_delc){
 		pcolor=m_pcolor;
@@ -103,7 +103,7 @@ template<typename M, typename E> SDL_Color* Displayable<M, E>::getPColor() const
 	return pcolor;
 }
 
-template<typename M, typename E> void Displayable<M, E>::setColor(SDL_Color& color, const bool& delc) {
+template<typename T> void Displayable<T>::setColor(SDL_Color& color, const bool& delc) {
 	if (m_delc){//Get rid of the last color
 		delete m_pcolor;
 	}
@@ -115,7 +115,7 @@ template<typename M, typename E> void Displayable<M, E>::setColor(SDL_Color& col
 	m_delc=delc;
 }
 
-template<typename M, typename E> void Displayable<M, E>::setPColor(SDL_Color* pcolor, const bool& delc) {
+template<typename T> void Displayable<T>::setPColor(SDL_Color* pcolor, const bool& delc) {
 	if (m_delc){//Get rid of the last color
 		delete m_pcolor;
 	}
@@ -127,24 +127,24 @@ template<typename M, typename E> void Displayable<M, E>::setPColor(SDL_Color* pc
 	m_delc=delc;
 }*/
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Point3D<M, E>>> Displayable<M, E>::getPPoints() const {
-	std::unordered_set<std::shared_ptr<Point3D<M, E>>> ppoints;
+template<typename T> std::unordered_set<std::shared_ptr<Point3D<T>>> Displayable<T>::getPPoints() const {
+	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
 	return ppoints;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Line3D<M, E>>> Displayable<M, E>::getPLines() const {
-	std::unordered_set<std::shared_ptr<Line3D<M, E>>> plines;
+template<typename T> std::unordered_set<std::shared_ptr<Line3D<T>>> Displayable<T>::getPLines() const {
+	std::unordered_set<std::shared_ptr<Line3D<T>>> plines;
 	return plines;
 }
 
-template<typename M, typename E> std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> Displayable<M, E>::getPTriangles() const {
-	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> ptriangles;
+template<typename T> std::unordered_set<std::shared_ptr<Triangle3D<T>>> Displayable<T>::getPTriangles() const {
+	std::unordered_set<std::shared_ptr<Triangle3D<T>>> ptriangles;
 	return ptriangles;
 }
 
 
 
-template<typename M, typename E> std::string Displayable<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+template<typename T> std::string Displayable<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
 	mes+="DISPLAYABLE";
@@ -152,7 +152,7 @@ template<typename M, typename E> std::string Displayable<M, E>::to_string(const 
 	return mes;
 }
 
-template<typename M, typename E> void Displayable<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
+template<typename T> void Displayable<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }

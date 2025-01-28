@@ -13,36 +13,36 @@
 
 
 /*
- * #######################
- *  BezierCurve3D<M, E> :)
- * #######################
+ * ####################
+ *  BezierCurve3D<T> :)
+ * ####################
  * A bezier curve defined by 2 or more control points.
  */
-template<typename M, typename E> class BezierCurve3D {
+template<typename T> class BezierCurve3D {
 	public:
-	std::unordered_set<std::shared_ptr<Point3D<M, E>>> m_pctr_points;// Pointeurs to the control points of the curve.
+	std::unordered_set<std::shared_ptr<Point3D<T>>> m_pctr_points;// Pointeurs to the control points of the curve.
 
 	BezierCurve3D();//:)
-	BezierCurve3D(const BezierCurve3D<M, E>& bezier_curve);//:)
+	BezierCurve3D(const BezierCurve3D<T>& bezier_curve);//:)
 	~BezierCurve3D();//:)
 	
-	//std::shared_ptr<Point3D<M, E>> getImage(const float& t);//:) t is between 0 and 1.
+	//std::shared_ptr<Point3D<T>> getImage(const float& t);//:) t is between 0 and 1.
 
-	bool testOnLine(const Point3D<M, E>& point);//:)
+	bool testOnLine(const Point3D<T>& point);//:)
 	//Line2D* getPerpendicularLine(Point2D* ppoint);//:) Get a perpendicular line passing throug the point in parameter.
 };
 
 
 
-template<typename M, typename E> BezierCurve3D<M, E>::BezierCurve3D() {
+template<typename T> BezierCurve3D<T>::BezierCurve3D() {
 	;
 }
 
-template<typename M, typename E> BezierCurve3D<M, E>::BezierCurve3D(const BezierCurve3D<M, E>& bezier_curve) {
+template<typename T> BezierCurve3D<T>::BezierCurve3D(const BezierCurve3D<T>& bezier_curve) {
 	;
 }
 
-template<typename M, typename E> BezierCurve3D<M, E>::~BezierCurve3D() {
+template<typename T> BezierCurve3D<T>::~BezierCurve3D() {
 	/*int szppoints=m_ppoints.size();
 	for (int i(0) ; i<szppoints ; i++)
 	{
@@ -53,8 +53,8 @@ template<typename M, typename E> BezierCurve3D<M, E>::~BezierCurve3D() {
 /**
  * Get the image on the line given the factor t.
  */
-/*template<typename M, typename E> std::shared_ptr<Point3D<M, E>> BezierCurve3D<M, E>::getImage(const float& t) {
-	SN<M, E> x{0, 0}, y{0, 0};
+/*template<typename T> std::shared_ptr<Point3D<T>> BezierCurve3D<T>::getImage(const float& t) {
+	SN<T> x{0, 0}, y{0, 0};
 
 	for (int i(0) ; i<(int)m_ppoints.size() ; i++)
 	{

@@ -17,41 +17,41 @@
 
 /*
  * ####################
- *  Polyhedron<M, E> :)
+ *  Polyhedron<T> :)
  * ####################
  */
-template<typename M, typename E> class Polyhedron : public Shape3D<M, E> {
+template<typename T> class Polyhedron : public Shape3D<T> {
 protected:
-	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> m_ptriangles;
+	std::unordered_set<std::shared_ptr<Triangle3D<T>>> m_ptriangles;
 
 public:
 	Polyhedron();
 	virtual ~Polyhedron();
-	Polyhedron(const Polyhedron<M, E> &other);
+	Polyhedron(const Polyhedron<T> &other);
 
-	std::unordered_set<std::shared_ptr<Triangle3D<M, E>>> getPFaces();
-	void setFace(std::shared_ptr<Triangle3D<M, E>> pface);
+	std::unordered_set<std::shared_ptr<Triangle3D<T>>> getPFaces();
+	void setFace(std::shared_ptr<Triangle3D<T>> pface);
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
-template<typename M, typename E> Polyhedron<M, E>::Polyhedron() {
+template<typename T> Polyhedron<T>::Polyhedron() {
 	// TODO Auto-generated constructor stub
 
 }
 
-template<typename M, typename E> Polyhedron<M, E>::~Polyhedron() {
+template<typename T> Polyhedron<T>::~Polyhedron() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename M, typename E> Polyhedron<M, E>::Polyhedron(const Polyhedron<M, E> &other) {
+template<typename T> Polyhedron<T>::Polyhedron(const Polyhedron<T> &other) {
 	// TODO Auto-generated constructor stub
 
 }
 
 
-template<typename M, typename E> std::string Polyhedron<M, E>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> std::string Polyhedron<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	std::string mes=((spread)?"\n" : "");
 
 	if (full_info){
@@ -67,7 +67,7 @@ template<typename M, typename E> std::string Polyhedron<M, E>::to_string(const b
 	return mes;
 }
 
-template<typename M, typename E> void Polyhedron<M, E>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
+template<typename T> void Polyhedron<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
 	printTabs(indent);
 	std::cout << this->to_string(spread, full_info, indent);
 }
