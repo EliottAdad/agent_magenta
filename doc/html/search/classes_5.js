@@ -1,7 +1,5 @@
 var searchData=
 [
   ['line3d_0',['Line3D',['../classLine3D.html',1,'']]],
-  ['line3d_3c_20t_20_3e_1',['Line3D&lt; T &gt;',['../classLine3D.html',1,'']]],
-  ['line3d_3c_20u_20_3e_2',['Line3D&lt; U &gt;',['../classLine3D.html',1,'']]],
-  ['line3ds_3',['Line3DS',['../classLine3DS.html',1,'']]]
+  ['line3d_3c_20u_20_3e_1',['Line3D&lt; U &gt;',['../classLine3D.html',1,'']]]
 ];

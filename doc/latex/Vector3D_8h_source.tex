@@ -28,11 +28,11 @@
 \DoxyCodeLine{24 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classVector3D}{Vector3D}} : \textcolor{keyword}{public} \mbox{\hyperlink{classLine3D}{Line3D}}<T> \{}
 \DoxyCodeLine{25 \textcolor{keyword}{public}:}
 \DoxyCodeLine{26     \mbox{\hyperlink{classVector3D}{Vector3D}}();}
-\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
-\DoxyCodeLine{28     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
-\DoxyCodeLine{29     \mbox{\hyperlink{classVector3D}{Vector3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp2);}
-\DoxyCodeLine{30     \mbox{\hyperlink{classVector3D}{Vector3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
-\DoxyCodeLine{31     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp2);}
+\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
+\DoxyCodeLine{28     \mbox{\hyperlink{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
+\DoxyCodeLine{29     \mbox{\hyperlink{classVector3D_a99ace19e85aa5d3925d593804a96f053}{Vector3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp2);}
+\DoxyCodeLine{30     \mbox{\hyperlink{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}{Vector3D}}(std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp1, \textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p2);}
+\DoxyCodeLine{31     \mbox{\hyperlink{classVector3D_a79511eff218ec5204846a39f3b277456}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& p1, std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> pp2);}
 \DoxyCodeLine{32     \mbox{\hyperlink{classVector3D}{Vector3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<T>}}\& v);}
 \DoxyCodeLine{33     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3D}{\string~Vector3D}}();\textcolor{comment}{//:)}}
 \DoxyCodeLine{34 }
@@ -63,7 +63,7 @@
 \DoxyCodeLine{59     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<T>}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
 \DoxyCodeLine{60     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<T>}}\& v) \textcolor{keyword}{const};\textcolor{comment}{// :)}}
 \DoxyCodeLine{61 }
-\DoxyCodeLine{62     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{62     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{63     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{64 \};}
 \DoxyCodeLine{65 }
@@ -251,7 +251,7 @@
 \DoxyCodeLine{282 }
 \DoxyCodeLine{283 }
 \DoxyCodeLine{284 }
-\DoxyCodeLine{285 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{Vector3D<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{285 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classVector3D}{Vector3D<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{286     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{287 }
 \DoxyCodeLine{288     \textcolor{keywordflow}{if} (full\_info)\{}

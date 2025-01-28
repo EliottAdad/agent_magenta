@@ -38,7 +38,7 @@
 \DoxyCodeLine{34     \textcolor{keyword}{virtual} \mbox{\hyperlink{classLine3D}{\string~Line3D}}();                                               \textcolor{comment}{//:)}}
 \DoxyCodeLine{35     \mbox{\hyperlink{classLine3D}{Line3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLine3D}{Line3D<T>}}\& line);}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
+\DoxyCodeLine{37     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{38     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{39 \};}
 \DoxyCodeLine{40 }
@@ -71,7 +71,7 @@
 \DoxyCodeLine{67     this-\/>pp2=line.pp2;}
 \DoxyCodeLine{68 \}}
 \DoxyCodeLine{69 }
-\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{Line3D<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classLine3D}{Line3D<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{71     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{72     mes+=to\_stringTabs(indent);}
 \DoxyCodeLine{73 }
@@ -96,7 +96,7 @@
 \DoxyCodeLine{92 }
 \DoxyCodeLine{93 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classLine3D}{Line3D<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{94     printTabs(indent);}
-\DoxyCodeLine{95     std::cout << this-\/>\mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{to\_string}}(spread, full\_info, indent);}
+\DoxyCodeLine{95     std::cout << this-\/>to\_string(spread, full\_info, indent);}
 \DoxyCodeLine{96 \}}
 \DoxyCodeLine{97 }
 \DoxyCodeLine{98 }

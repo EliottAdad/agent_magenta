@@ -103,7 +103,7 @@ $(function() {
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * T is the class for the objects stored.</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * U is the unit used for distance.</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt; <span class="keyword">class </span><a class="code hl_class" href="classQuad.html">Quad</a> : <span class="keyword">public</span> <a class="code hl_class" href="classPrintable.html">Printable</a> {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classQuad.html">   35</a></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt; <span class="keyword">class </span><a class="code hl_class" href="classQuad.html">Quad</a> : <span class="keyword">public</span> <a class="code hl_class" href="classPrintable.html">Printable</a> {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::shared_ptr&lt;Point3D&lt;U&gt;&gt; m_ppoint;       <span class="comment">// The center of the zone.</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::shared_ptr&lt;Point3D&lt;U&gt;&gt; m_pbarycenter;  <span class="comment">// The center of mass given the repartition of the WeightedPoints in the zone.</span></div>
@@ -297,7 +297,7 @@ $(function() {
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">return</span> elmts;</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt; std::unordered_set&lt;std::shared_ptr&lt;T&gt;&gt; <a class="code hl_function" href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">Quad&lt;T, U&gt;::getPNeighbors</a>(<span class="keyword">const</span> std::shared_ptr&lt;T&gt; pelement, <span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; mem)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">  237</a></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt; std::unordered_set&lt;std::shared_ptr&lt;T&gt;&gt; <a class="code hl_function" href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">Quad&lt;T, U&gt;::getPNeighbors</a>(<span class="keyword">const</span> std::shared_ptr&lt;T&gt; pelement, <span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; mem)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keyword">static</span> std::unordered_set&lt;std::shared_ptr&lt;T&gt;&gt; pneighbors;</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordflow">if</span> (mem==<span class="keyword">false</span>){</div>
@@ -314,7 +314,7 @@ $(function() {
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            <span class="comment">//printf(&quot;God3\n&quot;);</span></div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i(0) ; i&lt;8 ; i++) {</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                <span class="keywordflow">if</span> (m_ptrees[i]!=NULL){</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                    m_ptrees[i]-&gt;<a class="code hl_function" href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">getPNeighbors</a>(pelement, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                    m_ptrees[i]-&gt;getPNeighbors(pelement, <span class="keyword">true</span>);</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                    <span class="comment">//printf(&quot;God4\n&quot;);</span></div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                }</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            }</div>
@@ -589,9 +589,9 @@ $(function() {
 <div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span> </div>
 <div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span><span class="preprocessor">#endif </span><span class="comment">/* QUAD_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassPrintable_html"><div class="ttname"><a href="classPrintable.html">Printable</a></div><div class="ttdef"><b>Definition:</b> Printable.h:17</div></div>
-<div class="ttc" id="aclassQuad_html"><div class="ttname"><a href="classQuad.html">Quad</a></div><div class="ttdef"><b>Definition:</b> Quad.h:33</div></div>
-<div class="ttc" id="aclassQuad_html_a2afa15c4de6ee871bf2c0491d0fbf14a"><div class="ttname"><a href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">Quad::getPNeighbors</a></div><div class="ttdeci">std::unordered_set&lt; std::shared_ptr&lt; T &gt; &gt; getPNeighbors(const std::shared_ptr&lt; T &gt; pelement, const bool &amp;mem=false) const</div><div class="ttdef"><b>Definition:</b> Quad.h:235</div></div>
-<div class="ttc" id="astructPoint3D_html"><div class="ttname"><a href="structPoint3D.html">Point3D</a></div><div class="ttdef"><b>Definition:</b> Point3D (copie 1).h:26</div></div>
+<div class="ttc" id="aclassQuad_html"><div class="ttname"><a href="classQuad.html">Quad</a></div><div class="ttdef"><b>Definition:</b> Quad.h:35</div></div>
+<div class="ttc" id="aclassQuad_html_a2afa15c4de6ee871bf2c0491d0fbf14a"><div class="ttname"><a href="classQuad.html#a2afa15c4de6ee871bf2c0491d0fbf14a">Quad::getPNeighbors</a></div><div class="ttdeci">std::unordered_set&lt; std::shared_ptr&lt; T &gt; &gt; getPNeighbors(const std::shared_ptr&lt; T &gt; pelement, const bool &amp;mem=false) const</div><div class="ttdef"><b>Definition:</b> Quad.h:237</div></div>
+<div class="ttc" id="astructPoint3D_html"><div class="ttname"><a href="structPoint3D.html">Point3D</a></div><div class="ttdef"><b>Definition:</b> Point3D.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
