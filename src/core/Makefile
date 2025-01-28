@@ -9,7 +9,7 @@ all: main_test_SN
 main_test_SN: main_test_SN.o
 	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^
 
-main_test_SN.o: main_test_SN.cpp SN.h
+main_test_SN.o: main_test_SN.cpp SN.h Printable.h
 	$(CC) $(LDFLAGS) $(CFLAGS) -c $< -o $@
 
 #%.o: %.cpp

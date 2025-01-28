@@ -11,9 +11,9 @@
 
 #include <memory>
 
-#include "functions.h"
+#include "../utilities/functions.h"
 #include "Point3D.h"
-#include "Printable.h"
+#include "../utilities/Printable.h"
 
 /*
  * #############

@@ -19,6 +19,7 @@
  * ###############
  *  Vector3D<T> :)
  * ###############
+ * T: Unit for distances
  */
 template<typename T> class Vector3D : public Line3D<T> {
 public:
@@ -30,9 +31,6 @@ public:
 	Vector3D(const Point3D<T>& p1, std::shared_ptr<Point3D<T>> pp2);
 	Vector3D(const Vector3D<T>& v);
 	virtual ~Vector3D();//:)
-
-	//void setPPoint(Point3D<float, char>* ppoint, const bool& delp=true);
-	//void setPoint(Point3D<float, char>& point, const bool& delp=false);
 
 	T getNorm() const;// :)
 	void setNorm(const T& norm);// :)
@@ -53,7 +51,9 @@ public:
 //	virtual void operator*=(const M& k);// :)
 //	virtual void operator/=(const M& k);// :)
 	virtual void operator*=(const T& k);// :)
+	virtual void operator*=(const int& k);// :)
 	virtual void operator/=(const T& k);// :)
+	virtual void operator/=(const int& k);// :)
 
 	virtual bool operator==(const Vector3D<T>& v) const;// :)
 	virtual bool operator<=(const Vector3D<T>& v) const;// :)
@@ -67,7 +67,9 @@ template<typename T> Vector3D<T> operator+(const Vector3D<T>& v1, const Vector3D
 //std::unique_ptr<Vector3D>& operator+(const std::unique_ptr<Vector3D>& pv1, const std::unique_ptr<Vector3D>& pv2);
 template<typename T> Vector3D<T> operator-(const Vector3D<T>& v1, const Vector3D<T>& v2);// :)
 template<typename T> Vector3D<T> operator*(const Vector3D<T>& v, const T& k);// :)
+template<typename T> Vector3D<T> operator*(const Vector3D<T>& v, const int& k);// :)
 template<typename T> Vector3D<T> operator/(const Vector3D<T>& v, const T& k);// :)
+template<typename T> Vector3D<T> operator/(const Vector3D<T>& v, const int& k);// :)
 
 //Scalar product
 template<typename T> T operator*(const Vector3D<T>& v1, const Vector3D<T>& v2);// :)
@@ -244,7 +246,15 @@ template<typename T> void Vector3D<T>::operator*=(const T& k) {
 	*this->pp2*=k;
 }
 
+template<typename T> void Vector3D<T>::operator*=(const int& k) {
+	*this->pp2*=k;
+}
+
 template<typename T> void Vector3D<T>::operator/=(const T& k) {
+	*this->pp2/=k;
+}
+
+template<typename T> void Vector3D<T>::operator/=(const int& k) {
 	*this->pp2/=k;
 }
 
@@ -324,7 +334,17 @@ template<typename T> Vector3D<T> operator*(const Vector3D<T>& v, const T& k) {
 	return *pnv;
 }
 
+template<typename T> Vector3D<T> operator*(const Vector3D<T>& v, const int& k) {
+	std::shared_ptr<Vector3D<T>> pnv(new Vector3D<T>(v.pp1, *(v.pp2)*k));
+	return *pnv;
+}
+
 template<typename T> Vector3D<T> operator/(const Vector3D<T>& v, const T& k) {
+	std::shared_ptr<Vector3D<T>> pnv(new Vector3D<T>(v.pp1, *(v.pp2)/k));
+	return *pnv;
+}
+
+template<typename T> Vector3D<T> operator/(const Vector3D<T>& v, const int& k) {
 	std::shared_ptr<Vector3D<T>> pnv(new Vector3D<T>(v.pp1, *(v.pp2)/k));
 	return *pnv;
 }

@@ -12,9 +12,9 @@
 #include "../core/Point3D.h"
 
 /*
- * #########################
+ * ######################
  *  WeightedPoint3D<T> :)
- * #########################
+ * ######################
  * A point with a weight (useless)
  */
 template<typename T> struct WeightedPoint3D : public Point3D<T> {

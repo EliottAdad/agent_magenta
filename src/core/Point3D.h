@@ -12,7 +12,7 @@
 #include <memory>
 
 #include "SN.h"
-#include "Printable.h"
+#include "../utilities/Printable.h"
 
 
 
@@ -44,7 +44,9 @@ template<typename T> struct Point3D : public Printable {
 	virtual void operator-=(const Point3D<T>& p);			// :)
 	virtual void operator-=(const T& nb);				// :)
 	virtual void operator*=(const T& k);				// :)
+	virtual void operator*=(const int& k);				// :)
 	virtual void operator/=(const T& k);				// :)
+	virtual void operator/=(const int& k);				// :)
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
@@ -65,8 +67,11 @@ template<typename T> bool operator>=(const T& nb, const Point3D<T>& p);		// :)
 template<typename T> Point3D<T> operator+(const Point3D<T>& p1, const Point3D<T>& p2);	// :)
 template<typename T> Point3D<T> operator-(const Point3D<T>& p1, const Point3D<T>& p2);	// :)
 template<typename T> Point3D<T> operator*(const Point3D<T>& p, const T& k);			// :)
+template<typename T> Point3D<T> operator*(const Point3D<T>& p, const int& k);			// :)
 template<typename T> Point3D<T> operator*(const T& k, const Point3D<T>& p);			// :)
+template<typename T> Point3D<T> operator*(const int& k, const Point3D<T>& p);			// :)
 template<typename T> Point3D<T> operator/(const Point3D<T>& p, const T& k);			// :)
+template<typename T> Point3D<T> operator/(const Point3D<T>& p, const int& k);			// :)
 template<typename T> Point3D<T> abs(const Point3D<T>& p);	// :)
 
 
@@ -154,7 +159,19 @@ template<typename T> void Point3D<T>::operator*=(const T& k) {
 	this->z*=k;
 }
 
+template<typename T> void Point3D<T>::operator*=(const int& k) {
+	this->x*=k;
+	this->y*=k;
+	this->z*=k;
+}
+
 template<typename T> void Point3D<T>::operator/=(const T& k) {
+	this->x/=k;
+	this->y/=k;
+	this->z/=k;
+}
+
+template<typename T> void Point3D<T>::operator/=(const int& k) {
 	this->x/=k;
 	this->y/=k;
 	this->z/=k;
@@ -290,11 +307,23 @@ template<typename T> Point3D<T> operator*(const Point3D<T>& p, const T& k) {
 	return Point3D<T>{p.x*k, p.y*k, p.z*k};
 }
 
+template<typename T> Point3D<T> operator*(const Point3D<T>& p, const int& k) {
+	return Point3D<T>{p.x*k, p.y*k, p.z*k};
+}
+
 template<typename T> Point3D<T> operator*(const T& k, const Point3D<T>& p) {
 	return Point3D<T>{k*p.x, k*p.y, k*p.z};
 }
 
+template<typename T> Point3D<T> operator*(const int& k, const Point3D<T>& p) {
+	return Point3D<T>{k*p.x, k*p.y, k*p.z};
+}
+
 template<typename T> Point3D<T> operator/(const Point3D<T>& p, const T& k) {
+	return Point3D<T>{p.x/k, p.y/k, p.z/k};
+}
+
+template<typename T> Point3D<T> operator/(const Point3D<T>& p, const int& k) {
 	return Point3D<T>{p.x/k, p.y/k, p.z/k};
 }
 

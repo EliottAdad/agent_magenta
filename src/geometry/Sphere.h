@@ -14,9 +14,9 @@
 #include "../utilities/functions.h"
 
 /*
- * ################
+ * #############
  *  Sphere<T> :)
- * ################
+ * #############
  */
 template<typename T> class Sphere : public Shape3D<T> {
 public:

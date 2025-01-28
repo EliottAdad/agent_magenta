@@ -47,12 +47,14 @@
 /*
  * Main SDL
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
     pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{1,3}, 5, SN<float, char>{1, 15});
-
+    for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts) {
+    	ppart->print(true, true, 0);
+    }
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
@@ -94,8 +96,8 @@ int main(int argc, char* argv[]){
 
     printf("\nBye(main0)\n");
 
-    return EXIT_SUCCESS;
-}
+    //return EXIT_SUCCESS;
+}*/
 
 
 #endif /* MAIN0_CPP_ */

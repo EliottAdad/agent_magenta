@@ -131,8 +131,8 @@ template<typename T> SObject3D<T>::SObject3D() {
 	//printf("Hey5\n");*/
 }
 
-template<typename T> SObject3D<T>::SObject3D(std::string name, SDL_Color pcolor) {
-	/*m_name=name;
+/*template<typename T> SObject3D<T>::SObject3D(std::string name, SDL_Color pcolor) {
+	m_name=name;
 	m_mass={1, 1};
 	m_charge={0, 0};
 	m_inertia_moment={1, 0};
@@ -155,8 +155,8 @@ template<typename T> SObject3D<T>::SObject3D(std::string name, SDL_Color pcolor)
 	//printf("Hey4\n");
 	m_fmove=true;
 	m_fcollide=true;
-	//printf("Hey5\n");*/
-}
+	//printf("Hey5\n");
+}*/
 
 template<typename T> SObject3D<T>::SObject3D(const SObject3D& sobject) {
 	/*printf("OU1\n");

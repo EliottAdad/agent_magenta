@@ -16,7 +16,7 @@
  * Main core (SN)
  */
 /*int main(int argc, char* argv[]){
-	printf("%lu\n", sizeof(LSN));
+	printf("%lu\n", sizeof(int));
 	printf("%lu\n", sizeof(SN<float, char>));
 
 	//

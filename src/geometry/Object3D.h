@@ -13,9 +13,9 @@
 #include "Mesh3D.h"
 
 /*
- * ##################
+ * ###############
  *  Object3D<T> :)
- * ##################
+ * ###############
  */
 template<typename T> class Object3D : public Particle3D<T> {
 public:

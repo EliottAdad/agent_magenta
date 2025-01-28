@@ -17,7 +17,7 @@
 #include "SN.h"
 //#include "../geometry/Particle3D.h"
 #include "Point3D.h"
-#include "Printable.h"
+#include "../utilities/Printable.h"
 
 
 #define TLFTree m_ptrees[0] 	// Top Left Front corner : is NULL if nothing
@@ -40,8 +40,8 @@
  */
 template<typename T, typename U> class Oct : public Printable {
 protected:
-	std::shared_ptr<Point3D<T>> m_ppoint;					// The center of the zone.
-	std::shared_ptr<Point3D<T>> m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
+	std::shared_ptr<Point3D<U>> m_ppoint;					// The center of the zone.
+	std::shared_ptr<Point3D<U>> m_pbarycenter;				// The center of mass given the repartition of the WeightedPoints in the zone.
 
 	U m_a;												// Length of the zone's border.
 	U m_tot_weight;										// Total weight contained in this Oct.
@@ -66,13 +66,13 @@ public:
 	static float m_ALPHA;						// The threshold m_ALPHA=d/a (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.
 
 	Oct();
-	Oct(const U& a, const Point3D<T>& p={{0,0},{0,0},{0,0}});
+	Oct(const U& a, const Point3D<U>& p={(U)0,(U)0,(U)0});
 	virtual ~Oct();
 	Oct(const Oct<T, U>& oct);
 
-	Point3D<T> getPoint() const;
-	void setPoint(const Point3D<T>& point);
-	Point3D<T> getBarycenter() const;
+	Point3D<U> getPoint() const;
+	void setPoint(const Point3D<U>& point);
+	Point3D<U> getBarycenter() const;
 	U getA() const;
 	void setA(const U& a);
 	unsigned int getNB_OCTS() const;
@@ -85,7 +85,7 @@ public:
 	//void find(const T& t, std::unordered_set<Oct<T, U>*>& pocts);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
 	//void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;// Useless
 	//std::unordered_set<T*> find(const Point3D& point);
-	std::shared_ptr<T> search(const std::shared_ptr<Point3D<T>> ppoint) const;
+	std::shared_ptr<T> search(const std::shared_ptr<Point3D<U>> ppoint) const;
 	void recalculate();
 	void empty();
 
@@ -96,7 +96,7 @@ public:
 	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 template<typename T, typename U> unsigned int Oct<T, U>::m_NB_OCTS=0;
-template<typename T, typename U> U Oct<T, U>::m_LIT_A={1,0};
+template<typename T, typename U> U Oct<T, U>::m_LIT_A=(U)1;
 template<typename T, typename U> float Oct<T, U>::m_ALPHA=0.5;
 
 
@@ -104,17 +104,17 @@ template<typename T, typename U> float Oct<T, U>::m_ALPHA=0.5;
  * Constructor0
  */
 template<typename T, typename U> Oct<T, U>::Oct() {
-	m_ppoint=std::make_shared<Point3D<T>>();
-	m_pbarycenter=std::make_shared<Point3D<T>>(*m_ppoint);
+	m_ppoint=std::make_shared<Point3D<U>>();
+	m_pbarycenter=std::make_shared<Point3D<U>>(*m_ppoint);
 	//printf("\nHein1 ? (Oct)\n");
 	//m_pbarycenter->print();
 
-	m_a={1,2};
-	m_tot_weight=(T)0.;
+	m_a=(U)100;
+	m_tot_weight=(U)0;
 
 	m_pT=NULL;
 
-	for (int i(0) ; i<8 ; i++){
+	for (int i(0) ; i<8 ; i++) {
 		m_ptrees[i]=NULL;
 	}
 
@@ -127,12 +127,12 @@ template<typename T, typename U> Oct<T, U>::Oct() {
  * @param a{The side's lenght of the area}
  * @param point{The center on which is centered the Oct's area}
  */
-template<typename T, typename U> Oct<T, U>::Oct(const U& a, const Point3D<T>& p) {
-	m_ppoint=std::make_shared<Point3D<T>>(p);
-	m_pbarycenter=std::make_shared<Point3D<T>>(*m_ppoint);
+template<typename T, typename U> Oct<T, U>::Oct(const U& a, const Point3D<U>& p) {
+	m_ppoint=std::make_shared<Point3D<U>>(p);
+	m_pbarycenter=std::make_shared<Point3D<U>>(*m_ppoint);
 
 	m_a=a;
-	m_tot_weight=(T)0.;
+	m_tot_weight=(U)0.;
 
 	m_pT=NULL;
 
@@ -209,11 +209,11 @@ template<typename T, typename U> Oct<T, U>::~Oct() {
  * Copy constructor
  */
 template<typename T, typename U> Oct<T, U>::Oct(const Oct<T, U>& oct) {
-	m_ppoint=std::make_shared<Point3D<T>>(oct.getPoint());
-	m_pbarycenter=std::make_shared<Point3D<T>>(*m_ppoint);
+	m_ppoint=std::make_shared<Point3D<U>>(oct.getPoint());
+	m_pbarycenter=std::make_shared<Point3D<U>>(*m_ppoint);
 
 	m_a=oct.getA();
-	m_tot_weight=(T)0.;
+	m_tot_weight=(U)0.;
 
 	m_pT=NULL;
 
@@ -224,21 +224,21 @@ template<typename T, typename U> Oct<T, U>::Oct(const Oct<T, U>& oct) {
 	m_NB_OCTS++;
 }
 
-template<typename T, typename U> Point3D<T> Oct<T, U>::getPoint() const {// Because it can be NULL
+template<typename T, typename U> Point3D<U> Oct<T, U>::getPoint() const {// Because it can be NULL
 	return *m_ppoint;
 }
 
-template<typename T, typename U> void Oct<T, U>::setPoint(const Point3D<T>& point) {
+template<typename T, typename U> void Oct<T, U>::setPoint(const Point3D<U>& point) {
 	if (m_ppoint!=NULL){
 		*m_ppoint=point;
 	}else{
-		m_ppoint=std::make_shared<Point3D<T>>(point);
+		m_ppoint=std::make_shared<Point3D<U>>(point);
 		// Et le barycentre ?
 	}
 	this->recalculate();
 }
 
-template<typename T, typename U> Point3D<T> Oct<T, U>::getBarycenter() const {
+template<typename T, typename U> Point3D<U> Oct<T, U>::getBarycenter() const {
 	return *m_pbarycenter;
 }
 
@@ -294,7 +294,7 @@ template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> Oct<T, U
 		//printf("\n");
 		//(getDistance(/**m_pbarycenter*/*m_ppoint, *pelement)/m_a).print();
 		//printf("\n");
-		if (m_pT==NULL && (T)(m_ALPHA)/**abs(m_tot_weight)*/>=getDistance(*m_pbarycenter/**m_ppoint*/, *pelement)/m_a){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
+		if (m_pT==NULL && (U)(m_ALPHA)/**abs(m_tot_weight)*/>=getDistance(*m_pbarycenter/**m_ppoint*/, *pelement)/m_a){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
 			//printf("God3\n");
 			for (int i(0) ; i<8 ; i++){
 				if (m_ptrees[i]!=NULL){
@@ -322,20 +322,20 @@ template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> Oct<T, U
 template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) {
 	//printf("A0\n");
 	if (pT!=NULL){
-		Point3D<T> p={pT->x, pT->y, pT->z};
-		Point3D<T> dp=p-*m_ppoint;//{pT->x-m_ppoint->x, pT->y-m_ppoint->y, pT->z-m_ppoint->z};
+		Point3D<U> p={pT->x, pT->y, pT->z};
+		Point3D<U> dp=p-*m_ppoint;//{pT->x-m_ppoint->x, pT->y-m_ppoint->y, pT->z-m_ppoint->z};
 		//printf("A0_2: ");
 		//m_ppoint->print();
 		//p.print();
 		//abs(dp).print();
 		//printf("\n");
 
-		if (abs(dp.x)<=m_a/(T)2. && abs(dp.y)<=m_a/(T)2. && abs(dp.z)<=m_a/(T)2.){// If in the cube centered on the point.
+		if (abs(dp.x)<=m_a/(U)2 && abs(dp.y)<=m_a/(U)2 && abs(dp.z)<=m_a/(U)2){// If in the cube centered on the point.
 
 			//printf("A1\n");
 			// Tanage the barycenter
 			m_tot_weight+=pT->getW();//Add to tot_weight
-			if (m_tot_weight!=(T)0.){
+			if (m_tot_weight!=(U)0){
 				*m_pbarycenter+=p*(pT->getW()/m_tot_weight);//Add to the barycenter
 			}else{
 				*m_pbarycenter=*m_ppoint;
@@ -348,28 +348,28 @@ template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) 
 				//m_pT->print();
 				//printf("\nAAAAAAAAAAAA\n");
 			}else{																				// Else it means it is an internal branch
-				if (dp.x<=(T)0. && dp.y<=(T)0. && dp.z>=(T)0.){//If cube 1
+				if (dp.x<=(U)0 && dp.y<=(U)0 && dp.z>=(U)0){//If cube 1
 					//printf("D\n");
 					insertTLFTree(pT);
-				}else if (dp.x>=(T)0. && dp.y<=(T)0. && dp.z>=(T)0.){//If cube 2
+				}else if (dp.x>=(U)0 && dp.y<=(U)0 && dp.z>=(U)0){//If cube 2
 					//printf("E\n");
 					insertTRFTree(pT);
-				}else if (dp.x>=(T)0. && dp.y<=(T)0. && dp.z<=(T)0.){//If cube 3
+				}else if (dp.x>=(U)0 && dp.y<=(U)0 && dp.z<=(U)0){//If cube 3
 					//printf("F\n");
 					insertBRFTree(pT);
-				}else if (dp.x<=(T)0. && dp.y<=(T)0. && dp.z<=(T)0.){//If cube 4
+				}else if (dp.x<=(U)0 && dp.y<=(U)0 && dp.z<=(U)0){//If cube 4
 					//printf("G\n");
 					insertBLFTree(pT);
-				}else if (dp.x<=(T)0. && dp.y>=(T)0. && dp.z>=(T)0.){//If cube 5
+				}else if (dp.x<=(U)0 && dp.y>=(U)0 && dp.z>=(U)0){//If cube 5
 					//printf("H\n");
 					insertTLBTree(pT);
-				}else if (dp.x>=(T)0. && dp.y>=(T)0. && dp.z>=(T)0.){//If cube 6
+				}else if (dp.x>=(U)0 && dp.y>=(U)0 && dp.z>=(U)0){//If cube 6
 					//printf("I\n");
 					insertTRBTree(pT);
-				}else if (dp.x>=(T)0. && dp.y>=(T)0. && dp.z<=(T)0.){//If cube 7
+				}else if (dp.x>=(U)0 && dp.y>=(U)0 && dp.z<=(U)0){//If cube 7
 					//printf("J\n");
 					insertBRBTree(pT);
-				}else if (dp.x<=(T)0. && dp.y>=(T)0. && dp.z<=(T)0.){//If cube 8
+				}else if (dp.x<=(U)0 && dp.y>=(U)0 && dp.z<=(U)0){//If cube 8
 					//printf("K\n");
 					insertBLBTree(pT);
 				}
@@ -394,72 +394,72 @@ template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) 
 
 template<typename T, typename U> void Oct<T, U>::insertTLFTree(std::shared_ptr<T> pT) {//En private
 	if (TLFTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(-1.)*a, (T)(-1.)*a, (T)(1.)*a};
-		TLFTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(-1)*a, (U)(-1)*a, (U)(1)*a};
+		TLFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	TLFTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertTRFTree(std::shared_ptr<T> pT) {//En private
 	if (TRFTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(1.)*a, (T)(-1.)*a, (T)(1.)*a};
-		TRFTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(1)*a, (U)(-1)*a, (U)(1)*a};
+		TRFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	TRFTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertBRFTree(std::shared_ptr<T> pT) {//En private
 	if (BLBTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(1.)*a, (T)(-1.)*a, (T)(-1.)*a};
-		BLBTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(1)*a, (U)(-1)*a, (U)(-1)*a};
+		BLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLBTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertBLFTree(std::shared_ptr<T> pT) {//En private
 	if (BLFTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(-1.)*a, (T)(-1.)*a, (T)(-1.)*a};
-		BLFTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4.;
+		Point3D<U> np{(U)(-1)*a, (U)(-1)*a, (U)(-1)*a};
+		BLFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLFTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertTLBTree(std::shared_ptr<T> pT) {//En private
 	if (TLBTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(-1.)*a, (T)(1.)*a, (T)(1.)*a};
-		TLBTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(-1)*a, (U)(1)*a, (U)(1)*a};
+		TLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	TLBTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertTRBTree(std::shared_ptr<T> pT) {//En private
 	if (TRBTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(1.)*a, (T)(1.)*a, (T)(1.)*a};
-		TRBTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(1)*a, (U)(1)*a, (U)(1)*a};
+		TRBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	TRBTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertBRBTree(std::shared_ptr<T> pT) {//En private
 	if (BRBTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(1.)*a, (T)(1.)*a, (T)(-1.)*a};
-		BRBTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4;
+		Point3D<U> np{(U)(1)*a, (U)(1)*a, (U)(-1)*a};
+		BRBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	BRBTree->insert(pT);
 }
 
 template<typename T, typename U> void Oct<T, U>::insertBLBTree(std::shared_ptr<T> pT) {//En private
 	if (BLBTree==NULL){//If there is not yet a tree we create it
-		U a=m_a/(T)4.;
-		Point3D<T> np{(T)(-1.)*a, (T)(1.)*a, (T)(-1.)*a};
-		BLBTree=new Oct<T, U>(m_a/(T)2., *m_ppoint+np);
+		U a=m_a/(U)4.;
+		Point3D<U> np{(U)(-1)*a, (U)(1)*a, (U)(-1)*a};
+		BLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLBTree->insert(pT);
 }
@@ -482,7 +482,7 @@ template<typename T, typename U> void Oct<T, U>::empty() {
 	}
 
 	*m_pbarycenter=*m_ppoint;
-	m_tot_weight=(T)0;
+	m_tot_weight=(U)0;
 	m_pT=NULL;
 }
 

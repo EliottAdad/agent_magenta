@@ -21,22 +21,22 @@
 /*
  * Main core (Particle3D, Quads, Octs)
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
 	printf("abs(-3.2): %f\n", abs(-3.2));
-	printf("%lu\n", sizeof(Point3D<float, char>));
-	printf("%lu\n", sizeof(Point3D<float, char>));
-	printf("%lu\n", sizeof(WeightedPoint3D<float, char>));
-	printf("%lu\n", sizeof(Particle3D<float, char>));
+	printf("%lu\n", sizeof(Point3D<SN<float, char>>));
+	printf("%lu\n", sizeof(Point3D<SN<float, char>>));
+	printf("%lu\n", sizeof(WeightedPoint3D<SN<float, char>>));
+	printf("%lu\n", sizeof(Particle3D<SN<float, char>>));
 
 	//
 	// Tests Particles
 	//
 	std::cout<< "\n" << "####Tests Particles####" << "\n" << "\n";
-	WeightedPoint3D<float, char> w1{{-1,0},{1,0},{-1,0},{5,1}};
-	WeightedPoint3D<float, char> w2{{1.5,0},{1.87006,0},{0,0},{-3,1}};
-	WeightedPoint3D<float, char> w3{{-1.75,0},{-1.9,0},{0,0},{-2,1}};
-	WeightedPoint3D<float, char> w4{{-1,1},{2,1},{3,0},{7,1}};
+	WeightedPoint3D<SN<float, char>> w1{{-1,0},{1,0},{-1,0},{5,1}};
+	WeightedPoint3D<SN<float, char>> w2{{1.5,0},{1.87006,0},{0,0},{-3,1}};
+	WeightedPoint3D<SN<float, char>> w3{{-1.75,0},{-1.9,0},{0,0},{-2,1}};
+	WeightedPoint3D<SN<float, char>> w4{{-1,1},{2,1},{3,0},{7,1}};
 	Particle3D par1(w1);
 	Particle3D par2(w2);
 	Particle3D par3(w3);
@@ -50,24 +50,24 @@
 	par3.print(true, true, 1);
 	par4.print(true, true, 1);
 
-
-	//
-	// Tests Quads
-	//
-	std::cout<< "\n\n" << "####Tests Quads####" << "\n\n";
-	SN<float, char> a{1,2};
-	Point3D<float, char> p{{0,0},{0,0},{0,0}};
-	Quad<Particle3D<float, char>, float, char> q1(a, p);
-	q1.m_ALPHA=0.1;
-
-	std::shared_ptr<Particle3D<float, char>> ppar1(new Particle3D<float, char>(par1));
-	std::shared_ptr<Particle3D<float, char>> ppar2(new Particle3D<float, char>(par2));
-	std::shared_ptr<Particle3D<float, char>> ppar3(new Particle3D<float, char>(par3));
-	std::shared_ptr<Particle3D<float, char>> ppar4(new Particle3D<float, char>(par4));
+	std::shared_ptr<Particle3D<SN<float, char>>> ppar1(new Particle3D<SN<float, char>>(par1));
+	std::shared_ptr<Particle3D<SN<float, char>>> ppar2(new Particle3D<SN<float, char>>(par2));
+	std::shared_ptr<Particle3D<SN<float, char>>> ppar3(new Particle3D<SN<float, char>>(par3));
+	std::shared_ptr<Particle3D<SN<float, char>>> ppar4(new Particle3D<SN<float, char>>(par4));
 	ppar1->print(true, true, 1);
 	ppar2->print(true, true, 1);
 	ppar3->print(true, true, 1);
 	ppar4->print(true, true, 1);
+
+	//
+	// Tests Quads
+	//
+	/*std::cout<< "\n\n" << "####Tests Quads####" << "\n\n";
+	SN<float, char> a{1,2};
+	Point3D<SN<float, char>> p{{0,0},{0,0},{0,0}};
+	Quad<Particle3D<SN<float, char>>, SN<float, char>> q1(a, p);
+	q1.m_ALPHA=0.1;
+
 	q1.insert(ppar1);
 	q1.insert(ppar2);
 	//q1.insert(ppar3);
@@ -86,14 +86,14 @@
 	//Vector3D v(Point3D{{0,0},{0,0},{0,0}}, Point3D{{0,0},{0,0},{0,0}});
 	//q1.computeInverseSquareLawResultant(par4, v);
 	//std::cout << "\n" << v.to_string() << "\n";
-
+*/
 
 	//
 	// Tests Octs
 	//
 	std::cout<< "\n\n" << "####Tests Octs####" << "\n\n";
 	//Oct<Particle3D<float, char>, float, char> o1(a, p);
-	Oct<Particle3D<float, char>, float, char> o1;
+	Oct<Particle3D<SN<float, char>>, SN<float, char>> o1;
 	//o1.setA(a);
 	//o1.setPoint(p);
 	o1.m_ALPHA=0.58;
@@ -104,10 +104,10 @@
 	o1.insert(ppar2);
 	o1.insert(ppar3);
 	//o1.insert(ppar4);
-	std::unordered_set<std::shared_ptr<Particle3D<float, char>>> elms=o1.getPElements();
+	std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> elms=o1.getPElements();
 	printf("\nnb of elmts: %ld\n", elms.size());
 	//o1.getPNeighbors(ppar2);
-	std::unordered_set<std::shared_ptr<Particle3D<float, char>>> neights=o1.getPNeighbors(ppar2);
+	std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> neights=o1.getPNeighbors(ppar2);
 	printf("\nnb of neighbours: %ld\n", neights.size());
 	//o1.recalculate();
 	//printf("\nnb of neighbours: %ld\n", neights.size());
@@ -116,7 +116,7 @@
 	printf("\n\nBye bye\n");
 
 	return 0;
-}*/
+}
 
 
 

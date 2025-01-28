@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <math.h>
 #include <string>
+
 #include "../utilities/functions.h"
 #include "../utilities/Printable.h"
 
@@ -35,6 +36,7 @@ template<typename M, typename E> struct SN : public Printable {
 
 	SN();
 	SN(M m, E e);
+	SN(M nb);
 	SN(const SN<M, E>& nb);
 
 	void recal();												//:)
@@ -85,9 +87,13 @@ template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k);					//:)
 template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& nb);					//:)
+template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const int& k);					//:)
+template<typename M, typename E> SN<M, E> operator*(const int& k, const SN<M, E>& nb);					//:)
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const M& nb2);					//:)
 template<typename M, typename E> SN<M, E> operator/(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator/(const int& nb1, const SN<M, E>& nb2);					//:)
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb);											//:)
 template<typename M, typename E> SN<M, E> pow(const SN<M, E>& nb, const E& exp);					//:)
@@ -110,6 +116,12 @@ template<typename M, typename E> SN<M, E>::SN() {
 template<typename M, typename E> SN<M, E>::SN(M m, E e) {
 	this->m=m;
 	this->e=e;
+	this->recal();
+}
+
+template<typename M, typename E> SN<M, E>::SN(M nb) {
+	this->m=nb;
+	this->e=(E)0;
 	this->recal();
 }
 
@@ -487,6 +499,13 @@ template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M&
 	return nnb;
 }
 
+template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const int& k) {
+	M nm=nb.m*(M)k;
+	E ne=nb.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
 /*template<> SN<float, char> operator*(const SN<float, char>& nb, const float& k) {
 	SN<float, char> nnb{nb.m*k, nb.e};
 	nnb.recal();
@@ -500,11 +519,12 @@ template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& 
 	return nnb;
 }
 
-/*template<> SN<float, char> operator*(const float& k, const SN<float, char>& nb) {
-	SN<float, char> nnb{nb.m*k, nb.e};
-	nnb.recal();
+template<typename M, typename E> SN<M, E> operator*(const int& k, const SN<M, E>& nb) {
+	M nm=(M)k*nb.m;
+	E ne=nb.e;
+	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
-}*/
+}
 
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2) {
 	M nm=nb1.m/nb2.m;
@@ -524,6 +544,13 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M&
 	return nnb;
 }
 
+template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const int& k) {
+	M nm=nb.m/(M)k;
+	E ne=nb.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
 /*template<> SN<float, char> operator/(const SN<float, char>& nb, const float& k) {
 	float nm=nb.m*k;
 	char ne=nb.e;
@@ -532,6 +559,13 @@ template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb, const M&
 
 template<typename M, typename E> SN<M, E> operator/(const M& k, const SN<M, E>& nb) {
 	M nm=k/nb.m;
+	E ne=(-1)*nb.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> SN<M, E> operator/(const int& k, const SN<M, E>& nb) {
+	M nm=(M)k/nb.m;
 	E ne=(-1)*nb.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;

@@ -45,12 +45,11 @@ template<typename T> ParticleRot3D<T> operator+(const ParticleRot3D<T>& p1, cons
 
 
 template<typename T> ParticleRot3D<T>::ParticleRot3D() {
-	this->x=T{1,0};
-	this->y=T{1,0};
-	this->z=T{1,0};
-	//this->w=T{1,0};						// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	this->x=(T)1;						// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	this->y=(T)1;
+	this->z=(T)1;
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	pfields->insert({"mass", std::make_shared<T>(T{1,0})});
+	pfields->insert({"mass", std::make_shared<T>((T)1)});
 
 	ps=std::make_shared<Vector3D<T>>();		// Vector3D init to end=(1, 1, 1)
 	this->pcolor=NULL;
@@ -84,7 +83,7 @@ template<typename T> ParticleRot3D<T>::ParticleRot3D(const Point3D<T>& p) {
 	this->z=p.z;
 	//this->w=T{1,0};// Init the Weighted Point to {x, y, y, w=1}
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	pfields->insert({"mass", std::make_shared<T>(T{1,0})});
+	pfields->insert({"mass", std::make_shared<T>((T)1)});
 
 	ps=std::make_shared<Vector3D<T>>();
 	this->pcolor=NULL;
@@ -106,10 +105,9 @@ template<typename T> ParticleRot3D<T>::ParticleRot3D(const T& x, const T& y, con
 }
 
 template<typename T> ParticleRot3D<T>::ParticleRot3D(const WeightedPoint3D<T>& wp) {
-	this->x=wp.x;
+	this->x=wp.x;			// Init the Weighted Point to {x, y, y, w}
 	this->y=wp.y;
 	this->z=wp.z;
-	//this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
 	pfields->insert({"mass", std::make_shared<T>(wp.w)});
 
@@ -174,7 +172,7 @@ template<typename T> T ParticleRot3D<T>::getZ() const {
 }
 
 template<typename T> T ParticleRot3D<T>::getW() const {
-	T w{1,0};
+	T w=(T)1;
 
 	if (pfields!=NULL /*&& pfields->contains("mass")*/){
 		w=*((*pfields)["mass"]);
@@ -191,6 +189,9 @@ template<typename T> void ParticleRot3D<T>::apply(){
 	this->x+=(ps->pp2->x)*m_dt;
 	this->y+=(ps->pp2->y)*m_dt;
 	this->z+=(ps->pp2->z)*m_dt;
+	//this->x+=(ps->pp2->x)*(T)m_dt;
+	//this->y+=(ps->pp2->y)*(T)m_dt;
+	//this->z+=(ps->pp2->z)*(T)m_dt;
 }
 
 
@@ -228,7 +229,7 @@ template<typename T> std::string ParticleRot3D<T>::to_string(const bool& spread,
 	mes+=to_stringTabs(indent);
 	mes+="(" + this->getPosition().to_string();
 	mes+=" | ";
-	mes+="w:";// + this->w.to_string();
+	mes+="w:" + this->w.to_string();
 	mes+=" | ";
 	mes+=(ps==NULL)?"NULL":ps->to_string(false, false);
 	mes+=")";
@@ -242,8 +243,10 @@ template<typename T> void ParticleRot3D<T>::print(const bool& spread, const bool
 
 template<typename T> ParticleRot3D<T> operator+(const ParticleRot3D<T>& p1, const ParticleRot3D<T>& p2){
 	std::shared_ptr<ParticleRot3D<T>> pparticle=std::make_shared<ParticleRot3D<T>>();
+
 	*(pparticle->ps)=*(p1->ps)+*(p2->ps);
 	*(pparticle->prs)=*(p1->prs)+*(p2->prs);
+
 	pparticle->pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
 	if (p1->pfields!=NULL && p1->pfields->contains("mass") && p2->pfields!=NULL && p2->pfields->contains("mass")) {
 		pparticle->pfields->insert({"mass", *(p1->pfields)["mass"]+*(p2->pfields)["mass"]});

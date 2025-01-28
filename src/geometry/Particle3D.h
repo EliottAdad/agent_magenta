@@ -37,7 +37,7 @@ public:
 
 	Particle3D();
 	Particle3D(const Point3D<T>& p);
-	Particle3D(const T& x, const T& y, const T& z, const T& w={1, 0});
+	Particle3D(const T& x, const T& y, const T& z, const T& w=(T)1);
 	Particle3D(const WeightedPoint3D<T>& wp);
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
@@ -74,12 +74,11 @@ template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Part
 
 
 template<typename T> Particle3D<T>::Particle3D() {
-	this->x=T{1,0};
-	this->y=T{1,0};
-	this->z=T{1,0};
-	//this->w=T{1,0};						// Init the Weighted Point to {x=1, y=1, y=1, w=1}
+	this->x=(T)1;// Init to {x=1, y=1, y=1, w=1}
+	this->y=(T)1;
+	this->z=(T)1;
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	pfields->insert({"mass", std::make_shared<T>(T{1,0})});
+	pfields->insert({"mass", std::make_shared<T>((T)1)});
 
 	ps=std::make_shared<Vector3D<T>>();		// Vector3D init to end=(1, 1, 1)
 	this->pcolor=NULL;
@@ -108,12 +107,11 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
 }*/
 
 template<typename T> Particle3D<T>::Particle3D(const Point3D<T>& p) {
-	this->x=p.x;
+	this->x=p.x;// Init to {x, y, y, w=1}
 	this->y=p.y;
 	this->z=p.z;
-	//this->w=T{1,0};// Init the Weighted Point to {x, y, y, w=1}
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	pfields->insert({"mass", std::make_shared<T>(T{1,0})});
+	pfields->insert({"mass", std::make_shared<T>((T)1)});
 
 	ps=std::make_shared<Vector3D<T>>();
 	this->pcolor=NULL;
@@ -135,10 +133,9 @@ template<typename T> Particle3D<T>::Particle3D(const T& x, const T& y, const T& 
 }
 
 template<typename T> Particle3D<T>::Particle3D(const WeightedPoint3D<T>& wp) {
-	this->x=wp.x;
+	this->x=wp.x;// Init to {x, y, y, w}
 	this->y=wp.y;
 	this->z=wp.z;
-	//this->w=wp.w;// Init the Weighted Point to {x, y, y, w}
 	pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
 	pfields->insert({"mass", std::make_shared<T>(wp.w)});
 
@@ -175,12 +172,10 @@ template<typename T> Particle3D<T>::~Particle3D() {
 }
 
 template<typename T> Particle3D<T>::Particle3D(const Particle3D<T>& p) {
-	this->x=p.x;
+	this->x=p.x;// Init the Weighted Point to {x, y, y}
 	this->y=p.y;
 	this->z=p.z;
-	//this->w=p.w;// Init the Weighted Point to {x, y, y, w}
-	//pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	pfields=p->pfields;
+	pfields=p.pfields;// Copy the properties
 
 	ps=p.ps;
 	this->pcolor=p.pcolor;
@@ -203,7 +198,7 @@ template<typename T> T Particle3D<T>::getZ() const {
 }
 
 template<typename T> T Particle3D<T>::getW() const {
-	T w{1,0};
+	T w=(T)1;
 
 	if (pfields!=NULL /*&& pfields->contains("mass")*/){
 		w=*((*pfields)["mass"]);
@@ -220,6 +215,9 @@ template<typename T> void Particle3D<T>::apply(){
 	this->x+=(ps->pp2->x)*m_dt;
 	this->y+=(ps->pp2->y)*m_dt;
 	this->z+=(ps->pp2->z)*m_dt;
+	//this->x+=(ps->pp2->x)*(T)m_dt;
+	//this->y+=(ps->pp2->y)*(T)m_dt;
+	//this->z+=(ps->pp2->z)*(T)m_dt;
 }
 
 
@@ -257,8 +255,10 @@ template<typename T> std::string Particle3D<T>::to_string(const bool& spread, co
 	mes+=to_stringTabs(indent);
 	mes+="(" + this->getPosition().to_string();
 	mes+=" | ";
-	mes+="w:";// + this->w.to_string();
-	mes+=" | ";
+	for (auto pairr : *(this->pfields)) {
+		mes+=pairr.first+" "+pairr.second->to_string()+" | ";//"w:" + this->fields["mass"].to_string();
+	}
+	//mes+=" | ";
 	mes+=(ps==NULL)?"NULL":ps->to_string(false, false);
 	mes+=")";
 	return mes;
@@ -271,8 +271,10 @@ template<typename T> void Particle3D<T>::print(const bool& spread, const bool& f
 
 template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2){
 	std::shared_ptr<Particle3D<T>> pparticle=std::make_shared<Particle3D<T>>();
+
 	*(pparticle->ps)=*(p1->ps)+*(p2->ps);
 	*(pparticle->prs)=*(p1->prs)+*(p2->prs);
+
 	pparticle->pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
 	if (p1->pfields!=NULL && p1->pfields->contains("mass") && p2->pfields!=NULL && p2->pfields->contains("mass")) {
 		pparticle->pfields->insert({"mass", *(p1->pfields)["mass"]+*(p2->pfields)["mass"]});
