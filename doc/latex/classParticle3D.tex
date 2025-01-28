@@ -1,8 +1,9 @@
-\hypertarget{classParticle3D}{}\doxysection{Particle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classParticle3D}\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\hypertarget{classParticle3D}{}\doxysection{Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classParticle3D}\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 
 
-Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$
 \end{figure}
 
 
-Collaboration diagram for Particle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,130 +23,130 @@ Collaboration diagram for Particle3D\texorpdfstring{$<$}{<} M, E \texorpdfstring
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classParticle3D_ac62964c41c154e879a5252fe2eee5556}\label{classParticle3D_ac62964c41c154e879a5252fe2eee5556}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p)
+\mbox{\Hypertarget{classParticle3D_a78e98d971e5d47f8af34e212c2fd504a}\label{classParticle3D_a78e98d971e5d47f8af34e212c2fd504a}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p)
 \item 
-\mbox{\Hypertarget{classParticle3D_afda3c3c955fae81830962cf61478e383}\label{classParticle3D_afda3c3c955fae81830962cf61478e383}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&x, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&y, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&z, const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&w=\{1, 0\})
+\mbox{\Hypertarget{classParticle3D_a648fff8cccd1242472661cf779344578}\label{classParticle3D_a648fff8cccd1242472661cf779344578}} 
+{\bfseries Particle3D} (const T \&x, const T \&y, const T \&z, const T \&w=(T) 1)
 \item 
-\mbox{\Hypertarget{classParticle3D_a4326b7e72f28e23f4cd4d72076f583e3}\label{classParticle3D_a4326b7e72f28e23f4cd4d72076f583e3}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}}$<$ M, E $>$ \&wp)
+\mbox{\Hypertarget{classParticle3D_a4bfb2d599e713235b2e7a540b9948e1d}\label{classParticle3D_a4bfb2d599e713235b2e7a540b9948e1d}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{structWeightedPoint3D}{Weighted\+Point3D}}$<$ T $>$ \&wp)
 \item 
-\mbox{\Hypertarget{classParticle3D_a771679143dafb661906bf3f38d68381c}\label{classParticle3D_a771679143dafb661906bf3f38d68381c}} 
-{\bfseries Particle3D} (const \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$ \&p)
+\mbox{\Hypertarget{classParticle3D_a983835b75ac503e718764c3047f7aded}\label{classParticle3D_a983835b75ac503e718764c3047f7aded}} 
+{\bfseries Particle3D} (const \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$ \&p)
 \item 
-virtual \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D_a222d9b688c460986e8f790e652face46}{getX}} () const
+virtual T \mbox{\hyperlink{classParticle3D_a3f18d1459aaea15790b23e3ca1b47d01}{getX}} () const
 \item 
-virtual \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D_a54b9dd4618439a9f0b767f059154e064}{getY}} () const
+virtual T \mbox{\hyperlink{classParticle3D_a1ea731a5481813a916d8266dbe075598}{getY}} () const
 \item 
-virtual \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D_a77a9b8a507d343494405ccea0e72bae3}{getZ}} () const
+virtual T \mbox{\hyperlink{classParticle3D_a8f0924935b6bc66b110c161e4e5a598e}{getZ}} () const
 \item 
-\mbox{\Hypertarget{classParticle3D_a128a2b3f4eb3a1910d1ae660fd05529f}\label{classParticle3D_a128a2b3f4eb3a1910d1ae660fd05529f}} 
-virtual \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries getW} () const
+\mbox{\Hypertarget{classParticle3D_a8b6e1d9bbbebd90e5c1dd92e6a46039c}\label{classParticle3D_a8b6e1d9bbbebd90e5c1dd92e6a46039c}} 
+virtual T {\bfseries getW} () const
 \item 
-virtual void \mbox{\hyperlink{classParticle3D_a3a54be67d75aa63f6faa0af084b25dee}{setT}} (const float \&dt)
+virtual void \mbox{\hyperlink{classParticle3D_a1ee9e5affcf572c5edb12fdd2f8a2c73}{setT}} (const float \&dt)
 \item 
-virtual void \mbox{\hyperlink{classParticle3D_ae5a5c2f10c00409ae825759dcc227a9e}{apply}} ()
+virtual void \mbox{\hyperlink{classParticle3D_af15b7ae29e566bbdafbd58bf324dd732}{apply}} ()
 \item 
-\mbox{\Hypertarget{classParticle3D_a3568e57087d80f6e66d9ef576fa4ef43}\label{classParticle3D_a3568e57087d80f6e66d9ef576fa4ef43}} 
-virtual void {\bfseries operator+=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&v)
+\mbox{\Hypertarget{classParticle3D_a00e5bff71cd4a0323dd04372b28981c7}\label{classParticle3D_a00e5bff71cd4a0323dd04372b28981c7}} 
+virtual void {\bfseries operator+=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
 \item 
-std\+::string \mbox{\hyperlink{classParticle3D_a067776db82b0e78e5c5672f1a9bc9fac}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+std\+::string \mbox{\hyperlink{classParticle3D_a50b2774bbccb8891f441ff3a060a8566}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-void \mbox{\hyperlink{classParticle3D_acc4e6e8ff745d91431acf22fc0318a26}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+void \mbox{\hyperlink{classParticle3D_a32d9af38e599ddb208696c34bb0766f6}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classParticle3D_a1fcea795d69fbe6d371c21b538000e81}\label{classParticle3D_a1fcea795d69fbe6d371c21b538000e81}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ M, E $>$ $>$ {\bfseries psys}
+\mbox{\Hypertarget{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}\label{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ T $>$ $>$ {\bfseries psys}
 \item 
-\mbox{\Hypertarget{classParticle3D_a80358c7e08be5d80ad7c4d92b77e750a}\label{classParticle3D_a80358c7e08be5d80ad7c4d92b77e750a}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ $>$ {\bfseries ps}
+\mbox{\Hypertarget{classParticle3D_aa3bbcf835ac0d7196263fadda939832e}\label{classParticle3D_aa3bbcf835ac0d7196263fadda939832e}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ $>$ {\bfseries ps}
 \item 
-\mbox{\Hypertarget{classParticle3D_a25d3f094440d09ef4e1719714ccea174}\label{classParticle3D_a25d3f094440d09ef4e1719714ccea174}} 
-std\+::shared\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ $>$ $>$ $>$ {\bfseries pfields}
+\mbox{\Hypertarget{classParticle3D_a7207d90aafe63f407940ada800333d8e}\label{classParticle3D_a7207d90aafe63f407940ada800333d8e}} 
+std\+::shared\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ T $>$ $>$ $>$ {\bfseries pfields}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classParticle3D_ae5a5c2f10c00409ae825759dcc227a9e}\label{classParticle3D_ae5a5c2f10c00409ae825759dcc227a9e}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!apply@{apply}}
-\index{apply@{apply}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_af15b7ae29e566bbdafbd58bf324dd732}\label{classParticle3D_af15b7ae29e566bbdafbd58bf324dd732}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!apply@{apply}}
+\index{apply@{apply}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{apply()}{apply()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::apply\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::apply\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
-\mbox{\Hypertarget{classParticle3D_a222d9b688c460986e8f790e652face46}\label{classParticle3D_a222d9b688c460986e8f790e652face46}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!getX@{getX}}
-\index{getX@{getX}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a3f18d1459aaea15790b23e3ca1b47d01}\label{classParticle3D_a3f18d1459aaea15790b23e3ca1b47d01}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getX@{getX}}
+\index{getX@{getX}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{getX()}{getX()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::getX\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::getX\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ T $>$}}.
 
-\mbox{\Hypertarget{classParticle3D_a54b9dd4618439a9f0b767f059154e064}\label{classParticle3D_a54b9dd4618439a9f0b767f059154e064}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!getY@{getY}}
-\index{getY@{getY}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a1ea731a5481813a916d8266dbe075598}\label{classParticle3D_a1ea731a5481813a916d8266dbe075598}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getY@{getY}}
+\index{getY@{getY}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{getY()}{getY()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::getY\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::getY\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ T $>$}}.
 
-\mbox{\Hypertarget{classParticle3D_a77a9b8a507d343494405ccea0e72bae3}\label{classParticle3D_a77a9b8a507d343494405ccea0e72bae3}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!getZ@{getZ}}
-\index{getZ@{getZ}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a8f0924935b6bc66b110c161e4e5a598e}\label{classParticle3D_a8f0924935b6bc66b110c161e4e5a598e}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getZ@{getZ}}
+\index{getZ@{getZ}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{getZ()}{getZ()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::getZ\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::getZ\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ T $>$}}.
 
-\mbox{\Hypertarget{classParticle3D_acc4e6e8ff745d91431acf22fc0318a26}\label{classParticle3D_acc4e6e8ff745d91431acf22fc0318a26}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!print@{print}}
-\index{print@{print}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a32d9af38e599ddb208696c34bb0766f6}\label{classParticle3D_a32d9af38e599ddb208696c34bb0766f6}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!print@{print}}
+\index{print@{print}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ T $>$}}.
 
-\mbox{\Hypertarget{classParticle3D_a3a54be67d75aa63f6faa0af084b25dee}\label{classParticle3D_a3a54be67d75aa63f6faa0af084b25dee}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!setT@{setT}}
-\index{setT@{setT}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a1ee9e5affcf572c5edb12fdd2f8a2c73}\label{classParticle3D_a1ee9e5affcf572c5edb12fdd2f8a2c73}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!setT@{setT}}
+\index{setT@{setT}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{setT()}{setT()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::setT (\begin{DoxyParamCaption}\item[{const float \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::setT (\begin{DoxyParamCaption}\item[{const float \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 
-\mbox{\Hypertarget{classParticle3D_a067776db82b0e78e5c5672f1a9bc9fac}\label{classParticle3D_a067776db82b0e78e5c5672f1a9bc9fac}} 
-\index{Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}!to\_string@{to\_string}}
-\index{to\_string@{to\_string}!Particle3D$<$ M, E $>$@{Particle3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classParticle3D_a50b2774bbccb8891f441ff3a060a8566}\label{classParticle3D_a50b2774bbccb8891f441ff3a060a8566}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-std\+::string \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{structPoint3D}{Point3\+D$<$ T $>$}}.
 
 
 

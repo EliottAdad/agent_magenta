@@ -17,6 +17,7 @@ src/main4.o: ../src/main4.cpp ../src/core/SN.h \
  ../src/geometry/../display/../core/../core/Point3D.h \
  ../src/geometry/../display/../utilities/Printable.h \
  ../src/geometry/../display/../core/CoordinateSystem3D.h \
+ ../src/geometry/../display/../utilities/functions_display.h \
  ../src/core/Quad.h ../src/core/Point3D.h ../src/core/Oct.h \
  ../src/core/SN.h
 ../src/core/SN.h:
@@ -42,6 +43,7 @@ src/main4.o: ../src/main4.cpp ../src/core/SN.h \
 ../src/geometry/../display/../core/../core/Point3D.h:
 ../src/geometry/../display/../utilities/Printable.h:
 ../src/geometry/../display/../core/CoordinateSystem3D.h:
+../src/geometry/../display/../utilities/functions_display.h:
 ../src/core/Quad.h:
 ../src/core/Point3D.h:
 ../src/core/Oct.h:

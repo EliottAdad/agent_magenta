@@ -19,9 +19,10 @@
 #include "../core/Vector3D.h"
 #include "../display/Displayable.h"
 #include "../utilities/Printable.h"
-#include "../utilities/functions.h"
 #include "../core/Scene.h"
 #include "../core/CoordinateSystem3D.h"
+#include "../utilities/functions.h"
+#include "../utilities/functions_display.h"
 
 
 /*
@@ -43,15 +44,15 @@ public:
 	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 	std::shared_ptr<Vector3D<T>> pnormal;				// Pointeur to the center of display.
 
-	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
-	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
-	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
-	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.
+	std::shared_ptr<COLOR> pdraw_color;				// Pointeur to the render color.
+	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
+	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
 	bool fclear;
 
 	Display2();
 	Display2(std::shared_ptr<Point3D<T>> ppoint);
-	Display2(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer);
+	Display2(std::shared_ptr<WINDOW> pwindow, std::shared_ptr<RENDERER> prenderer);
 	virtual ~Display2();
 	//Display2(const Display1 &other);
 
@@ -78,8 +79,8 @@ template<typename T> Display2<T>::Display2() {
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);//std::make_shared<SDL_Color>(SDL_Color{});
+	pdraw_color=createColor(255, 255, 255, 255);//std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
 	pwindow=NULL;
 	prenderer=NULL;
 
@@ -91,8 +92,8 @@ template<typename T> Display2<T>::Display2(std::shared_ptr<Point3D<T>> ppoint) {
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);//std::make_shared<SDL_Color>(SDL_Color{});
+	pdraw_color=createColor(255, 255, 255, 255);//std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
 	pwindow=NULL;
 	prenderer=NULL;
 
@@ -104,8 +105,8 @@ template<typename T> Display2<T>::Display2(std::shared_ptr<SDL_Window> pwindow, 
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);//std::make_shared<SDL_Color>(SDL_Color{});
+	pdraw_color=createColor(255, 255, 255, 255);//std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
 	this->pwindow=pwindow;
 	this->prenderer=prenderer;
 
@@ -156,7 +157,7 @@ template<typename T> bool Display2<T>::render() const {
 	bool success=false;
 
 	if (prenderer!=NULL){
-		if (fclear){
+		if (fclear) {
 			SDL_SetRenderDrawColor(prenderer.get(), pbkgd_color->r, pbkgd_color->g, pbkgd_color->b, pbkgd_color->a); // Chooses the background color.
 			SDL_RenderClear(prenderer.get()); // Fill the canvas with the background color
 		}

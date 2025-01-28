@@ -16,7 +16,7 @@
 /**
  * Constructor 1
  */
-Material::Material(std::shared_ptr<SDL_Color> pcolor){
+Material::Material(std::shared_ptr<COLOR> pcolor){
 	this->pcolor=pcolor;
 }
 

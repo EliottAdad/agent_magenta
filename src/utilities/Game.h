@@ -15,8 +15,9 @@
 #include "../core/Physics.h"
 #include "../core/Point3D.h"
 #include "../core/Scene.h"
-#include "../utilities/Printable.h"
 #include "../display/Display1.h"
+#include "Printable.h"
+#include "functions_display.h"
 
 /*
  * ########
@@ -31,7 +32,7 @@ private:
 	bool m_fpause;
 
 public:
-	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
+	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
 	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
 	std::shared_ptr<Scene<SN<float, char>>> pscene;					// A scene

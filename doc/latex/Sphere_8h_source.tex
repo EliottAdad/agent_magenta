@@ -18,51 +18,51 @@
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
 \DoxyCodeLine{15 }
 \DoxyCodeLine{16 \textcolor{comment}{/*}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ *  Sphere<M, E> :)}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{18 \textcolor{comment}{ *  Sphere<T> :)}}
+\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{20 \textcolor{comment}{ */}}
-\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classSphere}{Sphere}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<M, E> \{}
+\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classSphere}{Sphere}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<T> \{}
 \DoxyCodeLine{22 \textcolor{keyword}{public}:}
-\DoxyCodeLine{23     \mbox{\hyperlink{structSN}{SN<M, E>}} r;}
+\DoxyCodeLine{23     T r;}
 \DoxyCodeLine{24 }
 \DoxyCodeLine{25     \mbox{\hyperlink{classSphere}{Sphere}}();}
 \DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSphere}{\string~Sphere}}();}
-\DoxyCodeLine{27     \mbox{\hyperlink{classSphere}{Sphere}}(\textcolor{keyword}{const} \mbox{\hyperlink{classSphere}{Sphere<M, E>}}\& sphere);}
+\DoxyCodeLine{27     \mbox{\hyperlink{classSphere}{Sphere}}(\textcolor{keyword}{const} \mbox{\hyperlink{classSphere}{Sphere<T>}}\& sphere);}
 \DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> getPoints() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> getLines() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<T>>> getPoints() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
+\DoxyCodeLine{30     \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<T>>> getLines() \textcolor{keyword}{const};\textcolor{comment}{//To render the shape}}
 \DoxyCodeLine{31 }
 \DoxyCodeLine{32     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{34 }
 \DoxyCodeLine{35 \};}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSphere}{Sphere<M, E>::Sphere}}() \{}
-\DoxyCodeLine{38     r=\mbox{\hyperlink{structSN}{SN<M, E>}}\{0,0\};}
+\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classSphere}{Sphere<T>::Sphere}}() \{}
+\DoxyCodeLine{38     r=T\{0,0\};}
 \DoxyCodeLine{39 \}}
 \DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSphere}{Sphere<M, E>::\string~Sphere}}() \{}
+\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classSphere}{Sphere<T>::\string~Sphere}}() \{}
 \DoxyCodeLine{42     ;}
 \DoxyCodeLine{43 \}}
 \DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classSphere}{Sphere<M, E>::Sphere}}(\textcolor{keyword}{const} \mbox{\hyperlink{classSphere}{Sphere<M, E>}}\& sphere) \{}
+\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classSphere}{Sphere<T>::Sphere}}(\textcolor{keyword}{const} \mbox{\hyperlink{classSphere}{Sphere<T>}}\& sphere) \{}
 \DoxyCodeLine{46     r=sphere.r;}
 \DoxyCodeLine{47 \}}
 \DoxyCodeLine{48 }
 \DoxyCodeLine{49 }
 \DoxyCodeLine{50 }
-\DoxyCodeLine{51 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> \mbox{\hyperlink{classSphere}{Sphere<M, E>::getPoints}}()\textcolor{keyword}{ const}\{}
-\DoxyCodeLine{52     std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> ppoints=pixelizeCircle(ppoint, (\textcolor{keywordtype}{int})(r.to\_m\_type()), 8);}
+\DoxyCodeLine{51 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Point3D<T>>> \mbox{\hyperlink{classSphere}{Sphere<T>::getPoints}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{52     std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pixelizeCircle(ppoint, (\textcolor{keywordtype}{int})(r.to\_m\_type()), 8);}
 \DoxyCodeLine{53     \textcolor{keywordflow}{return} ppoints;}
 \DoxyCodeLine{54 \}}
 \DoxyCodeLine{55 }
-\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<M, E>>> \mbox{\hyperlink{classSphere}{Sphere<M, E>::getLines}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{virtual} std::unordered\_set<std::shared\_ptr<Line3D<T>>> \mbox{\hyperlink{classSphere}{Sphere<T>::getLines}}()\textcolor{keyword}{ const}\{}
 \DoxyCodeLine{57     ;}
 \DoxyCodeLine{58 \}}
 \DoxyCodeLine{59 }
 \DoxyCodeLine{60 }
-\DoxyCodeLine{61 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classSphere}{Sphere<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{61 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classSphere}{Sphere<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{62     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{63 }
 \DoxyCodeLine{64     \textcolor{keywordflow}{if} (full\_info)\{}
@@ -76,7 +76,7 @@
 \DoxyCodeLine{72     \textcolor{keywordflow}{return} mes;}
 \DoxyCodeLine{73 \}}
 \DoxyCodeLine{74 }
-\DoxyCodeLine{75 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSphere}{Sphere<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{75 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classSphere}{Sphere<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{76     printTabs(indent);}
 \DoxyCodeLine{77     std::cout << this-\/>to\_string(spread, full\_info, indent);}
 \DoxyCodeLine{78 \}}

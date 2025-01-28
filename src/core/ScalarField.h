@@ -17,7 +17,22 @@ public:
 
 	ScalarField();
 	virtual ~ScalarField();
-	ScalarField(const ScalarField &other);
+	ScalarField(const ScalarField<T>& other);
 };
+
+template<typename T> ScalarField<T>::ScalarField() {
+	// TODO Auto-generated constructor stub
+
+}
+
+template<typename T> ScalarField<T>::~ScalarField() {
+	// TODO Auto-generated destructor stub
+}
+
+template<typename T> ScalarField<T>::ScalarField(const ScalarField &other) {
+	// TODO Auto-generated constructor stub
+
+}
+
 
 #endif /* SCALARFIELD_H_ */

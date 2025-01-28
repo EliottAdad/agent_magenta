@@ -15,52 +15,61 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include <eigen3/Eigen/Dense>}}
 \DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Vector3D.h"{}}}
 \DoxyCodeLine{15 }
 \DoxyCodeLine{16 \textcolor{comment}{/*}}
-\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{18 \textcolor{comment}{ *  CoordinateSystem3D<M, E> :)}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{18 \textcolor{comment}{ *  CoordinateSystem3D<T> :)}}
+\DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{20 \textcolor{comment}{ * An coordinate system defined by}}
 \DoxyCodeLine{21 \textcolor{comment}{ * its 3 own unary vectors expressed}}
 \DoxyCodeLine{22 \textcolor{comment}{ * in world coordinates}}
 \DoxyCodeLine{23 \textcolor{comment}{ */}}
-\DoxyCodeLine{24 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{struct }\mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}} \{}
-\DoxyCodeLine{25     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e1;}
-\DoxyCodeLine{26     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e2;}
-\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D}{Vector3D<M, E>}} e3;}
+\DoxyCodeLine{24 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{struct }\mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}} \{}
+\DoxyCodeLine{25     \mbox{\hyperlink{classVector3D}{Vector3D<T>}} e1;}
+\DoxyCodeLine{26     \mbox{\hyperlink{classVector3D}{Vector3D<T>}} e2;}
+\DoxyCodeLine{27     \mbox{\hyperlink{classVector3D}{Vector3D<T>}} e3;}
 \DoxyCodeLine{28 }
-\DoxyCodeLine{29     \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D}}();}
+\DoxyCodeLine{29     \mbox{\hyperlink{structCoordinateSystem3D_af1eb0d464ac4ac0a2a2be67786ca5004}{CoordinateSystem3D}}();}
 \DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{structCoordinateSystem3D}{\string~CoordinateSystem3D}}();}
-\DoxyCodeLine{31     \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<M, E>}}\& coordsystem);}
+\DoxyCodeLine{31     \mbox{\hyperlink{structCoordinateSystem3D_af1eb0d464ac4ac0a2a2be67786ca5004}{CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<T>}}\& coordsystem);}
 \DoxyCodeLine{32 }
-\DoxyCodeLine{33     Eigen::Matrix<SN<M, E>, 3, 3> getM() \textcolor{keyword}{const};}
-\DoxyCodeLine{34 \};}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{39 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D<M, E>::CoordinateSystem3D}}() \{}
-\DoxyCodeLine{40     e1.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{1,0\},\{0,0\},\{0,0\}\});}
-\DoxyCodeLine{41     e2.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{1,0\},\{0,0\}\});}
-\DoxyCodeLine{42     e3.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{1,0\}\});}
-\DoxyCodeLine{43 \}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<M, E>::\string~CoordinateSystem3D}}() \{}
-\DoxyCodeLine{46     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
-\DoxyCodeLine{47 \}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{structCoordinateSystem3D_a7adaff956dfd7a6e214d0457b89daff6}{CoordinateSystem3D<M, E>::CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}}\& coordsystem) \{}
-\DoxyCodeLine{50     e1=coordsystem.e1;}
-\DoxyCodeLine{51     e2=coordsystem.e2;}
-\DoxyCodeLine{52     e3=coordsystem.e3;}
-\DoxyCodeLine{53 \}}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> Eigen::Matrix<SN<M, E>, 3, 3> \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<M, E>::getM}}()\textcolor{keyword}{ const}\{}
-\DoxyCodeLine{56     \textcolor{keywordflow}{return} Eigen::Matrix<SN<M, E>, 3, 3>\{}
-\DoxyCodeLine{57         \{e1.ppoint2-\/>x,e2.ppoint2-\/>x,e3.ppoint2-\/>x\},}
-\DoxyCodeLine{58         \{e2.ppoint2-\/>y,e2.ppoint2-\/>y,e2.ppoint2-\/>y\},}
-\DoxyCodeLine{59         \{e3.ppoint2-\/>z,e3.ppoint2-\/>z,e3.ppoint2-\/>z\}}
-\DoxyCodeLine{60     \};}
-\DoxyCodeLine{61 \}}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* COORDINATESYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{33     Eigen::Matrix<T, 3, 3> getM() \textcolor{keyword}{const};}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} rotate(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<T>}}\& v);}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{structCoordinateSystem3D_af1eb0d464ac4ac0a2a2be67786ca5004}{CoordinateSystem3D<T>::CoordinateSystem3D}}() \{}
+\DoxyCodeLine{41     e1.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<T>}}\{(T)1,(T)0,(T)0\});}
+\DoxyCodeLine{42     e2.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<T>}}\{(T)0,(T)1,(T)0\});}
+\DoxyCodeLine{43     e3.setEnd(\mbox{\hyperlink{structPoint3D}{Point3D<T>}}\{(T)0,(T)0,(T)1\});}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<T>::\string~CoordinateSystem3D}}() \{}
+\DoxyCodeLine{47     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
+\DoxyCodeLine{48 \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{structCoordinateSystem3D_af1eb0d464ac4ac0a2a2be67786ca5004}{CoordinateSystem3D<T>::CoordinateSystem3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D}}\& coordsystem) \{}
+\DoxyCodeLine{51     e1=coordsystem.e1;}
+\DoxyCodeLine{52     e2=coordsystem.e2;}
+\DoxyCodeLine{53     e3=coordsystem.e3;}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> Eigen::Matrix<T, 3, 3> \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<T>::getM}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} Eigen::Matrix<T, 3, 3>\{}
+\DoxyCodeLine{58         \{e1.ppoint2-\/>x,e2.ppoint2-\/>x,e3.ppoint2-\/>x\},}
+\DoxyCodeLine{59         \{e2.ppoint2-\/>y,e2.ppoint2-\/>y,e2.ppoint2-\/>y\},}
+\DoxyCodeLine{60         \{e3.ppoint2-\/>z,e3.ppoint2-\/>z,e3.ppoint2-\/>z\}}
+\DoxyCodeLine{61     \};}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{structCoordinateSystem3D}{CoordinateSystem3D<T>::rotate}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector3D}{Vector3D<T>}}\& v) \{}
+\DoxyCodeLine{65     \textcolor{comment}{/*return Eigen::Matrix<T, 3, 3>\{}}
+\DoxyCodeLine{66 \textcolor{comment}{        \{e1.ppoint2-\/>x,e2.ppoint2-\/>x,e3.ppoint2-\/>x\},}}
+\DoxyCodeLine{67 \textcolor{comment}{        \{e2.ppoint2-\/>y,e2.ppoint2-\/>y,e2.ppoint2-\/>y\},}}
+\DoxyCodeLine{68 \textcolor{comment}{        \{e3.ppoint2-\/>z,e3.ppoint2-\/>z,e3.ppoint2-\/>z\}}}
+\DoxyCodeLine{69 \textcolor{comment}{    \};*/}}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* COORDINATESYSTEM3D\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

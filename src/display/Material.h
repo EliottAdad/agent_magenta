@@ -15,6 +15,7 @@
 #include <SDL2/SDL.h>
 
 #include "../utilities/Printable.h"
+#include "../utilities/functions_display.h"
 
 
 
@@ -28,9 +29,9 @@
 
 class Material{
 public:
-	std::shared_ptr<SDL_Color> pcolor;
+	std::shared_ptr<COLOR> pcolor;
 
-	Material(std::shared_ptr<SDL_Color> pcolor);
+	Material(std::shared_ptr<COLOR> pcolor);
 	Material(const Material& material);
 	~Material();
 };

@@ -17,6 +17,7 @@
 #include "../core/Triangle3D.h"
 #include "../utilities/Printable.h"
 #include "../core/CoordinateSystem3D.h"
+#include "../utilities/functions_display.h"
 
 /*
  * ##################
@@ -28,7 +29,7 @@
 template<typename T> struct Displayable : public Printable {
 public:
 	std::shared_ptr<CoordinateSystem3D<T>> psys;								// The coords system in wich it is expressed
-	std::shared_ptr<SDL_Color> pcolor;		// Drawing color
+	std::shared_ptr<COLOR> pcolor;		// Drawing color
 	//std::shared_ptr<Shape3D<T>> pshape;			// Pointer to the shape to be drawn(NULL if none)
 
 	Displayable();

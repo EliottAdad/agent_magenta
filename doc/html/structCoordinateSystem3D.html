@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Revivaal: CoordinateSystem3D&lt; M, E &gt; Struct Template Reference</title>
+<title>Revivaal: CoordinateSystem3D&lt; T &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,44 +66,47 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structCoordinateSystem3D-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">CoordinateSystem3D&lt; M, E &gt; Struct Template Reference</div></div>
+  <div class="headertitle"><div class="title">CoordinateSystem3D&lt; T &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7adaff956dfd7a6e214d0457b89daff6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCoordinateSystem3D.html#a7adaff956dfd7a6e214d0457b89daff6">CoordinateSystem3D</a> ()</td></tr>
-<tr class="separator:a7adaff956dfd7a6e214d0457b89daff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a551a494c7fa58a15a80fcb8b04c70ada"><td class="memItemLeft" align="right" valign="top"><a id="a551a494c7fa58a15a80fcb8b04c70ada" name="a551a494c7fa58a15a80fcb8b04c70ada"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CoordinateSystem3D</b> (const <a class="el" href="structCoordinateSystem3D.html">CoordinateSystem3D</a>&lt; M, E &gt; &amp;coordsystem)</td></tr>
-<tr class="separator:a551a494c7fa58a15a80fcb8b04c70ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9f0e03c40eccbdf5021f9dd133f5141"><td class="memItemLeft" align="right" valign="top"><a id="aa9f0e03c40eccbdf5021f9dd133f5141" name="aa9f0e03c40eccbdf5021f9dd133f5141"></a>
-Eigen::Matrix&lt; <a class="el" href="structSN.html">SN</a>&lt; M, E &gt;, 3, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getM</b> () const</td></tr>
-<tr class="separator:aa9f0e03c40eccbdf5021f9dd133f5141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1eb0d464ac4ac0a2a2be67786ca5004"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCoordinateSystem3D.html#af1eb0d464ac4ac0a2a2be67786ca5004">CoordinateSystem3D</a> ()</td></tr>
+<tr class="separator:af1eb0d464ac4ac0a2a2be67786ca5004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c3cb372e192a842b8994b2c730b66d"><td class="memItemLeft" align="right" valign="top"><a id="a96c3cb372e192a842b8994b2c730b66d" name="a96c3cb372e192a842b8994b2c730b66d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CoordinateSystem3D</b> (const <a class="el" href="structCoordinateSystem3D.html">CoordinateSystem3D</a>&lt; T &gt; &amp;coordsystem)</td></tr>
+<tr class="separator:a96c3cb372e192a842b8994b2c730b66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a044e8542e5f44832edfc1b5eb9c2b602"><td class="memItemLeft" align="right" valign="top"><a id="a044e8542e5f44832edfc1b5eb9c2b602" name="a044e8542e5f44832edfc1b5eb9c2b602"></a>
+Eigen::Matrix&lt; T, 3, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getM</b> () const</td></tr>
+<tr class="separator:a044e8542e5f44832edfc1b5eb9c2b602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff678471b43dd03115387076fc289b47"><td class="memItemLeft" align="right" valign="top"><a id="aff678471b43dd03115387076fc289b47" name="aff678471b43dd03115387076fc289b47"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (const <a class="el" href="classVector3D.html">Vector3D</a>&lt; T &gt; &amp;v)</td></tr>
+<tr class="separator:aff678471b43dd03115387076fc289b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a919b9228f6869ebe172f30d04787082c"><td class="memItemLeft" align="right" valign="top"><a id="a919b9228f6869ebe172f30d04787082c" name="a919b9228f6869ebe172f30d04787082c"></a>
-<a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e1</b></td></tr>
-<tr class="separator:a919b9228f6869ebe172f30d04787082c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf3ce80e2ff24d51abeff67d90283b1f"><td class="memItemLeft" align="right" valign="top"><a id="adf3ce80e2ff24d51abeff67d90283b1f" name="adf3ce80e2ff24d51abeff67d90283b1f"></a>
-<a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e2</b></td></tr>
-<tr class="separator:adf3ce80e2ff24d51abeff67d90283b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cecee65b78b992ca7dbe706f051bfb2"><td class="memItemLeft" align="right" valign="top"><a id="a2cecee65b78b992ca7dbe706f051bfb2" name="a2cecee65b78b992ca7dbe706f051bfb2"></a>
-<a class="el" href="classVector3D.html">Vector3D</a>&lt; M, E &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e3</b></td></tr>
-<tr class="separator:a2cecee65b78b992ca7dbe706f051bfb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7532ab27bb8875cefdf8e78ac74007"><td class="memItemLeft" align="right" valign="top"><a id="abd7532ab27bb8875cefdf8e78ac74007" name="abd7532ab27bb8875cefdf8e78ac74007"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e1</b></td></tr>
+<tr class="separator:abd7532ab27bb8875cefdf8e78ac74007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac865f96b874ff82dc072b7131a4da592"><td class="memItemLeft" align="right" valign="top"><a id="ac865f96b874ff82dc072b7131a4da592" name="ac865f96b874ff82dc072b7131a4da592"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e2</b></td></tr>
+<tr class="separator:ac865f96b874ff82dc072b7131a4da592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aa92dbfd16dd08421ee806dc1b037ec"><td class="memItemLeft" align="right" valign="top"><a id="a2aa92dbfd16dd08421ee806dc1b037ec" name="a2aa92dbfd16dd08421ee806dc1b037ec"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>e3</b></td></tr>
+<tr class="separator:a2aa92dbfd16dd08421ee806dc1b037ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7adaff956dfd7a6e214d0457b89daff6" name="a7adaff956dfd7a6e214d0457b89daff6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7adaff956dfd7a6e214d0457b89daff6">&#9670;&nbsp;</a></span>CoordinateSystem3D()</h2>
+<a id="af1eb0d464ac4ac0a2a2be67786ca5004" name="af1eb0d464ac4ac0a2a2be67786ca5004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1eb0d464ac4ac0a2a2be67786ca5004">&#9670;&nbsp;</a></span>CoordinateSystem3D()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename M , typename E &gt; </div>
+template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCoordinateSystem3D.html">CoordinateSystem3D</a>&lt; M, E &gt;<a class="el" href="structCoordinateSystem3D.html">::CoordinateSystem3D</a></td>
+          <td class="memname"><a class="el" href="structCoordinateSystem3D.html">CoordinateSystem3D</a>&lt; T &gt;<a class="el" href="structCoordinateSystem3D.html">::CoordinateSystem3D</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -142,7 +142,7 @@ bool Physics::run(const unsigned int& steps) {
 
 bool Physics::iterate(const float& dt) {
 	for (std::shared_ptr<TimeSensitive> ptime_sensitive : m_ptime_sensitives){
-		//printf("\nHello1\n");
+		//printf("\niterate(dt:%f)\n", dt*m_speed);
 		ptime_sensitive->setT(dt*m_speed);
 		//printf("%f\n", dt*m_speed);
 		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)

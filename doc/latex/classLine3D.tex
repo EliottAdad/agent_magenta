@@ -2,16 +2,18 @@
 \label{classLine3D}\index{Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}}
 
 
-Inheritance diagram for Line3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Line3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{classLine3D__inherit__graph}
+\includegraphics[width=278pt]{classLine3D__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Line3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Line3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,6 +35,19 @@ Collaboration diagram for Line3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$
 virtual std\+::string \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classLine3D_a2ca7a5ddad00fd20c9088c0077690be0}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+\mbox{\Hypertarget{classLine3D_a0f6c97eacf0a416fed36eeb34c33f750}\label{classLine3D_a0f6c97eacf0a416fed36eeb34c33f750}} 
+{\bfseries Line3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\item 
+\mbox{\Hypertarget{classLine3D_af54ee8e550e57cd2a9daa9a57d58a3ab}\label{classLine3D_af54ee8e550e57cd2a9daa9a57d58a3ab}} 
+{\bfseries Line3D} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp2)
+\item 
+\mbox{\Hypertarget{classLine3D_ac1da755d58cd4ce839b972b7800ba320}\label{classLine3D_ac1da755d58cd4ce839b972b7800ba320}} 
+{\bfseries Line3D} (const \mbox{\hyperlink{classLine3D}{Line3D}}$<$ T $>$ \&line)
+\item 
+virtual std\+::string \mbox{\hyperlink{classLine3D_ab47e811df658ad59cbcf17ca746ae597}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classLine3D_ac800adb44083205313abfe0bc35925b6}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -42,6 +57,12 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ 
 \item 
 \mbox{\Hypertarget{classLine3D_a526d88d945c0b516e275f2e637ccbd57}\label{classLine3D_a526d88d945c0b516e275f2e637ccbd57}} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ {\bfseries pp2}
+\item 
+\mbox{\Hypertarget{classLine3D_a18ae068cae9c89ee40ca928697c134ea}\label{classLine3D_a18ae068cae9c89ee40ca928697c134ea}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ {\bfseries pp1}
+\item 
+\mbox{\Hypertarget{classLine3D_a2bf20e3743042b05d8c6f9af78f8af7a}\label{classLine3D_a2bf20e3743042b05d8c6f9af78f8af7a}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ {\bfseries pp2}
 \end{DoxyCompactItemize}
 
 
@@ -49,9 +70,20 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ 
 \mbox{\Hypertarget{classLine3D_a2ca7a5ddad00fd20c9088c0077690be0}\label{classLine3D_a2ca7a5ddad00fd20c9088c0077690be0}} 
 \index{Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}!print@{print}}
 \index{print@{print}!Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{print()}{print()}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 void \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+\mbox{\Hypertarget{classLine3D_ac800adb44083205313abfe0bc35925b6}\label{classLine3D_ac800adb44083205313abfe0bc35925b6}} 
+\index{Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}!print@{print}}
+\index{print@{print}!Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual void \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -60,7 +92,7 @@ Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 \mbox{\Hypertarget{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}\label{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}} 
 \index{Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 std\+::string \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
@@ -70,10 +102,26 @@ Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
 
 
-Reimplemented in \mbox{\hyperlink{classVector3D_a2bcca51632e12746dcdc580348b8a0a2}{Vector3\+D$<$ M, E $>$}}.
+Reimplemented in \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{Vector3\+D$<$ T $>$}}, \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{Vector3\+D$<$ U $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ T $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ U $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ T $>$}}, and \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ U $>$}}.
+
+\mbox{\Hypertarget{classLine3D_ab47e811df658ad59cbcf17ca746ae597}\label{classLine3D_ab47e811df658ad59cbcf17ca746ae597}} 
+\index{Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Line3D$<$ M, E $>$@{Line3D$<$ M, E $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
+virtual std\+::string \mbox{\hyperlink{classLine3D}{Line3D}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{Vector3\+D$<$ T $>$}}, \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{Vector3\+D$<$ U $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ T $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ U $>$}}, \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ T $>$}}, and \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{Vector3\+D$<$ U $>$}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/core/bin/Line3\+D.\+h\item 
 src/core/Line3\+D.\+h\end{DoxyCompactItemize}

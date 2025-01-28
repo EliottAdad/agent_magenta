@@ -20,39 +20,39 @@
 \DoxyCodeLine{16 \textcolor{comment}{ * Functions}}
 \DoxyCodeLine{17 \textcolor{comment}{ */}}
 \DoxyCodeLine{18 }
-\DoxyCodeLine{19 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> generate2DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p, \mbox{\hyperlink{structSN}{SN<M, E>}} a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, \mbox{\hyperlink{structSN}{SN<M, E>}} w);}
+\DoxyCodeLine{19 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::unordered\_set<std::shared\_ptr<Particle3D<T>>> generate2DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<T>}} p, T a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, T w);}
 \DoxyCodeLine{20 }
-\DoxyCodeLine{24 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> generate2DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p, \mbox{\hyperlink{structSN}{SN<M, E>}} a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, \mbox{\hyperlink{structSN}{SN<M, E>}} w)\{}
-\DoxyCodeLine{25     std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> pparts;}
+\DoxyCodeLine{24 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::unordered\_set<std::shared\_ptr<Particle3D<T>>> generate2DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<T>}} p, T a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, T w)\{}
+\DoxyCodeLine{25     std::unordered\_set<std::shared\_ptr<Particle3D<T>>> pparts;}
 \DoxyCodeLine{26     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} i(0) ; i<n ; i++)\{}
 \DoxyCodeLine{27         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} j(0) ; j<n ; j++)\{}
 \DoxyCodeLine{28             \textcolor{comment}{//((M)(-\/1)*a/(M)2+(M)i*a/(M)(n-\/1)+p.x).print(true, true, 2);}}
-\DoxyCodeLine{29             std::shared\_ptr<Particle3D<M, E>> ppart=std::make\_shared<Particle3D<M, E>>(}
-\DoxyCodeLine{30                     (M)(-\/1)*a/(M)2+(M)i*a/(M)(n-\/1)+p.x,}
-\DoxyCodeLine{31                     (M)(-\/1)*a/(M)2+(M)j*a/(M)(n-\/1)+p.y,}
-\DoxyCodeLine{32                     \mbox{\hyperlink{structSN}{SN<M, E>}}\{0, 0\}+p.z,}
+\DoxyCodeLine{29             std::shared\_ptr<Particle3D<T>> ppart=std::make\_shared<Particle3D<T>>(}
+\DoxyCodeLine{30                     (T)(-\/1)*a/(T)2+(T)i*a/(T)(n-\/1)+p.x,}
+\DoxyCodeLine{31                     (T)(-\/1)*a/(T)2+(T)j*a/(T)(n-\/1)+p.y,}
+\DoxyCodeLine{32                     (T)0+p.z,}
 \DoxyCodeLine{33                     w);}
-\DoxyCodeLine{34             ppart-\/>ps=std::make\_shared<Vector3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\});}
-\DoxyCodeLine{35             \textcolor{comment}{//std::shared\_ptr<Particle3D<M, E>> ppart=std::make\_shared<Particle3D<M, E>>((M)i*a/(M)n, (M)j*a/(M)n, SN<M, E>\{0, 0\}, w);}}
+\DoxyCodeLine{34             ppart-\/>ps=std::make\_shared<Vector3D<T>>(\mbox{\hyperlink{structPoint3D}{Point3D<T>}}\{(T)0,(T)0,(T)0\});}
+\DoxyCodeLine{35             \textcolor{comment}{//std::shared\_ptr<Particle3D<T>> ppart=std::make\_shared<Particle3D<T>>((M)i*a/(M)n, (M)j*a/(M)n, T\{0, 0\}, w);}}
 \DoxyCodeLine{36             pparts.insert(ppart);}
 \DoxyCodeLine{37         \}}
 \DoxyCodeLine{38     \}}
 \DoxyCodeLine{39     \textcolor{keywordflow}{return} pparts;}
 \DoxyCodeLine{40 \}}
 \DoxyCodeLine{41 }
-\DoxyCodeLine{42 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> generate3DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p, \mbox{\hyperlink{structSN}{SN<M, E>}} a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, \mbox{\hyperlink{structSN}{SN<M, E>}} w);}
+\DoxyCodeLine{42 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::unordered\_set<std::shared\_ptr<Particle3D<T>>> generate3DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<T>}} p, T a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, T w);}
 \DoxyCodeLine{43 }
-\DoxyCodeLine{47 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> generate3DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}} p, \mbox{\hyperlink{structSN}{SN<M, E>}} a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, \mbox{\hyperlink{structSN}{SN<M, E>}} w)\{}
-\DoxyCodeLine{48     std::unordered\_set<std::shared\_ptr<Particle3D<M, E>>> pparts;}
+\DoxyCodeLine{47 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::unordered\_set<std::shared\_ptr<Particle3D<T>>> generate3DGridParticle3D(\mbox{\hyperlink{structPoint3D}{Point3D<T>}} p, T a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} n, T w)\{}
+\DoxyCodeLine{48     std::unordered\_set<std::shared\_ptr<Particle3D<T>>> pparts;}
 \DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} i(0) ; i<n ; i++)\{}
 \DoxyCodeLine{50         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} j(0) ; j<n ; j++)\{}
 \DoxyCodeLine{51             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} k(0) ; k<n ; k++)\{}
-\DoxyCodeLine{52                 std::shared\_ptr<Particle3D<M, E>> ppart=std::make\_shared<Particle3D<M, E>>(}
-\DoxyCodeLine{53                         (M)(-\/1)*a/(M)2+(M)i*a/(M)(n-\/1)+p.x,}
-\DoxyCodeLine{54                         (M)(-\/1)*a/(M)2+(M)j*a/(M)(n-\/1)+p.y,}
-\DoxyCodeLine{55                         (M)(-\/1)*a/(M)2+(M)k*a/(M)(n-\/1)+p.z,}
+\DoxyCodeLine{52                 std::shared\_ptr<Particle3D<T>> ppart=std::make\_shared<Particle3D<T>>(}
+\DoxyCodeLine{53                         (T)(-\/1)*a/(T)2+(T)i*a/(T)(n-\/1)+p.x,}
+\DoxyCodeLine{54                         (T)(-\/1)*a/(T)2+(T)j*a/(T)(n-\/1)+p.y,}
+\DoxyCodeLine{55                         (T)(-\/1)*a/(T)2+(T)k*a/(T)(n-\/1)+p.z,}
 \DoxyCodeLine{56                         w);}
-\DoxyCodeLine{57                 ppart-\/>ps=std::make\_shared<Vector3D<M, E>>(\mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\{\{0,0\},\{0,0\},\{0,0\}\});}
+\DoxyCodeLine{57                 ppart-\/>ps=std::make\_shared<Vector3D<T>>(\mbox{\hyperlink{structPoint3D}{Point3D<T>}}\{(T)0,(T)0,(T)0\});}
 \DoxyCodeLine{58                 pparts.insert(ppart);}
 \DoxyCodeLine{59             \}}
 \DoxyCodeLine{60         \}}

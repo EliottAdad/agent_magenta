@@ -31,16 +31,16 @@ template<typename T> struct CoordinateSystem3D {
 	CoordinateSystem3D(const CoordinateSystem3D<T>& coordsystem);
 
 	Eigen::Matrix<T, 3, 3> getM() const;
-	void rotate(const Vector3D<T>& v) const;
+	void rotate(const Vector3D<T>& v);
 };
 
 /**
  * Automatically aligned on the world coordinates at its creation.
  */
 template<typename T> CoordinateSystem3D<T>::CoordinateSystem3D() {
-	e1.setEnd(Point3D<T>{{1,0},{0,0},{0,0}});
-	e2.setEnd(Point3D<T>{{0,0},{1,0},{0,0}});
-	e3.setEnd(Point3D<T>{{0,0},{0,0},{1,0}});
+	e1.setEnd(Point3D<T>{(T)1,(T)0,(T)0});
+	e2.setEnd(Point3D<T>{(T)0,(T)1,(T)0});
+	e3.setEnd(Point3D<T>{(T)0,(T)0,(T)1});
 }
 
 template<typename T> CoordinateSystem3D<T>::~CoordinateSystem3D() {
@@ -59,6 +59,14 @@ template<typename T> Eigen::Matrix<T, 3, 3> CoordinateSystem3D<T>::getM() const{
 		{e2.ppoint2->y,e2.ppoint2->y,e2.ppoint2->y},
 		{e3.ppoint2->z,e3.ppoint2->z,e3.ppoint2->z}
 	};
+}
+
+template<typename T> void CoordinateSystem3D<T>::rotate(const Vector3D<T>& v) {
+	/*return Eigen::Matrix<T, 3, 3>{
+		{e1.ppoint2->x,e2.ppoint2->x,e3.ppoint2->x},
+		{e2.ppoint2->y,e2.ppoint2->y,e2.ppoint2->y},
+		{e3.ppoint2->z,e3.ppoint2->z,e3.ppoint2->z}
+	};*/
 }
 
 #endif /* COORDINATESYSTEM3D_H_ */

@@ -21,7 +21,7 @@
 /*
  * Main core (Particle3D, Quads, Octs)
  */
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 
 	printf("abs(-3.2): %f\n", abs(-3.2));
 	printf("%lu\n", sizeof(Point3D<SN<float, char>>));
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]){
 	ppar2->print(true, true, 1);
 	ppar3->print(true, true, 1);
 	ppar4->print(true, true, 1);
-
+*/
 	//
 	// Tests Quads
 	//
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]){
 	//q1.computeInverseSquareLawResultant(par4, v);
 	//std::cout << "\n" << v.to_string() << "\n";
 */
-
+/*
 	//
 	// Tests Octs
 	//
@@ -116,7 +116,7 @@ int main(int argc, char* argv[]){
 	printf("\n\nBye bye\n");
 
 	return 0;
-}
+}*/
 
 
 

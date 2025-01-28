@@ -207,17 +207,24 @@ template<typename T> T Particle3D<T>::getW() const {
 	return w;
 }
 
+/*template<typename T> Point3D<T> Particle3D<T>::getPosition() const {
+	return this->z;
+}*/
+
 template<typename T> void Particle3D<T>::setT(const float& dt) {
 	m_dt=dt;
 }
 
 template<typename T> void Particle3D<T>::apply(){
-	this->x+=(ps->pp2->x)*m_dt;
-	this->y+=(ps->pp2->y)*m_dt;
-	this->z+=(ps->pp2->z)*m_dt;
-	//this->x+=(ps->pp2->x)*(T)m_dt;
-	//this->y+=(ps->pp2->y)*(T)m_dt;
-	//this->z+=(ps->pp2->z)*(T)m_dt;
+	((T)m_dt).to_string(true, true, 0);
+	//printf("m_dt:%f", (T)m_dt);
+	//printf("speed*m_dt:%f");
+	//this->x+=(ps->pp2->x)*m_dt;
+	//this->y+=(ps->pp2->y)*m_dt;
+	//this->z+=(ps->pp2->z)*m_dt;
+	this->x+=(ps->pp2->x)*(T)m_dt;
+	this->y+=(ps->pp2->y)*(T)m_dt;
+	this->z+=(ps->pp2->z)*(T)m_dt;
 }
 
 

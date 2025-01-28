@@ -17,36 +17,36 @@
 \DoxyCodeLine{13 }
 \DoxyCodeLine{14 }
 \DoxyCodeLine{15 \textcolor{comment}{/*}}
-\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{17 \textcolor{comment}{ *  BezierCurve3D<M, E> :)}}
-\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{16 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{17 \textcolor{comment}{ *  BezierCurve3D<T> :)}}
+\DoxyCodeLine{18 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{19 \textcolor{comment}{ * A bezier curve defined by 2 or more control points.}}
 \DoxyCodeLine{20 \textcolor{comment}{ */}}
-\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D}} \{}
 \DoxyCodeLine{22     \textcolor{keyword}{public}:}
-\DoxyCodeLine{23     std::unordered\_set<std::shared\_ptr<Point3D<M, E>>> m\_pctr\_points;\textcolor{comment}{// Pointeurs to the control points of the curve.}}
+\DoxyCodeLine{23     std::unordered\_set<std::shared\_ptr<Point3D<T>>> m\_pctr\_points;\textcolor{comment}{// Pointeurs to the control points of the curve.}}
 \DoxyCodeLine{24 }
 \DoxyCodeLine{25     \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D}}();\textcolor{comment}{//:)}}
-\DoxyCodeLine{26     \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<M, E>}}\& bezier\_curve);\textcolor{comment}{//:)}}
+\DoxyCodeLine{26     \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<T>}}\& bezier\_curve);\textcolor{comment}{//:)}}
 \DoxyCodeLine{27     \mbox{\hyperlink{classBezierCurve3D}{\string~BezierCurve3D}}();\textcolor{comment}{//:)}}
 \DoxyCodeLine{28     }
-\DoxyCodeLine{29     \textcolor{comment}{//std::shared\_ptr<Point3D<M, E>> getImage(const float\& t);//:) t is between 0 and 1.}}
+\DoxyCodeLine{29     \textcolor{comment}{//std::shared\_ptr<Point3D<T>> getImage(const float\& t);//:) t is between 0 and 1.}}
 \DoxyCodeLine{30 }
-\DoxyCodeLine{31     \textcolor{keywordtype}{bool} testOnLine(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<M, E>}}\& point);\textcolor{comment}{//:)}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{bool} testOnLine(\textcolor{keyword}{const} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}\& point);\textcolor{comment}{//:)}}
 \DoxyCodeLine{32     \textcolor{comment}{//Line2D* getPerpendicularLine(Point2D* ppoint);//:) Get a perpendicular line passing throug the point in parameter.}}
 \DoxyCodeLine{33 \};}
 \DoxyCodeLine{34 }
 \DoxyCodeLine{35 }
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<M, E>::BezierCurve3D}}() \{}
+\DoxyCodeLine{37 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<T>::BezierCurve3D}}() \{}
 \DoxyCodeLine{38     ;}
 \DoxyCodeLine{39 \}}
 \DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<M, E>::BezierCurve3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<M, E>}}\& bezier\_curve) \{}
+\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<T>::BezierCurve3D}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<T>}}\& bezier\_curve) \{}
 \DoxyCodeLine{42     ;}
 \DoxyCodeLine{43 \}}
 \DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<M, E>::\string~BezierCurve3D}}() \{}
+\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classBezierCurve3D}{BezierCurve3D<T>::\string~BezierCurve3D}}() \{}
 \DoxyCodeLine{46     \textcolor{comment}{/*int szppoints=m\_ppoints.size();}}
 \DoxyCodeLine{47 \textcolor{comment}{    for (int i(0) ; i<szppoints ; i++)}}
 \DoxyCodeLine{48 \textcolor{comment}{    \{}}
@@ -54,8 +54,8 @@
 \DoxyCodeLine{50 \textcolor{comment}{    \}*/}}
 \DoxyCodeLine{51 \}}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{56 \textcolor{comment}{/*template<typename M, typename E> std::shared\_ptr<Point3D<M, E>> BezierCurve3D<M, E>::getImage(const float\& t) \{}}
-\DoxyCodeLine{57 \textcolor{comment}{    SN<M, E> x\{0, 0\}, y\{0, 0\};}}
+\DoxyCodeLine{56 \textcolor{comment}{/*template<typename T> std::shared\_ptr<Point3D<T>> BezierCurve3D<T>::getImage(const float\& t) \{}}
+\DoxyCodeLine{57 \textcolor{comment}{    SN<T> x\{0, 0\}, y\{0, 0\};}}
 \DoxyCodeLine{58 \textcolor{comment}{}}
 \DoxyCodeLine{59 \textcolor{comment}{    for (int i(0) ; i<(int)m\_ppoints.size() ; i++)}}
 \DoxyCodeLine{60 \textcolor{comment}{    \{}}

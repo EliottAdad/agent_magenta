@@ -1,8 +1,9 @@
-\hypertarget{classSObject3D}{}\doxysection{SObject3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classSObject3D}\index{SObject3D$<$ M, E $>$@{SObject3D$<$ M, E $>$}}
+\hypertarget{classSObject3D}{}\doxysection{SObject3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classSObject3D}\index{SObject3D$<$ T $>$@{SObject3D$<$ T $>$}}
 
 
-Inheritance diagram for SObject3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for SObject3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for SObject3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>
 \end{figure}
 
 
-Collaboration diagram for SObject3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for SObject3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,28 +23,25 @@ Collaboration diagram for SObject3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSObject3D_af0693cfbd2a0ff36ca594158f6d3ce46}\label{classSObject3D_af0693cfbd2a0ff36ca594158f6d3ce46}} 
-{\bfseries SObject3D} (std\+::string name=\char`\"{}sobject\char`\"{}, SDL\+\_\+\+Color pcolor=NULL)
+\mbox{\Hypertarget{classSObject3D_af8454ef681ef149a3534a7ce1242b15a}\label{classSObject3D_af8454ef681ef149a3534a7ce1242b15a}} 
+{\bfseries SObject3D} (const \mbox{\hyperlink{classSObject3D}{SObject3D}} \&sobject)
 \item 
-\mbox{\Hypertarget{classSObject3D_a1fd16e6b9ceb8a9301d4be13170f4c7d}\label{classSObject3D_a1fd16e6b9ceb8a9301d4be13170f4c7d}} 
-{\bfseries SObject3D} (\mbox{\hyperlink{classSObject3D}{SObject3D}} $\ast$psobject)
+\mbox{\Hypertarget{classSObject3D_aa33a577512d7d49303180c1d2b44b647}\label{classSObject3D_aa33a577512d7d49303180c1d2b44b647}} 
+T \& {\bfseries get\+Mass} ()
 \item 
-\mbox{\Hypertarget{classSObject3D_af0193f0c22f5e1b3959e3bc0eaa19de0}\label{classSObject3D_af0193f0c22f5e1b3959e3bc0eaa19de0}} 
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \& {\bfseries get\+Mass} ()
+\mbox{\Hypertarget{classSObject3D_a50e256d3bc5b9f36a273fdd2e7d73b71}\label{classSObject3D_a50e256d3bc5b9f36a273fdd2e7d73b71}} 
+void {\bfseries set\+Mass} (T mass=(T) 1)
 \item 
-\mbox{\Hypertarget{classSObject3D_af1f5faaa88226d3baa52b7cca345671b}\label{classSObject3D_af1f5faaa88226d3baa52b7cca345671b}} 
-void {\bfseries set\+Mass} (\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ mass=\{1, 1\})
+\mbox{\Hypertarget{classSObject3D_aa0423dee4530d2a6d5796d86fad98528}\label{classSObject3D_aa0423dee4530d2a6d5796d86fad98528}} 
+T \& {\bfseries get\+Charge} ()
 \item 
-\mbox{\Hypertarget{classSObject3D_a1356052fc33ff4f0bc039774b0cee133}\label{classSObject3D_a1356052fc33ff4f0bc039774b0cee133}} 
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \& {\bfseries get\+Charge} ()
+\mbox{\Hypertarget{classSObject3D_a66217f9bf50071ec6e5a5192b5b9b15a}\label{classSObject3D_a66217f9bf50071ec6e5a5192b5b9b15a}} 
+void {\bfseries set\+Charge} (T charge=(T) 0)
 \item 
-\mbox{\Hypertarget{classSObject3D_af0c5c59df83f18234455f19dfa7604b4}\label{classSObject3D_af0c5c59df83f18234455f19dfa7604b4}} 
-void {\bfseries set\+Charge} (\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ charge=\{0, 0\})
-\item 
-\mbox{\Hypertarget{classSObject3D_a412c6c019434f9c25e83ba80cb434679}\label{classSObject3D_a412c6c019434f9c25e83ba80cb434679}} 
+\mbox{\Hypertarget{classSObject3D_a324568b9c40536c8f2ed94fc2f2348a5}\label{classSObject3D_a324568b9c40536c8f2ed94fc2f2348a5}} 
 void {\bfseries move} (long double dt)
 \item 
-\mbox{\Hypertarget{classSObject3D_a0305b8886a116805514fd65e48974f2c}\label{classSObject3D_a0305b8886a116805514fd65e48974f2c}} 
+\mbox{\Hypertarget{classSObject3D_a5ec1e7641f2d6815ee035a195074a206}\label{classSObject3D_a5ec1e7641f2d6815ee035a195074a206}} 
 void {\bfseries spin} (long double dt)
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}

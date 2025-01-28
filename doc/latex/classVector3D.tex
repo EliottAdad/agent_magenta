@@ -1,25 +1,79 @@
-\hypertarget{classVector3D}{}\doxysection{Vector3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classVector3D}\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
+\hypertarget{classVector3D}{}\doxysection{Vector3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classVector3D}\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
 
 
-Inheritance diagram for Vector3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Vector3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{classVector3D__inherit__graph}
+\includegraphics[width=277pt]{classVector3D__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Vector3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Vector3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{classVector3D__coll__graph}
+\includegraphics[width=277pt]{classVector3D__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}{Vector3D}} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}{Vector3D}} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D_a99ace19e85aa5d3925d593804a96f053}{Vector3D}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp2)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}{Vector3D}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\item 
+\mbox{\hyperlink{classVector3D_a79511eff218ec5204846a39f3b277456}{Vector3D}} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp2)
+\item 
+\mbox{\Hypertarget{classVector3D_a323d263505f5ec6c5925946c9dc6d27b}\label{classVector3D_a323d263505f5ec6c5925946c9dc6d27b}} 
+{\bfseries Vector3D} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+T \mbox{\hyperlink{classVector3D_a697ed738973aed6c4c6da875d8cf6896}{get\+Norm}} () const
+\item 
+\mbox{\Hypertarget{classVector3D_ab3f953ffc66ef20604c3c458c6bfe65a}\label{classVector3D_ab3f953ffc66ef20604c3c458c6bfe65a}} 
+void {\bfseries set\+Norm} (const T \&norm)
+\item 
+\mbox{\Hypertarget{classVector3D_aaaa841f2cdf16fb2bbc078ff3adbfb7d}\label{classVector3D_aaaa841f2cdf16fb2bbc078ff3adbfb7d}} 
+virtual void {\bfseries operator=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_af7f0283d65d0b4426ea6e2414bd5f6e6}\label{classVector3D_af7f0283d65d0b4426ea6e2414bd5f6e6}} 
+virtual void {\bfseries operator+=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_ace89aa4bc5caede82b775b092dd6b227}\label{classVector3D_ace89aa4bc5caede82b775b092dd6b227}} 
+virtual void {\bfseries operator-\/=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_a6411704f30795c76618af431c37ef483}\label{classVector3D_a6411704f30795c76618af431c37ef483}} 
+virtual void {\bfseries operator$\ast$=} (const M \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_a0c7bb7963248df9f0ca37c9867bdf212}\label{classVector3D_a0c7bb7963248df9f0ca37c9867bdf212}} 
+virtual void {\bfseries operator/=} (const M \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_ab5c8b942f81b8b1224f1400f149c1cb0}\label{classVector3D_ab5c8b942f81b8b1224f1400f149c1cb0}} 
+virtual void {\bfseries operator$\ast$=} (const T \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_ac053f3cee247776f6fb21904b2facdec}\label{classVector3D_ac053f3cee247776f6fb21904b2facdec}} 
+virtual void {\bfseries operator/=} (const T \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_a3f70e370dc4d3410b841ef6ff92aa6d4}\label{classVector3D_a3f70e370dc4d3410b841ef6ff92aa6d4}} 
+virtual bool {\bfseries operator==} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+\mbox{\Hypertarget{classVector3D_a7d0f6b7ee7b7e248da4d923afa1a85d6}\label{classVector3D_a7d0f6b7ee7b7e248da4d923afa1a85d6}} 
+virtual bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+\mbox{\Hypertarget{classVector3D_a54b9dba443318d2efca806e8f8e975e7}\label{classVector3D_a54b9dba443318d2efca806e8f8e975e7}} 
+virtual bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+virtual std\+::string \mbox{\hyperlink{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classVector3D_a1b0ac2e7973ac023c916a6b052ebbc03}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 \mbox{\hyperlink{classVector3D_a9171ccf6df92f75b722a6fb44d0b97af}{Vector3D}} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p2)
 \begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. \end{DoxyCompactList}\item 
@@ -31,10 +85,11 @@ Collaboration diagram for Vector3D\texorpdfstring{$<$}{<} M, E \texorpdfstring{$
 \item 
 \mbox{\hyperlink{classVector3D_ad2dee636c29e80cd754f0eb9f6f6ec34}{Vector3D}} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&p1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$ pp2)
 \item 
-\mbox{\Hypertarget{classVector3D_ac59dc164cdebb27e76c98715033aba8d}\label{classVector3D_ac59dc164cdebb27e76c98715033aba8d}} 
+\mbox{\Hypertarget{classVector3D_a9ff76c7e7591c4fbb42554ce18cd7d75}\label{classVector3D_a9ff76c7e7591c4fbb42554ce18cd7d75}} 
 {\bfseries Vector3D} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&v)
 \item 
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classVector3D_a1eb8df4c7e0265ae59cd7780b2bfaa71}{get\+Norm}} () const
+\mbox{\Hypertarget{classVector3D_a37b811dbe2334938b68138c4f7ed8660}\label{classVector3D_a37b811dbe2334938b68138c4f7ed8660}} 
+\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ {\bfseries get\+Norm} () const
 \item 
 \mbox{\Hypertarget{classVector3D_a56c79b05e7a52e6828af8a0704211c25}\label{classVector3D_a56c79b05e7a52e6828af8a0704211c25}} 
 void {\bfseries set\+Norm} (const \mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \&norm)
@@ -48,10 +103,10 @@ virtual void {\bfseries operator+=} (const \mbox{\hyperlink{classVector3D}{Vecto
 \mbox{\Hypertarget{classVector3D_adb278be82ccd7034e875ccef97a699d8}\label{classVector3D_adb278be82ccd7034e875ccef97a699d8}} 
 virtual void {\bfseries operator-\/=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&v)
 \item 
-\mbox{\Hypertarget{classVector3D_a6411704f30795c76618af431c37ef483}\label{classVector3D_a6411704f30795c76618af431c37ef483}} 
+\mbox{\Hypertarget{classVector3D_a42d4217127ad760e0c3a6e94c4ef18a8}\label{classVector3D_a42d4217127ad760e0c3a6e94c4ef18a8}} 
 virtual void {\bfseries operator$\ast$=} (const M \&k)
 \item 
-\mbox{\Hypertarget{classVector3D_a0c7bb7963248df9f0ca37c9867bdf212}\label{classVector3D_a0c7bb7963248df9f0ca37c9867bdf212}} 
+\mbox{\Hypertarget{classVector3D_a6a5560fd94737f46d3edb22569accf1b}\label{classVector3D_a6a5560fd94737f46d3edb22569accf1b}} 
 virtual void {\bfseries operator/=} (const M \&k)
 \item 
 \mbox{\Hypertarget{classVector3D_acd696b57b0c177447a031a28affdfa42}\label{classVector3D_acd696b57b0c177447a031a28affdfa42}} 
@@ -69,18 +124,164 @@ virtual bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classVector3D}{Vec
 \mbox{\Hypertarget{classVector3D_a4be26488490fda41060905376ebf0834}\label{classVector3D_a4be26488490fda41060905376ebf0834}} 
 virtual bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$ \&v) const
 \item 
-virtual std\+::string \mbox{\hyperlink{classVector3D_a2bcca51632e12746dcdc580348b8a0a2}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-virtual void \mbox{\hyperlink{classVector3D_a677e5e595980aed053e7134d930ff093}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual void \mbox{\hyperlink{classVector3D_afa96292a3f35d7b155132f3c10923de9}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+\mbox{\Hypertarget{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}\label{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}} 
+{\bfseries Vector3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\item 
+\mbox{\Hypertarget{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}\label{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}} 
+{\bfseries Vector3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\item 
+\mbox{\Hypertarget{classVector3D_a99ace19e85aa5d3925d593804a96f053}\label{classVector3D_a99ace19e85aa5d3925d593804a96f053}} 
+{\bfseries Vector3D} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp2)
+\item 
+\mbox{\Hypertarget{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}\label{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}} 
+{\bfseries Vector3D} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp1, const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p2)
+\item 
+\mbox{\Hypertarget{classVector3D_a79511eff218ec5204846a39f3b277456}\label{classVector3D_a79511eff218ec5204846a39f3b277456}} 
+{\bfseries Vector3D} (const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&p1, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ pp2)
+\item 
+\mbox{\Hypertarget{classVector3D_a323d263505f5ec6c5925946c9dc6d27b}\label{classVector3D_a323d263505f5ec6c5925946c9dc6d27b}} 
+{\bfseries Vector3D} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_a697ed738973aed6c4c6da875d8cf6896}\label{classVector3D_a697ed738973aed6c4c6da875d8cf6896}} 
+T {\bfseries get\+Norm} () const
+\item 
+\mbox{\Hypertarget{classVector3D_ab3f953ffc66ef20604c3c458c6bfe65a}\label{classVector3D_ab3f953ffc66ef20604c3c458c6bfe65a}} 
+void {\bfseries set\+Norm} (const T \&norm)
+\item 
+\mbox{\Hypertarget{classVector3D_a34b936bda0ae394db42ae71adf6651c0}\label{classVector3D_a34b936bda0ae394db42ae71adf6651c0}} 
+virtual void {\bfseries operator=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_a2f7fd01a58ecdf8411599f707c735dbe}\label{classVector3D_a2f7fd01a58ecdf8411599f707c735dbe}} 
+virtual void {\bfseries operator+=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_a363908524c126e8854a9eadb1b9ce3b5}\label{classVector3D_a363908524c126e8854a9eadb1b9ce3b5}} 
+virtual void {\bfseries operator-\/=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v)
+\item 
+\mbox{\Hypertarget{classVector3D_ac06fff23ab73d98b93f943ff01e968fc}\label{classVector3D_ac06fff23ab73d98b93f943ff01e968fc}} 
+virtual void {\bfseries operator$\ast$=} (const T \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_a1c1eb58f0d8e6610922e24018387c495}\label{classVector3D_a1c1eb58f0d8e6610922e24018387c495}} 
+virtual void {\bfseries operator$\ast$=} (const int \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_a6d2944e2afed168cb8221a5bf6f3f7f1}\label{classVector3D_a6d2944e2afed168cb8221a5bf6f3f7f1}} 
+virtual void {\bfseries operator/=} (const T \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_a079bf515cec7d72649c8f96813d4e754}\label{classVector3D_a079bf515cec7d72649c8f96813d4e754}} 
+virtual void {\bfseries operator/=} (const int \&k)
+\item 
+\mbox{\Hypertarget{classVector3D_ab588083ab778a99850c59ce9bae965a0}\label{classVector3D_ab588083ab778a99850c59ce9bae965a0}} 
+virtual bool {\bfseries operator==} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+\mbox{\Hypertarget{classVector3D_a6d15c5678f08ac50fed1938a01b83600}\label{classVector3D_a6d15c5678f08ac50fed1938a01b83600}} 
+virtual bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+\mbox{\Hypertarget{classVector3D_a953f4bc7991d7ca7e6138b14cf400ecf}\label{classVector3D_a953f4bc7991d7ca7e6138b14cf400ecf}} 
+virtual bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ \&v) const
+\item 
+virtual std\+::string \mbox{\hyperlink{classVector3D_a4928d85184a9ca745903663354fedd67}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+\item 
+virtual void \mbox{\hyperlink{classVector3D_afa96292a3f35d7b155132f3c10923de9}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}\label{classVector3D_afecad3ff6ce5d716fe160ba0f4ca2783}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/10]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point \\
+\hline
+{\em p2} & Second point \\
+\hline
+{\em \mbox{[}in/out\mbox{]}} & p1 and p2 are copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}\label{classVector3D_a5b728e07c2a0f2b6bec38e8ac64c8398}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/10]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&}]{p1,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point \\
+\hline
+{\em p2} & Second point \\
+\hline
+{\em \mbox{[}in/out\mbox{]}} & p1 and p2 are copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVector3D_a99ace19e85aa5d3925d593804a96f053}\label{classVector3D_a99ace19e85aa5d3925d593804a96f053}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/10]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$}]{pp1,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$}]{pp2 }\end{DoxyParamCaption})}
+
+
+
+A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{structPoint3D}{Point3D}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point \\
+\hline
+{\em p2} & Second point \\
+\hline
+{\em \mbox{[}in/out\mbox{]}} & Modifications to $\ast$pp1 or $\ast$pp2 outside of class definition will be passed onto p1 and p2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}\label{classVector3D_a5b2f7cff4bb81c5eefcdd3db2d1c4180}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [4/10]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$}]{pp1,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+Constructor3 Defined by two points 
+\begin{DoxyParams}{Parameters}
+{\em pp1} & Pointer to the first point (modifications outside of class definition will be passed onto p1) \\
+\hline
+{\em p2} & Second point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVector3D_a79511eff218ec5204846a39f3b277456}\label{classVector3D_a79511eff218ec5204846a39f3b277456}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [5/10]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \&}]{p1,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$}]{pp2 }\end{DoxyParamCaption})}
+
+Constructor4 Defined by two points 
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point \\
+\hline
+{\em pp2} & Pointer to the second point (modifications outside of class definition will be passed onto p2) \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classVector3D_a9171ccf6df92f75b722a6fb44d0b97af}\label{classVector3D_a9171ccf6df92f75b722a6fb44d0b97af}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!Vector3D@{Vector3D}}
-\index{Vector3D@{Vector3D}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [6/10]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p2 }\end{DoxyParamCaption})}
 
@@ -98,9 +299,9 @@ A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVector3D_a3631715945ebd59b95ce87f9e73d4c84}\label{classVector3D_a3631715945ebd59b95ce87f9e73d4c84}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!Vector3D@{Vector3D}}
-\index{Vector3D@{Vector3D}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [7/10]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p1,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p2 }\end{DoxyParamCaption})}
 
@@ -118,9 +319,9 @@ A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVector3D_af965fa2d76853c37e18228ca8e6ea915}\label{classVector3D_af965fa2d76853c37e18228ca8e6ea915}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!Vector3D@{Vector3D}}
-\index{Vector3D@{Vector3D}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [8/10]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$}]{pp1,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$}]{pp2 }\end{DoxyParamCaption})}
 
@@ -138,9 +339,9 @@ A \mbox{\hyperlink{classVector3D}{Vector3D}} is defined by two \mbox{\hyperlink{
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVector3D_ab8d270ec8df0f57a468fcd34a9cfb2d1}\label{classVector3D_ab8d270ec8df0f57a468fcd34a9cfb2d1}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!Vector3D@{Vector3D}}
-\index{Vector3D@{Vector3D}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [9/10]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$}]{pp1,  }\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p2 }\end{DoxyParamCaption})}
 
@@ -152,9 +353,9 @@ Constructor3 Defined by two points
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVector3D_ad2dee636c29e80cd754f0eb9f6f6ec34}\label{classVector3D_ad2dee636c29e80cd754f0eb9f6f6ec34}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!Vector3D@{Vector3D}}
-\index{Vector3D@{Vector3D}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}\hspace{0.1cm}{\footnotesize\ttfamily [10/10]}}
 {\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
 \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\mbox{\hyperlink{classVector3D}{\+::\+Vector3D}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ \&}]{p1,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ M, E $>$ $>$}]{pp2 }\end{DoxyParamCaption})}
 
@@ -168,33 +369,77 @@ Constructor4 Defined by two points
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classVector3D_a1eb8df4c7e0265ae59cd7780b2bfaa71}\label{classVector3D_a1eb8df4c7e0265ae59cd7780b2bfaa71}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!getNorm@{getNorm}}
-\index{getNorm@{getNorm}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
+\mbox{\Hypertarget{classVector3D_a697ed738973aed6c4c6da875d8cf6896}\label{classVector3D_a697ed738973aed6c4c6da875d8cf6896}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!getNorm@{getNorm}}
+\index{getNorm@{getNorm}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{getNorm()}{getNorm()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-\mbox{\hyperlink{structSN}{SN}}$<$ M, E $>$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\+::get\+Norm}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::get\+Norm}
 
 \begin{DoxyReturn}{Returns}
 Returns the norm 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classVector3D_a677e5e595980aed053e7134d930ff093}\label{classVector3D_a677e5e595980aed053e7134d930ff093}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!print@{print}}
-\index{print@{print}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-void \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classVector3D_a1b0ac2e7973ac023c916a6b052ebbc03}\label{classVector3D_a1b0ac2e7973ac023c916a6b052ebbc03}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!print@{print}}
+\index{print@{print}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented from \mbox{\hyperlink{classLine3D}{Line3\+D$<$ M, E $>$}}.
 
-\mbox{\Hypertarget{classVector3D_a2bcca51632e12746dcdc580348b8a0a2}\label{classVector3D_a2bcca51632e12746dcdc580348b8a0a2}} 
-\index{Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}!to\_string@{to\_string}}
-\index{to\_string@{to\_string}!Vector3D$<$ M, E $>$@{Vector3D$<$ M, E $>$}}
-\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-std\+::string \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classVector3D_afa96292a3f35d7b155132f3c10923de9}\label{classVector3D_afa96292a3f35d7b155132f3c10923de9}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!print@{print}}
+\index{print@{print}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLine3D}{Line3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classVector3D_afa96292a3f35d7b155132f3c10923de9}\label{classVector3D_afa96292a3f35d7b155132f3c10923de9}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!print@{print}}
+\index{print@{print}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLine3D}{Line3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}\label{classVector3D_a0a3b2be9ee0bd17389312e2c2977a1d2}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case 
+
+Reimplemented from \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{Line3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classVector3D_a4928d85184a9ca745903663354fedd67}\label{classVector3D_a4928d85184a9ca745903663354fedd67}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual std\+::string \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case 
+
+Reimplemented from \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c0}{Line3\+D$<$ M, E $>$}}.
+
+\mbox{\Hypertarget{classVector3D_a4928d85184a9ca745903663354fedd67}\label{classVector3D_a4928d85184a9ca745903663354fedd67}} 
+\index{Vector3D$<$ T $>$@{Vector3D$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Vector3D$<$ T $>$@{Vector3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual std\+::string \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Returns the pointer to p1 (if p1 has been defined externally) or NULL in the other case Returns the pointer to p2 (if p2 has been defined externally) or NULL in the other case 
 
@@ -202,6 +447,8 @@ Reimplemented from \mbox{\hyperlink{classLine3D_a25dd4766be202688e004dc4ea6c4b9c
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/core/bin/Vector3\+D (copie 1).\+h\item 
+src/core/bin/Vector3\+D.\+h\item 
 src/core/Vector3\+D.\+h\end{DoxyCompactItemize}

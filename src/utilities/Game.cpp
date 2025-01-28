@@ -8,17 +8,9 @@
 #include "Game.h"
 
 Game::Game() {
-	pwindow=std::shared_ptr<SDL_Window>(
-			SDL_CreateWindow("Game",
-					SDL_WINDOWPOS_CENTERED,
-					SDL_WINDOWPOS_CENTERED,
-					1200, 600,
-					SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN_DESKTOP),
-			SDL_DestroyWindow);
+	pwindow=createWindow();
 	if (pwindow!=NULL){
-		prenderer=std::shared_ptr<SDL_Renderer>(
-				SDL_CreateRenderer(pwindow.get(), 0, SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_ACCELERATED),
-				SDL_DestroyRenderer);
+		prenderer=createRenderer(pwindow);
 	}
 
 	pphysics=std::make_shared<Physics>();

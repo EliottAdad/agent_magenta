@@ -11,6 +11,8 @@
 
 #include "../core/SN.h"
 
+
+
 const static SN<float, char> G=SN<float, char>{6.67430, -11};
 const static SN<float, char> K=SN<float, char>{9, 9};
 

@@ -21,41 +21,41 @@
 \DoxyCodeLine{17 }
 \DoxyCodeLine{18 \textcolor{comment}{/*}}
 \DoxyCodeLine{19 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{20 \textcolor{comment}{ *  Polyhedron<M, E> :)}}
+\DoxyCodeLine{20 \textcolor{comment}{ *  Polyhedron<T> :)}}
 \DoxyCodeLine{21 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{22 \textcolor{comment}{ */}}
-\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<M, E> \{}
+\DoxyCodeLine{23 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classPolyhedron}{Polyhedron}} : \textcolor{keyword}{public} \mbox{\hyperlink{classShape3D}{Shape3D}}<T> \{}
 \DoxyCodeLine{24 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{25     std::unordered\_set<std::shared\_ptr<Triangle3D<M, E>>> m\_ptriangles;}
+\DoxyCodeLine{25     std::unordered\_set<std::shared\_ptr<Triangle3D<T>>> m\_ptriangles;}
 \DoxyCodeLine{26 }
 \DoxyCodeLine{27 \textcolor{keyword}{public}:}
 \DoxyCodeLine{28     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}();}
 \DoxyCodeLine{29     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPolyhedron}{\string~Polyhedron}}();}
-\DoxyCodeLine{30     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>}} \&other);}
+\DoxyCodeLine{30     \mbox{\hyperlink{classPolyhedron}{Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>}} \&other);}
 \DoxyCodeLine{31 }
-\DoxyCodeLine{32     std::unordered\_set<std::shared\_ptr<Triangle3D<M, E>>> getPFaces();}
-\DoxyCodeLine{33     \textcolor{keywordtype}{void} setFace(std::shared\_ptr<\mbox{\hyperlink{classTriangle3D}{Triangle3D<M, E>}}> pface);}
+\DoxyCodeLine{32     std::unordered\_set<std::shared\_ptr<Triangle3D<T>>> getPFaces();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} setFace(std::shared\_ptr<\mbox{\hyperlink{classTriangle3D}{Triangle3D<T>}}> pface);}
 \DoxyCodeLine{34 }
 \DoxyCodeLine{35     \textcolor{keyword}{virtual} std::string to\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} print(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info=\textcolor{keyword}{false}, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent=0) \textcolor{keyword}{const};}
 \DoxyCodeLine{37 \};}
 \DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>::Polyhedron}}() \{}
+\DoxyCodeLine{39 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>::Polyhedron}}() \{}
 \DoxyCodeLine{40     \textcolor{comment}{// TODO Auto-\/generated constructor stub}}
 \DoxyCodeLine{41 }
 \DoxyCodeLine{42 \}}
 \DoxyCodeLine{43 }
-\DoxyCodeLine{44 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>::\string~Polyhedron}}() \{}
+\DoxyCodeLine{44 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>::\string~Polyhedron}}() \{}
 \DoxyCodeLine{45     \textcolor{comment}{// TODO Auto-\/generated destructor stub}}
 \DoxyCodeLine{46 \}}
 \DoxyCodeLine{47 }
-\DoxyCodeLine{48 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>::Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>}} \&other) \{}
+\DoxyCodeLine{48 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>::Polyhedron}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>}} \&other) \{}
 \DoxyCodeLine{49     \textcolor{comment}{// TODO Auto-\/generated constructor stub}}
 \DoxyCodeLine{50 }
 \DoxyCodeLine{51 \}}
 \DoxyCodeLine{52 }
 \DoxyCodeLine{53 }
-\DoxyCodeLine{54 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> std::string \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{54 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{55     std::string mes=((spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}} : \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{56 }
 \DoxyCodeLine{57     \textcolor{keywordflow}{if} (full\_info)\{}
@@ -71,7 +71,7 @@
 \DoxyCodeLine{67     \textcolor{keywordflow}{return} mes;}
 \DoxyCodeLine{68 \}}
 \DoxyCodeLine{69 }
-\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} M, \textcolor{keyword}{typename} E> \textcolor{keywordtype}{void} \mbox{\hyperlink{classPolyhedron}{Polyhedron<M, E>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classPolyhedron}{Polyhedron<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{}
 \DoxyCodeLine{71     printTabs(indent);}
 \DoxyCodeLine{72     std::cout << this-\/>to\_string(spread, full\_info, indent);}
 \DoxyCodeLine{73 \}}

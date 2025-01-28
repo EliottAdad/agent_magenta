@@ -1,70 +1,72 @@
-\hypertarget{classPolyhedron}{}\doxysection{Polyhedron\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>} Class Template Reference}
-\label{classPolyhedron}\index{Polyhedron$<$ M, E $>$@{Polyhedron$<$ M, E $>$}}
+\hypertarget{classPolyhedron}{}\doxysection{Polyhedron\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classPolyhedron}\index{Polyhedron$<$ T $>$@{Polyhedron$<$ T $>$}}
 
 
-Inheritance diagram for Polyhedron\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Inheritance diagram for Polyhedron\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=314pt]{classPolyhedron__inherit__graph}
+\includegraphics[width=284pt]{classPolyhedron__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Polyhedron\texorpdfstring{$<$}{<} M, E \texorpdfstring{$>$}{>}\+:\nopagebreak
+Collaboration diagram for Polyhedron\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=314pt]{classPolyhedron__coll__graph}
+\includegraphics[width=284pt]{classPolyhedron__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPolyhedron_a85126ee075270d92f30bf8cbef7fb9f0}\label{classPolyhedron_a85126ee075270d92f30bf8cbef7fb9f0}} 
-{\bfseries Polyhedron} (const \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ M, E $>$ \&other)
+\mbox{\Hypertarget{classPolyhedron_a3d05581f65940ffa820388037bd4a066}\label{classPolyhedron_a3d05581f65940ffa820388037bd4a066}} 
+{\bfseries Polyhedron} (const \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ T $>$ \&other)
 \item 
-\mbox{\Hypertarget{classPolyhedron_abaefb6c58c14c12c6c48bd88a8fa711f}\label{classPolyhedron_abaefb6c58c14c12c6c48bd88a8fa711f}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ $>$ {\bfseries get\+PFaces} ()
+\mbox{\Hypertarget{classPolyhedron_a3db41bb2d19550d5cade890fd8505daa}\label{classPolyhedron_a3db41bb2d19550d5cade890fd8505daa}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ $>$ {\bfseries get\+PFaces} ()
 \item 
-\mbox{\Hypertarget{classPolyhedron_a7c7b8675436cff255dc9577bd16dba86}\label{classPolyhedron_a7c7b8675436cff255dc9577bd16dba86}} 
-void {\bfseries set\+Face} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ pface)
+\mbox{\Hypertarget{classPolyhedron_ae1e4182d6df53c92e3dee175056b358c}\label{classPolyhedron_ae1e4182d6df53c92e3dee175056b358c}} 
+void {\bfseries set\+Face} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ pface)
 \item 
-virtual std\+::string \mbox{\hyperlink{classPolyhedron_a2bc4d58f9b8ee3c4adab7843092c5541}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual std\+::string \mbox{\hyperlink{classPolyhedron_a20aa00c0ad3ebd68e5e9afac6fbaf595}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
-virtual void \mbox{\hyperlink{classPolyhedron_a538299784b76374fc095e1e04e2c9265}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
+virtual void \mbox{\hyperlink{classPolyhedron_a6076b82a3683014a5979a37b881dfd3b}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPolyhedron_a8878f322c0814c7c685ec72e3e3d068a}\label{classPolyhedron_a8878f322c0814c7c685ec72e3e3d068a}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ M, E $>$ $>$ $>$ {\bfseries m\+\_\+ptriangles}
+\mbox{\Hypertarget{classPolyhedron_ae9bcd925677df8cb10d0e409fc493ac5}\label{classPolyhedron_ae9bcd925677df8cb10d0e409fc493ac5}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ $>$ {\bfseries m\+\_\+ptriangles}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classPolyhedron_a538299784b76374fc095e1e04e2c9265}\label{classPolyhedron_a538299784b76374fc095e1e04e2c9265}} 
-\index{Polyhedron$<$ M, E $>$@{Polyhedron$<$ M, E $>$}!print@{print}}
-\index{print@{print}!Polyhedron$<$ M, E $>$@{Polyhedron$<$ M, E $>$}}
+\mbox{\Hypertarget{classPolyhedron_a6076b82a3683014a5979a37b881dfd3b}\label{classPolyhedron_a6076b82a3683014a5979a37b881dfd3b}} 
+\index{Polyhedron$<$ T $>$@{Polyhedron$<$ T $>$}!print@{print}}
+\index{print@{print}!Polyhedron$<$ T $>$@{Polyhedron$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-void \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ M, E $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ T $>$\+::print (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ T $>$}}.
 
-\mbox{\Hypertarget{classPolyhedron_a2bc4d58f9b8ee3c4adab7843092c5541}\label{classPolyhedron_a2bc4d58f9b8ee3c4adab7843092c5541}} 
-\index{Polyhedron$<$ M, E $>$@{Polyhedron$<$ M, E $>$}!to\_string@{to\_string}}
-\index{to\_string@{to\_string}!Polyhedron$<$ M, E $>$@{Polyhedron$<$ M, E $>$}}
+\mbox{\Hypertarget{classPolyhedron_a20aa00c0ad3ebd68e5e9afac6fbaf595}\label{classPolyhedron_a20aa00c0ad3ebd68e5e9afac6fbaf595}} 
+\index{Polyhedron$<$ T $>$@{Polyhedron$<$ T $>$}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Polyhedron$<$ T $>$@{Polyhedron$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
-{\footnotesize\ttfamily template$<$typename M , typename E $>$ \\
-std\+::string \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ M, E $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classPolyhedron}{Polyhedron}}$<$ T $>$\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const bool \&}]{spread = {\ttfamily false},  }\item[{const bool \&}]{full\+\_\+info = {\ttfamily false},  }\item[{const unsigned char \&}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ M, E $>$}}.
+Reimplemented from \mbox{\hyperlink{classShape3D}{Shape3\+D$<$ T $>$}}.
 
 
 

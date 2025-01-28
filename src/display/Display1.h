@@ -11,7 +11,7 @@
 
 #include <memory>
 #include <unordered_set>
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
 
 #include "../core/Point3D.h"
 #include "../core/Line3D.h"
@@ -19,12 +19,13 @@
 #include "../utilities/Printable.h"
 #include "../utilities/functions.h"
 #include "../core/Scene.h"
+#include "../utilities/functions_display.h"
 
 
 /*
- * ##################
+ * ###############
  *  Display1<T> :)
- * ##################
+ * ###############
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
@@ -38,15 +39,15 @@ private:
 public:
 	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
-	std::shared_ptr<SDL_Color> pbkgd_color;				// Pointeur to the background color.
-	std::shared_ptr<SDL_Color> pdraw_color;				// Pointeur to the render color.
-	std::shared_ptr<SDL_Window> pwindow;				// Pointeur to the window.
-	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.
+	std::shared_ptr<COLOR> pdraw_color;				// Pointeur to the render color.
+	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
+	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
 	bool fclear;
 
 	Display1();
 	Display1(std::shared_ptr<Point3D<T>> ppoint);
-	Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer);
+	Display1(std::shared_ptr<WINDOW> pwindow, std::shared_ptr<RENDERER> prenderer);
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
@@ -73,8 +74,8 @@ template<typename T> Display1<T>::Display1() {
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);
+	pdraw_color=createColor(255, 255, 255, 255);
 	pwindow=NULL;//SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN);
 //	if (pwindow!=NULL){
 //		prenderer=SDL_CreateRenderer(pwindow, 0, SDL_RENDERER_TARGETTEXTURE);
@@ -89,8 +90,8 @@ template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);
+	pdraw_color=createColor(255, 255, 255, 255);
 	pwindow=NULL;
 	prenderer=NULL;
 
@@ -102,8 +103,8 @@ template<typename T> Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, 
 	m_display=1;
 	m_scale=2;
 
-	pbkgd_color=std::make_shared<SDL_Color>(SDL_Color{0, 0, 0, 255});
-	pdraw_color=std::make_shared<SDL_Color>(SDL_Color{255, 255, 255, 255});
+	pbkgd_color=createColor(0, 0, 0, 255);
+	pdraw_color=createColor(255, 255, 255, 255);
 	this->pwindow=pwindow;
 	this->prenderer=prenderer;
 
@@ -155,8 +156,7 @@ template<typename T> bool Display1<T>::render() const {
 
 	if (prenderer!=NULL){
 		if (fclear){
-			SDL_SetRenderDrawColor(prenderer.get(), pbkgd_color->r, pbkgd_color->g, pbkgd_color->b, pbkgd_color->a); // Chooses the background color.
-			SDL_RenderClear(prenderer.get()); // Fill the canvas with the background color
+			fillRendererWithColor(prenderer, pbkgd_color);// Fill the canvas with the background color
 		}
 
 		//printf("\nRendering 1: %ld\n", m_pscenes.size());
@@ -170,7 +170,7 @@ template<typename T> bool Display1<T>::render() const {
 			success=success & render(ppoint);
 		}*/
 
-		SDL_RenderPresent(prenderer.get());
+		displayChangesRenderer(prenderer);
 	}
 
 	return success;
@@ -221,14 +221,13 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<
 
 template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> ppoint) const {
 	bool success=false;
-
+	//printf("Rendering point\n");
 	if (this->ppoint!=NULL){
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
 
 		if (pwindow!=NULL && prenderer!=NULL && pdraw_color!=NULL){
-			SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
-
-			//SDL_RenderClear(m_prenderer); // Fill the canvas with the background color
+			changeRenderDrawColor(prenderer, pdraw_color);
+			//SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
 
 			// Get the dimensions of the window
 			int sizex(0);
@@ -241,13 +240,13 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 				switch (m_display){
 					case 1://(x,y) plane
 						//printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 						break;
 					case 3://(x,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
 						break;
 				}
 			}
@@ -308,7 +307,7 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 template<typename T> std::string Display1<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
-	mes+="DISPLAY1";
+	mes+="DISPLAY1\n";
 
 	return mes;
 }

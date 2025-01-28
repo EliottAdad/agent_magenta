@@ -50,45 +50,37 @@
 /*int main(int argc, char* argv[]){
 
     printf("Hello\n");
-    Particle3D<float, char> p1;
-    p1.x={1,1};
-    p1.y={1,0};
-    p1.z={0,0};
-    p1.w={1,11};
-    Point3D<float, char> point1{{0,0},{0,0},{0,0}};
-    Point3D<float, char> point2{{1,-3},{0,0},{0,0}};
-    std::shared_ptr<Vector3D<float, char>> pv(new Vector3D<float, char>(point2));
+    Particle3D<SN<float, char>> p1={{1,1},{1,0},{0,0},{1,11}};
+    Point3D<SN<float, char>> point1{{0,0},{0,0},{0,0}};
+    Point3D<SN<float, char>> point2{{1,-3},{0,0},{0,0}};
+    std::shared_ptr<Vector3D<SN<float, char>>> pv(new Vector3D<SN<float, char>>(point2));
     *p1.ps=*pv;
 
-    Particle3D<float, char> p2;
-    p2.x={-3,1};
-    p2.y={-2,1};
-    p2.z={2,1};
-    p2.w={1,10};
-    Point3D<float, char> point3{{0,0},{0,0},{0,0}};
-    Point3D<float, char> point4{{0,0},{-3,-1},{0,0}};
-    std::shared_ptr<Vector3D<float, char>> pv2(new Vector3D<float, char>(point4));
+    Particle3D<SN<float, char>> p2={{-3,1},{-2,1},{2,1},{1,10}};
+    Point3D<SN<float, char>> point3{{0,0},{0,0},{0,0}};
+    Point3D<SN<float, char>> point4{{0,0},{-3,-1},{0,0}};
+    std::shared_ptr<Vector3D<SN<float, char>>> pv2(new Vector3D<SN<float, char>>(point4));
     *p2.ps=*pv2;
 
-//    Particle3D<float, char> p3;
+//    Particle3D<SN<float, char>> p3;
 //    p3.x={-3,1};
 //    p3.y={1,0};
 //    p3.z={0,0};
 //    p3.w={1,13};
-//    Point3D<float, char> point5{{0,0},{0,0},{0,0}};
-//    Point3D<float, char> point6{{0,0},{-1,10},{0,0}};
-//    std::shared_ptr<Vector3D<float, char>> pv3(new Vector3D<float, char>(point6));
+//    Point3D<SN<float, char>> point5{{0,0},{0,0},{0,0}};
+//    Point3D<SN<float, char>> point6{{0,0},{-1,10},{0,0}};
+//    std::shared_ptr<Vector3D<SN<float, char>>> pv3(new Vector3D<SN<float, char>>(point6));
 //    *p3.ps=*pv3;
 
-    std::shared_ptr<Particle3D<float, char>> pp1(new Particle3D<float, char>(p1));
-    std::shared_ptr<Particle3D<float, char>> pp2(new Particle3D<float, char>(p2));
-    //std::shared_ptr<Particle3D<float, char>> pp3(new Particle3D<float, char>(p3));
+    std::shared_ptr<Particle3D<SN<float, char>>> pp1(new Particle3D<SN<float, char>>(p1));
+    std::shared_ptr<Particle3D<SN<float, char>>> pp2(new Particle3D<SN<float, char>>(p2));
+    //std::shared_ptr<Particle3D<SN<float, char>>> pp3(new Particle3D<SN<float, char>>(p3));
 
     p1.print(true, true, 0);
     p2.print(true, true, 0);
     //p3.print(true, true, 0);
 
-    //SN<float, char> result=rrr2(&p, &p2);
+    //SN<SN<float, char>> result=rrr2(&p, &p2);
     //result.print(true, true, 0);
 
     // Init SDL
@@ -98,7 +90,7 @@
     }
 
     // Sys
-    std::shared_ptr<System3D<Particle3D<float, char>, float, char>> psys=std::make_shared<System3D<Particle3D<float, char>, float, char>>();
+    std::shared_ptr<System3D<Particle3D<SN<float, char>>, SN<float, char>>> psys=std::make_shared<System3D<Particle3D<SN<float, char>>, SN<float, char>>>();
     psys->addPElement(pp1);
     psys->addPElement(pp2);
     //psys->addPElement(pp3);
@@ -134,7 +126,7 @@
     g1.setFPause(false);
 
     // Creation of a particle system (System3D)
-//    System3D<Particle3D, float, char> sys;
+//    System3D<Particle3D, SN<float, char>> sys;
 //    sys.setPFunc(rrr2);
 //    sys.setA({1, 3});
 //    sys.addPElement(&p);

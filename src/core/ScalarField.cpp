@@ -6,18 +6,3 @@
  */
 
 #include "ScalarField.h"
-
-ScalarField::ScalarField() {
-	// TODO Auto-generated constructor stub
-
-}
-
-ScalarField::~ScalarField() {
-	// TODO Auto-generated destructor stub
-}
-
-ScalarField::ScalarField(const ScalarField &other) {
-	// TODO Auto-generated constructor stub
-
-}
-

@@ -47,7 +47,7 @@
 /*
  * Main SDL
  */
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
@@ -62,7 +62,7 @@
     }
 
     // Sys
-    std::shared_ptr<System3D<Particle3D<SN<float, char>>, float, char>> psys=std::make_shared<System3D<Particle3D<SN<float, char>>, float, char>>();
+    std::shared_ptr<System3D<Particle3D<SN<float, char>>, SN<float, char>>> psys=std::make_shared<System3D<Particle3D<SN<float, char>>, SN<float, char>>>();
     psys->setA(SN<float, char>{1, 5});
     psys->setAlpha(5);
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
@@ -97,7 +97,7 @@
     printf("\nBye(main0)\n");
 
     //return EXIT_SUCCESS;
-}*/
+}
 
 
 #endif /* MAIN0_CPP_ */

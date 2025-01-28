@@ -17,15 +17,16 @@ src/main0.o: ../src/main0.cpp ../src/geometry/WeightedPoint3D.h \
  ../src/geometry/../display/../core/../core/Point3D.h \
  ../src/geometry/../display/../utilities/Printable.h \
  ../src/geometry/../display/../core/CoordinateSystem3D.h \
+ ../src/geometry/../display/../utilities/functions_display.h \
  ../src/core/System3D.h ../src/core/../utilities/macros.h \
  ../src/core/../utilities/../core/SN.h ../src/core/../core/Vector3D.h \
- ../src/core/Oct.h ../src/core/TimeSensitive.h ../src/core/VectorField.h \
+ ../src/core/Oct.h ../src/core/TimeSensitive.h \
+ ../src/core/../display/Displayable.h ../src/core/VectorField.h \
  ../src/core/Physics.h ../src/core/VectorField.h ../src/core/Point3D.h \
  ../src/core/Vector3D.h ../src/utilities/Game.h \
  ../src/utilities/../core/Physics.h ../src/utilities/../core/Point3D.h \
  ../src/utilities/../core/Scene.h \
  ../src/utilities/../core/../display/Displayable.h \
- ../src/utilities/../utilities/Printable.h \
  ../src/utilities/../display/Display1.h \
  ../src/utilities/../display/../core/Point3D.h \
  ../src/utilities/../display/../core/Line3D.h \
@@ -33,6 +34,8 @@ src/main0.o: ../src/main0.cpp ../src/geometry/WeightedPoint3D.h \
  ../src/utilities/../display/../utilities/Printable.h \
  ../src/utilities/../display/../utilities/functions.h \
  ../src/utilities/../display/../core/Scene.h \
+ ../src/utilities/../display/../utilities/functions_display.h \
+ ../src/utilities/Printable.h ../src/utilities/functions_display.h \
  ../src/utilities/functionsParticle3D.h \
  ../src/utilities/../geometry/Particle3D.h
 ../src/geometry/WeightedPoint3D.h:
@@ -60,12 +63,14 @@ src/main0.o: ../src/main0.cpp ../src/geometry/WeightedPoint3D.h \
 ../src/geometry/../display/../core/../core/Point3D.h:
 ../src/geometry/../display/../utilities/Printable.h:
 ../src/geometry/../display/../core/CoordinateSystem3D.h:
+../src/geometry/../display/../utilities/functions_display.h:
 ../src/core/System3D.h:
 ../src/core/../utilities/macros.h:
 ../src/core/../utilities/../core/SN.h:
 ../src/core/../core/Vector3D.h:
 ../src/core/Oct.h:
 ../src/core/TimeSensitive.h:
+../src/core/../display/Displayable.h:
 ../src/core/VectorField.h:
 ../src/core/Physics.h:
 ../src/core/VectorField.h:
@@ -76,7 +81,6 @@ src/main0.o: ../src/main0.cpp ../src/geometry/WeightedPoint3D.h \
 ../src/utilities/../core/Point3D.h:
 ../src/utilities/../core/Scene.h:
 ../src/utilities/../core/../display/Displayable.h:
-../src/utilities/../utilities/Printable.h:
 ../src/utilities/../display/Display1.h:
 ../src/utilities/../display/../core/Point3D.h:
 ../src/utilities/../display/../core/Line3D.h:
@@ -84,5 +88,8 @@ src/main0.o: ../src/main0.cpp ../src/geometry/WeightedPoint3D.h \
 ../src/utilities/../display/../utilities/Printable.h:
 ../src/utilities/../display/../utilities/functions.h:
 ../src/utilities/../display/../core/Scene.h:
+../src/utilities/../display/../utilities/functions_display.h:
+../src/utilities/Printable.h:
+../src/utilities/functions_display.h:
 ../src/utilities/functionsParticle3D.h:
 ../src/utilities/../geometry/Particle3D.h:
