@@ -9,6 +9,7 @@
 
 TimeSensitive::TimeSensitive() {
 	// TODO Auto-generated constructor stub
+	m_dt=0;
 }
 
 TimeSensitive::~TimeSensitive() {
@@ -20,6 +21,11 @@ TimeSensitive::~TimeSensitive() {
 }*/
 
 
+
+
+float TimeSensitive::getT() {
+	return m_dt;
+}
 
 void TimeSensitive::setT(const float& dt) {
 	m_dt=dt;

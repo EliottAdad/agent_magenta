@@ -28,34 +28,23 @@
  * Exemples of objects it can drive: System<T>, Particle3D, ...
  */
 class Physics : public Printable {
-private:
-	float m_speed;					//Ratio between simulation_speed/real_world_speed
-	unsigned char m_pps;			//Physics per second
-
-	bool m_fcollide;
-	bool m_fpause;
-	std::unordered_set<std::shared_ptr<TimeSensitive>> m_ptime_sensitives;			//List of time sensitive objects
-
 public:
+	float speed;					//Ratio between simulation_speed/real_world_speed
+	unsigned char pps;			//Physics per second
+
+	bool fcollide;
+	bool fpause;
+	std::unordered_set<std::shared_ptr<TimeSensitive>> ptime_sensitives;			//List of time sensitive objects
+
 	Physics();
 	Physics(const float& speed, const unsigned char& pps);
 	virtual ~Physics();
 	Physics(const Physics& phys);
 
-	float getSpeed() const;
-	void setSpeed(const float& speed);
-	unsigned char getPPS() const;
-	void setPPS(const unsigned char& pps);
-
 	std::unordered_set<std::shared_ptr<TimeSensitive>> getPTimeSensitives();
 	bool addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive);
 	//std::unordered_set<Moveable*> getPMoveables();
 	//bool addPMoveable(Moveable* pmoveabele);
-
-	bool getFCollide() const;
-	void setFCollide(const bool& bcollide);
-	bool getFPause() const;
-	void setFPause(const bool& bpause);
 
 	//bool loop();
 	bool run(const unsigned int& steps=1);

@@ -17,6 +17,7 @@
 #include "../core/Point3D.h"
 #include "../core/Line3D.h"
 #include "../core/Vector3D.h"
+#include "../core/CoordinateSystem3D.h"
 #include "../display/Displayable.h"
 #include "../utilities/Printable.h"
 #include "../core/Scene.h"
@@ -29,15 +30,14 @@
  * ###############
  *  Display2<T> :)
  * ###############
- * Orthographic projection
- * Choices between (x-y), (y-z), (z-x).
- * Display any object having x, y, z.
+ * Orthographic projection along vector
  */
 template<typename T> class Display2 : public Printable {
 private:
 	char m_display;						// The point of view from which it is projected (1, 2, 3).
 	float m_scale;						// Ratio d_pixels/d_meters
 	std::unordered_set<std::shared_ptr<Scene<T>>> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
+	std::shared_ptr<CoordinateSystem3D<T>> pcoord_sys;
 
 public:
 	std::shared_ptr<CoordinateSystem3D<T>> pcoordinate_system;

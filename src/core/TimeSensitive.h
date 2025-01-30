@@ -28,6 +28,7 @@ public:
 	virtual ~TimeSensitive();
 	//TimeSensitive(const TimeSensitive &other);
 
+	virtual float getT();	//Used to prepare the logic behind the scenes
 	virtual void setT(const float& dt);	//Used to prepare the logic behind the scenes
 	virtual void apply();						//Can used to execute an action (Ex: For the grav rule, move...)
 

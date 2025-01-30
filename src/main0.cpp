@@ -48,10 +48,9 @@
  * Main SDL
  */
 int main(int argc, char* argv[]){
-
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{1,3}, 5, SN<float, char>{1, 15});
+    pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 10, SN<float, char>{1, 15});
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts) {
     	ppart->print(true, true, 0);
     }
@@ -63,27 +62,29 @@ int main(int argc, char* argv[]){
 
     // Sys
     std::shared_ptr<System3D<Particle3D<SN<float, char>>, SN<float, char>>> psys=std::make_shared<System3D<Particle3D<SN<float, char>>, SN<float, char>>>();
-    psys->setA(SN<float, char>{1, 5});
-    psys->setAlpha(5);
+    psys->setA(SN<float, char>{1,4});
+    psys->setAlpha(0.01);
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
     	psys->addPElement(ppart);
     }
-    psys->ptrLaw=rrr2;
+    psys->ptrLaw=gravitOptimised;
 
     // Game
     Game g1;
-    g1.pdisplay->setScale(0.2);
+    g1.pdisplay->fclear=false;
+    g1.pdisplay->setScale(0.1);
     //g1.pdisplay->ppoint=pparts[0];
 
+    //g1.pscene->addPDisplayable(psys);// Not sure it works properly.
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
         g1.pscene->addPDisplayable(ppart);
     }
 
-    printf("\n%b\n", g1.pphysics->addPTimeSensitive(psys));
+    g1.pphysics->addPTimeSensitive(psys);
 
-    g1.setFPS(40);
-    g1.pphysics->setPPS(100);
-    g1.setFPause(false);
+    g1.fps=40;
+    g1.pphysics->pps=200;
+    g1.fpause=false;
     //g1.print(true, true, 0);
 
     g1.run(10000);

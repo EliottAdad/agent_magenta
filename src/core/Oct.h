@@ -48,7 +48,7 @@ protected:
 
 	std::shared_ptr<T> m_pT;					// The content of this square (NULL if nothing).
 
-	Oct<T, U>* m_ptrees[8];					// Contains the trees.
+	std::shared_ptr<Oct<T, U>> m_ptrees[8];					// Contains the trees.
 
 	static unsigned int m_NB_OCTS;				// Keeps track of the number of Octs created.
 
@@ -63,7 +63,8 @@ protected:
 
 public:
 	static U m_LIT_A;					// This indicates the limit at which we stop subdividing (useless)
-	static float m_ALPHA;						// The threshold m_ALPHA=d/a (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.
+	static float m_ALPHA;						// The threshold m_ALPHA=a/d (with a being the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.
+												// Plus alpha est petit plus on est precis
 
 	Oct();
 	Oct(const U& a, const Point3D<U>& p={(U)0,(U)0,(U)0});
@@ -80,13 +81,13 @@ public:
 	std::unordered_set<std::shared_ptr<T>> getPElements(const bool& mem=false) const;					//:) Returns all the elements contained in the tree.
 	std::unordered_set<std::shared_ptr<T>> getPNeighbors(const std::shared_ptr<T> pelement, const bool& mem=false) const;		//:) Returns all the neighbors.
 
-	bool insert(std::shared_ptr<T> pT);//:)
+	 std::shared_ptr<T> insert(std::shared_ptr<T> pT);//:)
 	//bool insert(Particle3D* ppart);
 	//void find(const T& t, std::unordered_set<Oct<T, U>*>& pocts);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
 	//void computeInverseSquareLawResultant(const T& t, Vector3D& v) const;// Useless
 	//std::unordered_set<T*> find(const Point3D& point);
 	std::shared_ptr<T> search(const std::shared_ptr<Point3D<U>> ppoint) const;
-	void recalculate();
+	std::unordered_set<std::shared_ptr<T>> recalculate();
 	void empty();
 
 	bool isLeaf() const;
@@ -198,7 +199,7 @@ template<typename T, typename U> Oct<T, U>::Oct(const U& a, const Point3D<U>& p)
 template<typename T, typename U> Oct<T, U>::~Oct() {
 	for (int i(0) ; i<8 ; i++){
 		if (m_ptrees[i]!=NULL){
-			delete m_ptrees[i];
+			m_ptrees[i]=NULL;
 		}
 	}
 	// There is one less Oct
@@ -289,13 +290,7 @@ template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> Oct<T, U
 	}
 
 	if (pelement!=NULL){
-		//printf("God0\n");
-		//getDistance(/**m_pbarycenter*/*m_ppoint, *pelement).print();
-		//printf("\n");
-		//(getDistance(/**m_pbarycenter*/*m_ppoint, *pelement)/m_a).print();
-		//printf("\n");
-		if (m_pT==NULL && (U)(m_ALPHA)/**abs(m_tot_weight)*/>=getDistance(*m_pbarycenter/**m_ppoint*/, *pelement)/m_a){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
-			//printf("God3\n");
+		if (m_pT==NULL && (U)(m_ALPHA)/**abs(m_tot_weight)*/<=m_a/getDistance(*m_pbarycenter/**m_ppoint*/, *pelement)){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
 			for (int i(0) ; i<8 ; i++){
 				if (m_ptrees[i]!=NULL){
 					m_ptrees[i]->getPNeighbors(pelement, true);
@@ -319,21 +314,18 @@ template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> Oct<T, U
 	return pneighbors;
 }
 
-template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) {
-	//printf("A0\n");
+/**
+ * returns
+ * NULL if it was inserted successfully or if entered NULL pointer
+ *  or the pointer that was passed in argument if it was enable.
+ */
+template<typename T, typename U> std::shared_ptr<T> Oct<T, U>::insert(std::shared_ptr<T> pT) {
 	if (pT!=NULL){
 		Point3D<U> p={pT->x, pT->y, pT->z};
-		Point3D<U> dp=p-*m_ppoint;//{pT->x-m_ppoint->x, pT->y-m_ppoint->y, pT->z-m_ppoint->z};
-		//printf("A0_2: ");
-		//m_ppoint->print();
-		//p.print();
-		//abs(dp).print();
-		//printf("\n");
+		Point3D<U> dp=p-*m_ppoint;
 
 		if (abs(dp.x)<=m_a/(U)2 && abs(dp.y)<=m_a/(U)2 && abs(dp.z)<=m_a/(U)2){// If in the cube centered on the point.
-
-			//printf("A1\n");
-			// Tanage the barycenter
+			// Manages the barycenter
 			m_tot_weight+=pT->getW();//Add to tot_weight
 			if (m_tot_weight!=(U)0){
 				*m_pbarycenter+=p*(pT->getW()/m_tot_weight);//Add to the barycenter
@@ -342,35 +334,23 @@ template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) 
 			}
 
 			if (this->isEmpty() && this->isLeaf()){		// If empty and the cube has no Octs under (if it's a leaf)
-				printf("A3\n");
 				m_pT=pT;//We add in
-				//printf("AAAAAAAAAAAA%b\n", m_pT==NULL);
-				//m_pT->print();
-				//printf("\nAAAAAAAAAAAA\n");
 			}else{																				// Else it means it is an internal branch
 				if (dp.x<=(U)0 && dp.y<=(U)0 && dp.z>=(U)0){//If cube 1
-					//printf("D\n");
 					insertTLFTree(pT);
 				}else if (dp.x>=(U)0 && dp.y<=(U)0 && dp.z>=(U)0){//If cube 2
-					//printf("E\n");
 					insertTRFTree(pT);
 				}else if (dp.x>=(U)0 && dp.y<=(U)0 && dp.z<=(U)0){//If cube 3
-					//printf("F\n");
 					insertBRFTree(pT);
 				}else if (dp.x<=(U)0 && dp.y<=(U)0 && dp.z<=(U)0){//If cube 4
-					//printf("G\n");
 					insertBLFTree(pT);
 				}else if (dp.x<=(U)0 && dp.y>=(U)0 && dp.z>=(U)0){//If cube 5
-					//printf("H\n");
 					insertTLBTree(pT);
 				}else if (dp.x>=(U)0 && dp.y>=(U)0 && dp.z>=(U)0){//If cube 6
-					//printf("I\n");
 					insertTRBTree(pT);
 				}else if (dp.x>=(U)0 && dp.y>=(U)0 && dp.z<=(U)0){//If cube 7
-					//printf("J\n");
 					insertBRBTree(pT);
 				}else if (dp.x<=(U)0 && dp.y>=(U)0 && dp.z<=(U)0){//If cube 8
-					//printf("K\n");
 					insertBLBTree(pT);
 				}
 
@@ -378,25 +358,24 @@ template <typename T, typename U> bool Oct<T, U>::insert(std::shared_ptr<T> pT) 
 				if (m_pT!=NULL){
 					m_tot_weight-=m_pT->getW();//Subtract the w of the already present obj to tot_weight
 					std::shared_ptr<T> pT2;//Init to null
-					//printf("###############%b\n", pT2==NULL);
-					/*pT2=m_pT;
-					m_pT=NULL;*/
 					pT2.swap(m_pT);// Set m_pT to NULL and pT2 to m_pT
-					//printf("###############\n");
 					this->insert(pT2);
-					//printf("###############%b\n", m_pT==NULL);
 				}
 			}
+		}else{
+			return pT;
 		}
+	}else{
+		return NULL;
 	}
-	return true;
+	return NULL;
 }
 
 template<typename T, typename U> void Oct<T, U>::insertTLFTree(std::shared_ptr<T> pT) {//En private
 	if (TLFTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(-1)*a, (U)(-1)*a, (U)(1)*a};
-		TLFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		TLFTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	TLFTree->insert(pT);
 }
@@ -405,7 +384,7 @@ template<typename T, typename U> void Oct<T, U>::insertTRFTree(std::shared_ptr<T
 	if (TRFTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(1)*a, (U)(-1)*a, (U)(1)*a};
-		TRFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		TRFTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	TRFTree->insert(pT);
 }
@@ -414,7 +393,7 @@ template<typename T, typename U> void Oct<T, U>::insertBRFTree(std::shared_ptr<T
 	if (BLBTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(1)*a, (U)(-1)*a, (U)(-1)*a};
-		BLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		BLBTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLBTree->insert(pT);
 }
@@ -423,7 +402,7 @@ template<typename T, typename U> void Oct<T, U>::insertBLFTree(std::shared_ptr<T
 	if (BLFTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4.;
 		Point3D<U> np{(U)(-1)*a, (U)(-1)*a, (U)(-1)*a};
-		BLFTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		BLFTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLFTree->insert(pT);
 }
@@ -432,7 +411,7 @@ template<typename T, typename U> void Oct<T, U>::insertTLBTree(std::shared_ptr<T
 	if (TLBTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(-1)*a, (U)(1)*a, (U)(1)*a};
-		TLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		TLBTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	TLBTree->insert(pT);
 }
@@ -441,7 +420,7 @@ template<typename T, typename U> void Oct<T, U>::insertTRBTree(std::shared_ptr<T
 	if (TRBTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(1)*a, (U)(1)*a, (U)(1)*a};
-		TRBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		TRBTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	TRBTree->insert(pT);
 }
@@ -450,7 +429,7 @@ template<typename T, typename U> void Oct<T, U>::insertBRBTree(std::shared_ptr<T
 	if (BRBTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4;
 		Point3D<U> np{(U)(1)*a, (U)(1)*a, (U)(-1)*a};
-		BRBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		BRBTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	BRBTree->insert(pT);
 }
@@ -459,25 +438,34 @@ template<typename T, typename U> void Oct<T, U>::insertBLBTree(std::shared_ptr<T
 	if (BLBTree==NULL){//If there is not yet a tree we create it
 		U a=m_a/(U)4.;
 		Point3D<U> np{(U)(-1)*a, (U)(1)*a, (U)(-1)*a};
-		BLBTree=new Oct<T, U>(m_a/(U)2, *m_ppoint+np);
+		BLBTree=std::make_shared<Oct<T, U>>(m_a/(U)2, *m_ppoint+np);
 	}
 	BLBTree->insert(pT);
 }
 
-template<typename T, typename U> void Oct<T, U>::recalculate() {
+/**
+ * Gives up objects that are outside of the range.
+ */
+template<typename T, typename U> std::unordered_set<std::shared_ptr<T>> Oct<T, U>::recalculate() {
 	std::unordered_set<std::shared_ptr<T>> pelements=this->getPElements();
+	std::unordered_set<std::shared_ptr<T>> perrored_elements;
 
 	this->empty();
 
 	for (std::shared_ptr<T> pelement : pelements){
-		this->insert(pelement);//:)
+		std::shared_ptr<T> perrored=this->insert(pelement);//:)
+		if (perrored!=NULL){
+			perrored_elements.insert(perrored);
+		}
 	}
+	return perrored_elements;
 }
 
 template<typename T, typename U> void Oct<T, U>::empty() {
+	// No more under Octs
 	for (int i(0) ; i<8 ; i++){
 		if (m_ptrees[i]!=NULL){
-			delete m_ptrees[i];
+			m_ptrees[i]=NULL;
 		}
 	}
 

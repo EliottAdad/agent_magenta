@@ -53,6 +53,10 @@ template<typename T> CoordinateSystem3D<T>::CoordinateSystem3D(const CoordinateS
 	e3=coordsystem.e3;
 }
 
+/**
+ * returns the Identity matrix
+ * Id(B|B')
+ */
 template<typename T> Eigen::Matrix<T, 3, 3> CoordinateSystem3D<T>::getM() const{
 	return Eigen::Matrix<T, 3, 3>{
 		{e1.ppoint2->x,e2.ppoint2->x,e3.ppoint2->x},

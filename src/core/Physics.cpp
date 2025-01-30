@@ -8,76 +8,43 @@
 #include "Physics.h"
 
 Physics::Physics() {
-	m_pps=40;//Computations per second
-	m_speed=1;//Speed of the simulation
+	pps=40;//Computations per second
+	speed=1;//Speed of the simulation
 
-	m_fcollide=false;
-	m_fpause=true;
+	fcollide=false;
+	fpause=true;
 }
 
 Physics::Physics(const float& speed, const unsigned char& pps) {
-	m_pps=pps;//Computations per second
-	m_speed=speed;//Speed of the simulation
+	this->pps=pps;//Computations per second
+	this->speed=speed;//Speed of the simulation
 
-	m_fcollide=false;
-	m_fpause=true;
+	fcollide=false;
+	fpause=true;
 }
 
 Physics::~Physics() {
-	m_ptime_sensitives.clear();
+	ptime_sensitives.clear();
 }
 
 Physics::Physics(const Physics& phys) {
-	m_pps=phys.getPPS();
-	m_speed=phys.getSpeed();
+	pps=phys.pps;
+	speed=phys.speed;
 
-	m_fcollide=phys.getFCollide();
-	m_fpause=true;
+	fcollide=phys.fcollide;
+	fpause=true;
 }
 
-
-
-unsigned char Physics::getPPS() const {
-	return m_pps;
-}
-
-void Physics::setPPS(const unsigned char& pps) {
-	m_pps=pps;
-}
-
-float Physics::getSpeed() const {
-	return m_speed;
-}
-
-void Physics::setSpeed(const float& speed) {
-	m_speed=speed;
-}
-
-bool Physics::getFCollide() const {
-	return m_fcollide;
-}
-
-void Physics::setFCollide(const bool& fcollide) {
-	m_fcollide=fcollide;
-}
-
-bool Physics::getFPause() const {
-	return m_fpause;
-}
-
-void Physics::setFPause(const bool& fpause) {
-	m_fpause=fpause;
-}
 
 std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::getPTimeSensitives() {
-	return m_ptime_sensitives;
+	return ptime_sensitives;
 }
 
 bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 
 	if (ptime_sensitive!=NULL){
-		success=m_ptime_sensitives.insert(ptime_sensitive).second;
+		success=ptime_sensitives.insert(ptime_sensitive).second;
 		//printf("Shush\n");
 	}
 	return success;
@@ -99,20 +66,20 @@ bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) 
 /*bool Physics::loop() {
 
 	std::chrono::time_point t1=std::chrono::system_clock::now();
-	while(!m_fpause){
+	while(!fpause){
 		std::chrono::time_point t2=std::chrono::system_clock::now();
 		std::chrono::duration dt=t2-t1;
 		if (dt.count()>=1/(long double)m_cps*1000000000.){
-			for(TimeSensitive* ptime_sensitive : m_ptime_sensitives){
+			for(TimeSensitive* ptime_sensitive : ptime_sensitives){
 
 				//std::cout << "\n delta t = " << dt.count() << "ns\n";
 
-				ptime_sensitive->setT(dt.count()/1000000000.*m_speed);//The duration given by dt is in ns.
+				ptime_sensitive->setT(dt.count()/1000000000.*speed);//The duration given by dt is in ns.
 			}
 			t1=t2;
 		}
 	}
-	return m_fpause;
+	return fpause;
 }*/
 
 /*
@@ -120,13 +87,13 @@ bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) 
  */
 bool Physics::run(const unsigned int& steps) {
 	std::chrono::time_point t1=std::chrono::system_clock::now();
-	if (!m_fpause){
+	if (!fpause){
 		unsigned int i(0);
 		while (i<=steps){
 			std::chrono::time_point t2=std::chrono::system_clock::now();
 			std::chrono::duration dt=t2-t1;
 
-			if (dt.count()>=1/(long double)m_pps*1000000000.){
+			if (dt.count()>=1/(long double)pps*1000000000.){
 				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
 				this->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 
@@ -137,17 +104,17 @@ bool Physics::run(const unsigned int& steps) {
 			}
 		}
 	}
-	return m_fpause;
+	return fpause;
 }
 
 bool Physics::iterate(const float& dt) {
-	for (std::shared_ptr<TimeSensitive> ptime_sensitive : m_ptime_sensitives){
-		//printf("\niterate(dt:%f)\n", dt*m_speed);
-		ptime_sensitive->setT(dt*m_speed);
-		//printf("%f\n", dt*m_speed);
+	for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
+		//printf("\niterate(dt:%f)\n", dt*speed);
+		ptime_sensitive->setT(dt*speed);
+		//printf("%f\n", dt*speed);
 		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
 	}
-	return m_fpause;
+	return fpause;
 }
 
 
@@ -165,14 +132,14 @@ std::string Physics::to_string(const bool& spread, const bool& full_info, const 
 	//}
 	//mes+=((spread)?"\n" : " ");
 	mes+=to_stringTabs(indent+1);
-	mes+="speed=" + std::to_string(m_speed) + " | fcollide=" + std::to_string(m_fcollide) + " | fpause=" + std::to_string(m_fpause) + "\n";
+	mes+="speed=" + std::to_string(speed) + " | fcollide=" + std::to_string(fcollide) + " | fpause=" + std::to_string(fpause) + "\n";
 
 	mes+=to_stringTabs(indent+1);
 	mes+="* List Time Sensitive:\n";
 	//int i=0;
 
 	if (full_info){
-		for (std::shared_ptr<TimeSensitive> ptime_sensitive : m_ptime_sensitives){
+		for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
 			//i++;
 			mes+="\n";
 			mes+=to_stringTabs(indent+2);

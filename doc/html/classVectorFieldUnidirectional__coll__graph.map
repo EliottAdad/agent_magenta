@@ -1,8 +1,0 @@
-<map id="VectorFieldUnidirectional" name="VectorFieldUnidirectional">
-<area shape="rect" id="node1" title=" " alt="" coords="26,247,211,273"/>
-<area shape="rect" id="node2" href="$classVectorField.html" title=" " alt="" coords="17,157,111,184"/>
-<area shape="rect" id="node3" href="$classTimeSensitive.html" title=" " alt="" coords="5,81,120,108"/>
-<area shape="rect" id="node4" href="$classPrintable.html" title=" " alt="" coords="79,5,159,32"/>
-<area shape="rect" id="node6" href="$classLine3D.html" title=" " alt="" coords="144,81,211,108"/>
-<area shape="rect" id="node5" href="$classVector3D.html" title=" " alt="" coords="135,157,217,184"/>
-</map>

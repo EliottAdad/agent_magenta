@@ -198,18 +198,16 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<
 	bool success=true;
 
 	if (pdisplayable!=NULL) {
-		std::shared_ptr<Point3D<T>> pp(new Point3D<T>(pdisplayable->getPosition()));
-		//std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->getPoints();
-		success=success & render(pp);
-		/*for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
-			success=success & render(ppoint);
-		}*/
+		//std::shared_ptr<Point3D<T>> pp(new Point3D<T>(pdisplayable->getPosition()));
+		//success=success & render(pp);
 
 		// For the points
 		std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->getPPoints();
 		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
+			//printf("There is at least one Point to be displayed.");
 			success=success & render(ppoint);
 		}
+
 		// For the lines
 		/*std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->pshape->getPoints();
 		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){

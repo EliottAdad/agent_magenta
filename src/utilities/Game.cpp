@@ -18,11 +18,9 @@ Game::Game() {
 	pdisplay=std::make_shared<Display1<SN<float, char>>>(pwindow, prenderer);
 	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
-	m_fps=30;
-	//m_pps=30;
-	m_fpause=false;
-
-	//render();
+	fps=30;
+	fpause=false;
+	render();
 }
 
 Game::~Game() {
@@ -35,94 +33,24 @@ Game::~Game() {
 }*/
 
 
-/*float Game::getSpeed() const {
-	return pphysics->getSpeed();
-}
-
-void Game::setSpeed(const float& speed) {
-	m_pphysics->setSpeed(speed);
-}
-
-unsigned char Game::getPPS() const {
-	return m_pphysics->getPPS();
-}
-
-void Game::setPPS(const unsigned char& pps) {
-	m_pphysics->setPPS(pps);
-}*/
-
-unsigned char Game::getFPS() const {
-	return m_fps;
-}
-
-void Game::setFPS(const unsigned char& fps) {
-	m_fps=fps;
-}
-
-/*Scene* Game::getPScene() {
-	return m_pscene;
-}
-
-Physics* Game::getPPhysics() {
-	return m_pphysics;
-}*/
-
-/*bool Game::addPDisplayable(std::shared_ptr<Displayable<SN<float, char>>> pdisplayable) {
-	bool success=false;
-	if (pdisplayable!=NULL){
-		success=m_pscene->addPDisplayable(pdisplayable);
-	}
-	return success;
-}*/
-
-/*std::unordered_set<TimeSensitive*> Game::getPTimeSensitives() {
-	return m_pphysics->getPTimeSensitives();
-}*/
-
-/*bool Game::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
-	bool success=false;
-	if (ptime_sensitive!=NULL){
-		success=m_pphysics->addPTimeSensitive(ptime_sensitive);
-	}
-	return success;
-}
-
-bool Game::getFCollide() const {
-	return m_pphysics->getFCollide();
-}
-
-void Game::setFCollide(const bool& fcollide) {
-	m_pphysics->setFCollide(fcollide);
-}*/
-
-bool Game::getFPause() const {
-	return m_fpause;
-}
-
-void Game::setFPause(const bool& fpause) {
-	m_fpause=fpause;
-}
-
-
-
 /**
  * Run the game for a certain number of frames
  */
 bool Game::run(const unsigned int& steps){
 	std::chrono::time_point t1=std::chrono::system_clock::now();
-	if (!m_fpause){
+	if (!fpause){
 		unsigned int i(0);
 		while (i<=steps){
 			std::chrono::time_point t2=std::chrono::system_clock::now();
 			std::chrono::duration dt=t2-t1;
 
 			// Calls the physics
-			if (dt.count()>=1/(long double)(pphysics->getPPS())*1000000000.){//The duration given by dt is in ns.
+			if (dt.count()>=1/(long double)(pphysics->pps)*1000000000.){//The duration given by dt is in ns.
 				pphysics->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
 			}
 
 			// Calls the rendering process
-			if (dt.count()>=1/(long double)m_fps*1000000000.){
+			if (dt.count()>=1/(long double)fps*1000000000.){
 				render();
 
 				t1=t2;
@@ -132,7 +60,7 @@ bool Game::run(const unsigned int& steps){
 			}
 		}
 	}
-	return m_fpause;
+	return fpause;
 }
 
 bool Game::render() const {
@@ -140,7 +68,7 @@ bool Game::render() const {
 		pdisplay->render();
 	}
 
-	return m_fpause;
+	return fpause;
 }
 
 
@@ -154,8 +82,8 @@ std::string Game::to_string(const bool& spread, const bool& full_info, const uns
 	mes+=ss.str();
 	mes+="]:\n";
 	mes+=to_stringTabs(indent+1);
-	mes+="fps=" + to_string(m_fps);
-	mes+=("fpause=" + to_string(m_fpause));
+	mes+="fps=" + to_string(fps);
+	mes+=("fpause=" + to_string(fpause));
 	mes+=((spread)?"\n" : "");
 
 	if (full_info){

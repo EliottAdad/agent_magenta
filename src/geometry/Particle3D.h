@@ -23,17 +23,18 @@
 //template<typename T> enum<T> Property {T, };
 
 /*
- * ####################
+ * #################
  *  Particle3D<T> :)
- * ####################
+ * #################
  * A point with a speed.
  */
 template<typename T> class Particle3D : public Point3D<T>, public TimeSensitive, public Displayable<T> {
 public:
-	std::shared_ptr<CoordinateSystem3D<T>> psys;								// The coords system in wich it is expressed
 	std::shared_ptr<Vector3D<T>> ps;											// Necessary or else we cannot know where the particle will move if no forces are present (2nd Newton law).
 	std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<T>>> pfields;		// Numeric fields
 	//std::shared_ptr<std::map<std::string, std::shared_ptr<void>>> pproperties;		// Properties
+	std::shared_ptr<CoordinateSystem3D<T>> psys;								// The coords system in wich it is expressed
+
 
 	Particle3D();
 	Particle3D(const Point3D<T>& p);
@@ -42,22 +43,14 @@ public:
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 
+	// From Displayable
 	virtual T getX() const;
 	virtual T getY() const;
 	virtual T getZ() const;
+	virtual Point3D<T> getPosition() const;
+	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const;
+
 	virtual T getW() const;
-
-	/*Vector3D getSpeed() const;
-	Vector3D* getPSpeed() const;
-	void setSpeed(const Vector3D& v);
-	void setSpeed(const Point3D<float, char>& p);
-	void addSpeed(const Vector3D& ds);
-	void addSpeed(const Point3D<float, char>& p);*/
-
-//	virtual void addAsForce(const Vector3D<T>& v, const float& dt);
-//	virtual void addAsAcc(const Vector3D<T>& v, const float& dt);
-//	virtual void addAsSpeed(const Vector3D<T>& v);
-//	virtual void addAsPos(const Vector3D<T>& v);
 
 	virtual void setT(const float& dt);
 	virtual void apply();
@@ -168,7 +161,7 @@ Particle3D::Particle3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 }*/
 
 template<typename T> Particle3D<T>::~Particle3D() {
-	;//this->~Displayable();
+	;
 }
 
 template<typename T> Particle3D<T>::Particle3D(const Particle3D<T>& p) {
@@ -184,7 +177,7 @@ template<typename T> Particle3D<T>::Particle3D(const Particle3D<T>& p) {
 }
 
 
-
+// From Displayable
 template<typename T> T Particle3D<T>::getX() const {
 	return this->x;
 }
@@ -196,6 +189,17 @@ template<typename T> T Particle3D<T>::getY() const {
 template<typename T> T Particle3D<T>::getZ() const {
 	return this->z;
 }
+
+template<typename T> Point3D<T> Particle3D<T>::getPosition() const {
+	return Point3D<T>{this->getX(), this->getY(), this->getZ()};
+}
+
+template<typename T> std::unordered_set<std::shared_ptr<Point3D<T>>> Particle3D<T>::getPPoints() const {
+	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
+	ppoints.insert(std::make_shared<Point3D<T>>(this->getPosition()));
+	return ppoints;
+}
+
 
 template<typename T> T Particle3D<T>::getW() const {
 	T w=(T)1;

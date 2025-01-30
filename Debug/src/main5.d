@@ -18,7 +18,8 @@ src/main5.o: ../src/main5.cpp ../src/geometry/Particle3D.h \
  ../src/geometry/../display/../utilities/functions_display.h \
  ../src/core/System3D.h ../src/core/../utilities/macros.h \
  ../src/core/../utilities/../core/SN.h ../src/core/../core/Vector3D.h \
- ../src/core/Oct.h ../src/core/SN.h ../src/core/Point3D.h \
+ ../src/core/../core/CoordinateSystem3D.h ../src/core/Oct.h \
+ ../src/core/SN.h ../src/core/Point3D.h \
  ../src/core/../utilities/Printable.h ../src/core/TimeSensitive.h \
  ../src/core/../display/Displayable.h ../src/core/Physics.h \
  ../src/core/VectorField.h
@@ -46,6 +47,7 @@ src/main5.o: ../src/main5.cpp ../src/geometry/Particle3D.h \
 ../src/core/../utilities/macros.h:
 ../src/core/../utilities/../core/SN.h:
 ../src/core/../core/Vector3D.h:
+../src/core/../core/CoordinateSystem3D.h:
 ../src/core/Oct.h:
 ../src/core/SN.h:
 ../src/core/Point3D.h:
