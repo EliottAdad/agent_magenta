@@ -2,8 +2,7 @@
 \label{classSystem3D}\index{System3D$<$ T, U $>$@{System3D$<$ T, U $>$}}
 
 
-Inheritance diagram for System3D\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for System3D\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for System3D\texorpdfstring{$<$}{<} T, U \texorpdfstring{$
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=336pt]{classSystem3D__coll__graph}
+\includegraphics[width=288pt]{classSystem3D__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -34,17 +33,13 @@ float {\bfseries get\+Alpha} () const
 \mbox{\Hypertarget{classSystem3D_a5c88ed0e8510d3bddd68946373a99c6f}\label{classSystem3D_a5c88ed0e8510d3bddd68946373a99c6f}} 
 void {\bfseries set\+Alpha} (const float \&alpha)
 \item 
-\mbox{\Hypertarget{classSystem3D_a2331a1f0bef3a72c62ab1814d8498184}\label{classSystem3D_a2331a1f0bef3a72c62ab1814d8498184}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PElements} () const
-\item 
-\mbox{\Hypertarget{classSystem3D_a67d1eecc9574a7e747d1f341c44c5f69}\label{classSystem3D_a67d1eecc9574a7e747d1f341c44c5f69}} 
-bool {\bfseries add\+PElement} (std\+::shared\+\_\+ptr$<$ T $>$ pelement)
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classSystem3D_a109a6dd25d2f099aa15cb6c6a4547b39}{add\+PElement}} (std\+::shared\+\_\+ptr$<$ T $>$ pelement)
 \item 
 \mbox{\Hypertarget{classSystem3D_a9a8299121702cb2caabf1e06b1483f4b}\label{classSystem3D_a9a8299121702cb2caabf1e06b1483f4b}} 
 std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries get\+PNeighbors} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement) const
 \item 
-\mbox{\Hypertarget{classSystem3D_a56a1f3f69e00a8b9c3e29de3ab07f64e}\label{classSystem3D_a56a1f3f69e00a8b9c3e29de3ab07f64e}} 
-void {\bfseries recalculate} () const
+\mbox{\Hypertarget{classSystem3D_a337f677a4e21a9298ad17f5ae2d6f0e1}\label{classSystem3D_a337f677a4e21a9298ad17f5ae2d6f0e1}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries recalculate} ()
 \item 
 \mbox{\Hypertarget{classSystem3D_a327dca7683e0ce2ded8db592d85c5401}\label{classSystem3D_a327dca7683e0ce2ded8db592d85c5401}} 
 void {\bfseries empty} ()
@@ -61,6 +56,8 @@ virtual U \mbox{\hyperlink{classSystem3D_ac85a1f95bc21fac3ed00bb290b82d6c4}{getZ
 \item 
 virtual \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ U $>$ \mbox{\hyperlink{classSystem3D_af790907af2d1bf720081f026dd68681c}{get\+Position}} () const
 \item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ U $>$ $>$ $>$ \mbox{\hyperlink{classSystem3D_a64978b9d3056304744d1c96fe5df1520}{get\+PPoints}} () const
+\item 
 virtual std\+::string \mbox{\hyperlink{classSystem3D_aaf86a8c15329f65fdeeb57ba50d94b18}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
 virtual void \mbox{\hyperlink{classSystem3D_a5cfdfd9ad1a47a57dce152ad61c79d0d}{print}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
@@ -74,19 +71,27 @@ U {\bfseries a}
 \mbox{\Hypertarget{classSystem3D_a3a08b7ee2a206f516f10c481f18ebc62}\label{classSystem3D_a3a08b7ee2a206f516f10c481f18ebc62}} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$ $>$ {\bfseries poctree}
 \item 
-\mbox{\Hypertarget{classSystem3D_a5712f52466947a4a93a7fc9fb3cb2beb}\label{classSystem3D_a5712f52466947a4a93a7fc9fb3cb2beb}} 
-\mbox{\hyperlink{classVector3D}{Vector3D}}$<$ U $>$($\ast$ {\bfseries ptr\+Law} )(std\+::shared\+\_\+ptr$<$ T $>$, std\+::shared\+\_\+ptr$<$ T $>$)
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
+\mbox{\Hypertarget{classSystem3D_a5fbfaf8c13acebf168a08390f184e1e2}\label{classSystem3D_a5fbfaf8c13acebf168a08390f184e1e2}} 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries pelements}
 \item 
-\mbox{\Hypertarget{classSystem3D_a3658da772cb207022cf4b91edc4ca0d9}\label{classSystem3D_a3658da772cb207022cf4b91edc4ca0d9}} 
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ {\bfseries m\+\_\+pelements}
+\mbox{\Hypertarget{classSystem3D_a849205c677223a17d267bd622d5c5a00}\label{classSystem3D_a849205c677223a17d267bd622d5c5a00}} 
+void($\ast$ {\bfseries ptr\+Law} )(\mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, U $>$ $\ast$psys)
+\item 
+\mbox{\Hypertarget{classSystem3D_a107c798c571f76b5d23deff3ce8cf1e1}\label{classSystem3D_a107c798c571f76b5d23deff3ce8cf1e1}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ T $>$ $>$ {\bfseries pcoord\+\_\+sys}
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classSystem3D_a7bb69c6f38d74485987e96918afc8662}\label{classSystem3D_a7bb69c6f38d74485987e96918afc8662}} 
+\mbox{\Hypertarget{classSystem3D_a109a6dd25d2f099aa15cb6c6a4547b39}\label{classSystem3D_a109a6dd25d2f099aa15cb6c6a4547b39}} 
+\index{System3D$<$ T, U $>$@{System3D$<$ T, U $>$}!addPElement@{addPElement}}
+\index{addPElement@{addPElement}!System3D$<$ T, U $>$@{System3D$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{addPElement()}{addPElement()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, U $>$\+::add\+PElement (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ T $>$}]{pelement }\end{DoxyParamCaption})}
+
+Correct way to add an element to a System. Adds to the octree and update the unordered\+\_\+set. returns NULL if it was inserted successfully or the pointer that was passed in argument if it was enable. if entered NULL pointer returns NULL \mbox{\Hypertarget{classSystem3D_a7bb69c6f38d74485987e96918afc8662}\label{classSystem3D_a7bb69c6f38d74485987e96918afc8662}} 
 \index{System3D$<$ T, U $>$@{System3D$<$ T, U $>$}!apply@{apply}}
 \index{apply@{apply}!System3D$<$ T, U $>$@{System3D$<$ T, U $>$}}
 \doxysubsubsection{\texorpdfstring{apply()}{apply()}}
@@ -103,6 +108,17 @@ Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 \doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
 {\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
 \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ U $>$ \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, U $>$\+::get\+Position\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ U $>$}}.
+
+\mbox{\Hypertarget{classSystem3D_a64978b9d3056304744d1c96fe5df1520}\label{classSystem3D_a64978b9d3056304744d1c96fe5df1520}} 
+\index{System3D$<$ T, U $>$@{System3D$<$ T, U $>$}!getPPoints@{getPPoints}}
+\index{getPPoints@{getPPoints}!System3D$<$ T, U $>$@{System3D$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{getPPoints()}{getPPoints()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ U $>$ $>$ $>$ \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, U $>$\+::get\+PPoints\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -159,7 +175,7 @@ Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
 {\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
 void \mbox{\hyperlink{classSystem3D}{System3D}}$<$ T, U $>$\+::setA (\begin{DoxyParamCaption}\item[{const U \&}]{a }\end{DoxyParamCaption})}
 
-Alternative to setting than recompute manually. Recomputes the structure for you. \+:X \mbox{\Hypertarget{classSystem3D_a65f99434241b908af1048180b1d5e7a1}\label{classSystem3D_a65f99434241b908af1048180b1d5e7a1}} 
+Recomputes the structure for you. An all in one alternative to\+: changing a and than recompute manually. \+:X \mbox{\Hypertarget{classSystem3D_a65f99434241b908af1048180b1d5e7a1}\label{classSystem3D_a65f99434241b908af1048180b1d5e7a1}} 
 \index{System3D$<$ T, U $>$@{System3D$<$ T, U $>$}!setT@{setT}}
 \index{setT@{setT}!System3D$<$ T, U $>$@{System3D$<$ T, U $>$}}
 \doxysubsubsection{\texorpdfstring{setT()}{setT()}}

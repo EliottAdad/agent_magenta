@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oct_0',['Oct',['../classOct.html#afdf774f7c6c54a28a7c6d0bddea8df23',1,'Oct']]]
+  ['insert_0',['insert',['../classOct.html#aa60d5c9551c137d8dbd5f8d3c5452491',1,'Oct']]]
 ];

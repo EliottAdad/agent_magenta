@@ -2,8 +2,7 @@
 \label{classOct}\index{Oct$<$ T, U $>$@{Oct$<$ T, U $>$}}
 
 
-Inheritance diagram for Oct\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for Oct\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Oct\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\
 \end{figure}
 
 
-Collaboration diagram for Oct\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for Oct\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -52,14 +50,12 @@ std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlin
 \item 
 std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlink{classOct_aec49b5773f15732508beb9bcab031f7b}{get\+PNeighbors}} (const std\+::shared\+\_\+ptr$<$ T $>$ pelement, const bool \&mem=false) const
 \item 
-\mbox{\Hypertarget{classOct_a4bfd33a752ecac03fe4607e9406cfe0d}\label{classOct_a4bfd33a752ecac03fe4607e9406cfe0d}} 
-bool {\bfseries insert} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classOct_aa60d5c9551c137d8dbd5f8d3c5452491}{insert}} (std\+::shared\+\_\+ptr$<$ T $>$ pT)
 \item 
 \mbox{\Hypertarget{classOct_aa130e99e016e4567d57d8d85da4f0c54}\label{classOct_aa130e99e016e4567d57d8d85da4f0c54}} 
 std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries search} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ U $>$ $>$ ppoint) const
 \item 
-\mbox{\Hypertarget{classOct_a3bc401040397bfbc0f827eb12cb94b4a}\label{classOct_a3bc401040397bfbc0f827eb12cb94b4a}} 
-void {\bfseries recalculate} ()
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlink{classOct_ad2466937b98ffac60e67877af7da1722}{recalculate}} ()
 \item 
 \mbox{\Hypertarget{classOct_a61fed2b32ccb60666fd9cd9a59e91ac3}\label{classOct_a61fed2b32ccb60666fd9cd9a59e91ac3}} 
 void {\bfseries empty} ()
@@ -128,8 +124,8 @@ U {\bfseries m\+\_\+tot\+\_\+weight}
 \mbox{\Hypertarget{classOct_ae2d1f21039d816e9943a5bbe8c8d9767}\label{classOct_ae2d1f21039d816e9943a5bbe8c8d9767}} 
 std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries m\+\_\+pT}
 \item 
-\mbox{\Hypertarget{classOct_abf67cb4a8394f45262a684bfb0383f15}\label{classOct_abf67cb4a8394f45262a684bfb0383f15}} 
-\mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$ $\ast$ {\bfseries m\+\_\+ptrees} \mbox{[}8\mbox{]}
+\mbox{\Hypertarget{classOct_ad6dafbb60df7afbf2e10f0093fa35649}\label{classOct_ad6dafbb60df7afbf2e10f0093fa35649}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$ $>$ {\bfseries m\+\_\+ptrees} \mbox{[}8\mbox{]}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -187,7 +183,14 @@ std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlin
 
 h abs(m\+\_\+tot\+\_\+weight)
 
-m\+\_\+ppoint\mbox{\Hypertarget{classOct_aadca62424ce83c2e7904dab0ccf7afe2}\label{classOct_aadca62424ce83c2e7904dab0ccf7afe2}} 
+m\+\_\+ppoint\mbox{\Hypertarget{classOct_aa60d5c9551c137d8dbd5f8d3c5452491}\label{classOct_aa60d5c9551c137d8dbd5f8d3c5452491}} 
+\index{Oct$<$ T, U $>$@{Oct$<$ T, U $>$}!insert@{insert}}
+\index{insert@{insert}!Oct$<$ T, U $>$@{Oct$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$\+::insert (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ T $>$}]{pT }\end{DoxyParamCaption})}
+
+returns NULL if it was inserted successfully or if entered NULL pointer or the pointer that was passed in argument if it was enable. \mbox{\Hypertarget{classOct_aadca62424ce83c2e7904dab0ccf7afe2}\label{classOct_aadca62424ce83c2e7904dab0ccf7afe2}} 
 \index{Oct$<$ T, U $>$@{Oct$<$ T, U $>$}!print@{print}}
 \index{print@{print}!Oct$<$ T, U $>$@{Oct$<$ T, U $>$}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
@@ -198,7 +201,14 @@ void \mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$\+::print (\begin{DoxyParamCapt
 
 Reimplemented from \mbox{\hyperlink{classPrintable}{Printable}}.
 
-\mbox{\Hypertarget{classOct_acf703ab77ef2df4c53f931612b52fac0}\label{classOct_acf703ab77ef2df4c53f931612b52fac0}} 
+\mbox{\Hypertarget{classOct_ad2466937b98ffac60e67877af7da1722}\label{classOct_ad2466937b98ffac60e67877af7da1722}} 
+\index{Oct$<$ T, U $>$@{Oct$<$ T, U $>$}!recalculate@{recalculate}}
+\index{recalculate@{recalculate}!Oct$<$ T, U $>$@{Oct$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{recalculate()}{recalculate()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ \mbox{\hyperlink{classOct}{Oct}}$<$ T, U $>$\+::recalculate}
+
+Gives up objects that are outside of the range. \mbox{\Hypertarget{classOct_acf703ab77ef2df4c53f931612b52fac0}\label{classOct_acf703ab77ef2df4c53f931612b52fac0}} 
 \index{Oct$<$ T, U $>$@{Oct$<$ T, U $>$}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!Oct$<$ T, U $>$@{Oct$<$ T, U $>$}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}

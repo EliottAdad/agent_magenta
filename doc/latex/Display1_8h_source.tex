@@ -202,195 +202,193 @@
 \DoxyCodeLine{198     \textcolor{keywordtype}{bool} success=\textcolor{keyword}{true};}
 \DoxyCodeLine{199 }
 \DoxyCodeLine{200     \textcolor{keywordflow}{if} (pdisplayable!=NULL) \{}
-\DoxyCodeLine{201         std::shared\_ptr<Point3D<T>> pp(\textcolor{keyword}{new} \mbox{\hyperlink{structPoint3D}{Point3D<T>}}(pdisplayable-\/>getPosition()));}
-\DoxyCodeLine{202         \textcolor{comment}{//std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pdisplayable-\/>getPoints();}}
-\DoxyCodeLine{203         success=success \& render(pp);}
-\DoxyCodeLine{204         \textcolor{comment}{/*for (std::shared\_ptr<Point3D<T>> ppoint : ppoints)\{}}
-\DoxyCodeLine{205 \textcolor{comment}{            success=success \& render(ppoint);}}
-\DoxyCodeLine{206 \textcolor{comment}{        \}*/}}
-\DoxyCodeLine{207 }
-\DoxyCodeLine{208         \textcolor{comment}{// For the points}}
-\DoxyCodeLine{209         std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pdisplayable-\/>getPPoints();}
-\DoxyCodeLine{210         \textcolor{keywordflow}{for} (std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> ppoint : ppoints)\{}
-\DoxyCodeLine{211             success=success \& render(ppoint);}
-\DoxyCodeLine{212         \}}
-\DoxyCodeLine{213         \textcolor{comment}{// For the lines}}
-\DoxyCodeLine{214         \textcolor{comment}{/*std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pdisplayable-\/>pshape-\/>getPoints();}}
-\DoxyCodeLine{215 \textcolor{comment}{        for (std::shared\_ptr<Point3D<T>> ppoint : ppoints)\{}}
-\DoxyCodeLine{216 \textcolor{comment}{            success=success \& render(ppoint);}}
-\DoxyCodeLine{217 \textcolor{comment}{        \}*/}}
-\DoxyCodeLine{218     \}}
-\DoxyCodeLine{219     \textcolor{keywordflow}{return} success;}
-\DoxyCodeLine{220 \}}
-\DoxyCodeLine{221 }
-\DoxyCodeLine{222 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDisplay1}{Display1<T>::render}}(\textcolor{keyword}{const} std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> ppoint)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{223     \textcolor{keywordtype}{bool} success=\textcolor{keyword}{false};}
-\DoxyCodeLine{224     \textcolor{comment}{//printf("{}Rendering point\(\backslash\)n"{});}}
-\DoxyCodeLine{225     \textcolor{keywordflow}{if} (this-\/>ppoint!=NULL)\{}
-\DoxyCodeLine{226         \mbox{\hyperlink{structPoint3D}{Point3D<T>}} d\_point=*ppoint-\/*(this-\/>ppoint);}
-\DoxyCodeLine{227 }
-\DoxyCodeLine{228         \textcolor{keywordflow}{if} (pwindow!=NULL \&\& prenderer!=NULL \&\& pdraw\_color!=NULL)\{}
-\DoxyCodeLine{229             changeRenderDrawColor(prenderer, pdraw\_color);}
-\DoxyCodeLine{230             \textcolor{comment}{//SDL\_SetRenderDrawColor(prenderer.get(), pdraw\_color-\/>r, pdraw\_color-\/>g, pdraw\_color-\/>b, pdraw\_color-\/>a); // Chooses the draw color.}}
-\DoxyCodeLine{231 }
-\DoxyCodeLine{232             \textcolor{comment}{// Get the dimensions of the window}}
-\DoxyCodeLine{233             \textcolor{keywordtype}{int} sizex(0);}
-\DoxyCodeLine{234             \textcolor{keywordtype}{int} sizey(0);}
-\DoxyCodeLine{235             SDL\_GetWindowSize(pwindow.get(), \&sizex, \&sizey);}
-\DoxyCodeLine{236             T centerx=(T)(sizex/2);}
-\DoxyCodeLine{237             T centery=(T)(sizey/2);}
-\DoxyCodeLine{238 }
-\DoxyCodeLine{239             \textcolor{keywordflow}{if} (prenderer!=NULL)\{}
-\DoxyCodeLine{240                 \textcolor{keywordflow}{switch} (m\_display)\{}
-\DoxyCodeLine{241                     \textcolor{keywordflow}{case} 1:\textcolor{comment}{//(x,y) plane}}
-\DoxyCodeLine{242                         \textcolor{comment}{//printf("{}\(\backslash\)nx=\%i\(\backslash\)n"{}, (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type());}}
-\DoxyCodeLine{243                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.x*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.y*m\_scale + centery).to\_m\_type());}
-\DoxyCodeLine{244                         \textcolor{keywordflow}{break};}
-\DoxyCodeLine{245                     \textcolor{keywordflow}{case} 2:\textcolor{comment}{//(y,z) plane}}
-\DoxyCodeLine{246                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.y*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.z*m\_scale + centery).to\_m\_type());}
-\DoxyCodeLine{247                         \textcolor{keywordflow}{break};}
-\DoxyCodeLine{248                     \textcolor{keywordflow}{case} 3:\textcolor{comment}{//(x,z) plane}}
-\DoxyCodeLine{249                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.x*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.z*m\_scale + centery).to\_m\_type());}
-\DoxyCodeLine{250                         \textcolor{keywordflow}{break};}
-\DoxyCodeLine{251                 \}}
-\DoxyCodeLine{252             \}}
-\DoxyCodeLine{253             success=\textcolor{keyword}{true};}
-\DoxyCodeLine{254         \}}
-\DoxyCodeLine{255     \}}
-\DoxyCodeLine{256     \textcolor{keywordflow}{return} success;}
-\DoxyCodeLine{257 \}}
-\DoxyCodeLine{258 }
-\DoxyCodeLine{259 \textcolor{comment}{/*template<typename T> bool Display1<T>::renderPoints(const std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints) const \{}}
-\DoxyCodeLine{260 \textcolor{comment}{    bool success=false;}}
-\DoxyCodeLine{261 \textcolor{comment}{}}
-\DoxyCodeLine{262 \textcolor{comment}{    //if (this-\/>ppoint!=NULL)\{}}
-\DoxyCodeLine{263 \textcolor{comment}{        Point3D<T> d\_point=*ppoint-\/*(this-\/>ppoint);}}
-\DoxyCodeLine{264 \textcolor{comment}{        //printf("{}\(\backslash\)nRendering 4\(\backslash\)n"{});}}
-\DoxyCodeLine{265 \textcolor{comment}{        //ppoint-\/>print(true);}}
-\DoxyCodeLine{266 \textcolor{comment}{        //m\_ppoint-\/>print(true);}}
-\DoxyCodeLine{267 \textcolor{comment}{        //d\_point.print(true);}}
-\DoxyCodeLine{268 \textcolor{comment}{        //SDL\_Renderer* prenderer=pdisplay-\/>getPRenderer();}}
-\DoxyCodeLine{269 \textcolor{comment}{        //SDL\_Window* pwindow=pdisplay-\/>getPWindow();}}
-\DoxyCodeLine{270 \textcolor{comment}{}}
-\DoxyCodeLine{271 \textcolor{comment}{        if (pwindow!=NULL \&\& prenderer!=NULL \&\& pdraw\_color!=NULL)\{}}
-\DoxyCodeLine{272 \textcolor{comment}{            SDL\_SetRenderDrawColor(prenderer.get(), pdraw\_color-\/>r, pdraw\_color-\/>g, pdraw\_color-\/>b, pdraw\_color-\/>a); // Chooses the draw color.}}
+\DoxyCodeLine{201         \textcolor{comment}{//std::shared\_ptr<Point3D<T>> pp(new Point3D<T>(pdisplayable-\/>getPosition()));}}
+\DoxyCodeLine{202         \textcolor{comment}{//success=success \& render(pp);}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204         \textcolor{comment}{// For the points}}
+\DoxyCodeLine{205         std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pdisplayable-\/>getPPoints();}
+\DoxyCodeLine{206         \textcolor{keywordflow}{for} (std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> ppoint : ppoints)\{}
+\DoxyCodeLine{207             \textcolor{comment}{//printf("{}There is at least one Point to be displayed."{});}}
+\DoxyCodeLine{208             success=success \& render(ppoint);}
+\DoxyCodeLine{209         \}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211         \textcolor{comment}{// For the lines}}
+\DoxyCodeLine{212         \textcolor{comment}{/*std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints=pdisplayable-\/>pshape-\/>getPoints();}}
+\DoxyCodeLine{213 \textcolor{comment}{        for (std::shared\_ptr<Point3D<T>> ppoint : ppoints)\{}}
+\DoxyCodeLine{214 \textcolor{comment}{            success=success \& render(ppoint);}}
+\DoxyCodeLine{215 \textcolor{comment}{        \}*/}}
+\DoxyCodeLine{216     \}}
+\DoxyCodeLine{217     \textcolor{keywordflow}{return} success;}
+\DoxyCodeLine{218 \}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDisplay1}{Display1<T>::render}}(\textcolor{keyword}{const} std::shared\_ptr<\mbox{\hyperlink{structPoint3D}{Point3D<T>}}> ppoint)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{221     \textcolor{keywordtype}{bool} success=\textcolor{keyword}{false};}
+\DoxyCodeLine{222     \textcolor{comment}{//printf("{}Rendering point\(\backslash\)n"{});}}
+\DoxyCodeLine{223     \textcolor{keywordflow}{if} (this-\/>ppoint!=NULL)\{}
+\DoxyCodeLine{224         \mbox{\hyperlink{structPoint3D}{Point3D<T>}} d\_point=*ppoint-\/*(this-\/>ppoint);}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226         \textcolor{keywordflow}{if} (pwindow!=NULL \&\& prenderer!=NULL \&\& pdraw\_color!=NULL)\{}
+\DoxyCodeLine{227             changeRenderDrawColor(prenderer, pdraw\_color);}
+\DoxyCodeLine{228             \textcolor{comment}{//SDL\_SetRenderDrawColor(prenderer.get(), pdraw\_color-\/>r, pdraw\_color-\/>g, pdraw\_color-\/>b, pdraw\_color-\/>a); // Chooses the draw color.}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230             \textcolor{comment}{// Get the dimensions of the window}}
+\DoxyCodeLine{231             \textcolor{keywordtype}{int} sizex(0);}
+\DoxyCodeLine{232             \textcolor{keywordtype}{int} sizey(0);}
+\DoxyCodeLine{233             SDL\_GetWindowSize(pwindow.get(), \&sizex, \&sizey);}
+\DoxyCodeLine{234             T centerx=(T)(sizex/2);}
+\DoxyCodeLine{235             T centery=(T)(sizey/2);}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237             \textcolor{keywordflow}{if} (prenderer!=NULL)\{}
+\DoxyCodeLine{238                 \textcolor{keywordflow}{switch} (m\_display)\{}
+\DoxyCodeLine{239                     \textcolor{keywordflow}{case} 1:\textcolor{comment}{//(x,y) plane}}
+\DoxyCodeLine{240                         \textcolor{comment}{//printf("{}\(\backslash\)nx=\%i\(\backslash\)n"{}, (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type());}}
+\DoxyCodeLine{241                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.x*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.y*m\_scale + centery).to\_m\_type());}
+\DoxyCodeLine{242                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{243                     \textcolor{keywordflow}{case} 2:\textcolor{comment}{//(y,z) plane}}
+\DoxyCodeLine{244                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.y*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.z*m\_scale + centery).to\_m\_type());}
+\DoxyCodeLine{245                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{246                     \textcolor{keywordflow}{case} 3:\textcolor{comment}{//(x,z) plane}}
+\DoxyCodeLine{247                         drawPointRenderer(prenderer, (\textcolor{keywordtype}{int})(d\_point.x*m\_scale + centerx).to\_m\_type(), (\textcolor{keywordtype}{int})(d\_point.z*m\_scale + centery).to\_m\_type());}
+\DoxyCodeLine{248                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{249                 \}}
+\DoxyCodeLine{250             \}}
+\DoxyCodeLine{251             success=\textcolor{keyword}{true};}
+\DoxyCodeLine{252         \}}
+\DoxyCodeLine{253     \}}
+\DoxyCodeLine{254     \textcolor{keywordflow}{return} success;}
+\DoxyCodeLine{255 \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 \textcolor{comment}{/*template<typename T> bool Display1<T>::renderPoints(const std::unordered\_set<std::shared\_ptr<Point3D<T>>> ppoints) const \{}}
+\DoxyCodeLine{258 \textcolor{comment}{    bool success=false;}}
+\DoxyCodeLine{259 \textcolor{comment}{}}
+\DoxyCodeLine{260 \textcolor{comment}{    //if (this-\/>ppoint!=NULL)\{}}
+\DoxyCodeLine{261 \textcolor{comment}{        Point3D<T> d\_point=*ppoint-\/*(this-\/>ppoint);}}
+\DoxyCodeLine{262 \textcolor{comment}{        //printf("{}\(\backslash\)nRendering 4\(\backslash\)n"{});}}
+\DoxyCodeLine{263 \textcolor{comment}{        //ppoint-\/>print(true);}}
+\DoxyCodeLine{264 \textcolor{comment}{        //m\_ppoint-\/>print(true);}}
+\DoxyCodeLine{265 \textcolor{comment}{        //d\_point.print(true);}}
+\DoxyCodeLine{266 \textcolor{comment}{        //SDL\_Renderer* prenderer=pdisplay-\/>getPRenderer();}}
+\DoxyCodeLine{267 \textcolor{comment}{        //SDL\_Window* pwindow=pdisplay-\/>getPWindow();}}
+\DoxyCodeLine{268 \textcolor{comment}{}}
+\DoxyCodeLine{269 \textcolor{comment}{        if (pwindow!=NULL \&\& prenderer!=NULL \&\& pdraw\_color!=NULL)\{}}
+\DoxyCodeLine{270 \textcolor{comment}{            SDL\_SetRenderDrawColor(prenderer.get(), pdraw\_color-\/>r, pdraw\_color-\/>g, pdraw\_color-\/>b, pdraw\_color-\/>a); // Chooses the draw color.}}
+\DoxyCodeLine{271 \textcolor{comment}{}}
+\DoxyCodeLine{272 \textcolor{comment}{            //SDL\_RenderClear(m\_prenderer); // Fill the canvas with the background color}}
 \DoxyCodeLine{273 \textcolor{comment}{}}
-\DoxyCodeLine{274 \textcolor{comment}{            //SDL\_RenderClear(m\_prenderer); // Fill the canvas with the background color}}
-\DoxyCodeLine{275 \textcolor{comment}{}}
-\DoxyCodeLine{276 \textcolor{comment}{            // Get the dimensions of the window}}
-\DoxyCodeLine{277 \textcolor{comment}{            int sizex(0);}}
-\DoxyCodeLine{278 \textcolor{comment}{            int sizey(0);}}
-\DoxyCodeLine{279 \textcolor{comment}{            SDL\_GetWindowSize(pwindow.get(), \&sizex, \&sizey);}}
-\DoxyCodeLine{280 \textcolor{comment}{            SN<T> centerx=\{(M)(sizex/2),(E)0\};}}
-\DoxyCodeLine{281 \textcolor{comment}{            SN<T> centery=\{(M)(sizey/2),(E)0\};}}
-\DoxyCodeLine{282 \textcolor{comment}{}}
-\DoxyCodeLine{283 \textcolor{comment}{            if (prenderer!=NULL)\{}}
-\DoxyCodeLine{284 \textcolor{comment}{                switch (m\_display)\{}}
-\DoxyCodeLine{285 \textcolor{comment}{                    case 1://(x,y) plane}}
-\DoxyCodeLine{286 \textcolor{comment}{                        //printf("{}\(\backslash\)nx=\%i\(\backslash\)n"{}, (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type());}}
-\DoxyCodeLine{287 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.y*(M)m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{288 \textcolor{comment}{                        break;}}
-\DoxyCodeLine{289 \textcolor{comment}{                    case 2://(y,z) plane}}
-\DoxyCodeLine{290 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.y*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*(M)m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{291 \textcolor{comment}{                        break;}}
-\DoxyCodeLine{292 \textcolor{comment}{                    case 3://(x,z) plane}}
-\DoxyCodeLine{293 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*(M)m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{294 \textcolor{comment}{                        break;}}
-\DoxyCodeLine{295 \textcolor{comment}{                \}}}
-\DoxyCodeLine{296 \textcolor{comment}{            \}}}
-\DoxyCodeLine{297 \textcolor{comment}{            success=true;}}
-\DoxyCodeLine{298 \textcolor{comment}{        \}}}
-\DoxyCodeLine{299 \textcolor{comment}{    //\}}}
-\DoxyCodeLine{300 \textcolor{comment}{    return success;}}
-\DoxyCodeLine{301 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{274 \textcolor{comment}{            // Get the dimensions of the window}}
+\DoxyCodeLine{275 \textcolor{comment}{            int sizex(0);}}
+\DoxyCodeLine{276 \textcolor{comment}{            int sizey(0);}}
+\DoxyCodeLine{277 \textcolor{comment}{            SDL\_GetWindowSize(pwindow.get(), \&sizex, \&sizey);}}
+\DoxyCodeLine{278 \textcolor{comment}{            SN<T> centerx=\{(M)(sizex/2),(E)0\};}}
+\DoxyCodeLine{279 \textcolor{comment}{            SN<T> centery=\{(M)(sizey/2),(E)0\};}}
+\DoxyCodeLine{280 \textcolor{comment}{}}
+\DoxyCodeLine{281 \textcolor{comment}{            if (prenderer!=NULL)\{}}
+\DoxyCodeLine{282 \textcolor{comment}{                switch (m\_display)\{}}
+\DoxyCodeLine{283 \textcolor{comment}{                    case 1://(x,y) plane}}
+\DoxyCodeLine{284 \textcolor{comment}{                        //printf("{}\(\backslash\)nx=\%i\(\backslash\)n"{}, (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type());}}
+\DoxyCodeLine{285 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.y*(M)m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{286 \textcolor{comment}{                        break;}}
+\DoxyCodeLine{287 \textcolor{comment}{                    case 2://(y,z) plane}}
+\DoxyCodeLine{288 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.y*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*(M)m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{289 \textcolor{comment}{                        break;}}
+\DoxyCodeLine{290 \textcolor{comment}{                    case 3://(x,z) plane}}
+\DoxyCodeLine{291 \textcolor{comment}{                        SDL\_RenderDrawPoint(prenderer.get(), (int)(d\_point.x*(M)m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*(M)m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{292 \textcolor{comment}{                        break;}}
+\DoxyCodeLine{293 \textcolor{comment}{                \}}}
+\DoxyCodeLine{294 \textcolor{comment}{            \}}}
+\DoxyCodeLine{295 \textcolor{comment}{            success=true;}}
+\DoxyCodeLine{296 \textcolor{comment}{        \}}}
+\DoxyCodeLine{297 \textcolor{comment}{    //\}}}
+\DoxyCodeLine{298 \textcolor{comment}{    return success;}}
+\DoxyCodeLine{299 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301 }
 \DoxyCodeLine{302 }
 \DoxyCodeLine{303 }
 \DoxyCodeLine{304 }
-\DoxyCodeLine{305 }
-\DoxyCodeLine{306 }
-\DoxyCodeLine{307 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classDisplay1}{Display1<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
-\DoxyCodeLine{308     std::string mes=(spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}}:\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{305 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> std::string \mbox{\hyperlink{classDisplay1}{Display1<T>::to\_string}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{306     std::string mes=(spread)?\textcolor{stringliteral}{"{}\(\backslash\)n"{}}:\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308     mes+=\textcolor{stringliteral}{"{}DISPLAY1\(\backslash\)n"{}};}
 \DoxyCodeLine{309 }
-\DoxyCodeLine{310     mes+=\textcolor{stringliteral}{"{}DISPLAY1\(\backslash\)n"{}};}
-\DoxyCodeLine{311 }
-\DoxyCodeLine{312     \textcolor{keywordflow}{return} mes;}
-\DoxyCodeLine{313 \}}
-\DoxyCodeLine{314 }
-\DoxyCodeLine{315 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classDisplay1}{Display1<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
-\DoxyCodeLine{316     printTabs(indent);}
-\DoxyCodeLine{317     std::cout << this-\/>to\_string(spread, full\_info, indent);}
-\DoxyCodeLine{318 \}}
-\DoxyCodeLine{319 }
+\DoxyCodeLine{310     \textcolor{keywordflow}{return} mes;}
+\DoxyCodeLine{311 \}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classDisplay1}{Display1<T>::print}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& spread, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\& full\_info, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}\& indent)\textcolor{keyword}{ const }\{\textcolor{comment}{// :)}}
+\DoxyCodeLine{314     printTabs(indent);}
+\DoxyCodeLine{315     std::cout << this-\/>to\_string(spread, full\_info, indent);}
+\DoxyCodeLine{316 \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319 \textcolor{comment}{// Functions}}
 \DoxyCodeLine{320 }
-\DoxyCodeLine{321 \textcolor{comment}{// Functions}}
-\DoxyCodeLine{322 }
-\DoxyCodeLine{323 }
-\DoxyCodeLine{324 \textcolor{comment}{//template<typename T> bool render(const Display1<T>* pdisplay, const Point3D<T>* ppoint);}}
-\DoxyCodeLine{325 \textcolor{comment}{//template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt);}}
-\DoxyCodeLine{326 \textcolor{comment}{//template<typename T> void renderPoints(const Display1* pdisplay, std::unordered\_set<Point3D<T>*> ppoints);//:)}}
-\DoxyCodeLine{327 \textcolor{comment}{//template<typename T> void renderPoint(const Display1* pdisplay, const Point3D<T>* ppoint);//:)}}
-\DoxyCodeLine{328 \textcolor{comment}{//void renderLines(const Display1* pdisplay, std::unordered\_set<Line3D*> plines);//:)}}
-\DoxyCodeLine{329 \textcolor{comment}{//void renderLine(const Display1* pdisplay, Line3D* pline);//:)}}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{322 \textcolor{comment}{//template<typename T> bool render(const Display1<T>* pdisplay, const Point3D<T>* ppoint);}}
+\DoxyCodeLine{323 \textcolor{comment}{//template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt);}}
+\DoxyCodeLine{324 \textcolor{comment}{//template<typename T> void renderPoints(const Display1* pdisplay, std::unordered\_set<Point3D<T>*> ppoints);//:)}}
+\DoxyCodeLine{325 \textcolor{comment}{//template<typename T> void renderPoint(const Display1* pdisplay, const Point3D<T>* ppoint);//:)}}
+\DoxyCodeLine{326 \textcolor{comment}{//void renderLines(const Display1* pdisplay, std::unordered\_set<Line3D*> plines);//:)}}
+\DoxyCodeLine{327 \textcolor{comment}{//void renderLine(const Display1* pdisplay, Line3D* pline);//:)}}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329 }
 \DoxyCodeLine{330 }
-\DoxyCodeLine{331 }
-\DoxyCodeLine{332 }
-\DoxyCodeLine{333 \textcolor{comment}{/*}}
-\DoxyCodeLine{334 \textcolor{comment}{ *}}
-\DoxyCodeLine{335 \textcolor{comment}{ */}}
-\DoxyCodeLine{336 \textcolor{comment}{/*template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt) \{}}
-\DoxyCodeLine{337 \textcolor{comment}{    bool success=false;}}
-\DoxyCodeLine{338 \textcolor{comment}{    if (pt!=NULL) \{}}
-\DoxyCodeLine{339 \textcolor{comment}{        //printf("{}pdisplayable1\(\backslash\)n"{});}}
-\DoxyCodeLine{340 \textcolor{comment}{        //pdisplayable-\/>getX().print(true);}}
-\DoxyCodeLine{341 \textcolor{comment}{        //pdisplayable-\/>getY().print(true);}}
-\DoxyCodeLine{342 \textcolor{comment}{        //pdisplayable-\/>getZ().print(true);}}
-\DoxyCodeLine{343 \textcolor{comment}{        Point3D<T> p\{pt-\/>getX(), pt-\/>getY(), pt-\/>getZ()\};}}
-\DoxyCodeLine{344 \textcolor{comment}{        render(pdisplay, \&p);}}
-\DoxyCodeLine{345 \textcolor{comment}{    \}}}
-\DoxyCodeLine{346 \textcolor{comment}{    return success;}}
-\DoxyCodeLine{347 \textcolor{comment}{\}*/}}
-\DoxyCodeLine{348 }
-\DoxyCodeLine{349 }
-\DoxyCodeLine{350 \textcolor{comment}{/*void renderPoints(std::unordered\_set<Point3D<float, char>*> ppoints) const \{//:)}}
-\DoxyCodeLine{351 \textcolor{comment}{    for (Point3D<float, char>* ppoint : ppoints)\{}}
-\DoxyCodeLine{352 \textcolor{comment}{        this-\/>renderPoint(ppoint);}}
-\DoxyCodeLine{353 \textcolor{comment}{    \}}}
-\DoxyCodeLine{354 \textcolor{comment}{\}}}
-\DoxyCodeLine{355 \textcolor{comment}{}}
-\DoxyCodeLine{356 \textcolor{comment}{void Display1::renderPoint(Point3D<float, char>* ppoint) const \{//:)}}
-\DoxyCodeLine{357 \textcolor{comment}{    Point3D<float, char> d\_point=(*ppoint)-\/(*m\_ppoint);}}
-\DoxyCodeLine{358 \textcolor{comment}{    //ppoint-\/>print(true);}}
-\DoxyCodeLine{359 \textcolor{comment}{    //m\_ppoint-\/>print(true);}}
-\DoxyCodeLine{360 \textcolor{comment}{    //d\_point.print(true);}}
-\DoxyCodeLine{361 \textcolor{comment}{}}
-\DoxyCodeLine{362 \textcolor{comment}{    SDL\_SetRenderDrawColor(m\_prenderer, m\_pdraw\_color-\/>r, m\_pdraw\_color-\/>g, m\_pdraw\_color-\/>b, m\_pdraw\_color-\/>a); // Chooses the background color.}}
-\DoxyCodeLine{363 \textcolor{comment}{    //SDL\_RenderClear(m\_prenderer); // Fill the canvas with the background color}}
-\DoxyCodeLine{364 \textcolor{comment}{}}
-\DoxyCodeLine{365 \textcolor{comment}{    // Get the dimensions of the window}}
-\DoxyCodeLine{366 \textcolor{comment}{    int sizex(0);}}
-\DoxyCodeLine{367 \textcolor{comment}{    int sizey(0);}}
-\DoxyCodeLine{368 \textcolor{comment}{    SDL\_GetWindowSize(m\_pwindow, \&sizex, \&sizey);}}
-\DoxyCodeLine{369 \textcolor{comment}{    SN<float, char> centerx=\{(float)sizex/2, 0\};}}
-\DoxyCodeLine{370 \textcolor{comment}{    SN<float, char> centery=\{(float)sizey/2, 0\};}}
-\DoxyCodeLine{371 \textcolor{comment}{}}
-\DoxyCodeLine{372 \textcolor{comment}{    if (m\_prenderer!=NULL)\{}}
-\DoxyCodeLine{373 \textcolor{comment}{        switch (m\_display)\{}}
-\DoxyCodeLine{374 \textcolor{comment}{            case 1://(x,y) plane}}
-\DoxyCodeLine{375 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.x*m\_scale + centerx).to\_m\_type(), (int)(d\_point.y*m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{376 \textcolor{comment}{                break;}}
-\DoxyCodeLine{377 \textcolor{comment}{            case 2://(y,z) plane}}
-\DoxyCodeLine{378 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.y*m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{379 \textcolor{comment}{                break;}}
-\DoxyCodeLine{380 \textcolor{comment}{            case 3://(x,z) plane}}
-\DoxyCodeLine{381 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.x*m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*m\_scale + centery).to\_m\_type());}}
-\DoxyCodeLine{382 \textcolor{comment}{                break;}}
-\DoxyCodeLine{383 \textcolor{comment}{        \}}}
-\DoxyCodeLine{384 \textcolor{comment}{    \}}}
-\DoxyCodeLine{385 \textcolor{comment}{}}
-\DoxyCodeLine{386 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{331 \textcolor{comment}{/*}}
+\DoxyCodeLine{332 \textcolor{comment}{ *}}
+\DoxyCodeLine{333 \textcolor{comment}{ */}}
+\DoxyCodeLine{334 \textcolor{comment}{/*template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt) \{}}
+\DoxyCodeLine{335 \textcolor{comment}{    bool success=false;}}
+\DoxyCodeLine{336 \textcolor{comment}{    if (pt!=NULL) \{}}
+\DoxyCodeLine{337 \textcolor{comment}{        //printf("{}pdisplayable1\(\backslash\)n"{});}}
+\DoxyCodeLine{338 \textcolor{comment}{        //pdisplayable-\/>getX().print(true);}}
+\DoxyCodeLine{339 \textcolor{comment}{        //pdisplayable-\/>getY().print(true);}}
+\DoxyCodeLine{340 \textcolor{comment}{        //pdisplayable-\/>getZ().print(true);}}
+\DoxyCodeLine{341 \textcolor{comment}{        Point3D<T> p\{pt-\/>getX(), pt-\/>getY(), pt-\/>getZ()\};}}
+\DoxyCodeLine{342 \textcolor{comment}{        render(pdisplay, \&p);}}
+\DoxyCodeLine{343 \textcolor{comment}{    \}}}
+\DoxyCodeLine{344 \textcolor{comment}{    return success;}}
+\DoxyCodeLine{345 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347 }
+\DoxyCodeLine{348 \textcolor{comment}{/*void renderPoints(std::unordered\_set<Point3D<float, char>*> ppoints) const \{//:)}}
+\DoxyCodeLine{349 \textcolor{comment}{    for (Point3D<float, char>* ppoint : ppoints)\{}}
+\DoxyCodeLine{350 \textcolor{comment}{        this-\/>renderPoint(ppoint);}}
+\DoxyCodeLine{351 \textcolor{comment}{    \}}}
+\DoxyCodeLine{352 \textcolor{comment}{\}}}
+\DoxyCodeLine{353 \textcolor{comment}{}}
+\DoxyCodeLine{354 \textcolor{comment}{void Display1::renderPoint(Point3D<float, char>* ppoint) const \{//:)}}
+\DoxyCodeLine{355 \textcolor{comment}{    Point3D<float, char> d\_point=(*ppoint)-\/(*m\_ppoint);}}
+\DoxyCodeLine{356 \textcolor{comment}{    //ppoint-\/>print(true);}}
+\DoxyCodeLine{357 \textcolor{comment}{    //m\_ppoint-\/>print(true);}}
+\DoxyCodeLine{358 \textcolor{comment}{    //d\_point.print(true);}}
+\DoxyCodeLine{359 \textcolor{comment}{}}
+\DoxyCodeLine{360 \textcolor{comment}{    SDL\_SetRenderDrawColor(m\_prenderer, m\_pdraw\_color-\/>r, m\_pdraw\_color-\/>g, m\_pdraw\_color-\/>b, m\_pdraw\_color-\/>a); // Chooses the background color.}}
+\DoxyCodeLine{361 \textcolor{comment}{    //SDL\_RenderClear(m\_prenderer); // Fill the canvas with the background color}}
+\DoxyCodeLine{362 \textcolor{comment}{}}
+\DoxyCodeLine{363 \textcolor{comment}{    // Get the dimensions of the window}}
+\DoxyCodeLine{364 \textcolor{comment}{    int sizex(0);}}
+\DoxyCodeLine{365 \textcolor{comment}{    int sizey(0);}}
+\DoxyCodeLine{366 \textcolor{comment}{    SDL\_GetWindowSize(m\_pwindow, \&sizex, \&sizey);}}
+\DoxyCodeLine{367 \textcolor{comment}{    SN<float, char> centerx=\{(float)sizex/2, 0\};}}
+\DoxyCodeLine{368 \textcolor{comment}{    SN<float, char> centery=\{(float)sizey/2, 0\};}}
+\DoxyCodeLine{369 \textcolor{comment}{}}
+\DoxyCodeLine{370 \textcolor{comment}{    if (m\_prenderer!=NULL)\{}}
+\DoxyCodeLine{371 \textcolor{comment}{        switch (m\_display)\{}}
+\DoxyCodeLine{372 \textcolor{comment}{            case 1://(x,y) plane}}
+\DoxyCodeLine{373 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.x*m\_scale + centerx).to\_m\_type(), (int)(d\_point.y*m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{374 \textcolor{comment}{                break;}}
+\DoxyCodeLine{375 \textcolor{comment}{            case 2://(y,z) plane}}
+\DoxyCodeLine{376 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.y*m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{377 \textcolor{comment}{                break;}}
+\DoxyCodeLine{378 \textcolor{comment}{            case 3://(x,z) plane}}
+\DoxyCodeLine{379 \textcolor{comment}{                SDL\_RenderDrawPoint(m\_prenderer, (int)(d\_point.x*m\_scale + centerx).to\_m\_type(), (int)(d\_point.z*m\_scale + centery).to\_m\_type());}}
+\DoxyCodeLine{380 \textcolor{comment}{                break;}}
+\DoxyCodeLine{381 \textcolor{comment}{        \}}}
+\DoxyCodeLine{382 \textcolor{comment}{    \}}}
+\DoxyCodeLine{383 \textcolor{comment}{}}
+\DoxyCodeLine{384 \textcolor{comment}{\}*/}}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386 }
 \DoxyCodeLine{387 }
-\DoxyCodeLine{388 }
-\DoxyCodeLine{389 }
-\DoxyCodeLine{390 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DISPLAY1\_H\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{388 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DISPLAY1\_H\_ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

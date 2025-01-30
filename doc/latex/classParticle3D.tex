@@ -2,8 +2,7 @@
 \label{classParticle3D}\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
 
 
-Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}
 \end{figure}
 
 
-Collaboration diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for Particle3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,6 +39,10 @@ virtual T \mbox{\hyperlink{classParticle3D_a1ea731a5481813a916d8266dbe075598}{ge
 \item 
 virtual T \mbox{\hyperlink{classParticle3D_a8f0924935b6bc66b110c161e4e5a598e}{getZ}} () const
 \item 
+virtual \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \mbox{\hyperlink{classParticle3D_a149438ccbc9ef6e439a21d0f8282f5d3}{get\+Position}} () const
+\item 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classParticle3D_ae647037e39dfc7533e3272104ce97923}{get\+PPoints}} () const
+\item 
 \mbox{\Hypertarget{classParticle3D_a8b6e1d9bbbebd90e5c1dd92e6a46039c}\label{classParticle3D_a8b6e1d9bbbebd90e5c1dd92e6a46039c}} 
 virtual T {\bfseries getW} () const
 \item 
@@ -58,14 +60,14 @@ void \mbox{\hyperlink{classParticle3D_a32d9af38e599ddb208696c34bb0766f6}{print}}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}\label{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ T $>$ $>$ {\bfseries psys}
-\item 
 \mbox{\Hypertarget{classParticle3D_aa3bbcf835ac0d7196263fadda939832e}\label{classParticle3D_aa3bbcf835ac0d7196263fadda939832e}} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVector3D}{Vector3D}}$<$ T $>$ $>$ {\bfseries ps}
 \item 
 \mbox{\Hypertarget{classParticle3D_a7207d90aafe63f407940ada800333d8e}\label{classParticle3D_a7207d90aafe63f407940ada800333d8e}} 
 std\+::shared\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ T $>$ $>$ $>$ {\bfseries pfields}
+\item 
+\mbox{\Hypertarget{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}\label{classParticle3D_ae4fe7834322151d8c220c285b1c22b7c}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCoordinateSystem3D}{Coordinate\+System3D}}$<$ T $>$ $>$ {\bfseries psys}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -81,6 +83,28 @@ void \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::apply\hspace{0.3
 
 
 Reimplemented from \mbox{\hyperlink{classTimeSensitive}{Time\+Sensitive}}.
+
+\mbox{\Hypertarget{classParticle3D_a149438ccbc9ef6e439a21d0f8282f5d3}\label{classParticle3D_a149438ccbc9ef6e439a21d0f8282f5d3}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::get\+Position\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ T $>$}}.
+
+\mbox{\Hypertarget{classParticle3D_ae647037e39dfc7533e3272104ce97923}\label{classParticle3D_ae647037e39dfc7533e3272104ce97923}} 
+\index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getPPoints@{getPPoints}}
+\index{getPPoints@{getPPoints}!Particle3D$<$ T $>$@{Particle3D$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getPPoints()}{getPPoints()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classParticle3D}{Particle3D}}$<$ T $>$\+::get\+PPoints\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ T $>$}}.
 
 \mbox{\Hypertarget{classParticle3D_a3f18d1459aaea15790b23e3ca1b47d01}\label{classParticle3D_a3f18d1459aaea15790b23e3ca1b47d01}} 
 \index{Particle3D$<$ T $>$@{Particle3D$<$ T $>$}!getX@{getX}}

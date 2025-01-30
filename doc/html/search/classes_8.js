@@ -7,5 +7,6 @@ var searchData=
   ['point3d_4',['Point3D',['../structPoint3D.html',1,'']]],
   ['point3d_3c_20m_20_3e_5',['Point3D&lt; M &gt;',['../structPoint3D.html',1,'']]],
   ['polyhedron_6',['Polyhedron',['../classPolyhedron.html',1,'']]],
-  ['printable_7',['Printable',['../classPrintable.html',1,'']]]
+  ['printable_7',['Printable',['../classPrintable.html',1,'']]],
+  ['properties_8',['Properties',['../structProperties.html',1,'']]]
 ];

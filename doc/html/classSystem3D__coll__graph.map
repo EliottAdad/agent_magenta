@@ -1,8 +1,6 @@
 <map id="System3D&lt; T, U &gt;" name="System3D&lt; T, U &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="114,272,259,299"/>
-<area shape="rect" id="node2" href="$classTimeSensitive.html" title=" " alt="" coords="5,132,120,159"/>
-<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="155,5,235,32"/>
-<area shape="rect" id="node4" href="$structDisplayable.html" title=" " alt="" coords="127,132,265,159"/>
-<area shape="rect" id="node6" href="$classLine3D.html" title=" " alt="" coords="232,81,339,108"/>
-<area shape="rect" id="node5" href="$classVector3D.html" title=" " alt="" coords="225,183,346,209"/>
+<area shape="rect" id="node1" title=" " alt="" coords="65,155,210,181"/>
+<area shape="rect" id="node2" href="$classTimeSensitive.html" title=" " alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node3" href="$classPrintable.html" title=" " alt="" coords="97,5,177,32"/>
+<area shape="rect" id="node4" href="$structDisplayable.html" title=" " alt="" coords="144,80,283,107"/>
 </map>

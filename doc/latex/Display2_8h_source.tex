@@ -21,27 +21,27 @@
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../core/Point3D.h"{}}}
 \DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../core/Line3D.h"{}}}
 \DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}../core/Vector3D.h"{}}}
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}../display/Displayable.h"{}}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}../core/Scene.h"{}}}
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}../core/CoordinateSystem3D.h"{}}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
-\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}../utilities/functions\_display.h"{}}}
-\DoxyCodeLine{26 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}../core/CoordinateSystem3D.h"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}../display/Displayable.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}../utilities/Printable.h"{}}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}../core/Scene.h"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}../core/CoordinateSystem3D.h"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}../utilities/functions.h"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}../utilities/functions\_display.h"{}}}
 \DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{comment}{/*}}
-\DoxyCodeLine{29 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{30 \textcolor{comment}{ *  Display2<T> :)}}
-\DoxyCodeLine{31 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{32 \textcolor{comment}{ * Orthographic projection}}
-\DoxyCodeLine{33 \textcolor{comment}{ * Choices between (x-\/y), (y-\/z), (z-\/x).}}
-\DoxyCodeLine{34 \textcolor{comment}{ * Display any object having x, y, z.}}
-\DoxyCodeLine{35 \textcolor{comment}{ */}}
-\DoxyCodeLine{36 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classDisplay2}{Display2}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
-\DoxyCodeLine{37 \textcolor{keyword}{private}:}
-\DoxyCodeLine{38     \textcolor{keywordtype}{char} m\_display;                     \textcolor{comment}{// The point of view from which it is projected (1, 2, 3).}}
-\DoxyCodeLine{39     \textcolor{keywordtype}{float} m\_scale;                      \textcolor{comment}{// Ratio d\_pixels/d\_meters}}
-\DoxyCodeLine{40     std::unordered\_set<std::shared\_ptr<Scene<T>>> m\_pscenes;            \textcolor{comment}{// Pointeurs to the scenes that are rendered in the display.}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{/*}}
+\DoxyCodeLine{30 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{31 \textcolor{comment}{ *  Display2<T> :)}}
+\DoxyCodeLine{32 \textcolor{comment}{ * \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{33 \textcolor{comment}{ * Orthographic projection along vector}}
+\DoxyCodeLine{34 \textcolor{comment}{ */}}
+\DoxyCodeLine{35 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{class }\mbox{\hyperlink{classDisplay2}{Display2}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPrintable}{Printable}} \{}
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37     \textcolor{keywordtype}{char} m\_display;                     \textcolor{comment}{// The point of view from which it is projected (1, 2, 3).}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{float} m\_scale;                      \textcolor{comment}{// Ratio d\_pixels/d\_meters}}
+\DoxyCodeLine{39     std::unordered\_set<std::shared\_ptr<Scene<T>>> m\_pscenes;            \textcolor{comment}{// Pointeurs to the scenes that are rendered in the display.}}
+\DoxyCodeLine{40     std::shared\_ptr<CoordinateSystem3D<T>> pcoord\_sys;}
 \DoxyCodeLine{41 }
 \DoxyCodeLine{42 \textcolor{keyword}{public}:}
 \DoxyCodeLine{43     std::shared\_ptr<CoordinateSystem3D<T>> pcoordinate\_system;}

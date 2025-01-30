@@ -2,8 +2,7 @@
 \label{classShape3D}\index{Shape3D$<$ T $>$@{Shape3D$<$ T $>$}}
 
 
-Inheritance diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Inheritance diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}
 \end{figure}
 
 
-Collaboration diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
+Collaboration diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,9 +26,11 @@ Collaboration diagram for Shape3D\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{
 \item 
 virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D_aeee3d21ba935dc93defaa70811f7e85c}{get\+PPoints}} () const
 \item 
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D_ad10583b7f2364cb67c265ebfee27e7cb}{get\+PLines}} () const
+\mbox{\Hypertarget{classShape3D_ad10583b7f2364cb67c265ebfee27e7cb}\label{classShape3D_ad10583b7f2364cb67c265ebfee27e7cb}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ T $>$ $>$ $>$ {\bfseries get\+PLines} () const
 \item 
-virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D_a3e0a8f74b62e6439c5926b8a36385989}{get\+PTriangles}} () const
+\mbox{\Hypertarget{classShape3D_a3e0a8f74b62e6439c5926b8a36385989}\label{classShape3D_a3e0a8f74b62e6439c5926b8a36385989}} 
+virtual std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ $>$ {\bfseries get\+PTriangles} () const
 \item 
 virtual std\+::string \mbox{\hyperlink{classShape3D_af34abe23a2a073bdabbe77a1124ed887}{to\+\_\+string}} (const bool \&spread=false, const bool \&full\+\_\+info=false, const unsigned char \&indent=0) const
 \item 
@@ -40,34 +40,12 @@ virtual void \mbox{\hyperlink{classShape3D_a3242395f452984ebb578b74a2648241f}{pr
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classShape3D_ad10583b7f2364cb67c265ebfee27e7cb}\label{classShape3D_ad10583b7f2364cb67c265ebfee27e7cb}} 
-\index{Shape3D$<$ T $>$@{Shape3D$<$ T $>$}!getPLines@{getPLines}}
-\index{getPLines@{getPLines}!Shape3D$<$ T $>$@{Shape3D$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{getPLines()}{getPLines()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLine3D}{Line3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D}{Shape3D}}$<$ T $>$\+::get\+PLines\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ T $>$}}.
-
 \mbox{\Hypertarget{classShape3D_aeee3d21ba935dc93defaa70811f7e85c}\label{classShape3D_aeee3d21ba935dc93defaa70811f7e85c}} 
 \index{Shape3D$<$ T $>$@{Shape3D$<$ T $>$}!getPPoints@{getPPoints}}
 \index{getPPoints@{getPPoints}!Shape3D$<$ T $>$@{Shape3D$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{getPPoints()}{getPPoints()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structPoint3D}{Point3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D}{Shape3D}}$<$ T $>$\+::get\+PPoints\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Reimplemented from \mbox{\hyperlink{structDisplayable}{Displayable$<$ T $>$}}.
-
-\mbox{\Hypertarget{classShape3D_a3e0a8f74b62e6439c5926b8a36385989}\label{classShape3D_a3e0a8f74b62e6439c5926b8a36385989}} 
-\index{Shape3D$<$ T $>$@{Shape3D$<$ T $>$}!getPTriangles@{getPTriangles}}
-\index{getPTriangles@{getPTriangles}!Shape3D$<$ T $>$@{Shape3D$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{getPTriangles()}{getPTriangles()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTriangle3D}{Triangle3D}}$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classShape3D}{Shape3D}}$<$ T $>$\+::get\+PTriangles\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

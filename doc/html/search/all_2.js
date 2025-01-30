@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['display1_0',['Display1',['../classDisplay1.html',1,'']]],
-  ['display2_1',['Display2',['../classDisplay2.html',1,'']]],
-  ['displayable_2',['Displayable',['../structDisplayable.html',1,'']]],
-  ['displayable_3c_20m_20_3e_3',['Displayable&lt; M &gt;',['../structDisplayable.html',1,'']]],
-  ['displayable_3c_20u_20_3e_4',['Displayable&lt; U &gt;',['../structDisplayable.html',1,'']]]
+  ['camera_0',['Camera',['../classCamera.html',1,'']]],
+  ['coordinatesystem3d_1',['CoordinateSystem3D',['../structCoordinateSystem3D.html',1,'CoordinateSystem3D&lt; T &gt;'],['../structCoordinateSystem3D.html#af1eb0d464ac4ac0a2a2be67786ca5004',1,'CoordinateSystem3D::CoordinateSystem3D()']]],
+  ['cube_2',['Cube',['../classCube.html',1,'']]]
 ];
