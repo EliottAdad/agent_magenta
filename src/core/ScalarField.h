@@ -22,16 +22,16 @@ public:
 
 template<typename T> ScalarField<T>::ScalarField() {
 	// TODO Auto-generated constructor stub
-
+	pfunc=NULL;
 }
 
 template<typename T> ScalarField<T>::~ScalarField() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> ScalarField<T>::ScalarField(const ScalarField &other) {
+template<typename T> ScalarField<T>::ScalarField(const ScalarField& other) {
 	// TODO Auto-generated constructor stub
-
+	pfunc=other.pfunc;
 }
 
 

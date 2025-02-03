@@ -11,6 +11,7 @@
 
 #include <memory>
 #include <unordered_set>
+#include <thread>
 
 #include "../core/Physics.h"
 #include "../core/Point3D.h"
@@ -27,21 +28,20 @@
  */
 class Game : public Printable {
 public:
-	unsigned char fps;					// Frames per second
 	bool fpause;
 
 	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
-	std::shared_ptr<SDL_Renderer> prenderer;			// Pointeur to the renderer.
+	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
 	std::shared_ptr<Scene<SN<float, char>>> pscene;					// A scene
 	std::shared_ptr<Display1<SN<float, char>>> pdisplay;
 
 	Game();
 	virtual ~Game();
-	//Game(const Game &other);
+	//Game(const Game& game);
 
 	bool run(const unsigned int& steps=1);	// Runs a certain number of frames
-	bool iterate(const float& dt);	// Renders once (à faire)
+	//bool iterate(const float& dt);	// Renders once (à faire)
 	bool render() const;					// Draws the content of the game on the screen
 
 	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)

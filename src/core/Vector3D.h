@@ -86,9 +86,8 @@ template<typename T> Vector3D<T> operator^(const Vector3D<T>& v1, const Vector3D
  * By default constructor
  */
 template<typename T> Vector3D<T>::Vector3D() {
-	this->pp1=std::make_shared<Point3D<T>>();
+	this->pp1=NULL;//std::make_shared<Point3D<T>>();
 	this->pp2=std::make_shared<Point3D<T>>((T)1,(T)1,(T)1);
-	//pp2=std::shared_ptr(new Point3D<float, char>{});
 }
 
 /**
@@ -98,7 +97,7 @@ template<typename T> Vector3D<T>::Vector3D() {
  * @param[in/out] p1 and p2 are copied
  */
 template<typename T> Vector3D<T>::Vector3D(const Point3D<T>& p2) {
-	this->pp1=std::make_shared<Point3D<T>>();
+	this->pp1=NULL;//std::make_shared<Point3D<T>>();
 	this->pp2=std::make_shared<Point3D<T>>(p2);
 }
 
@@ -156,15 +155,6 @@ template<typename T> Vector3D<T>::Vector3D(const Vector3D& v) {
 	this->pp1=v.pp1;
 	this->pp2=v.pp2;
 }
-
-/*
- * Constructor 7
- * Copy constructor
- */
-/*Vector3D::Vector3D(const Vector3D* pv) {
-	pp1=pv->getP1());
-	pp2=new Point3D<float, char>(pv->getP2());
-}*/
 
 template<typename T> Vector3D<T>::~Vector3D() {
 	;

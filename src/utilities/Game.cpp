@@ -37,6 +37,16 @@ Game::~Game() {
  * Run the game for a certain number of frames
  */
 bool Game::run(const unsigned int& steps){
+	// The parameters to the function are put after the comma
+	std::thread thread_physics(&Physics::run, pphysics, 0);
+	// The parameters to the function are put after the comma
+	std::thread thread_physics(&Display1<SN<float, char>>::render, pphysics, 0);
+	while(1){
+		//reads inputs.
+	}
+	thread_physics.join();
+
+	/*
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	if (!fpause){
 		unsigned int i(0);
@@ -51,6 +61,8 @@ bool Game::run(const unsigned int& steps){
 
 			// Calls the rendering process
 			if (dt.count()>=1/(long double)fps*1000000000.){
+				//printf("FPS:%f\n", 1000000000./dt.count());
+
 				render();
 
 				t1=t2;
@@ -59,7 +71,7 @@ bool Game::run(const unsigned int& steps){
 				}
 			}
 		}
-	}
+	}*/
 	return fpause;
 }
 

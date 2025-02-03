@@ -31,12 +31,12 @@
  * Display any object having x, y, z.
  */
 template<typename T> class Display1 : public Printable {
-private:
-	char m_display;						// The point of view from which it is projected (1, 2, 3).
-	float m_scale;						// Ratio d_pixels/d_meters
-	std::unordered_set<std::shared_ptr<Scene<T>>> m_pscenes;			// Pointeurs to the scenes that are rendered in the display.
-
 public:
+	unsigned char fps;					// Frames per second
+	char display;						// The point of view from which it is projected (1, 2, 3).
+	float scale;						// Ratio d_pixels/d_meters
+	std::unordered_set<std::shared_ptr<Scene<T>>> pscenes;			// Pointeurs to the scenes that are rendered in the display.
+
 	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
 	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.

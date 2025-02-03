@@ -350,7 +350,11 @@ template<typename T> Point3D<T> abs(const Point3D<T>& p){
 
 //template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2);
 
-template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2) {
+/**
+ * Computes distance between two points.
+ * Uses (0,0,0) as the ref if only one point is provided.
+ */
+template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2={(T)0, (T)0, (T)0}) {
 	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
 }
 
