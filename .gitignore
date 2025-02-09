@@ -5,8 +5,11 @@ build/**
 # Ignores the documentation
 doc/**
 
-# Ignores Debug folder created by Eclipse
+# Ignores Debug folder, and others created by Eclipse
 Debug/**
+.settings
+.cproject
+.project
 
 # Ignores all .o, .d and ~ files
 **.o
