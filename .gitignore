@@ -7,7 +7,7 @@ doc/**
 
 # Ignores Debug folder, and others created by Eclipse
 Debug/**
-.settings
+.settings/**
 .cproject
 .project
 
