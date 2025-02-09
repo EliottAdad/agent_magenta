@@ -1,0 +1,14 @@
+
+# Ignores the build folder
+build/**
+
+# Ignores the documentation
+doc/**
+
+# Ignores Debug folder created by Eclipse
+Debug/**
+
+# Ignores all .o, .d and ~ files
+**.o
+**.d
+**~**

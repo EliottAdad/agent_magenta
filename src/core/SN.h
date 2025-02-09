@@ -11,6 +11,7 @@
 
 //#include <iostream>
 #include <cstdlib>
+#include <sstream>
 #include <cstdio>
 #include <math.h>
 #include <string>
@@ -140,18 +141,20 @@ template<typename M, typename E> void SN<M, E>::recal() {
 		this->e=(E)0;
 	}else{
 		//std::cout<<"m!=0\n";
-		int l_m=std::log((M)abs(m)) / std::log(10);//Number of digits before/after the comma
+		E l_m=floor(std::log((M)abs(m)) / std::log(10));//Number of digits before/after the comma
 
-		e+=(E)(l_m);
+		e+=l_m;
 		m/=(M)std::pow(10, l_m);
 	}
 }
 
-/*template<> void SN<float, char>::recal() {//printf(("Number : "+this->to_string()+"\n").c_str());
-	if (m==0){
-		e=0;
+// Optimisation attempt
+/*template<> void SN<float, char>::recal() {
+	if (m==0.){
+		this->e=0;
 	}else{
-		int l_m=std::log(abs(m)) / std::log(10.);//Number of chiffres avant/après la virgule
+		//std::cout<<"m!=0\n";
+		char l_m=floorf(std::log(abs(m)) / std::log(10.));//Number of digits before/after the comma
 
 		e+=l_m;
 		m/=std::pow(10, l_m);

@@ -18,7 +18,7 @@ Game::Game() {
 	pdisplay=std::make_shared<Display1<SN<float, char>>>(pwindow, prenderer);
 	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
-	fps=30;
+	//fps=30;
 	fpause=false;
 	render();
 }
@@ -40,11 +40,12 @@ bool Game::run(const unsigned int& steps){
 	// The parameters to the function are put after the comma
 	std::thread thread_physics(&Physics::run, pphysics, 0);
 	// The parameters to the function are put after the comma
-	std::thread thread_physics(&Display1<SN<float, char>>::render, pphysics, 0);
+	//std::thread thread_display(&Display1<SN<float, char>>::render, pdisplay);
 	while(1){
 		//reads inputs.
 	}
 	thread_physics.join();
+	//thread_display.join();
 
 	/*
 	std::chrono::time_point t1=std::chrono::system_clock::now();
@@ -94,7 +95,7 @@ std::string Game::to_string(const bool& spread, const bool& full_info, const uns
 	mes+=ss.str();
 	mes+="]:\n";
 	mes+=to_stringTabs(indent+1);
-	mes+="fps=" + to_string(fps);
+	//mes+="fps=" + to_string(fps);
 	mes+=("fpause=" + to_string(fpause));
 	mes+=((spread)?"\n" : "");
 

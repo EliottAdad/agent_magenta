@@ -51,12 +51,6 @@ public:
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
-	char getDisplay() const;
-	void setDisplay(const char& display);
-	float getScale() const;
-	void setScale(const float& scale);
-
-	std::unordered_set<std::shared_ptr<Scene<T>>> getPScenes() const;
 	void addPScene(std::shared_ptr<Scene<T>> pscene);
 
 	bool render() const;
@@ -71,8 +65,9 @@ public:
 
 template<typename T> Display1<T>::Display1() {
 	ppoint=std::make_shared<Point3D<T>>();
-	m_display=1;
-	m_scale=2;
+	fps=25;
+	display=1;
+	scale=2;
 
 	pbkgd_color=createColor(0, 0, 0, 255);
 	pdraw_color=createColor(255, 255, 255, 255);
@@ -87,8 +82,9 @@ template<typename T> Display1<T>::Display1() {
 
 template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 	this->ppoint=ppoint;
-	m_display=1;
-	m_scale=2;
+	fps=25;
+	display=1;
+	scale=2;
 
 	pbkgd_color=createColor(0, 0, 0, 255);
 	pdraw_color=createColor(255, 255, 255, 255);
@@ -100,8 +96,9 @@ template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 
 template<typename T> Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
 	ppoint=std::make_shared<Point3D<T>>();
-	m_display=1;
-	m_scale=2;
+	fps=25;
+	display=1;
+	scale=2;
 
 	pbkgd_color=createColor(0, 0, 0, 255);
 	pdraw_color=createColor(255, 255, 255, 255);
@@ -122,29 +119,9 @@ Display1::Display1(const Display1 &other) {
 
 
 
-template<typename T> char Display1<T>::getDisplay() const {
-	return m_display;
-}
-
-template<typename T> void Display1<T>::setDisplay(const char& display){
-	m_display=display;
-}
-
-template<typename T> float Display1<T>::getScale() const {
-	return m_scale;
-}
-
-template<typename T> void Display1<T>::setScale(const float& scale){
-	m_scale=scale;
-}
-
-template<typename T> std::unordered_set<std::shared_ptr<Scene<T>>> Display1<T>::getPScenes() const {
-	return m_pscenes;
-}
-
 template<typename T> void Display1<T>::addPScene(std::shared_ptr<Scene<T>> pscene){
 	if (pscene!=NULL){
-		m_pscenes.insert(pscene);
+		pscenes.insert(pscene);
 	}
 }
 
@@ -159,8 +136,8 @@ template<typename T> bool Display1<T>::render() const {
 			fillRendererWithColor(prenderer, pbkgd_color);// Fill the canvas with the background color
 		}
 
-		//printf("\nRendering 1: %ld\n", m_pscenes.size());
-		for (std::shared_ptr<Scene<T>> pscene : m_pscenes){
+		//printf("\nRendering 1: %ld\n", pscenes.size());
+		for (std::shared_ptr<Scene<T>> pscene : pscenes){
 			success=success | render(pscene);
 		}
 		//drawCircle(prenderer.get(), {0, 0}, 100);
@@ -235,16 +212,16 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 			T centery=(T)(sizey/2);
 
 			if (prenderer!=NULL){
-				switch (m_display){
+				switch (display){
 					case 1://(x,y) plane
-						//printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
-						drawPointRenderer(prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
+						//printf("\nx=%i\n", (int)(d_point.x*(M)scale + centerx).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.y*scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
-						drawPointRenderer(prenderer, (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.y*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 						break;
 					case 3://(x,z) plane
-						drawPointRenderer(prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 						break;
 				}
 			}
@@ -261,7 +238,7 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
 		//printf("\nRendering 4\n");
 		//ppoint->print(true);
-		//m_ppoint->print(true);
+		//ppoint->print(true);
 		//d_point.print(true);
 		//SDL_Renderer* prenderer=pdisplay->getPRenderer();
 		//SDL_Window* pwindow=pdisplay->getPWindow();
@@ -279,16 +256,16 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 			SN<T> centery={(M)(sizey/2),(E)0};
 
 			if (prenderer!=NULL){
-				switch (m_display){
+				switch (display){
 					case 1://(x,y) plane
-						//printf("\nx=%i\n", (int)(d_point.x*(M)m_scale + centerx).to_m_type());
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.y*(M)m_scale + centery).to_m_type());
+						//printf("\nx=%i\n", (int)(d_point.x*(M)scale + centerx).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)scale + centerx).to_m_type(), (int)(d_point.y*(M)scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)scale + centerx).to_m_type(), (int)(d_point.z*(M)scale + centery).to_m_type());
 						break;
 					case 3://(x,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)m_scale + centerx).to_m_type(), (int)(d_point.z*(M)m_scale + centery).to_m_type());
+						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)scale + centerx).to_m_type(), (int)(d_point.z*(M)scale + centery).to_m_type());
 						break;
 				}
 			}
@@ -352,9 +329,9 @@ template<typename T> void Display1<T>::print(const bool& spread, const bool& ful
 }
 
 void Display1::renderPoint(Point3D<float, char>* ppoint) const {//:)
-	Point3D<float, char> d_point=(*ppoint)-(*m_ppoint);
+	Point3D<float, char> d_point=(*ppoint)-(*ppoint);
 	//ppoint->print(true);
-	//m_ppoint->print(true);
+	//ppoint->print(true);
 	//d_point.print(true);
 
 	SDL_SetRenderDrawColor(m_prenderer, m_pdraw_color->r, m_pdraw_color->g, m_pdraw_color->b, m_pdraw_color->a); // Chooses the background color.
@@ -368,15 +345,15 @@ void Display1::renderPoint(Point3D<float, char>* ppoint) const {//:)
 	SN<float, char> centery={(float)sizey/2, 0};
 
 	if (m_prenderer!=NULL){
-		switch (m_display){
+		switch (display){
 			case 1://(x,y) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.y*m_scale + centery).to_m_type());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.y*scale + centery).to_m_type());
 				break;
 			case 2://(y,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 				break;
 			case 3://(x,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*m_scale + centerx).to_m_type(), (int)(d_point.z*m_scale + centery).to_m_type());
+				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 				break;
 		}
 	}

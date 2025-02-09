@@ -5,10 +5,6 @@
  *      Author: esn
  */
 
-#ifndef MATERIAL_CPP_
-
-#define MATERIAL_CPP_
-
 
 #include "Material.h"
 
@@ -36,5 +32,3 @@ Material::~Material(){
 
 
 
-
-#endif
