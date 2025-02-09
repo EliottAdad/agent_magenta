@@ -115,16 +115,8 @@ Game.o: src/utilities/Game.cpp
 # Cleaning options
 
 #Finds all the .d, .o and executables files in subdirectories
-TOCLEANFOLDERS = src test build
-DFILES := $(shell find $(TOCLEANFOLDERS) -name '*.d')
-OFILES := $(shell find $(TOCLEANFOLDERS) -name '*.o')
-EXECUTABLES := $(shell find $(TOCLEANFOLDERS)  -name 'main_game')
-EXECUTABLES += $(shell find $(TOCLEANFOLDERS)  -name 'main_tests')
-
-
 clean:
-	rm $(DFILES) $(OFILES) $(EXECUTABLES) *.o *.d
-#	rm src/**.o src/**.d src/**~ *.o *.d src/core/*.o
+	$(RM) -f *.o *.d main_game main_tests -r ./build
 
 
 include $(wildcard .d)    #handle header dependencies

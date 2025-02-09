@@ -355,7 +355,7 @@ template<typename T> Point3D<T> abs(const Point3D<T>& p){
  * Uses (0,0,0) as the ref if only one point is provided.
  */
 template<typename T> T getDistance(const Point3D<T>& p1, const Point3D<T>& p2={(T)0, (T)0, (T)0}) {
-	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
+	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)²+(zA-zB)² )
 }
 
 /**
@@ -413,4 +413,4 @@ template<typename T> std::unordered_set<std::shared_ptr<Point3D<T>>> pixelizeCir
 }
 
 
-#endif /* POINT3DS_H_ */
+#endif /* POINT3D_H_ */
