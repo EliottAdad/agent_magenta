@@ -10,7 +10,7 @@
 #define VECTOR3D_TEST_CPP_
 
 #include <string.h>
-#include "../src/core/Vector3D.h"
+#include "../src/core/Vector3D.hpp"
 
 #include <boost/test/unit_test.hpp>
 

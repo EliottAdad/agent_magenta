@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#include "LThread.h"
+#include "LThread.hpp"
 
 LThread::LThread() {
 	// TODO Auto-generated constructor stub

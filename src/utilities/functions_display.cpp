@@ -5,7 +5,7 @@
  *      Author: esn
  */
  
-#include "functions_display.h"
+#include "functions_display.hpp"
 
 std::shared_ptr<WINDOW> createWindow() {
 	return std::shared_ptr<SDL_Window>(

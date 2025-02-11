@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#include "Properties.h"
+#include "Properties.hpp"
 
 /*Properties::Properties() {
 	// TODO Auto-generated constructor stub

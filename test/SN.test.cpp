@@ -10,7 +10,7 @@
 #define SN_TEST_CPP_
 
 #include <string.h>
-#include "../src/core/SN.h"
+#include "../src/core/SN.hpp"
 
 #include <boost/test/unit_test.hpp>
 
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE (test_operator_plus_equal) { //
 
 BOOST_AUTO_TEST_CASE (test_operator_minus_equal) { // 
 	SN<float, char> nb1={1, 20};
-	SN<float, char> nb2={9.9, 19};
+	SN<float, char> nb2={9.3, 19};
 	SN<float, char> rslt1={1, 18};
 
 	nb1-=nb2;

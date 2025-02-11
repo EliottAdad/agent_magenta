@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#include "Face.h"
+#include "Face.hpp"
 
 Face::Face() {
 	// TODO Auto-generated constructor stub

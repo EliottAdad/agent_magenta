@@ -14,39 +14,45 @@ LDFLAGS	=
 #SRCS =
 #OBJS =
 # Phonies
-.PHONY = all clean
+.PHONY = all clean create_build_dir display_info
 # Options
 DEBUG			= no
 #NORMALBUILD		= no
 #EXPERIMENTAL	= yes
 
 
-all: main_game main_tests
+all: create_build_dir main_tests main_game
+#
 
 
+# Create build directory
+create_build_dir:
+	$(shell mkdir ./build)
 
 # Display info
 display_info:
-	a = $(shell echo 'Debug:' $(DEBUG))
-	$(info $(a))
+	$(shell echo 'Debug:' $(DEBUG))
 
 
 
 
 ifeq ($(DEBUG), yes)
-$(CFLAGS)+= -lboost_unit_test_framework
-
+	$(CFLAGS)+= -lboost_unit_test_framework
+	$(CFLAGS)+= --log_level=message
 endif
 
 
 # Linking main_game
-main_game: main.o Game.o Material.o TimeSensitive.o Physics.o functions.o functions_display.o Printable.o
+main_game: main.o Material.o TimeSensitive.o Physics.o functions.o functions_display.o Printable.o
+	$(MAKE) create_build_dir
+#	$(MAKE) display_info
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 
-
+#
 # Linking main_tests
-main_tests: tests.o SN.test.o Point3D.test.o Printable.o functions.o Printable.o
+TESTS = SN.test.o Point3D.test.o Mobile.test.o Displayable.test.o Particle3D.test.o Game.test.o Physics.test.o Oct.test.o Physics.o TimeSensitive.o Printable.o functions.o functions_display.o
+main_tests: tests.o $(TESTS)
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 
@@ -59,20 +65,13 @@ main.o: src/main.cpp
 tests.o: test/tests.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
-# ///////TESTS/////// #
-# Compile SN.test.cpp
-SN.test.o: test/SN.test.cpp
+# /////////////////////////////TESTS//////////////////////////////////// #
+
+# Compile %.test.cpp
+%.test.o: test/%.test.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
-# Compile Point3D.test.cpp
-Point3D.test.o: test/Point3D.test.cpp
-	$(CC) -o build/$@ -c $^ $(CFLAGS)
-
-# Compile Vector3D.test.cpp
-#Vector3D.test.o: test/Vector3D.test.cpp
-#	$(CC) -o build/$@ -c $^ $(CFLAGS)
-
-# ///////COMPILATION/////// #
+# //////////////////////////COMPILATION///////////////////////////////// #
 # Compile Printables
 Printable.o: src/utilities/Printable.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
@@ -97,13 +96,6 @@ TimeSensitive.o: src/core/TimeSensitive.cpp
 Material.o: src/display/Material.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
-# Compile functions
-Game.o: src/utilities/Game.cpp
-	$(CC) -o build/$@ -c $^ $(CFLAGS)
-
-
-
-
 
 
 
@@ -116,7 +108,7 @@ Game.o: src/utilities/Game.cpp
 
 #Finds all the .d, .o and executables files in subdirectories
 clean:
-	$(RM) -f *.o *.d main_game main_tests -r ./build
+	$(RM) -f *.o *.d main_game main_tests -r ./doc ./build
 
 
 include $(wildcard .d)    #handle header dependencies

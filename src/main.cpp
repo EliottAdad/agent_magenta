@@ -12,19 +12,19 @@
 #include <SDL2/SDL.h>
 
 //#include "core/SN.h"
-#include "geometry/WeightedPoint3D.h"
-#include "core/Quad.h"
-#include "core/Oct.h"
-#include "geometry/Particle3D.h"
+//#include "geometry/WeightedPoint3D.hpp"
+#include "core/Quad.hpp"
+#include "core/Oct.hpp"
+#include "geometry/Particle3D.hpp"
 //#include "core/ParticleSystem3D.h"
-#include "core/System3D.h"
-#include "core/VectorField.h"
+#include "core/System3D.hpp"
+#include "core/VectorField.hpp"
 //#include "core/VectorFieldUnidirectional.h"
-#include "core/Physics.h"
-#include "core/Point3D.h"
-#include "core/Vector3D.h"
-#include "utilities/Game.h"
-#include "utilities/functionsParticle3D.h"
+#include "core/Physics.hpp"
+#include "core/Point3D.hpp"
+#include "core/Vector3D.hpp"
+#include "utilities/Game.hpp"
+#include "utilities/functionsParticle3D.hpp"
 
 
 
@@ -34,7 +34,7 @@
 int main(int argc, char* argv[]){
     printf("Hello %ld, %ld, %ld, %ld, %ld\n", sizeof(long int), sizeof(uint32_t), sizeof(int32_t), sizeof(int64_t), sizeof(SN<float, char>));
     std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
-    pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 16});
+    pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 18});
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts) {
     	ppart->print(true, true, 0);
     }
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
     psys->ptrLaw=gravitOptimised;
 
     // Game
-    Game g1;
+    Game<SN<float, char>> g1;
     //g1.pdisplay->fclear=false;
     g1.pdisplay->scale=0.15;
     //g1.pdisplay->ppoint=pparts[0];
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
         g1.pscene->addPDisplayable(ppart);
     }
 
-    g1.pphysics->addPTimeSensitive(psys);
+    g1.pphysics->add(psys);
 
     g1.pdisplay->fps=40;
     g1.pphysics->pps=200;

@@ -5,25 +5,24 @@
  *      Author: esn
  */
 
-#include "TimeSensitive.h"
+#include "TimeSensitive.hpp"
 
 TimeSensitive::TimeSensitive() {
-	// TODO Auto-generated constructor stub
 	m_dt=0;
 }
 
 TimeSensitive::~TimeSensitive() {
-	// TODO Auto-generated destructor stub
+	;
 }
 
-/*TimeSensitive::TimeSensitive(const TimeSensitive &other) {
-	// TODO Auto-generated constructor stub
-}*/
+TimeSensitive::TimeSensitive(const TimeSensitive& time_sensitive) {
+	m_dt=time_sensitive.getT();
+}
 
 
 
 
-float TimeSensitive::getT() {
+float TimeSensitive::getT() const {
 	return m_dt;
 }
 
@@ -40,7 +39,7 @@ void TimeSensitive::apply() {//Useless
 std::string TimeSensitive::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
 	std::string mes=(spread)?"\n":"";
 
-	mes+="TIME_SENSITIVE";
+	mes+="TIME_SENSITIVE\n";
 
 	return mes;
 }

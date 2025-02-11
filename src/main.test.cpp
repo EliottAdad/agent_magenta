@@ -5,6 +5,7 @@
 #define MAIN_TEST_CPP_
 
 #include "../test/SN.test.cpp"
+#include "../test/Point3D.test.cpp"
 //#include ""
 
 /*int main(){

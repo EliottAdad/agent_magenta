@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#include "Physics.h"
+#include "Physics.hpp"
 
 Physics::Physics() {
 	pps=40;//Computations per second
@@ -36,11 +36,12 @@ Physics::Physics(const Physics& phys) {
 }
 
 
-std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::getPTimeSensitives() {
+
+std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::get() {
 	return ptime_sensitives;
 }
 
-bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) {
+bool Physics::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 
 	if (ptime_sensitive!=NULL){
@@ -50,37 +51,8 @@ bool Physics::addPTimeSensitive(std::shared_ptr<TimeSensitive> ptime_sensitive) 
 	return success;
 }
 
-/*std::unordered_set<Moveable*> Physics::getPMoveables() {
-	return m_pmoveables;
-}*/
-
-/*bool Physics::addPMoveable(Moveable* pmoveable) {
-	bool success=false;
-	if (pmoveable!=NULL){
-		success=m_pmoveables.insert(pmoveable).second;
-	}
-	return success;
-}*/
 
 
-/*bool Physics::loop() {
-
-	std::chrono::time_point t1=std::chrono::system_clock::now();
-	while(!fpause){
-		std::chrono::time_point t2=std::chrono::system_clock::now();
-		std::chrono::duration dt=t2-t1;
-		if (dt.count()>=1/(long double)m_cps*1000000000.){
-			for(TimeSensitive* ptime_sensitive : ptime_sensitives){
-
-				//std::cout << "\n delta t = " << dt.count() << "ns\n";
-
-				ptime_sensitive->setT(dt.count()/1000000000.*speed);//The duration given by dt is in ns.
-			}
-			t1=t2;
-		}
-	}
-	return fpause;
-}*/
 
 /*
  * If 0: infinite loop

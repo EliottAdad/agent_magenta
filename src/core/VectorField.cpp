@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#include "VectorField.h"
+#include "VectorField.hpp"
 
 VectorField::VectorField() {
 	m_mode=2;
