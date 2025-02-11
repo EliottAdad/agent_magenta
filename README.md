@@ -1,5 +1,5 @@
 
-# Magenta Game engine
+# Agent Magenta : Game engine
 
 Restructuration of the pka "Fun" project with a better organisation in mind.
 
