@@ -16,12 +16,12 @@
  * Functions
  */
 
-template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate2DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w);
+//template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate2DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w);
 
 /**
  * Generates a grid in the x-y plane centered on p.
  */
-template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate2DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w){
+template<typename T> inline std::unordered_set<std::shared_ptr<Particle3D<T>>> generate2DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w){
 	std::unordered_set<std::shared_ptr<Particle3D<T>>> pparts;
 	for (unsigned char i(0) ; i<n ; i++){
 		for (unsigned char j(0) ; j<n ; j++){
@@ -39,12 +39,12 @@ template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate
 	return pparts;
 }
 
-template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate3DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w);
+template<typename T> inline std::unordered_set<std::shared_ptr<Particle3D<T>>> generate3DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w);
 
 /**
  * Generates a grid in a cubic volume of side a centered on p.
  */
-template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate3DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w){
+template<typename T> inline std::unordered_set<std::shared_ptr<Particle3D<T>>> generate3DGridParticle3D(Point3D<T> p, T a, unsigned char n, T w){
 	std::unordered_set<std::shared_ptr<Particle3D<T>>> pparts;
 	for (unsigned char i(0) ; i<n ; i++){
 		for (unsigned char j(0) ; j<n ; j++){

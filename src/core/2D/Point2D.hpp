@@ -12,7 +12,7 @@
 #include <memory>
 
 #include "SN.hpp"
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 
 
@@ -23,7 +23,7 @@
  *  Point2D<T> :)
  * ##############
  */
-template<typename T> struct Point2D : public Printable {
+template<typename T> struct Point2D {
 	T x;
 	T y;
 
@@ -45,9 +45,6 @@ template<typename T> struct Point2D : public Printable {
 	virtual void operator*=(const int& k);				// :)
 	virtual void operator/=(const T& k);				// :)
 	virtual void operator/=(const int& k);				// :)
-
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 template<typename T> bool operator==(const Point2D<T>& p1, const Point2D<T>& p2);		// :)
@@ -75,32 +72,32 @@ template<typename T> Point2D<T> abs(const Point2D<T>& p);	// :)
 
 
 
-template<typename T> Point2D<T>::Point2D() {
+template<typename T> inline Point2D<T>::Point2D() {
 	this->x=T{0,0};
 	this->y=T{0,0};
 }
 
-template<typename T> Point2D<T>::Point2D(const T& x, const T& y, const T& z) {
+template<typename T> inline Point2D<T>::Point2D(const T& x, const T& y, const T& z) {
 	this->x=x;
 	this->y=y;
 }
 
-template<typename T> Point2D<T>::~Point2D() {
+template<typename T> inline Point2D<T>::~Point2D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> Point2D<T>::Point2D(const Point2D<T>& point) {
+template<typename T> inline Point2D<T>::Point2D(const Point2D<T>& point) {
 	this->x=point.x;
 	this->y=point.y;
 }
 
 
 
-template<typename T> T Point2D<T>::getX() const {
+template<typename T> inline T Point2D<T>::getX() const {
 	return x;
 }
 
-template<typename T> T Point2D<T>::getY() const {
+template<typename T> inline T Point2D<T>::getY() const {
 	return y;
 }
 
@@ -108,52 +105,52 @@ template<typename T> T Point2D<T>::getY() const {
 	return {x, y, z};
 }*/
 
-template<typename T> void Point2D<T>::operator=(const Point2D<T>& p) {
+template<typename T> inline void Point2D<T>::operator=(const Point2D<T>& p) {
 	this->x=p.x;
 	this->y=p.y;
 }
 
-template<typename T> void Point2D<T>::operator=(const T& nb) {
+template<typename T> inline void Point2D<T>::operator=(const T& nb) {
 	this->x=nb;
 	this->y=nb;
 }
 
-template<typename T> void Point2D<T>::operator+=(const Point2D<T>& p) {
+template<typename T> inline void Point2D<T>::operator+=(const Point2D<T>& p) {
 	this->x+=p.x;
 	this->y+=p.y;
 }
 
-template<typename T> void Point2D<T>::operator+=(const T& nb) {
+template<typename T> inline void Point2D<T>::operator+=(const T& nb) {
 	this->x+=nb;
 	this->y+=nb;
 }
 
-template<typename T> void Point2D<T>::operator-=(const Point2D<T>& p) {
+template<typename T> inline void Point2D<T>::operator-=(const Point2D<T>& p) {
 	this->x-=p.x;
 	this->y-=p.y;
 }
 
-template<typename T> void Point2D<T>::operator-=(const T& nb) {
+template<typename T> inline void Point2D<T>::operator-=(const T& nb) {
 	this->x-=nb;
 	this->y-=nb;
 }
 
-template<typename T> void Point2D<T>::operator*=(const T& k) {
+template<typename T> inline void Point2D<T>::operator*=(const T& k) {
 	this->x*=k;
 	this->y*=k;
 }
 
-template<typename T> void Point2D<T>::operator*=(const int& k) {
+template<typename T> inline void Point2D<T>::operator*=(const int& k) {
 	this->x*=k;
 	this->y*=k;
 }
 
-template<typename T> void Point2D<T>::operator/=(const T& k) {
+template<typename T> inline void Point2D<T>::operator/=(const T& k) {
 	this->x/=k;
 	this->y/=k;
 }
 
-template<typename T> void Point2D<T>::operator/=(const int& k) {
+template<typename T> inline void Point2D<T>::operator/=(const int& k) {
 	this->x/=k;
 	this->y/=k;
 }
@@ -162,133 +159,105 @@ template<typename T> void Point2D<T>::operator/=(const int& k) {
 
 
 
-template<typename T> std::string Point2D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	//std::cout<<"Help1\n";
-	std::string mes=((spread)?"\n" : "");
-	mes+=to_stringTabs(indent);
-	//printf("Help2\n");
-	if (full_info){
-		mes+="Point2D[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:";
-		mes+=((spread)?"\n" + to_stringTabs(1) : "");
-	}
-	//printf("Help3\n");
-	mes+=to_stringTabs(indent);
-	mes+="(x:" + x.to_string(false, false, 0) + " ; y:" + y.to_string(false, false, 0) + ")";
-
-	return mes;
-}
-
-template<typename T> void Point2D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	printTabs(indent);
-	std::cout << this->to_string(spread, full_info, indent);
-}
 
 
-
-
-
-
-template<typename T> bool operator==(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline bool operator==(const Point2D<T>& p1, const Point2D<T>& p2) {
 	if (p1.x==p2.x && p1.y==p2.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator==(const Point2D<T>& p, const T& nb) {
+template<typename T> inline bool operator==(const Point2D<T>& p, const T& nb) {
 	if (p.x==nb && p.y==nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator==(const T& nb, const Point2D<T>& p) {
+template<typename T> inline bool operator==(const T& nb, const Point2D<T>& p) {
 	if (nb==p.x && nb==p.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator!=(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline bool operator!=(const Point2D<T>& p1, const Point2D<T>& p2) {
 	if (p1.x!=p2.x && p1.y!=p2.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator!=(const Point2D<T>& p, const T& nb) {
+template<typename T> inline bool operator!=(const Point2D<T>& p, const T& nb) {
 	if (p.x!=nb && p.y!=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator!=(const T& nb, const Point2D<T>& p) {
+template<typename T> inline bool operator!=(const T& nb, const Point2D<T>& p) {
 	if (nb!=p.x && nb!=p.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator<=(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline bool operator<=(const Point2D<T>& p1, const Point2D<T>& p2) {
 	if (p1.x<=p2.x && p1.y<=p2.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator<=(const Point2D<T>& p, const T& nb) {
+template<typename T> inline bool operator<=(const Point2D<T>& p, const T& nb) {
 	if (p.x<=nb && p.y<=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator<=(const T& nb, const Point2D<T>& p) {
+template<typename T> inline bool operator<=(const T& nb, const Point2D<T>& p) {
 	if (nb<=p.x && nb<=p.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator>=(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline bool operator>=(const Point2D<T>& p1, const Point2D<T>& p2) {
 	if (p1.x>=p2.x && p1.y>=p2.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator>=(const Point2D<T>& p, const T& nb) {
+template<typename T> inline bool operator>=(const Point2D<T>& p, const T& nb) {
 	if (p.x>=nb && p.y>=nb){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> bool operator>=(const T& nb, const Point2D<T>& p) {
+template<typename T> inline bool operator>=(const T& nb, const Point2D<T>& p) {
 	if (nb>=p.x && nb>=p.y){
 		return true;
 	}
 	return false;
 }
 
-template<typename T> Point2D<T> operator+(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline Point2D<T> operator+(const Point2D<T>& p1, const Point2D<T>& p2) {
 	return Point2D<T>{p1.x+p2.x, p1.y+p2.y};
 }
 
-template<typename T> Point2D<T> operator-(const Point2D<T>& p1, const Point2D<T>& p2) {
+template<typename T> inline Point2D<T> operator-(const Point2D<T>& p1, const Point2D<T>& p2) {
 	return Point2D<T>{p1.x-p2.x, p1.y-p2.y};
 }
 
-template<typename T> Point2D<T> operator*(const Point2D<T>& p, const T& k) {
+template<typename T> inline Point2D<T> operator*(const Point2D<T>& p, const T& k) {
 	return Point2D<T>{p.x*k, p.y*k};
 }
 
-template<typename T> Point2D<T> operator*(const Point2D<T>& p, const int& k) {
+template<typename T> inline Point2D<T> operator*(const Point2D<T>& p, const int& k) {
 	return Point2D<T>{p.x*k, p.y*k};
 }
 
@@ -296,19 +265,19 @@ template<typename T> Point2D<T> operator*(const T& k, const Point2D<T>& p) {
 	return Point2D<T>{k*p.x, k*p.y};
 }
 
-template<typename T> Point2D<T> operator*(const int& k, const Point2D<T>& p) {
+template<typename T> inline Point2D<T> operator*(const int& k, const Point2D<T>& p) {
 	return Point2D<T>{k*p.x, k*p.y};
 }
 
-template<typename T> Point2D<T> operator/(const Point2D<T>& p, const T& k) {
+template<typename T> inline Point2D<T> operator/(const Point2D<T>& p, const T& k) {
 	return Point2D<T>{p.x/k, p.y/k};
 }
 
-template<typename T> Point2D<T> operator/(const Point2D<T>& p, const int& k) {
+template<typename T> inline Point2D<T> operator/(const Point2D<T>& p, const int& k) {
 	return Point2D<T>{p.x/k, p.y/k};
 }
 
-template<typename T> Point2D<T> abs(const Point2D<T>& p){
+template<typename T> inline Point2D<T> abs(const Point2D<T>& p){
 	return Point2D<T>{abs(p.x), abs(p.y)};
 }
 
@@ -335,14 +304,14 @@ template<typename T> Point2D<T> abs(const Point2D<T>& p){
  * Computes distance between two points.
  * Uses (0,0) as the ref if only one point is provided.
  */
-template<typename T> T getDistance(const Point2D<T>& p1, const Point2D<T>& p2={(T)0, (T)0}) {
+template<typename T> inline T getDistance(const Point2D<T>& p1, const Point2D<T>& p2={(T)0, (T)0}) {
 	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) ), 0);// d=sqrt( (xA-xB)²+(yA-yB)² )
 }
 
 /**
  * Returns the points to be rendered.
  */
-template<typename T> std::unordered_set<std::shared_ptr<Point2D<T>>> pixelizeCircle(std::shared_ptr<Point2D<T>> pcenter, int radius, int spacing=8){
+template<typename T> inline std::unordered_set<std::shared_ptr<Point2D<T>>> pixelizeCircle(std::shared_ptr<Point2D<T>> pcenter, int radius, int spacing=8){
     std::unordered_set<std::shared_ptr<Point2D<T>>> ppoints;
 
     // 35 / 49 is a slightly biased approximation of 1/sqrt(2)

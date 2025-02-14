@@ -15,7 +15,7 @@
 #include "../core/Vector3D.hpp"
 #include "../geometry/Mesh3D.hpp"
 #include "../geometry/Triangle3D.hpp"
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 /*
  * ################
@@ -23,7 +23,7 @@
  * ################
  * This camera is a cone directed by a normal
  */
-template<typename T> class Camera : public Printable {
+template<typename T> class Camera {
 private:
 	float m_aperture;		//Aperture angle in radians
 	float m_roll_ang;		//Roll angle to the normal
@@ -50,12 +50,9 @@ public:
 	void renderPoint(const Point3D<T>& p) const;
 
 	bool testInFielOfView(const Point3D<T>& p) const;
-
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
-template<typename T> Camera<T>::Camera() {
+template<typename T> inline Camera<T>::Camera() {
 	m_aperture=1;
 	m_roll_ang=0;
 	ppoint=NULL;
@@ -63,11 +60,11 @@ template<typename T> Camera<T>::Camera() {
 	*pnormal/=pnormal->getNorm();//Normalization
 }
 
-template<typename T> Camera<T>::~Camera() {
+template<typename T> inline Camera<T>::~Camera() {
 	;
 }
 
-template<typename T> Camera<T>::Camera(const Camera<T>& other) {
+template<typename T> inline Camera<T>::Camera(const Camera<T>& other) {
 	m_aperture=1;
 	m_roll_ang=0;
 	this->ppoint=other.ppoint;
@@ -87,7 +84,7 @@ Vector3D Camera::getNormal() const {
 	return *m_pnormal;
 }*/
 
-template<typename T> std::shared_ptr<Vector3D<T>> Camera<T>::getE1() const {
+template<typename T> inline std::shared_ptr<Vector3D<T>> Camera<T>::getE1() const {
 	std::shared_ptr<Vector3D<T>> pv;
 	if (ppoint!=NULL && pnormal!=NULL){
 		pv=std::make_shared<Vector3D<T>>(
@@ -102,7 +99,7 @@ template<typename T> std::shared_ptr<Vector3D<T>> Camera<T>::getE1() const {
 	return pv;
 }
 
-template<typename T> std::shared_ptr<Vector3D<T>> Camera<T>::getE2() const {
+template<typename T> inline std::shared_ptr<Vector3D<T>> Camera<T>::getE2() const {
 	std::shared_ptr<Vector3D<T>> pv;
 	if (ppoint!=NULL && pnormal!=NULL){
 		pv=std::make_shared<Vector3D<T>>( *pnormal^*(this->getE1()) );
@@ -113,15 +110,15 @@ template<typename T> std::shared_ptr<Vector3D<T>> Camera<T>::getE2() const {
 
 
 
-template<typename T> void Camera<T>::renderMesh(const Mesh3D<T>& mesh) const {
+template<typename T> inline void Camera<T>::renderMesh(const Mesh3D<T>& mesh) const {
 	;
 }
 
-template<typename T> void Camera<T>::renderTriangle(const Triangle3D<T>& triangle) const {
+template<typename T> inline void Camera<T>::renderTriangle(const Triangle3D<T>& triangle) const {
 	;
 }
 
-template<typename T> void Camera<T>::renderPoint(const Point3D<T>& p) const {
+template<typename T> inline void Camera<T>::renderPoint(const Point3D<T>& p) const {
 	if (ppoint!=NULL){
 		Vector3D<T> vpos(ppoint, p-*ppoint);
 		SN<T> projx(*(this->getE1())*vpos);
@@ -133,7 +130,7 @@ template<typename T> void Camera<T>::renderPoint(const Point3D<T>& p) const {
 	}
 }
 
-template<typename T> bool Camera<T>::testInFielOfView(const Point3D<T>& p) const {
+template<typename T> inline bool Camera<T>::testInFielOfView(const Point3D<T>& p) const {
 	bool test=false;
 	if (ppoint!=NULL){
 		Vector3D<T> vpos(ppoint, p-*ppoint);
@@ -146,18 +143,6 @@ template<typename T> bool Camera<T>::testInFielOfView(const Point3D<T>& p) const
 }
 
 
-template<typename T> std::string Camera<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
-	std::string mes=(spread)?"\n":"";
-
-	mes+="CAMERA";
-
-	return mes;
-}
-
-template<typename T> void Camera<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
-	printTabs(indent);
-	std::cout << this->to_string(spread, full_info, indent);
-}
 
 
 #endif /* CAMERA_HPP_ */

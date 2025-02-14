@@ -35,16 +35,13 @@ public:
 
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	//virtual void operator+=(const ParticleRot3D<T>& p);// :)
-
-	std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
-	void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;
 };
 
 template<typename T> ParticleRot3D<T> operator+(const ParticleRot3D<T>& p1, const ParticleRot3D<T>& p2);
 
 
 
-template<typename T> ParticleRot3D<T>::ParticleRot3D() {
+template<typename T> inline ParticleRot3D<T>::ParticleRot3D() {
 	this->x=(T)1;						// Init the Weighted Point to {x=1, y=1, y=1, w=1}
 	this->y=(T)1;
 	this->z=(T)1;
@@ -77,7 +74,7 @@ ParticleRot3D::ParticleRot3D(const WeightedPoint3D& wp, Vector* pspeed) {
 	m_dt=0;
 }*/
 
-template<typename T> ParticleRot3D<T>::ParticleRot3D(const Point3D<T>& p) {
+template<typename T> inline ParticleRot3D<T>::ParticleRot3D(const Point3D<T>& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
@@ -91,7 +88,7 @@ template<typename T> ParticleRot3D<T>::ParticleRot3D(const Point3D<T>& p) {
 	m_dt=0;
 }
 
-template<typename T> ParticleRot3D<T>::ParticleRot3D(const T& x, const T& y, const T& z, const T& w) {
+template<typename T> inline ParticleRot3D<T>::ParticleRot3D(const T& x, const T& y, const T& z, const T& w) {
 	this->x=x;
 	this->y=y;
 	this->z=z;
@@ -104,7 +101,7 @@ template<typename T> ParticleRot3D<T>::ParticleRot3D(const T& x, const T& y, con
 	m_dt=0;
 }
 
-template<typename T> ParticleRot3D<T>::ParticleRot3D(const WeightedPoint3D<T>& wp) {
+template<typename T> inline ParticleRot3D<T>::ParticleRot3D(const WeightedPoint3D<T>& wp) {
 	this->x=wp.x;			// Init the Weighted Point to {x, y, y, w}
 	this->y=wp.y;
 	this->z=wp.z;
@@ -139,11 +136,11 @@ ParticleRot3D::ParticleRot3D(const WeightedPoint3D& wp, const Vector3D& speed) {
 	m_dt=0;
 }*/
 
-template<typename T> ParticleRot3D<T>::~ParticleRot3D() {
+template<typename T> inline ParticleRot3D<T>::~ParticleRot3D() {
 	;//this->~Displayable();
 }
 
-template<typename T> ParticleRot3D<T>::ParticleRot3D(const ParticleRot3D<T>& p) {
+template<typename T> inline ParticleRot3D<T>::ParticleRot3D(const ParticleRot3D<T>& p) {
 	this->x=p.x;
 	this->y=p.y;
 	this->z=p.z;
@@ -159,19 +156,19 @@ template<typename T> ParticleRot3D<T>::ParticleRot3D(const ParticleRot3D<T>& p) 
 
 
 
-template<typename T> T ParticleRot3D<T>::getX() const {
+template<typename T> inline T ParticleRot3D<T>::getX() const {
 	return this->x;
 }
 
-template<typename T> T ParticleRot3D<T>::getY() const {
+template<typename T> inline T ParticleRot3D<T>::getY() const {
 	return this->y;
 }
 
-template<typename T> T ParticleRot3D<T>::getZ() const {
+template<typename T> inline T ParticleRot3D<T>::getZ() const {
 	return this->z;
 }
 
-template<typename T> T ParticleRot3D<T>::getW() const {
+template<typename T> inline T ParticleRot3D<T>::getW() const {
 	T w=(T)1;
 
 	if (pfields!=NULL /*&& pfields->contains("mass")*/){
@@ -181,11 +178,11 @@ template<typename T> T ParticleRot3D<T>::getW() const {
 	return w;
 }
 
-template<typename T> void ParticleRot3D<T>::setT(const float& dt) {
+template<typename T> inline void ParticleRot3D<T>::setT(const float& dt) {
 	m_dt=dt;
 }
 
-template<typename T> void ParticleRot3D<T>::apply(){
+template<typename T> inline void ParticleRot3D<T>::apply(){
 	this->x+=(ps->pp2->x)*m_dt;
 	this->y+=(ps->pp2->y)*m_dt;
 	this->z+=(ps->pp2->z)*m_dt;
@@ -195,7 +192,7 @@ template<typename T> void ParticleRot3D<T>::apply(){
 }
 
 
-template<typename T> void ParticleRot3D<T>::operator+=(const Vector3D<T>& v){
+template<typename T> inline void ParticleRot3D<T>::operator+=(const Vector3D<T>& v){
 	if (this->ps!=NULL){
 		*this->ps+=v;
 	}else{
@@ -213,35 +210,7 @@ template<typename T> void ParticleRot3D<T>::operator+=(const Vector3D<T>& v){
 
 
 
-template<typename T> std::string ParticleRot3D<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	std::string mes=((spread)?"\n" : "");
-	mes+=to_stringTabs(indent);
-
-	if (full_info){
-		mes+="PARTICLE3D[";
-		std::stringstream ss;
-		ss << this;
-		mes+=ss.str();
-		mes+="]:";
-		mes+=((spread)?"\n" + to_stringTabs(1) : "");
-	}
-
-	mes+=to_stringTabs(indent);
-	mes+="(" + this->getPosition().to_string();
-	mes+=" | ";
-	mes+="w:" + this->w.to_string();
-	mes+=" | ";
-	mes+=(ps==NULL)?"NULL":ps->to_string(false, false);
-	mes+=")";
-	return mes;
-}
-
-template<typename T> void ParticleRot3D<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	printTabs(indent);
-	std::cout << this->to_string(spread, full_info, indent);
-}
-
-template<typename T> ParticleRot3D<T> operator+(const ParticleRot3D<T>& p1, const ParticleRot3D<T>& p2){
+template<typename T> inline ParticleRot3D<T> operator+(const ParticleRot3D<T>& p1, const ParticleRot3D<T>& p2){
 	std::shared_ptr<ParticleRot3D<T>> pparticle=std::make_shared<ParticleRot3D<T>>();
 
 	*(pparticle->ps)=*(p1->ps)+*(p2->ps);

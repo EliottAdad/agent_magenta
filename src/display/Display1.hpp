@@ -11,14 +11,14 @@
 
 #include <memory>
 #include <unordered_set>
-//#include <SDL2/SDL.h>
+#include <chrono>
 
 #include "../core/Point3D.hpp"
 #include "../core/Line3D.hpp"
-#include "../display/Displayable.hpp"
-#include "../utilities/Printable.hpp"
+#include "../display/Displayable3D.hpp"
+//#include "../utilities/Printable.hpp"
 #include "../utilities/functions.hpp"
-#include "../core/Scene.hpp"
+#include "../core/Scene3D.hpp"
 #include "../utilities/functions_display.hpp"
 
 
@@ -30,12 +30,12 @@
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
  */
-template<typename T> class Display1 : public Printable {
+template<typename T> class Display1 {
 public:
 	unsigned char fps;					// Frames per second
 	char display;						// The point of view from which it is projected (1, 2, 3).
 	float scale;						// Ratio d_pixels/d_meters
-	std::unordered_set<std::shared_ptr<Scene<T>>> pscenes;			// Pointeurs to the scenes that are rendered in the display.
+	std::unordered_set<std::shared_ptr<Scene3D<T>>> pscenes;			// Pointeurs to the scenes that are rendered in the display.
 
 	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
@@ -51,20 +51,20 @@ public:
 	virtual ~Display1();
 	//Display1(const Display1 &other);
 
-	void addPScene(std::shared_ptr<Scene<T>> pscene);
+	void addPScene(std::shared_ptr<Scene3D<T>> pscene);
 	
 	void run(const unsigned int frames) const;
 	bool render() const;
-	bool render(const std::shared_ptr<Scene<T>> pscene) const;
-	bool render(const std::shared_ptr<Displayable<T>> pdisplayable) const;
-	bool render(const std::shared_ptr<Point3D<T>> ppoint) const;
-
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	bool renderScene(const std::shared_ptr<Scene3D<T>> pscene) const;
+	bool renderDisplayable(const std::shared_ptr<Displayable3D<T>> pdisplayable) const;
+	bool renderPoint(const std::shared_ptr<Point3D<T>> ppoint) const;
+	bool renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const;
 };
 
 
-template<typename T> Display1<T>::Display1() {
+
+
+template<typename T> inline Display1<T>::Display1() {
 	ppoint=std::make_shared<Point3D<T>>();
 	fps=25;
 	display=1;
@@ -81,7 +81,7 @@ template<typename T> Display1<T>::Display1() {
 	fclear=true;
 }
 
-template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
+template<typename T> inline Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 	this->ppoint=ppoint;
 	fps=25;
 	display=1;
@@ -95,7 +95,7 @@ template<typename T> Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
 	fclear=true;
 }
 
-template<typename T> Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
+template<typename T> inline Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
 	ppoint=std::make_shared<Point3D<T>>();
 	fps=25;
 	display=1;
@@ -109,7 +109,7 @@ template<typename T> Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, 
 	fclear=true;
 }
 
-template<typename T> Display1<T>::~Display1() {
+template<typename T> inline Display1<T>::~Display1() {
 	;
 }
 
@@ -120,7 +120,9 @@ Display1::Display1(const Display1 &other) {
 
 
 
-template<typename T> void Display1<T>::addPScene(std::shared_ptr<Scene<T>> pscene){
+
+
+template<typename T> inline void Display1<T>::addPScene(std::shared_ptr<Scene3D<T>> pscene){
 	if (pscene!=NULL){
 		pscenes.insert(pscene);
 	}
@@ -129,7 +131,7 @@ template<typename T> void Display1<T>::addPScene(std::shared_ptr<Scene<T>> pscen
 /*
  * If 0: infinite loop
  */
-template<typename T> void Display1<T>::run(const unsigned int frames) const {
+template<typename T> inline void Display1<T>::run(const unsigned int frames) const {
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	//if (!fpause){
 		unsigned int i(0);
@@ -153,7 +155,7 @@ template<typename T> void Display1<T>::run(const unsigned int frames) const {
 /*
  *
  */
-template<typename T> bool Display1<T>::render() const {
+template<typename T> inline bool Display1<T>::render() const {
 	bool success=false;
 
 	if (prenderer!=NULL){
@@ -162,8 +164,8 @@ template<typename T> bool Display1<T>::render() const {
 		}
 
 		//printf("\nRendering 1: %ld\n", pscenes.size());
-		for (std::shared_ptr<Scene<T>> pscene : pscenes){
-			success=success | render(pscene);
+		for (std::shared_ptr<Scene3D<T>> pscene : pscenes){
+			success=success | renderScene(pscene);
 		}
 		//drawCircle(prenderer.get(), {0, 0}, 100);
 
@@ -181,12 +183,12 @@ template<typename T> bool Display1<T>::render() const {
 /*
  *
  */
-template<typename T> bool Display1<T>::render(const std::shared_ptr<Scene<T>> pscene) const {
+template<typename T> inline bool Display1<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
 	bool success=false;
 
 	if (pscene!=NULL){
-		for (std::shared_ptr<Displayable<T>> pdisplayable : pscene->getPDisplayables()){
-			success=success | render(pdisplayable);
+		for (std::shared_ptr<Displayable3D<T>> pdisplayable : pscene->pdisplayables){
+			success=success | renderDisplayable(pdisplayable);
 		}
 	}
 
@@ -196,7 +198,7 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Scene<T>> ps
 /*
  *
  */
-template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<T>> pdisplayable) const {
+template<typename T> inline bool Display1<T>::renderDisplayable(const std::shared_ptr<Displayable3D<T>> pdisplayable) const {
 	bool success=true;
 
 	if (pdisplayable!=NULL) {
@@ -207,7 +209,7 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<
 		std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints=pdisplayable->getPPoints();
 		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			//printf("There is at least one Point to be displayed.");
-			success=success & render(ppoint);
+			success=success & renderPoint(ppoint);
 		}
 
 		// For the lines
@@ -219,7 +221,7 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Displayable<
 	return success;
 }
 
-template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> ppoint) const {
+template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<Point3D<T>> ppoint) const {
 	bool success=false;
 	//printf("Rendering point\n");
 	if (this->ppoint!=NULL){
@@ -256,134 +258,42 @@ template<typename T> bool Display1<T>::render(const std::shared_ptr<Point3D<T>> 
 	return success;
 }
 
-/*template<typename T> bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
+template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
 	bool success=false;
-
-	//if (this->ppoint!=NULL){
+	//printf("Rendering point\n");
+	for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
-		//printf("\nRendering 4\n");
-		//ppoint->print(true);
-		//ppoint->print(true);
-		//d_point.print(true);
-		//SDL_Renderer* prenderer=pdisplay->getPRenderer();
-		//SDL_Window* pwindow=pdisplay->getPWindow();
 
 		if (pwindow!=NULL && prenderer!=NULL && pdraw_color!=NULL){
-			SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
-
-			//SDL_RenderClear(m_prenderer); // Fill the canvas with the background color
+			changeRenderDrawColor(prenderer, pdraw_color);
+			//SDL_SetRenderDrawColor(prenderer.get(), pdraw_color->r, pdraw_color->g, pdraw_color->b, pdraw_color->a); // Chooses the draw color.
 
 			// Get the dimensions of the window
 			int sizex(0);
 			int sizey(0);
 			SDL_GetWindowSize(pwindow.get(), &sizex, &sizey);
-			SN<T> centerx={(M)(sizex/2),(E)0};
-			SN<T> centery={(M)(sizey/2),(E)0};
+			T centerx=(T)(sizex/2);
+			T centery=(T)(sizey/2);
 
 			if (prenderer!=NULL){
 				switch (display){
 					case 1://(x,y) plane
 						//printf("\nx=%i\n", (int)(d_point.x*(M)scale + centerx).to_m_type());
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)scale + centerx).to_m_type(), (int)(d_point.y*(M)scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.y*scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.y*(M)scale + centerx).to_m_type(), (int)(d_point.z*(M)scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.y*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 						break;
 					case 3://(x,z) plane
-						SDL_RenderDrawPoint(prenderer.get(), (int)(d_point.x*(M)scale + centerx).to_m_type(), (int)(d_point.z*(M)scale + centery).to_m_type());
+						drawPointRenderer(prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
 						break;
 				}
 			}
 			success=true;
 		}
-	//}
-	return success;
-}*/
-
-
-
-
-
-template<typename T> std::string Display1<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
-	std::string mes=(spread)?"\n":"";
-
-	mes+="DISPLAY1\n";
-
-	return mes;
-}
-
-template<typename T> void Display1<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {// :)
-	printTabs(indent);
-	std::cout << this->to_string(spread, full_info, indent);
-}
-
-
-// Functions
-
-
-//template<typename T> bool render(const Display1<T>* pdisplay, const Point3D<T>* ppoint);
-//template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt);
-//template<typename T> void renderPoints(const Display1* pdisplay, std::unordered_set<Point3D<T>*> ppoints);//:)
-//template<typename T> void renderPoint(const Display1* pdisplay, const Point3D<T>* ppoint);//:)
-//void renderLines(const Display1* pdisplay, std::unordered_set<Line3D*> plines);//:)
-//void renderLine(const Display1* pdisplay, Line3D* pline);//:)
-
-
-
-/*
- *
- */
-/*template<typename T, typename M, typename E> bool render(const Display1<T>* pdisplay, const T* pt) {
-	bool success=false;
-	if (pt!=NULL) {
-		//printf("pdisplayable1\n");
-		//pdisplayable->getX().print(true);
-		//pdisplayable->getY().print(true);
-		//pdisplayable->getZ().print(true);
-		Point3D<T> p{pt->getX(), pt->getY(), pt->getZ()};
-		render(pdisplay, &p);
 	}
 	return success;
-}*/
-
-
-/*void renderPoints(std::unordered_set<Point3D<float, char>*> ppoints) const {//:)
-	for (Point3D<float, char>* ppoint : ppoints){
-		this->renderPoint(ppoint);
-	}
 }
-
-void Display1::renderPoint(Point3D<float, char>* ppoint) const {//:)
-	Point3D<float, char> d_point=(*ppoint)-(*ppoint);
-	//ppoint->print(true);
-	//ppoint->print(true);
-	//d_point.print(true);
-
-	SDL_SetRenderDrawColor(m_prenderer, m_pdraw_color->r, m_pdraw_color->g, m_pdraw_color->b, m_pdraw_color->a); // Chooses the background color.
-	//SDL_RenderClear(m_prenderer); // Fill the canvas with the background color
-
-	// Get the dimensions of the window
-	int sizex(0);
-	int sizey(0);
-	SDL_GetWindowSize(m_pwindow, &sizex, &sizey);
-	SN<float, char> centerx={(float)sizex/2, 0};
-	SN<float, char> centery={(float)sizey/2, 0};
-
-	if (m_prenderer!=NULL){
-		switch (display){
-			case 1://(x,y) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.y*scale + centery).to_m_type());
-				break;
-			case 2://(y,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.y*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
-				break;
-			case 3://(x,z) plane
-				SDL_RenderDrawPoint(m_prenderer, (int)(d_point.x*scale + centerx).to_m_type(), (int)(d_point.z*scale + centery).to_m_type());
-				break;
-		}
-	}
-
-}*/
 
 
 

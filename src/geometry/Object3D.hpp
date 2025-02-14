@@ -25,16 +25,16 @@ public:
 };
 
 
-template<typename T> Object3D<T>::Object3D() {
+template<typename T> inline Object3D<T>::Object3D() {
 	// TODO Auto-generated constructor stub
 
 }
 
-template<typename T> Object3D<T>::~Object3D() {
+template<typename T> inline Object3D<T>::~Object3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> Object3D<T>::Object3D(const Object3D<T>& object) {
+template<typename T> inline Object3D<T>::Object3D(const Object3D<T>& object) {
 	// TODO Auto-generated constructor stub
 
 }

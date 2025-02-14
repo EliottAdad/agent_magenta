@@ -34,15 +34,15 @@ template<typename T> class BezierCurve3D {
 
 
 
-template<typename T> BezierCurve3D<T>::BezierCurve3D() {
+template<typename T> inline BezierCurve3D<T>::BezierCurve3D() {
 	;
 }
 
-template<typename T> BezierCurve3D<T>::BezierCurve3D(const BezierCurve3D<T>& bezier_curve) {
+template<typename T> inline BezierCurve3D<T>::BezierCurve3D(const BezierCurve3D<T>& bezier_curve) {
 	;
 }
 
-template<typename T> BezierCurve3D<T>::~BezierCurve3D() {
+template<typename T> inline BezierCurve3D<T>::~BezierCurve3D() {
 	/*int szppoints=m_ppoints.size();
 	for (int i(0) ; i<szppoints ; i++)
 	{

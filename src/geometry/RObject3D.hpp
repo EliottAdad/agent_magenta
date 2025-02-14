@@ -47,14 +47,14 @@ public:
 	//void operator*=(double k);//:)
 };
 
-template<typename T> bool operator==(const RObject3D<T>& robject1, const RObject3D<T>& robject2);//:)
+template<typename T> inline bool operator==(const RObject3D<T>& robject1, const RObject3D<T>& robject2);//:)
 
-template<typename T> bool testCollide(const RObject3D<T>& robject1, const RObject3D<T>& robject2);//:)
+template<typename T> inline bool testCollide(const RObject3D<T>& robject1, const RObject3D<T>& robject2);//:)
 
 //void print(RObject2D* probject, unsigned int indent=0);//:)
 
 
-template<typename T> RObject3D<T>::RObject2D(){
+template<typename T> inline RObject3D<T>::RObject2D(){
 	//printf("ROBJECT: CONSTRUCTOR START\n");
 	m_name="robject";
 	m_mass={1, 1};
@@ -86,7 +86,7 @@ template<typename T> RObject3D<T>::RObject2D(){
 /**
  * Calls first the Object2D CONSTRUCTOR / WHY!!!
  */
-template<typename T> RObject3D<T>::RObject3D(std::string name, SDL_Color* pcolor) {
+template<typename T> inline RObject3D<T>::RObject3D(std::string name, SDL_Color* pcolor) {
 	//printf("ROBJECT: CONSTRUCTOR START\n");
 	m_name=name;
 	m_mass={1, 1};
@@ -117,7 +117,7 @@ template<typename T> RObject3D<T>::RObject3D(std::string name, SDL_Color* pcolor
 	//printf("ROBJECT: CONSTRUCTOR END\n");
 }
 
-template<typename T> RObject3D<T>::RObject3D(const RObject3D& robject) {
+template<typename T> inline RObject3D<T>::RObject3D(const RObject3D& robject) {
 	//printf("ROBJECT COPY_CONSTRUCTOR START\n");
 	m_name=probject->getName();
 	m_mass=probject->getMass();
@@ -149,7 +149,7 @@ template<typename T> RObject3D<T>::RObject3D(const RObject3D& robject) {
 /**
  * Calls first the Object2D DESTRUCTOR
  */
-template<typename T> RObject3D<T>::~RObject3D() {
+template<typename T> inline RObject3D<T>::~RObject3D() {
 	//printf("ROBJECT: DESTRUCTOR START\n");
 	m_pcolor=NULL;
 	/* We delete the properties.*/
@@ -174,7 +174,7 @@ template<typename T> RObject3D<T>::~RObject3D() {
 
 
 
-template<typename T> void RObject3D<T>::move(long double dt) {
+template<typename T> inline void RObject3D<T>::move(long double dt) {
 	if (m_fmove)
 	{
 		Point2D dp=m_plin_acceleration->getEnd() * (1/2) * pow(dt, 2) + m_plin_velocity->getEnd() * dt;
@@ -187,7 +187,7 @@ template<typename T> void RObject3D<T>::move(long double dt) {
 	////printf("C3\n");
 }
 
-template<typename T> void RObject3D<T>::spin(long double dt) {
+template<typename T> inline void RObject3D<T>::spin(long double dt) {
 	//long double angle_plus=(1/2) * m_rot_acceleration * pow(dt, 2) + m_rot_velocity * dt;
 	//m_pshape->rotate(angle_plus/*, m_rot_center*/);
 }
@@ -232,7 +232,7 @@ void RigidObject2D::delEdges()
 
 
 
-template<typename T> void RObject3D<T>::operator=(const RObject3D<T>& robject) {
+template<typename T> inline void RObject3D<T>::operator=(const RObject3D<T>& robject) {
 	//printf("ROBJECT op= 1\n");
 	m_name=robject.getName();
 	m_mass=robject.getMass();
@@ -276,7 +276,7 @@ template<typename T> void RObject3D<T>::operator=(const RObject3D<T>& robject) {
 	return test;
 }*/
 
-template<typename T> bool operator==(const RObject3D<T>& robject1, const RObject3D<T>& robject2) {
+template<typename T> inline bool operator==(const RObject3D<T>& robject1, const RObject3D<T>& robject2) {
 	bool test(false);
 	return test;
 }

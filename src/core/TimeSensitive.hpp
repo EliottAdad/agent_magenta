@@ -12,15 +12,16 @@
 #include <string>
 
 #include "../utilities/functions.hpp"
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 /*
  * #################
  *  TimeSensitive :)
  * #################
- * Squeleton for time management.
+ * Abstract class
+ * Skeleton for time management.
  */
-class TimeSensitive : public Printable {
+class TimeSensitive {
 protected:
 	float m_dt;
 
@@ -29,13 +30,43 @@ public:
 	virtual ~TimeSensitive();
 	TimeSensitive(const TimeSensitive& time_sensitive);
 
-	virtual float getT() const;
-	virtual void setT(const float& dt);			//Used to prepare the logic behind the scenes
-	virtual void apply();						//Can be used to execute an action (Ex: For the grav rule, move...)
-
-	// From Printable
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
+	virtual float getT() const = 0;
+	virtual void setT(const float& dt) = 0;			//Used to prepare the logic behind the scenes
+	virtual void apply() = 0;						//Can be used to execute an action (Ex: For the grav rule, move...)
 };
+
+
+
+
+
+inline TimeSensitive::TimeSensitive() {
+	m_dt=0;
+}
+
+inline TimeSensitive::~TimeSensitive() {
+	;
+}
+
+inline TimeSensitive::TimeSensitive(const TimeSensitive& time_sensitive) {
+	m_dt=time_sensitive.getT();
+}
+
+
+
+
+inline float TimeSensitive::getT() const {
+	return m_dt;
+}
+
+inline void TimeSensitive::setT(const float& dt) {
+	m_dt=dt;
+}
+
+inline void TimeSensitive::apply() {//Useless
+	m_dt=0;
+}
+
+
+
 
 #endif /* TIMESENSITIVE_HPP_ */

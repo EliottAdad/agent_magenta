@@ -25,16 +25,16 @@ public:
 };
 
 
-template<typename T> Cube<T>::Cube() {
+template<typename T> inline Cube<T>::Cube() {
 	// TODO Auto-generated constructor stub
 
 }
 
-template<typename T> Cube<T>::~Cube() {
+template<typename T> inline Cube<T>::~Cube() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> Cube<T>::Cube(const Cube<T>& other) {
+template<typename T> inline Cube<T>::Cube(const Cube<T>& other) {
 	// TODO Auto-generated constructor stub
 
 }

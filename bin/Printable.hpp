@@ -1,11 +1,30 @@
 /*
- * Printable.cpp
+ * Printable.hpp
  *
  *  Created on: 24 août 2024
  *      Author: esn
  */
 
-#include "Printable.hpp"
+#ifndef PRINTABLE_HPP_
+#define PRINTABLE_HPP_
+
+#include <iostream>
+#include <string>
+#include <sstream>
+
+#include "functions.hpp"
+
+class Printable {
+public:
+	Printable();
+	virtual ~Printable();
+
+	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const = 0;// :)
+	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const = 0;// :)
+};
+
+
+
 
 Printable::Printable() {
 	// TODO Auto-generated constructor stub
@@ -14,11 +33,6 @@ Printable::Printable() {
 
 Printable::~Printable() {
 	// TODO Auto-generated destructor stub
-}
-
-Printable::Printable(const Printable &other) {
-	// TODO Auto-generated constructor stub
-
 }
 
 
@@ -44,3 +58,6 @@ void Printable::print(const bool& spread, const bool& full_info, const unsigned 
 	std::cout << this->to_string(spread, full_info, indent);
 }
 
+
+
+#endif /* PRINTABLE_HPP_ */

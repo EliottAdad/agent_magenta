@@ -1,13 +1,13 @@
 /*
- * Game.hpp
+ * Game3D.hpp
  *
  *  Created on: 7 nov. 2024
  *      Author: esn
  */
 
-#ifndef GAME_HPP_
+#ifndef GAME3D_HPP_
 
-#define GAME_HPP_
+#define GAME3D_HPP_
 
 #include <memory>
 #include <unordered_set>
@@ -15,49 +15,45 @@
 
 #include "../core/Physics.hpp"
 #include "../core/Point3D.hpp"
-#include "../core/Scene.hpp"
+#include "../core/Scene3D.hpp"
 #include "../display/Display1.hpp"
-#include "Printable.hpp"
+//#include "Printable.hpp"
 #include "functions_display.hpp"
 
 /*
- * ###########
- *  Game<T> :)
- * ###########
+ * #############
+ *  Game3D<T> :)
+ * #############
  * Contains a scene, a physics management system, and a display.
  */
-template<typename T> class Game : public Printable {
+template<typename T> class Game3D {
 public:
 	bool fpause;
 
 	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
 	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
-	std::shared_ptr<Scene<T>> pscene;					// A scene
+	std::shared_ptr<Scene3D<T>> pscene;					// A scene
 	std::shared_ptr<Display1<T>> pdisplay;
 
-	Game();
-	virtual ~Game();
-	//Game(const Game& game);
+	Game3D();
+	virtual ~Game3D();
+	//Game3D(const Game3D& game);
 
 	bool run(const unsigned int& steps=1);	// Runs a certain number of frames
 	//bool iterate(const float& dt);	// Renders once (à faire)
 	bool render() const;					// Draws the content of the game on the screen
-
-	// From Printable
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
 
 
-template<typename T> Game<T>::Game() {
+template<typename T> inline Game3D<T>::Game3D() {
 	pwindow=createWindow();
 	if (pwindow!=NULL){
 		prenderer=createRenderer(pwindow);
 	}
 
 	pphysics=std::make_shared<Physics>();
-	pscene=std::make_shared<Scene<SN<float, char>>>();
+	pscene=std::make_shared<Scene3D<SN<float, char>>>();
 	pdisplay=std::make_shared<Display1<T>>(pwindow, prenderer);
 	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
@@ -66,7 +62,7 @@ template<typename T> Game<T>::Game() {
 	//render();
 }
 
-template<typename T> Game<T>::~Game() {
+template<typename T> inline Game3D<T>::~Game3D() {
 	;
 }
 
@@ -79,14 +75,14 @@ template<typename T> Game<T>::~Game() {
 /**
  * Run the game for a certain number of frames
  */
-template<typename T> bool Game<T>::run(const unsigned int& steps){
+template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	SDL_Event event;
 	bool quit=false;
 	// The parameters to the function are put after the comma
 	std::thread thread_physics(&Physics::run, pphysics, 0);
 	// The parameters to the function are put after the comma
 	std::thread thread_display(&Display1<T>::run, pdisplay, 0);
-	while(!quit){
+	/*while(!quit){
 		//reads inputs.
 		switch (event.type){
 			case SDL_QUIT:
@@ -104,7 +100,7 @@ template<typename T> bool Game<T>::run(const unsigned int& steps){
 		if (quit){
 			std::terminate();
 		}
-	}
+	}*/
 	thread_physics.join();
 	thread_display.join();
 
@@ -137,7 +133,7 @@ template<typename T> bool Game<T>::run(const unsigned int& steps){
 	return fpause;
 }
 
-template<typename T> bool Game<T>::render() const {
+template<typename T> inline bool Game3D<T>::render() const {
 	if (pdisplay!=NULL){
 		pdisplay->render();
 	}
@@ -146,31 +142,5 @@ template<typename T> bool Game<T>::render() const {
 }
 
 
-template<typename T> std::string Game<T>::to_string(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	std::string mes=((spread)?"\n" : "");
-	mes+=to_stringTabs(indent);
 
-	mes+="GAME[";
-	std::stringstream ss;
-	ss << this;
-	mes+=ss.str();
-	mes+="]:\n";
-	mes+=to_stringTabs(indent+1);
-	//mes+="fps=" + to_string(fps);
-	mes+=("fpause=" + to_string(fpause));
-	mes+=((spread)?"\n" : "");
-
-	if (full_info){
-		//mes+=pscene->to_string(spread, full_info, indent+1);
-		//mes+=pphysics->to_string(spread, full_info, indent+1);
-	}
-
-	return mes;
-}
-
-template<typename T> void Game<T>::print(const bool& spread, const bool& full_info, const unsigned char& indent) const {
-	printTabs(indent);
-	std::cout << this->to_string(spread, full_info, indent);
-}
-
-#endif /* GAME_HPP_ */
+#endif /* GAME3D_HPP_ */

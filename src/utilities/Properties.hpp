@@ -20,4 +20,25 @@ struct Properties {
 	//Properties(const Properties& properties);
 };
 
+
+
+
+
+
+/*Properties::Properties() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Properties::~Properties() {
+	// TODO Auto-generated destructor stub
+}
+
+Properties::Properties(const Properties &other) {
+	// TODO Auto-generated constructor stub
+
+}*/
+
+
+
 #endif /* PROPERTIES_HPP_ */

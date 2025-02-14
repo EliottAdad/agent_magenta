@@ -9,7 +9,7 @@
 
 #define FACE_HPP_
 
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 /*
  * ##############
@@ -17,7 +17,7 @@
  * ##############
  * .
  */
-class Face : public Printable {
+class Face {
 public:
 	Face();
 	virtual ~Face();
@@ -25,5 +25,23 @@ public:
 
 	//void set;
 };
+
+
+
+
+inline Face::Face() {
+	// TODO Auto-generated constructor stub
+
+}
+
+inline Face::~Face() {
+	// TODO Auto-generated destructor stub
+}
+
+/*inline Face::Face(const Face &other) {
+	// TODO Auto-generated constructor stub
+
+}*/
+
 
 #endif /* FACE_HPP_ */

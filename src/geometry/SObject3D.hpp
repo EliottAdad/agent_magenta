@@ -105,7 +105,7 @@ template<typename T> class SObject3D : public Object3D<T> {
 //void print(SObject2D* psobject, unsigned int indent=0);//:)
 
 
-template<typename T> SObject3D<T>::SObject3D() {
+template<typename T> inline SObject3D<T>::SObject3D() {
 	/*m_mass=1;
 	m_charge={0, 0};
 	m_inertia_moment={1, 0};
@@ -158,7 +158,7 @@ template<typename T> SObject3D<T>::SObject3D() {
 	//printf("Hey5\n");
 }*/
 
-template<typename T> SObject3D<T>::SObject3D(const SObject3D& sobject) {
+template<typename T> inline SObject3D<T>::SObject3D(const SObject3D& sobject) {
 	/*printf("OU1\n");
 	m_name=psobject->getName();
 	printf("OU2\n");
@@ -193,7 +193,7 @@ template<typename T> SObject3D<T>::SObject3D(const SObject3D& sobject) {
 	m_fcollide=psobject->getFCollide();*/
 }
 
-template<typename T> SObject3D<T>::~SObject3D() {
+template<typename T> inline SObject3D<T>::~SObject3D() {
 	//m_pcolor=NULL;
 	/* We delete the properties.*/
 	//this->delProperties();
@@ -475,7 +475,7 @@ void Object2D::setRotVelocity(LSN rot_velocity, bool fadd)//:|
 	//this->calculateRotation(delta_t);
 }*/
 
-template<typename T> void SObject3D<T>::move(long double delta_t) {
+template<typename T> inline void SObject3D<T>::move(long double delta_t) {
 	printf("C1\n");
 	//printf("*Norm velocity: %Lgx10^%lim/s.\n", m_plin_velocity->getNorm().m, m_plin_velocity->getNorm().exp);
 	//m_lin_velocity * delta_t;

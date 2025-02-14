@@ -16,7 +16,7 @@
 #include "../core/Point3D.hpp"
 #include "Triangle3D.hpp"
 #include "Shape3D.hpp"
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 /*
  * ###########
@@ -39,20 +39,20 @@ public:
 
 };
 
-template<typename T> Mesh3D<T>::Mesh3D() {
+template<typename T> inline Mesh3D<T>::Mesh3D() {
 	;
 }
 
-template<typename T> Mesh3D<T>::~Mesh3D() {
+template<typename T> inline Mesh3D<T>::~Mesh3D() {
 	;
 }
 
-template<typename T> Mesh3D<T>::Mesh3D(const Mesh3D& mesh) {
+template<typename T> inline Mesh3D<T>::Mesh3D(const Mesh3D& mesh) {
 	;
 }
 
 
-template<typename T> void Mesh3D<T>::addTriangle(std::shared_ptr<Triangle3D<T>> ptriangle){
+template<typename T> inline void Mesh3D<T>::addTriangle(std::shared_ptr<Triangle3D<T>> ptriangle){
 	ptriangles.insert(ptriangle);
 }
 

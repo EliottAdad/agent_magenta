@@ -14,7 +14,7 @@
 #include <vector>
 //#include <SDL2/SDL.h>
 
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 #include "../utilities/functions_display.hpp"
 
 
@@ -26,7 +26,7 @@
  * ############
  * A material to apply on the objects.
  */
-class Material{
+class Material {
 public:
 	std::shared_ptr<COLOR> pcolor;
 
@@ -34,5 +34,32 @@ public:
 	Material(const Material& material);
 	~Material();
 };
+
+
+
+
+
+/**
+ * Constructor 1
+ */
+inline Material::Material(std::shared_ptr<COLOR> pcolor){
+	this->pcolor=pcolor;
+}
+
+/**
+ * Constructor 2
+ */
+inline Material::Material(const Material& material){
+	pcolor=material.pcolor;
+}
+
+/**
+ * Destructor
+ */
+inline Material::~Material(){
+	//pcolor=NULL;
+}
+
+
 
 #endif

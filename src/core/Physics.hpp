@@ -14,10 +14,9 @@
 #include <chrono>
 #include <unordered_set>
 
-//#include "TimeLoop.hpp"
-//#include "Particle3DSet.hpp"
+#include "TimeSensitive.hpp"
 #include "VectorField.hpp"
-#include "../utilities/Printable.hpp"
+//#include "../utilities/Printable.hpp"
 
 /*
  * ###########
@@ -27,10 +26,10 @@
  * Gère le temps (à la place de TimeLoop, tout transvaser)
  * Exemples of objects it can drive: System<T>, Particle3D, ...
  */
-class Physics : public Printable {
+class Physics {
 public:
-	float speed;					//Ratio between simulation_speed/real_world_speed
-	unsigned char pps;			//Physics per second
+	float speed;					// Ratio between simulation_speed/real_world_speed
+	unsigned char pps;				// Physics per second
 
 	bool fcollide;
 	bool fpause;
@@ -43,16 +42,100 @@ public:
 
 	std::unordered_set<std::shared_ptr<TimeSensitive>> get();
 	bool add(std::shared_ptr<TimeSensitive> ptime_sensitive);
-	//std::unordered_set<Moveable*> getPMoveables();
-	//bool addPMoveable(Moveable* pmoveabele);
 
-	//bool loop();
 	bool run(const unsigned int& steps=1);
 	bool iterate(const float& dt);
-
-	// From Printable
-	virtual std::string to_string(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
-	virtual void print(const bool& spread=false, const bool& full_info=false, const unsigned char& indent=0) const;// :)
 };
+
+
+
+
+
+
+
+inline Physics::Physics() {
+	pps=40;//Computations per second
+	speed=1;//Speed of the simulation
+
+	fcollide=false;
+	fpause=true;
+}
+
+inline Physics::Physics(const float& speed, const unsigned char& pps) {
+	this->pps=pps;//Computations per second
+	this->speed=speed;//Speed of the simulation
+
+	fcollide=false;
+	fpause=true;
+}
+
+inline Physics::~Physics() {
+	ptime_sensitives.clear();
+}
+
+inline Physics::Physics(const Physics& phys) {
+	pps=phys.pps;
+	speed=phys.speed;
+
+	fcollide=phys.fcollide;
+	fpause=true;
+}
+
+
+
+inline std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::get() {
+	return ptime_sensitives;
+}
+
+inline bool Physics::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
+	bool success=false;
+
+	if (ptime_sensitive!=NULL){
+		success=ptime_sensitives.insert(ptime_sensitive).second;
+		//printf("Shush\n");
+	}
+	return success;
+}
+
+
+
+
+/*
+ * If 0: infinite loop
+ */
+inline bool Physics::run(const unsigned int& steps) {
+	std::chrono::time_point t1=std::chrono::system_clock::now();
+	if (!fpause){
+		unsigned int i(0);
+		while (i<=steps){
+			std::chrono::time_point t2=std::chrono::system_clock::now();
+			std::chrono::duration dt=t2-t1;
+
+			if (dt.count()>=1/(long double)pps*1000000000.){
+				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
+				this->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
+
+				t1=t2;
+				if (steps!=0){//If steps is not null
+					i++;
+				}
+			}
+		}
+	}
+	return fpause;
+}
+
+inline bool Physics::iterate(const float& dt) {
+	for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
+		//printf("\niterate(dt:%f)\n", dt*speed);
+		ptime_sensitive->setT(dt*speed);
+		//printf("%f\n", dt*speed);
+		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
+	}
+	return fpause;
+}
+
+
+
 
 #endif /* PHYSICS_HPP_ */
