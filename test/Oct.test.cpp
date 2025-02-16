@@ -144,7 +144,6 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 
 		BOOST_CHECK(0 == poctf->getPElements().size());
 		BOOST_CHECK(1 == poctf->getNB_OCTS());
-
 	}
 
 	BOOST_AUTO_TEST_CASE (test_getPElements) { //
@@ -198,7 +197,6 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(0 == poctf->getPElements().size());//PROBLEM should't work (cannot insert 2 p at origin(exact same coords)
 		//BOOST_CHECK(1 == poct->getPElements().size());
 		BOOST_CHECK(2 == poctf->getPElements().size());//  Should work
-
 	}
 
 	BOOST_AUTO_TEST_CASE (test_remove) { //
@@ -214,8 +212,6 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(poctf->remove(ppf) == false);
 		poctf->insert(ppf);
 		BOOST_CHECK(poctf->remove(ppf) == true);
-
-
 	}
 
 

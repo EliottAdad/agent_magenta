@@ -22,6 +22,7 @@
  * ###########
  *  Mesh<T> :)
  * ###########
+ * Abstract class
  * A mesh is a set of triangles.
  */
 template<typename T> class Mesh3D : public Shape3D<T> {

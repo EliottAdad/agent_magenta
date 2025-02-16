@@ -23,7 +23,7 @@ struct FDisplay1 {
 	
 	FDisplay1() {
 		BOOST_TEST_MESSAGE("setup fixture");
-		init();
+		initSDL();
 		pd=new Display1<SN<float, char>>();
 	}
 	~FDisplay1() {
@@ -44,7 +44,7 @@ BOOST_FIXTURE_TEST_SUITE (Display1_test, FDisplay1) // The name of this serie is
 		pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 18});
 
 		// Init SDL
-		init();
+		initSDL();
 
 
 		pd->scale=0.15;

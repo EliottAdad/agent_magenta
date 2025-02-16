@@ -31,6 +31,7 @@ template<typename T> class Displayable3D : public Mobile3D<T> {
 public:
 	std::shared_ptr<COLOR> pcolor;					// Drawing color
 	//std::shared_ptr<Shape3D<T>> pshape;			// Pointer to the shape to be drawn(NULL if none)
+	bool finvisible;
 
 	Displayable3D();
 	virtual ~Displayable3D();
@@ -43,17 +44,19 @@ public:
 };
 
 
-template<typename T> inline Displayable3D<T>::Displayable3D() {
+template<typename T> inline Displayable3D<T>::Displayable3D() : Mobile3D<T>() {
 	pcolor=NULL;//std::make_shared<SDL_Color>(255, 255, 255, 255);		// Will be interprated as white by the cameras and displays
 	//m_pmesh=NULL;			//
+	finvisible=false;
 }
 
 template<typename T> inline Displayable3D<T>::~Displayable3D() {
 	;
 }
 
-template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D &other) {
-	pcolor=other.pcolor;
+template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D& displayable) : Mobile3D<T>(displayable) {
+	pcolor=displayable.pcolor;
+	finvisible=displayable.finvisible;
 }
 
 
@@ -61,7 +64,6 @@ template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D 
 
 template<typename T> inline std::unordered_set<std::shared_ptr<Point3D<T>>> Displayable3D<T>::getPPoints() const {
 	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
-	// return pos
 	return ppoints;
 }
 

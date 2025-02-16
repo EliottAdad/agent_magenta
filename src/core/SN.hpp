@@ -31,8 +31,8 @@
  * 						<double, int>
  */
 template<typename M, typename E> struct SN {
-	M m;						// Mantissa
-	E e;						// Exponent
+	M m=0;						// Mantissa
+	E e=0;						// Exponent
 
 	SN();
 	SN(M m, E e);

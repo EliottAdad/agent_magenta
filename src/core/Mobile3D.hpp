@@ -14,6 +14,7 @@
 #include "CoordinateSystem3D.hpp"
 #include "Point3D.hpp"
 #include "TimeSensitive.hpp"
+#include "../geometry/Shape3D.hpp"
 
 /**
  * ###############
@@ -24,9 +25,13 @@
  */
 template<typename T> class Mobile3D : public TimeSensitive, public Point3D<T> {
 public:
+	bool fmove;
 	std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	std::shared_ptr<Vector3D<T>> ps;											// Linear speed
 	std::shared_ptr<Vector3D<T>> prs;											// Angular speed
+	
+	bool fcollide;																// Flag true if collide using the collision box
+	std::shared_ptr<Shape3D<T>> phit_box;											// Pointer to the hibox (used for  
 	
 	Mobile3D();
 	virtual ~Mobile3D();
@@ -38,18 +43,33 @@ public:
 	virtual Point3D<T> getPosition() const = 0;
 };
 
-template<typename T> inline Mobile3D<T>::Mobile3D() {
-	pcoord_system=NULL;
-	ps=NULL;
+
+
+
+
+template<typename T> inline Mobile3D<T>::Mobile3D() : TimeSensitive(), Point3D<T>() {
+	fmove=true;
+	pcoord_system=std::make_shared<CoordinateSystem3D<T>>();
+	ps=std::make_shared<Vector3D<T>>();
+	ps->setNorm((T)0);
+	prs=std::make_shared<Vector3D<T>>();
+	prs->setNorm((T)0);
+	
+	fcollide=false;
+	phit_box=NULL;
 }
 
 template<typename T> inline Mobile3D<T>::~Mobile3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) {
+template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : TimeSensitive(mobile), Point3D<T>(mobile) {
+	fmove=mobile.fmove;
 	pcoord_system=mobile.pcoord_system;
 	ps=mobile.ps;
+	
+	fcollide=false;
+	phit_box=NULL;
 }
 
 

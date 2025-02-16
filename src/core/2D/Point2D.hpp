@@ -24,8 +24,8 @@
  * ##############
  */
 template<typename T> struct Point2D {
-	T x;
-	T y;
+	T x=(T)0;
+	T y=(T)0;
 
 	Point2D();
 	Point2D(const T& x, const T& y);
@@ -73,8 +73,8 @@ template<typename T> Point2D<T> abs(const Point2D<T>& p);	// :)
 
 
 template<typename T> inline Point2D<T>::Point2D() {
-	this->x=T{0,0};
-	this->y=T{0,0};
+	this->x=(T)0;
+	this->y=(T)0;
 }
 
 template<typename T> inline Point2D<T>::Point2D(const T& x, const T& y, const T& z) {

@@ -15,6 +15,7 @@
  *  Scene3D<T> :)
  * ##############
  * Scene3D contains Displayables
+ * Containent une liste de tt ce qui va etre display
  */
 template<typename T> class Scene3D {
 public:

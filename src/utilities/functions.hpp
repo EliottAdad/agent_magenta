@@ -22,7 +22,6 @@
  * Functions
  */
 
-
 std::string to_stringTabs(const unsigned char& nb);
 void printTabs(const unsigned char& nb);
 
@@ -40,6 +39,7 @@ std::vector<SDL_Point> pixelizeCircle(SDL_Point center, int radius);
 /*
  * Functions
  */
+
 
 /**
  * Returns the chained tabs as a string.

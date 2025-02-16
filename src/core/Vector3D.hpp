@@ -29,18 +29,18 @@ public:
 	Vector3D(std::shared_ptr<Point3D<T>> pp1, std::shared_ptr<Point3D<T>> pp2);
 	Vector3D(std::shared_ptr<Point3D<T>> pp1, const Point3D<T>& p2);
 	Vector3D(const Point3D<T>& p1, std::shared_ptr<Point3D<T>> pp2);
-	Vector3D(const Vector3D<T>& v);
 	virtual ~Vector3D();//:)
+	Vector3D(const Vector3D<T>& v);
 
 	T getNorm() const;// :)
 	void setNorm(const T& norm);// :)
 	//Point3D<float, char> getOrigin() const;	//:)
-	//Point3D<float, char>* getPOrigin() const;	//:)
+	//std::shared_ptr<Point3D<T>> getPOrigin() const {return Line3D<T>::getPP1();};	//:)
 	//void setOrigin(Point3D<float, char>& origin, const bool& delp=true);	//:)
 	//void setPOrigin(Point3D<float, char>* porigin, const bool& delp=false);	//:)
 	//void addOrigin(const Point3D<float, char>& dp);	//:)
 	//Point3D<float, char> getEnd() const;	//:)
-	//Point3D<float, char>* getPEnd() const;	//:)
+	//std::shared_ptr<Point3D<T>> getPEnd() const {return Line3D<T>::getPP2();};	//:)
 	//void setEnd(Point3D<float, char>& end, const bool& delp=true);	//:)
 	//void setPEnd(Point3D<float, char>* pend, const bool& delp=false);	//:)
 	//void addEnd(const Point3D<float, char>& dp);	//:)
@@ -82,7 +82,7 @@ template<typename T> Vector3D<T> operator^(const Vector3D<T>& v1, const Vector3D
  * Constructor 1
  * By default constructor
  */
-template<typename T> inline Vector3D<T>::Vector3D() {
+template<typename T> inline Vector3D<T>::Vector3D() : Line3D<T>() {
 	this->pp1=NULL;//std::make_shared<Point3D<T>>();
 	this->pp2=std::make_shared<Point3D<T>>((T)1,(T)1,(T)1);
 }
@@ -93,7 +93,7 @@ template<typename T> inline Vector3D<T>::Vector3D() {
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p2) {
+template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p2) : Line3D<T>() {
 	this->pp1=NULL;//std::make_shared<Point3D<T>>();
 	this->pp2=std::make_shared<Point3D<T>>(p2);
 }
@@ -104,7 +104,7 @@ template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p2) {
  * @param p2 Second point
  * @param[in/out] p1 and p2 are copied
  */
-template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p1, const Point3D<T>& p2) {
+template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p1, const Point3D<T>& p2) : Line3D<T>() {
 	this->pp1=std::make_shared<Point3D<T>>(p1);
 	this->pp2=std::make_shared<Point3D<T>>(p2);
 }
@@ -115,7 +115,7 @@ template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p1, const Po
  * @param p2 Second point
  * @param[in/out] Modifications to *pp1 or *pp2 outside of class definition will be passed onto p1 and p2
  */
-template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp1, std::shared_ptr<Point3D<T>> pp2) {
+template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp1, std::shared_ptr<Point3D<T>> pp2) : Line3D<T>() {
 	this->pp1=pp1;
 	this->pp2=pp2;
 }
@@ -127,7 +127,7 @@ template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp
  * (modifications outside of class definition will be passed onto p1)
  * @param p2 Second point
  */
-template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp1, const Point3D<T>& p2) {
+template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp1, const Point3D<T>& p2) : Line3D<T>() {
 	this->pp1=pp1;
 	this->pp2=std::make_shared<Point3D<T>>(p2);
 }
@@ -139,22 +139,22 @@ template<typename T> inline Vector3D<T>::Vector3D(std::shared_ptr<Point3D<T>> pp
  * @param pp2 Pointer to the second point
  * (modifications outside of class definition will be passed onto p2)
  */
-template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p1, std::shared_ptr<Point3D<T>> pp2) {
+template<typename T> inline Vector3D<T>::Vector3D(const Point3D<T>& p1, std::shared_ptr<Point3D<T>> pp2) : Line3D<T>() {
 	this->pp1=std::make_shared<Point3D<T>>(p1);
 	this->pp2=pp2;
+}
+
+template<typename T> inline Vector3D<T>::~Vector3D() {
+	;
 }
 
 /*
  * Constructor 6
  * Copy constructor
  */
-template<typename T> inline Vector3D<T>::Vector3D(const Vector3D<T>& v) {
+template<typename T> inline Vector3D<T>::Vector3D(const Vector3D<T>& v) : Line3D<T>() {
 	this->pp1=v.pp1;
 	this->pp2=v.pp2;
-}
-
-template<typename T> inline Vector3D<T>::~Vector3D() {
-	;
 }
 
 

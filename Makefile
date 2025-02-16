@@ -54,8 +54,8 @@ main_game.o: src/main.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
 #######################Test
-# Linking main_test
-main_test: main.test.o Game3D.test.o Display1.test.o Oct.test.o SN.test.o Point3D.test.o
+# Linking main_test Game3D.test.o Display1.test.o Oct.test.o SN.test.o Point3D.test.o
+main_test: main.test.o
 	$(MAKE) create_build_dir
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 

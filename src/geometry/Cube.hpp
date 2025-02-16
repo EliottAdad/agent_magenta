@@ -9,7 +9,8 @@
 
 #define CUBE_HPP_
 
-#include "Polyhedron.hpp"
+#include "Mesh3D.hpp"
+//#include "Polyhedron.hpp"
 
 /*
  * ###########
@@ -17,7 +18,7 @@
  * ###########
  * A cube.
  */
-template<typename T> class Cube : public Polyhedron<T> {
+template<typename T> class Cube : public Mesh3D<T> {
 public:
 	Cube();
 	virtual ~Cube();

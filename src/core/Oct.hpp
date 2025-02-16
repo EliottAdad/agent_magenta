@@ -47,7 +47,7 @@ protected:
 
 	std::shared_ptr<U> m_pU;					// The content of this square (NULL if nothing).
 
-	std::shared_ptr<Oct<U, T>> m_ptrees[8];					// Contains the trees.
+	std::unique_ptr<Oct<U, T>> m_ptrees[8];					// Contains the trees.
 
 	static unsigned int m_NB_OCTS;				// Keeps track of the number of Octs created.
 

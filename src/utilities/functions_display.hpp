@@ -17,7 +17,8 @@
 #define COLOR SDL_Color
 
 
-/*int init();// Init SDL
+
+int initSDL();// Init SDL
 
 std::shared_ptr<WINDOW> createWindow();
 std::shared_ptr<RENDERER> createRenderer(std::shared_ptr<WINDOW> pwindow);
@@ -32,7 +33,7 @@ void fillRendererWithColor(std::shared_ptr<RENDERER> prenderer, std::shared_ptr<
 void drawPointRenderer(std::shared_ptr<RENDERER> prenderer, int x, int y);
 
 void displayChangesRenderer(std::shared_ptr<RENDERER> prenderer);
-*/
+
 
 
 
@@ -40,13 +41,22 @@ void displayChangesRenderer(std::shared_ptr<RENDERER> prenderer);
 
 //####################Definitions
 
-
-inline int init(){
+/**
+ * Init SDL
+ */
+inline int initSDL(){
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     return 0;
+}
+
+/**
+ * Quit SDL
+ */
+inline void quitSDL(){
+    SDL_Quit();
 }
 
 inline std::shared_ptr<WINDOW> createWindow() {

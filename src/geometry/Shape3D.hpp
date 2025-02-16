@@ -13,14 +13,15 @@
 
 #include "../core/Line3D.hpp"
 #include "../core/Point3D.hpp"
-#include "../display/Displayable.hpp"
+#include "../display/Displayable3D.hpp"
 
 /*
  * #################
  *  Shape3D<T> :)
  * #################
+ * Abstract class
  */
-template<typename T> class Shape3D : public Point3D<T>, public Displayable<T> {
+template<typename T> class Shape3D : public Displayable3D<T> {
 public:
 	Shape3D();
 	virtual ~Shape3D();
@@ -47,7 +48,7 @@ template<typename T> inline Shape3D<T>::~Shape3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> inline Shape3D<T>::Shape3D(const Shape3D &other) {
+template<typename T> inline Shape3D<T>::Shape3D(const Shape3D& shape) {
 	// TODO Auto-generated constructor stub
 
 }

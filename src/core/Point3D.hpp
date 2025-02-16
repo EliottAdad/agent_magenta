@@ -24,9 +24,9 @@
  * ##############
  */
 template<typename T> struct Point3D {
-	T x;
-	T y;
-	T z;
+	T x=(T)0;
+	T y=(T)0;
+	T z=(T)0;
 
 	Point3D();
 	Point3D(const T& x, const T& y, const T& z);

@@ -105,6 +105,7 @@ inline bool Physics::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
  */
 inline bool Physics::run(const unsigned int& steps) {
 	std::chrono::time_point t1=std::chrono::system_clock::now();
+	
 	if (!fpause){
 		unsigned int i(0);
 		while (i<=steps){
@@ -112,9 +113,9 @@ inline bool Physics::run(const unsigned int& steps) {
 			std::chrono::duration dt=t2-t1;
 
 			if (dt.count()>=1/(long double)pps*1000000000.){
-				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
 				this->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
-
+				
+				printf("PPS %f\n", 1/(dt.count()/1000000000.));
 				t1=t2;
 				if (steps!=0){//If steps is not null
 					i++;
@@ -127,9 +128,8 @@ inline bool Physics::run(const unsigned int& steps) {
 
 inline bool Physics::iterate(const float& dt) {
 	for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
-		//printf("\niterate(dt:%f)\n", dt*speed);
 		ptime_sensitive->setT(dt*speed);
-		//printf("%f\n", dt*speed);
+		
 		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
 	}
 	return fpause;

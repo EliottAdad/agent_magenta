@@ -40,7 +40,7 @@ public:
 
 
 inline TimeSensitive::TimeSensitive() {
-	m_dt=0;
+	this->m_dt=0;
 }
 
 inline TimeSensitive::~TimeSensitive() {
@@ -48,22 +48,22 @@ inline TimeSensitive::~TimeSensitive() {
 }
 
 inline TimeSensitive::TimeSensitive(const TimeSensitive& time_sensitive) {
-	m_dt=time_sensitive.getT();
+	this->m_dt=time_sensitive.getT();
 }
 
 
 
 
 inline float TimeSensitive::getT() const {
-	return m_dt;
+	return this->m_dt;
 }
 
 inline void TimeSensitive::setT(const float& dt) {
-	m_dt=dt;
+	this->m_dt=dt;
 }
 
 inline void TimeSensitive::apply() {//Useless
-	m_dt=0;
+	this->m_dt=0;
 }
 
 

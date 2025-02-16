@@ -17,6 +17,7 @@
 #include "../core/Point3D.hpp"
 #include "../core/Scene3D.hpp"
 #include "../display/Display1.hpp"
+//#include "../display/Display2.hpp"
 //#include "Printable.hpp"
 #include "functions_display.hpp"
 
@@ -44,6 +45,9 @@ public:
 	//bool iterate(const float& dt);	// Renders once (à faire)
 	bool render() const;					// Draws the content of the game on the screen
 };
+
+
+
 
 
 template<typename T> inline Game3D<T>::Game3D() {
@@ -79,8 +83,7 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	SDL_Event event;
 	bool quit=false;
 	// The parameters to the function are put after the comma
-	std::thread thread_physics(&Physics::run, pphysics, 0);
-	// The parameters to the function are put after the comma
+	//std::thread thread_physics(&Physics::run, pphysics, 0);
 	std::thread thread_display(&Display1<T>::run, pdisplay, 0);
 	/*while(!quit){
 		//reads inputs.
@@ -101,7 +104,7 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 			std::terminate();
 		}
 	}*/
-	thread_physics.join();
+	//thread_physics.join();
 	thread_display.join();
 
 	/*
