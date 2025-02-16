@@ -19,7 +19,7 @@
 #include "../display/Display1.hpp"
 //#include "../display/Display2.hpp"
 //#include "Printable.hpp"
-#include "functions_display.hpp"
+#include "../display/functions_display.hpp"
 
 /*
  * #############

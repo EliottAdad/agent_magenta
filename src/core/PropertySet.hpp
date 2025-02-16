@@ -10,6 +10,7 @@
 #define PROPERTYSET_HPP_
 
 #include <memory>
+#include <string>
 #include <map>
 
 #include "SN.hpp"
@@ -33,18 +34,19 @@ template<typename U> struct PropertySet {
 public:
 	std::shared_ptr<U> ptarget;					// Object to which are attached the properties
 	//std::shared_ptr<std::map<std::string, std::shared_ptr<P>>> pproperties;		// Properties
-	PROPERTYSETSN psn;
-	PROPERTYSETF pf;
-	PROPERTYSETD pd;
+	PROPERTYSETSN properties_sn;
+	//std::map<std::string, std::shared_ptr<SN<float, char>>> psn;
+	PROPERTYSETF properties_f;
+	PROPERTYSETD properties_d;
 	
 	PropertySet();
 	PropertySet(std::shared_ptr<U> ptarget);
 	virtual ~PropertySet();
 	PropertySet(const PropertySet<U>& property_set);
 
-	void add(std::string name, std::shared_ptr<SN<float, char>> pnb);
-	void add(std::string name, std::shared_ptr<float> pf);
-	void add(std::string name, std::shared_ptr<int> pd);
+	void add(const std::string& name, std::shared_ptr<SN<float, char>> pnb);
+	void add(const std::string& name, std::shared_ptr<float> pf);
+	void add(const std::string& name, std::shared_ptr<int> pd);
 	//virtual void remove();
 	
 	void operator=(const PropertySet& properties);
@@ -74,31 +76,31 @@ template<typename U> PropertySet<U>::PropertySet(const PropertySet<U>& property_
 /**
  * Inserts a SN
  */
-template<typename U> void PropertySet<U>::add(std::string name, std::shared_ptr<SN<float, char>> pnb) {
-	PROPERTYSETSN.insert({name, pnb});
+template<typename U> void PropertySet<U>::add(const std::string& name, std::shared_ptr<SN<float, char>> pnb) {
+	properties_sn.insert({name, pnb});
 }
 
 /**
  * Inserts a float
  */
 template<typename U> void PropertySet<U>::add(const std::string& name, std::shared_ptr<float> pf) {
-	PROPERTYSETF.insert({name, pf});
+	properties_f.insert({name, pf});
 }
 
 /**
  * Inserts an int
  */
 template<typename U> void PropertySet<U>::add(const std::string& name, std::shared_ptr<int> pd) {
-	PROPERTYSETD.insert({name, pd});
+	properties_d.insert({name, pd});
 }
 
 /**
  * Copy
  */
-template<typename U> void PropertySet<U>::operator=(const PropertySet& properties) {
-	this->psn=properties.psn;
-	this->pf=properties.pf;
-	this->pd=properties.pd;
+template<typename U> void PropertySet<U>::operator=(const PropertySet& property_set) {
+	this->properties_sn=property_set.psn;
+	this->properties_f=property_set.pf;
+	this->properties_d=property_set.pd;
 }
 	
 

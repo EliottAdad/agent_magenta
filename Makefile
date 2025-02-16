@@ -5,11 +5,11 @@
 
 # Parameters
 CC		= g++
-CFLAGS	= -Wall -Wextra -MMD
 # CFLAGS is for -I
+CFLAGS	= -Wall -Wextra -MMD
 LDLIBS	= -lboost_unit_test_framework -lSDL2
-LDFLAGS	=
 #LDFLAGS is for -L
+LDFLAGS	=
 # -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 # Phonies
 .PHONY = all
@@ -17,7 +17,14 @@ LDFLAGS	=
 DEBUG=yes
 TEST=yes
 
-all: create_build_dir main_game
+
+
+
+all: main_game
+
+
+
+
 
 # Activates Debug
 ifeq ($(DEBUG),yes)

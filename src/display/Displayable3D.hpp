@@ -16,7 +16,7 @@
 #include "../core/Triangle3D.hpp"
 #include "../core/Mobile3D.hpp"
 #include "../core/CoordinateSystem3D.hpp"
-#include "../utilities/functions_display.hpp"
+#include "../display/functions_display.hpp"
 
 /*
  * ####################

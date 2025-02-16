@@ -46,6 +46,7 @@ protected:
 	T m_tot_weight;										// Total weight contained in this Oct.
 
 	std::shared_ptr<U> m_pU;					// The content of this square (NULL if nothing).
+	T (*ptr_getW)();							// Pointer to the method to compute weights (called on U)
 
 	std::unique_ptr<Oct<U, T>> m_ptrees[8];					// Contains the trees.
 
@@ -112,6 +113,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
 	m_tot_weight=(T)0;
 
 	m_pU=NULL;
+	ptr_getW=getW;
 
 	for (int i(0) ; i<8 ; i++) {
 		m_ptrees[i]=NULL;
@@ -120,6 +122,25 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
 	m_NB_OCTS++;
 }
 
+// Specific to Particles
+template<Particle3D<T>, typename T> inline Oct<Particle3D<T>, T>::Oct() {
+	m_ppoint=std::make_shared<Point3D<T>>();
+	m_pbarycenter=std::make_shared<Point3D<T>>(*m_ppoint);
+	//printf("\nHein1 ? (Oct)\n");
+	//m_pbarycenter->print();
+
+	m_ha=(T)50;
+	m_tot_weight=(T)0;
+
+	m_pU=NULL;
+	ptr_getW=getW;
+
+	for (int i(0) ; i<8 ; i++) {
+		m_ptrees[i]=NULL;
+	}
+
+	m_NB_OCTS++;
+}
 
 /**
  * Constructor1
@@ -134,6 +155,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D
 	m_tot_weight=(T)0.;
 
 	m_pU=NULL;
+	ptr_getW=getW;
 
 	for (int i(0) ; i<8 ; i++){
 		m_ptrees[i]=NULL;

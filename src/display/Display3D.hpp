@@ -20,7 +20,7 @@
 #include "../utilities/functions.hpp"
 #include "../core/Scene3D.hpp"
 #include "../core/Mobile3D.hpp"
-#include "../utilities/functions_display.hpp"
+#include "../display/functions_display.hpp"
 
 
 /*
@@ -70,7 +70,7 @@ template<typename T> inline Display3D<T>::Display3D() : Mobile3D<T>() {
 	this->pbkgd_color=createColor(0, 0, 0, 255);
 	this->pdraw_color=createColor(255, 255, 255, 255);
 	this->pwindow=createWindow();
-	this->prenderer=createRenderer();
+	this->prenderer=createRenderer(this->pwindow);
 
 	this->fclear=true;
 }
@@ -84,8 +84,8 @@ template<typename T> inline Display3D<T>::Display3D(std::shared_ptr<Point3D<T>> 
 	
 	this->pbkgd_color=createColor(0, 0, 0, 255);
 	this->pdraw_color=createColor(255, 255, 255, 255);
-	this->pwindow=NULL;
-	this->prenderer=NULL;
+	this->pwindow=createWindow();
+	this->prenderer=createRenderer(this->pwindow);
 
 	this->fclear=true;
 }
@@ -131,7 +131,7 @@ template<typename T> inline Display3D<T>::Display3D(const Display3D& display) : 
 
 template<typename T> inline void Display3D<T>::addPScene(std::shared_ptr<Scene3D<T>> pscene) {
 	if (pscene!=NULL){
-		pscenes.insert(pscene);
+		this->pscenes.insert(pscene);
 	}
 }
 
@@ -151,7 +151,7 @@ template<typename T> inline void Display3D<T>::run(const unsigned int frames) co
 				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
 				this->render();
 
-				printf("FPS %f\n", 1/(dt.count()/1000000000.));
+				printf("Display3D: FPS %f\n", 1/(dt.count()/1000000000.));
 				
 				t1=t2;
 				if (frames!=0){//If steps is not null

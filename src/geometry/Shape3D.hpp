@@ -13,7 +13,7 @@
 
 #include "../core/Line3D.hpp"
 #include "../core/Point3D.hpp"
-#include "../display/Displayable3D.hpp"
+#include "../core/Triangle3D.hpp"
 
 /*
  * #################
@@ -21,7 +21,7 @@
  * #################
  * Abstract class
  */
-template<typename T> class Shape3D : public Displayable3D<T> {
+template<typename T> class Shape3D {
 public:
 	Shape3D();
 	virtual ~Shape3D();

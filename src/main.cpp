@@ -24,7 +24,7 @@
 #include "core/Vector3D.hpp"
 #include "utilities/Game3D.hpp"
 #include "utilities/functions.hpp"
-#include "utilities/functions_Particle3D.hpp"
+#include "core/functions_Particle3D.hpp"
 
 
 
