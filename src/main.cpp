@@ -1,7 +1,12 @@
-
-
+/*
+ * main.cpp
+ *
+ *  Created on: 4 fevrier 2025
+ *      Author: esn
+ */
 
 #ifndef MAIN_CPP_
+
 #define MAIN_CPP_
 
 
@@ -11,20 +16,8 @@
 //#include <eigen3/Eigen/Dense>
 #include <SDL2/SDL.h>
 
-//#include "core/SN.h"
-//#include "geometry/WeightedPoint3D.hpp"
-#include "core/Quad.hpp"
-#include "core/Oct.hpp"
-#include "core/Particle3D.hpp"
-#include "core/System3D.hpp"
-#include "core/VectorField.hpp"
-//#include "core/VectorFieldUnidirectional.h"
-#include "core/Physics.hpp"
-#include "core/Point3D.hpp"
-#include "core/Vector3D.hpp"
-#include "utilities/Game3D.hpp"
-#include "utilities/functions.hpp"
-#include "core/functions_Particle3D.hpp"
+#include "core_includes.hpp"
+#include "utilities_includes.hpp"
 
 
 
@@ -47,7 +40,7 @@ int main(int argc, char* argv[]){
     psys->setA(SN<float, char>{1,4});
     psys->setAlpha(0.1);
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
-    	psys->addPElement(ppart);
+    	psys->insert(ppart);
     }
     psys->ptrLaw=gravitOptimised;
 

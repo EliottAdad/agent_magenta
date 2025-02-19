@@ -14,4 +14,7 @@
 #include "core/Point3D.hpp"
 #include "core/Vector3D.hpp"
 
+#include "core/functions_Particle3D.hpp"
+#include "core/functions_Point3D.hpp"
+
 #endif /* CORE_INCLUDES_HPP_ */

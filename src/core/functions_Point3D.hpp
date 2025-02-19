@@ -12,7 +12,7 @@
 #include <memory>
 #include <eigen3/Eigen/Dense>
 
-#include "../core/Point3D.hpp"
+#include "Point3D.hpp"
 
 /*
  * Functions

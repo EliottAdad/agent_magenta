@@ -11,7 +11,7 @@
 
 #include <string.h>
 #include "../src/core/Point3D.hpp"
-#include "../src/utilities/functions_Point3D.hpp"
+#include "../src/core/functions_Point3D.hpp"
 
 #include <boost/test/unit_test.hpp>
 
@@ -43,16 +43,25 @@ BOOST_AUTO_TEST_CASE (test_operator_not_equal) { //
 	BOOST_CHECK(p1 != p2);
 }
 
+BOOST_AUTO_TEST_CASE (test_getDistance) { // 
+	Point3D<SN<float, char>> p1={{3,2},{4,2},{0,0}};
+	Point3D<SN<float, char>> p2={{3,2},{0,0},{0,0}};
+	Point3D<SN<float, char>> p3={{0,0},{4,2},{0,0}};
+	SN<float, char> answ={5,2};
+	BOOST_CHECK(getDistance(p1) == answ);
+	BOOST_CHECK(getDistance(p2, p3) == answ);
+}
+
 BOOST_AUTO_TEST_CASE (test_toEigen) { // 
 	Point3D<SN<float, char>> p1={{1,2},{-1,2},{2,2}};
-	Eigen::Matrix<SN<float, char>> pimg=toEigen(p1);
+	Eigen::Matrix<SN<float, char>, 3, 1> pimg=toEigen(p1);
 	BOOST_CHECK(pimg[0] == p1.x);
 	BOOST_CHECK(pimg[1] == p1.y);
 	BOOST_CHECK(pimg[2] == p1.z);
 }
 
 BOOST_AUTO_TEST_CASE (test_toPoint) { // 
-	Eigen::Matrix<SN<float, char>> p1={{1,2},{1,2},{1,2}};
+	Eigen::Matrix<SN<float, char>, 3, 1> p1={SN<float, char>{1,2},SN<float, char>{1,2},SN<float, char>{1,2}};
 	Point3D<SN<float, char>> pimg=toPoint(p1);
 	BOOST_CHECK(pimg.x == p1[0]);
 	BOOST_CHECK(pimg.y == p1[1]);

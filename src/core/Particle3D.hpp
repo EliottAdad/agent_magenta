@@ -20,6 +20,7 @@
 #include "../display/Displayable3D.hpp"
 #include "../core/Vector3D.hpp"
 #include "../core/PropertySet.hpp"
+//#include "../core/functions_Particle3D.hpp"
 
 //template<typename T> enum<T> Property {T, };
 
@@ -67,10 +68,15 @@ template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Part
 
 
 
+
 template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
-	properties.ptarget=this;
-	properties.add("mass", std::make_shared<SN<float, char>>(1, 0));
-	properties.add("charge", std::make_shared<SN<float, char>>(1, 0));
+	printf("Particle3D: Particle3D()1A\n");
+	std::cout<<"Particle3D: Particle3D()1A"<<"\n";
+	//properties.ptarget=this;
+	properties.add("mass", SN<float, char>(1, 0));
+	printf("Particle3D: Particle3D()1B\n");
+	properties.add("charge", SN<float, char>(1, 0));
+	printf("Particle3D: Particle3D()1C\n");
 	//pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
 	//pfields->insert({"mass", std::make_shared<T>((T)1)});
 }
@@ -101,10 +107,10 @@ template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Dis
 	this->y=p.y;
 	this->z=p.z;
 	
-	properties.ptarget=this;
+	//properties.ptarget=this;
 	printf("Particle3D: Particle3D()B\n");
-	properties.add("mass", std::make_shared<SN<float, char>>(1, 0));
-	properties.add("charge", std::make_shared<SN<float, char>>(1, 0));
+	properties.add("mass", SN<float, char>(1, 0));
+	properties.add("charge", SN<float, char>(1, 0));
 	printf("Particle3D: Particle3D()D\n");
 }
 
@@ -112,9 +118,11 @@ template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, co
 	this->x=x;
 	this->y=y;
 	this->z=z;
+	printf("Particle3D(): E\n");
 	
-	properties.ptarget=this;
-	properties.add("mass", std::make_shared<SN<float, char>>(mass));
+	//properties.ptarget=this;
+	properties.add("mass", mass);
+	printf("Particle3D(): F\n");
 }
 
 template<typename T> inline Particle3D<T>::~Particle3D() {
@@ -140,7 +148,7 @@ template<typename T> inline SN<float, char> Particle3D<T>::getMass() const {
 	SN<float, char> w={0, 0};
 
 	//if (pfields!=NULL){
-		w=*(properties["mass"]);
+		w=this->properties.getSN("mass");
 	//}
 
 	return w;

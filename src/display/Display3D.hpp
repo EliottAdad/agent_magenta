@@ -48,7 +48,7 @@ public:
 	Display3D(std::shared_ptr<Point3D<T>> ppoint);
 	Display3D(std::shared_ptr<WINDOW> pwindow, std::shared_ptr<RENDERER> prenderer);
 	virtual ~Display3D();
-	//Display3D(const Display3D &other);
+	Display3D(const Display3D<T>& display);
 
 	virtual void addPScene(std::shared_ptr<Scene3D<T>> pscene) = 0;
 	
@@ -110,7 +110,7 @@ template<typename T> inline Display3D<T>::~Display3D() {
 }
 
 
-template<typename T> inline Display3D<T>::Display3D(const Display3D& display) : Mobile3D<T>(display) {
+template<typename T> inline Display3D<T>::Display3D(const Display3D<T>& display) : Mobile3D<T>(display) {
 	this->fps=display.fps;
 	this->scale=display.scale;
 	this->pscenes=display.pscenes;
@@ -197,18 +197,18 @@ template<typename T> inline bool Display3D<T>::render() const {
 /*
  *
  */
-template<typename T> inline bool Display3D<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
+/*template<typename T> inline bool Display3D<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
 	printf("Display3D : renderScene\n");
 	bool success=false;
 
-	/*if (pscene!=NULL){
+	if (pscene!=NULL){
 		for (std::shared_ptr<Displayable3D<T>> pdisplayable : pscene->pdisplayables){
 			success=success | renderDisplayable(pdisplayable);
 		}
-	}*/
+	}
 	
 	return success;
-}
+}*/
 
 /*
  *

@@ -11,7 +11,7 @@
 
 #include <string.h>
 #include "../src/core/Oct.hpp"
-#include "../src/geometry/Particle3D.hpp"
+#include "../src/core/Particle3D.hpp"
 
 #include <boost/test/unit_test.hpp>
 

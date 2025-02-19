@@ -317,7 +317,11 @@ template<typename T> inline Point3D<T> abs(const Point3D<T>& p){
  * Uses (0,0,0) as the ref if only one point is provided.
  */
 template<typename T> inline T getDistance(const Point3D<T>& p1, const Point3D<T>& p2={(T)0, (T)0, (T)0}) {
-	return T(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)²+(zA-zB)² )
+	return (T)(sqrt(pow((p1.x-p2.x), 2) + pow((p1.y-p2.y), 2) + pow((p1.z-p2.z), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)²+(zA-zB)² )
+}
+
+template<typename M, typename E> inline SN<M, E> getDistance(const Point3D<SN<M, E>>& p1, const Point3D<SN<M, E>>& p2={(SN<M, E>)0, (SN<M, E>)0, (SN<M, E>)0}) {
+	return SN<M, E>(sqrt(pow((p1.x-p2.x).to_m_type(), 2) + pow((p1.y-p2.y).to_m_type(), 2) + pow((p1.z-p2.z).to_m_type(), 2)), 0);// d=sqrt( (xA-xB)²+(yA-yB)²+(zA-zB)² )
 }
 
 /**

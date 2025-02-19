@@ -28,9 +28,9 @@ public:
 	std::shared_ptr<CoordinateSystem3D> preference;// NULL if World space
 	std::shared_ptr<Point3D<T>> ppoint;//The position is given from the reference position & orientation
 	// Axis
-	std::shared_ptr<Vector3D<T>> pe1;
-	std::shared_ptr<Vector3D<T>> pe2;
-	std::shared_ptr<Vector3D<T>> pe3;
+	std::unique_ptr<Vector3D<T>> pe1;
+	std::unique_ptr<Vector3D<T>> pe2;
+	std::unique_ptr<Vector3D<T>> pe3;
 	// Rotation
 	float alpha;	// Angle balayant l'equateur
 	float beta;		// Angle depuis l'equateur (negatif si en dessous de l'équateur, positif si l'inverse)
@@ -56,9 +56,9 @@ template<typename T> inline CoordinateSystem3D<T>::CoordinateSystem3D() {
 	pe1->pp1=ppoint;
 	pe2->pp1=ppoint;
 	pe3->pp1=ppoint;
-	pe1->pp2=std::make_shared<Point3D<T>>((T)1,(T)0,(T)0);
-	pe2->pp2=std::make_shared<Point3D<T>>((T)0,(T)1,(T)0);
-	pe3->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)1);
+	pe1->pp2=std::make_unique<Point3D<T>>((T)1,(T)0,(T)0);
+	pe2->pp2=std::make_unique<Point3D<T>>((T)0,(T)1,(T)0);
+	pe3->pp2=std::make_unique<Point3D<T>>((T)0,(T)0,(T)1);
 	
 	alpha=0;
 	beta=0;
@@ -75,6 +75,9 @@ template<typename T> inline CoordinateSystem3D<T>::CoordinateSystem3D(const Coor
 	pe1=coordinate_system.pe1;
 	pe2=coordinate_system.pe2;
 	pe3=coordinate_system.pe3;
+	pe1->pp2=std::make_unique<Point3D<T>>(coordinate_system.pe1);
+	pe2->pp2=std::make_unique<Point3D<T>>(coordinate_system.pe1);
+	pe3->pp2=std::make_unique<Point3D<T>>(coordinate_system.pe1);
 	
 	alpha=coordinate_system.alpha;
 	beta=coordinate_system.beta;

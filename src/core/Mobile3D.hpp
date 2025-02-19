@@ -26,7 +26,7 @@
 template<typename T> class Mobile3D : public TimeSensitive, public Point3D<T> {
 public:
 	bool fmove;
-	std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
+	//std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	std::shared_ptr<Vector3D<T>> ps;											// Linear speed
 	std::shared_ptr<Vector3D<T>> prs;											// Angular speed
 	
@@ -48,15 +48,15 @@ public:
 
 
 template<typename T> inline Mobile3D<T>::Mobile3D() : TimeSensitive(), Point3D<T>() {
-	fmove=true;
-	pcoord_system=std::make_shared<CoordinateSystem3D<T>>();
-	ps=std::make_shared<Vector3D<T>>();
-	ps->setNorm((T)0);
-	prs=std::make_shared<Vector3D<T>>();
-	prs->setNorm((T)0);
+	this->fmove=true;
+	//this->pcoord_system=std::make_shared<CoordinateSystem3D<T>>();
+	this->ps=std::make_shared<Vector3D<T>>();
+	this->ps->setNorm((T)0);
+	this->prs=std::make_shared<Vector3D<T>>();
+	this->prs->setNorm((T)0);
 	
-	fcollide=false;
-	phit_box=NULL;
+	this->fcollide=false;
+	this->phit_box=NULL;
 }
 
 template<typename T> inline Mobile3D<T>::~Mobile3D() {
@@ -64,12 +64,13 @@ template<typename T> inline Mobile3D<T>::~Mobile3D() {
 }
 
 template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : TimeSensitive(mobile), Point3D<T>(mobile) {
-	fmove=mobile.fmove;
-	pcoord_system=mobile.pcoord_system;
-	ps=mobile.ps;
+	this->fmove=mobile.fmove;
+	//this->pcoord_system=mobile.pcoord_system;
+	this->ps=mobile.ps;
+	this->prs=mobile.prs;
 	
-	fcollide=false;
-	phit_box=NULL;
+	this->fcollide=false;
+	this->phit_box=mobile.phit_box;
 }
 
 
