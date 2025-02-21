@@ -33,18 +33,17 @@
 template<typename T> class Particle3D : public Displayable3D<T> {
 public:
 	PropertySet<Particle3D<T>> properties;										// Properties
-	//std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<T>>> pfields;		// Numeric fields
-	//std::shared_ptr<std::map<std::string, std::shared_ptr<void>>> pproperties;		// Properties
 	
 	Particle3D();
 	Particle3D(const Point3D<T>& p);
-	Particle3D(const T& x, const T& y, const T& z, const SN<float, char>& mass={1, 0});
+	Particle3D(const T& x, const T& y, const T& z, const T& mass=(T)1);
 	//Particle3D(const WeightedPoint3D<T>& wp);
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 	
-	virtual SN<float, char> getMass() const;
-
+	static T getMass();
+	static T getCharge();
+	
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	//virtual void operator+=(const Particle3D<T>& p);// :)
 
@@ -65,64 +64,34 @@ public:
 };
 
 template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2);
+// Mass, charge,...
+template<typename T> T getMass(const Particle3D<T>& p);
+
 
 
 
 
 template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
-	printf("Particle3D: Particle3D()1A\n");
-	std::cout<<"Particle3D: Particle3D()1A"<<"\n";
-	//properties.ptarget=this;
-	properties.add("mass", SN<float, char>(1, 0));
-	printf("Particle3D: Particle3D()1B\n");
-	properties.add("charge", SN<float, char>(1, 0));
-	printf("Particle3D: Particle3D()1C\n");
-	//pfields=std::make_shared<std::unordered_map<std::string, std::shared_ptr<T>>>();
-	//pfields->insert({"mass", std::make_shared<T>((T)1)});
+	this->properties.add("mass", std::make_shared<T>((T)1));
+	this->properties.add("charge", std::make_shared<T>((T)1));
 }
-
-/*Particle3D::Particle3D(const Point3D& p, Vector* pspeed) {
-	x=p.x;
-	y=p.y;
-	z=p.z;
-	w=LSN{1, 0};// Init the Weighted Point to {x, y, y, w=1}
-	m_ps=pspeed;
-	m_dels=false;
-	m_dt=0;
-}
-
-Particle3D::Particle3D(const WeightedPoint3D& wp, Vector* pspeed) {
-	x=wp.x;
-	y=wp.y;
-	z=wp.z;
-	w=wp.w;// Init the Weighted Point to {x, y, y, w}
-	m_ps=pspeed;
-	m_dels=false;
-	m_dt=0;
-}*/
 
 template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Displayable3D<T>() {
-	printf("Particle3D: Particle3D()A\n");
 	this->x=p.x;// Init to {x, y, y, w=1}
 	this->y=p.y;
 	this->z=p.z;
 	
-	//properties.ptarget=this;
-	printf("Particle3D: Particle3D()B\n");
-	properties.add("mass", SN<float, char>(1, 0));
-	properties.add("charge", SN<float, char>(1, 0));
-	printf("Particle3D: Particle3D()D\n");
+	this->properties.add("mass", std::make_shared<T>((T)1));
+	this->properties.add("charge", std::make_shared<T>((T)1));
 }
 
-template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const SN<float, char>& mass) : Displayable3D<T>() {
-	this->x=x;
-	this->y=y;
-	this->z=z;
-	printf("Particle3D(): E\n");
+template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Displayable3D<T>() {
+	this->ppoint->x=x;
+	this->ppoint->y=y;
+	this->ppoint->z=z;
 	
-	//properties.ptarget=this;
-	properties.add("mass", mass);
-	printf("Particle3D(): F\n");
+	this->properties.add("mass", std::make_shared<T>(mass));
+	this->properties.add("charge", std::make_shared<T>((T)1));
 }
 
 template<typename T> inline Particle3D<T>::~Particle3D() {
@@ -130,9 +99,7 @@ template<typename T> inline Particle3D<T>::~Particle3D() {
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : Displayable3D<T>() {
-	this->x=p.x;// Init the Weighted Point to {x, y, y}
-	this->y=p.y;
-	this->z=p.z;
+	this->ppoint=p.ppoint;
 	this->properties=p.properties;// Copy the properties
 
 	this->ps=p.ps;
@@ -143,16 +110,6 @@ template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : 
 
 
 
-
-template<typename T> inline SN<float, char> Particle3D<T>::getMass() const {
-	SN<float, char> w={0, 0};
-
-	//if (pfields!=NULL){
-		w=this->properties.getSN("mass");
-	//}
-
-	return w;
-}
 
 template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v){
 	if (this->ps!=NULL){
@@ -209,12 +166,10 @@ void Particle3D<T>::apply() {//Useless
  * l
  */
 template<typename T> inline void Particle3D<T>::apply(){
-	//SN<float, char> sn1=(T)(this->m_dt);
-	//T sn2=(T)(this->m_dt);
-	//printf("Particle3D: apply(), dt=%f, m=%f.10^e=%d\n", sn2.m, sn2.e);
-	this->x+=(this->ps->pp2->x)*(T)this->m_dt;
-	this->y+=(this->ps->pp2->y)*(T)this->m_dt;
-	this->z+=(this->ps->pp2->z)*(T)this->m_dt;
+	*this->ppoint+= *this->ps->pp2 * (T)this->m_dt;
+	//this->x+=(this->ps->pp2->x)*(T)this->m_dt;
+	//this->y+=(this->ps->pp2->y)*(T)this->m_dt;
+	//this->z+=(this->ps->pp2->z)*(T)this->m_dt;
 }
 
 /*template<typename T> void Particle3D<T>::operator+=(const Particle3D<T>& p){
@@ -224,6 +179,8 @@ template<typename T> inline void Particle3D<T>::apply(){
 		*this->ps=v;
 	}
 }*/
+
+
 
 
 
@@ -241,6 +198,12 @@ template<typename T> inline Particle3D<T> operator+(const Particle3D<T>& p1, con
 		pparticle->pfields->insert({"mass", *(p1->pfields)["mass"]+*(p2->pfields)["mass"]});
 	}
 }
+
+
+
+
+
+
 
 
 

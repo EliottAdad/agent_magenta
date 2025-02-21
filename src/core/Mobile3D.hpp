@@ -23,8 +23,9 @@
  * Abstract class
  * TimeSensitive + Point3D + getX + CoordSystem
  */
-template<typename T> class Mobile3D : public TimeSensitive, public Point3D<T> {
+template<typename T> class Mobile3D : public TimeSensitive {
 public:
+	std::shared_ptr<Point3D<T>> ppoint;				// Position
 	bool fmove;
 	//std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	std::shared_ptr<Vector3D<T>> ps;											// Linear speed
@@ -47,7 +48,8 @@ public:
 
 
 
-template<typename T> inline Mobile3D<T>::Mobile3D() : TimeSensitive(), Point3D<T>() {
+template<typename T> inline Mobile3D<T>::Mobile3D() : TimeSensitive() {
+	this->ppoint=std::make_shared<Point3D<T>>();
 	this->fmove=true;
 	//this->pcoord_system=std::make_shared<CoordinateSystem3D<T>>();
 	this->ps=std::make_shared<Vector3D<T>>();
@@ -63,7 +65,8 @@ template<typename T> inline Mobile3D<T>::~Mobile3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : TimeSensitive(mobile), Point3D<T>(mobile) {
+template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : TimeSensitive(mobile) {
+	this->ppoint=mobile.ppoint;
 	this->fmove=mobile.fmove;
 	//this->pcoord_system=mobile.pcoord_system;
 	this->ps=mobile.ps;
@@ -76,19 +79,19 @@ template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : T
 
 
 template<typename T> inline T Mobile3D<T>::getX() const {
-	return this->x;
+	return this->ppoint->x;
 }
 
 template<typename T> inline T Mobile3D<T>::getY() const {
-	return this->y;
+	return this->ppoint->y;
 }
 
 template<typename T> inline T Mobile3D<T>::getZ() const {
-	return this->z;
+	return this->ppoint->z;
 }
 
 template<typename T> inline Point3D<T> Mobile3D<T>::getPosition() const {
-	return Point3D<T>{this->x, this->y, this->z};
+	return Point3D<T>{this->ppoint->x, this->ppoint->y, this->ppoint->z};
 }
 
 

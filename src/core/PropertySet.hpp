@@ -15,10 +15,7 @@
 
 #include "SN.hpp"
 
-#define PROPERTYSETSN std::map<std::string, SN<float, char>>
-#define PROPERTYSETF std::map<std::string, float>
-#define PROPERTYSETD std::map<std::string, int>
-//#define PROPERTYSETF<T> PropertySet<T, float>
+#define PROPERTYSET std::map<std::string, std::shared_ptr<void>>
 
 
 
@@ -34,33 +31,22 @@ template<typename U> struct PropertySet {
 public:
 	//U* ptarget;					// Object to which are attached the properties
 	//std::shared_ptr<std::map<std::string, std::shared_ptr<P>>> pproperties;		// Properties
-	PROPERTYSETSN properties_sn;
-	//std::map<std::string, std::shared_ptr<SN<float, char>>> psn;
-	PROPERTYSETF properties_f;
-	PROPERTYSETD properties_d;
+	PROPERTYSET properties;
 	
 	PropertySet();
 	//PropertySet(std::shared_ptr<U> ptarget);
 	virtual ~PropertySet();
 	PropertySet(const PropertySet<U>& property_set);
 
-	void add(const std::string& name, const SN<float, char>& nb);
-	void add(const std::string& name, const float& f);
-	void add(const std::string& name, const int& d);
-	SN<float, char> getSN(const std::string& name) const;
-	float getF(const std::string& name) const;
-	int getD(const std::string& name) const;
+	void add(const std::string& name, std::shared_ptr<void> pprop);
+	std::shared_ptr<void> get(const std::string& name) const;
 	
-	void operator=(const PropertySet& properties);
+	void operator=(const PropertySet<U>& properties);
 };
-
-
 
 template<typename U> PropertySet<U>::PropertySet() {
 	//this->ptarget=NULL;
-	this->properties_sn={};
-	this->properties_f={};
-	this->properties_d={};
+	//this->properties={};
 }
 
 /*template<typename U> PropertySet<U>::PropertySet(std::shared_ptr<U> ptarget) {
@@ -68,7 +54,7 @@ template<typename U> PropertySet<U>::PropertySet() {
 }*/
 
 template<typename U> PropertySet<U>::~PropertySet() {
-	;
+	//this->ptarget=NULL;
 }
 
 template<typename U> PropertySet<U>::PropertySet(const PropertySet<U>& property_set) {
@@ -79,54 +65,24 @@ template<typename U> PropertySet<U>::PropertySet(const PropertySet<U>& property_
 
 
 /**
- * Inserts a SN
+ * Inserts
  */
-template<typename U> void PropertySet<U>::add(const std::string& name, const SN<float, char>& nb) {
-	this->properties_sn.insert({name, nb});
+template<typename U> void PropertySet<U>::add(const std::string& name, std::shared_ptr<void> pprop) {
+	this->properties.insert({name, pprop});
 }
 
 /**
- * Inserts a float
+ * Returns the corresponding.
  */
-template<typename U> void PropertySet<U>::add(const std::string& name, const float& f) {
-	this->properties_f.insert({name, f});
-}
-
-/**
- * Inserts an int
- */
-template<typename U> void PropertySet<U>::add(const std::string& name, const int& d) {
-	this->properties_d.insert({name, d});
-}
-
-/**
- * Returns the corresponding SN.
- */
-template<typename U> SN<float, char> PropertySet<U>::getSN(const std::string& name) const {
-	return this->properties_sn.at(name);
-}
-
-/**
- * Returns the corresponding float.
- */
-template<typename U> float PropertySet<U>::getF(const std::string& name) const {
-	return this->properties_f.at(name);
-}
-
-/**
- * Returns the corresponding int.
- */
-template<typename U> int PropertySet<U>::getD(const std::string& name) const {
-	return this->properties_d.at(name);
+template<typename U> std::shared_ptr<void> PropertySet<U>::get(const std::string& name) const {
+	return this->properties.at(name);
 }
 
 /**
  * Copy
  */
-template<typename U> void PropertySet<U>::operator=(const PropertySet& property_set) {
-	this->properties_sn=property_set.properties_sn;
-	this->properties_f=property_set.properties_f;
-	this->properties_d=property_set.properties_d;
+template<typename U> void PropertySet<U>::operator=(const PropertySet<U>& property_set) {
+	this->properties=property_set.properties;
 }
 	
 

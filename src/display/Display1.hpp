@@ -30,7 +30,6 @@
 template<typename T> class Display1 : public Display3D<T> {
 public:
 	char display;									// The point of view from which it is projected (1, 2, 3).
-	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
 	Display1();
 	Display1(std::shared_ptr<Point3D<T>> ppoint);
@@ -38,108 +37,43 @@ public:
 	virtual ~Display1();
 	Display1(const Display1<T>& display);
 
-	virtual void addPScene(std::shared_ptr<Scene3D<T>> pscene) {Display3D<T>::addPScene(pscene);};
-	
 	virtual bool renderDisplayable(const std::shared_ptr<Displayable3D<T>> pdisplayable) const;
 	virtual bool renderPoint(const std::shared_ptr<Point3D<T>> ppoint) const;
 	virtual bool renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const;
 	
 	// From Display3D
-	virtual void run(const unsigned int frames) const {Display3D<T>::run(frames);};
-	virtual bool render() const {return Display3D<T>::render();};
+	virtual void addPScene(std::shared_ptr<Scene3D<T>> pscene) {Display3D<T>::addPScene(pscene);}
+	
+	virtual void run(const unsigned int frames) const {Display3D<T>::run(frames);}
+	virtual bool render() const {return Display3D<T>::render();}
 	virtual bool renderScene(const std::shared_ptr<Scene3D<T>> pscene) const;
-	
-	// From TimeSensitive
-	virtual float getT() const {return TimeSensitive::getT();};
-	virtual void setT(const float& dt) {TimeSensitive::setT(dt);};
-	virtual void apply() {TimeSensitive::apply();};
-	
-	// From Mobile3D
-	virtual T getX() const {return Mobile3D<T>::getX();};
-	virtual T getY() const {return Mobile3D<T>::getY();};
-	virtual T getZ() const {return Mobile3D<T>::getZ();};
-	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();};
+
 };
 
 
 
 
 
-template<typename T> inline Display1<T>::Display1() {
-	this->ppoint=std::make_shared<Point3D<T>>();
-	this->fps=25;
+template<typename T> inline Display1<T>::Display1() : Display3D<T>() {
 	this->display=1;
-	this->scale=2;
-
-	this->pbkgd_color=createColor(0, 0, 0, 255);
-	this->pdraw_color=createColor(255, 255, 255, 255);
-	this->pwindow=NULL;//SDL_CreateWindow("Fama", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_SHOWN);
-	this->prenderer=NULL;
-
-	this->fclear=true;
 }
 
-template<typename T> inline Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) {
-	this->ppoint=ppoint;
-	this->fps=25;
+template<typename T> inline Display1<T>::Display1(std::shared_ptr<Point3D<T>> ppoint) : Display3D<T>(ppoint) {
 	this->display=1;
-	this->scale=2;
-
-	this->pbkgd_color=createColor(0, 0, 0, 255);
-	this->pdraw_color=createColor(255, 255, 255, 255);
-	this->pwindow=NULL;
-	this->prenderer=NULL;
-
-	this->fclear=true;
 }
 
-template<typename T> inline Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) {
-	this->ppoint=std::make_shared<Point3D<T>>();
-	this->fps=25;
+template<typename T> inline Display1<T>::Display1(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) : Display3D<T>(pwindow, prenderer) {
 	this->display=1;
-	this->scale=2;
-
-	this->pbkgd_color=createColor(0, 0, 0, 255);
-	this->pdraw_color=createColor(255, 255, 255, 255);
-	this->pwindow=pwindow;
-	this->prenderer=prenderer;
-
-	this->fclear=true;
 }
 
 template<typename T> inline Display1<T>::~Display1() {
 	;
 }
 
-/*
-Display1::Display1(const Display1 &other) {
-	m_pwindow=;
-}*/
-
-
-
-
-
-
-
-/*
- * From Display3D
- */
- 
-/**
- * f
- */
-template<typename T> inline bool Display1<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
-	bool success=false;
-
-	if (pscene!=NULL){
-		for (std::shared_ptr<Displayable3D<T>> pdisplayable : pscene->pdisplayables){
-			success=success | renderDisplayable(pdisplayable);
-		}
-	}
-
-	return success;
+template<typename T> inline Display1<T>::Display1(const Display1<T>& display1) : Display3D<T>(display1) {
+	this->display=display1.display;
 }
+
 
 /**
  * g
@@ -157,6 +91,7 @@ template<typename T> inline bool Display1<T>::renderDisplayable(const std::share
 			//printf("There is at least one Point to be displayed.");
 			success=success & renderPoint(ppoint);
 		}*/
+		printf("Display1: renderDisplayable\n");
 		this->renderPoints(pdisplayable->getPPoints());
 
 		// For the lines
@@ -208,8 +143,9 @@ template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<
 
 template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
 	bool success=false;
-	//printf("Rendering point\n");
+	printf("Display1: renderPoints1\n");
 	for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
+		printf("Display1: renderPoints2\n");
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
 
 		if (this->pwindow!=NULL && this->prenderer!=NULL && this->pdraw_color!=NULL){
@@ -226,7 +162,7 @@ template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_
 			if (this->prenderer!=NULL){
 				switch (display){
 					case 1://(x,y) plane
-						//printf("\nx=%i\n", (int)(d_point.x*(M)scale + centerx).to_m_type());
+						printf("Display1: renderPoints3\n");
 						drawPointRenderer(this->prenderer, (int)(d_point.x*this->scale + centerx).to_m_type(), (int)(d_point.y*this->scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
@@ -243,6 +179,26 @@ template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_
 	return success;
 }
 
+
+/*
+ * From Display3D
+ */
+ 
+/**
+ * f
+ */
+template<typename T> inline bool Display1<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
+	printf("Display1 : renderScene\n");
+	bool success=false;
+
+	if (pscene!=NULL){
+		for (std::shared_ptr<Displayable3D<T>> pdisplayable : pscene->pdisplayables){
+			success=success | renderDisplayable(pdisplayable);
+		}
+	}
+
+	return success;
+}
 
 
 #endif /* DISPLAY1_HPP_ */

@@ -31,8 +31,6 @@ template<typename T> class Game3D {
 public:
 	bool fpause;
 
-	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
-	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
 	std::shared_ptr<Physics> pphysics;
 	std::shared_ptr<Scene3D<T>> pscene;					// A scene
 	std::shared_ptr<Display1<T>> pdisplay;
@@ -43,7 +41,7 @@ public:
 
 	bool run(const unsigned int& steps=1);	// Runs a certain number of frames
 	//bool iterate(const float& dt);	// Renders once (à faire)
-	bool render() const;					// Draws the content of the game on the screen
+	//bool render() const;					// Draws the content of the game on the screen
 };
 
 
@@ -51,19 +49,12 @@ public:
 
 
 template<typename T> inline Game3D<T>::Game3D() {
-	pwindow=createWindow();
-	if (pwindow!=NULL){
-		prenderer=createRenderer(pwindow);
-	}
-
 	pphysics=std::make_shared<Physics>();
-	pscene=std::make_shared<Scene3D<SN<float, char>>>();
-	pdisplay=std::make_shared<Display1<T>>(pwindow, prenderer);
+	pscene=std::make_shared<Scene3D<T>>();
+	pdisplay=std::make_shared<Display1<T>>();
 	pdisplay->addPScene(pscene);					// Will render the unique scene for this game
 
-	//fps=30;
 	fpause=false;
-	//render();
 }
 
 template<typename T> inline Game3D<T>::~Game3D() {
@@ -83,7 +74,7 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	SDL_Event event;
 	bool quit=false;
 	// The parameters to the function are put after the comma
-	//std::thread thread_physics(&Physics::run, pphysics, 0);
+	std::thread thread_physics(&Physics::run, pphysics, 0);
 	std::thread thread_display(&Display1<T>::run, pdisplay, 0);
 	/*while(!quit){
 		//reads inputs.
@@ -107,42 +98,16 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	//thread_physics.join();
 	thread_display.join();
 
-	/*
-	std::chrono::time_point t1=std::chrono::system_clock::now();
-	if (!fpause){
-		unsigned int i(0);
-		while (i<=steps){
-			std::chrono::time_point t2=std::chrono::system_clock::now();
-			std::chrono::duration dt=t2-t1;
-
-			// Calls the physics
-			if (dt.count()>=1/(long double)(pphysics->pps)*1000000000.){//The duration given by dt is in ns.
-				pphysics->iterate(dt.count()/1000000000.);//The duration given by dt is in ns.
-			}
-
-			// Calls the rendering process
-			if (dt.count()>=1/(long double)fps*1000000000.){
-				//printf("FPS:%f\n", 1000000000./dt.count());
-
-				render();
-
-				t1=t2;
-				if (steps!=0){//If steps is not null (allows for infinite loop when 0)
-					i++;
-				}
-			}
-		}
-	}*/
 	return fpause;
 }
 
-template<typename T> inline bool Game3D<T>::render() const {
+/*template<typename T> inline bool Game3D<T>::render() const {
 	if (pdisplay!=NULL){
 		pdisplay->render();
 	}
 
 	return fpause;
-}
+}*/
 
 
 

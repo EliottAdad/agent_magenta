@@ -1,31 +1,31 @@
 /*
- * Physics.test.cpp
+ * System3D.test.cpp
  *
  *  Created on: 7 mai 2024
  *      Author: esn
  */
 
-#ifndef PHYSICS_TEST_CPP_
+#ifndef SYSTEM3D_TEST_CPP_
 
-#define PHYSICS_TEST_CPP_
+#define SYSTEM3D_TEST_CPP_
 
 #include <string.h>
-#include "../src/core/Physics.hpp"
+#include "../src/core/System3D.hpp"
 #include "../src/core/Particle3D.hpp"
 
 #include <boost/test/unit_test.hpp>
 
 
-struct FPhysics {
+struct FSystem3D {
 	Physics* pph;
 	
-	FPhysics() {
+	FSystem3D() {
 		BOOST_TEST_MESSAGE("setup fixture");
-		pph=new Physics();
+		psys=new System3D<Particle3D<SN<float, char>>>();
 	}
-	~FPhysics() {
+	~FSystem3D() {
 		BOOST_TEST_MESSAGE("teardown fixture");
-		delete pph;
+		delete psys;
 	}
 };
 
@@ -39,9 +39,9 @@ BOOST_FIXTURE_TEST_SUITE (Physics_test, FPhysics) // The name of this serie is P
 
 	BOOST_AUTO_TEST_CASE (test_insert) { // 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
-		pph->add(pp);
+		psys->insert(pp);
 		
-		for (std::shared_ptr<TimeSensitive> ppart : pph->get()){
+		for (std::shared_ptr<TimeSensitive> ppart : psys->getPElements()){
 			BOOST_CHECK(ppart == pp);
 		}
 	}
@@ -70,4 +70,4 @@ BOOST_AUTO_TEST_SUITE_END()
 
 
 
-#endif /* PHYSICS_TEST_CPP_ */
+#endif /* SYSTEM3D_TEST_CPP_ */

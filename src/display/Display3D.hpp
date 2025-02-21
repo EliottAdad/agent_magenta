@@ -27,6 +27,7 @@
  * ################
  *  Display3D<T> :)
  * ################
+ * Abstract class
  * Orthographic projection
  * Display any object having x, y, z.
  */
@@ -35,8 +36,6 @@ public:
 	unsigned char fps;					// Frames per second
 	float scale;						// Ratio d_pixels/d_meters
 	std::unordered_set<std::shared_ptr<Scene3D<T>>> pscenes;			// Pointeurs to the scenes that are rendered in the display.
-
-	std::shared_ptr<Point3D<T>> ppoint;				// Pointeur to the center of display.
 
 	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<COLOR> pdraw_color;				// Pointeur to the render color.
@@ -55,6 +54,17 @@ public:
 	virtual void run(const unsigned int frames) const = 0;
 	virtual bool render() const = 0;
 	virtual bool renderScene(const std::shared_ptr<Scene3D<T>> pscene) const = 0;
+
+	// From TimeSensitive
+	virtual float getT() const {return TimeSensitive::getT();}
+	virtual void setT(const float& dt) {TimeSensitive::setT(dt);}
+	virtual void apply() {TimeSensitive::apply();}
+
+	// From Mobile3D
+	virtual T getX() const {return Mobile3D<T>::getX();}
+	virtual T getY() const {return Mobile3D<T>::getY();}
+	virtual T getZ() const {return Mobile3D<T>::getZ();}
+	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();}
 };
 
 
@@ -63,10 +73,7 @@ public:
 template<typename T> inline Display3D<T>::Display3D() : Mobile3D<T>() {
 	this->fps=25;
 	this->scale=2;
-	this->pscenes={};
 	
-	this->ppoint=std::make_shared<Point3D<T>>();
-
 	this->pbkgd_color=createColor(0, 0, 0, 255);
 	this->pdraw_color=createColor(255, 255, 255, 255);
 	this->pwindow=createWindow();
@@ -78,22 +85,22 @@ template<typename T> inline Display3D<T>::Display3D() : Mobile3D<T>() {
 template<typename T> inline Display3D<T>::Display3D(std::shared_ptr<Point3D<T>> ppoint) : Mobile3D<T>() {
 	this->fps=25;
 	this->scale=2;
-	this->pscenes={};
 
-	this->ppoint=ppoint;
-	
 	this->pbkgd_color=createColor(0, 0, 0, 255);
 	this->pdraw_color=createColor(255, 255, 255, 255);
 	this->pwindow=createWindow();
 	this->prenderer=createRenderer(this->pwindow);
 
 	this->fclear=true;
+	
+	// 
+	this->ppoint=ppoint;
+	
 }
 
 template<typename T> inline Display3D<T>::Display3D(std::shared_ptr<SDL_Window> pwindow, std::shared_ptr<SDL_Renderer> prenderer) : Mobile3D<T>() {
 	this->fps=25;
 	this->scale=2;
-	this->pscenes={};
 
 	this->ppoint=std::make_shared<Point3D<T>>();
 	
@@ -114,8 +121,6 @@ template<typename T> inline Display3D<T>::Display3D(const Display3D<T>& display)
 	this->fps=display.fps;
 	this->scale=display.scale;
 	this->pscenes=display.pscenes;
-
-	this->ppoint=display.ppoint;
 
 	this->pbkgd_color=display.pbkgd_color;
 	this->pdraw_color=display.pdraw_color;
@@ -139,7 +144,7 @@ template<typename T> inline void Display3D<T>::addPScene(std::shared_ptr<Scene3D
  * If 0: infinite loop
  */
 template<typename T> inline void Display3D<T>::run(const unsigned int frames) const {
-	printf("Display3D : run\n");
+	//printf("Display3D : run\n");
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	//if (!fpause){
 		unsigned int i(0);
@@ -168,13 +173,13 @@ template<typename T> inline void Display3D<T>::run(const unsigned int frames) co
 template<typename T> inline bool Display3D<T>::render() const {
 	bool success=false;
 	
-	printf("Display3D : render1\n");
+	//printf("Display3D : render1\n");
 	if (prenderer!=NULL){
 		if (fclear){
 			fillRendererWithColor(prenderer, pbkgd_color);// Fill the canvas with the background color
 		}
 
-		printf("Display3D : render2\n");
+		//printf("Display3D : render2\n");
 		//printf("\nRendering 1: %ld\n", pscenes.size());
 		for (std::shared_ptr<Scene3D<T>> pscene : pscenes){
 			success=success | renderScene(pscene);
@@ -185,10 +190,10 @@ template<typename T> inline bool Display3D<T>::render() const {
 		for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
 			success=success & render(ppoint);
 		}*/
-		printf("Display3D : render3\n");
+		//printf("Display3D : render3\n");
 
 		displayChangesRenderer(prenderer);
-		printf("Display3D : render4\n");
+		//printf("Display3D : render4\n");
 	}
 
 	return success;

@@ -35,7 +35,7 @@
  * #############
  * U is the class for the objects stored.
  * T is the unit used for distance.
- * Can contain any object that has x, y, z, w, (pU->*ptr_getW)()
+ * Can contain any object that has methods .getX, .getY, .getZ, (pU->*ptr_getW)()
  */
 template<typename U, typename T> class Oct {
 protected:
@@ -46,7 +46,7 @@ protected:
 	T m_ha;												// Half of the length of the zone's border (better to make calculations).
 	T m_lim_ha;						// This indicates the limit at which we stop subdividing (unused for now)
 	
-	T (U::*m_ptr_getW)();						// Pointer to the method to compute weights (called on U)
+	T (*m_ptr_getW)(const U&);						// Pointer to the method to compute weights (called on U)
 	T m_tot_weight;										// Total weight contained in this Oct.
 
 	std::shared_ptr<U> m_pU;							// The content of this square (NULL if nothing).
@@ -66,7 +66,8 @@ protected:
 	void insertBLBTree(std::shared_ptr<U> pU);//:)
 
 public:
-	typedef T (U::*PtrGetW)();				// Defines a function's pointer (used locally)
+	typedef T (*PtrGetW)(const U&);				// Defines a function's pointer (used locally)
+	//std::string weight_id;					// "mass" or "charge"
 	float alpha;							// The threshold alpha=ha/d (with ha being half of the width of the zone and d the distance from the center of the quad) indicates at which point we can consider an agglomeration of bodies as one.
 											// Plus alpha est petit plus on est precis
 
@@ -82,7 +83,7 @@ public:
 	std::unordered_set<std::shared_ptr<U>> setA(const T& a);
 	
 	PtrGetW getPtrGetW() const {return this->m_ptr_getW;}
-	bool setPtrGetW(PtrGetW ptr_getW) {
+	std::unordered_set<std::shared_ptr<U>> setPtrGetW(PtrGetW ptr_getW) {
 		this->m_ptr_getW=ptr_getW;
 		return this->recalculate();
 	}
@@ -96,8 +97,6 @@ public:
 
 	std::shared_ptr<U> insert(std::shared_ptr<U> pU);//:)
 	bool remove(std::shared_ptr<U> pU);//:)
-	//void find(const T& t, std::unordered_set<Oct<U, T>*>& pocts);// It adds to the list of Octs in parameter accordingly to the ratio m_ALPHA
-	//std::unordered_set<T*> find(const Point3D& point);
 	std::shared_ptr<U> search(const std::shared_ptr<Point3D<T>> ppoint) const;
 	std::unordered_set<std::shared_ptr<U>> recalculate();
 	void empty();
@@ -134,6 +133,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
 	this->m_NB_OCTS++;
 	
 	// External variables
+	//this->weight_id="";					// "mass" or "charge"
 	this->alpha=0.5;
 }
 
@@ -163,6 +163,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D
 	this->m_NB_OCTS++;
 	
 	// External variables
+	//this->weight_id="";					// "mass" or "charge"
 	this->alpha=0.5;
 }
 
@@ -204,6 +205,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 	this->m_NB_OCTS++;
 	
 	// External variables
+	//this->weight_id=oct.weight_id;					// "mass" or "charge"
 	this->alpha=oct.alpha;
 	
 	// Reinsert the elements.
@@ -286,7 +288,7 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 	}
 
 	if (pelement!=NULL){
-		if (this->m_pU==NULL && (T)(this->alpha)/**abs(m_tot_weight)*/<=m_ha/getDistance(*this->m_pbarycenter/**m_ppoint*/, *pelement)){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
+		if (this->m_pU==NULL && (T)(this->alpha)<=m_ha/getDistance(*this->m_pbarycenter, pelement->getPosition())){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
 			for (int i(0) ; i<8 ; i++){
 				if (this->m_ptrees[i]!=NULL){
 					this->m_ptrees[i]->getPNeighbors(pelement, true);
@@ -314,29 +316,34 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
  * returns
  * NULL if it was inserted successfully or if entered NULL pointer
  *  or the pointer that was passed in argument if it was enable.
- * needs ->x,y,z, ptr_getW
+ * needs ->getX,getY,getZ, ptr_getW
  */
 template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std::shared_ptr<U> pU) {
+	printf("Oct: insert\n");
 	if (pU!=NULL){
-		Point3D<T> p={pU->x, pU->y, pU->z};
+		Point3D<T> p={pU->getX(), pU->getY(), pU->getZ()};
 		Point3D<T> dp=p-*this->m_ppoint;
 
 		if (abs(dp.x)<=m_ha && 
 				abs(dp.y)<=this->m_ha && 
 				abs(dp.z)<=this->m_ha && 
 				this->m_ptr_getW!=NULL){// If in the cube centered on the point.
-					
+
+			printf("Oct: insert2\n");
 			// Manages the barycenter
-			this->m_tot_weight+=(*pU.*this->m_ptr_getW)();//Add to tot_weight
+			this->m_tot_weight+=(*(this->m_ptr_getW))(*pU);//Add to tot_weight
 			if (this->m_tot_weight!=(T)0){
-				*this->m_pbarycenter+=p*((*pU.*this->m_ptr_getW)()/m_tot_weight);//Add to the barycenter
+				*this->m_pbarycenter+=p * (*(this->m_ptr_getW))(*pU)/m_tot_weight;//Add to the barycenter
 			}else{
 				*this->m_pbarycenter=*this->m_ppoint;
 			}
 
+			printf("Oct: insert3\n");
 			if (this->isEmpty() && this->isLeaf()){		// If empty and the cube has no Octs under (if it's a leaf)
 				this->m_pU=pU;//We add in
+				printf("Oct: insert4\n");
 			}else{										// Else it means it is an internal branch
+				printf("Oct: insert5\n");
 				if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){		//If cube 1
 					insertTLFTree(pU);
 				}else if (dp.x>=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 2
@@ -354,12 +361,15 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 				}else if (dp.x<=(T)0 && dp.y>=(T)0 && dp.z<=(T)0){	//If cube 8
 					insertBLBTree(pU);
 				}
+				printf("Oct: insert6\n");
 
 				// We reinsert the object already present(can be null if it wasn't a leaf).
 				if (this->m_pU!=NULL){
-					this->m_tot_weight-=(*pU.*this->m_ptr_getW)();//Subtract the w of the already present obj to tot_weight
+					printf("Oct: insert7\n");
+					this->m_tot_weight-=(*(this->m_ptr_getW))(*pU);//Subtract the w of the already present obj to tot_weight
 					std::shared_ptr<U> pU2;//Init to null
 					pU2.swap(m_pU);// Set m_pU to NULL and pU2 to m_pU
+					printf("Oct: insert8\n");
 					this->insert(pU2);
 				}
 			}
@@ -538,62 +548,6 @@ template<typename U, typename T> inline bool Oct<U, T>::isLeaf() const {
 	return test;
 }
 
-/*template<typename U, typename T> std::shared_ptr<T> Oct<U, T>::search(const std::shared_ptr<Point3D<T>> ppoint) const {
-	std::shared_ptr<T> pT=NULL;
-
-	if (ppoint!=NULL){
-		T delta_x=(T)(ppoint->x-this->m_ppoint->x);
-		T delta_y=(T)(ppoint->y-this->m_ppoint->y);
-		T delta_z=(T)(ppoint->z-this->m_ppoint->z);
-
-		if (abs(delta_x)<m_a/2 && abs(delta_y)<m_a/2 && abs(delta_z)<m_a/2){//If in the square centered on the point.
-
-			if (m_pT!=NULL){// This means it is a square of the smallest size possible.
-				pT=m_pT;
-			}else{
-				if (TLFTree!=NULL){//Cube 1
-					pT=TLFTree->search(ppoint);
-				}
-				if (pT==NULL){//If it hasn't been initiated by the precedent line
-					if (TRFTree!=NULL){//Cube 2
-						pT=TRFTree->search(ppoint);
-					}
-					if (pT==NULL){//If it hasn't been initiated by the precedent line
-						if (BLFTree!=NULL){//Cube 3
-							pT=BLFTree->search(ppoint);
-						}
-						if (pT==NULL){//If it hasn't been initiated by the precedent line
-							if (BRFTree!=NULL){//Cube 4
-								pT=BRFTree->search(ppoint);
-							}
-							if (pT==NULL){//If it hasn't been initiated by the precedent line
-								if (TLBTree!=NULL){//Cube 5
-									pT=TLBTree->search(ppoint);
-								}
-								if (pT==NULL){//If it hasn't been initiated by the precedent line
-									if (TRBTree!=NULL){//Cube 6
-										pT=TRBTree->search(ppoint);
-									}
-									if (pT==NULL){//If it hasn't been initiated by the precedent line
-										if (BLBTree!=NULL){//Cube 7
-											pT=BLBTree->search(ppoint);
-										}
-										if (pT==NULL){//If it hasn't been initiated by the precedent line
-											if (BRBTree!=NULL){//Cube 8
-												pT=BRBTree->search(ppoint);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	return pT;
-}*/
 
 
 

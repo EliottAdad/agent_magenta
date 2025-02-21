@@ -140,7 +140,7 @@ template<typename M, typename E> inline SN<M, E>::SN(M nb) {
 template<typename M, typename E> inline SN<M, E>::SN(const SN<M, E>& nb) {
 	this->m=nb.m;
 	this->e=nb.e;
-	this->recal();
+	//this->recal();
 }
 
 /**

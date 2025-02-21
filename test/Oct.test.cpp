@@ -12,6 +12,7 @@
 #include <string.h>
 #include "../src/core/Oct.hpp"
 #include "../src/core/Particle3D.hpp"
+#include "../src/core/functions_Particle3D.hpp"
 
 #include <boost/test/unit_test.hpp>
 
@@ -24,7 +25,10 @@ struct FOct {
 	FOct() {
 		BOOST_TEST_MESSAGE("setup fixture");
 		poct=new Oct<Particle3D<SN<float, char>>, SN<float, char>>();
+		poct->setPtrGetW(getMass);
+		
 		poctf=new Oct<Particle3D<float>, float>();
+		poctf->setPtrGetW(getMass);
 	}
 	~FOct() {
 		BOOST_TEST_MESSAGE("teardown fixture");
@@ -62,17 +66,15 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp);
 
-		for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : poct->getPElements()){
-			BOOST_CHECK(ppart == pp);
-		}
+		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts_sn=poct->getPElements();
+		BOOST_CHECK(pparts_sn.size() == 1);
 
 		// Float
 		std::shared_ptr<Particle3D<float>> ppf=std::make_shared<Particle3D<float>>();
 		poctf->insert(ppf);
 
-		for (std::shared_ptr<Particle3D<float>> ppart : poctf->getPElements()){
-			BOOST_CHECK(ppart == ppf);
-		}
+		std::unordered_set<std::shared_ptr<Particle3D<float>>> pparts_f=poctf->getPElements();
+		BOOST_CHECK(pparts_f.size() == 1);
 	}
 
 	BOOST_AUTO_TEST_CASE (test_isEmpty) { //
@@ -80,9 +82,12 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(true == poct->isEmpty());
 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>();
+		//std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{1,0}, SN<float, char>{1,0});
 		poct->insert(pp1);
 
-		BOOST_CHECK(false == poct->isEmpty());
+		printf("NB_OCTS: %d\n", poct->getNB_OCTS());//True
+		BOOST_CHECK(1 == poct->getNB_OCTS());//True
+		BOOST_CHECK(false == poct->isEmpty());//Should be true
 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp2);

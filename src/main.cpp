@@ -39,10 +39,14 @@ int main(int argc, char* argv[]){
     std::shared_ptr<System3D<Particle3D<SN<float, char>>, SN<float, char>>> psys=std::make_shared<System3D<Particle3D<SN<float, char>>, SN<float, char>>>();
     psys->setA(SN<float, char>{1,4});
     psys->setAlpha(0.1);
+	printf("main : sys2\n");
+    psys->setPtrGetW(getMass);
+	printf("main : sys3\n");
+    psys->ptrLaw=gravitOptimised;
+	printf("main : sys4\n");
     for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
     	psys->insert(ppart);
     }
-    psys->ptrLaw=gravitOptimised;
 
     // Game
 	printf("main : game\n");
