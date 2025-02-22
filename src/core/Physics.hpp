@@ -127,10 +127,11 @@ inline bool Physics::run(const unsigned int& steps) {
 }
 
 inline bool Physics::iterate(const float& dt) {
+	//printf("Physics: iterate\n");
 	for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
 		ptime_sensitive->setT(dt*speed);
 		
-		ptime_sensitive->apply();//THE PROBLEM(REPAIRED)
+		ptime_sensitive->apply();
 	}
 	return fpause;
 }

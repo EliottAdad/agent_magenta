@@ -54,8 +54,8 @@ int main(int argc, char* argv[]){
     //g1.pdisplay->fclear=false;
     g1.fpause=false;//useless
     g1.pdisplay->scale=0.15;
-    g1.pdisplay->fps=40;
-    g1.pphysics->pps=200;
+    g1.pdisplay->fps=2;
+    g1.pphysics->pps=1;
     g1.pphysics->speed=0.1;
     g1.pphysics->fpause=false;
 

@@ -25,7 +25,7 @@
  * ###############
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
- * Display any object having x, y, z.
+ * Display any Displayable.
  */
 template<typename T> class Display1 : public Display3D<T> {
 public:
@@ -91,7 +91,7 @@ template<typename T> inline bool Display1<T>::renderDisplayable(const std::share
 			//printf("There is at least one Point to be displayed.");
 			success=success & renderPoint(ppoint);
 		}*/
-		printf("Display1: renderDisplayable\n");
+		//printf("Display1: renderDisplayable\n");
 		this->renderPoints(pdisplayable->getPPoints());
 
 		// For the lines
@@ -143,9 +143,9 @@ template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<
 
 template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
 	bool success=false;
-	printf("Display1: renderPoints1\n");
+	//printf("Display1: renderPoints1\n");
 	for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
-		printf("Display1: renderPoints2\n");
+		//printf("Display1: renderPoints2\n");
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
 
 		if (this->pwindow!=NULL && this->prenderer!=NULL && this->pdraw_color!=NULL){
@@ -162,7 +162,7 @@ template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_
 			if (this->prenderer!=NULL){
 				switch (display){
 					case 1://(x,y) plane
-						printf("Display1: renderPoints3\n");
+						//printf("Display1: renderPoints3\n");
 						drawPointRenderer(this->prenderer, (int)(d_point.x*this->scale + centerx).to_m_type(), (int)(d_point.y*this->scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
@@ -188,7 +188,7 @@ template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_
  * f
  */
 template<typename T> inline bool Display1<T>::renderScene(const std::shared_ptr<Scene3D<T>> pscene) const {
-	printf("Display1 : renderScene\n");
+	//printf("Display1 : renderScene\n");
 	bool success=false;
 
 	if (pscene!=NULL){

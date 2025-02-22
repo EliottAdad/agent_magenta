@@ -76,6 +76,8 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	// The parameters to the function are put after the comma
 	std::thread thread_physics(&Physics::run, pphysics, 0);
 	std::thread thread_display(&Display1<T>::run, pdisplay, 0);
+	
+	
 	/*while(!quit){
 		//reads inputs.
 		switch (event.type){
@@ -95,7 +97,9 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 			std::terminate();
 		}
 	}*/
-	//thread_physics.join();
+	
+	
+	thread_physics.join();
 	thread_display.join();
 
 	return fpause;

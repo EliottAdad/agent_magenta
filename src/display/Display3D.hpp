@@ -156,7 +156,7 @@ template<typename T> inline void Display3D<T>::run(const unsigned int frames) co
 				//printf("dt: %f\n", (float)(dt.count()/1000000000.));
 				this->render();
 
-				printf("Display3D: FPS %f\n", 1/(dt.count()/1000000000.));
+				//printf("Display3D: FPS %f\n", 1/(dt.count()/1000000000.));
 				
 				t1=t2;
 				if (frames!=0){//If steps is not null

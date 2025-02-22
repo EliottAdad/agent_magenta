@@ -15,7 +15,6 @@
 #include <unordered_set>
 #include <iostream>
 
-//#include "Particle3DSet.hpp"
 #include "TimeSensitive.hpp"
 //#include "../utilities/Printable.hpp"
 

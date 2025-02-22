@@ -77,18 +77,17 @@ template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Displayable3D<T>() {
-	this->x=p.x;// Init to {x, y, y, w=1}
-	this->y=p.y;
-	this->z=p.z;
+	this->ppoint=std::make_shared<Point3D<T>>(p);
 	
 	this->properties.add("mass", std::make_shared<T>((T)1));
 	this->properties.add("charge", std::make_shared<T>((T)1));
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Displayable3D<T>() {
-	this->ppoint->x=x;
-	this->ppoint->y=y;
-	this->ppoint->z=z;
+	//this->ppoint->x=x;
+	//this->ppoint->y=y;
+	//this->ppoint->z=z;
+	this->ppoint=std::make_shared<Point3D<T>>(x, y, z);
 	
 	this->properties.add("mass", std::make_shared<T>(mass));
 	this->properties.add("charge", std::make_shared<T>((T)1));
@@ -166,6 +165,7 @@ void Particle3D<T>::apply() {//Useless
  * l
  */
 template<typename T> inline void Particle3D<T>::apply(){
+	//printf("Particle3D: apply %f, %f\n", this->m_dt, this->ps->getNorm().to_m_type());
 	*this->ppoint+= *this->ps->pp2 * (T)this->m_dt;
 	//this->x+=(this->ps->pp2->x)*(T)this->m_dt;
 	//this->y+=(this->ps->pp2->y)*(T)this->m_dt;

@@ -15,7 +15,7 @@ LDFLAGS	=
 .PHONY = all
 
 DEBUG=yes
-TEST=yes
+TEST=no
 
 
 

@@ -33,4 +33,35 @@ template<typename T> inline Point3D<T> toPoint(const Eigen::Matrix<T, 3, 1>& m) 
 }
 
 
+
+
+/* 
+ * Console
+ */
+
+template<typename T> std::string to_string(const Point3D<T>& p) const {
+	//std::cout<<"Help1\n";
+	std::string mes=((spread)?"\n" : "");
+	mes+=to_stringTabs(indent);
+	//printf("Help2\n");
+	if (full_info){
+		mes+="POINT3D[";
+		std::stringstream ss;
+		ss << this;
+		mes+=ss.str();
+		mes+="]:";
+		mes+=((spread)?"\n" + to_stringTabs(1) : "");
+	}
+	//printf("Help3\n");
+	mes+=to_stringTabs(indent);
+	mes+="(x:" + to_string(x) + " ; y:" + to_string(y) + " ; z:" + to_string(z) + ")";
+
+	return mes;
+}
+
+template<typename T> void print(const Point3D<T>& p) const {
+	printTabs(indent);
+	std::cout << this->to_string(spread, full_info, indent);
+}
+
 #endif /* FUNCTIONS_POINT3D_HPP_ */

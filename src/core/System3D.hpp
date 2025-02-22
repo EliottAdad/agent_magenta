@@ -142,20 +142,21 @@ template<typename U, typename T> inline System3D<U, T>::System3D(const System3D<
  */
 template<typename U, typename T> inline void System3D<U, T>::setT(const float& dt) {
 	this->m_dt=dt;
-	printf("System3D: setT");
+	//printf("System3D: setT");
 	// Set time for all objects.
 	for (std::shared_ptr<U> pelement : this->m_pelements){
 		pelement->setT(this->m_dt);
 	}
 	// If there is a law to apply... calls it
 	if (this->ptrLaw!=NULL){
-		printf("System3D: setT2");
+		//printf("System3D: setT2");
 		(*ptrLaw)(this);
 	}
 }
 
 template<typename U, typename T> inline void System3D<U, T>::apply() {
 	// We aaply to each element
+	//printf("System3D: apply");
 	for (std::shared_ptr<U> pelement : this->m_pelements){
 		pelement->apply();
 	}
@@ -224,18 +225,20 @@ template<typename U, typename T> inline void gravitOptimised(System3D<U, T>* psy
 	printf("System3D: gravitOptimised1\n");
 	for (std::shared_ptr<U> pelement : psystem->getPElements()) {
 
-		std::unordered_set<std::shared_ptr<U>> pneighbors=psystem->getPNeighbors(pelement);
-
-		printf("System3D: gravitOptimised2\n");
+		// YES
+		std::unordered_set<std::shared_ptr<U>> pneighbors=psystem->getPNeighbors(pelement);// PROBLEM
+		
+		//printf("System3D: gravitOptimised2\n");
 		// Apply the grav law
 		for (std::shared_ptr<U> pneighbor : pneighbors) {
-			Vector3D<T> da=rrr2(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
+			//NO
 			printf("System3D: gravitOptimised3\n");
-			*pelement+=da*(T)psystem->getT();						//Surcharger l'op += entre U et Vector3D
+			Vector3D<T> da=rrr2(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
 			//printf("System3D: gravitOptimised4\n");
+			*pelement+=da*(T)psystem->getT();						//Surcharger l'op += entre U et Vector3D
 		}
 	}
-	printf("System3D: gravitOptimised4\n");
+	//printf("System3D: gravitOptimised4\n");
 }
 
 /**
@@ -262,12 +265,12 @@ template<typename U, typename T> inline void elecOptimised(System3D<U, T>* psyst
 template<typename T, typename U> inline Vector3D<T> rrr2(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
 	printf("System3D: rrr2 1\n");
 	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>();
-	printf("System3D: rrr2 2\n");
+	//printf("System3D: rrr2 2\n");
 	pv->pp1=std::make_shared<Point3D<T>>(pU2->getPosition());
-	printf("System3D: rrr2 3\n");
+	//printf("System3D: rrr2 3\n");
 	pv->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);
 	
-	printf("System3D: rrr2 4\n");
+	//printf("System3D: rrr2 4\n");
 
 	if (ptr_getW!=NULL) {// && pT1->pfields->contains("mass")
 		*pv->pp2=pU1->getPosition()-pU2->getPosition();
@@ -279,7 +282,7 @@ template<typename T, typename U> inline Vector3D<T> rrr2(std::shared_ptr<U> pU1,
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
 		pv->setNorm(G*abs((*ptr_getW)(*pU1))/(d*d));
 	}
-	printf("System3D: rrr2 5\n");
+	//printf("System3D: rrr2 5\n");
 	
 	return *pv;
 }

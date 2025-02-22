@@ -107,11 +107,12 @@ template<typename T> inline T getCharge(const Particle3D<T>& p) {
 	return w;
 }*/
 
-template<typename T> inline T getMass(const Particle3D<T>& p) {
-	T w=(T)0;
+template<typename T> inline T getMass(const Particle3D<T>& p) {// Pas la le probleme, avant
+	//T w=(T)0;
+	T w={1, 19};
 
 	//if (pfields!=NULL){
-		w=(T)(*(std::static_pointer_cast<T>(p.properties.get("mass"))));
+		//w=(T)(*(std::static_pointer_cast<T>(p.properties.get("mass"))));
 	//}
 
 	return w;

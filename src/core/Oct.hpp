@@ -300,10 +300,12 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 					pneighbors.insert(this->m_pU);
 				}
 			}else{			// Else if the place is empty
-				std::shared_ptr<U> new_pU(new U(this->m_pbarycenter->x, 
+				printf("Oct: getPNeighbors %f, %f, %f, %f\n", this->m_pbarycenter->x.to_m_type(), this->m_pbarycenter->y.to_m_type(), this->m_pbarycenter->z.to_m_type(), this->m_tot_weight.to_m_type());
+				std::shared_ptr<U> new_pU=std::make_shared<U>(
+												this->m_pbarycenter->x, 
 												this->m_pbarycenter->y, 
 												this->m_pbarycenter->z, 
-												this->m_tot_weight));
+												this->m_tot_weight);
 				pneighbors.insert(new_pU);
 			}
 		}
