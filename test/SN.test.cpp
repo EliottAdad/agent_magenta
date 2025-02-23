@@ -9,10 +9,11 @@
 
 #define SN_TEST_CPP_
 
-#include <string.h>
-#include "../src/core/SN.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/core/utils_SN.hpp"
+
 
 BOOST_AUTO_TEST_SUITE (SN_test) // le nom de la série de test est SN_test
 

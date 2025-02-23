@@ -1,13 +1,13 @@
 /*
- * functions_Particle3D.hpp
+ * utils_Particle3D.hpp
  *
  *  Created on: 22 decembre 2024
  *      Author: esn
  */
 
-#ifndef FUNCTIONS_PARTICLE3D_HPP_
+#ifndef UTILS_PARTICLE3D_HPP_
 
-#define FUNCTIONS_PARTICLE3D_HPP_
+#define UTILS_PARTICLE3D_HPP_
 
 #include <memory>
 
@@ -108,12 +108,11 @@ template<typename T> inline T getCharge(const Particle3D<T>& p) {
 }*/
 
 template<typename T> inline T getMass(const Particle3D<T>& p) {// Pas la le probleme, avant
-	//T w=(T)0;
-	T w={1, 19};
+	T w=(T)0;
 
-	//if (pfields!=NULL){
-		//w=(T)(*(std::static_pointer_cast<T>(p.properties.get("mass"))));
-	//}
+	if (p.pproperties!=NULL){
+		w=*(p.pproperties->get("mass"));
+	}
 
 	return w;
 }
@@ -121,12 +120,43 @@ template<typename T> inline T getMass(const Particle3D<T>& p) {// Pas la le prob
 template<typename T> inline T getCharge(const Particle3D<T>& p) {
 	T w=(T)0;
 
-	//if (pfields!=NULL){
-	//*(p.properties.get("charge"));
-		w=(T)(*(std::static_pointer_cast<T>(p.properties.get("charge"))));
-	//}
+	if (p.pproperties!=NULL){
+		w=*(p.pproperties->get("charge"));
+	}
 
 	return w;
 }
+
+
+
+/*
+ * Console
+ */
+
+template<typename T> std::string to_string(const Particle3D<T>& p) {
+	std::string mes="";
+
+	mes+="PARTICLE3D[";
+	std::stringstream ss;
+	ss << &p;
+	mes+=ss.str();
+	mes+="]:";
+	
+	mes+="(" + to_string(p.getPosition());
+	mes+=" | ";
+	/*for (auto pairr : *(this->pfields)) {
+		mes+=pairr.first+" "+pairr.second->to_string()+" | ";//"w:" + this->fields["mass"].to_string();
+	}*/
+	//mes+=" | ";
+	mes+=(p.ps==NULL)?"NULL":to_string(*p.ps);
+	mes+=")";
+	
+	return mes;
+}
+
+template<typename T> void print(const Particle3D<T>& p) {
+	std::cout << to_string(p);
+}
+
 
 #endif /* FUNCTIONS_PARTICLE3D_HPP_ */

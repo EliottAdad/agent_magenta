@@ -5,7 +5,7 @@
  *      Author: esn
  */
 
-#ifndef POINT2D_HHH_
+#ifndef POINT2D_HPP_
 
 #define POINT2D_HPP_
 

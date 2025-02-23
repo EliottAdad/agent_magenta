@@ -9,11 +9,11 @@
 
 #define POINT3D_TEST_CPP_
 
-#include <string.h>
-#include "../src/core/Point3D.hpp"
-#include "../src/core/functions_Point3D.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/core/utils_Point3D.hpp"
+
 
 BOOST_AUTO_TEST_SUITE (Point3D_test) // le nom de la série de test est Point3D_test
 

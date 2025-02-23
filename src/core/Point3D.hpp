@@ -12,7 +12,6 @@
 #include <memory>
 
 #include "SN.hpp"
-#include "../utilities/functions.hpp"
 
 
 

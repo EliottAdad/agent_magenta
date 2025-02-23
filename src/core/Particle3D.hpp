@@ -20,7 +20,6 @@
 #include "../display/Displayable3D.hpp"
 #include "../core/Vector3D.hpp"
 #include "../core/PropertySet.hpp"
-//#include "../core/functions_Particle3D.hpp"
 
 //template<typename T> enum<T> Property {T, };
 
@@ -32,7 +31,7 @@
  */
 template<typename T> class Particle3D : public Displayable3D<T> {
 public:
-	PropertySet<Particle3D<T>> properties;										// Properties
+	std::shared_ptr<PropertySet<Particle3D<T>, T>> pproperties;										// Properties
 	
 	Particle3D();
 	Particle3D(const Point3D<T>& p);
@@ -72,15 +71,17 @@ template<typename T> T getMass(const Particle3D<T>& p);
 
 
 template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
-	this->properties.add("mass", std::make_shared<T>((T)1));
-	this->properties.add("charge", std::make_shared<T>((T)1));
+	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
+	this->pproperties->add("mass", std::make_shared<T>((T)1));
+	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Displayable3D<T>() {
 	this->ppoint=std::make_shared<Point3D<T>>(p);
-	
-	this->properties.add("mass", std::make_shared<T>((T)1));
-	this->properties.add("charge", std::make_shared<T>((T)1));
+
+	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
+	this->pproperties->add("mass", std::make_shared<T>((T)1));
+	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Displayable3D<T>() {
@@ -88,9 +89,10 @@ template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, co
 	//this->ppoint->y=y;
 	//this->ppoint->z=z;
 	this->ppoint=std::make_shared<Point3D<T>>(x, y, z);
-	
-	this->properties.add("mass", std::make_shared<T>(mass));
-	this->properties.add("charge", std::make_shared<T>((T)1));
+
+	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
+	this->pproperties->add("mass", std::make_shared<T>(mass));
+	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
 template<typename T> inline Particle3D<T>::~Particle3D() {
@@ -99,7 +101,7 @@ template<typename T> inline Particle3D<T>::~Particle3D() {
 
 template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : Displayable3D<T>() {
 	this->ppoint=p.ppoint;
-	this->properties=p.properties;// Copy the properties
+	this->pproperties=p->pproperties;// Copy the properties
 
 	this->ps=p.ps;
 	this->pcolor=p.pcolor;

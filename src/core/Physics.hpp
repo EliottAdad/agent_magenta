@@ -15,7 +15,7 @@
 #include <unordered_set>
 
 #include "TimeSensitive.hpp"
-#include "VectorField.hpp"
+//#include "VectorField3D.hpp"
 //#include "../utilities/Printable.hpp"
 
 /*
@@ -91,8 +91,9 @@ inline bool Physics::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 	bool success=false;
 
 	if (ptime_sensitive!=NULL){
+		printf("Shush1\n");
 		success=ptime_sensitives.insert(ptime_sensitive).second;
-		//printf("Shush\n");
+		printf("Shush2\n");
 	}
 	return success;
 }

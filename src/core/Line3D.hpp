@@ -10,10 +10,10 @@
 #define LINE3D_HPP_
 
 #include <memory>
+#include <eigen3/Eigen/Dense>
 
 #include "../utilities/functions.hpp"
-#include "Point3D.hpp"
-//#include "../utilities/Printable.hpp"
+#include "utils_Point3D.hpp"
 
 /*
  * #############

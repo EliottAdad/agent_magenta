@@ -9,11 +9,12 @@
 
 #define GAME3D_TEST_CPP_
 
-#include <string.h>
-#include "../src/utilities/Game3D.hpp"
-#include "../src/geometry/Particle3D.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/utilities/Game3D.hpp"
+#include "../src/core/utils_Particle3D.hpp"
+
 
 
 

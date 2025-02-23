@@ -14,7 +14,7 @@
 #include <unordered_set>
 
 //#include "Particle3D.hpp"
-#include "Point3D.hpp"
+#include "Point2D.hpp"
 
 
 #define TLTree m_ptrees[0] 		// Top Left corner : is NULL if nothing
@@ -33,7 +33,7 @@
  */
 template<typename U, typename T> class Quad {
 protected:
-	std::shared_ptr<Point3D<T>> m_ppoint;		// The center of the zone.
+	std::shared_ptr<Point2D<T>> m_ppoint;		// The center of the zone.
 	std::shared_ptr<Point3D<T>> m_pbarycenter;	// The center of mass given the repartition of the WeightedPoints in the zone.
 
 	T m_ha;										// Half of the length of the zone's border.

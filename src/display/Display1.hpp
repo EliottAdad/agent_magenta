@@ -16,7 +16,7 @@
 #include "../core/Point3D.hpp"
 #include "../core/Scene3D.hpp"
 #include "../display/Display3D.hpp"
-#include "../display/functions_display.hpp"
+#include "functions_display.hpp"
 
 
 /*

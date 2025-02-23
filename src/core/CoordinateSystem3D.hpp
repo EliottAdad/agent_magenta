@@ -13,7 +13,6 @@
 #include <eigen3/Eigen/Dense>
 
 #include "Vector3D.hpp"
-//#include "../utilities/Printable.hpp"
 
 /*
  * #########################

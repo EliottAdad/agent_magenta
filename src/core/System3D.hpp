@@ -13,8 +13,8 @@
 #include <unordered_set>
 
 #include "../utilities/macros.hpp"
-#include "../core/Vector3D.hpp"
-#include "../core/CoordinateSystem3D.hpp"
+#include "Vector3D.hpp"
+#include "CoordinateSystem3D.hpp"
 #include "Oct.hpp"
 #include "Mobile3D.hpp"
 #include "../display/Displayable3D.hpp"
@@ -94,8 +94,8 @@ public:
 //Functions
 template<typename U, typename T> void gravitOptimised(System3D<U, T>* psystem);// Gravit Function Optimsed by Barnes-Hutt algorithm
 template<typename U, typename T> void elecOptimised(System3D<U, T>* psystem);
-template<typename T, typename U> Vector3D<T> rrr2(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&));// Returns l'acc exercée par p2 sur p1
-template<typename T, typename U> Vector3D<T> rrr3(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&));
+template<typename T, typename U> Vector3D<T> apply_gravitOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&));// Returns l'acc exercée par p2 sur p1
+template<typename T, typename U> Vector3D<T> apply_elecOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&));
 
 
 
@@ -233,7 +233,7 @@ template<typename U, typename T> inline void gravitOptimised(System3D<U, T>* psy
 		for (std::shared_ptr<U> pneighbor : pneighbors) {
 			//NO
 			printf("System3D: gravitOptimised3\n");
-			Vector3D<T> da=rrr2(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
+			Vector3D<T> da=apply_gravitOptimised(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
 			//printf("System3D: gravitOptimised4\n");
 			*pelement+=da*(T)psystem->getT();						//Surcharger l'op += entre U et Vector3D
 		}
@@ -251,7 +251,7 @@ template<typename U, typename T> inline void elecOptimised(System3D<U, T>* psyst
 
 		// Apply the grav law
 		for (std::shared_ptr<U> pneighbor : pneighbors) {
-			Vector3D<T> da=rrr3(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
+			Vector3D<T> da=apply_elecOptimised(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
 			*pelement+=da*(T)psystem->getT();							//Surcharger l'op += entre T et Vector3D
 		}
 	}
@@ -262,7 +262,7 @@ template<typename U, typename T> inline void elecOptimised(System3D<U, T>* psyst
  * Returns the acc (in norm) felt by pU2 due to pU1
  * @param : pU1: src, pU2: target (not NULL)
  */
-template<typename T, typename U> inline Vector3D<T> rrr2(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
+template<typename T, typename U> inline Vector3D<T> apply_gravitOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
 	printf("System3D: rrr2 1\n");
 	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>();
 	//printf("System3D: rrr2 2\n");
@@ -292,7 +292,7 @@ template<typename T, typename U> inline Vector3D<T> rrr2(std::shared_ptr<U> pU1,
  * Returns the acc (in norm) felt by pU2 due to pU1
  * @param : pU1: src, pU2: target (not NULL pls)
  */
-template<typename T, typename U> inline Vector3D<T> rrr3(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
+template<typename T, typename U> inline Vector3D<T> apply_elecOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
 	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>();
 	pv->pp1=std::make_shared<Point3D<T>>(pU2->getPosition());
 	pv->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);

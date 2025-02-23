@@ -9,10 +9,11 @@
 
 #define VECTOR3D_TEST_CPP_
 
-#include <string.h>
-#include "../src/core/Vector3D.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/core/utils_Vector3D.hpp"
+
 
 BOOST_AUTO_TEST_SUITE (Vector3D_test) // le nom de la série de test est Vector3D_test
 

@@ -9,10 +9,11 @@
 
 #define PARTICLE3D_TEST_CPP_
 
-#include <string.h>
-#include "../src/geometry/Particle3D.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/core/utils_Particle3D.hpp"
+
 
 BOOST_AUTO_TEST_SUITE (Particle3D_test) // The name of this serie is Particle3D_test
 

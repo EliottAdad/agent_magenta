@@ -13,9 +13,9 @@ LDFLAGS	=
 # -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 # Phonies
 .PHONY = all
-
+# Configuration
 DEBUG=yes
-TEST=no
+TEST=yes
 
 
 
@@ -53,7 +53,6 @@ run_test:
 #######################Main
 # Linking main_game
 main_game: main_game.o
-	$(MAKE) create_build_dir
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 # Compile main_draft.cpp
@@ -61,21 +60,20 @@ main_game.o: src/main.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
 #######################Test
-# Linking Game3D.test.o 
-main_test: main.test.o Display1.test.o Oct.test.o SN.test.o Point3D.test.o
-	$(MAKE) create_build_dir
+# Linking
+TFILES := $(shell find test -name '*.test.cpp')
+TOFILES = $(patsubst %.cpp, %.o, $(notdir $(TFILES)))
+main_test: main.test.o $(TOFILES)
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 
 # Compile main.test.cpp
 main.test.o: test/main.test.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
-#	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
 #######################Draft
 # Linking main_draft
 main_draft: main_draft.o
-	$(MAKE) create_build_dir
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 
@@ -87,10 +85,6 @@ main_draft.o: src/main_draft.cpp
 
 ################### Compilation
 
-
-# Compile
-#%.o: %o.cpp
-#	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
 # Compile
 %.test.o: test/%.test.cpp

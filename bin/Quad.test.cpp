@@ -9,11 +9,12 @@
 
 #define QUAD_TEST_CPP_
 
+#include <boost/test/unit_test.hpp>
 #include <string.h>
-#include "../src/core/Quad.hpp"
+
+#include "../src/core/2D/Quad.hpp"
 #include "../src/geometry/Particle3D.hpp"
 
-#include <boost/test/unit_test.hpp>
 
 
 struct FQuad {

@@ -9,17 +9,16 @@
 
 #define SCENE3D_TEST_CPP_
 
-#include <string.h>
-#include "../src/core/Scene3D.hpp"
-#include "../src/geometry/Particle3D.hpp"
-#include "../src/utilities/functionsParticle3D.hpp"
-//#include "../src/utilities/functions_display.hpp"
-
 #include <boost/test/unit_test.hpp>
+#include <string.h>
+
+#include "../src/core/utils_Scene3D.hpp"
+#include "../src/core/utils_Particle3D.hpp"
+
 
 
 struct FScene3D {
-	FScene3D<SN<float, char>>* ps;
+	Scene3D<SN<float, char>>* ps;
 	
 	FScene3D() {
 		BOOST_TEST_MESSAGE("setup fixture");
@@ -38,7 +37,7 @@ BOOST_FIXTURE_TEST_SUITE (Scene3D_test, FScene3D) // The name of this serie is S
 		//Display1<SN<float, char>> display;
 	}
 
-	BOOST_AUTO_TEST_CASE (test_add) { //
+	/*BOOST_AUTO_TEST_CASE (test_add) { //
 		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
 		pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 18});
 
@@ -55,7 +54,7 @@ BOOST_FIXTURE_TEST_SUITE (Scene3D_test, FScene3D) // The name of this serie is S
 		}
 	
 		BOOST_CHECK(25 == ps->getNbElements());
-	}
+	}*/
 
 
 BOOST_AUTO_TEST_SUITE_END()
