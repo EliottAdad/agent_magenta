@@ -16,9 +16,10 @@
 #include "../core/Triangle3D.hpp"
 
 /*
- * #################
+ * ##############
  *  Shape3D<T> :)
- * #################
+ * ##############
+ * @brief
  * Abstract class
  */
 template<typename T> class Shape3D {

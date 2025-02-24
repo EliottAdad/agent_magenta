@@ -24,6 +24,7 @@
  * ############
  *  Material :)
  * ############
+ * @brief
  * A material to apply on the objects.
  */
 class Material {

@@ -19,10 +19,11 @@
 
 
 
-/*
+/**
  * #####################
  *  PropertySet<U, T> :)
  * #####################
+ * @brief
  * U: Unit of the target
  * T: Unit of distances target
  * P: Type of the property (SN<float, char>, float, bool, ...)
@@ -41,7 +42,8 @@ public:
 	void add(const std::string& name, std::shared_ptr<T> pprop);
 	std::shared_ptr<T> get(const std::string& name) const;
 	
-	void operator=(const PropertySet<U, T>& properties);
+	void operator=(const PropertySet<U, T>& property_set);
+	void operator+=(const PropertySet<U, T>& property_set);
 };
 
 template<typename U, typename T> PropertySet<U, T>::PropertySet() {
@@ -77,10 +79,21 @@ template<typename U, typename T> std::shared_ptr<T> PropertySet<U, T>::get(const
 	return this->properties.at(name);
 }
 
+/*
+ * Operators
+ */
+
 /**
- * Copy
+ * h
  */
 template<typename U, typename T> void PropertySet<U, T>::operator=(const PropertySet<U, T>& property_set) {
+	this->properties=property_set.properties;
+}
+
+/**
+ * TODO
+ */
+template<typename U, typename T> void PropertySet<U, T>::operator+=(const PropertySet<U, T>& property_set) {
 	this->properties=property_set.properties;
 }
 	

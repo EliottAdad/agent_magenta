@@ -22,6 +22,7 @@
  * ####################
  *  Displayable3D<T> :)
  * ####################
+ * @brief
  * Abstract class
  * Color + Mat + getX
  * Stores the color, and a shape to use when rendering

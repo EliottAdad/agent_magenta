@@ -21,6 +21,7 @@
  * ################
  *  Camera<T> :)
  * ################
+ * @brief
  * This camera is a cone directed by a normal
  */
 template<typename T> class Camera {

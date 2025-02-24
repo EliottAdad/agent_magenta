@@ -6,7 +6,7 @@
 # Parameters
 CC		= g++
 # CFLAGS is for -I
-CFLAGS	= -Wall -Wextra -MMD
+CFLAGS	= -Wall -Wextra -MMD -std=c++20
 LDLIBS	= -lboost_unit_test_framework -lSDL2
 #LDFLAGS is for -L
 LDFLAGS	=

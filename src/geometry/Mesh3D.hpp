@@ -22,6 +22,7 @@
  * ###########
  *  Mesh<T> :)
  * ###########
+ * @brief
  * Abstract class
  * A mesh is a set of triangles.
  */

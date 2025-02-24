@@ -17,10 +17,11 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
+#include "macros.hpp"
 
-/*
- * Functions
- */
+
+
+template<typename T> bool equal(const T& nb1, const T& nb2);
 
 std::string to_stringTabs(const unsigned char& nb);
 void printTabs(const unsigned char& nb);
@@ -40,6 +41,17 @@ std::vector<SDL_Point> pixelizeCircle(SDL_Point center, int radius);
  * Functions
  */
 
+/**
+ * Test out if number are sufficiently close to be considered equal
+ * Can be used on float, double, SN.
+ */
+template<typename T> bool equal(const T& nb1, const T& nb2){
+	if ((T)abs(nb1-nb2)<=(T)LIM_EQUAL){
+		true;
+	}else{
+		return false;
+	}
+}
 
 /**
  * Returns the chained tabs as a string.

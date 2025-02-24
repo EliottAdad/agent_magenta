@@ -18,11 +18,13 @@
 #include "Oct.hpp"
 #include "Mobile3D.hpp"
 #include "../display/Displayable3D.hpp"
+#include "../utilities/macros.hpp"
 
 /*
  * ##################
  *  System3D<U, T> :)
  * ##################
+ * @brief
  * U is the type of object stored, T is the unit
  * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ(), .getPosition()
  * If you want to use the functions (rrr, ...) you need a .getW() too
@@ -280,7 +282,7 @@ template<typename T, typename U> inline Vector3D<T> apply_gravitOptimised(std::s
 					(Point3D<T>)pU2->getPosition()
 					);
 		//d.print();						// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
-		pv->setNorm(G*abs((*ptr_getW)(*pU1))/(d*d));
+		pv->setNorm(G(T) * abs((*ptr_getW)(*pU1))/(d*d));
 	}
 	//printf("System3D: rrr2 5\n");
 	
@@ -304,7 +306,7 @@ template<typename T, typename U> inline Vector3D<T> apply_elecOptimised(std::sha
 					(Point3D<T>)pU1->getPosition(), 
 					(Point3D<T>)pU2->getPosition()
 					);// Probleme: 2 objects sont sur la meme pos (getNeighbors ne fait pas son job)
-		pv->setNorm(K*abs((*ptr_getW)(*pU1))/(d*d));
+		pv->setNorm(K(T) * abs((*ptr_getW)(*pU1))/(d*d));
 	}
 
 	return *pv;

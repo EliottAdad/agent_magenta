@@ -19,6 +19,7 @@
  * ###############
  *  Vector3D<T> :)
  * ###############
+ * @brief
  * T: Unit for distances
  */
 template<typename T> class Vector3D : public Line3D<T> {

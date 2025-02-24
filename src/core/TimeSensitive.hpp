@@ -18,6 +18,7 @@
  * #################
  *  TimeSensitive :)
  * #################
+ * @brief
  * Abstract class
  * Skeleton for time management.
  */

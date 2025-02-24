@@ -18,6 +18,7 @@
  * #########################
  *  CoordinateSystem3D<T> :)
  * #########################
+ * @brief
  * An coordinate system defined by
  * its 3 own unary vectors expressed
  * in world/reference coordinates

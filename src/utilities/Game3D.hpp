@@ -25,6 +25,7 @@
  * #############
  *  Game3D<T> :)
  * #############
+ * @brief
  * Contains a scene, a physics management system, and a display.
  */
 template<typename T> class Game3D {

@@ -16,6 +16,7 @@
  * #############
  *  Ball3D<T> :)
  * #############
+ * @brief
  * Particle3D with radius (useless)
  */
 template<typename T> class Ball3D : public Particle3D<T> {

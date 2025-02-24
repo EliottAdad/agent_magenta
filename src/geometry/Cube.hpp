@@ -16,6 +16,7 @@
  * ###########
  *  Cube<T> :)
  * ###########
+ * @brief
  * A cube.
  */
 template<typename T> class Cube : public Mesh3D<T> {

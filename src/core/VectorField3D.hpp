@@ -20,9 +20,10 @@
 
 
 /*
- * ###############
+ * #################
  *  VectorField3D :)
- * ###############
+ * #################
+ * @brief
  * Uses the weights of the particles.
  */
 template <typename T> class VectorField3D : public TimeSensitive {

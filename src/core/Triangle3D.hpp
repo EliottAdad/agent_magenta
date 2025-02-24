@@ -17,6 +17,7 @@
  * #################
  *  Triangle3D<T> :)
  * #################
+ * @brief
  * A set of 3 points.
  */
 template<typename T> class Triangle3D {

@@ -16,6 +16,7 @@
  * ####################
  *  BezierCurve3D<T> :)
  * ####################
+ * @brief
  * A bezier curve defined by 2 or more control points.
  */
 template<typename T> class BezierCurve3D {

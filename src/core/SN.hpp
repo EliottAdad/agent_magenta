@@ -23,9 +23,10 @@
  * ############
  *  SN<M, E> :)
  * ############
+ * @brief
  * Scientific Number
- * It allows to store big numbers
- * under scientific notation.
+ * It allows to store extremely big or 
+ * small numbers under scientific notation.
  * Recommended usage : 	<float, char>
  * 						<double, char>
  * 						<double, int>

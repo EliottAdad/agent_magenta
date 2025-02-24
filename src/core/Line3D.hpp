@@ -15,10 +15,11 @@
 #include "../utilities/functions.hpp"
 #include "utils_Point3D.hpp"
 
-/*
+/**
  * #############
  *  Line3D<T> :)
  * #############
+ * @brief
  * A line is represented by two points.
  * This class present a few useful methods
  * to compute the geometry of the objects.
@@ -40,8 +41,8 @@ template<typename T> Point3D<T> getIntersectionSegments(const Line3D<T>& l1, con
 
 
 template<typename T> inline Line3D<T>::Line3D(){
-	this->pp1=std::make_shared<Point3D<T>>();				// Point created at the origin
-	this->pp2=std::make_shared<Point3D<T>>((T)1,(T)1,(T)1);	// {1, 1, 1}
+	this->pp1=std::make_shared<Point3D<T>>();				// First point created at origin
+	this->pp2=std::make_shared<Point3D<T>>((T)1,(T)1,(T)1);	// Second point at {1, 1, 1}
 }
 
 template<typename T> inline Line3D<T>::Line3D(const Point3D<T>& p1, const Point3D<T>& p2){//:)

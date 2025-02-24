@@ -20,6 +20,7 @@
  * ###############
  *  Mobile3D<T> :)
  * ###############
+ * @brief
  * Abstract class
  * TimeSensitive + Point3D + getX + CoordSystem
  */

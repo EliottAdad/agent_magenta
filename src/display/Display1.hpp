@@ -23,6 +23,7 @@
  * ###############
  *  Display1<T> :)
  * ###############
+ * @brief
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
  * Display any Displayable.

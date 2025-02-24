@@ -23,10 +23,11 @@
 
 //template<typename T> enum<T> Property {T, };
 
-/*
+/**
  * #################
  *  Particle3D<T> :)
  * #################
+ * @brief
  * A point with a speed.
  */
 template<typename T> class Particle3D : public Displayable3D<T> {
@@ -44,7 +45,7 @@ public:
 	static T getCharge();
 	
 	virtual void operator+=(const Vector3D<T>& v);// :)
-	//virtual void operator+=(const Particle3D<T>& p);// :)
+	virtual void operator+=(const Particle3D<T>& p);// :)
 
 	// From Mobile3D
 	virtual T getX() const {return Mobile3D<T>::getX();};				//Gets the coords (for rendering)
@@ -117,6 +118,14 @@ template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v)
 		*this->ps+=v;
 	}else{
 		*this->ps=v;
+	}
+}
+
+template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p){
+	if (this->pproperties!=NULL){
+		*this->pproperties+=*p.pproperties;
+	}else{
+		this->pproperties=p.pproperties;
 	}
 }
 

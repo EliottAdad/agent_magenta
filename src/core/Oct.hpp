@@ -34,12 +34,12 @@
  * #############
  * U is the class for the objects stored.
  * T is the unit used for distance.
- * Can contain any object that has methods .getX, .getY, .getZ, (pU->*ptr_getW)()
+ * Can contain any object that has methods .getPosition, (pU->*ptr_getW)(), +=
  */
 template<typename U, typename T> class Oct {
 protected:
 	// Internal variables
-	Oct<U, T>* poct_parent;								// Pointer to the parent oct;
+	Oct<U, T>* m_poct_parent;							// Pointer to the parent oct;
 	std::unique_ptr<Point3D<T>> m_ppoint;				// The center of the zone.
 	std::unique_ptr<Point3D<T>> m_pbarycenter;			// The center of mass given the repartition of the WeightedPoints in the zone.
 
@@ -70,7 +70,8 @@ public:
 											// Plus alpha est petit plus on est precis
 											
 	std::unique_ptr<Oct<U, T>> ptrees[8];				// Contains the trees.
-	static std::unordered_set<std::shared_ptr<Oct<U, T>>> LEAVES;			// Keeps track of the Octs that are leaves.
+	static std::unordered_set<Oct<U, T>*> LEAVES;			// Keeps track of the Octs that are leaves.
+	bool ffuse;											// Leaves the choice between fusing the elements at insertion if they are at the same coords, or not inserting them.
 	
 	Oct();
 	Oct(const T& a, const Point3D<T>& p={(T)0,(T)0,(T)0});
@@ -91,12 +92,13 @@ public:
 		return this->recalculate();
 	}
 	
-	
 	unsigned int getNB_OCTS() const;
 	
-	//std::unordered_set<Oct<U, T>*> getPTrees();						//Returns all the trees under, contained by this tree.
+	std::unordered_set<Oct<U, T>*> getPChilds() const;	//Returns all the trees directly under, contained by this tree.
+	std::unordered_set<const Oct<U, T>*> getPUnderLeaves(const bool& mem=false) const;	//Returns all the trees that are leaves directly under, contained by this tree.
 	std::unordered_set<std::shared_ptr<U>> getPElements(const bool& mem=false) const;					//:) Returns all the elements contained in the tree.
 	std::unordered_set<std::shared_ptr<U>> getPNeighbors(const std::shared_ptr<U> pelement, const bool& mem=false) const;		//:) Returns all the neighbors.
+	std::unordered_set<Oct<U, T>*> getPNeighbouringOcts() const;		//:) Returns all the neighbouring octs.
 
 	std::shared_ptr<U> insert(std::shared_ptr<U> pU);//:)
 	bool remove(std::shared_ptr<U> pU);//:)
@@ -110,6 +112,7 @@ public:
 	bool isRoot() const;
 };
 template<typename U, typename T> unsigned int Oct<U, T>::m_NB_OCTS=0;
+template<typename U, typename T> std::unordered_set<Oct<U, T>*> Oct<U, T>::LEAVES={};
 
 
 
@@ -118,7 +121,7 @@ template<typename U, typename T> unsigned int Oct<U, T>::m_NB_OCTS=0;
  */
 template<typename U, typename T> inline Oct<U, T>::Oct() {
 	// Internal variables
-	this->poct_parent=NULL;
+	this->m_poct_parent=NULL;
 	this->m_ppoint=std::make_unique<Point3D<T>>();
 	this->m_pbarycenter=std::make_unique<Point3D<T>>(*m_ppoint);
 
@@ -130,7 +133,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
 
 	this->m_pU=NULL;
 
-	for (int i(0) ; i<8 ; i++) {
+	for (unsigned char i(0) ; i<8 ; i++) {
 		this->ptrees[i]=NULL;
 	}
 
@@ -139,6 +142,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
 	// External variables
 	//this->weight_id="";					// "mass" or "charge"
 	this->alpha=0.5;
+	this->ffuse=false;
 }
 
 /**
@@ -148,7 +152,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct() {
  */
 template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D<T>& p) {
 	// Internal variables
-	this->poct_parent=NULL;
+	this->m_poct_parent=NULL;
 	this->m_ppoint=std::make_unique<Point3D<T>>(p);
 	this->m_pbarycenter=std::make_unique<Point3D<T>>(*m_ppoint);
 
@@ -160,7 +164,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D
 
 	this->m_pU=NULL;
 
-	for (int i(0) ; i<8 ; i++) {
+	for (unsigned char i(0) ; i<8 ; i++) {
 		this->ptrees[i]=NULL;
 	}
 
@@ -169,20 +173,18 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D
 	// External variables
 	//this->weight_id="";					// "mass" or "charge"
 	this->alpha=0.5;
+	this->ffuse=false;
 }
 
 template<typename U, typename T> inline Oct<U, T>::~Oct() {
 	
-	this->poct_parent=NULL;
+	this->m_poct_parent=NULL;
 	this->m_ptr_getW=NULL;
 	
 	this->m_pU=NULL;
 	
-	for (int i(0) ; i<8 ; i++){
-		if (this->ptrees[i]!=NULL){
-			this->ptrees[i]=NULL;
-		}
-	}
+	this->empty();
+
 	// There is one less Oct
 	this->m_NB_OCTS--;
 }
@@ -192,7 +194,7 @@ template<typename U, typename T> inline Oct<U, T>::~Oct() {
  */
 template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 	// Internal variables
-	this->poct_parent=NULL;
+	this->m_poct_parent=NULL;
 	this->m_ppoint=std::make_unique<Point3D<T>>(oct.getPoint());
 	this->m_pbarycenter=std::make_unique<Point3D<T>>(*m_ppoint);
 
@@ -204,7 +206,7 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 
 	this->m_pU=NULL;
 
-	for (int i(0) ; i<8 ; i++) {
+	for (unsigned char i(0) ; i<8 ; i++) {
 		this->ptrees[i]=NULL;
 	}
 
@@ -213,7 +215,8 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 	// External variables
 	//this->weight_id=oct.weight_id;					// "mass" or "charge"
 	this->alpha=oct.alpha;
-	
+	this->ffuse=oct.ffuse;
+
 	// Reinsert the elements.
 	this->insert(oct.getPElements());
 }
@@ -268,6 +271,38 @@ template<typename U, typename T> inline unsigned int Oct<U, T>::getNB_OCTS() con
 	return this->m_NB_OCTS;
 }
 
+template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPChilds() const {
+	std::unordered_set<Oct<U, T>*> pchilds;
+	for (unsigned char i(0) ; i<8 ; i++){
+		if (this->ptrees[i]!=NULL){
+			pchilds.insert(this->ptrees[i].get());
+		}
+	}
+	return pchilds;
+}
+
+/**
+ * Returns all the trees that are leaves directly under (including this tree), contained by this tree.
+ * mem: flag memorise (recursive call)
+ */
+template<typename U, typename T> inline std::unordered_set<const Oct<U, T>*> Oct<U, T>::getPUnderLeaves(const bool& mem) const {
+	static std::unordered_set<const Oct<U, T>*> pleaves={};
+
+	if (mem==false){
+		pleaves.clear();
+	}
+
+	if (this->isLeaf()){// If leaf, adds itself
+		pleaves.insert(this);
+	}
+
+	for (Oct<U, T>* pchild : this->getPChilds()){
+			pchild->getPUnderLeaves(true);
+	}
+
+	return pleaves;
+}
+
 /**
  * mem: flag memorise (recursive call)
  */
@@ -281,7 +316,7 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 	if (m_pU!=NULL){
 		elmts.insert(m_pU);
 	}else{
-		for (int i(0) ; i<8 ; i++){
+		for (unsigned char i(0) ; i<8 ; i++){
 			if (this->ptrees[i]!=NULL){
 				this->ptrees[i]->getPElements(true);
 			}
@@ -304,7 +339,7 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 
 	if (pelement!=NULL){
 		if (this->m_pU==NULL && (T)(this->alpha)<=m_ha/getDistance(*this->m_pbarycenter, pelement->getPosition())){//U{1., 0}/getDistance(*m_ppoint, *pelement)<=U{m_ALPHA, 0}
-			for (int i(0) ; i<8 ; i++){
+			for (unsigned char i(0) ; i<8 ; i++){
 				if (this->ptrees[i]!=NULL){
 					this->ptrees[i]->getPNeighbors(pelement, true);
 				}
@@ -330,6 +365,32 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 }
 
 /**
+ * Returns the neighboring Octs
+ */
+template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPNeighbouringOcts() const {
+	static pneigh_octs;
+	pchilds;
+	if (this->m_poct_parent!=NULL){
+		pchilds=this->m_poct_parent->getChilds();
+	}
+	pchilds.remove(this);
+
+	for (pchild : pchilds){
+		d=getDistance(*this->m_ppoint, pchild->getPoint())
+		if (this->getA()+pchild->getA() == 2*d){// Facade
+			+=pow(pchild->getA(), 2);		//Must be >=pow(this->getA(), 2) on every face when done
+		}else if(sqrt(2)*(this->getA()+pchild->getA())==d){// Corner
+			corner+=pchild->getA();		// Must be 12*this->getA() when done
+		}else if(sqrt(3)*(this->getA()+pchild->getA())==d){//Corner corner
+			corner2+=1			// Must be 8 when done
+		}
+	}
+	if (){//If les conds ne sont pas reunies regarde plus haut.
+		this->m_poct_parent->getPNeighbouringOcts();
+	}
+}
+
+/**
  * returns
  * NULL if it was inserted successfully or if entered NULL pointer
  *  or the pointer that was passed in argument if it was enable.
@@ -337,8 +398,9 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
  */
 template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std::shared_ptr<U> pU) {
 	printf("Oct: insert\n");
+	// If the object to insert is not NULL
 	if (pU!=NULL){
-		Point3D<T> p={pU->getX(), pU->getY(), pU->getZ()};
+		Point3D<T> p=pU->getPosition();
 		Point3D<T> dp=p-*this->m_ppoint;
 
 		if (abs(dp.x)<=m_ha && 
@@ -358,10 +420,17 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 			printf("Oct: insert3\n");
 			if (this->isEmpty() && this->isLeaf()){		// If empty and the cube has no Octs under (if it's a leaf)
 				this->m_pU=pU;//We add in
+				this->LEAVES.insert(this);// Marked as a leaf
 				printf("Oct: insert4\n");
-			}else{										// Else it means it is an internal branch
+			}else{										// Else it means it is an internal branch (or a leaf already full)
 				printf("Oct: insert5\n");
-				if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){		//If cube 1
+				if (this->isFull() && p==this->m_pU->getPosition()){// If pU and m_pU at the same location
+					if (this->ffuse){
+						*this->m_pU+=*pU;
+					}else{
+						return pU;
+					}
+				}else if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 1
 					insertTLFTree(pU);
 				}else if (dp.x>=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 2
 					insertTRFTree(pU);
@@ -404,7 +473,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertTLFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(-1)*a, (T)(1)*a};
 		TLFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		TLFTree->poct_parent=this;
+		TLFTree->m_poct_parent=this;
 	}
 	TLFTree->insert(pU);
 }
@@ -414,7 +483,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertTRFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(-1)*a, (T)(1)*a};
 		TRFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		TRFTree->poct_parent=this;
+		TRFTree->m_poct_parent=this;
 	}
 	TRFTree->insert(pU);
 }
@@ -424,7 +493,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertBRFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(-1)*a, (T)(-1)*a};
 		BLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		BLBTree->poct_parent=this;
+		BLBTree->m_poct_parent=this;
 	}
 	BLBTree->insert(pU);
 }
@@ -434,7 +503,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertBLFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(-1)*a, (T)(-1)*a};
 		BLFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		BLFTree->poct_parent=this;
+		BLFTree->m_poct_parent=this;
 	}
 	BLFTree->insert(pU);
 }
@@ -444,7 +513,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertTLBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(1)*a, (T)(1)*a};
 		TLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		TLBTree->poct_parent=this;
+		TLBTree->m_poct_parent=this;
 	}
 	TLBTree->insert(pU);
 }
@@ -454,7 +523,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertTRBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(1)*a, (T)(1)*a};
 		TRBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		TRBTree->poct_parent=this;
+		TRBTree->m_poct_parent=this;
 	}
 	TRBTree->insert(pU);
 }
@@ -464,7 +533,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertBRBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(1)*a, (T)(-1)*a};
 		BRBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		BRBTree->poct_parent=this;
+		BRBTree->m_poct_parent=this;
 	}
 	BRBTree->insert(pU);
 }
@@ -474,7 +543,7 @@ template<typename U, typename T> inline void Oct<U, T>::insertBLBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(1)*a, (T)(-1)*a};
 		BLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np);
-		BLBTree->poct_parent=this;
+		BLBTree->m_poct_parent=this;
 	}
 	BLBTree->insert(pU);
 }
@@ -521,8 +590,17 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
  * Empty the octree from all elements ans subtrees.
  */
 template<typename U, typename T> inline void Oct<U, T>::empty() {
+	// Gets the leaves under.
+	std::unordered_set<const Oct<U, T>*> under_leaves=getPUnderLeaves();
+	// Suppress the leaves under from the leaves list.
+	for (const Oct<U, T>* poct : under_leaves){
+		if (this->LEAVES.contains(poct)){
+			this->LEAVES.erase(poct);
+		}
+	}
+
 	// No more under Octs
-	for (int i(0) ; i<8 ; i++){
+	for (unsigned char i(0) ; i<8 ; i++){
 		if (this->ptrees[i]!=NULL){
 			this->ptrees[i]=NULL;
 		}
@@ -563,7 +641,7 @@ template<typename U, typename T> inline bool Oct<U, T>::isEmpty() const {
 template<typename U, typename T> inline bool Oct<U, T>::isLeaf() const {
 	bool test=true;
 
-	for (int i(0) ; i<8 ; i++){
+	for (unsigned char i(0) ; i<8 ; i++){
 		if (this->ptrees[i]!=NULL){
 			test=false;
 			break;

@@ -16,9 +16,9 @@
 #include "Triangle3D.hpp"
 
 /*
- * ####################
+ * #################
  *  Polyhedron<T> :)
- * ####################
+ * #################
  */
 template<typename T> class Polyhedron : public Shape3D<T> {
 protected:
