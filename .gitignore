@@ -12,7 +12,8 @@ Debug/**
 .project
 
 # Ignores files created by Kdevelop
-**.kdev4
+*.kdev4
+.kdev4/**
 
 # Ignores all .o, .d and ~ files
 **.o
