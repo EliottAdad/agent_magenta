@@ -11,7 +11,11 @@ Debug/**
 .cproject
 .project
 
+# Ignores files created by Kdevelop
+**.kdev4
+
 # Ignores all .o, .d and ~ files
 **.o
 **.d
 **~**
+
