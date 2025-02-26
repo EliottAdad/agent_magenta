@@ -87,12 +87,12 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 
 		printf("NB_OCTS: %d\n", poct->getNB_OCTS());//True
 		BOOST_CHECK(1 == poct->getNB_OCTS());//True
-		BOOST_CHECK(false == poct->isEmpty());//Should be true
+		BOOST_CHECK(!poct->isEmpty());//Should pass
 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp2);
 
-		BOOST_CHECK(false == poct->isEmpty());
+		BOOST_CHECK(!poct->isEmpty());
 
 		poct->empty();
 
@@ -155,25 +155,21 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp1);
 
-		//BOOST_CHECK(0 == poct->getPElements().size());
 		BOOST_CHECK(1 == poct->getPElements().size());
-		//BOOST_CHECK(2 == poct->getPElements().size());
+		BOOST_CHECK(poct->isFull());
+		BOOST_CHECK(poct->isLeaf());
 
 		poct->empty();
+		
+		BOOST_CHECK(0 == poct->getPElements().size());
+		BOOST_CHECK(poct->isEmpty());
+		BOOST_CHECK(!poct->isLeaf());
 
-		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
-		poct->insert(pp1);
-		poct->insert(pp2);
-
-		BOOST_CHECK(2 == poct->getPElements().size());
-
-		poct->empty();
-
-		std::shared_ptr<Particle3D<SN<float, char>>> pp3=std::make_shared<Particle3D<SN<float, char>>>();
+		std::shared_ptr<Particle3D<SN<float, char>>> pp3=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
 		poct->insert(pp1);
 		poct->insert(pp3);
 		
-		BOOST_CHECK(0 == poct->getPElements().size());//PROBLEM should't work (cannot insert 2 p at origin(exact same coords)
+		//BOOST_CHECK(0 == poct->getPElements().size());//PROBLEM should't work (cannot insert 2 p at origin(exact same coords)
 		//BOOST_CHECK(1 == poct->getPElements().size());
 		BOOST_CHECK(2 == poct->getPElements().size());//  Should work
 
@@ -204,6 +200,27 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(2 == poctf->getPElements().size());//  Should work
 	}
 
+	BOOST_AUTO_TEST_CASE (test_fuse) { //
+		std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>();
+
+		//poct->ffuse is by default false
+		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>();
+		poct->insert(pp1);
+		poct->insert(pp2);
+
+		BOOST_CHECK(1 == poct->getPElements().size());
+
+		poct->empty();
+		
+		poct->ffuse=true;	// Fuse on
+		poct->insert(pp1);
+		poct->insert(pp2);
+		
+		BOOST_CHECK(1 == poct->getPElements().size());
+		
+		poct->empty();
+	}
+	
 	BOOST_AUTO_TEST_CASE (test_remove) { //
 		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
 

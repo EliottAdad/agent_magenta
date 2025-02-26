@@ -4,18 +4,18 @@
 ############
 
 # Parameters
-CC		= g++
+CC		:= g++
 # CFLAGS is for -I
-CFLAGS	= -Wall -Wextra -MMD -std=c++20
-LDLIBS	= -lboost_unit_test_framework -lSDL2
+CFLAGS	:= -Wall -Wextra -MMD -std=c++20
+LDLIBS	:= -lboost_unit_test_framework -lSDL2
 #LDFLAGS is for -L
-LDFLAGS	=
+LDFLAGS	:=
 # -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 # Phonies
-.PHONY = all
+.PHONY 	:= all
 # Configuration
-DEBUG=yes
-TEST=yes
+DEBUG	:=yes
+TEST	:=yes
 
 
 
@@ -24,7 +24,7 @@ all: create_build_dir main_game
 
 
 
-
+####################### Options
 
 # Activates Debug
 ifeq ($(DEBUG),yes)
@@ -41,7 +41,7 @@ endif
 
 # Create build directory
 create_build_dir:
-	$(shell mkdir ./build)
+	mkdir -p ./build
 
 # Run tests
 run_test:
@@ -50,7 +50,7 @@ run_test:
 
 
 
-#######################Main
+####################### Main
 # Linking main_game
 main_game: main_game.o
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
@@ -59,7 +59,7 @@ main_game: main_game.o
 main_game.o: src/main.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
-#######################Test
+####################### Test
 # Linking
 TFILES := $(shell find test -name '*.test.cpp')
 TOFILES = $(patsubst %.cpp, %.o, $(notdir $(TFILES)))
@@ -71,7 +71,7 @@ main_test: main.test.o $(TOFILES)
 main.test.o: test/main.test.cpp
 	$(CC) -o build/$@ -c $^ $(CFLAGS)
 
-#######################Draft
+####################### Draft
 # Linking main_draft
 main_draft: main_draft.o
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
@@ -83,7 +83,7 @@ main_draft.o: src/main_draft.cpp
 
 
 
-################### Compilation
+####################### Compilation
 
 
 # Compile
@@ -94,11 +94,11 @@ main_draft.o: src/main_draft.cpp
 
 
 
-# Cleaning options
+####################### Cleaning options
 
 #Finds all the .d, .o and executables files in subdirectories
 clean:
 	$(RM) -f *.o *.d main_game main_test main_draft -r ./doc ./build
 
 
-include $(wildcard .d)    #handle header dependencies
+include $(wildcard /build/*.d)    #handle header dependencies

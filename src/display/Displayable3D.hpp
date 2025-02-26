@@ -38,7 +38,7 @@ public:
 	virtual ~Displayable3D();
 	Displayable3D(const Displayable3D& displayable);
 
-	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const = 0;
+	virtual std::unordered_set<Point3D<T>*> getPPoints() const = 0;
 	/*virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
 	virtual std::unordered_set<std::shared_ptr<Triangle3D<T>>> getPTriangles() const;*/
 	//virtual Image getSticker() const;
@@ -63,8 +63,8 @@ template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D&
 
 
 
-template<typename T> inline std::unordered_set<std::shared_ptr<Point3D<T>>> Displayable3D<T>::getPPoints() const {
-	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
+template<typename T> inline std::unordered_set<Point3D<T>*> Displayable3D<T>::getPPoints() const {
+	std::unordered_set<Point3D<T>*> ppoints;
 	return ppoints;
 }
 

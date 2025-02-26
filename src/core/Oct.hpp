@@ -95,17 +95,18 @@ public:
 	unsigned int getNB_OCTS() const;
 	
 	std::unordered_set<Oct<U, T>*> getPChilds() const;	//Returns all the trees directly under, contained by this tree.
-	std::unordered_set<const Oct<U, T>*> getPUnderLeaves(const bool& mem=false) const;	//Returns all the trees that are leaves directly under, contained by this tree.
+	std::unordered_set<Oct<U, T>*> getPUnderLeaves(const bool& mem=false) const;	//Returns all the trees that are leaves directly under, contained by this tree.
 	std::unordered_set<std::shared_ptr<U>> getPElements(const bool& mem=false) const;					//:) Returns all the elements contained in the tree.
 	std::unordered_set<std::shared_ptr<U>> getPNeighbors(const std::shared_ptr<U> pelement, const bool& mem=false) const;		//:) Returns all the neighbors.
-	std::unordered_set<Oct<U, T>*> getPNeighbouringOcts() const;		//:) Returns all the neighbouring octs.
+	std::unordered_set<Oct<U, T>*> getPNeighbouringOcts(const bool& mem=false) const;		//:) Returns all the neighbouring octs.
 
 	std::shared_ptr<U> insert(std::shared_ptr<U> pU);//:)
 	bool remove(std::shared_ptr<U> pU);//:)
-	std::shared_ptr<U> search(const std::shared_ptr<Point3D<T>> ppoint) const;
+	//std::shared_ptr<U> search(const std::shared_ptr<Point3D<T>> ppoint) const;
 	std::unordered_set<std::shared_ptr<U>> recalculate();
 	void empty();
 
+	// Tests
 	bool isFull() const;
 	bool isEmpty() const;
 	bool isLeaf() const;
@@ -171,7 +172,6 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const T& a, const Point3D
 	this->m_NB_OCTS++;
 	
 	// External variables
-	//this->weight_id="";					// "mass" or "charge"
 	this->alpha=0.5;
 	this->ffuse=false;
 }
@@ -213,7 +213,6 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 	this->m_NB_OCTS++;
 	
 	// External variables
-	//this->weight_id=oct.weight_id;					// "mass" or "charge"
 	this->alpha=oct.alpha;
 	this->ffuse=oct.ffuse;
 
@@ -271,6 +270,9 @@ template<typename U, typename T> inline unsigned int Oct<U, T>::getNB_OCTS() con
 	return this->m_NB_OCTS;
 }
 
+/**
+ * Get octs under.
+ */
 template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPChilds() const {
 	std::unordered_set<Oct<U, T>*> pchilds;
 	for (unsigned char i(0) ; i<8 ; i++){
@@ -282,11 +284,23 @@ template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>
 }
 
 /**
+ * Get its brothers (other octs at the same level, itself excluded)
+ */
+template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPBrothers() const {
+	std::unordered_set<Oct<U, T>*> pbrothers;
+	if (this->m_poct_parent!=NULL){
+		pbrothers=this->m_poct_parent->getChilds();
+	}
+	pbrothers.remove(this);
+	return pbrothers;
+}
+	
+/**
  * Returns all the trees that are leaves directly under (including this tree), contained by this tree.
  * mem: flag memorise (recursive call)
  */
-template<typename U, typename T> inline std::unordered_set<const Oct<U, T>*> Oct<U, T>::getPUnderLeaves(const bool& mem) const {
-	static std::unordered_set<const Oct<U, T>*> pleaves={};
+template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPUnderLeaves(const bool& mem) const {
+	static std::unordered_set<Oct<U, T>*> pleaves;
 
 	if (mem==false){
 		pleaves.clear();
@@ -367,27 +381,29 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 /**
  * Returns the neighboring Octs
  */
-template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPNeighbouringOcts() const {
-	static pneigh_octs;
-	pchilds;
-	if (this->m_poct_parent!=NULL){
-		pchilds=this->m_poct_parent->getChilds();
+template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>::getPNeighbouringOcts(const bool& mem) const {
+	static Oct<U, T>* target_oct=this;
+	static std::unordered_set<Oct<U, T>*> pneigh_octs;
+	
+	if (mem==false){
+		target_oct=NULL;
+		pneigh_octs.empty();
 	}
-	pchilds.remove(this);
+	
+	std::unordered_set<Oct<U, T>*> pbrothers=this->getBrothers();
 
-	for (pchild : pchilds){
-		d=getDistance(*this->m_ppoint, pchild->getPoint())
-		if (this->getA()+pchild->getA() == 2*d){// Facade
-			+=pow(pchild->getA(), 2);		//Must be >=pow(this->getA(), 2) on every face when done
-		}else if(sqrt(2)*(this->getA()+pchild->getA())==d){// Corner
-			corner+=pchild->getA();		// Must be 12*this->getA() when done
-		}else if(sqrt(3)*(this->getA()+pchild->getA())==d){//Corner corner
-			corner2+=1			// Must be 8 when done
+	bool recurs=false;
+	for (Oct<U, T>* pbrother : pbrothers){
+		T d=getDistance(*target_oct->m_ppoint, pbrother->getPoint());
+		if (2*d <= sqrt(3)*(target_oct->getA()+pbrother->getA())){// If in the sphere close enough (max corners2)
+			pneigh_octs.insert(pbrother);
+			recurs=true;
 		}
 	}
-	if (){//If les conds ne sont pas reunies regarde plus haut.
-		this->m_poct_parent->getPNeighbouringOcts();
+	if (recurs=true){//If les conds ne sont pas reunies regarde plus haut.
+		this->m_poct_parent->getPNeighbouringOcts(true);
 	}
+	return m_pneigh_octs;
 }
 
 /**
@@ -624,13 +640,10 @@ template<typename U, typename T> inline bool Oct<U, T>::isFull() const {
  * False otherwise.
  */
 template<typename U, typename T> inline bool Oct<U, T>::isEmpty() const {
-	bool test=false;
-
 	if (this->m_pU==NULL){
-		test=true;
+		return true;
 	}
-
-	return test;
+	return false;
 }
 
 /**

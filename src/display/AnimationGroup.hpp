@@ -7,6 +7,11 @@
 
 #define ANIMATIONGROUP_HPP_
 
+
+#include <string.h>
+
+#include "Animation.hpp"
+
 #define MAX_NB_ANIMATIONS 10			// Max nb of animations for an animation group
 
 
@@ -41,6 +46,11 @@ public:
 	
 	void next();
 	void previous(AnimationGroup* panimation_group);
+	
+	// From TimeSensitive
+	virtual float getT() const = 0;
+	virtual void setT(const float& dt) = 0;			//Used to prepare the logic behind the scenes
+	virtual void apply() = 0;
 };
 
 

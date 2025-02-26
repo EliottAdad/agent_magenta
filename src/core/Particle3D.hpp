@@ -21,7 +21,6 @@
 #include "../core/Vector3D.hpp"
 #include "../core/PropertySet.hpp"
 
-//template<typename T> enum<T> Property {T, };
 
 /**
  * #################
@@ -41,8 +40,8 @@ public:
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 	
-	static T getMass();
-	static T getCharge();
+	//static T getMass() const;
+	//static T getCharge() const;
 	
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	virtual void operator+=(const Particle3D<T>& p);// :)
@@ -54,7 +53,7 @@ public:
 	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();};
 
 	// From Displayable
-	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const;
+	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
 	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
 
 	// From TimeSensitive

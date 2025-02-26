@@ -43,6 +43,7 @@ public:
 	virtual ~System3D();
 	System3D(const System3D<U, T>& sys);
 
+	std::unordered_set<std::shared_ptr<U>> getPossibleColliding(Oct<U, T>* poct);
 	// Over Oct
 	T getA() const {return m_poctree->getA();}
 	std::unordered_set<std::shared_ptr<U>>  setA(const T& a) {return m_poctree->setA(a);}
@@ -130,6 +131,17 @@ template<typename U, typename T> inline System3D<U, T>::System3D(const System3D<
 }
 
 
+
+template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> System3D<U, T>::getPossibleColliding(Oct<U, T>* poct) {
+	std::unordered_set<std::shared_ptr<U>> pUin_neighs;
+	std::unordered_set<Oct<U, T>*> pneigh_octs=this->m_poctree->getPNeighbouringOcts(poct);
+	
+	for (Oct<U, T>* pneigh_oct : pneigh_octs){
+		pUin_neighs.insert(pneigh_oct->getPElements());
+	}
+	
+	return pUin_neighs;
+}
 
 
 

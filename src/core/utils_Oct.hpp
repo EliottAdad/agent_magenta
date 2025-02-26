@@ -31,7 +31,7 @@ template<typename U, typename T> std::string to_string(const Oct<U, T>& oct, con
 	mes+=to_string(oct.getBarycenter());		//Barycenter
 	mes+=" | ";
 	std::stringstream ss2;
-	ss2 << oct.getPU();						// m_pU
+	ss2 << oct.getPU();						// pU
 	mes+=ss2.str();
 	mes+=" | ";
 	mes+="w:" + to_string(oct.getTotWeight());
