@@ -9,6 +9,7 @@
 //#include "core/utils_Quad.hpp"
 #include "core/utils_Oct.hpp"
 #include "core/utils_Particle3D.hpp"
+#include "core/utils_PropertySet.hpp"
 #include "core/utils_System3D.hpp"
 #include "core/utils_VectorField3D.hpp"
 //#include "core/VectorFieldUnidirectional.h"

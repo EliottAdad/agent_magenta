@@ -140,9 +140,9 @@ template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& 
 /**
  * v
  */
-template<typename T> inline std::unordered_set<std::shared_ptr<Point3D<T>>> Particle3D<T>::getPPoints() const {
-	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
-	ppoints.insert(std::make_shared<Point3D<T>>(this->getPosition()));
+template<typename T> inline std::unordered_set<Point3D<T>*> Particle3D<T>::getPPoints() const {
+	std::unordered_set<Point3D<T>*> ppoints;
+	ppoints.insert(this->ppoint);
 	return ppoints;
 }
 

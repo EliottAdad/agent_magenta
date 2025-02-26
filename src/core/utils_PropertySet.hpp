@@ -24,7 +24,7 @@ template<typename U, typename T> std::string to_string(const PropertySet<U, T>& 
 	mes+="]:";
 	
 	std::stringstream ss2;
-	ss2 << ptarget;
+	ss2 << property_set.ptarget;
 	mes+=ss2.str();
 	
 	for (T* pproperty : property_set.properties){

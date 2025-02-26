@@ -34,7 +34,7 @@
  * #############
  * U is the class for the objects stored.
  * T is the unit used for distance.
- * Can contain any object that has methods .getPosition, (pU->*ptr_getW)(), +=
+ * Can contain any object that has methods .getPosition, (pU->*ptr_getW)(), +=, constructor from ((T)x, (T)y, (T)z, (T)w)
  */
 template<typename U, typename T> class Oct {
 protected:
@@ -95,6 +95,7 @@ public:
 	unsigned int getNB_OCTS() const;
 	
 	std::unordered_set<Oct<U, T>*> getPChilds() const;	//Returns all the trees directly under, contained by this tree.
+	std::unordered_set<Oct<U, T>*> getPBrothers() const;	//Returns all the trees directly under, contained by this tree.
 	std::unordered_set<Oct<U, T>*> getPUnderLeaves(const bool& mem=false) const;	//Returns all the trees that are leaves directly under, contained by this tree.
 	std::unordered_set<std::shared_ptr<U>> getPElements(const bool& mem=false) const;					//:) Returns all the elements contained in the tree.
 	std::unordered_set<std::shared_ptr<U>> getPNeighbors(const std::shared_ptr<U> pelement, const bool& mem=false) const;		//:) Returns all the neighbors.
@@ -403,7 +404,7 @@ template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>
 	if (recurs=true){//If les conds ne sont pas reunies regarde plus haut.
 		this->m_poct_parent->getPNeighbouringOcts(true);
 	}
-	return m_pneigh_octs;
+	return pneigh_octs;
 }
 
 /**

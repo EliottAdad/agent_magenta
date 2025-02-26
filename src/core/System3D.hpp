@@ -91,7 +91,7 @@ public:
 	virtual Point3D<T> getPosition() const;
 
 	// From Displayable3D
-	virtual std::unordered_set<std::shared_ptr<Point3D<T>>> getPPoints() const;
+	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
 };
 
 //Functions

@@ -39,8 +39,8 @@ public:
 	Display1(const Display1<T>& display);
 
 	virtual bool renderDisplayable(const std::shared_ptr<Displayable3D<T>> pdisplayable) const;
-	virtual bool renderPoint(const std::shared_ptr<Point3D<T>> ppoint) const;
-	virtual bool renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const;
+	virtual bool renderPoint(const Point3D<T>* ppoint) const;
+	virtual bool renderPoints(const std::unordered_set<Point3D<T>*> ppoints) const;
 	
 	// From Display3D
 	virtual void addPScene(std::shared_ptr<Scene3D<T>> pscene) {Display3D<T>::addPScene(pscene);}
@@ -104,7 +104,7 @@ template<typename T> inline bool Display1<T>::renderDisplayable(const std::share
 	return success;
 }
 
-template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<Point3D<T>> ppoint) const {
+template<typename T> inline bool Display1<T>::renderPoint(const Point3D<T>* ppoint) const {
 	bool success=false;
 	
 	if (this->ppoint!=NULL){
@@ -124,8 +124,6 @@ template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<
 			if (this->prenderer!=NULL){
 				switch (this->display){
 					case 1://(x,y) plane
-						//printf("AAAAA\n");
-						//printf("\nx=%i\n", (int)(d_point.x*(M)scale + centerx).to_m_type());
 						drawPointRenderer(this->prenderer, (int)(d_point.x*this->scale + centerx).to_m_type(), (int)(d_point.y*this->scale + centery).to_m_type());
 						break;
 					case 2://(y,z) plane
@@ -142,10 +140,10 @@ template<typename T> inline bool Display1<T>::renderPoint(const std::shared_ptr<
 	return success;
 }
 
-template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints) const {
+template<typename T> inline bool Display1<T>::renderPoints(const std::unordered_set<Point3D<T>*> ppoints) const {
 	bool success=false;
 	//printf("Display1: renderPoints1\n");
-	for (std::shared_ptr<Point3D<T>> ppoint : ppoints){
+	for (Point3D<T>* ppoint : ppoints){
 		//printf("Display1: renderPoints2\n");
 		Point3D<T> d_point=*ppoint-*(this->ppoint);
 
