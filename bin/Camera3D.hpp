@@ -5,9 +5,9 @@
  *      Author: esn
  */
 
-#ifndef CAMERA_HPP_
+#ifndef CAMERA3D_HPP_
 
-#define CAMERA_HPP_
+#define CAMERA3D_HPP_
 
 #include <memory>
 
@@ -22,33 +22,35 @@
  *  Camera3D<T> :)
  * ###############
  * @brief
+ * Orthographic projection for now
  * This camera is a cone directed by a normal
  */
 template<typename T> class Camera3D : public Mobile3D<T> {
-private:
-	float m_aperture;		//Aperture angle in radians
-	float m_roll_ang;		//Roll angle to the normal
-	//m_window;
-
 public:
-	std::shared_ptr<Point3D<T>> ppoint;
-	std::shared_ptr<Vector3D<T>> pnormal;
+	//float m_aperture;		//Aperture angle in radians
+	//float m_roll_ang;		//Roll angle to the normal
+	
+	char display;									// The point of view from which it is projected (1, 2, 3).
+	unsigned char fps;								// Frames per second
+	float scale;									// Ratio d_pixels/d_meters
+	
+	std::unordered_set<Scene3D<T>*> pscenes;			// Pointeurs to the scenes that are rendered in the display.
+
+	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.
+	std::shared_ptr<COLOR> pdraw_color;				// Pointeur to the render color.
+	std::shared_ptr<WINDOW> pwindow;				// Pointeur to the window.
+	std::shared_ptr<RENDERER> prenderer;			// Pointeur to the renderer.
+	bool fclear;
+
+	//std::shared_ptr<Vector3D<T>> pnormal;
 
 	Camera3D();
 	virtual ~Camera3D();
 	Camera3D(const Camera3D<T>& camera);
 
-	/*Point3D<float, char> getPoint() const;
-	void setPoint(const Point3D<float, char>& p);*/
-	//Vector3D* getPNormal();
-	/*Vector3D getNormal() const;
-	void setNormal(const Point3D<float, char>& p);*/
-	std::shared_ptr<Vector3D<T>> getE1() const;
-	std::shared_ptr<Vector3D<T>> getE2() const;
-
-	void renderMesh(const Mesh3D<T>& mesh) const;
-	void renderTriangle(const Triangle3D<T>& triangle) const;
-	void renderPoint(const Point3D<T>& p) const;
+	//void renderMesh(const Mesh3D<T>& mesh) const;
+	//void renderTriangle(const Triangle3D<T>& triangle) const;
+	//void renderPoint(const Point3D<T>& p) const;
 
 	bool testInFielOfView(const Point3D<T>& p) const;
 };
@@ -146,4 +148,4 @@ template<typename T> inline bool Camera<T>::testInFielOfView(const Point3D<T>& p
 
 
 
-#endif /* CAMERA_HPP_ */
+#endif /* CAMERA3D_HPP_ */

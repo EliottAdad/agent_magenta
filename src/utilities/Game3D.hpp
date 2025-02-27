@@ -16,7 +16,7 @@
 #include "../core/TimeManager.hpp"
 #include "../core/Point3D.hpp"
 #include "../core/Scene3D.hpp"
-#include "../display/Display1.hpp"
+#include "../display/Display3D.hpp"
 //#include "../display/Display2.hpp"
 //#include "Printable.hpp"
 #include "../display/functions_display.hpp"
@@ -32,7 +32,9 @@ template<typename T> class Game3D {
 public:
 	std::shared_ptr<TimeManager> ptime_manager;
 	std::shared_ptr<Scene3D<T>> pscene;					// A scene
-	std::shared_ptr<Display1<T>> pdisplay;
+	std::shared_ptr<Display3D<T>> pdisplay;
+	
+	bool fpause;
 
 	Game3D();
 	virtual ~Game3D();
@@ -41,8 +43,6 @@ public:
 	bool run(const unsigned int& steps=1);	// Runs a certain number of frames
 	//bool iterate(const float& dt);	// Renders once (à faire)
 	//bool render() const;					// Draws the content of the game on the screen
-	
-	bool fpause;
 };
 
 
@@ -52,10 +52,10 @@ public:
 template<typename T> inline Game3D<T>::Game3D() {
 	this->ptime_manager=std::make_shared<TimeManager>();
 	this->pscene=std::make_shared<Scene3D<T>>();
-	this->pdisplay=std::make_shared<Display1<T>>();
-	this->pdisplay->addPScene(pscene);					// Will render the unique scene for this game
+	this->pdisplay=std::make_shared<Display3D<T>>();
+	this->pdisplay->addPScene(pscene.get());					// Will render the unique scene for this game
 
-	fpause=false;
+	this->fpause=false;
 }
 
 template<typename T> inline Game3D<T>::~Game3D() {
@@ -76,7 +76,7 @@ template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){
 	bool quit=false;
 	// The parameters to the function are put after the comma
 	std::thread thread_time(&TimeManager::run, ptime_manager, 0);
-	std::thread thread_display(&Display1<T>::run, pdisplay, 0);
+	std::thread thread_display(&Display3D<T>::run, pdisplay, 0);
 	
 	
 	/*while(!quit){

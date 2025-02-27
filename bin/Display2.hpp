@@ -28,6 +28,7 @@
  * Orthographic projection
  * Choices between (x-y), (y-z), (z-x).
  * Display any object having x, y, z.
+ * Setra fusionné avec Camera
  */
 template<typename T> class Display2 : public Display3D<T> {
 public:
