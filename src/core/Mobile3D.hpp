@@ -22,18 +22,19 @@
  * ###############
  * @brief
  * Abstract class
- * TimeSensitive + Point3D + getX + CoordSystem
+ * TimeSensitive + Point3D + getX + CoordSystem + Speed
  */
 template<typename T> class Mobile3D : public TimeSensitive {
 public:
 	std::shared_ptr<Point3D<T>> ppoint;				// Position
+	std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	bool fmove;
-	//std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
+	
 	std::shared_ptr<Vector3D<T>> ps;											// Linear speed
 	std::shared_ptr<Vector3D<T>> prs;											// Angular speed
 	
+	std::shared_ptr<Shape3D<T>> phit_box;											// Pointer to the hitbox (used for collision computations)
 	bool fcollide;																// Flag true if collide using the collision box
-	std::shared_ptr<Shape3D<T>> phit_box;											// Pointer to the hibox (used for  
 	
 	Mobile3D();
 	virtual ~Mobile3D();

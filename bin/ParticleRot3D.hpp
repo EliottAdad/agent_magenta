@@ -14,9 +14,9 @@
 //template<typename T> enum<T> Property {T, };
 
 /*
- * #######################
+ * ####################
  *  ParticleRot3D<T> :)
- * #######################
+ * ####################
  * A particle with added rotational capabilities
  */
 template<typename T> class ParticleRot3D : public Particle3D<T>{

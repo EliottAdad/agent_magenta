@@ -1,32 +1,32 @@
 /*
- * Physics.test.cpp
+ * TimeManager.test.cpp
  *
  *  Created on: 7 mai 2024
  *      Author: esn
  */
 
-#ifndef PHYSICS_TEST_CPP_
+#ifndef TIME_MANAGER_TEST_CPP_
 
-#define PHYSICS_TEST_CPP_
+#define TIME_MANAGER_TEST_CPP_
 
 #include <boost/test/unit_test.hpp>
 #include <string.h>
 
-#include "../src/core/utils_Physics.hpp"
+#include "../src/core/utils_TimeManager.hpp"
 #include "../src/core/utils_Particle3D.hpp"
 
 
 
-struct FPhysics {
-	Physics* pph;
+struct FTimeManager {
+	TimeManager* ptm;
 	
-	FPhysics() {
+	FTimeManager() {
 		BOOST_TEST_MESSAGE("setup fixture");
-		pph=new Physics();
+		ptm=new TimeManager();
 	}
-	~FPhysics() {
+	~FTimeManager() {
 		BOOST_TEST_MESSAGE("teardown fixture");
-		delete pph;
+		delete ptm;
 	}
 };
 
@@ -49,7 +49,7 @@ BOOST_FIXTURE_TEST_SUITE (Physics_test, FPhysics) // The name of this serie is P
 
 	BOOST_AUTO_TEST_CASE (test_run) { // 
 		
-		pph->run(1);
+		ptm->run(1);
 		
 	}
 
@@ -71,4 +71,4 @@ BOOST_AUTO_TEST_SUITE_END()
 
 
 
-#endif /* PHYSICS_TEST_CPP_ */
+#endif /* TIME_MANAGER_TEST_CPP_ */

@@ -5,9 +5,9 @@
  *      Author: esn
  */
 
-#ifndef PHYSICS_HPP_
+#ifndef TIME_MANAGER_HPP_
 
-#define PHYSICS_HPP_
+#define TIME_MANAGER_HPP_
 
 //#include <ctime>
 #include <memory>
@@ -19,27 +19,28 @@
 //#include "../utilities/Printable.hpp"
 
 /**
- * ###########
- *  Physics :)
- * ###########
+ * ###############
+ *  TimeManager :)
+ * ###############
  * @brief
- * Physics must be kept independent from Game (it should be self sufficient)
- * Gère le temps (à la place de TimeLoop, tout transvaser)
+ * TimeManager must be kept independent from Game (it should be self sufficient)
+ * Gère le temps
  * Exemples of objects it can drive: System<T>, Particle3D, ...
+ * TODO : change to TimeManager
  */
-class Physics {
+class TimeManager {
 public:
 	float speed;					// Ratio between simulation_speed/real_world_speed
-	unsigned char pps;				// Physics per second
+	unsigned char pps;				// Pulse Per Second
 
 	bool fcollide;
 	bool fpause;
 	std::unordered_set<std::shared_ptr<TimeSensitive>> ptime_sensitives;			//List of time sensitive objects
 
-	Physics();
-	Physics(const float& speed, const unsigned char& pps);
-	virtual ~Physics();
-	Physics(const Physics& phys);
+	TimeManager();
+	TimeManager(const float& speed, const unsigned char& pps);
+	virtual ~TimeManager();
+	TimeManager(const TimeManager& phys);
 
 	std::unordered_set<std::shared_ptr<TimeSensitive>> get();
 	bool add(std::shared_ptr<TimeSensitive> ptime_sensitive);
@@ -54,7 +55,7 @@ public:
 
 
 
-inline Physics::Physics() {
+inline TimeManager::TimeManager() {
 	pps=40;//Computations per second
 	speed=1;//Speed of the simulation
 
@@ -62,7 +63,7 @@ inline Physics::Physics() {
 	fpause=true;
 }
 
-inline Physics::Physics(const float& speed, const unsigned char& pps) {
+inline TimeManager::TimeManager(const float& speed, const unsigned char& pps) {
 	this->pps=pps;//Computations per second
 	this->speed=speed;//Speed of the simulation
 
@@ -70,11 +71,11 @@ inline Physics::Physics(const float& speed, const unsigned char& pps) {
 	fpause=true;
 }
 
-inline Physics::~Physics() {
+inline TimeManager::~TimeManager() {
 	ptime_sensitives.clear();
 }
 
-inline Physics::Physics(const Physics& phys) {
+inline TimeManager::TimeManager(const TimeManager& phys) {
 	pps=phys.pps;
 	speed=phys.speed;
 
@@ -84,7 +85,7 @@ inline Physics::Physics(const Physics& phys) {
 
 
 
-inline std::unordered_set<std::shared_ptr<TimeSensitive>> Physics::get() {
+inline std::unordered_set<std::shared_ptr<TimeSensitive>> TimeManager::get() {
 	return ptime_sensitives;
 }
 
@@ -105,7 +106,7 @@ inline bool Physics::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 /*
  * If 0: infinite loop
  */
-inline bool Physics::run(const unsigned int& steps) {
+inline bool TimeManager::run(const unsigned int& steps) {
 	std::chrono::time_point t1=std::chrono::system_clock::now();
 	
 	if (!fpause){
@@ -128,7 +129,7 @@ inline bool Physics::run(const unsigned int& steps) {
 	return fpause;
 }
 
-inline bool Physics::iterate(const float& dt) {
+inline bool TimeManager::iterate(const float& dt) {
 	//printf("Physics: iterate\n");
 	for (std::shared_ptr<TimeSensitive> ptime_sensitive : ptime_sensitives){
 		ptime_sensitive->setT(dt*speed);
@@ -141,4 +142,4 @@ inline bool Physics::iterate(const float& dt) {
 
 
 
-#endif /* PHYSICS_HPP_ */
+#endif /* TIME_MANAGER_HPP_ */

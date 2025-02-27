@@ -10,7 +10,6 @@
 #define OBJECT3D_HPP_
 
 #include "Particle3D.hpp"
-#include "Mesh3D.hpp"
 
 /*
  * ###############
@@ -22,6 +21,10 @@ public:
 	Object3D();
 	virtual ~Object3D();
 	Object3D(const Object3D<T>& object);
+	
+	// From Displayable3D
+	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
+	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
 };
 
 

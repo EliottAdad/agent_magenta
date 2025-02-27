@@ -14,12 +14,11 @@
 #include <string>
 #include <unordered_map>
 
-//#include "WeightedPoint3D.hpp"
-#include "../core/CoordinateSystem3D.hpp"
-#include "../core/Mobile3D.hpp"
-#include "../display/Displayable3D.hpp"
-#include "../core/Vector3D.hpp"
-#include "../core/PropertySet.hpp"
+#include "CoordinateSystem3D.hpp"
+#include "Mobile3D.hpp"
+#include "Displayable3D.hpp"
+#include "Vector3D.hpp"
+#include "PropertySet.hpp"
 
 
 /**
@@ -29,7 +28,7 @@
  * @brief
  * A point with a speed.
  */
-template<typename T> class Particle3D : public Displayable3D<T> {
+template<typename T> class Particle3D : public Mobile3D<T>, public Displayable3D<T> {
 public:
 	std::shared_ptr<PropertySet<Particle3D<T>, T>> pproperties;										// Properties
 	
@@ -40,19 +39,16 @@ public:
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 	
-	//static T getMass() const;
-	//static T getCharge() const;
-	
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	virtual void operator+=(const Particle3D<T>& p);// :)
 
 	// From Mobile3D
-	virtual T getX() const {return Mobile3D<T>::getX();};				//Gets the coords (for rendering)
-	virtual T getY() const {return Mobile3D<T>::getY();};
-	virtual T getZ() const {return Mobile3D<T>::getZ();};
-	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();};
+	virtual T getX() const {return Mobile3D<T>::getX();}				//Gets the coords (for rendering)
+	virtual T getY() const {return Mobile3D<T>::getY();}
+	virtual T getZ() const {return Mobile3D<T>::getZ();}
+	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();}
 
-	// From Displayable
+	// From Displayable3D
 	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
 	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
 
@@ -63,8 +59,6 @@ public:
 };
 
 template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2);
-// Mass, charge,...
-template<typename T> T getMass(const Particle3D<T>& p);
 
 
 
