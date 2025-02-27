@@ -55,9 +55,9 @@ int main(int argc, char* argv[]){
     g1.fpause=false;//useless
     g1.pdisplay->scale=0.15;
     g1.pdisplay->fps=2;
-    g1.pphysics->pps=1;
-    g1.pphysics->speed=0.1;
-    g1.pphysics->fpause=false;
+    g1.ptime_manager->pps=1;
+    g1.ptime_manager->speed=0.1;
+    g1.ptime_manager->fpause=false;
 
 	// Adding to the scene
 	printf("main : adding to scene\n");
@@ -70,7 +70,7 @@ int main(int argc, char* argv[]){
     /*for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
         g1.pphysics->add(ppart);
     }*/
-    g1.pphysics->add(psys);
+    g1.ptime_manager->add(psys);
 
     g1.run(10000);
 

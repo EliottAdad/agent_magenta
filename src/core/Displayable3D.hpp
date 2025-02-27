@@ -12,9 +12,11 @@
 #include <memory>
 #include <unordered_set>
 
-#include "../core/Point3D.hpp"
-#include "../core/Triangle3D.hpp"
-#include "../core/CoordinateSystem3D.hpp"
+#include "Point3D.hpp"
+#include "Triangle3D.hpp"
+#include "CoordinateSystem3D.hpp"
+#include "../display/Material.hpp"
+#include "../display/Animation.hpp"
 #include "../display/functions_display.hpp"
 
 /*
@@ -23,15 +25,14 @@
  * ####################
  * @brief
  * Abstract class
- * Color + Mat + getX,Y,Z + getPosition()
+ * Contains objects that can be rendered by a Camera.
+ * Color + Mat + getPPoints(pcoord_system_caller)
  * Stores the color, and a shape to use when rendering
+ * Depreciated:
  * If shape=NULL draws a point, if SDL_Color=NULL draws in white
  */
 template<typename T> class Displayable3D {
 public:
-	std::shared_ptr<Point3D<T>> ppoint;
-	std::shared_ptr<CoordinateSystem3D<T>> pcoords_system;
-	
 	//std::shared_ptr<COLOR> pcolor;					// Drawing color
 	std::shared_ptr<Material> pmaterial;					// Drawing material
 	std::shared_ptr<Animation> panimation;					// Drawn sprites
@@ -42,12 +43,7 @@ public:
 	virtual ~Displayable3D();
 	Displayable3D(const Displayable3D<T>& displayable);
 
-	virtual T getX() const = 0;
-	virtual T getY() const = 0;
-	virtual T getZ() const = 0;
-	virtual Point3D<T> getPosition() const = 0;
-	
-	virtual std::unordered_set<Point3D<T>*> getPPoints() const = 0;
+	virtual std::unordered_set<Point3D<T>*> getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const = 0;
 	//virtual std::unordered_set<Line3D<T>*> getPLines() const = 0;
 	//virtual std::unordered_set<Triangle3D<T>*> getPTriangles() const = 0;
 	//virtual Image getSticker() const;
@@ -81,8 +77,10 @@ template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D&
 
 
 
-
-template<typename T> inline std::unordered_set<Point3D<T>*> Displayable3D<T>::getPPoints() const {
+/**
+ * Points projected from the point of view of the caller.
+ */
+template<typename T> inline std::unordered_set<Point3D<T>*> Displayable3D<T>::getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const {
 	std::unordered_set<Point3D<T>*> ppoints;
 	return ppoints;
 }

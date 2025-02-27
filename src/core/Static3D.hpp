@@ -1,18 +1,18 @@
 /*
- * Mobile3D.hpp
+ * Static3D.hpp
  *
  *  Created on: 31 janv. 2025
  *      Author: esn
  */
 
-#ifndef MOBILE3D_HPP_
+#ifndef STATIC3D_HPP_
 
-#define MOBILE3D_HPP_
+#define STATIC3D_HPP_
 
 #include <memory>
 
-#include "CoordinateSystem3D.hpp"
 #include "Point3D.hpp"
+#include "CoordinateSystem3D.hpp"
 #include "TimeSensitive.hpp"
 #include "../geometry/Shape3D.hpp"
 
@@ -22,7 +22,8 @@
  * ###############
  * @brief
  * Abstract class
- * TimeSensitive + Point3D + getX + CoordSystem + no speeed
+ * TimeSensitive + Point3D + getX(),Y(),Z() + getPosition() + CoordSystem + Hitbox
+ * 
  */
 template<typename T> class Static3D : public TimeSensitive {
 public:
@@ -87,4 +88,4 @@ template<typename T> inline Point3D<T> Static3D<T>::getPosition() const {
 
 
 
-#endif /* MOBILE3D_HPP_ */
+#endif /* STATIC3D_HPP_ */

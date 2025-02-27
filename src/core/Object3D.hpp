@@ -9,14 +9,15 @@
 
 #define OBJECT3D_HPP_
 
-#include "Particle3D.hpp"
+#include "Mobile3D.hpp"
+#include "Displayable3D.hpp"
 
 /*
  * ###############
  *  Object3D<T> :)
  * ###############
  */
-template<typename T> class Object3D : public Particle3D<T> {
+template<typename T> class Object3D : public Mobile3D<T>, public Displayable3D<T> {
 public:
 	Object3D();
 	virtual ~Object3D();
@@ -25,6 +26,11 @@ public:
 	// From Displayable3D
 	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
 	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
+
+	// From TimeSensitive
+	virtual float getT() const {return TimeSensitive::getT();}
+	virtual void setT(const float& dt) {TimeSensitive::setT(dt);}
+	virtual void apply();
 };
 
 

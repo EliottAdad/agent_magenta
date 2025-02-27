@@ -1,25 +1,25 @@
 /*
- * utils_Physics.hpp
+ * utils_TimeManager.hpp
  *
  *  Created on: 22 decembre 2024
  *      Author: esn
  */
 
-#ifndef UTILS_PHYSICS_HPP_
+#ifndef UTILS_TIME_MANAGER_HPP_
 
-#define UTILS_PHYSICS_HPP_
+#define UTILS_TIME_MANAGER_HPP_
 
 #include <memory>
 
-#include "Physics.hpp"
+#include "TimeManager.hpp"
 
 
-std::string to_string(const Physics& physics) {
+std::string to_string(const TimeManager& time_manager) {
 	std::string mes="";
 	
-	mes+="PHYSICS[";
+	mes+="TIME_MANAGER[";
 	std::stringstream ss;
-	ss << &physics;
+	ss << &time_manager;
 	mes+=ss.str();
 	mes+="]:";
 	//mes+=std::to_string(m) + "x10^" + std::to_string(e);
@@ -27,9 +27,9 @@ std::string to_string(const Physics& physics) {
 	return mes;
 }
 
-void print(const Physics& physics) {
-	std::cout << to_string(physics);
+void print(const TimeManager& time_manager) {
+	std::cout << to_string(time_manager);
 }
 
 
-#endif /* UTILS_PHYSICS_HPP_ */
+#endif /* UTILS_TIME_MANAGER_HPP_ */

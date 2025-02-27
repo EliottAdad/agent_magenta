@@ -17,7 +17,8 @@
 #include "CoordinateSystem3D.hpp"
 #include "Oct.hpp"
 #include "Mobile3D.hpp"
-#include "../display/Displayable3D.hpp"
+#include "Displayable3D.hpp"
+#include "TimeSensitive.hpp"
 #include "../utilities/macros.hpp"
 
 /*
@@ -26,10 +27,12 @@
  * ##################
  * @brief
  * U is the type of object stored, T is the unit
- * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ(), .getPosition()
- * If you want to use the functions (rrr, ...) you need a .getW() too
+ * Can contain any object having .x, .y, .z, methods: .getX(), .getY(), .getZ(), .getPosition(), that is a TimeSensitive(setT), ->getPPoints()
+ * Can contain objects derived from TimeSensitive and Displayable3D with a pointer to a function ->getW()
+ * If you want to use the functions (rrr, ...) you need a .getW() 
+ * TODO : Surcharger le cas U=TimeSensitive
  */
-template<typename U, typename T> class System3D : public Displayable3D<T> {
+template<typename U, typename T> class System3D : public Displayable3D<T>, public TimeSensitive {
 protected:
 	std::shared_ptr<Oct<U, T>> m_poctree;											// Pointer to the Octree.
 	std::unordered_set<std::shared_ptr<U>> m_pelements;
@@ -152,7 +155,7 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> S
  */
 
 /**
- * k
+ * Need TimeSensitives
  */
 template<typename U, typename T> inline void System3D<U, T>::setT(const float& dt) {
 	this->m_dt=dt;
@@ -164,7 +167,7 @@ template<typename U, typename T> inline void System3D<U, T>::setT(const float& d
 	// If there is a law to apply... calls it
 	if (this->ptrLaw!=NULL){
 		//printf("System3D: setT2");
-		(*ptrLaw)(this);
+		(*ptrLaw)(*this);
 	}
 }
 
@@ -209,11 +212,11 @@ template<typename U, typename T> inline Point3D<T> System3D<U, T>::getPosition()
 /**
  * l
  */
-template<typename U, typename T> inline std::unordered_set<std::shared_ptr<Point3D<T>>> System3D<U, T>::getPPoints() const {
-	std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints;
+template<typename U, typename T> inline std::unordered_set<Point3D<T>*> System3D<U, T>::getPPoints() const {
+	std::unordered_set<Point3D<T>*> ppoints;
 	for (std::shared_ptr<U> pelement : this->m_pelements){
-		std::unordered_set<std::shared_ptr<Point3D<T>>> ppoints_element=pelement->getPPoints();
-		for (std::shared_ptr<Point3D<T>> ppoint : ppoints_element){
+		std::unordered_set<Point3D<T>*> ppoints_element=pelement->getPPoints();
+		for (Point3D<T>* ppoint : ppoints_element){
 			ppoints.insert(ppoint);
 		}
 	}
@@ -235,21 +238,21 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<Point
  * Gravitational force optimised by Barnes-Hutt's algo
  * function that will be applied.
  */
-template<typename U, typename T> inline void gravitOptimised(System3D<U, T>* psystem) {
+template<typename U, typename T> inline void gravitOptimised(const System3D<U, T>& system) {
 	printf("System3D: gravitOptimised1\n");
-	for (std::shared_ptr<U> pelement : psystem->getPElements()) {
+	for (std::shared_ptr<U> pelement : system.getPElements()) {
 
 		// YES
-		std::unordered_set<std::shared_ptr<U>> pneighbors=psystem->getPNeighbors(pelement);// PROBLEM
+		std::unordered_set<std::shared_ptr<U>> pneighbors=system.getPNeighbors(pelement);// PROBLEM
 		
 		//printf("System3D: gravitOptimised2\n");
 		// Apply the grav law
 		for (std::shared_ptr<U> pneighbor : pneighbors) {
 			//NO
 			printf("System3D: gravitOptimised3\n");
-			Vector3D<T> da=apply_gravitOptimised(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
+			Vector3D<T> da=apply_gravitOptimised(pneighbor, pelement, system.getPtrGetW());				// Get the acceleration
 			//printf("System3D: gravitOptimised4\n");
-			*pelement+=da*(T)psystem->getT();						//Surcharger l'op += entre U et Vector3D
+			*pelement+=da*(T)system.getT();						//Surcharger l'op += entre U et Vector3D
 		}
 	}
 	//printf("System3D: gravitOptimised4\n");
@@ -258,15 +261,15 @@ template<typename U, typename T> inline void gravitOptimised(System3D<U, T>* psy
 /**
  * function that will be applied.
  */
-template<typename U, typename T> inline void elecOptimised(System3D<U, T>* psystem) {
-	for (std::shared_ptr<U> pelement : psystem->getPElements()) {
+template<typename U, typename T> inline void elecOptimised(const System3D<U, T>& system) {
+	for (std::shared_ptr<U> pelement : system.getPElements()) {
 
-		std::unordered_set<std::shared_ptr<U>> pneighbors=psystem->getPNeighbors(pelement);
+		std::unordered_set<std::shared_ptr<U>> pneighbors=system.getPNeighbors(pelement);
 
 		// Apply the grav law
 		for (std::shared_ptr<U> pneighbor : pneighbors) {
-			Vector3D<T> da=apply_elecOptimised(pneighbor, pelement, psystem->getPtrGetW());				// Get the acceleration
-			*pelement+=da*(T)psystem->getT();							//Surcharger l'op += entre T et Vector3D
+			Vector3D<T> da=apply_elecOptimised(pneighbor, pelement, system.getPtrGetW());				// Get the acceleration
+			*pelement+=da*(T)system.getT();							//Surcharger l'op += entre T et Vector3D
 		}
 	}
 }

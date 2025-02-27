@@ -15,7 +15,7 @@
 //#include <SDL2/SDL.h>
 
 //#include "../utilities/Printable.hpp"
-#include "../utilities/functions_display.hpp"
+#include "functions_display.hpp"
 
 
 

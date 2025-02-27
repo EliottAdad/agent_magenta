@@ -11,10 +11,7 @@
 
 #include <memory>
 
-#include "CoordinateSystem3D.hpp"
-#include "Point3D.hpp"
-#include "TimeSensitive.hpp"
-#include "../geometry/Shape3D.hpp"
+#include "Static3D.hpp"
 
 /**
  * ###############
@@ -22,80 +19,64 @@
  * ###############
  * @brief
  * Abstract class
- * TimeSensitive + Point3D + getX + CoordSystem + Speed
+ * The idea is to have a class that has everything to manage movements.
+ * Static3D + Speed + RotSpeed
+ * Same as Static3D but with speed.
  */
-template<typename T> class Mobile3D : public TimeSensitive {
+template<typename T> class Mobile3D : public Static3D<T> {
 public:
-	std::shared_ptr<Point3D<T>> ppoint;				// Position
-	std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	bool fmove;
 	
 	std::shared_ptr<Vector3D<T>> ps;											// Linear speed
 	std::shared_ptr<Vector3D<T>> prs;											// Angular speed
 	
-	std::shared_ptr<Shape3D<T>> phit_box;											// Pointer to the hitbox (used for collision computations)
-	bool fcollide;																// Flag true if collide using the collision box
-	
 	Mobile3D();
 	virtual ~Mobile3D();
 	Mobile3D(const Mobile3D<T>& mobile);
 	
-	virtual T getX() const = 0;
-	virtual T getY() const = 0;
-	virtual T getZ() const = 0;
-	virtual Point3D<T> getPosition() const = 0;
+	virtual Vector3D<T> getSpeed() const = 0;
+	virtual Vector3D<T> getRotSpeed() const = 0;
 };
 
 
 
 
 
-template<typename T> inline Mobile3D<T>::Mobile3D() : TimeSensitive() {
-	this->ppoint=std::make_shared<Point3D<T>>();
+template<typename T> inline Mobile3D<T>::Mobile3D() : Static3D<T>() {
 	this->fmove=true;
-	//this->pcoord_system=std::make_shared<CoordinateSystem3D<T>>();
+	
 	this->ps=std::make_shared<Vector3D<T>>();
 	this->ps->setNorm((T)0);
 	this->prs=std::make_shared<Vector3D<T>>();
 	this->prs->setNorm((T)0);
-	
-	this->fcollide=false;
-	this->phit_box=NULL;
 }
 
 template<typename T> inline Mobile3D<T>::~Mobile3D() {
 	// TODO Auto-generated destructor stub
 }
 
-template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : TimeSensitive(mobile) {
-	this->ppoint=mobile.ppoint;
+template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : Static3D<T>(mobile) {
 	this->fmove=mobile.fmove;
-	//this->pcoord_system=mobile.pcoord_system;
+	
 	this->ps=mobile.ps;
 	this->prs=mobile.prs;
-	
-	this->fcollide=false;
-	this->phit_box=mobile.phit_box;
 }
 
 
 
-template<typename T> inline T Mobile3D<T>::getX() const {
-	return this->ppoint->x;
+/**
+ * Returns the speed
+ */
+template<typename T> inline Vector3D<T> Mobile3D<T>::getSpeed() const {
+	return *this->ps;
 }
 
-template<typename T> inline T Mobile3D<T>::getY() const {
-	return this->ppoint->y;
+/**
+ * Returns the rot speed
+ */
+template<typename T> inline Vector3D<T> Mobile3D<T>::getRotSpeed() const {
+	return *this->prs;
 }
-
-template<typename T> inline T Mobile3D<T>::getZ() const {
-	return this->ppoint->z;
-}
-
-template<typename T> inline Point3D<T> Mobile3D<T>::getPosition() const {
-	return Point3D<T>{this->ppoint->x, this->ppoint->y, this->ppoint->z};
-}
-
 
 
 

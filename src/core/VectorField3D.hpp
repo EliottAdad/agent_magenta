@@ -27,8 +27,6 @@
  * Uses the weights of the particles.
  */
 template <typename T> class VectorField3D : public TimeSensitive {
-protected:
-
 public:
 	std::shared_ptr<Vector3D<T>> pv;
 	std::unordered_set<std::shared_ptr<Mobile3D<T>>> pmobiles;					// Pointers to the Mobiles.
@@ -45,9 +43,9 @@ public:
 	bool remove(std::shared_ptr<Mobile3D<T>> pmobile);
 
 	// From TimeSensitive
-	virtual float getT() const {return TimeSensitive::getT();};
-	virtual void setT(const float& dt) {TimeSensitive::setT(dt);};//Apply given the mode (a, j, p)
-	virtual void apply() {TimeSensitive::apply();};
+	virtual float getT() const {return TimeSensitive::getT();}
+	virtual void setT(const float& dt) {TimeSensitive::setT(dt);}//Apply given the mode (a, j, p)
+	virtual void apply() {TimeSensitive::apply();}
 };
 
 

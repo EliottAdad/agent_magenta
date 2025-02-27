@@ -15,11 +15,12 @@
 
 #include "../core/Point3D.hpp"
 #include "../core/Line3D.hpp"
-#include "../display/Displayable3D.hpp"
+#include "../core/Displayable3D.hpp"
 //#include "../utilities/Printable.hpp"
 #include "../utilities/functions.hpp"
 #include "../core/Scene3D.hpp"
 #include "../core/Mobile3D.hpp"
+#include "../core/CoordinateSystem3D.hpp"
 #include "../display/functions_display.hpp"
 
 
@@ -31,11 +32,12 @@
  * Orthographic projection
  * Display any object having x, y, z.
  */
-template<typename T> class Display3D : public Mobile3D<T>{
+template<typename T> class Display3D : public Mobile3D<T> {
 public:
+	std::shared_ptr<CoordinateSystem3D<T>> pcoord_system;
 	unsigned char fps;					// Frames per second
 	float scale;						// Ratio d_pixels/d_meters
-	std::unordered_set<std::shared_ptr<Scene3D<T>>> pscenes;			// Pointeurs to the scenes that are rendered in the display.
+	std::unordered_set<Scene3D<T>*> pscenes;			// Pointeurs to the scenes that are rendered in the display.
 
 	std::shared_ptr<COLOR> pbkgd_color;				// Pointeur to the background color.
 	std::shared_ptr<COLOR> pdraw_color;				// Pointeur to the render color.
@@ -49,11 +51,11 @@ public:
 	virtual ~Display3D();
 	Display3D(const Display3D<T>& display);
 
-	virtual void addPScene(std::shared_ptr<Scene3D<T>> pscene) = 0;
+	virtual void addPScene(Scene3D<T>* pscene) = 0;
 	
 	virtual void run(const unsigned int frames) const = 0;
 	virtual bool render() const = 0;
-	virtual bool renderScene(const std::shared_ptr<Scene3D<T>> pscene) const = 0;
+	virtual bool renderScene(const Scene3D<T>& scene) const = 0;
 
 	// From TimeSensitive
 	virtual float getT() const {return TimeSensitive::getT();}
@@ -134,7 +136,7 @@ template<typename T> inline Display3D<T>::Display3D(const Display3D<T>& display)
 
 
 
-template<typename T> inline void Display3D<T>::addPScene(std::shared_ptr<Scene3D<T>> pscene) {
+template<typename T> inline void Display3D<T>::addPScene(Scene3D<T>* pscene) {
 	if (pscene!=NULL){
 		this->pscenes.insert(pscene);
 	}
@@ -181,7 +183,7 @@ template<typename T> inline bool Display3D<T>::render() const {
 
 		//printf("Display3D : render2\n");
 		//printf("\nRendering 1: %ld\n", pscenes.size());
-		for (std::shared_ptr<Scene3D<T>> pscene : pscenes){
+		for (Scene3D<T>* pscene : pscenes){
 			success=success | renderScene(pscene);
 		}
 		//drawCircle(prenderer.get(), {0, 0}, 100);

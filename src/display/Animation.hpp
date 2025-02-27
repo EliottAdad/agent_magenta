@@ -57,7 +57,7 @@ struct Animation : public TimeSensitive {
  * Creates a new instance of Animation with 
  * default arguments
  */
-Animation::Animation() {
+Animation::Animation() : TimeSensitive() {
 	this->filename="";
 	this->w=64;
 	this->h=64;
@@ -77,7 +77,7 @@ Animation::Animation() {
  * duration of the animation.
  * Ex: ={16, 16, 0, 0, 4, 1} creates a 
  */
-Animation::Animation(char* filename, float data[6]) {
+Animation::Animation(char* filename, float data[6]) : TimeSensitive() {
 	this->filename=filename;
 	this->w=(unsigned int)data[0];
 	this->h=(unsigned int)data[1];
@@ -98,7 +98,7 @@ Animation::~Animation() {
 /**
  * Creates a copy from another Animation
  */
-Animation::Animation(const Animation& animation) {
+Animation::Animation(const Animation& animation) : TimeSensitive(animation) {
 	this->filename=filename;
 	this->w=animation.w;
 	this->h=animation.h;
@@ -110,70 +110,6 @@ Animation::Animation(const Animation& animation) {
 }
 
 
-//Getters/Setters
-char* get_filename(Animation* panimation) {
-	return panimation->filename;
-}
-
-void set_filename(Animation* panimation, char* filename) {
-	panimation->filename=filename;
-}
-
-unsigned char get_id(Animation* panimation) {
-	return panimation->id;
-}
-
-void set_id(Animation* panimation, unsigned char id) {
-	panimation->id=id%panimation->nb_sprites;
-}
-
-unsigned char get_nb_sprites(Animation* panimation) {
-	return panimation->nb_sprites;
-}
-
-void set_nb_sprites(Animation* panimation, unsigned char nb_sprites) {
-	panimation->nb_sprites=nb_sprites;
-}
-
-float get_duration(Animation* panimation) {
-	return panimation->duration;
-}
-
-void set_duration(Animation* panimation, float duration) {
-	panimation->duration=duration;
-}
-
-unsigned int get_width(Animation* panimation) {
-	return panimation->w;
-}
-
-void set_width(Animation* panimation, unsigned int width) {
-	panimation->w=width;
-}
-
-unsigned int get_height(Animation* panimation) {
-	return panimation->h;
-}
-
-void set_height(Animation* panimation, unsigned int height) {
-	panimation->h=height;
-}
-
-unsigned int get_start_x(Animation* panimation) {
-	return panimation->start_x;
-}
-
-void set_start_x(Animation* panimation, unsigned int start_x){
-	panimation->start_x=start_x;
-}
-
-unsigned int get_start_y(Animation* panimation) {
-	return panimation->start_y;
-}
-
-void set_start_y(Animation* panimation, unsigned int start_y) {
-	panimation->start_y=start_y;
-}
 
 
 // Methods
@@ -181,40 +117,32 @@ void set_start_y(Animation* panimation, unsigned int start_y) {
  * @brief
  * Switches to the next frame.
  */
-void next(Animation* panimation) {
-	if (panimation!=NULL){
-		panimation->id=(panimation->id+1)%panimation->nb_sprites;
-	}
+void Animation::next() {
+	this->id=(this->id+1)%this->nb_sprites;
 }
 
 /**
  * @brief
  * Switches to the previous frame.
  */
-void previous(Animation* panimation) {
-	if (panimation!=NULL){
-		panimation->id=(panimation->id-1)%panimation->nb_sprites;
-	}
+void Animation::previous() {
+	this->id=(this->id-1)%this->nb_sprites;
 }
 
 /**
  * @brief
  * Reset to the first frame.
  */
-void first(Animation* panimation) {
-	if (panimation!=NULL){
-		panimation->id=0;
-	}
+void Animation::first() {
+	this->id=0;
 }
 
 /**
  * @brief
  * Reset to the first frame.
  */
-void last(Animation* panimation) {
-	if (panimation!=NULL){
-		panimation->id=panimation->nb_sprites-1;
-	}
+void Animation::last() {
+		this->id=this->nb_sprites-1;
 }
 
 

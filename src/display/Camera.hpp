@@ -1,5 +1,5 @@
 /*
- * Camera.hpp
+ * Camera3D.hpp
  *
  *  Created on: 26 sept. 2024
  *      Author: esn
@@ -18,13 +18,13 @@
 //#include "../utilities/Printable.hpp"
 
 /*
- * ################
- *  Camera<T> :)
- * ################
+ * ###############
+ *  Camera3D<T> :)
+ * ###############
  * @brief
  * This camera is a cone directed by a normal
  */
-template<typename T> class Camera {
+template<typename T> class Camera3D : public Mobile3D<T> {
 private:
 	float m_aperture;		//Aperture angle in radians
 	float m_roll_ang;		//Roll angle to the normal
@@ -34,9 +34,9 @@ public:
 	std::shared_ptr<Point3D<T>> ppoint;
 	std::shared_ptr<Vector3D<T>> pnormal;
 
-	Camera();
-	virtual ~Camera();
-	Camera(const Camera<T>& other);
+	Camera3D();
+	virtual ~Camera3D();
+	Camera3D(const Camera3D<T>& camera);
 
 	/*Point3D<float, char> getPoint() const;
 	void setPoint(const Point3D<float, char>& p);*/
@@ -53,7 +53,7 @@ public:
 	bool testInFielOfView(const Point3D<T>& p) const;
 };
 
-template<typename T> inline Camera<T>::Camera() {
+template<typename T> inline Camera3D<T>::Camera3D() {
 	m_aperture=1;
 	m_roll_ang=0;
 	ppoint=NULL;
@@ -61,11 +61,11 @@ template<typename T> inline Camera<T>::Camera() {
 	*pnormal/=pnormal->getNorm();//Normalization
 }
 
-template<typename T> inline Camera<T>::~Camera() {
+template<typename T> inline Camera3D<T>::~Camera3D() {
 	;
 }
 
-template<typename T> inline Camera<T>::Camera(const Camera<T>& other) {
+template<typename T> inline Camera3D<T>::Camera3D(const Camera3D<T>& camera) {
 	m_aperture=1;
 	m_roll_ang=0;
 	this->ppoint=other.ppoint;
