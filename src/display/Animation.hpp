@@ -41,7 +41,7 @@ struct Animation : public TimeSensitive {
 
 	// From TimeSensitive
 	virtual float getT() const {return TimeSensitive::getT();}
-	virtual void setT(const float& dt){TimeSensitive::setT(dt);}
+	virtual void setT(const float& dt);
 	virtual void apply();
 };
 
@@ -57,7 +57,7 @@ struct Animation : public TimeSensitive {
  * Creates a new instance of Animation with 
  * default arguments
  */
-Animation::Animation() : TimeSensitive() {
+inline Animation::Animation() : TimeSensitive() {
 	this->filename="";
 	this->w=64;
 	this->h=64;
@@ -77,7 +77,7 @@ Animation::Animation() : TimeSensitive() {
  * duration of the animation.
  * Ex: ={16, 16, 0, 0, 4, 1} creates a 
  */
-Animation::Animation(char* filename, float data[6]) : TimeSensitive() {
+inline Animation::Animation(char* filename, float data[6]) : TimeSensitive() {
 	this->filename=filename;
 	this->w=(unsigned int)data[0];
 	this->h=(unsigned int)data[1];
@@ -91,14 +91,14 @@ Animation::Animation(char* filename, float data[6]) : TimeSensitive() {
 /**
  * l
  */
-Animation::~Animation() {
+inline Animation::~Animation() {
 	;
 }
 
 /**
  * Creates a copy from another Animation
  */
-Animation::Animation(const Animation& animation) : TimeSensitive(animation) {
+inline Animation::Animation(const Animation& animation) : TimeSensitive(animation) {
 	this->filename=filename;
 	this->w=animation.w;
 	this->h=animation.h;
@@ -117,7 +117,7 @@ Animation::Animation(const Animation& animation) : TimeSensitive(animation) {
  * @brief
  * Switches to the next frame.
  */
-void Animation::next() {
+inline void Animation::next() {
 	this->id=(this->id+1)%this->nb_sprites;
 }
 
@@ -125,7 +125,7 @@ void Animation::next() {
  * @brief
  * Switches to the previous frame.
  */
-void Animation::previous() {
+inline void Animation::previous() {
 	this->id=(this->id-1)%this->nb_sprites;
 }
 
@@ -133,7 +133,7 @@ void Animation::previous() {
  * @brief
  * Reset to the first frame.
  */
-void Animation::first() {
+inline void Animation::first() {
 	this->id=0;
 }
 
@@ -141,7 +141,7 @@ void Animation::first() {
  * @brief
  * Reset to the first frame.
  */
-void Animation::last() {
+inline void Animation::last() {
 		this->id=this->nb_sprites-1;
 }
 
@@ -151,7 +151,16 @@ void Animation::last() {
 /*
  * From TimeSensitive
  */
+inline void Animation::setT(const float& dt) {
+	this->m_dt+=dt;
+}
 
+inline void Animation::apply() {
+	if (this->m_dt>=this->duration){
+		this->next();
+		this->m_dt=0;
+	}
+}
 
 
 #endif /* ANIMATION_HPP_ */

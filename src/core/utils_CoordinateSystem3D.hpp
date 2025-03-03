@@ -25,13 +25,13 @@ template<typename U, typename T> std::string to_string(const CoordinateSystem3D<
 	
 	mes+="[";
 	mes+="E1:";
-	mes+=((csystem.pe1==NULL)?"NULL":to_string(*csystem.pe1);
+	mes+=(csystem.pe1==NULL)?"NULL":to_string(*csystem.pe1);
 	mes+="|";
 	mes+="E2:";
-	mes+=((csystem.pe1==NULL)?"NULL":to_string(*csystem.pe2);
+	mes+=(csystem.pe1==NULL)?"NULL":to_string(*csystem.pe2);
 	mes+="|";
 	mes+="E3:";
-	mes+=((csystem.pe1==NULL)?"NULL":to_string(*csystem.pe3);
+	mes+=(csystem.pe1==NULL)?"NULL":to_string(*csystem.pe3);
 	mes+="]";
 
 	return mes;

@@ -62,7 +62,7 @@ public:
 /**
  * Constructor0
  */
-AnimationGroup::AnimationGroup(){
+inline AnimationGroup::AnimationGroup(){
 	AnimationGroup* panimation_group=(AnimationGroup*)malloc(sizeof(AnimationGroup));
 	panimation_group->filename="";
 	panimation_group->sz_panimations=0;
@@ -75,7 +75,7 @@ AnimationGroup::AnimationGroup(){
  * offsety is an offset in reference to the precedent line
  * Exemple: {{16, 16, 4, 1, 0, 0}} is a single animation AnimationGroup with no offset
  */
-AnimationGroup::AnimationGroup(char* filename, float data[][6], unsigned char nb_animations){
+inline AnimationGroup::AnimationGroup(char* filename, float data[][6], unsigned char nb_animations){
 	AnimationGroup* panimation_group=(AnimationGroup*)malloc(sizeof(AnimationGroup));
 	
 	panimation_group->filename=filename;
@@ -93,7 +93,7 @@ AnimationGroup::AnimationGroup(char* filename, float data[][6], unsigned char nb
 	return panimation_group;
 }
 
-AnimationGroup::~AnimationGroup(){
+inline AnimationGroup::~AnimationGroup(){
 	for (int i(0) ; i<panimation_group->nb_animations ; i++){
 		free(panimations[i]);
 	}
@@ -104,11 +104,11 @@ AnimationGroup::~AnimationGroup(){
 
 
 
-unsigned char AnimationGroup::getIdActive(){
+inline unsigned char AnimationGroup::getIdActive(){
 	return panimation_group->id_active;
 }
 
-void AnimationGroup::setIdActive(unsigned char id_active){
+inline void AnimationGroup::setIdActive(unsigned char id_active){
 	if (id_active<this->nb_animations){
 		this->id_active=id_active;
 	}else{
@@ -122,7 +122,7 @@ void AnimationGroup::setIdActive(unsigned char id_active){
  * @brief
  * Switch to the next frame
  */
-void AnimationGroup::next() {
+inline void AnimationGroup::next() {
 	panimation_group->panimations[panimation_group->id_active]->next();
 }
 
@@ -130,7 +130,7 @@ void AnimationGroup::next() {
  * @brief
  * Switch to the previous frame
  */
-void AnimationGroup::previous(){
+inline void AnimationGroup::previous(){
 	panimation_group->panimations[panimation_group->id_active]->previous();
 }
 

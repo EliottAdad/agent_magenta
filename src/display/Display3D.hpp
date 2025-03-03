@@ -64,15 +64,19 @@ public:
 	virtual bool renderPoints(const std::unordered_set<Point3D<T>*> ppoints) const;
 
 	// From TimeSensitive
-	virtual float getT() const;
-	virtual void setT(const float& dt);
-	virtual void apply();
+	virtual float getT() const {return TimeSensitive::getT();}
+	virtual void setT(const float& dt) {TimeSensitive::setT(dt);}
+	virtual void apply() {TimeSensitive::apply();}
 
+	// From Static3D
+	virtual T getX() const {return Static3D<T>::getX();}
+	virtual T getY() const {return Static3D<T>::getY();}
+	virtual T getZ() const {return Static3D<T>::getZ();}
+	virtual Point3D<T> getPosition() const {return Static3D<T>::getPosition();}
+	
 	// From Mobile3D
-	virtual T getX() const;
-	virtual T getY() const;
-	virtual T getZ() const;
-	virtual Point3D<T> getPosition() const;
+	virtual Vector3D<T> getSpeed() const {return Mobile3D<T>::getSpeed();}
+	virtual Vector3D<T> getRotSpeed() const {return Mobile3D<T>::getRotSpeed();}
 };
 
 

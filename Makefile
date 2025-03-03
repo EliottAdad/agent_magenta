@@ -63,7 +63,12 @@ main_game.o: src/main.cpp
 # Linking
 TFILES := $(shell find test -name '*.test.cpp')
 TOFILES = $(patsubst %.cpp, %.o, $(notdir $(TFILES)))
-main_test: main.test.o $(TOFILES)
+#$(TOFILES)
+#Works:
+#Point3D.test.o Particle3D.test.o PropertySet.test.o Display3D.test.o
+#Doesn't work
+#Oct.test.o 
+main_test: main.test.o SN.test.o
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 

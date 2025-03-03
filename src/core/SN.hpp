@@ -30,6 +30,9 @@
  * Recommended usage : 	<float, char>
  * 						<double, char>
  * 						<double, int>
+ * Overwritten for M, doubles and ints :
+ * 		3.14 is by default double
+ * 		2 is by default int
  */
 template<typename M, typename E> struct SN {
 	M m=0;						// Mantissa
@@ -45,61 +48,134 @@ template<typename M, typename E> struct SN {
 	M to_m_type() const;										//:)
 	void operator=(const SN<M, E>& nb);							//:)
 	void operator=(const M& nb);								//:)
+	void operator=(const int& nb);								//
+	void operator=(const double& nb);							//
 	SN<M, E> operator++();										//X
 	SN<M, E> operator++(int);									//X
 	void operator+=(const SN<M, E>& nb);						//:)
 	void operator+=(const M& nb);								//:)
+	void operator+=(const int& nb);								//
+	void operator+=(const double& nb);							//
 	SN<M, E> operator--();										//X
 	SN<M, E> operator--(int);									//X
 	void operator-=(const SN<M, E>& nb);						//:)
 	void operator-=(const M& nb);								//:)
+	void operator-=(const int& nb);								//
+	void operator-=(const double& nb);							//
 	void operator*=(const SN<M, E>& nb);						//:)
 	void operator*=(const M& nb);								//:)
+	void operator*=(const int& nb);								//
+	void operator*=(const double& nb);							//
 	void operator/=(const SN<M, E>& nb);						//:)
 	void operator/=(const M& nb);								//:)
+	void operator/=(const int& nb);								//:)
+	void operator/=(const double& nb);							//:)
 };
 
 template<typename M, typename E> bool operator==(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator==(const SN<M, E>& nb1, const K& nb2);		//:)
 template<typename M, typename E> bool operator==(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> bool operator==(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator==(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator==(const K& nb1, const SN<M, E>& nb2);		//:)
 template<typename M, typename E> bool operator==(const M& nb1, const SN<M, E>& nb2);					//:)
-template<typename M, typename E> bool operator==(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+template<typename M, typename E> bool operator==(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator==(const double& nb1, const SN<M, E>& nb2);				//:)
+
 template<typename M, typename E> bool operator!=(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator!=(const SN<M, E>& nb1, const K& nb2);		//:)
 template<typename M, typename E> bool operator!=(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> bool operator!=(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator!=(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator!=(const K& nb1, const SN<M, E>& nb2);		//:)
 template<typename M, typename E> bool operator!=(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator!=(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator!=(const double& nb1, const SN<M, E>& nb2);				//:)
+
 template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator<=(const SN<M, E>& nb1, const K& nb2);		//:)
 template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator<=(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator<=(const K& nb1, const SN<M, E>& nb2);		//:)
 template<typename M, typename E> bool operator<=(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator<=(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator<=(const double& nb1, const SN<M, E>& nb2);				//:)
+
 template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator>=(const SN<M, E>& nb1, const K& nb2);		//:)
 template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator>=(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator>=(const K& nb1, const SN<M, E>& nb2);		//:)
 template<typename M, typename E> bool operator>=(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator>=(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator>=(const double& nb1, const SN<M, E>& nb2);				//:)
+
 template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
-template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const M& nb2);
-template<typename M, typename E> bool operator<(const M& nb1, const SN<M, E>& nb2);
+//template<typename M, typename E, typename K> bool operator<(const SN<M, E>& nb1, const K& nb2);		//:)
+template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const M& nb2);						//:)
+template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator<(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator<(const K& nb1, const SN<M, E>& nb2);		//:)
+template<typename M, typename E> bool operator<(const M& nb1, const SN<M, E>& nb2);						//:)
+template<typename M, typename E> bool operator<(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator<(const double& nb1, const SN<M, E>& nb2);				//:)
+
 template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const SN<M, E>& nb2);				//:)
-template<typename M, typename E> bool operator>(const SN<M, E>& nb1, M& nb2);							//:)
+//template<typename M, typename E, typename K> bool operator>(const SN<M, E>& nb1, const K& nb2);		//:)
+template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const M& nb2);						//:)
+template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const int& nb2);					//:)
+template<typename M, typename E> bool operator>(const SN<M, E>& nb1, const double& nb2);				//:)
+//template<typename M, typename E, typename K> bool operator>(const K& nb1, const SN<M, E>& nb2);		//:)
 template<typename M, typename E> bool operator>(const M& nb1, const SN<M, E>& nb2);						//:)
+template<typename M, typename E> bool operator>(const int& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> bool operator>(const double& nb1, const SN<M, E>& nb2);				//:)
 
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+//template<typename M, typename E, typename K> SN<M, E> operator+(const SN<M, E>& nb1, const K& nb2);	//:)
 template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const int& nb2);				//:)
+template<typename M, typename E> SN<M, E> operator+(const SN<M, E>& nb1, const double& nb2);			//:)
+//template<typename M, typename E, typename K> SN<M, E> operator+(const K& nb1, const SN<M, E>& nb2);	//:)
 template<typename M, typename E> SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator+(const int& nb1, const SN<M, E>& nb2);				//:)
+template<typename M, typename E> SN<M, E> operator+(const double& nb1, const SN<M, E>& nb2);			//:)
+
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
+//template<typename M, typename E, typename K> SN<M, E> operator-(const SN<M, E>& nb1, const K& nb2);	//:)
 template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const M& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const int& nb2);				//:)
+template<typename M, typename E> SN<M, E> operator-(const SN<M, E>& nb1, const double& nb2);			//:)
+//template<typename M, typename E, typename K> SN<M, E> operator-(const K& nb1, const SN<M, E>& nb2);	//:)
 template<typename M, typename E> SN<M, E> operator-(const M& nb1, const SN<M, E>& nb2);					//:)
+template<typename M, typename E> SN<M, E> operator-(const int& nb1, const SN<M, E>& nb2);				//:)
+template<typename M, typename E> SN<M, E> operator-(const double& nb1, const SN<M, E>& nb2);			//:)
+
 template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
-template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const M& k);					//:)
-template<typename M, typename E> SN<M, E> operator*(const M& k, const SN<M, E>& nb);					//:)
-template<typename M, typename E> SN<M, E> operator*(const SN<M, E>& nb, const int& k);					//:)
-template<typename M, typename E> SN<M, E> operator*(const int& k, const SN<M, E>& nb);					//:)
+//template<typename M, typename E, typename K> SN<M, E> operator*(const SN<M, E>& nb1, const K& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const SN<M, E>& nb1, const M& nb2);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const SN<M, E>& nb1, const int& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const SN<M, E>& nb1, const double& nb2);//:)
+//template<typename M, typename E, typename K> SN<M, E> operator*(const K& k, const SN<M, E>& nb);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const M& k, const SN<M, E>& nb);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const int& k, const SN<M, E>& nb);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator*(const double& k, const SN<M, E>& nb);	//:)
+
 template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const SN<M, E>& nb2);			//:)
-template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const M& nb2);					//:)
-template<typename M, typename E> SN<M, E> operator/(const M& nb1, const SN<M, E>& nb2);					//:)
-template<typename M, typename E> SN<M, E> operator/(const SN<M, E>& nb1, const int& nb2);				//:)
-template<typename M, typename E> SN<M, E> operator/(const int& nb1, const SN<M, E>& nb2);				//:)
+//template<typename M, typename E, typename K> SN<M, E> operator/(const SN<M, E>& nb1, const K& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const SN<M, E>& nb1, const M& nb2);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const SN<M, E>& nb1, const int& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const SN<M, E>& nb1, const double& nb2);//:)
+//template<typename M, typename E, typename K> SN<M, E> operator/(const K& nb1, const SN<M, E>& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const M& nb1, const SN<M, E>& nb2);		//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const int& nb1, const SN<M, E>& nb2);	//:)
+template<typename M, typename E, typename K> SN<M, E> operator/(const double& nb1, const SN<M, E>& nb2);//:)
 
 template<typename M, typename E> SN<M, E> abs(const SN<M, E>& nb);										//:)
 template<typename M, typename E> SN<M, E> pow(const SN<M, E>& nb, const E& exp);						//:)
 //template<typename M, typename E> SN<M, E> nrt(const SN<M, E>& nb, const long int& rt);
-template<typename M, typename E> SN<M, E> sqrt(const SN<M, E>& nb);
+template<typename M, typename E> SN<M, E> sqrt(const SN<M, E>& nb);										//:(
 
 
 
@@ -144,6 +220,10 @@ template<typename M, typename E> inline SN<M, E>::SN(const SN<M, E>& nb) {
 	//this->recal();
 }
 
+
+
+
+
 /**
  * Recalculate the SN under scientific notation.
  * Ex: 1.27x10⁹
@@ -173,6 +253,10 @@ template<typename M, typename E> inline void SN<M, E>::recal() {
 	}
 }*/
 
+
+
+
+
 template<typename M, typename E> inline M SN<M, E>::to_m_type() const {
 	return (this->m)*(M)(pow(10, this->e));
 }
@@ -185,6 +269,18 @@ template<typename M, typename E> inline void SN<M, E>::operator=(const SN<M, E>&
 
 template<typename M, typename E> inline void SN<M, E>::operator=(const M& nb) {
 	this->m=nb;
+	this->e=(E)0;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator=(const int& nb) {
+	this->m=(M)nb;
+	this->e=(E)0;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator=(const double& nb) {
+	this->m=(M)nb;
 	this->e=(E)0;
 	this->recal();
 }
@@ -211,6 +307,16 @@ template<typename M, typename E> inline void SN<M, E>::operator+=(const M& nb) {
 	this->recal();
 }
 
+template<typename M, typename E> inline void SN<M, E>::operator+=(const int& nb) {//X
+	this->m+=(M)nb/pow(10., (M)(this->e));
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator+=(const double& nb) {//X
+	this->m+=(M)nb/pow(10., (M)(this->e));
+	this->recal();
+}
+
 template<typename M, typename E> inline SN<M, E> SN<M, E>::operator--() {
 	this->m-=(M)1;
 	this->recal();
@@ -233,14 +339,34 @@ template<typename M, typename E> inline void SN<M, E>::operator-=(const M& nb) {
 	this->recal();
 }
 
+template<typename M, typename E> inline void SN<M, E>::operator-=(const int& nb) {
+	this->m-=(M)nb/pow(10., (M)(this->e));
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator-=(const double& nb) {
+	this->m-=(M)nb/pow(10., (M)(this->e));
+	this->recal();
+}
+
 template<typename M, typename E> inline void SN<M, E>::operator*=(const SN<M, E>& nb) {
 	this->m*=nb.m;
 	this->e+=nb.e;
 	this->recal();
 }
 
-template<typename M, typename E> inline void SN<M, E>::operator*=(const M& k) {
-	this->m*=k;
+template<typename M, typename E> inline void SN<M, E>::operator*=(const M& nb) {
+	this->m*=nb;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator*=(const int& nb) {
+	this->m*=(M)nb;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator*=(const double& nb) {
+	this->m*=(M)nb;
 	this->recal();
 }
 
@@ -250,8 +376,18 @@ template<typename M, typename E> inline void SN<M, E>::operator/=(const SN<M, E>
 	this->recal();
 }
 
-template<typename M, typename E> inline void SN<M, E>::operator/=(const M& k) {
-	this->m/=k;
+template<typename M, typename E> inline void SN<M, E>::operator/=(const M& nb) {
+	this->m/=nb;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator/=(const int& nb) {
+	this->m/=(M)nb;
+	this->recal();
+}
+
+template<typename M, typename E> inline void SN<M, E>::operator/=(const double& nb) {
+	this->m/=(M)nb;
 	this->recal();
 }
 
@@ -274,8 +410,18 @@ template<typename M, typename E> inline bool operator==(const SN<M, E>& nb1, con
 /*:)
  *
  */
+/*template<typename M, typename E, typename K> inline bool operator==(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m==(M)nb2/(M)(pow(10, nb1.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}*/
+
+/*:)
+ *
+ */
 template<typename M, typename E> inline bool operator==(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.to_m_type()==nb2){							// If e and m are the same. A and B.
+	if (nb1.m==nb2/(M)(pow(10, nb1.e))){							// If e and m are the same. A and B.
 		return true;
 	}
 	return false;
@@ -284,8 +430,58 @@ template<typename M, typename E> inline bool operator==(const SN<M, E>& nb1, con
 /*:)
  *
  */
+template<typename M, typename E> inline bool operator==(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m==(M)nb2/(M)(pow(10, nb1.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}
+
+/*:)
+ *
+ */
+template<typename M, typename E> inline bool operator==(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m==(M)nb2/(M)(pow(10, nb1.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}
+
+/*:)
+ *
+ */
+/*template<typename M, typename E, typename K> inline bool operator==(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m==(M)nb1/(M)(pow(10, nb2.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}*/
+
+/*:)
+ *
+ */
 template<typename M, typename E> inline bool operator==(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1==nb2.to_m_type()){							// If e and m are the same. A and B.
+	if (nb2.m==nb1/(M)(pow(10, nb2.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}
+
+/*:)
+ *
+ */
+template<typename M, typename E> inline bool operator==(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m==(M)nb1/(M)(pow(10, nb2.e))){							// If e and m are the same. A and B.
+		return true;
+	}
+	return false;
+}
+
+/*:)
+ *
+ */
+template<typename M, typename E> inline bool operator==(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m==(M)nb1/(M)(pow(10, nb2.e))){							// If e and m are the same. A and B.
 		return true;
 	}
 	return false;
@@ -301,15 +497,57 @@ template<typename M, typename E> inline bool operator!=(const SN<M, E>& nb1, con
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator!=(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m!=(M)nb2/(M)(pow(10, nb1.e))){							//
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator!=(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.m!=nb2/pow(10., (M)nb1.e)){							//
+	if (nb1.m!=nb2/(M)(pow(10, nb1.e))){							//
 		return true;
 	}
 	return false;
 }
 
+template<typename M, typename E> inline bool operator!=(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m!=(M)nb2/(M)(pow(10, nb1.e))){							//
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator!=(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m!=(M)nb2/(M)(pow(10, nb1.e))){							//
+		return true;
+	}
+	return false;
+}
+
+/*template<typename M, typename E, typename K> inline bool operator!=(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m!=(M)nb1/(M)(pow(10, nb2.e))){							//
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator!=(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1/pow(10., (M)nb2.e)!=nb2.m){							//
+	if (nb2.m!=nb1/(M)(pow(10, nb2.e))){							//
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator!=(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m!=(M)nb1/(M)(pow(10, nb2.e))){							//
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator!=(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m!=(M)nb1/(M)(pow(10, nb2.e))){							//
 		return true;
 	}
 	return false;
@@ -325,15 +563,54 @@ template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, con
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator<=(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m<=(M)nb2/(M)(pow(10, nb1.e))){
+		return true;
+	}
+	return false;
+}*/
 template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.m*pow(10., (M)(nb1.e))<=nb2){
+	if (nb1.m<=nb2/(M)(pow(10, nb1.e))){
+		return true;
+	}
+	return false;
+}
+template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m<=(M)nb2/(M)(pow(10, nb1.e))){
+		return true;
+	}
+	return false;
+}
+template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m<=(M)nb2/(M)(pow(10, nb1.e))){
 		return true;
 	}
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator<=(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>=(M)nb1/(M)(pow(10, nb2.e))){	//
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator<=(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1/pow(10., (M)(nb2.e))<=nb2.m){	//
+	if (nb2.m>=nb1/(M)(pow(10, nb2.e))){	//
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator<=(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>=(M)nb1/(M)(pow(10, nb2.e))){	//
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator<=(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>=(M)nb1/(M)(pow(10, nb2.e))){	//
 		return true;
 	}
 	return false;
@@ -346,15 +623,57 @@ template<typename M, typename E> inline bool operator>=(const SN<M, E>& nb1, con
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator>=(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m>=(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator>=(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.m*pow(10., (M)(nb1.e))>=nb2){	// .
+	if (nb1.m>=nb2/(M)(pow(10, nb1.e))){	// .
 		return true;
 	}
 	return false;
 }
 
+template<typename M, typename E> inline bool operator>=(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m>=(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator>=(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m>=(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+/*template<typename M, typename E, typename K> inline bool operator>=(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m<=(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator>=(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1/pow(10., (M)(nb2.e))>=nb2.m){	// .
+	if (nb2.m<=nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator>=(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m<=(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator>=(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m<=(M)nb1/(M)(pow(10, nb2.e))){	// .
 		return true;
 	}
 	return false;
@@ -367,15 +686,57 @@ template<typename M, typename E> inline bool operator<(const SN<M, E>& nb1, cons
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator<(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m<(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator<(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.m*pow(10., (M)(nb1.e))<nb2){	// .
+	if (nb1.m<nb2/(M)(pow(10, nb1.e))){	// .
 		return true;
 	}
 	return false;
 }
 
+template<typename M, typename E> inline bool operator<(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m<(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator<(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m<(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+/*template<typename M, typename E, typename K> inline bool operator<(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator<(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1/pow(10., (M)(nb2.e))<nb2.m){	// .
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator<(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator<(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
 		return true;
 	}
 	return false;
@@ -388,15 +749,55 @@ template<typename M, typename E> inline bool operator>(const SN<M, E>& nb1, cons
 	return false;
 }
 
+/*template<typename M, typename E, typename K> inline bool operator>(const SN<M, E>& nb1, const K& nb2) {
+	if (nb1.m>(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator>(const SN<M, E>& nb1, const M& nb2) {
-	if (nb1.m*pow(10., (M)(nb1.e))>nb2){	// .
+	if (nb1.m>nb2/(M)(pow(10, nb1.e))){	// .
 		return true;
 	}
 	return false;
 }
 
+template<typename M, typename E> inline bool operator>(const SN<M, E>& nb1, const int& nb2) {
+	if (nb1.m>(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+template<typename M, typename E> inline bool operator>(const SN<M, E>& nb1, const double& nb2) {
+	if (nb1.m>(M)nb2/(M)(pow(10, nb1.e))){	// .
+		return true;
+	}
+	return false;
+}
+
+/*template<typename M, typename E, typename K> inline bool operator>(const K& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}*/
+
 template<typename M, typename E> inline bool operator>(const M& nb1, const SN<M, E>& nb2) {
-	if (nb1/pow(10., (M)(nb2.e))>nb2.m){	// .
+	if (nb2.m>nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+template<typename M, typename E> inline bool operator>(const int& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
+		return true;
+	}
+	return false;
+}
+template<typename M, typename E> inline bool operator>(const double& nb1, const SN<M, E>& nb2) {
+	if (nb2.m>(M)nb1/(M)(pow(10, nb2.e))){	// .
 		return true;
 	}
 	return false;
@@ -412,15 +813,54 @@ template<typename M, typename E> inline SN<M, E> operator+(const SN<M, E>& nb1, 
 	return nnb;
 }
 
+/*template<typename M, typename E, typename K> inline SN<M, E> operator+(const SN<M, E>& nb1, const K& nb2) {
+	M nm=nb1.m+nb2/pow(10., (M)(nb1.e));
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
 template<typename M, typename E> inline SN<M, E> operator+(const SN<M, E>& nb1, const M& nb2) {
 	M nm=nb1.m+nb2/pow(10., (M)(nb1.e));
 	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
+template<typename M, typename E> inline SN<M, E> operator+(const SN<M, E>& nb1, const int& nb2) {
+	M nm=nb1.m+(M)nb2/pow(10., (M)(nb1.e));
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+template<typename M, typename E> inline SN<M, E> operator+(const SN<M, E>& nb1, const double& nb2) {
+	M nm=nb1.m+(M)nb2/pow(10., (M)(nb1.e));
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+/*template<typename M, typename E, typename K> inline SN<M, E> operator+(const K& nb1, const SN<M, E>& nb2) {
+	M nm=nb1+nb2.m*pow(10., (M)nb2.e);
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
 
 template<typename M, typename E> inline SN<M, E> operator+(const M& nb1, const SN<M, E>& nb2) {
 	M nm=nb1+nb2.m*pow(10., (M)nb2.e);
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator+(const int& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1+nb2.m*pow(10., (M)nb2.e);
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator+(const double& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1+nb2.m*pow(10., (M)nb2.e);
 	E ne=0;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
@@ -436,6 +876,13 @@ template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, 
 	return nnb;
 }
 
+/*template<typename M, typename E, typename K> inline SN<M, E> operator-(const SN<M, E>& nb1, const K& nb2) {
+	M nm=nb1.m-nb2/pow(10., (M)nb1.e);
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
 template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, const M& nb2) {
 	M nm=nb1.m-nb2/pow(10., (M)nb1.e);
 	E ne=nb1.e;
@@ -443,8 +890,43 @@ template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, 
 	return nnb;
 }
 
+template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, const int& nb2) {
+	M nm=nb1.m-(M)nb2/pow(10., (M)nb1.e);
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, const double& nb2) {
+	M nm=nb1.m-(M)nb2/pow(10., (M)nb1.e);
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+/*template<typename M, typename E, typename K> inline SN<M, E> operator-(const K& nb1, const SN<M, E>& nb2) {
+	M nm=nb1-nb2.m*pow(10., (M)(nb2.e));
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
 template<typename M, typename E> inline SN<M, E> operator-(const M& nb1, const SN<M, E>& nb2) {
 	M nm=nb1-nb2.m*pow(10., (M)(nb2.e));
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator-(const int& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1-nb2.m*pow(10., (M)(nb2.e));
+	E ne=0;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator-(const double& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1-nb2.m*pow(10., (M)(nb2.e));
 	E ne=0;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
@@ -457,30 +939,58 @@ template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb1, 
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb, const M& k) {
-	M nm=nb.m*k;
-	E ne=nb.e;
+/*template<typename M, typename E, typename K> inline SN<M, E> operator*(const SN<M, E>& nb1, const K& nb2) {
+	M nm=nb1.m*nb2;
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
+template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb1, const M& nb2) {
+	M nm=nb1.m*nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb, const int& k) {
-	M nm=nb.m*(M)k;
-	E ne=nb.e;
+template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb1, const int& nb2) {
+	M nm=nb1.m*(M)nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator*(const M& k, const SN<M, E>& nb) {
-	M nm=k*nb.m;
-	E ne=nb.e;
+template<typename M, typename E> inline SN<M, E> operator*(const SN<M, E>& nb1, const double& nb2) {
+	M nm=nb1.m*(M)nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator*(const int& k, const SN<M, E>& nb) {
-	M nm=(M)k*nb.m;
-	E ne=nb.e;
+/*template<typename M, typename E, typename K> inline SN<M, E> operator*(const K& nb1, const SN<M, E>& nb2) {
+	M nm=nb1*nb2.m;
+	E ne=nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
+template<typename M, typename E> inline SN<M, E> operator*(const M& nb1, const SN<M, E>& nb2) {
+	M nm=nb1*nb2.m;
+	E ne=nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator*(const int& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1*nb2.m;
+	E ne=nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator*(const double& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1*nb2.m;
+	E ne=nb2.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
@@ -492,30 +1002,58 @@ template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb1, 
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb, const M& k) {
-	M nm=nb.m/k;
-	E ne=nb.e;
+/*template<typename M, typename E, typename K> inline SN<M, E> operator/(const SN<M, E>& nb1, const K& nb2) {
+	M nm=nb1.m/nb2;
+	E ne=nb1.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
+template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb1, const M& nb2) {
+	M nm=nb1.m/nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb, const int& k) {
-	M nm=nb.m/(M)k;
-	E ne=nb.e;
+template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb1, const int& nb2) {
+	M nm=nb1.m/(M)nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator/(const M& k, const SN<M, E>& nb) {
-	M nm=k/nb.m;
-	E ne=(-1)*nb.e;
+template<typename M, typename E> inline SN<M, E> operator/(const SN<M, E>& nb1, const double& nb2) {
+	M nm=nb1.m/(M)nb2;
+	E ne=nb1.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
 
-template<typename M, typename E> inline SN<M, E> operator/(const int& k, const SN<M, E>& nb) {
-	M nm=(M)k/nb.m;
-	E ne=(-1)*nb.e;
+/*template<typename M, typename E, typename K> inline SN<M, E> operator/(const K& nb1, const SN<M, E>& nb2) {
+	M nm=nb1/nb2.m;
+	E ne=(-1)*nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}*/
+
+template<typename M, typename E> inline SN<M, E> operator/(const M& nb1, const SN<M, E>& nb2) {
+	M nm=nb1/nb2.m;
+	E ne=(-1)*nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator/(const int& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1/nb2.m;
+	E ne=(-1)*nb2.e;
+	SN<M, E> nnb(nm, ne);// To recal
+	return nnb;
+}
+
+template<typename M, typename E> inline SN<M, E> operator/(const double& nb1, const SN<M, E>& nb2) {
+	M nm=(M)nb1/nb2.m;
+	E ne=(-1)*nb2.e;
 	SN<M, E> nnb(nm, ne);// To recal
 	return nnb;
 }
@@ -527,9 +1065,9 @@ template<typename M, typename E> inline SN<M, E> operator/(const int& k, const S
  * Functions
  */
  
- /**
-  * Computes the absolute value of a SN
-  */
+/**
+* Computes the absolute value of a SN
+*/
 template<typename M, typename E> inline SN<M, E> abs(const SN<M, E>& nb) {
 	return SN<M, E>{(M)std::abs(nb.m), nb.e};
 }
@@ -556,7 +1094,7 @@ template<typename M, typename E> LSN nrt(LSN& nb, long int e) {
 	return *(new LSN{pow(nb.m, e), nb.e*e});
 }*/
 
-/*
+/**
  * Calculate the square root of a number.
  */
 template<typename M, typename E> inline SN<M, E> sqrt(const SN<M, E>& nb) {

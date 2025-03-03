@@ -68,14 +68,14 @@ template<typename T> inline Mobile3D<T>::Mobile3D(const Mobile3D<T>& mobile) : S
  * Returns the speed
  */
 template<typename T> inline Vector3D<T> Mobile3D<T>::getSpeed() const {
-	return *this->ps;
+	return *(this->ps);
 }
 
 /**
  * Returns the rot speed
  */
 template<typename T> inline Vector3D<T> Mobile3D<T>::getRotSpeed() const {
-	return *this->prs;
+	return *(this->prs);
 }
 
 

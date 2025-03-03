@@ -23,15 +23,18 @@ template<typename U, typename T> std::string to_string(const PropertySet<U, T>& 
 	mes+=ss.str();
 	mes+="]:";
 	
+	mes+="[";
+	mes+="ptarget: ";
 	std::stringstream ss2;
 	ss2 << property_set.ptarget;
 	mes+=ss2.str();
+	mes+="]";
+	mes+="\n";
 	
 	for (T* pproperty : property_set.properties){
 		mes+=to_string(*pproperty);
 		mes+="\n";
 	}
-	//mes+=std::to_string(m) + "x10^" + std::to_string(e);
 
 	return mes;
 }

@@ -18,7 +18,7 @@
 BOOST_AUTO_TEST_SUITE (SN_test) // le nom de la série de test est SN_test
 
 
-BOOST_AUTO_TEST_CASE (test_constructor) { // 
+BOOST_AUTO_TEST_CASE (test_constructor_default) { // 
 	SN<float, char> nb1;
 	SN<double, char> nb2;
 	SN<int, char> nb3;
@@ -29,6 +29,60 @@ BOOST_AUTO_TEST_CASE (test_constructor) { //
 	BOOST_CHECK(nb3.m == 0 && nb3.e == 0);
 	BOOST_CHECK(nb4.m == 0 && nb4.e == 0);
 	BOOST_CHECK(nb5.m == 0 && nb5.e == 0);
+}
+
+BOOST_AUTO_TEST_CASE (test_constructor) { // 
+	SN<float, char> nb1(1, -1);
+	SN<double, char> nb2(1, -1);
+	SN<int, char> nb3(1, -1);
+	SN<float, float> nb4(1, -1);
+	SN<int, int> nb5(1, -1);
+	BOOST_CHECK(nb1.m == 1 && nb1.e == -1);
+	BOOST_CHECK(nb2.m == 1 && nb2.e == -1);
+	BOOST_CHECK(nb3.m == 1 && nb3.e == -1);
+	BOOST_CHECK(nb4.m == 1 && nb4.e == -1);
+	BOOST_CHECK(nb5.m == 1 && nb5.e == -1);
+}
+
+BOOST_AUTO_TEST_CASE (test_constructor2) { // 
+	SN<float, char> nb1(12);
+	SN<double, char> nb2(12);
+	SN<int, char> nb3(12);
+	SN<float, float> nb4(12);
+	SN<int, int> nb5(12);
+	/*print(nb1);
+	printf("\n");
+	print(nb2);
+	printf("\n");
+	print(nb3);
+	printf("\n");
+	print(nb4);
+	printf("\n");
+	print(nb5);
+	printf("\n");*/
+	BOOST_CHECK(nb1.m == (float)1.2 && nb1.e == (char)1);
+	BOOST_CHECK(nb2.m == (double)1.2 && nb2.e == (char)1);
+	BOOST_CHECK(nb3.m == (int)1 && nb3.e == (char)1);
+	BOOST_CHECK(nb4.m == (float)1.2 && nb4.e == (float)1);
+	BOOST_CHECK(nb5.m == (int)1 && nb5.e == (int)1);
+}
+
+BOOST_AUTO_TEST_CASE (test_constructor_copy) { // 
+	SN<float, char> nb1(12);
+	SN<float, char> nb1_c(nb1);
+	SN<double, char> nb2(12);
+	SN<double, char> nb2_c(nb2);
+	SN<int, char> nb3(12);
+	SN<int, char> nb3_c(nb3);
+	SN<float, float> nb4(12);
+	SN<float, float> nb4_c(nb4);
+	SN<int, int> nb5(12);
+	SN<int, int> nb5_c(nb5);
+	BOOST_CHECK(nb1 == nb1_c);
+	BOOST_CHECK(nb2 == nb2_c);
+	BOOST_CHECK(nb3 == nb3_c);
+	BOOST_CHECK(nb4 == nb4_c);
+	BOOST_CHECK(nb5 == nb5_c);
 }
 
 BOOST_AUTO_TEST_CASE (test_recal) { // 
@@ -58,10 +112,49 @@ BOOST_AUTO_TEST_CASE (test_recal) { //
 	//nb1.print(true, true, 0);					//////////////////////////////
 }
 
+BOOST_AUTO_TEST_CASE (test_to_m_type) { // 
+	SN<float, char> nb1(12.1);
+	SN<double, char> nb2(12.1);
+	SN<int, char> nb3(12);
+	SN<float, float> nb4(12.1);
+	SN<int, int> nb5(12);
+	BOOST_CHECK((float)12.1 == nb1.to_m_type());
+	BOOST_CHECK((double)12.1 == nb2.to_m_type());
+	BOOST_CHECK((int)10 == nb3.to_m_type());
+	BOOST_CHECK((float)12.1 == nb4.to_m_type());
+	BOOST_CHECK((int)10 == nb5.to_m_type());
+}
+
+BOOST_AUTO_TEST_CASE (test_operator_equal) { // 
+	SN<float, char> nb1={1, 2};
+	SN<float, char> nb2={3, 2};
+	
+	SN<float, char> nb2=nb1;
+	BOOST_CHECK(nb2 == nb1);
+	
+	SN<float, char> nb2=(float)0.1;
+	BOOST_CHECK(nb2.m == (float)1);
+	BOOST_CHECK(nb2.e == (char)-1);
+	
+	SN<float, char> nb2=(int)1;
+	BOOST_CHECK(nb2.m == (float)1);
+	BOOST_CHECK(nb2.e == (char)-1);
+}
+
+
+
+
 BOOST_AUTO_TEST_CASE (test_operator_equal) { // 
 	SN<float, char> nb1={1, 2};
 	SN<float, char> nb2={1, 2};
 	BOOST_CHECK(nb1 == nb2);
+}
+
+BOOST_AUTO_TEST_CASE (test_operator_equal_m_type) { // 
+	SN<float, char> nb1={1, 2};
+	SN<float, char> nb2={1, -2};
+	BOOST_CHECK(nb1 == (float)100);
+	BOOST_CHECK(nb2 == (float)0.01);
 }
 
 BOOST_AUTO_TEST_CASE (test_operator_not_equal) { // 
@@ -82,8 +175,8 @@ BOOST_AUTO_TEST_CASE (test_operator_plus_equal) { //
 
 BOOST_AUTO_TEST_CASE (test_operator_minus_equal) { // 
 	SN<float, char> nb1={1, 20};
-	SN<float, char> nb2={9.3, 19};
-	SN<float, char> rslt1={1, 18};
+	SN<float, char> nb2={7, 20};
+	SN<float, char> rslt1={-6, 20};
 
 	nb1-=nb2;
 	//nb1.print(true, true, 0);				//////////////////////////////////////

@@ -31,6 +31,7 @@ class Material {
 public:
 	std::shared_ptr<COLOR> pcolor;
 
+	Material();
 	Material(std::shared_ptr<COLOR> pcolor);
 	Material(const Material& material);
 	~Material();
@@ -43,7 +44,14 @@ public:
 /**
  * Constructor 1
  */
-inline Material::Material(std::shared_ptr<COLOR> pcolor){
+inline Material::Material() {
+	this->pcolor=createColor(255, 255, 255, 255);
+}
+
+/**
+ * Constructor 1
+ */
+inline Material::Material(std::shared_ptr<COLOR> pcolor) {
 	this->pcolor=pcolor;
 }
 
@@ -63,4 +71,4 @@ inline Material::~Material(){
 
 
 
-#endif
+#endif /* MATERIAL_HPP_ */

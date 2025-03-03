@@ -14,11 +14,11 @@
 #include <string>
 #include <unordered_map>
 
-#include "CoordinateSystem3D.hpp"
+#include "utils_CoordinateSystem3D.hpp"
 #include "Mobile3D.hpp"
 #include "Displayable3D.hpp"
-#include "Vector3D.hpp"
-#include "PropertySet.hpp"
+#include "utils_Vector3D.hpp"
+#include "utils_PropertySet.hpp"
 
 
 /**
@@ -42,14 +42,18 @@ public:
 	virtual void operator+=(const Vector3D<T>& v);// :)
 	virtual void operator+=(const Particle3D<T>& p);// :)
 
+	// From Static3D
+	virtual T getX() const {return Static3D<T>::getX();}				//Gets the coords (for rendering)
+	virtual T getY() const {return Static3D<T>::getY();}
+	virtual T getZ() const {return Static3D<T>::getZ();}
+	virtual Point3D<T> getPosition() const {return Static3D<T>::getPosition();}
+	
 	// From Mobile3D
-	virtual T getX() const {return Mobile3D<T>::getX();}				//Gets the coords (for rendering)
-	virtual T getY() const {return Mobile3D<T>::getY();}
-	virtual T getZ() const {return Mobile3D<T>::getZ();}
-	virtual Point3D<T> getPosition() const {return Mobile3D<T>::getPosition();}
+	virtual Vector3D<T> getSpeed() const {return Mobile3D<T>::getSpeed();}
+	virtual Vector3D<T> getRotSpeed() const {return Mobile3D<T>::getRotSpeed();}
 
 	// From Displayable3D
-	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
+	virtual std::unordered_set<Point3D<T>*> getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const;
 	//virtual std::unordered_set<std::shared_ptr<Line3D<T>>> getPLines() const;
 
 	// From TimeSensitive
@@ -70,7 +74,7 @@ template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
 	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
-template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Displayable3D<T>() {
+template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Mobile3D<T>(), Displayable3D<T>() {
 	this->ppoint=std::make_shared<Point3D<T>>(p);
 
 	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
@@ -78,7 +82,7 @@ template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Dis
 	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
-template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Displayable3D<T>() {
+template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Mobile3D<T>(), Displayable3D<T>() {
 	//this->ppoint->x=x;
 	//this->ppoint->y=y;
 	//this->ppoint->z=z;
@@ -93,7 +97,7 @@ template<typename T> inline Particle3D<T>::~Particle3D() {
 	;
 }
 
-template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : Displayable3D<T>() {
+template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : Mobile3D<T>(p), Displayable3D<T>(p) {
 	this->ppoint=p.ppoint;
 	this->pproperties=p->pproperties;// Copy the properties
 
@@ -106,7 +110,7 @@ template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : 
 
 
 
-template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v){
+template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v) {
 	if (this->ps!=NULL){
 		*this->ps+=v;
 	}else{
@@ -114,7 +118,7 @@ template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v)
 	}
 }
 
-template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p){
+template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p) {
 	if (this->pproperties!=NULL){
 		*this->pproperties+=*p.pproperties;
 	}else{
@@ -134,9 +138,9 @@ template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& 
 /**
  * v
  */
-template<typename T> inline std::unordered_set<Point3D<T>*> Particle3D<T>::getPPoints() const {
+template<typename T> inline std::unordered_set<Point3D<T>*> Particle3D<T>::getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const {
 	std::unordered_set<Point3D<T>*> ppoints;
-	ppoints.insert(this->ppoint);
+	ppoints.insert(this->ppoint.get());
 	return ppoints;
 }
 
@@ -168,7 +172,7 @@ void Particle3D<T>::apply() {//Useless
 /**
  * l
  */
-template<typename T> inline void Particle3D<T>::apply(){
+template<typename T> inline void Particle3D<T>::apply() {
 	//printf("Particle3D: apply %f, %f\n", this->m_dt, this->ps->getNorm().to_m_type());
 	*this->ppoint+= *this->ps->pp2 * (T)this->m_dt;
 	//this->x+=(this->ps->pp2->x)*(T)this->m_dt;
@@ -191,7 +195,7 @@ template<typename T> inline void Particle3D<T>::apply(){
 
 
 
-template<typename T> inline Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2){
+template<typename T> inline Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2) {
 	std::shared_ptr<Particle3D<T>> pparticle=std::make_shared<Particle3D<T>>();
 
 	*(pparticle->ps)=*(p1->ps)+*(p2->ps);

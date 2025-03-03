@@ -15,7 +15,10 @@
 #include "../src/core/utils_Oct.hpp"
 #include "../src/core/utils_Particle3D.hpp"
 
-
+/*
+ * TODO:
+ * insert doesn't work
+ */
 
 
 struct FOct {
@@ -41,40 +44,120 @@ struct FOct {
 
 BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 
-
-	//BOOST_AUTO_TEST_SUITE (Oct_test) // The name of this serie is Oct_test
-
-
-	BOOST_AUTO_TEST_CASE (test_constructor) { //
+	BOOST_AUTO_TEST_CASE (test_constructor_default) { //
 		Point3D<SN<float, char>> p(SN<float, char>{0,0}, SN<float, char>{0,0}, SN<float, char>{0,0});
+		SN<float, char> a(1,2);
+		SN<float, char> b(0,0);
 		BOOST_CHECK(poct->getBarycenter() == p);
 		BOOST_CHECK(poct->getPoint() == p);
 
+		BOOST_CHECK(poct->getA() == a);
+		//BOOST_CHECK(poct->getPoint() == p);
+		
+		BOOST_CHECK(poct->getPtrGetW() != NULL);
+		BOOST_CHECK(poct->tot_weight == b);
+	
+		BOOST_CHECK(poct->pU == NULL);
+		
 		BOOST_CHECK(poct->isLeaf() == true);
 		BOOST_CHECK(poct->isEmpty() == true);
-
+		
+		BOOST_CHECK(poct->alpha == 0.5);
+		BOOST_CHECK(poct->ffuse == false);
+		
+		BOOST_CHECK(poct->getNB_OCTS() == 1);
+		
 		// Float
-		Point3D<float> pf(0., 0., 0.);
+		/*Point3D<float> pf(0., 0., 0.);
 		BOOST_CHECK(poctf->getBarycenter() == pf);
 		BOOST_CHECK(poctf->getPoint() == pf);
 
 		BOOST_CHECK(poctf->isLeaf() == true);
-		BOOST_CHECK(poctf->isEmpty() == true);
+		BOOST_CHECK(poctf->isEmpty() == true);*/
 	}
+	
+	BOOST_AUTO_TEST_CASE (test_constructor) { //
+		Point3D<SN<float, char>> p(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{3,0});
+		SN<float, char> a(5,1);
+		SN<float, char> b(0,0);
+		std::shared_ptr<Oct<Particle3D<SN<float, char>>, SN<float, char>>> poct2=std::make_shared<Oct<Particle3D<SN<float, char>>, SN<float, char>>>(a, p);
+		
+		BOOST_CHECK(poct2->getBarycenter() == p);
+		BOOST_CHECK(poct2->getPoint() == p);
 
+		BOOST_CHECK(poct2->getA() == a);
+		//BOOST_CHECK(poct->getPoint() == p);
+		
+		BOOST_CHECK(poct2->getPtrGetW() == NULL);
+		BOOST_CHECK(poct2->tot_weight == b);
+	
+		BOOST_CHECK(poct2->pU == NULL);
+		
+		BOOST_CHECK(poct2->isLeaf() == true);
+		BOOST_CHECK(poct2->isEmpty() == true);
+		
+		BOOST_CHECK(poct2->alpha == 0.5);
+		BOOST_CHECK(poct2->ffuse == false);
+		
+		BOOST_CHECK(poct2->getNB_OCTS() == 2);
+		
+		// Float
+		/*Point3D<float> pf(0., 0., 0.);
+		BOOST_CHECK(poctf->getBarycenter() == pf);
+		BOOST_CHECK(poctf->getPoint() == pf);
+
+		BOOST_CHECK(poctf->isLeaf() == true);
+		BOOST_CHECK(poctf->isEmpty() == true);*/
+	}
+	
+	BOOST_AUTO_TEST_CASE (test_getPChilds) { //
+		std::unordered_set<Oct<Particle3D<SN<float, char>>, SN<float, char>>*> pchilds=poct->getPChilds();
+		BOOST_CHECK(pchilds.size() == 0);//Should be at 0 by default.
+		
+		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{3,0});
+		poct->insert(pp);
+		BOOST_CHECK(pchilds.size() == 0);//Shouldn't have created sub octs.
+		
+		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{3,0});
+		poct->insert(pp);
+		printf("\n#########Nb childs %lu\n", pchilds.size());
+		BOOST_CHECK(pchilds.size() == 2);//Should have created 2 sub octs.
+	}
+	
+	BOOST_AUTO_TEST_CASE (test_getPBrothers) { //
+		std::unordered_set<Oct<Particle3D<SN<float, char>>, SN<float, char>>*> pbrothers=poct->getPBrothers();
+		BOOST_CHECK(pbrothers.size() == 0);//Should be at 0 by default.
+		
+		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{3,0});
+		poct->insert(pp);
+		BOOST_CHECK(pbrothers.size() == 0);//Shouldn't have created brothers.
+		
+		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{3,0});
+		poct->insert(pp);
+		BOOST_CHECK(pbrothers.size() == 0);//Shouldn't have created brothers.
+	}
+	
 	BOOST_AUTO_TEST_CASE (test_insert) { //
 		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp);
 
-		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts_sn=poct->getPElements();
+		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts_sn=poct->getPUnderElements();
+		for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts_sn){
+			print(*ppart);
+			printf("\n");
+		}
 		BOOST_CHECK(pparts_sn.size() == 1);
+		BOOST_CHECK(poctf->getNB_OCTS() == 1);
+		BOOST_CHECK(poctf->isEmpty() == false);
 
 		// Float
 		std::shared_ptr<Particle3D<float>> ppf=std::make_shared<Particle3D<float>>();
 		poctf->insert(ppf);
 
-		std::unordered_set<std::shared_ptr<Particle3D<float>>> pparts_f=poctf->getPElements();
+		std::unordered_set<std::shared_ptr<Particle3D<float>>> pparts_f=poctf->getPUnderElements();
 		BOOST_CHECK(pparts_f.size() == 1);
+		BOOST_CHECK(poctf->getNB_OCTS() == 1);
+		BOOST_CHECK(poctf->isEmpty() == false);
 	}
 
 	BOOST_AUTO_TEST_CASE (test_isEmpty) { //
@@ -85,7 +168,6 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		//std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{1,0}, SN<float, char>{1,0});
 		poct->insert(pp1);
 
-		printf("NB_OCTS: %d\n", poct->getNB_OCTS());//True
 		BOOST_CHECK(1 == poct->getNB_OCTS());//True
 		BOOST_CHECK(!poct->isEmpty());//Should pass
 
@@ -121,7 +203,7 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
 
 		poct->insert(pp1);
-		BOOST_CHECK(1 == poct->getPElements().size());
+		BOOST_CHECK(1 == poct->getPUnderElements().size());
 		BOOST_CHECK(1 == poct->getNB_OCTS());
 
 		poct->insert(pp2);
@@ -156,6 +238,7 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		poct->insert(pp1);
 
 		BOOST_CHECK(1 == poct->getPElements().size());
+		BOOST_CHECK(1 == poct->getPUnderElements().size());
 		BOOST_CHECK(poct->isFull());
 		BOOST_CHECK(poct->isLeaf());
 

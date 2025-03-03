@@ -51,9 +51,6 @@ public:
 
 
 template<typename T> inline Displayable3D<T>::Displayable3D() {
-	this->ppoint=std::make_shared<Point3D<T>>();
-	this->pcoords_system=std::make_shared<CoordinateSystem3D<T>>();
-	
 	this->pmaterial=std::make_shared<Material>();
 	this->panimation=std::make_shared<Animation>();
 	//pcolor=NULL;//std::make_shared<SDL_Color>(255, 255, 255, 255);		// Will be interprated as white by the cameras and displays
@@ -66,9 +63,6 @@ template<typename T> inline Displayable3D<T>::~Displayable3D() {
 }
 
 template<typename T> inline Displayable3D<T>::Displayable3D(const Displayable3D& displayable) {
-	this->ppoint=displayable.ppoint;
-	this->pcoords_system=displayable.pcoords_system;
-	
 	//pcolor=displayable.pcolor;
 	this->pmaterial=displayable.pmaterial;
 	this->panimation=displayable.panimation;

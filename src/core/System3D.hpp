@@ -32,14 +32,14 @@
  * If you want to use the functions (rrr, ...) you need a .getW() 
  * TODO : Surcharger le cas U=TimeSensitive
  */
-template<typename U, typename T> class System3D : public Displayable3D<T>, public TimeSensitive {
+template<typename U, typename T> class System3D : public Static3D<T>, public Displayable3D<T> {
 protected:
 	std::shared_ptr<Oct<U, T>> m_poctree;											// Pointer to the Octree.
 	std::unordered_set<std::shared_ptr<U>> m_pelements;
 	
 public:
 	typedef T (*PtrGetW)(const U&);				// Defines a function's pointer (used locally)
-	void (*ptrLaw) (System3D<U, T>* psys);											// Pointer to a function operating on the system
+	void (*ptrLaw) (const System3D<U, T>& sys);											// Pointer to a function operating on the system
 	//Vector3D<U> (*ptrLaw) (std::shared_ptr<T>, std::shared_ptr<T>);				// Pointer to a function operating on 2 particles (Todo List)
 
 	System3D();
@@ -87,14 +87,14 @@ public:
 	virtual void setT(const float& dt);
 	virtual void apply();
 
-	// From Mobile3D
+	// From Static3D
 	virtual T getX() const;
 	virtual T getY() const;
 	virtual T getZ() const;
 	virtual Point3D<T> getPosition() const;
-
+	
 	// From Displayable3D
-	virtual std::unordered_set<Point3D<T>*> getPPoints() const;
+	virtual std::unordered_set<Point3D<T>*> getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const;
 };
 
 //Functions
@@ -108,7 +108,7 @@ template<typename T, typename U> Vector3D<T> apply_elecOptimised(std::shared_ptr
 
 
 
-template<typename U, typename T> inline System3D<U, T>::System3D() : Displayable3D<T>() {
+template<typename U, typename T> inline System3D<U, T>::System3D() : Displayable3D<T>(), Static3D<T>() {
 	this->m_poctree=std::make_shared<Oct<U, T>>();
 	this->ptrLaw=NULL;
 }
@@ -123,7 +123,7 @@ template<typename U, typename T> inline System3D<U, T>::~System3D() {
 	this->ptrLaw=NULL;
 }
 
-template<typename U, typename T> inline System3D<U, T>::System3D(const System3D<U, T>& sys) : Displayable3D<T>(sys) {
+template<typename U, typename T> inline System3D<U, T>::System3D(const System3D<U, T>& sys) : Displayable3D<T>(sys), Static3D<T>(sys) {
 	
 	this->m_poctree=std::make_shared<Oct<U, T>>(*sys.m_poctree);
 	this->ptrLaw=sys.ptrLaw;
@@ -167,7 +167,7 @@ template<typename U, typename T> inline void System3D<U, T>::setT(const float& d
 	// If there is a law to apply... calls it
 	if (this->ptrLaw!=NULL){
 		//printf("System3D: setT2");
-		(*ptrLaw)(*this);
+		(*ptrLaw)(*(this));
 	}
 }
 
@@ -212,10 +212,10 @@ template<typename U, typename T> inline Point3D<T> System3D<U, T>::getPosition()
 /**
  * l
  */
-template<typename U, typename T> inline std::unordered_set<Point3D<T>*> System3D<U, T>::getPPoints() const {
+template<typename U, typename T> inline std::unordered_set<Point3D<T>*> System3D<U, T>::getPPoints(const CoordinateSystem3D<T>& coord_system_caller) const {
 	std::unordered_set<Point3D<T>*> ppoints;
 	for (std::shared_ptr<U> pelement : this->m_pelements){
-		std::unordered_set<Point3D<T>*> ppoints_element=pelement->getPPoints();
+		std::unordered_set<Point3D<T>*> ppoints_element=pelement->getPPoints(*this->pcoord_system);
 		for (Point3D<T>* ppoint : ppoints_element){
 			ppoints.insert(ppoint);
 		}
@@ -281,16 +281,17 @@ template<typename U, typename T> inline void elecOptimised(const System3D<U, T>&
  */
 template<typename T, typename U> inline Vector3D<T> apply_gravitOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
 	printf("System3D: rrr2 1\n");
-	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>();
+	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>(pU2->getPosition(), Point3D<T>{(T)0,(T)0,(T)0});
 	//printf("System3D: rrr2 2\n");
-	pv->pp1=std::make_shared<Point3D<T>>(pU2->getPosition());
+	//pv->setP1(pU2->getPosition());
 	//printf("System3D: rrr2 3\n");
-	pv->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);
+	//pv->setpp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);
 	
 	//printf("System3D: rrr2 4\n");
 
 	if (ptr_getW!=NULL) {// && pT1->pfields->contains("mass")
-		*pv->pp2=pU1->getPosition()-pU2->getPosition();
+		//*pv->pp2=pU1->getPosition()-pU2->getPosition();
+		pv->setP2(pU1->getPosition()-pU2->getPosition());
 
 		T d=getDistance(
 					(Point3D<T>)pU1->getPosition(), 
@@ -315,7 +316,7 @@ template<typename T, typename U> inline Vector3D<T> apply_elecOptimised(std::sha
 	pv->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);
 	
 	if (ptr_getW!=NULL) {
-		*pv->pp2=pU1->getPosition()-pU2->getPosition();
+		pv->setP2(pU1->getPosition()-pU2->getPosition());
 
 		T d=getDistance(
 					(Point3D<T>)pU1->getPosition(), 

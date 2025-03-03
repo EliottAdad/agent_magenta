@@ -32,33 +32,52 @@
 template<typename U, typename T> struct PropertySet {
 public:
 	U* ptarget;					// Object to which are attached the properties
-	std::map<std::string, std::shared_ptr<T>> properties;
+	std::map<std::string, std::shared_ptr<T>> pproperties;
+	std::map<std::string, T> properties;
 	
 	PropertySet();
 	PropertySet(const U* ptarget);
 	virtual ~PropertySet();
 	PropertySet(const PropertySet<U, T>& property_set);
 
-	void add(const std::string& name, std::shared_ptr<T> pprop);
-	std::shared_ptr<T> get(const std::string& name) const;
+	bool add(const std::string& name, std::shared_ptr<T> pprop);
+	bool add(const std::string& name, const T& prop);
+	//void remove(const std::string& name);
+	std::shared_ptr<T> getP(const std::string& name) const;
+	T get(const std::string& name) const;
 	
 	void operator=(const PropertySet<U, T>& property_set);
 	void operator+=(const PropertySet<U, T>& property_set);
 };
 
-template<typename U, typename T> PropertySet<U, T>::PropertySet() {
+template<typename U, typename T> PropertySet<U, T> operator+(const PropertySet<U, T>& property_set1, const PropertySet<U, T>& property_set2);
+
+
+/**
+ * Constructor0
+ */
+template<typename U, typename T> inline PropertySet<U, T>::PropertySet() {
 	this->ptarget=NULL;
 }
 
-template<typename U, typename T> PropertySet<U, T>::PropertySet(const U* ptarget) {
+/**
+ * Constructor1
+ */
+template<typename U, typename T> inline PropertySet<U, T>::PropertySet(const U* ptarget) {
 	this->ptarget=ptarget;
 }
 
-template<typename U, typename T> PropertySet<U, T>::~PropertySet() {
+/**
+ * Destructor
+ */
+template<typename U, typename T> inline PropertySet<U, T>::~PropertySet() {
 	this->ptarget=NULL;
 }
 
-template<typename U, typename T> PropertySet<U, T>::PropertySet(const PropertySet<U, T>& property_set) {
+/**
+ * Copy constructor
+ */
+template<typename U, typename T> inline PropertySet<U, T>::PropertySet(const PropertySet<U, T>& property_set) {
 	this->ptarget=property_set.ptarget;
 }
 
@@ -66,17 +85,57 @@ template<typename U, typename T> PropertySet<U, T>::PropertySet(const PropertySe
 
 
 /**
- * Inserts
+ * Inserts a new property (name of the property paired with a pointer to the said property)
  */
-template<typename U, typename T> void PropertySet<U, T>::add(const std::string& name, std::shared_ptr<T> pprop) {
-	this->properties.insert({name, pprop});
+template<typename U, typename T> inline bool PropertySet<U, T>::add(const std::string& name, std::shared_ptr<T> pprop) {
+	return this->pproperties.insert({name, pprop}).second;
 }
 
 /**
- * Returns the corresponding.
+ * Inserts a new property (name of the property paired with a reference to the property)
  */
-template<typename U, typename T> std::shared_ptr<T> PropertySet<U, T>::get(const std::string& name) const {
-	return this->properties.at(name);
+template<typename U, typename T> inline bool PropertySet<U, T>::add(const std::string& name, const T& prop) {
+	return this->properties.insert({name, prop}).second;
+}
+
+/**
+ * Returns the pointer to the requested property corresponding to the name.
+ * NULL if not found.
+ */
+template<typename U, typename T> inline std::shared_ptr<T> PropertySet<U, T>::getP(const std::string& name) const {
+	/*auto pairr=this->pproperties.find(name);
+	if (pairr!=this->pproperties.end()){
+		return pairr.second;
+	}
+	return NULL;*/
+	//return this->pproperties.find(name).second;
+	
+	if (auto search = this->pproperties.find(name); search != this->pproperties.end()){
+		return (*search).second;
+	}
+	return NULL;
+}
+
+/**
+ * Returns the property corresponding to the name. Priority on pointers.
+ * Return default T from default constructor if not found.
+ */
+template<typename U, typename T> inline T PropertySet<U, T>::get(const std::string& name) const {
+	std::shared_ptr<T> pproperty=NULL;
+	
+	pproperty=this->getP(name);
+	if (pproperty!=NULL){
+		return *pproperty;
+	}
+	/*if (this->properties.contains(name)){
+		return this->properties.find(name).second;
+	}
+	return T();*/
+	//return this->properties.find(name).second;
+	if (auto search = this->properties.find(name); search != this->properties.end()){
+		return (*search).second;
+	}
+	return T();
 }
 
 /*
@@ -86,17 +145,30 @@ template<typename U, typename T> std::shared_ptr<T> PropertySet<U, T>::get(const
 /**
  * h
  */
-template<typename U, typename T> void PropertySet<U, T>::operator=(const PropertySet<U, T>& property_set) {
+template<typename U, typename T> inline void PropertySet<U, T>::operator=(const PropertySet<U, T>& property_set) {
+	this->pproperties=property_set.pproperties;
 	this->properties=property_set.properties;
 }
 
 /**
  * TODO
  */
-template<typename U, typename T> void PropertySet<U, T>::operator+=(const PropertySet<U, T>& property_set) {
-	this->properties=property_set.properties;
-}
+template<typename U, typename T> inline void PropertySet<U, T>::operator+=(const PropertySet<U, T>& property_set) {
+	this->properties;
 	
+	//=property_set.properties;
+}
 
+
+/**
+ * TODO
+ */
+template<typename U, typename T> inline PropertySet<U, T> operator+(const PropertySet<U, T>& property_set1, const PropertySet<U, T>& property_set2) {
+	//this->properties;
+	
+	//=property_set.properties;
+	std::shared_ptr<PropertySet<U, T>> pproperty_set=std::make_shared<PropertySet<U, T>>();
+	return *pproperty_set;
+}
 
 #endif /* PROPERTYSET_HPP_ */

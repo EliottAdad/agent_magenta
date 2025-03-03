@@ -18,8 +18,8 @@
 template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate2DGridParticle3D(Point3D<T> p, T a, unsigned char n, T mass);
 template<typename T> std::unordered_set<std::shared_ptr<Particle3D<T>>> generate3DGridParticle3D(Point3D<T> p, T a, unsigned char n, T mass);
 
-template<typename T> T getMass(Particle3D<T> p);
-template<typename T> T getCharge(Particle3D<T> p);
+template<typename T> T getMass(const Particle3D<T>& p);
+template<typename T> T getCharge(const Particle3D<T>& p);
 
 
 
@@ -84,34 +84,11 @@ template<typename T> inline std::unordered_set<std::shared_ptr<Particle3D<T>>> g
  * Mass, charge,...
  */
 
-/**
- * j
- */
-/*template<typename T> inline T getMass(const Particle3D<T>& p) {
-	T w=(T)0;
-
-	//if (pfields!=NULL){
-		w=(T)(*(p.properties.get("mass")));
-	//}
-
-	return w;
-}
-
-template<typename T> inline T getCharge(const Particle3D<T>& p) {
-	T w=(T)0;
-
-	//if (pfields!=NULL){
-		w=(T)(*(p.properties.get("charge")));
-	//}
-
-	return w;
-}*/
-
-template<typename T> inline T getMass(const Particle3D<T>& p) {// Pas la le probleme, avant
+template<typename T> inline T getMass(const Particle3D<T>& p) {
 	T w=(T)0;
 
 	if (p.pproperties!=NULL){
-		w=*(p.pproperties->get("mass"));
+		w=p.pproperties->get("mass");
 	}
 
 	return w;
@@ -121,7 +98,7 @@ template<typename T> inline T getCharge(const Particle3D<T>& p) {
 	T w=(T)0;
 
 	if (p.pproperties!=NULL){
-		w=*(p.pproperties->get("charge"));
+		w=p.pproperties->get("charge");
 	}
 
 	return w;
