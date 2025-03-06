@@ -30,12 +30,11 @@
  */
 template<typename T> class Particle3D : public Mobile3D<T>, public Displayable3D<T> {
 public:
-	std::shared_ptr<PropertySet<Particle3D<T>, T>> pproperties;										// Properties
+	std::shared_ptr<PropertySet<Particle3D<T>, T>> pproperties;										// Properties of type T
 	
 	Particle3D();
 	Particle3D(const Point3D<T>& p);
 	Particle3D(const T& x, const T& y, const T& z, const T& mass=(T)1);
-	//Particle3D(const WeightedPoint3D<T>& wp);
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 	
@@ -69,7 +68,7 @@ template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Part
 
 
 
-template<typename T> inline Particle3D<T>::Particle3D() : Displayable3D<T>() {
+template<typename T> inline Particle3D<T>::Particle3D() : Mobile3D<T>(), Displayable3D<T>() {
 	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
 	this->pproperties->add("mass", std::make_shared<T>((T)1));
 	this->pproperties->add("charge", std::make_shared<T>((T)1));

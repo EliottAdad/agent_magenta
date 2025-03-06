@@ -141,7 +141,7 @@ public:
 	
 	/**
 	 * @brief
-	 * Returns the pointer to the function getting the weight of U
+	 * Returns all the leaves
 	 */
 	static std::unordered_set<Oct<U, T>*> getLeaves() {return m_LEAVES;}
 	/**
@@ -475,20 +475,23 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 		Point3D<T> p=pU->getPosition();
 		Point3D<T> dp=p-*this->m_ppoint;
 
-		if (m_PTR_GETW==NULL){
+		/*if (m_PTR_GETW==NULL){
 			//printf("\nm_PTR_GETW is NULL\n");
 		}
 		if (abs(dp.x)<=this->m_ha){
 			//printf("\nabs(dp.x)<=this->ha\n");
 		}else{
 			//printf("\nabs(dp.x)>this->ha\n");
-		}
+		}*/
 		if (abs(dp.x)<=this->m_ha &&
 				abs(dp.y)<=this->m_ha &&
 				abs(dp.z)<=this->m_ha &&
-				m_PTR_GETW!=NULL){// If in the cube centered on the point.
+				m_PTR_GETW!=NULL){// If in the cube centered on the Oct's position.
 
 			// Manages the barycenter
+
+			T weight=(*(m_PTR_GETW))(*pU);
+
 			this->m_tot_weight+=(*(m_PTR_GETW))(*pU);//Add to tot_weight
 			if (this->m_tot_weight!=(T)0){
 				*this->m_pbarycenter+=p * (*(m_PTR_GETW))(*pU)/m_tot_weight;//Add to the barycenter

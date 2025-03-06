@@ -38,8 +38,10 @@ struct FPropertySet {
 BOOST_FIXTURE_TEST_SUITE (PropertySet_test, FPropertySet) // The name of this serie is PropertySet_test
 
 	BOOST_AUTO_TEST_CASE (test_add) { // 
+		// SN
 		pps->add("mass", std::make_shared<SN<float, char>>());
 		pps->add("charge", std::make_shared<SN<float, char>>(1, 0));
+
 		// Float
 		ppsf->add("mass", 0.);
 		ppsf->add("charge", 1.5);
