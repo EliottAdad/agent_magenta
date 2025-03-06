@@ -6,16 +6,16 @@
 # Parameters
 CC		:= g++
 # CFLAGS is for -I
-CFLAGS	:= -Wall -Wextra -MMD -std=c++20
-LDLIBS	:= -lboost_unit_test_framework -lSDL2
+CFLAGS		:= -Wall -Wextra -MMD -std=c++20
+LDLIBS		:= -lboost_unit_test_framework -lSDL2
 #LDFLAGS is for -L
 LDFLAGS	:=
 # -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 # Phonies
-.PHONY 	:= all
+.PHONY 		:= all
 # Configuration
-DEBUG	:=yes
-TEST	:=yes
+DEBUG		:=yes
+TEST		:=yes
 
 
 
@@ -65,10 +65,10 @@ TFILES := $(shell find test -name '*.test.cpp')
 TOFILES = $(patsubst %.cpp, %.o, $(notdir $(TFILES)))
 #$(TOFILES)
 #Works:
-#Point3D.test.o Particle3D.test.o PropertySet.test.o Display3D.test.o
+#Particle3D.test.o Display3D.test.o SN.test.o Vector3D.test.o Point3D.test.o PropertySet.test.o Scene3D.test.o
 #Doesn't work
 #Oct.test.o 
-main_test: main.test.o SN.test.o
+main_test: main.test.o Oct.test.o
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 

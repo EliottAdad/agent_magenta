@@ -311,9 +311,7 @@ template<typename T, typename U> inline Vector3D<T> apply_gravitOptimised(std::s
  * @param : pU1: src, pU2: target (not NULL pls)
  */
 template<typename T, typename U> inline Vector3D<T> apply_elecOptimised(std::shared_ptr<U> pU1, std::shared_ptr<U> pU2, T (*ptr_getW)(const U&)) {
-	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>();
-	pv->pp1=std::make_shared<Point3D<T>>(pU2->getPosition());
-	pv->pp2=std::make_shared<Point3D<T>>((T)0,(T)0,(T)0);
+	std::shared_ptr<Vector3D<T>> pv=std::make_shared<Vector3D<T>>(pU2->getPosition(), Point3D<T>{(T)0,(T)0,(T)0});
 	
 	if (ptr_getW!=NULL) {
 		pv->setP2(pU1->getPosition()-pU2->getPosition());

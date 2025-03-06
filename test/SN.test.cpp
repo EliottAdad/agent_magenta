@@ -50,16 +50,7 @@ BOOST_AUTO_TEST_CASE (test_constructor2) { //
 	SN<int, char> nb3(12);
 	SN<float, float> nb4(12);
 	SN<int, int> nb5(12);
-	/*print(nb1);
-	printf("\n");
-	print(nb2);
-	printf("\n");
-	print(nb3);
-	printf("\n");
-	print(nb4);
-	printf("\n");
-	print(nb5);
-	printf("\n");*/
+
 	BOOST_CHECK(nb1.m == (float)1.2 && nb1.e == (char)1);
 	BOOST_CHECK(nb2.m == (double)1.2 && nb2.e == (char)1);
 	BOOST_CHECK(nb3.m == (int)1 && nb3.e == (char)1);
@@ -78,6 +69,7 @@ BOOST_AUTO_TEST_CASE (test_constructor_copy) { //
 	SN<float, float> nb4_c(nb4);
 	SN<int, int> nb5(12);
 	SN<int, int> nb5_c(nb5);
+
 	BOOST_CHECK(nb1 == nb1_c);
 	BOOST_CHECK(nb2 == nb2_c);
 	BOOST_CHECK(nb3 == nb3_c);
@@ -109,7 +101,10 @@ BOOST_AUTO_TEST_CASE (test_recal) { //
 	nb1=SN<float, char>{0.02, 3};
 	nb1.recal();
 	BOOST_CHECK(nb1.m == 2 && nb1.e == 1);
-	//nb1.print(true, true, 0);					//////////////////////////////
+
+	nb1=SN<float, char>{0.1, 0};
+	nb1.recal();
+	BOOST_CHECK(nb1.m == 1 && nb1.e == -1);
 }
 
 BOOST_AUTO_TEST_CASE (test_to_m_type) { // 
@@ -129,26 +124,27 @@ BOOST_AUTO_TEST_CASE (test_operator_equal) { //
 	SN<float, char> nb1={1, 2};
 	SN<float, char> nb2={3, 2};
 	
-	SN<float, char> nb2=nb1;
+	nb2=nb1;
 	BOOST_CHECK(nb2 == nb1);
 	
-	SN<float, char> nb2=(float)0.1;
-	BOOST_CHECK(nb2.m == (float)1);
+	//printf("%lf", floor(log(abs((double)0.1)) / log(10.0)));
+	nb2=(float)0.1;
+	//printf("##########\n");
+	//print(nb2);
+	//printf("\n");
+	BOOST_CHECK(nb2.m == (float)1.0);
 	BOOST_CHECK(nb2.e == (char)-1);
 	
-	SN<float, char> nb2=(int)1;
+	/*nb2=(int)1;//Not overloaded
 	BOOST_CHECK(nb2.m == (float)1);
-	BOOST_CHECK(nb2.e == (char)-1);
+	BOOST_CHECK(nb2.e == (char)-1);*/
 }
 
-
-
-
-BOOST_AUTO_TEST_CASE (test_operator_equal) { // 
+/*BOOST_AUTO_TEST_CASE (test_operator_equal) { //
 	SN<float, char> nb1={1, 2};
 	SN<float, char> nb2={1, 2};
 	BOOST_CHECK(nb1 == nb2);
-}
+}*/
 
 BOOST_AUTO_TEST_CASE (test_operator_equal_m_type) { // 
 	SN<float, char> nb1={1, 2};

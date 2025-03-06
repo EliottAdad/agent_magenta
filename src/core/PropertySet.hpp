@@ -29,7 +29,7 @@
  * P: Type of the property (SN<float, char>, float, bool, ...)
  * Not properly designed yet.
  */
-template<typename U, typename T> struct PropertySet {
+template<typename U, typename T> class PropertySet {
 public:
 	U* ptarget;					// Object to which are attached the properties
 	std::map<std::string, std::shared_ptr<T>> pproperties;

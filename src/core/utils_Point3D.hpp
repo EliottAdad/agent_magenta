@@ -11,6 +11,7 @@
 
 #include <memory>
 #include <eigen3/Eigen/Dense>
+#include "string.h"
 
 #include "Point3D.hpp"
 
@@ -48,6 +49,21 @@ template<typename T> std::string to_string(const Point3D<T>& p) {
 	mes+=ss.str();
 	mes+="]:";
 	
+	mes+="(x:" + std::to_string(p.x) + " ; y:" + std::to_string(p.y) + " ; z:" + std::to_string(p.z) + ")";
+
+	return mes;
+}
+
+//SN pecific
+template<typename M, typename E> std::string to_string(const Point3D<SN<M, E>>& p) {
+	std::string mes="";
+
+	mes+="POINT3D[";
+	std::stringstream ss;
+	ss << &p;
+	mes+=ss.str();
+	mes+="]:";
+
 	mes+="(x:" + to_string(p.x) + " ; y:" + to_string(p.y) + " ; z:" + to_string(p.z) + ")";
 
 	return mes;

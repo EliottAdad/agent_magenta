@@ -34,19 +34,16 @@ struct FScene3D {
 BOOST_FIXTURE_TEST_SUITE (Scene3D_test, FScene3D) // The name of this serie is Scene3D_test
 	
 	BOOST_AUTO_TEST_CASE (test_constructor) { //
-		//Display1<SN<float, char>> display;
+		BOOST_CHECK(ps->getNbElements()==0);
+		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
+		ps->add(pp);
+		BOOST_CHECK(ps->getNbElements()==1);
+		//BOOST_CHECK();
 	}
 
-	/*BOOST_AUTO_TEST_CASE (test_add) { //
+	BOOST_AUTO_TEST_CASE (test_add) { //
 		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
 		pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 18});
-
-		// Init SDL
-		init();
-
-
-		ps->scale=0.15;
-		ps->fps=40;
 
 		//g1.pscene->addPDisplayable(psys);// Not sure it works properly.
 		for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
@@ -54,7 +51,26 @@ BOOST_FIXTURE_TEST_SUITE (Scene3D_test, FScene3D) // The name of this serie is S
 		}
 	
 		BOOST_CHECK(25 == ps->getNbElements());
-	}*/
+	}
+
+	BOOST_AUTO_TEST_CASE (test_remove) { //
+		std::unordered_set<std::shared_ptr<Particle3D<SN<float, char>>>> pparts;
+		pparts=generate2DGridParticle3D(Point3D<SN<float, char>>{{2,1},{0,0},{0,0}}, SN<float, char>{2,3}, 5, SN<float, char>{1, 18});
+
+		for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
+			ps->add(ppart);
+		}
+
+		int i=0;
+		for (std::shared_ptr<Particle3D<SN<float, char>>> ppart : pparts){
+			i++;
+			if (i%2==1){
+				ps->remove(ppart);
+			}
+		}
+		//printf("%d", ps->getNbElements());
+		BOOST_CHECK(12 == ps->getNbElements());
+	}
 
 
 BOOST_AUTO_TEST_SUITE_END()

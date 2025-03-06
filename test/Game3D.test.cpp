@@ -65,7 +65,7 @@ BOOST_FIXTURE_TEST_SUITE (Game3D_test, FGame3D) // The name of this serie is Gam
 	}*/
 
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()
 
 
 

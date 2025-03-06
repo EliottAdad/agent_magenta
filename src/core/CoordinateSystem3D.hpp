@@ -24,14 +24,15 @@
  * in world/reference coordinates
  */
 template<typename T> class CoordinateSystem3D {
+protected:
+	// Axis
+	std::shared_ptr<Vector3D<T>> m_pe1;
+	std::shared_ptr<Vector3D<T>> m_pe2;
+	std::shared_ptr<Vector3D<T>> m_pe3;
+
 public:
 	std::shared_ptr<CoordinateSystem3D> preference;// NULL if World space
 	std::shared_ptr<Point3D<T>> ppoint;//The position is given from the reference position & orientation
-
-	// Axis (TODO move to protected)
-	std::shared_ptr<Vector3D<T>> pe1;
-	std::shared_ptr<Vector3D<T>> pe2;
-	std::shared_ptr<Vector3D<T>> pe3;
 
 	// Rotation (unused for now
 	float alpha;	// Angle balayant l'equateur
@@ -40,6 +41,15 @@ public:
 	CoordinateSystem3D();
 	virtual ~CoordinateSystem3D();
 	CoordinateSystem3D(const CoordinateSystem3D<T>& coordinate_system);
+
+	Vector3D<T> getE1() const {return *this->m_pe1;};
+	std::shared_ptr<Vector3D<T>> getPE1() const {return this->m_pe1;};
+	void setE1(const Point3D<T>& p1) {*this->m_pp1=p1;}
+	void setPE1(std::shared_ptr<Vector3D<T>> pv);
+	Vector3D<T> getE2() const {return *this->m_pe2;};
+	std::shared_ptr<Vector3D<T>> getPE2() const {return this->m_pe2;};
+	Vector3D<T> getE3() const {return *this->m_pe3;};
+	std::shared_ptr<Vector3D<T>> getPE3() const {return this->m_pe3;};
 
 	Eigen::Matrix<T, 3, 3> getM() const;
 	void rotate(const Vector3D<T>& v);
@@ -55,12 +65,12 @@ template<typename T> inline CoordinateSystem3D<T>::CoordinateSystem3D() {
 	this->preference=NULL;
 	this->ppoint=std::make_shared<Point3D<T>>();
 	
-	this->pe1=std::make_shared<Vector3D<T>>(Point3D<T>((T)1,(T)0,(T)0));
-	this->pe2=std::make_shared<Vector3D<T>>(Point3D<T>((T)0,(T)1,(T)0));
-	this->pe3=std::make_shared<Vector3D<T>>(Point3D<T>((T)0,(T)0,(T)1));
-	this->pe1->pp1=this->ppoint;
-	this->pe2->pp1=this->ppoint;
-	this->pe3->pp1=this->ppoint;
+	this->m_pe1=std::make_shared<Vector3D<T>>(Point3D<T>((T)1,(T)0,(T)0));
+	this->m_pe2=std::make_shared<Vector3D<T>>(Point3D<T>((T)0,(T)1,(T)0));
+	this->m_pe3=std::make_shared<Vector3D<T>>(Point3D<T>((T)0,(T)0,(T)1));
+	this->m_pe1->setPOrigin(this->ppoint);
+	this->m_pe2->setPOrigin(this->ppoint);
+	this->m_pe3->setPOrigin(this->ppoint);
 	
 	this->alpha=0;
 	this->beta=0;
@@ -74,12 +84,12 @@ template<typename T> inline CoordinateSystem3D<T>::CoordinateSystem3D(const Coor
 	this->preference=coordinate_system.preference;
 	this->ppoint=coordinate_system.ppoint;
 	
-	this->pe1=coordinate_system.pe1;
-	this->pe2=coordinate_system.pe2;
-	this->pe3=coordinate_system.pe3;
-	this->pe1->pp2=this->ppoint;
-	this->pe2->pp2=this->ppoint;
-	this->pe3->pp2=this->ppoint;
+	this->m_pe1=coordinate_system.pe1;
+	this->m_pe2=coordinate_system.pe2;
+	this->m_pe3=coordinate_system.pe3;
+	this->m_pe1->setPOrigin(this->ppoint);
+	this->m_pe2->setPOrigin(this->ppoint);
+	this->m_pe3->setPOrigin(this->ppoint);
 	
 	this->alpha=coordinate_system.alpha;
 	this->beta=coordinate_system.beta;
@@ -93,15 +103,15 @@ template<typename T> inline CoordinateSystem3D<T>::CoordinateSystem3D(const Coor
 template<typename T> inline Eigen::Matrix<T, 3, 3> CoordinateSystem3D<T>::getM() const{
 	if (this->preference==NULL){
 		return Eigen::Matrix<T, 3, 3>{
-			{pe1->pp2->x,pe2->pp2->x,pe3->pp2->x},
-			{pe2->pp2->y,pe2->pp2->y,pe2->pp2->y},
-			{pe3->pp2->z,pe3->pp2->z,pe3->pp2->z}
+			{m_pe1->pp2->x,m_pe2->pp2->x,m_pe3->pp2->x},
+			{m_pe2->pp2->y,m_pe2->pp2->y,m_pe2->pp2->y},
+			{m_pe3->pp2->z,m_pe3->pp2->z,m_pe3->pp2->z}
 		};
 	}else{
 		return Eigen::Matrix<T, 3, 3>{
-			{pe1->pp2->x,pe2->pp2->x,pe3->pp2->x},
-			{pe2->pp2->y,pe2->pp2->y,pe2->pp2->y},
-			{pe3->pp2->z,pe3->pp2->z,pe3->pp2->z}
+			{m_pe1->pp2->x,m_pe2->pp2->x,m_pe3->pp2->x},
+			{m_pe2->pp2->y,m_pe2->pp2->y,m_pe2->pp2->y},
+			{m_pe3->pp2->z,m_pe3->pp2->z,m_pe3->pp2->z}
 		} * this->preference->getM();
 	}
 }

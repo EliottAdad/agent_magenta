@@ -25,11 +25,11 @@ template<typename T> std::string to_string(const Vector3D<T>& v) {
 	
 	mes+="(";
 	mes+="P1";
-	mes+= (v.pp1==NULL)?" NULL": to_string(*v.pp1);
+	mes+= to_string(v.getP1());
 	mes+=" ; ";
 	
 	mes+="P2";
-	mes+=(v.pp2==NULL)?" NULL": to_string(*v.pp2);
+	mes+= to_string(v.getP2());
 	mes+=")";
 
 	return mes;

@@ -63,12 +63,8 @@ template<typename T> inline bool Scene3D<T>::add(std::shared_ptr<Displayable3D<T
 
 template<typename T> inline bool Scene3D<T>::remove(std::shared_ptr<Displayable3D<T>> pdisplayable) {//:)
 	bool success=false;
-	for (std::shared_ptr<Displayable3D<T>> pelement : pdisplayables){
-		if (pelement==pdisplayable){
-			pdisplayables.remove(pelement);
-			success=true;
-			break;
-		}
+	if (pdisplayables.erase(pdisplayable)!=0){
+		success=true;
 	}
 	return success;
 }

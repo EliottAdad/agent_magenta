@@ -39,9 +39,6 @@ public:
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
 	
-	virtual void operator+=(const Vector3D<T>& v);// :)
-	virtual void operator+=(const Particle3D<T>& p);// :)
-
 	// From Static3D
 	virtual T getX() const {return Static3D<T>::getX();}				//Gets the coords (for rendering)
 	virtual T getY() const {return Static3D<T>::getY();}
@@ -60,6 +57,10 @@ public:
 	virtual float getT() const {return TimeSensitive::getT();}
 	virtual void setT(const float& dt) {TimeSensitive::setT(dt);}
 	virtual void apply();
+
+	virtual void operator+=(const Vector3D<T>& v);// :)
+	virtual void operator+=(const Particle3D<T>& p);// :)
+
 };
 
 template<typename T> Particle3D<T> operator+(const Particle3D<T>& p1, const Particle3D<T>& p2);
@@ -110,27 +111,6 @@ template<typename T> inline Particle3D<T>::Particle3D(const Particle3D<T>& p) : 
 
 
 
-template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v) {
-	if (this->ps!=NULL){
-		*this->ps+=v;
-	}else{
-		*this->ps=v;
-	}
-}
-
-template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p) {
-	if (this->pproperties!=NULL){
-		*this->pproperties+=*p.pproperties;
-	}else{
-		this->pproperties=p.pproperties;
-	}
-}
-
-
-
-
-
-
 /*
  * From Displayable
  */
@@ -174,7 +154,7 @@ void Particle3D<T>::apply() {//Useless
  */
 template<typename T> inline void Particle3D<T>::apply() {
 	//printf("Particle3D: apply %f, %f\n", this->m_dt, this->ps->getNorm().to_m_type());
-	*this->ppoint+= *this->ps->pp2 * (T)this->m_dt;
+	*this->ppoint+= this->ps->getEnd() * (T)this->m_dt;
 	//this->x+=(this->ps->pp2->x)*(T)this->m_dt;
 	//this->y+=(this->ps->pp2->y)*(T)this->m_dt;
 	//this->z+=(this->ps->pp2->z)*(T)this->m_dt;
@@ -191,6 +171,22 @@ template<typename T> inline void Particle3D<T>::apply() {
 
 
 
+
+template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v) {
+	if (this->ps!=NULL){
+		*this->ps+=v;
+	}else{
+		this->ps=std::make_shared<Vector3D<T>>(v);
+	}
+}
+
+template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p) {
+	if (this->pproperties!=NULL){
+		*this->pproperties+=*p.pproperties;
+	}else{
+		this->pproperties=p.pproperties;
+	}
+}
 
 
 

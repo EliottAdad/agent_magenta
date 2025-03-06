@@ -48,6 +48,7 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		Point3D<SN<float, char>> p(SN<float, char>{0,0}, SN<float, char>{0,0}, SN<float, char>{0,0});
 		SN<float, char> a(1,2);
 		SN<float, char> b(0,0);
+
 		BOOST_CHECK(poct->getBarycenter() == p);
 		BOOST_CHECK(poct->getPoint() == p);
 
@@ -55,9 +56,9 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		//BOOST_CHECK(poct->getPoint() == p);
 		
 		BOOST_CHECK(poct->getPtrGetW() != NULL);
-		BOOST_CHECK(poct->tot_weight == b);
+		BOOST_CHECK(poct->getTotWeight() == b);
 	
-		BOOST_CHECK(poct->pU == NULL);
+		BOOST_CHECK(poct->getPU() == NULL);
 		
 		BOOST_CHECK(poct->isLeaf() == true);
 		BOOST_CHECK(poct->isEmpty() == true);
@@ -89,9 +90,9 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		//BOOST_CHECK(poct->getPoint() == p);
 		
 		BOOST_CHECK(poct2->getPtrGetW() == NULL);
-		BOOST_CHECK(poct2->tot_weight == b);
+		BOOST_CHECK(poct2->getTotWeight() == b);
 	
-		BOOST_CHECK(poct2->pU == NULL);
+		BOOST_CHECK(poct2->getPU() == NULL);
 		
 		BOOST_CHECK(poct2->isLeaf() == true);
 		BOOST_CHECK(poct2->isEmpty() == true);
@@ -110,8 +111,8 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(poctf->isEmpty() == true);*/
 	}
 	
-	BOOST_AUTO_TEST_CASE (test_getPChilds) { //
-		std::unordered_set<Oct<Particle3D<SN<float, char>>, SN<float, char>>*> pchilds=poct->getPChilds();
+	BOOST_AUTO_TEST_CASE (test_getPChildren) { //
+		std::unordered_set<Oct<Particle3D<SN<float, char>>, SN<float, char>>*> pchilds=poct->getPChildren();
 		BOOST_CHECK(pchilds.size() == 0);//Should be at 0 by default.
 		
 		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{3,0});
