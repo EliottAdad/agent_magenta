@@ -151,12 +151,16 @@ template<typename U, typename T> inline void PropertySet<U, T>::operator=(const 
 }
 
 /**
- * TODO
+ * @brief
+ * Add to the properties that are already present in this PropertySet
  */
 template<typename U, typename T> inline void PropertySet<U, T>::operator+=(const PropertySet<U, T>& property_set) {
-	this->properties;
-	
-	//=property_set.properties;
+	//std::map<std::string, std::shared_ptr<T>> pproperties;
+	//std::map<std::string, T> properties;
+
+	for (auto property : this->properties){
+		property.second+=property_set.get(property.first);
+	}
 }
 
 
@@ -170,5 +174,6 @@ template<typename U, typename T> inline PropertySet<U, T> operator+(const Proper
 	std::shared_ptr<PropertySet<U, T>> pproperty_set=std::make_shared<PropertySet<U, T>>();
 	return *pproperty_set;
 }
+
 
 #endif /* PROPERTYSET_HPP_ */

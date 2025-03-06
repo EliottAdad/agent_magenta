@@ -60,7 +60,8 @@ BOOST_FIXTURE_TEST_SUITE (Particle3D_test, FParticle3D) // The name of this seri
 
 	BOOST_AUTO_TEST_CASE (test_constructor2) { //
 		Point3D<SN<float, char>> p{SN<float, char>{-1, 0}, SN<float, char>{1, 0}, SN<float, char>{-3, 0}};
-		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(p);
+		SN<float, char> w{1, 10};
+		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(p, w);
 
 		// Checking position
 		SN<float, char> x{-1, 0};
@@ -109,11 +110,12 @@ BOOST_FIXTURE_TEST_SUITE (Particle3D_test, FParticle3D) // The name of this seri
 		pp2->apply();
 	}
 
-	BOOST_AUTO_TEST_CASE (test_getMass) { //
+	BOOST_AUTO_TEST_CASE (test_getMass_default_constructor_Particle3D) { //
 		SN<float, char> mass{1, 0};
 		BOOST_CHECK(getMass(*pp) == mass);
+	}
 
-
+	BOOST_AUTO_TEST_CASE (test_getMass_constructor3_Particle3D) { //
 		SN<float, char> x{-1, 0};
 		SN<float, char> y{1, 0};
 		SN<float, char> z{-3, 0};
@@ -122,13 +124,21 @@ BOOST_FIXTURE_TEST_SUITE (Particle3D_test, FParticle3D) // The name of this seri
 		BOOST_CHECK(getMass(*pp2) == w);
 	}
 
-	/*BOOST_AUTO_TEST_CASE (test_operator_equal) { //
-		Point3D<SN<float, char>> p1={{1,2},{1,2},{1,2}};
-		Point3D<SN<float, char>> p2={{1,2},{1,2},{1,2}};
-		BOOST_CHECK(p1 == p2);
+	BOOST_AUTO_TEST_CASE (test_operator_plus_equal) { //
+		SN<float, char> x{-1, 0};
+		SN<float, char> y{1, 0};
+		SN<float, char> z{-3, 0};
+		Point3D<SN<float, char>> p{x, y, z};
+		SN<float, char> w{1, 1};
+		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(x, y, z, w);
+
+		*pp2+=*pp;
+
+		SN<float, char> w_result{11, 0};
+		BOOST_CHECK(getMass(*pp2) == w_result);
 	}
 
-	BOOST_AUTO_TEST_CASE (test_operator_not_equal) { //
+	/*BOOST_AUTO_TEST_CASE (test_operator_not_equal) { //
 		Point3D<SN<float, char>> p1={{1,2},{1,2},{1,2}};
 		Point3D<SN<float, char>> p2={{-1,2},{2,2},{3,2}};
 		BOOST_CHECK(p1 != p2);

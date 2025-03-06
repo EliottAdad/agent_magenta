@@ -66,8 +66,19 @@ BOOST_FIXTURE_TEST_SUITE (PropertySet_test, FPropertySet) // The name of this se
 		pps->ptarget=&p;
 		
 		BOOST_CHECK(pps->ptarget == &p);
+
+		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
+		PropertySet<Particle3D<SN<float, char>>, SN<float, char>> ps2(pp.get());
+
+		BOOST_CHECK(ps2.ptarget == pp.get());
 	}
 
+	BOOST_AUTO_TEST_CASE (test_operator_equal) { //
+		std::shared_ptr<Particle3D<SN<float, char>>> pp=std::make_shared<Particle3D<SN<float, char>>>();
+		PropertySet<Particle3D<SN<float, char>>, SN<float, char>> ps2(pp.get());
+
+		BOOST_CHECK(pps->ptarget == &p);
+	}
 
 BOOST_AUTO_TEST_SUITE_END()
 

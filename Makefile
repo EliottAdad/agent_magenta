@@ -68,7 +68,7 @@ TOFILES = $(patsubst %.cpp, %.o, $(notdir $(TFILES)))
 #Particle3D.test.o Display3D.test.o SN.test.o Vector3D.test.o Point3D.test.o PropertySet.test.o Scene3D.test.o
 #Doesn't work
 #Oct.test.o 
-main_test: main.test.o Particle3D.test.o
+main_test: main.test.o Oct.test.o
 	$(CC) $(CFLAGS) $(addprefix build/, $^) $(LDFLAGS) $(LDLIBS) -o build/$@
 
 

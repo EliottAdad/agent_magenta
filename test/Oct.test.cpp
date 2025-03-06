@@ -62,7 +62,7 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 	
 		BOOST_CHECK(poct->getPU() == NULL);
 		
-		BOOST_CHECK(poct->isLeaf() == true);
+		BOOST_CHECK(poct->isWithoutChildren() == true);
 		BOOST_CHECK(poct->isEmpty() == true);
 		
 		BOOST_CHECK(poct->alpha == 0.5);
@@ -97,7 +97,7 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 	
 		BOOST_CHECK(poct2->getPU() == NULL);
 		
-		BOOST_CHECK(poct2->isLeaf() == true);
+		BOOST_CHECK(poct2->isWithoutChildren() == true);
 		BOOST_CHECK(poct2->isEmpty() == true);
 		
 		BOOST_CHECK(poct2->alpha == 0.5);
@@ -285,13 +285,13 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		BOOST_CHECK(1 == poct->getPElements().size());
 		BOOST_CHECK(1 == poct->getPUnderElements().size());
 		BOOST_CHECK(poct->isFull());
-		BOOST_CHECK(poct->isLeaf());
+		BOOST_CHECK(poct->isWithoutChildren());
 
 		poct->empty();
 		
 		BOOST_CHECK(0 == poct->getPElements().size());
 		BOOST_CHECK(poct->isEmpty());
-		BOOST_CHECK(!poct->isLeaf());
+		BOOST_CHECK(!poct->isWithoutChildren());
 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp3=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
 		poct->insert(pp1);

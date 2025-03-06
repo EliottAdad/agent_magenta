@@ -185,7 +185,7 @@ public:
 	 *------ */
 	bool isFull() const;
 	bool isEmpty() const;
-	bool isLeaf() const;
+	bool isWithoutChildren() const;
 	bool isRoot() const;
 };
 template<typename U, typename T> std::unordered_set<Oct<U, T>*> Oct<U, T>::m_LEAVES={};
@@ -335,7 +335,7 @@ template<typename U, typename T> inline std::unordered_set<Oct<U, T>*> Oct<U, T>
 		pleaves.clear();
 	}
 
-	if (this->isLeaf()){// If leaf, adds itself
+	if (this->isWithoutChildren()){// If leaf, adds itself
 		pleaves.insert(this);
 	}
 
@@ -489,9 +489,6 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 				m_PTR_GETW!=NULL){// If in the cube centered on the Oct's position.
 
 			// Manages the barycenter
-
-			T weight=(*(m_PTR_GETW))(*pU);
-
 			this->m_tot_weight+=(*(m_PTR_GETW))(*pU);//Add to tot_weight
 			if (this->m_tot_weight!=(T)0){
 				*this->m_pbarycenter+=p * (*(m_PTR_GETW))(*pU)/m_tot_weight;//Add to the barycenter
@@ -499,18 +496,19 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 				*this->m_pbarycenter=*this->m_ppoint;
 			}
 
-			if (this->isEmpty() && this->isLeaf()){		// If empty and the cube has no Octs under (if it's a leaf)
+			if (this->isEmpty() && this->isWithoutChildren()){		// If empty and the cube has no Octs under (if it's an empty leaf)
 				this->m_pU=pU;//We add in
 				this->m_LEAVES.insert(this);// Marked as a leaf
 			}else{										// Else it means it is an internal branch (or a leaf already full)
-				/*if (this->isFull() && p==this->pU->getPosition()){// If pU and this->pU at the same location
+				// Same location object management
+				if (this->isFull() && p==this->m_pU->getPosition()){// If pU and this->pU at the same location
 					if (this->ffuse){
 						printf("\nFusing particles\n");
-						*this->pU+=*pU;
+						*this->m_pU+=*pU;
 					}else{
 						return pU;
 					}
-				}else */if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 1
+				}else if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 1
 					insertTLFTree(pU);
 				}else if (dp.x>=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 2
 					insertTRFTree(pU);
@@ -528,11 +526,11 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 					insertBLBTree(pU);
 				}
 
-				// We reinsert the object already present(can be null if it wasn't a leaf).
+				// We reinsert the object already present.
 				if (this->m_pU!=NULL){
-					this->m_tot_weight-=(*(m_PTR_GETW))(*pU);//Subtract the w of the already present obj to tot_weight
-					std::shared_ptr<U> pU2;//Init to null
-					pU2.swap(pU);// Set this->pU to NULL and pU2 to this->pU
+					this->m_tot_weight-=(*(m_PTR_GETW))(*this->m_pU);//Subtract the w of the already present obj to tot_weight but do not change anything for the barycenter because it is still present down the line.
+					std::shared_ptr<U> pU2;//Pointer to U type data, init to null
+					pU2.swap(this->m_pU);// Set this->m_pU to NULL and pU2 to this->m_pU
 					this->insert(pU2);
 				}
 			}
@@ -725,7 +723,7 @@ template<typename U, typename T> inline bool Oct<U, T>::isEmpty() const {
  * Returns false if contains at least a subtree.
  * True otherwise.
  */
-template<typename U, typename T> inline bool Oct<U, T>::isLeaf() const {
+template<typename U, typename T> inline bool Oct<U, T>::isWithoutChildren() const {
 	bool test=true;
 
 	for (unsigned char i(0) ; i<8 ; i++){

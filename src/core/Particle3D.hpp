@@ -33,7 +33,7 @@ public:
 	std::shared_ptr<PropertySet<Particle3D<T>, T>> pproperties;										// Properties of type T
 	
 	Particle3D();
-	Particle3D(const Point3D<T>& p);
+	Particle3D(const Point3D<T>& p, const T& mass=(T)1);
 	Particle3D(const T& x, const T& y, const T& z, const T& mass=(T)1);
 	virtual ~Particle3D();
 	Particle3D(const Particle3D<T>& p);
@@ -74,12 +74,12 @@ template<typename T> inline Particle3D<T>::Particle3D() : Mobile3D<T>(), Display
 	this->pproperties->add("charge", std::make_shared<T>((T)1));
 }
 
-template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p) : Mobile3D<T>(), Displayable3D<T>() {
+template<typename T> inline Particle3D<T>::Particle3D(const Point3D<T>& p, const T& mass) : Mobile3D<T>(), Displayable3D<T>() {
 	this->ppoint=std::make_shared<Point3D<T>>(p);
 
 	this->pproperties=std::make_shared<PropertySet<Particle3D<T>, T>>();
-	this->pproperties->add("mass", std::make_shared<T>((T)1));
-	this->pproperties->add("charge", std::make_shared<T>((T)1));
+	this->pproperties->add("mass", std::make_shared<T>(mass));
+	this->pproperties->add("charge", std::make_shared<T>(mass));
 }
 
 template<typename T> inline Particle3D<T>::Particle3D(const T& x, const T& y, const T& z, const T& mass) : Mobile3D<T>(), Displayable3D<T>() {
@@ -172,19 +172,19 @@ template<typename T> inline void Particle3D<T>::apply() {
 
 
 template<typename T> inline void Particle3D<T>::operator+=(const Vector3D<T>& v) {
-	if (this->ps!=NULL){
-		*this->ps+=v;
-	}else{
-		this->ps=std::make_shared<Vector3D<T>>(v);
-	}
+	;
 }
 
 template<typename T> inline void Particle3D<T>::operator+=(const Particle3D<T>& p) {
+	// Fuse the properties
 	if (this->pproperties!=NULL){
 		*this->pproperties+=*p.pproperties;
 	}else{
 		this->pproperties=p.pproperties;
 	}
+	// Fuse the positions TODO
+
+	// Fuse the speeds TODO
 }
 
 
