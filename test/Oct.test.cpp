@@ -248,15 +248,21 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		std::shared_ptr<Particle3D<SN<float, char>>> pp2=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
 
 		poct->insert(pp1);
+		printf("##1#########%d\n", poct->getPElements().size());
+		BOOST_CHECK(1 == poct->getPElements().size());
 		BOOST_CHECK(1 == poct->getPUnderElements().size());
 		BOOST_CHECK(1 == poct->getNB_OCTS());
 
 		poct->insert(pp2);
+		printf("##2#########%d\n", poct->getPElements().size());
 		BOOST_CHECK(2 == poct->getPElements().size());
+		BOOST_CHECK(2 == poct->getPUnderElements().size());
 		BOOST_CHECK(3 == poct->getNB_OCTS());
 
 		poct->empty();
 
+		printf("##3#########%d\n", poct->getPElements().size());
+		BOOST_CHECK(0 == poct->getPUnderElements().size());
 		BOOST_CHECK(0 == poct->getPElements().size());
 		BOOST_CHECK(1 == poct->getNB_OCTS());
 
@@ -282,16 +288,16 @@ BOOST_FIXTURE_TEST_SUITE (Oct_test, FOct) // The name of this serie is Oct_test
 		std::shared_ptr<Particle3D<SN<float, char>>> pp1=std::make_shared<Particle3D<SN<float, char>>>();
 		poct->insert(pp1);
 
-		BOOST_CHECK(1 == poct->getPElements().size());
-		BOOST_CHECK(1 == poct->getPUnderElements().size());
-		BOOST_CHECK(poct->isFull());
-		BOOST_CHECK(poct->isWithoutChildren());
+		BOOST_CHECK(poct->getPElements().size() == 1);
+		BOOST_CHECK(poct->getPUnderElements().size() == 1);
+		BOOST_CHECK(poct->isFull() == true);
+		BOOST_CHECK(poct->isWithoutChildren() == true);
 
 		poct->empty();
 		
-		BOOST_CHECK(0 == poct->getPElements().size());
-		BOOST_CHECK(poct->isEmpty());
-		BOOST_CHECK(!poct->isWithoutChildren());
+		BOOST_CHECK(poct->getPElements().size() == 0);
+		BOOST_CHECK(poct->isEmpty() == true);
+		BOOST_CHECK(poct->isWithoutChildren() == true);
 
 		std::shared_ptr<Particle3D<SN<float, char>>> pp3=std::make_shared<Particle3D<SN<float, char>>>(SN<float, char>{1,0}, SN<float, char>{-1,0}, SN<float, char>{1,0}, SN<float, char>{1,6});
 		poct->insert(pp1);

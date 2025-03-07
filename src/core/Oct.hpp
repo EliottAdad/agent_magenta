@@ -359,9 +359,7 @@ template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> O
 	}
 	
 	for (Oct<U, T>* pleaf : this->m_LEAVES){
-		if (pleaf!=NULL){// TODO: unseless check
-			elmts.insert(pleaf->getPU());
-		}
+		elmts.insert(pleaf->getPU());
 	}
 
 	return elmts;
@@ -499,16 +497,16 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 			if (this->isEmpty() && this->isWithoutChildren()){		// If empty and the cube has no Octs under (if it's an empty leaf)
 				this->m_pU=pU;//We add in
 				this->m_LEAVES.insert(this);// Marked as a leaf
-			}else{										// Else it means it is an internal branch (or a leaf already full)
+			}else if(this->isFull() && p==this->m_pU->getPosition()){// If pU and this->pU at the same location
 				// Same location object management
-				if (this->isFull() && p==this->m_pU->getPosition()){// If pU and this->pU at the same location
-					if (this->ffuse){
-						printf("\nFusing particles\n");
-						*this->m_pU+=*pU;
-					}else{
-						return pU;
-					}
-				}else if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 1
+				if (this->ffuse){
+					printf("\nFusing particles\n");
+					*this->m_pU+=*pU;
+				}else{
+					return pU;
+				}
+			}else{										// Else it means it is an internal branch (or a leaf already full)
+				if (dp.x<=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 1
 					insertTLFTree(pU);
 				}else if (dp.x>=(T)0 && dp.y<=(T)0 && dp.z>=(T)0){	//If cube 2
 					insertTRFTree(pU);
@@ -550,6 +548,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertTLFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(-1)*a, (T)(1)*a};
 		TLFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	TLFTree->insert(pU);
 }
@@ -559,6 +559,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertTRFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(-1)*a, (T)(1)*a};
 		TRFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	TRFTree->insert(pU);
 }
@@ -568,6 +570,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertBRFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(-1)*a, (T)(-1)*a};
 		BLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	BLBTree->insert(pU);
 }
@@ -577,7 +581,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertBLFTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(-1)*a, (T)(-1)*a};
 		BLFTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
-		//BLFTree->poct_parent=this;
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	BLFTree->insert(pU);
 }
@@ -587,7 +592,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertTLBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(1)*a, (T)(1)*a};
 		TLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
-		//TLBTree->poct_parent=this;
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	TLBTree->insert(pU);
 }
@@ -597,7 +603,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertTRBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(1)*a, (T)(1)*a};
 		TRBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
-		//TRBTree->poct_parent=this;
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	TRBTree->insert(pU);
 }
@@ -607,6 +614,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertBRBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(1)*a, (T)(1)*a, (T)(-1)*a};
 		BRBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	BRBTree->insert(pU);
 }
@@ -616,6 +625,8 @@ template<typename U, typename T> inline void Oct<U, T>::insertBLBTree(std::share
 		T a=this->m_ha/(T)2;
 		Point3D<T> np{(T)(-1)*a, (T)(1)*a, (T)(-1)*a};
 		BLBTree=std::make_unique<Oct<U, T>>(this->m_ha, *this->m_ppoint+np, this);
+		// Suppress this oct from the leaves as it now has a child.
+		m_LEAVES.erase(this);
 	}
 	BLBTree->insert(pU);
 }
@@ -674,9 +685,7 @@ template<typename U, typename T> inline void Oct<U, T>::empty() {
 	std::unordered_set<Oct<U, T>*> under_leaves=this->getPUnderLeaves();
 	// Suppress the leaves under from the leaves list.
 	for (Oct<U, T>* poct : under_leaves){
-		if (this->m_LEAVES.contains(poct)){
-			this->m_LEAVES.erase(poct);
-		}
+		this->m_LEAVES.erase(poct);
 	}
 
 	// No more under Octs
