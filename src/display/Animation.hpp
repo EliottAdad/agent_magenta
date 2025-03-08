@@ -96,6 +96,7 @@ inline Animation::~Animation() {
 }
 
 /**
+ * @brief
  * Creates a copy from another Animation
  */
 inline Animation::Animation(const Animation& animation) : TimeSensitive(animation) {
@@ -151,6 +152,7 @@ inline void Animation::last() {
 /*
  * From TimeSensitive
  */
+
 inline void Animation::setT(const float& dt) {
 	this->m_dt+=dt;
 }

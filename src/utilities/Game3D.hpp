@@ -69,6 +69,7 @@ template<typename T> inline Game3D<T>::~Game3D() {
 
 
 /**
+ * @brief
  * Run the game for a certain number of frames
  */
 template<typename T> inline bool Game3D<T>::run(const unsigned int& steps){

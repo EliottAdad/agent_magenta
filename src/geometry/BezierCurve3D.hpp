@@ -60,6 +60,7 @@ template<typename T> inline BezierCurve3D<T>::~BezierCurve3D() {
 }
 
 /**
+ * @brief
  * Get the image on the line given the factor t.
  * \t is between 0 and 1.
  */

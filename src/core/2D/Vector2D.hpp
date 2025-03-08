@@ -12,7 +12,7 @@
 
 #include <memory>
 
-#include "Line3D.hpp"
+#include "Line2D.hpp"
 #include "Point2D.hpp"
 
 /*
@@ -21,7 +21,7 @@
  * ###############
  * T: Unit for distances
  */
-template<typename T> class Vector2D : public Line3D<T> {
+template<typename T> class Vector2D : public Line2D<T> {
 public:
 	Vector2D();
 	Vector2D(const Point2D<T>& p2);

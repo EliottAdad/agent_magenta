@@ -94,12 +94,7 @@ public:
 	 * Returns the side lenght of the Oct
 	 */
 	T getA() const {return this->m_ha*(T)2;}
-	/**
-	 * @brief
-	 * Sets the side lenght of the Oct
-	 * \\Crucial
-	 */
-	std::unordered_set<std::shared_ptr<U>> setA(const T& a){this->m_ha=a/(T)2;	return this->recalculate();}
+	std::unordered_set<std::shared_ptr<U>> setA(const T& a);
 	/**
 	 * @brief
 	 * Returns the total weight stored in this Oct
@@ -114,12 +109,7 @@ public:
 	 * Returns the pointer to the point
 	 */
 	std::shared_ptr<Point3D<T>> getPPoint() const {return this->m_ppoint;}
-	/**
-	 * @brief
-	 * Sets the point
-	 * \\Crucial
-	 */
-	void setPoint(const Point3D<T>& point){*this->m_ppoint=point;	*this->m_pbarycenter=*this->m_ppoint;	this->recalculate();}	// Et le barycentre ?=>Verif
+	void setPoint(const Point3D<T>& point);
 	/**
 	 * @brief
 	 * Returns the barycenter
@@ -288,9 +278,37 @@ template<typename U, typename T> inline Oct<U, T>::Oct(const Oct<U, T>& oct) {
 
 
 
+/*---------------- x
+ * Getters/Setters
+ *---------------- */
+
+/**
+ * @brief
+ * Sets the side lenght of the Oct
+ * \\Crucial
+ */
+template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> Oct<U, T>::setA(const T& a){
+	this->m_ha=a/(T)2;
+	return this->recalculate();
+}
+
+/**
+ * @brief
+ * Sets the point
+ * \\Crucial
+ */
+template<typename U, typename T> inline void Oct<U, T>::setPoint(const Point3D<T>& point){
+	*this->m_ppoint=point;
+	*this->m_pbarycenter=*this->m_ppoint;	// What about the barycentre ?=>Verif
+	this->recalculate();
+}
 
 
 
+
+/*-------- x
+ * Methods
+ *-------- */
 
 /**
  * @brief
@@ -473,28 +491,14 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 		Point3D<T> p=pU->getPosition();
 		Point3D<T> dp=p-*this->m_ppoint;
 
-		/*if (m_PTR_GETW==NULL){
-			//printf("\nm_PTR_GETW is NULL\n");
-		}
-		if (abs(dp.x)<=this->m_ha){
-			//printf("\nabs(dp.x)<=this->ha\n");
-		}else{
-			//printf("\nabs(dp.x)>this->ha\n");
-		}*/
+		// If in the cube centered on the Oct's position.
 		if (abs(dp.x)<=this->m_ha &&
 				abs(dp.y)<=this->m_ha &&
 				abs(dp.z)<=this->m_ha &&
-				m_PTR_GETW!=NULL){// If in the cube centered on the Oct's position.
+				m_PTR_GETW!=NULL){
 
-			// Manages the barycenter
-			this->m_tot_weight+=(*(m_PTR_GETW))(*pU);//Add to tot_weight
-			if (this->m_tot_weight!=(T)0){
-				*this->m_pbarycenter+=p * (*(m_PTR_GETW))(*pU)/m_tot_weight;//Add to the barycenter
-			}else{
-				*this->m_pbarycenter=*this->m_ppoint;
-			}
-
-			if (this->isEmpty() && this->isWithoutChildren()){		// If empty and the cube has no Octs under (if it's an empty leaf)
+			// If it is empty and has no Octs under (if it's an empty leaf)
+			if (this->isEmpty() && this->isWithoutChildren()){
 				this->m_pU=pU;//We add in
 				this->m_LEAVES.insert(this);// Marked as a leaf
 			}else if(this->isFull() && p==this->m_pU->getPosition()){// If pU and this->pU at the same location
@@ -531,6 +535,14 @@ template<typename U, typename T> inline std::shared_ptr<U> Oct<U, T>::insert(std
 					pU2.swap(this->m_pU);// Set this->m_pU to NULL and pU2 to this->m_pU
 					this->insert(pU2);
 				}
+			}
+
+			// Manages the barycenter
+			this->m_tot_weight+=(*(m_PTR_GETW))(*pU);//Add to tot_weight
+			if (this->m_tot_weight!=(T)0){
+				*this->m_pbarycenter+=p * (*(m_PTR_GETW))(*pU)/m_tot_weight;//Add to the barycenter
+			}else{
+				*this->m_pbarycenter=*this->m_ppoint;
 			}
 		}else{
 			//printf("\nFailed1\n");
@@ -633,7 +645,9 @@ template<typename U, typename T> inline void Oct<U, T>::insertBLBTree(std::share
 
 /**
  * @brief
- * Removes the given object and reconstructs the tree.
+ * Removes the given object and reconstructs the tree
+ * (do not free pU but the reference to the shared poiter is lost).
+ * @return
  * Returns true if the element was present, false if not.
  * \\Critical
  */
@@ -657,7 +671,8 @@ template<typename U, typename T> inline bool Oct<U, T>::remove(std::shared_ptr<U
 /**
  * @brief
  * Recalculate the tree.
- * Gives up objects that are outside of range, that are no longer in bounds of the tree.
+ * @return
+ * Gives up the objects that are no longer in bounds of the tree.
  */
 template<typename U, typename T> inline std::unordered_set<std::shared_ptr<U>> Oct<U, T>::recalculate() {
 	std::unordered_set<std::shared_ptr<U>> pelements=this->getPUnderElements();

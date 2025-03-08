@@ -101,7 +101,8 @@ inline bool TimeManager::add(std::shared_ptr<TimeSensitive> ptime_sensitive) {
 
 
 
-/*
+/**
+ * @brief
  * If 0: infinite loop
  */
 inline bool TimeManager::run(const unsigned int& steps) {

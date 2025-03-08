@@ -36,7 +36,7 @@ public:
 	std::map<std::string, T> properties;
 	
 	PropertySet();
-	PropertySet(const U* ptarget);
+	PropertySet(U* ptarget);
 	virtual ~PropertySet();
 	PropertySet(const PropertySet<U, T>& property_set);
 
@@ -63,7 +63,7 @@ template<typename U, typename T> inline PropertySet<U, T>::PropertySet() {
 /**
  * Constructor1
  */
-template<typename U, typename T> inline PropertySet<U, T>::PropertySet(const U* ptarget) {
+template<typename U, typename T> inline PropertySet<U, T>::PropertySet(U* ptarget) {
 	this->ptarget=ptarget;
 }
 

@@ -156,7 +156,8 @@ template<typename T> inline void Display3D<T>::addPScene(Scene3D<T>* pscene) {
 	}
 }
 
-/*
+/**
+ * @brief
  * If 0: infinite loop
  */
 template<typename T> inline void Display3D<T>::run(const unsigned int frames) const {
@@ -216,6 +217,7 @@ template<typename T> inline bool Display3D<T>::render() const {
 }
 
 /**
+ * @brief
  * f
  */
 template<typename T> inline bool Display3D<T>::renderScene(const Scene3D<T>& scene) const {
@@ -229,6 +231,7 @@ template<typename T> inline bool Display3D<T>::renderScene(const Scene3D<T>& sce
 }
 
 /**
+ * @brief
  * g
  */
 template<typename T> inline bool Display3D<T>::renderDisplayable(const Displayable3D<T>& displayable) const {

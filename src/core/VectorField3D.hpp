@@ -80,7 +80,9 @@ template<typename T> inline bool VectorField3D<T>::add(std::shared_ptr<Mobile3D<
 	}
 	return success;
 }
+
 /**
+ * @brief
  * True if was there before
  * false if not
  */

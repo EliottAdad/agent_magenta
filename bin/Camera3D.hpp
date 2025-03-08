@@ -11,11 +11,10 @@
 
 #include <memory>
 
-#include "../core/Point3D.hpp"
-#include "../core/Vector3D.hpp"
-#include "../geometry/Mesh3D.hpp"
-#include "../geometry/Triangle3D.hpp"
-//#include "../utilities/Printable.hpp"
+#include "Display3D.hpp"
+#include "../core/Scene3D.hpp"
+
+
 
 /*
  * ###############
@@ -25,7 +24,7 @@
  * Orthographic projection for now
  * This camera is a cone directed by a normal
  */
-template<typename T> class Camera3D : public Mobile3D<T> {
+template<typename T> class Camera3D : public Display3D<T> {
 public:
 	//float m_aperture;		//Aperture angle in radians
 	//float m_roll_ang;		//Roll angle to the normal

@@ -235,6 +235,7 @@ template<typename U, typename T> inline std::unordered_set<Point3D<T>*> System3D
 
 
 /**
+ * @brief
  * Gravitational force optimised by Barnes-Hutt's algo
  * function that will be applied.
  */
@@ -259,6 +260,7 @@ template<typename U, typename T> inline void gravitOptimised(const System3D<U, T
 }
 
 /**
+ * @brief
  * function that will be applied.
  */
 template<typename U, typename T> inline void elecOptimised(const System3D<U, T>& system) {
@@ -274,7 +276,8 @@ template<typename U, typename T> inline void elecOptimised(const System3D<U, T>&
 	}
 }
 
-/*
+/**
+ * @brief
  * Gravitation
  * Returns the acc (in norm) felt by pU2 due to pU1
  * @param : pU1: src, pU2: target (not NULL)
@@ -305,7 +308,8 @@ template<typename T, typename U> inline Vector3D<T> apply_gravitOptimised(std::s
 	return *pv;
 }
 
-/*
+/**
+ * @brief
  * Electromagnetics
  * Returns the acc (in norm) felt by pU2 due to pU1
  * @param : pU1: src, pU2: target (not NULL pls)

@@ -86,6 +86,7 @@ template<typename T> Vector3D<T> operator^(const Vector3D<T>& v1, const Vector3D
 
 
 /**
+ * @brief
  * @return Returns the norm
  */
 template<typename T> inline T Vector3D<T>::getNorm() const {
@@ -208,6 +209,7 @@ template<typename T> inline Vector3D<T> operator/(const Vector3D<T>& v, const do
 
 
 /**
+ * @brief
  * Scalar product
  */
 template<typename T> inline T operator*(const Vector3D<T>& v1, const Vector3D<T>& v2) {
@@ -215,6 +217,7 @@ template<typename T> inline T operator*(const Vector3D<T>& v1, const Vector3D<T>
 }
 
 /**
+ * @brief
  * Vectorial product
  */
 template<typename T> inline Vector3D<T> operator^(const Vector3D<T>& v1, const Vector3D<T>& v2) {

@@ -186,6 +186,7 @@ template<typename M, typename E> SN<M, E> sqrt(const SN<M, E>& nb);										//:
  */
 
 /**
+ * @brief
  * Constructor
  */
 template<typename M, typename E> inline SN<M, E>::SN() {
@@ -194,6 +195,7 @@ template<typename M, typename E> inline SN<M, E>::SN() {
 }
 
 /**
+ * @brief
  * Constructor
  */
 template<typename M, typename E> inline SN<M, E>::SN(M m, E e) {
@@ -203,6 +205,7 @@ template<typename M, typename E> inline SN<M, E>::SN(M m, E e) {
 }
 
 /**
+ * @brief
  * Constructor
  */
 template<typename M, typename E> inline SN<M, E>::SN(M nb) {
@@ -212,6 +215,7 @@ template<typename M, typename E> inline SN<M, E>::SN(M nb) {
 }
 
 /**
+ * @brief
  * Constructor
  */
 template<typename M, typename E> inline SN<M, E>::SN(const SN<M, E>& nb) {
@@ -225,6 +229,7 @@ template<typename M, typename E> inline SN<M, E>::SN(const SN<M, E>& nb) {
 
 
 /**
+ * @brief
  * Recalculate the SN under scientific notation.
  * Ex: 1.27x10⁹
  */
@@ -568,6 +573,7 @@ template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, con
 	}
 	return false;
 }*/
+
 template<typename M, typename E> inline bool operator<=(const SN<M, E>& nb1, const M& nb2) {
 	if (nb1.m<=nb2/(M)(pow(10, nb1.e))){
 		return true;
@@ -807,6 +813,7 @@ template<typename M, typename E> inline bool operator>(const double& nb1, const 
 }*/
 
 /*:)
+ * @brief
  * It's better to enter the bigger number first I think.
  */
 template<typename M, typename E> inline SN<M, E> operator+(const SN<M, E>& nb1, const SN<M, E>& nb2) {
@@ -873,6 +880,7 @@ template<typename M, typename E> inline SN<M, E> operator+(const double& nb1, co
 }*/
 
 /*:)
+ * @brief
  * It's better to enter the bigger number first.
  */
 template<typename M, typename E> inline SN<M, E> operator-(const SN<M, E>& nb1, const SN<M, E>& nb2) {
@@ -1072,13 +1080,15 @@ template<typename M, typename E> inline SN<M, E> operator/(const double& nb1, co
  */
  
 /**
-* Computes the absolute value of a SN
-*/
+ * @brief
+ * Computes the absolute value of a SN
+ */
 template<typename M, typename E> inline SN<M, E> abs(const SN<M, E>& nb) {
 	return SN<M, E>{(M)std::abs(nb.m), nb.e};
 }
 
 /**
+ * @brief
  * Puts to the power 2
  */
 template<typename M, typename E> inline SN<M, E> pow(const SN<M, E>& nb, const E& e) {
@@ -1101,6 +1111,7 @@ template<typename M, typename E> LSN nrt(LSN& nb, long int e) {
 }*/
 
 /**
+ * @brief
  * Calculate the square root of a number.
  */
 template<typename M, typename E> inline SN<M, E> sqrt(const SN<M, E>& nb) {

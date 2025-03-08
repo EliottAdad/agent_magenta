@@ -42,6 +42,7 @@ public:
 
 
 /**
+ * @brief
  * Constructor 1
  */
 inline Material::Material() {
@@ -49,6 +50,7 @@ inline Material::Material() {
 }
 
 /**
+ * @brief
  * Constructor 1
  */
 inline Material::Material(std::shared_ptr<COLOR> pcolor) {
@@ -56,6 +58,7 @@ inline Material::Material(std::shared_ptr<COLOR> pcolor) {
 }
 
 /**
+ * @brief
  * Constructor 2
  */
 inline Material::Material(const Material& material){
@@ -63,6 +66,7 @@ inline Material::Material(const Material& material){
 }
 
 /**
+ * @brief
  * Destructor
  */
 inline Material::~Material(){
